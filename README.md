@@ -1,4 +1,4 @@
-# thym
+# thym working attempting stuff
 
  # Multidomain genome recovering (MUDOGER)
  
