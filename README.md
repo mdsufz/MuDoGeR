@@ -5,7 +5,7 @@
  
  ![](https://github.com/EfthymisF/folder-scripts/blob/master/index.png)
  
-MUDOGER is a tool developed for metagenomic analysis and classification of data contained in mixed libraries from a wide range of environments. MUDOGER is user-friendly tool and is the first that combines a number of pipelines from diffrent tools for the simultaneous extraction of Prokaryotic, Eykaryotic and Viral metagenomic data. The MUDOGER pipeline process starts with **Read Quality control** of the libraries and **Assembly** of the *"good quality reads"* resulted from the former step. For the next step of data analysis, the pipeline is devided in 3 different branches: **1. Metawrap** pipeline is used for analayzing Prokaryotic genomes. **2.** **Virsorter**, **Virfinder** and **Vibrant** pipelines are followed and combined for the prediction of viral sequences. **3.** **EykRep** pipeline is run for metagenomic analysis of Eykaryotic genomes. 
+MUDOGER is a tool developed for metagenomic analysis and classification of data contained in mixed libraries taken from a wide range of environments. MUDOGER is user-friendly  and the first that combines a number of pipelines from diffrent tools for the simultaneous extraction of Prokaryotic, Eykaryotic and Viral metagenomic data. The MUDOGER pipeline process starts with **Read Quality control** of the libraries and **Assembly** of the *"good quality reads"* resulted from the former step. For the next step of data analysis, the pipeline is devided in 3 different branches: **1. Metawrap** pipeline is used for analayzing Prokaryotic genomes. **2.** **Virsorter**, **Virfinder** and **Vibrant** pipelines are followed and combined for the prediction of viral sequences. **3.** **EykRep** pipeline is run for metagenomic analysis of Eykaryotic genomes. 
  
 
 ## MUDOGER Workflow
@@ -18,10 +18,10 @@ MUDOGER is a tool developed for metagenomic analysis and classification of data 
 ```(3.1) Bin extraction with MaxBin2, metaBAT2, and CONCOCT (3.2) Unification of multiple binning prediction into an advanced bin set (Bin refinement) (3.3) Quality control using cCheckM (3.4) Classification of genomic bins (3.5) Reassemble the final annotation with PROKKA```
 
 ###  (4) Metagenomic analysis of Viral genomes
-```(4.1) Recovery of viral metagenomes using Virfinder, VirSorter and VIBRANT for the prediction of viral sequences, combination of them to a single file and removal of replicates (4.2) Prediction of each contig's protein by Prodigal (4.3) Identification of Proteins by Blastp``` 
+```(4.1) Recovery of viral metagenomes using Virfinder, VirSorter and VIBRANT for the prediction of viral sequences, combination of them to a single file and removal of replicates (4.2) Prediction of each contig's protein using Prodigal (4.3) Identification using Proteins by Blastp``` 
 
 ###  (5) Metagenomic analysis of Eykaryotic genomes
-```(5.1) Classification  of  Eykaryotic genomes with EykRep (5.2) Use of CONCOCT for binning and filtering of the Eykaryotic sequences by size.(5.3) Then, genes are predicted by  using the trained GeneMark-ES model and MAKER2. (5.4) BUSCO is applied for detection of single copy orthologous genes (SCGs) and will estimate the completeness and contamination of Eykaryotic reads```
+```(5.1) Classification  of  Eykaryotic genomes with EykRep (5.2) Use of CONCOCT for binning and filtering the Eykaryotic sequences by size.(5.3) Then, genes are predicted by using the trained GeneMark-ES model and (5.4) MAKER2. Finally, (5.5) BUSCO is applied for detection of single copy orthologous genes (SCGs) and will estimate the completeness and contamination of Eykaryotic reads```
 
              
 
@@ -84,7 +84,7 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 	vibrant		Prediction of viral genomes with VIBRANT module
  	viral_filt	Selecion of virfinder,virsorter,vibrant good contings 
 	viral_gc_comb	Combination of good viral contigs to one database module	
-	dereplicate	Removal of redundant viral particles module
+	dereplication	Removal of redundant viral particles module
 	prodigal	Prodigal module	
 	blastp		Protein identification module
 	eykrep		EykRep classification module
