@@ -1,11 +1,12 @@
 # MuDoGeR
 
- # Multidomain Genome Recovery (MuDoGeR)
+ # Multi-domain Genome Recovery (MuDoGeR)
  
  
  ![](https://github.com/EfthymisF/folder-scripts/blob/master/index.png)
- 
-MuDoGeR is a tool developed for metagenomic analysis and classification of data contained in mixed libraries taken from a wide range of environments. MuDoGeR is user-friendly  and the first that combines a number of pipelines from diffrent tools for the simultaneous extraction of Prokaryotic, Eykaryotic and Viral metagenomic data. The MuDoGeR pipeline process starts with **Read Quality control** of the libraries and **Assembly** of the *"good quality reads"* resulted from the former step. For the next step of data analysis, the pipeline is devided in 3 different branches: **Metawrap** pipeline is used for analayzing Prokaryotic genomes. **Virsorter**, **Virfinder** and **Vibrant** pipelines are followed and combined for the prediction of viral sequences. **EykRep** pipeline is run for metagenomic analysis of Eykaryotic genomes. 
+
+Multi-domain Genome Recovery (MuDoGeR)is a tool developed to help users to recover metagenome assembled genomes from hundreds of samples simultaneously
+The MuDoGeR pipeline process combines a number of pipelines from different tools. It starts with **Read Quality control** of the libraries and **Assembly** of the *"good quality reads"* resulted from the former step. For the next step of data analysis, the pipeline is devided in 3 different branches: **Metawrap** pipeline is used for analayzing Prokaryotic genomes. **Virsorter**, **Virfinder** and **Vibrant** pipelines are followed and combined for the prediction of viral sequences. **EykRep** pipeline is run for metagenomic analysis of Eykaryotic genomes. 
  
 
 ## MuDoGeR Overview
