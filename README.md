@@ -109,15 +109,13 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 
 # Step 0:Dowloading the libraries
 
-# Step 1:Trimming the reads and removing possible host reads
+# Step 1:Pre-Processing 
+# Step 2:Metagenomic recovery of Prokaryotic genomes 
 
-# Step 2:Assembly of "good quality" sequences
+# Step 3:Pipelines for viral genomes(VirFinder, VirSorter, Vibrant)
 
-# Step 3:MetaWRAP pipeline
+# Step 4:EykRep pipeline
 
-# Step 4:Pipelines for viral genomes(VirFinder, VirSorter, Vibrant)
-
-# Step 5:EykRep pipeline 
 
 
  
