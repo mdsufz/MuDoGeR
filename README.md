@@ -1,7 +1,7 @@
 ## thym
 
 
- # Multidomain genome recovering (MUDOGER)
+ # Multidomain Genome Recovery (MUDOGER)
  
  
  ![](https://github.com/EfthymisF/folder-scripts/blob/master/index.png)
