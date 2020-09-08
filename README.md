@@ -13,7 +13,7 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 
 
 ### (1) Pre-Processing
-* **(1.1)** Trimming of the Metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
+* **(1.1)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
 * **(1.2)** Assembly of the clean metagenomic reads produced in **(1)** by running metaWRAP-Assembly module
 
 ###  (2) Metagenomic recovery of Prokaryotic genomes 
@@ -37,7 +37,7 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 
 
 
-# OVERVIEW OF THE MUDOGER
+# Parts of the MuDoGeR
 
 * **Installation** 
 * **Read Quality control:** Trimming of the reads and removal of possible host reads
@@ -54,7 +54,7 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 
 ### MetaWRAP
 
-The instructions for the metaWrap installation can be found at ![MetaWrap_Manual](https://github.com/EfthymisF/new/blob/master/Tutorial.md)
+The instructions for the metaWrap installation can be found at ![metaWrap_Manual](https://github.com/EfthymisF/new/blob/master/Tutorial.md)
 
 ### VirFinder
 
@@ -75,12 +75,12 @@ The instructions for EykRep installation can be found at ![EykRep_Manual](https:
 
 # Using MuDoGeR
 
-A tutorial of MUDOGER usage can be found in ![Manual](https://github.com/EfthymisF/new/blob/master/Tutorial.md)
+A tutorial of MuDoGeR usage can be found in ![Manual](https://github.com/EfthymisF/new/blob/master/Tutorial.md)
 
 Once all the dependencies are in place, running metaWRAP is relatively simple. The main metaWRAP script wraps around all of its individual modules, which you can call independently.
 
-```MUDOGER -h
-	Usage: MUDOGER [module] --help
+```MuDoGeR -h
+	Usage: MuDoGeR [module] --help
 	Options:
 
 	read_qc		Raw read QC module
@@ -107,11 +107,11 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
  ```
 
 
-# Step 0: Dowloading the libraries
+# Step 0:Dowloading the libraries
 
-# Step 1: Trimming the reads and removing possible host reads
+# Step 1:Trimming the reads and removing possible host reads
 
-# Step 2: Assembly of "good quality" sequences
+# Step 2:Assembly of "good quality" sequences
 
 # Step 3:MetaWRAP pipeline
 
