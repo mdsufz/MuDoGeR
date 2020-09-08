@@ -1,4 +1,4 @@
-# thym
+# MuDoGeR
 
  # Multidomain Genome Recovery (MUDOGER)
  
