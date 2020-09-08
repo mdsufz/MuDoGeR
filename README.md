@@ -1,17 +1,17 @@
 # MuDoGeR
 
- # Multidomain Genome Recovery (MUDOGER)
+ # Multidomain Genome Recovery (MuDoGeR)
  
  
  ![](https://github.com/EfthymisF/folder-scripts/blob/master/index.png)
  
-MUDOGER is a tool developed for metagenomic analysis and classification of data contained in mixed libraries taken from a wide range of environments. MUDOGER is user-friendly  and the first that combines a number of pipelines from diffrent tools for the simultaneous extraction of Prokaryotic, Eykaryotic and Viral metagenomic data. The MUDOGER pipeline process starts with **Read Quality control** of the libraries and **Assembly** of the *"good quality reads"* resulted from the former step. For the next step of data analysis, the pipeline is devided in 3 different branches: **1. Metawrap** pipeline is used for analayzing Prokaryotic genomes. **2.** **Virsorter**, **Virfinder** and **Vibrant** pipelines are followed and combined for the prediction of viral sequences. **3.** **EykRep** pipeline is run for metagenomic analysis of Eykaryotic genomes. 
+MuDoGeR is a tool developed for metagenomic analysis and classification of data contained in mixed libraries taken from a wide range of environments. MuDoGeR is user-friendly  and the first that combines a number of pipelines from diffrent tools for the simultaneous extraction of Prokaryotic, Eykaryotic and Viral metagenomic data. The MuDoGeR pipeline process starts with **Read Quality control** of the libraries and **Assembly** of the *"good quality reads"* resulted from the former step. For the next step of data analysis, the pipeline is devided in 3 different branches: **Metawrap** pipeline is used for analayzing Prokaryotic genomes. **Virsorter**, **Virfinder** and **Vibrant** pipelines are followed and combined for the prediction of viral sequences. **EykRep** pipeline is run for metagenomic analysis of Eykaryotic genomes. 
  
 
-## MUDOGER Workflow
+## MuDoGeR Overview
 
 
-### P(1) Pre-Processing
+### (1) Pre-Processing
 * **(1.1)** Trimming of the Metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
 * **(1.2)** Assembly of the clean metagenomic reads produced in **(1)** by running metaWRAP-Assembly module
 
@@ -34,7 +34,6 @@ MUDOGER is a tool developed for metagenomic analysis and classification of data 
 * **(4.4)** MAKER2. 
 * **(4.5)** BUSCO is applied for detection of single copy orthologous genes (SCGs) and will estimate the completeness and contamination of Eykaryotic reads
 
-  
 
 
 # OVERVIEW OF THE MUDOGER
@@ -73,7 +72,7 @@ The instructions for EykRep installation can be found at ![EykRep_Manual](https:
 
 
 
-# Using MUDOGER
+# Using MuDoGeR
 
 A tutorial of MUDOGER usage can be found in ![Manual](https://github.com/EfthymisF/new/blob/master/Tutorial.md)
 
