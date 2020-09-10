@@ -85,9 +85,9 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 
 	read_qc		Raw read QC module
 	assembly	Assembly module
- 	Proka_recovery	Recovery of Prokaryotic genomes using metaWRAP
-	Viral_recovery	Recovery of Viral genomes using VirFinder, VirSorter, VIBRANT
-	Eukar_recovery	Recovery of Eukaryotic genomes using EukRep 
+	Prokaryotic	Recovery of Prokaryotic genomes using metaWRAP
+	Viral		Recovery of Viral genomes using VirFinder, VirSorter, VIBRANT
+	Eukaryotic 	Recovery of Eukaryotic genomes using EukRep 
 	
  ```
 
