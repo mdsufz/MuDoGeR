@@ -90,10 +90,10 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 	checkm		Completeness and contamination of Prokaryotic bins module
 	classify 	Classification of  Prokaryotic bins module
 	prokka		Annotation of bins module
- 	virfinder   	Prediction of viral genomes with VirFinder module 
-	virsorter	Prediction of viral genomes with VirSorter module 
-	vibrant		Prediction of viral genomes with VIBRANT module
- 	viral_filt	Selecion of virfinder,virsorter,vibrant good contings 
+ 	virfinder   	Recovery of viral genomes with VirFinder module 
+	virsorter	Recovery of viral genomes with VirSorter module 
+	vibrant		Recovery of viral genomes with VIBRANT module
+ 	viral_filt	Selecion of virfinder,virsorter,vibrant good contings module
 	viral_gc_comb	Combination of good viral contigs to one database module	
 	dereplication	Removal of redundant viral particles module
 	prodigal	Prodigal module	
