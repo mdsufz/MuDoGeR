@@ -6,7 +6,7 @@
  ![](https://github.com/EfthymisF/folder-scripts/blob/master/index.png)
 
 Multi-domain Genome Recovery (MuDoGeR)is a tool developed to help users to recover metagenome assembled genomes from hundreds of samples simultaneously
-The MuDoGeR pipeline process combines a number of pipelines from different tools. It starts with **Read Quality control** of the libraries and **Assembly** of the *"good quality reads"* resulted from the former step. For the next step of data analysis, the pipeline is devided in 3 different branches: **Metawrap** pipeline is used for analayzing Prokaryotic genomes. **Virsorter**, **Virfinder** and **Vibrant** pipelines are followed and combined for the prediction of viral sequences. **EykRep** pipeline is run for metagenomic analysis of Eykaryotic genomes. 
+The MuDoGeR pipeline process combines a number of pipelines from different tools. It starts with **Read Quality control** of the libraries and **Assembly** of the *"good quality reads"* resulted from the former step. For the next step of data analysis, the pipeline is devided in 3 different branches: **Metawrap** pipeline is used for analayzing Prokaryotic genomes. **Virsorter**, **Virfinder** and **Vibrant** pipelines are followed and combined for the prediction of viral sequences. **EukRep** pipeline is run for metagenomic analysis of Eukaryotic genomes. 
  
 
 ## MuDoGeR Overview
@@ -28,12 +28,12 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 * **(3.2)** Prediction of each contig's protein using Prodigal. 
 * **(3.3)** Identification using Proteins by Blastp. 
 
-###  (4) Metagenomic recovery of Eykaryotic genomes
-* **(4.1)** Classification  of  Eykaryotic genomes with EykRep.
-* **(4.2)** Use of CONCOCT for binning and filtering the Eykaryotic sequences by size.
+###  (4) Metagenomic recovery of Eukaryotic genomes
+* **(4.1)** Classification  of  Eukaryotic genomes with EukRep.
+* **(4.2)** Use of CONCOCT for binning and filtering the Eukaryotic sequences by size.
 * **(4.3)** Then, genes are predicted by using the trained GeneMark-ES model 
 * **(4.4)** MAKER2. 
-* **(4.5)** BUSCO is applied for detection of single copy orthologous genes (SCGs) and will estimate the completeness and contamination of Eykaryotic reads
+* **(4.5)** BUSCO is applied for detection of single copy orthologous genes (SCGs) and will estimate the completeness and contamination of Eukaryotic reads
 
 
 
@@ -44,7 +44,7 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 * **Assembly:** Assembly of "good quality" sequences
 * **MetaWRAP pipeline:**  Metagenomic analysis of prokaryotic genomes
 * **Pipelines for viral genomes(VirFinder, VirSorter, Vibrant):** Metagenomic analysis of viral sequences 
-* **EykRep pipeline:** Metagenomic analysis of Eykaryotic genomes
+* **EukRep pipeline:** Metagenomic analysis of Eukaryotic genomes
 
 
 # System requirements
@@ -54,7 +54,7 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 
 ### MetaWRAP
 
-The instructions for the metaWrap installation can be found at ![metaWrap_Manual](https://github.com/EfthymisF/new/blob/master/Tutorial.md)
+The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/EfthymisF/new/blob/master/Tutorial.md)
 
 ### VirFinder
 
@@ -68,8 +68,8 @@ The instructions for VirSorter installation can be found at ![VirSorter_Manual](
 
 The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](https://github.com/AnantharamanLab/VIBRANT) 
 
-### EykRep
-The instructions for EykRep installation can be found at ![EykRep_Manual](https://github.com/patrickwest/EukRep_Pipeline ) 
+### EukRep
+The instructions for EukRep installation can be found at ![EukRep_Manual](https://github.com/patrickwest/EukRep_Pipeline ) 
 
 
 
@@ -79,30 +79,15 @@ A tutorial of MuDoGeR usage can be found in ![Manual](https://github.com/Efthymi
 
 Once all the dependencies are in place, running metaWRAP is relatively simple. The main metaWRAP script wraps around all of its individual modules, which you can call independently.
 
-```MuDoGeR -h
-	Usage: MuDoGeR [module] --help
+```mudoger -h
+	Usage: mudoger [module] --help
 	Options:
 
 	read_qc		Raw read QC module
 	assembly	Assembly module
- 	binning		Binning of Prokaryotic data module 
-	bin_refinement	Refinement of bins from binning module
-	checkm		Completeness and contamination of Prokaryotic bins module
-	classify 	Classification of  Prokaryotic bins module
-	prokka		Annotation of bins module
- 	virfinder   	Recovery of viral genomes with VirFinder module 
-	virsorter	Recovery of viral genomes with VirSorter module 
-	vibrant		Recovery of viral genomes with VIBRANT module
- 	viral_filt	Selecion of virfinder,virsorter,vibrant good contings module
-	viral_gc_comb	Combination of good viral contigs to one database module	
-	dereplication	Removal of redundant viral particles module
-	prodigal	Prodigal module	
-	blastp		Protein identification module
-	eykrep		EykRep classification module
-	concoct		CONCOCT module
-	genemark	GeneMark-ES module
-	maker		Maker2 module
-	busco		BUSCO module
+ 	Proka_recovery	Recovery of Prokaryotic genomes using metaWRAP
+	Viral_recovery	Recovery of Viral genomes using VirFinder, VirSorter, VIBRANT
+	Eukar_recovery	Recovery of Eukaryotic genomes using EukRep 
 	
  ```
 
@@ -114,7 +99,7 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 
 # Step 3:Pipelines for viral genomes(VirFinder, VirSorter, Vibrant)
 
-# Step 4:EykRep pipeline
+# Step 4:EukRep pipeline
 
 
 
