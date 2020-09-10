@@ -82,12 +82,20 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 ```mudoger -h
 	Usage: mudoger [module] --help
 	Options:
-
+	
+	Full_Workflow	Whole workflow excecution
 	read_qc		Raw read QC module
 	assembly	Assembly module
 	Prokaryotic	Recovery of Prokaryotic genomes using metaWRAP
 	Viral		Recovery of Viral genomes using VirFinder, VirSorter, VIBRANT
-	Eukaryotic 	Recovery of Eukaryotic genomes using EukRep 
+	Eukaryotic 	Recovery of Eukaryotic genomes using EukRep
+	Sep_Modules	Watch each module separately
+	
+	--help | -h		show this help message
+	--version | -v	show MuDoGeR version
+	--show-config	show where the mudoger configuration files are stored
+
+	
 	
  ```
 
