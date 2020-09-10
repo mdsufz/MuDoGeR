@@ -14,7 +14,7 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 
 ### (1) Pre-Processing
 * **(1.1)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
-* **(1.2)** Assembly of the clean metagenomic reads produced in **(1)** by running metaWRAP-Assembly module
+* **(1.2)** Assembly of the clean metagenomic reads produced in **(1.1)** by running metaWRAP-Assembly module
 
 ###  (2) Metagenomic recovery of Prokaryotic genomes 
 * **(2.1)** Bin extraction with MaxBin2, metaBAT2, and CONCOCT 
