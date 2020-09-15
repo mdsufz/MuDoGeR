@@ -107,6 +107,29 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 
 # Step 3:Pipelines for viral genomes(VirFinder, VirSorter, Vibrant)
 
+```viral -h
+   viral_tools v= "1.2.1"
+
+	Usage: Usage: Viral assembly and dereplication [options] -1 P19011_A1_assembly.fasta -o output_dir --help
+	Options:
+	
+	-1 STR          P19011_A1_assembly.fasta
+	-o STR          output directory
+	-t INT          number of threads (defualt=1)
+	
+	--virfinder     Recovery of viral data with VirFinder
+	--virsorter     Recovery of viral data with VirSorter
+	--vibrant       Recovery of viral data with VIBRANT
+	--combination   Combination of recovered data of the three tools
+	--dereplication Removal of relicate sequences
+	
+	--help | -h		show this help message
+	--version | -v	show virfinder,virsorter,vibrant version
+	--show-config	show where the mudoger configuration files are stored
+
+	
+	
+ ```
 # Step 4:EukRep pipeline
 
 
