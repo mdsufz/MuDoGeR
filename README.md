@@ -121,7 +121,7 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 	--virsorter     Recovery of viral data with VirSorter
 	--vibrant       Recovery of viral data with VIBRANT
 	--combination   Combination of recovered data of the three tools
-	--dereplication Removal of relicate sequences
+	--dereplication Removal of replicate sequences
 	
 	--help | -h		show this help message
 	--version | -v	show virfinder,virsorter,vibrant version
