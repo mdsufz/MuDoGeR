@@ -103,13 +103,19 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 # Step 0:Dowloading the libraries
 
 # Step 1:Pre-Processing 
+## Step 1.1: Read Quality control
+## Step1.2: Assembly of the good quality control reads
+
 # Step 2:Metagenomic recovery of Prokaryotic genomes 
 
 # Step 3:Pipelines for viral genomes recovery(VirFinder, VirSorter, Vibrant)
+More detailed informations about this step can be found  in (file name)
 
+The recovery of viral genomes is achieved by using the tolls VirFinder, VirSorter and VIBRANT. Although each of the tools can recover seperately genome sequences, for the inc
 For the activation of viral genomes recovery the input used is the Assembly fasta file produced in the step 1.2 
 
-` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/folder -og `
+` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/virfinder/folder -o /path/to/output/virfinder/file `
+
 
 The help message of the viral recovery script is the following: 
 
