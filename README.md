@@ -105,7 +105,13 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 # Step 1:Pre-Processing 
 # Step 2:Metagenomic recovery of Prokaryotic genomes 
 
-# Step 3:Pipelines for viral genomes(VirFinder, VirSorter, Vibrant)
+# Step 3:Pipelines for viral genomes recovery(VirFinder, VirSorter, Vibrant)
+
+For the activation of viral genomes recovery the input used is the Assembly fasta file produced in the step 1.2 
+
+` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/folder -og `
+
+The help message of the viral recovery script is the following: 
 
 ```viral -h
    viral_tools v= "1.2.1"
@@ -115,13 +121,11 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 	
 	-1 STR          P19011_A1_assembly.fasta
 	-o STR          output directory
-	-t INT          number of threads (defualt=1)
 	
-	--virfinder     Recovery of viral data with VirFinder
-	--virsorter     Recovery of viral data with VirSorter
-	--vibrant       Recovery of viral data with VIBRANT
-	--combination   Combination of recovered data of the three tools
-	--dereplication Removal of replicate sequences
+	-virfinder     Recovery of viral data with VirFinder
+	-virsorter     Recovery of viral data with VirSorter
+	-vibrant       Recovery of viral data with VIBRANT
+	-dereplication Removal of replicate sequences
 	
 	--help | -h		show this help message
 	--version | -v	show virfinder,virsorter,vibrant version
@@ -130,6 +134,8 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 	
 	
  ```
+ 
+ 
 # Step 4:EukRep pipeline
 
 
