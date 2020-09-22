@@ -115,12 +115,12 @@ The recovery of viral genomes is achieved by using the tolls VirFinder, VirSorte
 * In the VirSorter results only the sequences of the categories 1 and 2 are chosen 
 * In the VIBRANT results only the sequences of the `Assembly.phages_combined.fna` are chosen
 
-* The headers of the filtered sequences are combined to one file and the repeated sequences are removed. With the help of the headers, those sequences are detected from the initial Assembly.fasta file and are located to a new fasta file. Finally the replicates are removed with a dereplication process with term of maximum coverage(cov)/maximum identity(id) of 70/95,. The combination of id and cov parameters is able to vary depending on the purposes and goals of the users. 
+* The headers of the filtered sequences are combined to one file and the repeated sequences are removed. With the help of the headers, those sequences are detected from the initial Assembly.fasta file and are located to a new fasta file. Finally the replicates are removed with a dereplication process. The loading parameters of this part of the step are maximum coverage `-c=70` and maximal identity `-i=95`. The combination of identity and coverage parameters is able to vary, depending on the purposes and the goals of the user. 
 
+* Run the pipelines for viral genomes recovery module
 
-For the activation of viral genomes recovery the input used is the Assembly fasta file produced in the step 1.2 
+* ``` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/folder```
 
-` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/folder `
 
 
 
