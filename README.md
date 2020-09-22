@@ -110,11 +110,19 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 
 # Step 3:Pipelines for viral genomes recovery(VirFinder, VirSorter, Vibrant)
 More detailed informations about this step can be found  in (file name)
+The recovery of viral genomes is achieved by using the tolls VirFinder, VirSorter and VIBRANT. Although each of the tools can be used independently, to achieve the maximum recovery of viral genomes it is better to use all the three tools together. After the genome recovery the, the viral genomes recovered from each method are filtered:
+* In the VirFinder results sequences with q-value > 0.01 and lentgh =< 1000 bp are removed
+* In the VirSorter results only the sequences of the categories 1 and 2 are chosen 
+* In the VIBRANT results only the sequences of the `Assembly.phages_combined.fna` are chosen
 
-The recovery of viral genomes is achieved by using the tolls VirFinder, VirSorter and VIBRANT. Although each of the tools can recover seperately genome sequences, for the inc
+* The headers of the filtered sequences are combined to one file and the repeated sequences are removed. With the help of the headers, those sequences are detected from the initial Assembly.fasta file and are located to a new fasta file. Finally the replicates are removed with a dereplication process with term of maximum coverage(cov)/maximum identity(id) of 70/95,. The combination of id and cov parameters is able to vary depending on the purposes and goals of the users. 
+
+
 For the activation of viral genomes recovery the input used is the Assembly fasta file produced in the step 1.2 
 
-` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/virfinder/folder -o /path/to/output/virfinder/file `
+` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/folder `
+
+
 
 
 The help message of the viral recovery script is the following: 
