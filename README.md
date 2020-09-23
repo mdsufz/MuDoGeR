@@ -143,7 +143,8 @@ The help message of the viral recovery script is the following:
 
 * ``` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/folder -o /path/to/output/folder/file/virsorter.tsv``` 
 
-
+The final results will directed to an individual folder: `Viral_final_results` 
+If we have a look inside the output folder we can see:
 
 
 
