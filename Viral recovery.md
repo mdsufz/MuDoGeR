@@ -23,14 +23,16 @@ Rscript /data/msb/tools/virfinder/virfinder_script.r ${output_viral} $2 $3
 output_virsorter="$output_viral/virsorter"
 
 wrapper_phage_contigs_sorter_iPlant.pl -f $2 --wdir $output_virsorter --ncpu ${NSLOTS:-1}
-
 #VIBRANT 
+(not ready yet, needs correction)
 ```
+
 * VIBRANT (still have something to be corrected, not ready yet)
 
 
 ### 3.2 Filtering of the results, combination and removal of repeated sequences   
 
+* Filtering 
 ```#VirFinder
 cat $output_viral/virfinder.tsv | awk -F'\t' '{ if ( $4 <= 0.01) print }' | awk -F'_' '{ if ( $4 >= 1000) print  }' | cut -f2 | sed "s/\"//g" > $output_viral/vir4/virf
 
@@ -44,14 +46,12 @@ vibrant_filt_inp="$output_viral/vibrant_file"
 cat $vibrant_filt_inp/*phages*combined*fna | grep ">" | sed "s/_fragment_1//g;s/>//g" > $output_viral/vibr_filt 
 ```
 
-
-
 * Combination of results and removal the repeates sequences
 
-
-cd $output_viral/vir4
+``` cd $output_viral/vir4
 cat * virs_filt vibr_filt virf | sort | uniq > COMBINED_VIRAL_PARTICLES_FOR_EXTRACTION
+```
 
-
+### 3.3 Extraction of the  
 
 
