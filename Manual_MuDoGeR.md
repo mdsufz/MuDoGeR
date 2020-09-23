@@ -2,7 +2,7 @@
 # Step 3: Pipelines for viral genomes recovery
 
 
-* Run the pipelines for viral genomes recovery module ``` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/folder -o /path/to/output/folder/file/virsorter.tsv``` 
+For the usage of the viral pipelines: ```mudoger viral_module -i </path/to/assembly.fa> -o </path/to/outputdir>  </path/to/output/folder/file/virfinder.tsv> ``` 
 
 * Note: To achieve revovery and derepeplication process the modules mentioned in the scirpt should be loaded. In different case the script for the viral ricavery will not work.
 
@@ -17,6 +17,8 @@ output_viral="$1"
 ```
 Rscript /data/msb/tools/virfinder/virfinder_script.r ${output_viral} $2 $3
 ```
+THe individual output of the VirFinder script is : ```virfinder.tsv```
+
 * VirSorter 
 
 ```
@@ -52,6 +54,6 @@ cat $vibrant_filt_inp/*phages*combined*fna | grep ">" | sed "s/_fragment_1//g;s/
 cat * virs_filt vibr_filt virf | sort | uniq > COMBINED_VIRAL_PARTICLES_FOR_EXTRACTION
 ```
 
-### 3.3 Extraction of the  
+### 3.3 Extraction of the sequences from the assembly fasta file by using their headers to detect them. 
 
 
