@@ -1,5 +1,5 @@
 
-# Step 3:Pipelines for viral genomes recovery(VirFinder, VirSorter, Vibrant)
+# Step 3: Pipelines for viral genomes recovery
 
 
 * Run the pipelines for viral genomes recovery module ``` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/folder -o /path/to/output/folder/file/virsorter.tsv``` 
