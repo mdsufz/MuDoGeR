@@ -75,9 +75,7 @@ The instructions for EukRep installation can be found at ![EukRep_Manual](https:
 
 # Using MuDoGeR
 
-A tutorial of MuDoGeR usage can be found in ![Manual](https://github.com/EfthymisF/new/blob/master/Tutorial.md)
-
-Once all the dependencies are in place, running metaWRAP is relatively simple. The main metaWRAP script wraps around all of its individual modules, which you can call independently.
+A more detailed tutorial for the MuDoGeR can be found in ![]().Once all the dependencies are in place, running metaWRAP is relatively simple. The main metaWRAP script wraps around all of its individual modules, which you can call independently.
 
 ```mudoger -h
 	Usage: mudoger [module] --help
@@ -133,8 +131,6 @@ The help message of the viral recovery script is the following:
 	
 	
  ```
-
-* More detailed informations about this step can be found  in ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Viral%20recovery.md)
 
 * The recovery of viral genomes is achieved by using the tolls VirFinder, VirSorter and VIBRANT. Although each of the tools can be used independently, to achieve the maximum recovery of viral genomes it is better to use all the three tools together. After the genome recovery the, the viral genomes recovered from each method are filtered:
 * In the VirFinder results sequences with q-value > 0.01 and lentgh =< 1000 bp are removed
