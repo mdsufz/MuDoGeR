@@ -75,7 +75,7 @@ The instructions for EukRep installation can be found at ![EukRep_Manual](https:
 
 # Using MuDoGeR
 
-A more detailed tutorial for the MuDoGeR can be found in ![]().Once all the dependencies are in place, running metaWRAP is relatively simple. The main metaWRAP script wraps around all of its individual modules, which you can call independently.
+A more detailed tutorial for the MuDoGeR can be found in ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file.Once all the dependencies are in place, running metaWRAP is relatively simple. The main metaWRAP script wraps around all of its individual modules, which you can call independently. The help message for MuDoGeR is the following:
 
 ```mudoger -h
 	Usage: mudoger [module] --help
@@ -116,7 +116,7 @@ The help message of the viral recovery script is the following:
 	Usage: Usage: Viral assembly and dereplication [options] -1 P19011_A1_assembly.fasta -o output_dir --help
 	Options:
 	
-	-1 STR          P19011_A1_assembly.fasta
+	-f STR          Assembly.fasta
 	-o STR          output directory
 	
 	-virfinder     Recovery of viral data with VirFinder
