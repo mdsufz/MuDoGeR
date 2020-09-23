@@ -110,7 +110,7 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 
 # Step 3:Pipelines for viral genomes recovery(VirFinder, VirSorter, Vibrant)
 
-More detailed informations about this step can be found  in (file name)
+More detailed informations about this step can be found  in ![Viral Recovery Pipelines](https://github.com/mdsufz/MuDoGeR/blob/master/Viral%20recovery.md)
 
 The recovery of viral genomes is achieved by using the tolls VirFinder, VirSorter and VIBRANT. Although each of the tools can be used independently, to achieve the maximum recovery of viral genomes it is better to use all the three tools together. After the genome recovery the, the viral genomes recovered from each method are filtered:
 * In the VirFinder results sequences with q-value > 0.01 and lentgh =< 1000 bp are removed
