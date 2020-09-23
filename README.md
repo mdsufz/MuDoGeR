@@ -109,17 +109,21 @@ Once all the dependencies are in place, running metaWRAP is relatively simple. T
 # Step 2:Metagenomic recovery of Prokaryotic genomes 
 
 # Step 3:Pipelines for viral genomes recovery(VirFinder, VirSorter, Vibrant)
+
 More detailed informations about this step can be found  in (file name)
+
 The recovery of viral genomes is achieved by using the tolls VirFinder, VirSorter and VIBRANT. Although each of the tools can be used independently, to achieve the maximum recovery of viral genomes it is better to use all the three tools together. After the genome recovery the, the viral genomes recovered from each method are filtered:
 * In the VirFinder results sequences with q-value > 0.01 and lentgh =< 1000 bp are removed
 * In the VirSorter results only the sequences of the categories 1 and 2 are chosen 
 * In the VIBRANT results only the sequences of the `Assembly.phages_combined.fna` are chosen
 
-* The headers of the filtered sequences are combined to one file and the repeated sequences are removed. With the help of the headers, those sequences are detected from the initial Assembly.fasta file and are located to a new fasta file. Finally the replicates are removed with a dereplication process. The loading parameters of this part of the step are maximum coverage `-c=70` and maximal identity `-i=95`. The combination of identity and coverage parameters is able to vary, depending on the purposes and the goals of the user. 
+* The headers of the filtered sequences are combined to one file and the repeated sequences are removed. With the help of the headers, those sequences are extracted from the initial Assembly.fasta file and are located to a new fasta file. Finally the replicates are removed with a dereplication process. The loading parameters of this part of the step are maximum coverage `-c=70` and maximal identity `-i=95`. The combination of identity and coverage parameters is able to vary, depending on the purposes and the goals of the user. 
 
 * Run the pipelines for viral genomes recovery module
 
-* ``` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/folder```
+* ``` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/folder -o /path/to/output/folder/file/virsorter.tsv``` 
+
+
 
 
 
