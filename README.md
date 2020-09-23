@@ -125,10 +125,6 @@ The recovery of viral genomes is achieved by using the tolls VirFinder, VirSorte
 
 
 
-
-
-
-
 The help message of the viral recovery script is the following: 
 
 ```viral -h
