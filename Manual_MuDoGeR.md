@@ -31,8 +31,8 @@ wrapper_phage_contigs_sorter_iPlant.pl -f $2 --wdir $output_virsorter --ncpu ${N
 * VirFinder Filtering
 * ```cat $output_viral/virfinder.tsv | awk -F'\t' '{ if ( $4 <= 0.01) print }' | awk -F'_' '{ if ( $4 >= 1000) print  }' | cut -f2 | sed "s/\"//g" > $output_viral/vir4/virf ```
 
-* VirSorter Filtering 
-```cat $virsorter_filt_inp/Predicted_viral_sequences/VIRSorter_cat-{1..2}*fasta | grep ">" | sed "s/>VIRSorter_//g"  | sed "s/-cat_2//g" | sed "s/-cat_1//g" | sed 's/\(.*\)_/\1./' > $output_viral/vir4/virs_filt ```
+* VirSorter Filtering
+* ```cat $virsorter_filt_inp/Predicted_viral_sequences/VIRSorter_cat-{1..2}*fasta | grep ">" | sed "s/>VIRSorter_//g"  | sed "s/-cat_2//g" | sed "s/-cat_1//g" | sed 's/\(.*\)_/\1./' > $output_viral/vir4/virs_filt ```
 
 * VIBRANT Filtering (VIBRANT (not sure yet because of the correction needed in the VIBRAN. But as I know what result gives, I know what will be the files and how to filtering it. they will be  some changes for sure but the  main idea is this)
 
