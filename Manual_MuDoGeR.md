@@ -22,7 +22,17 @@ output_virsorter="$output_viral/virsorter"
 wrapper_phage_contigs_sorter_iPlant.pl -f $2 --wdir $output_virsorter --ncpu ${NSLOTS:-1}
 
 ```
-* VIBRANT (still have something to be corrected, not ready yet, probably something with the modules)
+* VIBRANT (Module problem, the script is for sure ok I think)
+
+``` 
+task=""
+input="$2"
+output_folder="$1"
+
+/gpfs1/data/msb/tools/vibrant/env_vibrant_v1.0.1/bin/python3 /data/msb/tools/vibrant/VIBRANT/VIBRANT_run.py -i $input -folder $output_folder/vibrant_folder
+
+``` 
+
 
 ### 3.2 Filtering of the results, output combination and removal of repeated sequences 
 * VirFinder Filtering
@@ -48,10 +58,15 @@ cat * virs_filt vibr_filt virf | sort | uniq > COMBINED_VIRAL_PARTICLES_FOR_EXTR
 ```
 
 ## 3.3 Extraction of the sequences from the assembly fasta file by using their headers to detect them. 
-(something is wrong I have to check)
+First create a file to sent the extracted sequences:
+```mkdir $viral_output/extracted_fasta
+```
+Command for the extraction
+```python /data/msb/thym/mudoger_tutorial/working_dir/extract_fa.py $viral_output/extracted_fasta/vir4/COMBINED_VIRAL_PARTICLES_FOR_EXTRACTION $2 $viral_output/extracted_fasta/VIRALLL_PARTICLES.fa ``` 
+
 
 ### Dereplication and deposition of final output into an output folder
-
+(module loading problem, I ll see to it)
 
 
 
