@@ -5,7 +5,6 @@ For the usage of the viral pipelines: ```mudoger viral_module -i </path/to/assem
 * Note: To achieve revovery and derepeplication process the modules mentioned in the scirpt should be loaded. In different case the script for the viral ricavery will not work.
 
 ### 3.1 Viral genomes recovery **VirFinder**, **VirSorter**, **VIBRANT**,:
-
 * Create the output directory:
 ```mkdir $1
 output_viral="$1" 
@@ -21,13 +20,11 @@ THe individual output of the VirFinder script is : ```virfinder.tsv```
 output_virsorter="$output_viral/virsorter"
 
 wrapper_phage_contigs_sorter_iPlant.pl -f $2 --wdir $output_virsorter --ncpu ${NSLOTS:-1}
-#VIBRANT 
-(not ready yet, needs correction)
+
 ```
-* VIBRANT (still have something to be corrected, not ready yet)
+* VIBRANT (still have something to be corrected, not ready yet, probably something with the modules)
 
 ### 3.2 Filtering of the results, output combination and removal of repeated sequences 
-
 * VirFinder Filtering
  ```
 * cat $output_viral/virfinder.tsv | awk -F'\t' '{ if ( $4 <= 0.01) print }' | awk -F'_' '{ if ( $4 >= 1000) print  }' | cut -f2 | sed "s/\"//g" > $output_viral/vir4/virf
