@@ -1,72 +1,26 @@
 
 # Step 3: Pipelines for viral genomes recovery
 
-For the usage of the viral pipelines: ```mudoger viral_module -i </path/to/assembly.fa> -o </path/to/outputdir>  </path/to/output/folder/file/virfinder.tsv> ``` 
-* Note: To achieve revovery and derepeplication process the modules mentioned in the scirpt should be loaded. In different case the script for the viral ricavery will not work.
-
-### 3.1 Viral genomes recovery **VirFinder**, **VirSorter**, **VIBRANT**,:
-* Create the output directory:
-```mkdir $1
-output_viral="$1" 
-``` 
-* VirFinder
+The help message of this step:
 ```
-Rscript /data/msb/tools/virfinder/virfinder_script.r ${output_viral} $2 $3
-```
-THe individual output of the VirFinder script is : ```virfinder.tsv```
-
-* VirSorter 
-```
-output_virsorter="$output_viral/virsorter"
-
-wrapper_phage_contigs_sorter_iPlant.pl -f $2 --wdir $output_virsorter --ncpu ${NSLOTS:-1}
+help_message () {
+        echo ""
+        echo "Usage: Viral assembly and dereplication [options] -f Assembly.fasta -o output_dir"
+        echo "Options:"
+        echo ""
+        echo "  -f STR          Assembly.fasta"
+        echo "  -o STR          output directory"          
+        echo ""
+        echo "  -virfinder     Recovery of viral data with VirFinder"
+        echo "  -virsorter     Recovery of viral data with VirSorter"
+        echo "  -vibrant       Recovery of viral data with VIBRANT"
+        echo "  -combination   Combination of recovered data of the three tools"
+        echo "  -dereplication Removal of replicate sequences"
+        echo "";}
 
 ```
-* VIBRANT (Module problem, the script is for sure ok I think)
-
-``` 
-task=""
-input="$2"
-output_folder="$1"
-
-/gpfs1/data/msb/tools/vibrant/env_vibrant_v1.0.1/bin/python3 /data/msb/tools/vibrant/VIBRANT/VIBRANT_run.py -i $input -folder $output_folder/vibrant_folder
-
-``` 
-
-
-### 3.2 Filtering of the results, output combination and removal of repeated sequences 
-* VirFinder Filtering
- ```
-* cat $output_viral/virfinder.tsv | awk -F'\t' '{ if ( $4 <= 0.01) print }' | awk -F'_' '{ if ( $4 >= 1000) print  }' | cut -f2 | sed "s/\"//g" > $output_viral/vir4/virf
-```
-
-* VirSorter Filtering
-```
-* cat $virsorter_filt_inp/Predicted_viral_sequences/VIRSorter_cat-{1..2}*fasta | grep ">" | sed "s/>VIRSorter_//g"  | sed "s/-cat_2//g" | sed "s/-cat_1//g" | sed 's/\(.*\)_/\1./' > $output_viral/vir4/virs_filt 
-```
-
-* VIBRANT Filtering (VIBRANT (not sure yet because of the correction needed in the VIBRAN. But as I know what result gives, I know what will be the files and how to filtering it. they will be  some changes for sure but the  main idea is this)
-
-```
-vibrant_filt_inp="$output_viral/vibrant_file"
-cat $vibrant_filt_inp/*phages*combined*fna | grep ">" | sed "s/_fragment_1//g;s/>//g" > $output_viral/vibr_filt
-```
-* Output combination and removal of repeated sequences
-```
-cd $output_viral/vir4
-cat * virs_filt vibr_filt virf | sort | uniq > COMBINED_VIRAL_PARTICLES_FOR_EXTRACTION 
-```
-
-## 3.3 Extraction of the sequences from the assembly fasta file by using their headers to detect them. 
-First create a file to sent the extracted sequences:
-```mkdir $viral_output/extracted_fasta
-```
-Command for the extraction
-```python /data/msb/thym/mudoger_tutorial/working_dir/extract_fa.py $viral_output/extracted_fasta/vir4/COMBINED_VIRAL_PARTICLES_FOR_EXTRACTION $2 $viral_output/extracted_fasta/VIRALLL_PARTICLES.fa ``` 
-
-
-### Dereplication and deposition of final output into an output folder
-(module loading problem, I ll see to it)
+Running of the viral module with all the three recovery methods and the dereplication process. The output directory is placed in the beginnng of the command before the assembly.fasta inpu. In the final place is necessary to give the output file for the VirFinder recovery
+```mudoger viral_module -o </path/to/outputdir> -f </path/to/assembly.fa> </path/to/output/folder/file/virfinder.tsv> ``` 
 
 
 
