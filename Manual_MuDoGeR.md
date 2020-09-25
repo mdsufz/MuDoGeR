@@ -19,7 +19,9 @@ help_message () {
 
 ```
 * Running of the viral module with all the three recovery methods and the dereplication process (coverage 70 and id 95). The output directory is placed in the beginnng of the command before the assembly.fasta inpu. In the final place is necessary to give the output file for the VirFinder recovery.  
-* ```mudoger viral_module -o </path/to/outputdir> -f </path/to/assembly.fa> </path/to/output/folder/file/virfinder.tsv>```
+```
+mudoger viral_module -o </path/to/outputdir> -f </path/to/assembly.fa> </path/to/output/folder/file/virfinder.tsv>
+```
 
 * After the process is fully completed, the ouput folder contains the outputs from the initial recovery from each individual tool and the folder with the  dereplicated assembled files:
 
