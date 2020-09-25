@@ -1,7 +1,7 @@
 
 # Step 3: Pipelines for viral genomes recovery
 
-The help message of this step:
+The help message of the viral step:
 ```
 help_message () {
         echo ""
