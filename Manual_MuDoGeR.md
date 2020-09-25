@@ -23,8 +23,9 @@ help_message () {
 
 * After the process is fully completed, the ouput folder contains the outputs from the initial recovery from each individual tool and the folder with the  dereplicated assembled files:
 
-* `virfinder.tsv  virsorter_folder vibrant_folder dereplication_outputs 
-` 
+```
+virfinder.tsv  virsorter_folder vibrant_folder dereplication_outputs 
+`` 
 
 
 
