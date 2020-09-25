@@ -3,7 +3,7 @@
  # Multi-domain Genome Recovery (MuDoGeR)
  
  
- ![](https://github.com/EfthymisF/folder-scripts/blob/master/index.png)
+ ![](https://github.com/mdsufz/MuDoGeR/blob/master/mudoger.png)
 
 Multi-domain Genome Recovery (MuDoGeR)is a tool developed to help users to recover metagenome assembled genomes from hundreds of samples simultaneously
 The MuDoGeR pipeline process combines a number of pipelines from different tools. It starts with **Read Quality control** of the libraries and **Assembly** of the *"good quality reads"* resulted from the former step. For the next step of data analysis, the pipeline is devided in 3 different branches: **Metawrap** pipeline is used for analayzing Prokaryotic genomes. **Virsorter**, **Virfinder** and **Vibrant** pipelines are followed and combined for the prediction of viral sequences. **EukRep** pipeline is run for metagenomic analysis of Eukaryotic genomes. 
