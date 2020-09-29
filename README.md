@@ -132,7 +132,7 @@ The help message of the viral recovery script is the following:
 	
  ```
 
-* The recovery of viral genomes is achieved by using the tolls VirFinder, VirSorter and VIBRANT. Although each of the tools can be used independently, to achieve the maximum recovery of viral genomes it is better to use all the three tools together. After the genome recovery the, the viral genomes recovered from each method are filtered:
+* The recovery of viral genomes is achieved by using the tolls VirFinder, VirSorter and VIBRANT. Although each of the tools can be used independently, to achieve the maximum recovery of viral genomes it is better to use all the three tools together. After the genome recovery, the viral genomes recovered from each method are filtered:
 * In the VirFinder results sequences with q-value > 0.01 and lentgh =< 1000 bp are removed
 * In the VirSorter results only the sequences of the categories 1 and 2 are chosen 
 * In the VIBRANT results only the sequences of the `Assembly.phages_combined.fna` are chosen
@@ -141,10 +141,13 @@ The help message of the viral recovery script is the following:
 
 * Run the pipelines for viral genomes recovery module
 
-* ``` ~/viral_working_directory/viral_recovery_script -f ~/path/to/assembly/file -o /path/to/output/folder -o /path/to/output/folder/file/virsorter.tsv``` 
+* ``` ~/viral_working_directory/viral_recovery_script  -o /path/to/output/folder -f ~/path/to/assembly/file ``` 
 
-The final results will directed to an individual folder: `Viral_final_results` 
+The final results will directed to an individual folder: `viral_test_folder` 
 If we have a look inside the output folder we can see:
+``` virfinder.tsv	virsorter_folder	vibrant_folder
+    extracted_and_dereplication_fasta 
+```
 
 
 
