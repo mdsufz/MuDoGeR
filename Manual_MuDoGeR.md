@@ -1,4 +1,6 @@
 
+# Step 2 : MetaWrap for prokaryotic genomes recovery
+
 # Step 3: Pipelines for viral genomes recovery
 
 The help message of the viral step:
