@@ -1,7 +1,31 @@
 
-# Step 2 : MetaWrap for prokaryotic genomes recovery
+# Step 2:Metagenomic recovery of Prokaryotic genomes 
 
-# Step 3: Pipelines for viral genomes recovery
+The help message for prokaryotic genomes recovery
+```
+help_message () {
+        echo ""
+        echo "MetaWRAP v=$VERSION"
+        echo "Usage: metaWRAP [module]"
+        echo ""
+        echo "  Modules:"
+        echo "  binning         Binning module (metabat, maxbin, or concoct)"
+        echo "  bin_refinement  Refinement of archaea bins from binning module"
+        echo "  bin_refinement  Refinement of bacteria bins from binning module"
+        echo "  Quality_bins_a  Calculation of quality for archaea bins   
+        echo "  Quality_bins_b  Calculation of quality for bacteria bins 
+        echo "  Taxon_bins_a    Taxonomy for archaea bins   
+        echo "  Quality_bins_b  Taxonomy for bacteria bins
+        echo ""
+        echo "  --help | -h     show this help message"
+        echo "  --version | -v  show metaWRAP version"
+        echo "  --show-config   show where the metawrap configuration files are stored"
+        echo "";}
+
+```
+*  Running of the prokaryotic recovery module with the MetaWrap tool. As first input the Assembly.fasta file was used. In the second place  In the final place is necessary to give the output file for the  recovery.   
+
+# Step 3: Pipelines for viral genomes recovery 
 
 The help message of the viral step:
 ```
@@ -20,7 +44,7 @@ help_message () {
         echo "";}
 
 ```
-* Running of the viral module with all the three recovery methods and the dereplication process (coverage 70 and id 95). The output directory is placed in the beginnng of the command before the assembly.fasta inpu. In the final place is necessary to give the output file for the VirFinder recovery.  
+* Running of the viral recovery module with all the three recovery methods and the dereplication process (coverage 70 and id 95). The output directory is placed in the beginnng of the command before the assembly.fasta input.  
 ```
 mudoger viral_module -o </path/to/outputdir> -f </path/to/assembly.fa>
 ```
