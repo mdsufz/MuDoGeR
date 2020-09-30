@@ -26,24 +26,14 @@ help_message () {
 *  Running of the prokaryotic recovery module with the MetaWrap tool. As first input the Assembly.fasta file was used. In the second place  In the final place is necessary to give the output file for the  recovery.   
 
 # Step 3: Pipelines for viral genomes recovery 
+* In this step, the recovery of  the viral genomes from the Assembly.fasta file takes place. For the initial recovery of the viral genomes three tools are used: VirFinder, VirSorter and VIBRANT. The three tools are used simultaneously, although it is possible to be run independentely. After the initial run, the recovered data from each tool are filtered,combined and the replicates are been removed. 
 
-The help message of the viral step:
-```
-help_message () {
-        echo ""
-        echo "Usage: Viral assembly and dereplication [options] -f Assembly.fasta -o output_dir"
-        echo "Options:"
-        echo ""
-        echo "  -f STR          Assembly.fasta"
-        echo "  -o STR          output directory"          
-        echo ""
-        echo "  -virfinder     Recovery of viral data with VirFinder"
-        echo "  -virsorter     Recovery of viral data with VirSorter"
-        echo "  -vibrant       Recovery of viral data with VIBRANT"
-        echo "  -dereplication Removal of replicate sequences"
-        echo "";}
+* Run MuDoGeR viral recovery module:
+* ```~/viral_working_directory/viral_recovery_script  -o /path/to/output/folder -f ~/path/to/assembly/file ``` 
+* The generated output directory contains three fodlers, one for the initial recovered genomes of each tool and a fourth file that contains the results from the dereplication problems.
 
-```
+
+
 * Running of the viral recovery module with all the three recovery methods and the dereplication process (coverage 70 and id 95). The output directory is placed in the beginnng of the command before the assembly.fasta input.  
 ```
 mudoger viral_module -o </path/to/outputdir> -f </path/to/assembly.fa>
