@@ -111,7 +111,8 @@ Options:
 	-o STR          output directory
 	-f STR          assembly fasta file
 	-t INT          number of threads (defualt=1)
-	
+	-c INT		minimum coverage (default=70)
+	-i INT		minimum identity (default=95)
 
 ```
 
