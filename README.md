@@ -73,9 +73,14 @@ The instructions for EukRep installation can be found at ![EukRep_Manual](https:
 
 
 
+# DATABASES
+
+
+# DETAILED PIPELINE WALKTHROUGH
+
 # Using MuDoGeR
 
-A more detailed tutorial for the MuDoGeR can be found in ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file.Once all the dependencies are in place, running metaWRAP is relatively simple. The main metaWRAP script wraps around all of its individual modules, which you can call independently. The help message for MuDoGeR is the following:
+A more detailed tutorial for the MuDoGeR can be found in ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file. In this file, instructions and examples can be found.
 
 ```mudoger -h
 	Usage: mudoger [module] --help
@@ -93,66 +98,28 @@ A more detailed tutorial for the MuDoGeR can be found in ![Manual_MuDoGeR](https
 	--version | -v	show MuDoGeR version
 	--show-config	show where the mudoger configuration files are stored
 
-	
-	
  ```
 
+Each of the modules can be run seperately. As an example to run the viral module:
 
-# Step 0:Dowloading the libraries
+```
+mudoger viral module -h
 
-# Step 1:Pre-Processing 
-## Step 1.1: Read Quality control
-## Step1.2: Assembly of the good quality control reads
-
-# Step 2:Metagenomic recovery of Prokaryotic genomes 
-
-# Step 3:Pipelines for viral genomes recovery(VirFinder, VirSorter, Vibrant)
-
-The help message of the viral recovery script is the following: 
-
-
-```viral -h
-
-	Usage: Usage: Viral assembly and dereplication [options] -1 P19011_A1_assembly.fasta -o output_dir --help
-	Options:
+Usage: mudoger viral module [options] -o output_dir -f assembly.fasta 
+Options:
 	
-	-f STR          Assembly.fasta
 	-o STR          output directory
+	-f STR          assembly fasta file
+	-t INT          number of threads (defualt=1)
 	
-	-virfinder     Recovery of viral data with VirFinder
-	-virsorter     Recovery of viral data with VirSorter
-	-vibrant       Recovery of viral data with VIBRANT
-	-dereplication Removal of replicate sequences
-	
-	--help | -h		show this help message
-	--version | -v	show virfinder,virsorter,vibrant version
-	--show-config	show where the mudoger configuration files are stored
 
-	
-	
- ```
-
-* The recovery of viral genomes is achieved by using the tolls VirFinder, VirSorter and VIBRANT. Although each of the tools can be used independently, to achieve the maximum recovery of viral genomes it is better to use all the three tools together. After the genome recovery, the viral genomes recovered from each method are filtered:
-* In the VirFinder results sequences with q-value > 0.01 and lentgh =< 1000 bp are removed
-* In the VirSorter results only the sequences of the categories 1 and 2 are chosen 
-* In the VIBRANT results only the sequences of the `Assembly.phages_combined.fna` are chosen
-
-* The headers of the filtered sequences are combined to one file and the repeated sequences are removed. With the help of the headers, those sequences are extracted from the initial Assembly.fasta file and are located to a new fasta file. Finally the replicates are removed with a dereplication process. The loading parameters of this part of the step are maximum coverage `-c=70` and maximal identity `-i=95`. The combination of identity and coverage parameters is able to vary, depending on the purposes and the goals of the user. 
-
-* Run the pipelines for viral genomes recovery module
-
-* ``` ~/viral_working_directory/viral_recovery_script  -o /path/to/output/folder -f ~/path/to/assembly/file ``` 
-
-The final results will directed to an individual folder: `viral_test_folder` 
-If we have a look inside the output folder we can see:
-``` virfinder.tsv	virsorter_folder	vibrant_folder
-    extracted_and_dereplication_fasta 
 ```
 
+# Citing
 
+# Acknowledgements
 
- 
-# Step 4:EukRep pipeline
+	
 
 
 
