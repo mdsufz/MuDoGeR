@@ -35,7 +35,7 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 * **(4.4)** MAKER2. 
 * **(4.5)** BUSCO is applied for detection of single copy orthologous genes (SCGs) and will estimate the completeness and contamination of Eukaryotic reads
 
-For more details for each step, the user can study the ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file
+For more detailed descriptio of the MuDoGeR steps, the user can study the ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file
 
 # Parts of the MuDoGeR
 
