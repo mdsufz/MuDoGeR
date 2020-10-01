@@ -1,7 +1,9 @@
 
 
 # Step 3: Pipelines for viral genomes recovery 
-* In this step, the recovery of  the viral genomes from the Assembly.fasta file takes place. For the initial recovery of the viral genomes three tools are used: VirFinder, VirSorter and VIBRANT. The three tools are used simultaneously, although it is possible to be run independentely. After the initial run, the recovered data from each tool are filtered,combined and the replicates are been removed. 
+* Note: Make sure that all the viral tools are installed 
+* Running the viral module on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined together and the replicates are been removed. The three viral recovery tools (**VirFinder**, **VIBRANT**, **VirSorter**) are used simultaneously, but it is possible for each tool to be run seperately and the user is possible to chose not to run one of the tools, depending on the aim of the analysis and the size of the assembly dataset.
+
 * Run MuDoGeR viral recovery module:
 * ```~/viral_working_directory/viral_recovery_script  -o /path/to/output/folder -f ~/path/to/assembly/file  -c 70 -i 95 ``` 
 * Before the run of the script is important for the user to decide about the parameters minimum coverege(-c) and minimum identity (-i) used in the dereplication. 
