@@ -20,7 +20,10 @@ VIRAL_PARTICLES-nucmer.out.delta
 ```
      
 
+# Step 1: Pre-Processing
+## Step 1.1:
 
+## Step 1.2:
 
 
 
