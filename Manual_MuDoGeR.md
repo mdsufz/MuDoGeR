@@ -17,7 +17,8 @@ virfinder_folder   virsorter_folder    vibrant_folder    dereplication_folder
 Inside the dereplication_folder are the final outputs of the viral module.
 
 ``` 
-VIRAL_PARTICLES_95-70.clstr   VIRAL_PARTICLES-nucmer.out.coords   VIRAL_PARTICLES_95-70.fna   VIRAL_PARTICLES-cover.csv   VIRAL_PARTICLES-nucmer.out.delta
+VIRAL_PARTICLES_95-70.clstr   VIRAL_PARTICLES-nucmer.out.coords   VIRAL_PARTICLES_95-70.fna   VIRAL_PARTICLES-cover.csv   
+VIRAL_PARTICLES-nucmer.out.delta
 
 ```
      
