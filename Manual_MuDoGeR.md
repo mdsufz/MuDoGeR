@@ -27,7 +27,8 @@ The  `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of th
 >Cluster_3	NODE_105_length_3251_cov_4.997497	3251
 >Cluster_4	NODE_108_length_3205_cov_6.333333	3205
 
-``` 
+```
+The sequences of the clusters can be found in the `VIRAL_PARTICLES_95-70.fna` file.
 
 
 
