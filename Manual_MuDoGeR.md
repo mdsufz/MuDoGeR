@@ -9,7 +9,7 @@ Run MuDoGeR viral  module with all three tools and the de-replication function:
 mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --vifinder --virsorter --vibrant --dereplication -c 70 -i 95 
  ```
 
-In the final output directory four folders are appeared. Three of them contain the results from the independent recovery of each tool while in the fourth the user can found the final de-replicated contigs and the . The independent recovered contigs of each tool can be usefull for other types of analysis. 
+In the final output directory four folders are appeared. Three of them contain the results from the independent recovery of each tool while in the fourth the user can found the final de-replicated contigs. The independent recovered contigs of each tool can be usefull for other types of analysis. 
 
 ```
 virfinder_folder   virsorter_folder    vibrant_folder    dereplication_folder
