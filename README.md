@@ -77,6 +77,26 @@ The instructions for EukRep installation can be found at ![EukRep_Manual](https:
 # DATABASES
 
 
+|   Database	|     Used 	|
+| ------------- | ------------- |
+|   Checkm_DB	| Prokaryotic module |
+| KRAKEN standard database | Prokaryotic module  |
+| First Header  | Prokaryotic module  |
+| KRAKEN2 standard database  |Prokaryotic module |
+| NCBI_nt  | Prokaryotic module |
+| NCBI_tax  | Prokarytic module |
+| Indexed hg38 | Pre-processing module for read_qc  |
+|virsorter-data-v2.tar.gz | Viral module |
+|Pandas | Viral module |
+|BioPython | Viral module |
+|Matplotlib | Viral module |
+|Seaborn| Viral module |
+| Numpy(version >= 1.17.0 )| Viral module |
+|Scikit-learn(version == 0.21.3)| Viral module |
+|Pickle| Viral module |
+
+
+
 # DETAILED PIPELINE WALKTHROUGH
 
 # Using MuDoGeR
