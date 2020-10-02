@@ -9,17 +9,10 @@ Run MuDoGeR viral  module with all three tools and the de-replication function:
 mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --vifinder --virsorter --vibrant --dereplication -c 70 -i 95 
  ```
 
-The folder with the non de-replicated viral particles  and the de-replicated files is renamed and the file with the non de-replicated viral particles is removed
-
-```
-mv extracted_and_dereplication_folder dereplication_folder
-rm dereplication_folder/VIRAL_PARTICLES.fa
-```
-
 In the final output directory four folders are appeared. Three of them contain the results from the independent recovery of each tool while in the fourth the user can found the final de-replicated contigs and the . The independent recovered contigs of each tool can be usefull for other types of analysis. 
 
 ```
-virfinder_folder   virsorter_folder    vibrant_folder    extracted_and_dereplication_folder
+virfinder_folder   virsorter_folder    vibrant_folder    dereplication_folder
 ``` 
 Inside the `dereplication_folder` are only the final output files of the viral module.
 
