@@ -12,7 +12,8 @@ In the generated output directory four folders are appeared.  Three of them cont
 ```
 virfinder_folder   virsorter_folder    vibrant_folder    dereplication_folder
 ``` 
-Inside the dereplication_folder are the final outputs of the viral module.
+
+Inside the `dereplication_folder` are the final outputs of the viral module.
 
 ``` 
 VIRAL_PARTICLES_95-70.clstr   VIRAL_PARTICLES-nucmer.out.coords   VIRAL_PARTICLES_95-70.fna   VIRAL_PARTICLES-cover.csv   
