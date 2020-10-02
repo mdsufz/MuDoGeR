@@ -29,4 +29,7 @@ Run the prokayotic module with using MetaWrap:
 mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 -1 ~/path/to/final_pure_reads_2.fastq 
 
 ``` 
+# Read_qc module
+The Read_qc module is responsible to preparethe raw reads for assembly and alignment. The trimming of the raw reads is based on adapted content and PHRED scored with the default setting of Trim-galore. As a result, all the non-high quality sequences are removed. The high quality reads that remained are aligned to the genome of the host with bmtagger leading to removal of host contamination and the read pairs with only one aligned read from the metagenomic data. In the final step, 
+, FASTQC is used to generate quality reports of the raw and final read sets in order to assess read quality improvement. The users have control over which of the above features they wish to use.
 
