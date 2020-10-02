@@ -103,18 +103,17 @@ The instructions for EukRep installation can be found at ![EukRep_Manual](https:
 
 A more detailed tutorial for the MuDoGeR can be found in ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file. In this file, instructions and examples can be found.
 
-```mudoger -h
-	Usage: mudoger [module] --help
-	Options:
-	
-	Full_Workflow	Whole workflow excecution
+```
+MuDoGeR
+Usage: mudoger [module]
+
+	Modules:	
 	read_qc		Raw read QC module
 	assembly	Assembly module
 	Prokaryotic	Recovery of Prokaryotic genomes using metaWRAP
 	Viral		Recovery of Viral genomes using VirFinder, VirSorter, VIBRANT
 	Eukaryotic 	Recovery of Eukaryotic genomes using EukRep
-	Sep_Modules	Watch each module separately
-	
+		
 	--help | -h		show this help message
 	--version | -v	show MuDoGeR version
 	--show-config	show where the mudoger configuration files are stored
@@ -131,7 +130,6 @@ Options:
 	
 	-o STR          output directory
 	-f STR          assembly fasta file
-	-t INT          number of threads (defualt=1)
 	-c INT		minimum coverage (default=70)
 	-i INT		minimum identity (default=95)
 
