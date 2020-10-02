@@ -13,7 +13,11 @@ mudoger read_qc module --skip-bmtagger -1 /path/to/raw_reads_1.fasta -2 /path/to
 ```
 
 
-In the output directory 
+The output directory of the read quality control module contains:
+```
+final_pure_reads_1.fastq    pre-QC_report
+final_pure_reads_2.fastq    post-QC_report 
+```
 
 
 # ASSEMBLY Module
