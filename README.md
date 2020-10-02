@@ -103,11 +103,13 @@ The instructions for EukRep installation can be found at ![EukRep_Manual](https:
 
 A more detailed tutorial for the MuDoGeR can be found in ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file. In this file, instructions and examples can be found.
 
-```
-MuDoGeR
-Usage: mudoger [module]
+After all dependencies are in position then the MuDoGeR is ready to run. The run of MuDoGeR is easy and there is a main script that can wrap around all the MuDoGeR's individual module. The individual modules can be called independently.
 
-	Modules:	
+```
+MuDoGeR -h
+	Usage: mudoger [module] --help
+	Options:
+	
 	read_qc		Raw read QC module
 	assembly	Assembly module
 	Prokaryotic	Recovery of Prokaryotic genomes using metaWRAP
@@ -120,7 +122,7 @@ Usage: mudoger [module]
 
  ```
 
-Each of the modules can be run seperately. As an example to run the viral module:
+Each of the modules is run seperately. As an example to run the viral module:
 
 ```
 mudoger viral module -h
