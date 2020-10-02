@@ -85,7 +85,7 @@ The instructions for EukRep installation can be found at ![EukRep_Manual](https:
 | KRAKEN2 standard database  |Prokaryotic module |
 | NCBI_nt  | Prokaryotic module |
 | NCBI_tax  | Prokarytic module |
-| Indexed hg38 | Pre-processing module for read_qc  |
+| Indexed hg38 | Read_qc module |
 |virsorter-data-v2.tar.gz | Viral module |
 |Pandas | Viral module |
 |BioPython | Viral module |
