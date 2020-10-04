@@ -134,7 +134,12 @@ Options:
 	-f STR          assembly fasta file
 	-c INT		minimum coverage (default=70)
 	-i INT		minimum identity (default=95)
-
+	
+	--virsorter	viral genome recovery with VirSorter
+	--virfinder	viral genome recovery with VirFinder
+	--vibrant	viral genome recovery with VIBRANT
+	--dereplication	de-replication of recovered viral genomes
+	
 ```
 
 # Citing
