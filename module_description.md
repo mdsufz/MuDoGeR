@@ -5,7 +5,7 @@
 The MuDoGeR Read_qc module is based on MetaWrap Read_qc module and is responsible to prepare the raw reads for assembly and alignment. The trimming of the raw reads is based on adapted content and PHRED scored with the default setting of Trim-galore. As a result, all the non-high quality sequences are removed. The high quality reads that remained are aligned to the genome of the host with bmtagger leading to removal of host contamination and the read pairs with only one aligned read from the metagenomic data. In the final step, , FASTQC is used to generate quality reports of the raw and final read sets in order to assess read quality improvement. The users have control over which of the above features they wish to use.
 
 ## Assembly module
-The  MuDoGeR Assembly module is based on MetaWrap Assembly module. This module is utillized for assembling a set of metagenomic reads. The assembly can be achieved by using either MegaHit or metaSPAdes tools. Although, MegaHit is able to assemble large and complex metagenomic data and is cost memory and time-efficient metaSPAdes assembly is usually superior. 
+The  MuDoGeR Assembly module is based on MetaWrap Assembly module. This module is utillized for assembling a set of metagenomic reads. The assembly can be achieved by using either MegaHit or metaSPAdes tools. Although, MegaHit is able to assemble large and complex metagenomic data and is cost memory and time-efficient metaSPAdes assembly is usually superior. The MegaHit assembly is sorted by length and their names are changed to resembled the names in the SPAdes, including the contig ID, length, and coverage. In the end the scafgolds with lenght <1000bp are removed and QUAST formates an assembly report.
 
 ## Prokaryotic module
 
