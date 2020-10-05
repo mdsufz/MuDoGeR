@@ -107,9 +107,9 @@ mudoger -h
 	
 	read_qc		Raw read QC module
 	assembly	Assembly module
-	Prokaryotic	Recovery of Prokaryotic genomes using metaWRAP module
-	Viral		Recovery of Viral genomes using VirFinder, VirSorter, VIBRANT module
-	Eukaryotic 	Recovery of Eukaryotic genomes using EukRep module
+	prokaryotic	Recovery of Prokaryotic genomes using metaWRAP module
+	viral		Recovery of Viral genomes using VirFinder, VirSorter, VIBRANT module
+	eukaryotic 	Recovery of Eukaryotic genomes using EukRep module
 		
 	--help | -h		show this help message
 	--version | -v	show MuDoGeR version
