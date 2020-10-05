@@ -86,14 +86,6 @@ The instructions for EukRep installation can be found at ![EukRep_Manual](https:
 | NCBI_nt  | Prokaryotic module |
 | NCBI_tax  | Prokarytic module |
 | Indexed hg38 | Read_qc module |
-|virsorter-data-v2.tar.gz | Viral module |
-|Pandas | Viral module |
-|BioPython | Viral module |
-|Matplotlib | Viral module |
-|Seaborn| Viral module |
-| Numpy(version >= 1.17.0 )| Viral module |
-|Scikit-learn(version == 0.21.3)| Viral module |
-|Pickle| Viral module |
 
 
 
