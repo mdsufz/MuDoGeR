@@ -20,11 +20,13 @@ final_pure_reads_2.fastq    post-QC_report
 ```
 
 
-# ASSEMBLY Module
+# Assembly Module
 
 ```
-metawrap assembly -1 /path/to/pure_reads_1.fasta -2 path/to/pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assmebled_reads/output/directory
+metawrap assembly -1 /path/to/pure_reads_1.fasta -2 path/to/pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory
 ```
+
+After completing the assembly module the fasta file with the assembled reads is located to the the Assembly_results folder, which can be found inside the output directory.
 
 # Prokaryotic module
 Note: Make sure that all the databases and programms required for the MetaWrap run are downloaded
