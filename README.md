@@ -101,7 +101,7 @@ A more detailed tutorial for the MuDoGeR can be found in ![Manual_MuDoGeR](https
 After all dependencies are in position then the MuDoGeR is ready to run. The run of MuDoGeR is easy and there is a main script that can wrap around all the MuDoGeR's individual module. The individual modules can be called independently.
 
 ```
-MuDoGeR -h
+mudoger -h
 	Usage: mudoger [module] --help
 	Options:
 	
