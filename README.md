@@ -11,6 +11,7 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 
 ## MuDoGeR Overview
 
+For  detailed description of the MuDoGeR steps, the user can study the ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file
 
 ### (1) Pre-Processing
 * **(1.1)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
@@ -38,7 +39,6 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 * **(4.4)** MAKER2. 
 * **(4.5)** BUSCO is applied for detection of single copy orthologous genes (SCGs) and will estimate the completeness and contamination of Eukaryotic reads
 
-For more detailed descriptio of the MuDoGeR steps, the user can study the ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file
 
 # Parts of the MuDoGeR
 
