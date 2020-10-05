@@ -20,7 +20,7 @@ Inside the `dereplication_folder` are only the final output files of the viral m
 VIRAL_PARTICLES_95-70.clstr   VIRAL_PARTICLES-nucmer.out.coords   VIRAL_PARTICLES_95-70.fna   VIRAL_PARTICLES-cover.csv   
 VIRAL_PARTICLES-nucmer.out.delta
 ``` 
-The  `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of the clusters. For example `head -5 VIRAL_PARTICLES_95-70.clstr`:
+The  `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of the contigs. For example `head -5 VIRAL_PARTICLES_95-70.clstr`:
 
 ```
 >Cluster_0	NODE_53_length_4168_cov_5.199611	4168 
@@ -30,7 +30,7 @@ The  `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of th
 >Cluster_4	NODE_108_length_3205_cov_6.333333	3205
 
 ```
-The sequences of the clusters can be found in the `VIRAL_PARTICLES_95-70.fna` file.
+The sequences of the contigs can be found in the `VIRAL_PARTICLES_95-70.fna` file.
 
 
 
