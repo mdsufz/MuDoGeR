@@ -22,11 +22,12 @@ final_pure_reads_2.fastq    post-QC_report
 
 # Assembly Module
 
+The reads are assembled with utilization of metaSPAdes option flag(in case of very large datasets it is bettere to use MegaHIT):
 ```
 metawrap assembly -1 /path/to/pure_reads_1.fasta -2 path/to/pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory
 ```
+After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the QUAST assembly report html called `assembly_report.html`.
 
-After completing the assembly module the fasta file with the assembled reads is located to the the Assembly_results folder, which can be found inside the output directory.
 
 # Prokaryotic module
 Note: Make sure that all the databases and programms required for the MetaWrap run are downloaded
@@ -38,4 +39,4 @@ Run the prokayotic module with using MetaWrap:
 mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 -1 ~/path/to/final_pure_reads_2.fastq 
 
 ```
-
+In the final output folder the user can find:
