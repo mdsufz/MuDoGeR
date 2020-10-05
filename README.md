@@ -24,9 +24,9 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 * **(2.5)** Reassemble the final annotation with PROKKA
 
 ###  (3) Metagenomic recovery of Viral genomes
-* **(3.1)** Recovery of viral metagenomes using Virfinder, VirSorter and VIBRANT for the prediction of viral sequences, combination of them to a single file and removal of replicates. 
-* **(3.2)** Prediction of each contig's protein using Prodigal. 
-* **(3.3)** Identification using Proteins by Blastp. 
+* **(3.1)** Recovery of viral metagenomes using Virfinder, VirSorter and VIBRANT for the prediction of viral sequences . 
+* **(3.2)** Combination of them to a single file
+* **(3.3)** Removal of replicates with de-replication function
 
 ###  (4) Metagenomic recovery of Eukaryotic genomes
 * **(4.1)** Classification  of  Eukaryotic genomes with EukRep.
