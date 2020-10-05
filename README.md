@@ -25,7 +25,7 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 * **(2.5)** Reassemble the final annotation with PROKKA
 
 ###  (3) Metagenomic recovery of Viral genomes
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Viral%20module.png)
+![](https://github.com/mdsufz/MuDoGeR/blob/master/Viral%20Module.png)
 * **(3.1)** Recovery of viral metagenomes using Virfinder, VirSorter and VIBRANT for the prediction of viral sequences . 
 * **(3.2)** Filtering of the recovered genomes
 * **(3.3)** Combination of the headers of the filtered data to a single file
