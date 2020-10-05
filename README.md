@@ -28,7 +28,7 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Viral%20Module.png)
 * **(3.1)** Recovery of viral metagenomes using Virfinder, VirSorter and VIBRANT for the prediction of viral sequences . 
 * **(3.2)** Filtering of the recovered genomes
-* **(3.3)** Combination of the headers of the filtered data to a single file
+* **(3.3)** Combination of the headers of the filtered data to a single file, removed repeated sequences and sort by length
 * **(3.4)** Extraction of the viral sequences from the assembly file using the headers
 * **(3.5)** Removal of replicates with de-replication function
 
