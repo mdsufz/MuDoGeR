@@ -8,7 +8,7 @@ The MuDoGeR Read_qc module is based on MetaWrap Read_qc module and is responsibl
 The  MuDoGeR Assembly module is based on MetaWrap Assembly module. This module is utillized for assembling a set of metagenomic reads. The assembly can be achieved by using either MegaHit or metaSPAdes tools. Although, MegaHit is able to assemble large and complex metagenomic data and is cost memory and time-efficient metaSPAdes assembly is usually superior. The MegaHit assembly is sorted by length and their names are changed to resembled the names in the SPAdes, including the contig ID, length, and coverage. In the end the scafgolds with lenght <1000bp are removed and QUAST formates an assembly report.
 
 ## Prokaryotic module
-
+The MuDoGeR prokaryotic module is a combination of modules included in the MetaWrap module
  
 
 
