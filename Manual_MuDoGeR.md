@@ -1,4 +1,6 @@
-# Raw read QC module 
+
+# Step 1: Pre-Processing module
+# Step 1.1: Raw read QC module 
 Note: For the removing of human contaminationation  the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the MetaWrap installation instructions. It is also possible to use only the read trimming, by using `--skip-bmtagger` of the ReadQC module. 
 
 For running the raw read QC module:
@@ -27,7 +29,7 @@ Reads after read QC:
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Read_QC_after_trimming.png)
 
 
-# Assembly Module
+# Step 1.2: Assembly Module
 
 The reads are assembled with utilization of metaSPAdes option flag(in case of very large datasets it is bettere to use MegaHIT):
 ```
@@ -35,6 +37,7 @@ metawrap assembly -1 /path/to/pure_reads_1.fasta -2 path/to/pure_reads_2.fastq -
 ```
 After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the QUAST assembly report html called `assembly_report.html`.
 
+# Step 2: Prokaryotic module
 
 
 # Step 3: Pipelines for viral genomes recovery 
