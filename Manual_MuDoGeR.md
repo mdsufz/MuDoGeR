@@ -1,5 +1,6 @@
 
 # Step 1: Pre-Processing module
+
 ## Step 1.1: Raw read QC module 
 Note: For the removing of human contaminationation  the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the MetaWrap installation instructions. It is also possible to use only the read trimming, by using `--skip-bmtagger` of the ReadQC module. 
 
@@ -49,6 +50,22 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 ```
 
 # Step 2: Prokaryotic module
+Note: Make sure that all the databases and programms required for the MetaWrap run are downloaded.
+
+The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module.
+
+Run the prokayotic module with using MetaWrap:
+``` 
+mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 -1 ~/path/to/final_pure_reads_2.fastq 
+
+```
+In the final output folder the user can find:
+
+```
+Taxonomy_folder_bacteria Taxonomy_folder_archaea 
+
+```
+
 
 
 # Step 3: Pipelines for viral genomes recovery 
