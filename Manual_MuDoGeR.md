@@ -38,7 +38,7 @@ metawrap assembly -1 /path/to/pure_reads_1.fasta -2 path/to/pure_reads_2.fastq -
 ```
 After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the QUAST assembly report html called `assembly_report.html`. 
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Assembly_figure.png)
+![](https://github.com/mdsufz/MuDoGeR/blob/master/Assembly.png)
 
 Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the top five longer sequences.
 
