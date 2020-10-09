@@ -94,11 +94,12 @@ VIRAL_PARTICLES-nucmer.out.delta
 The  `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of the contigs. For example `head -5 VIRAL_PARTICLES_95-70.clstr`:
 
 ```
->Cluster_0	NODE_53_length_4168_cov_5.199611	4168 
->Cluster_1	NODE_58_length_3975_cov_7.914796	3975
->Cluster_2	NODE_67_length_3721_cov_2.320513	3721
->Cluster_3	NODE_105_length_3251_cov_4.997497	3251
->Cluster_4	NODE_108_length_3205_cov_6.333333	3205
+>Cluster_0	NODE_6_length_9839_cov_5.151165	   9839
+>Cluster_1	NODE_7_length_8843_cov_4.647815	   8843
+>Cluster_2	NODE_9_length_8285_cov_3.135358	   8285
+>Cluster_3	NODE_16_length_6117_cov_3.296107	  6117
+>Cluster_4	NODE_20_length_5444_cov_5.065875	  5444
+
 
 ```
 The sequences of the contigs can be found in the `VIRAL_PARTICLES_95-70.fna` file.
