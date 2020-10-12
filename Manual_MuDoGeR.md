@@ -64,11 +64,27 @@ mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/as
 In the final output folder the user can find:
 
 ```
-Taxonomy_folder_bacteria Taxonomy_folder_archaea 
+Annotation_folder_Bacteria Annotation_folder_Archaea
 
 ```
 
+Each of these folders contains the following directories 
 
+```
+bin_funct_annotations  bin_translated_genes  bin_untranslated_genes  prokka_out
+
+```
+
+ The `bin_translated_genes` and  `bin_untranslated_genes files` include the fasta format of translated and unstranslated predicted genes, inside the `prokka_out` folder are the raw PROKKA output files and `bin_funct_annotations`folder contains the functional annotations of each bin in GFF format.
+
+Running `Annotation_folder_Bacteria/bin_funct_annotations/bin.1.orig.gff | head -5`:
+
+
+
+
+ 
+ 
+For more detailed explanation of the MetaWrap tool the user can study the ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) file 
 
 # Step 3: Pipelines for viral genomes recovery 
 Note: Make sure that all the viral tools are installed. 
@@ -91,7 +107,7 @@ Inside the `dereplication_folder` are only the final output files of the viral m
 VIRAL_PARTICLES_95-70.clstr   VIRAL_PARTICLES-nucmer.out.coords   VIRAL_PARTICLES_95-70.fna   VIRAL_PARTICLES-cover.csv   
 VIRAL_PARTICLES-nucmer.out.delta
 ``` 
-The  `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of the contigs. For example `head -5 VIRAL_PARTICLES_95-70.clstr`:
+The  `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of the contigs. For example `head -5 dereplication_folder/VIRAL_PARTICLES_95-70.clstr`:
 
 ```
 >Cluster_0	NODE_6_length_9839_cov_5.151165	   9839
