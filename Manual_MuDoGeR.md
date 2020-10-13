@@ -58,7 +58,8 @@ Note: Make sure that all the databases and programms required for the MetaWrap r
 The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module. The important parameters of minimum completion (-c) and maximum contamination(-x) for the CheckM quaity control are settled to 50 and 10 respectively for the recovery of bacterial contigs, while for archaeal contigs recovery are settled to 40 and 10.
 
 Run the prokayotic module with using MetaWrap:
-``` mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 -1 ~/path/to/final_pure_reads_2.fastq
+``` 
+mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 -1 ~/path/to/final_pure_reads_2.fastq
 
 ```
 In the final output folder the user can find:
@@ -72,17 +73,15 @@ Inside each of the checkm directories there is the `bin` directory that contains
 
 ```
 cat checkm.tsv  | head -5
-Bin Id	Marker lineage	# genomes	# markers	# marker sets	0	1	2	3	4	5+	Completeness	Contamination	Strain heterogeneity
-bin.1	c__Deltaproteobacteria (UID3216)	83	247	155	2	242	3	0	0	0	99.32	1.94	66.67
-bin.11	o__Pseudomonadales (UID4488)	185	813	308	102	696	14	1	0	0	90.38	2.03	17.65
-bin.12	c__Deltaproteobacteria (UID3218)	61	284	169	29	246	9	0	0	0	90.66	0.30	33.33
-bin.13	o__Pseudomonadales (UID4488)	185	813	308	211	576	25	1	0	0	74.44	2.91	17.86
-
+Bin Id	Marker lineage                  	# genomes	# markers	# marker sets	  0  	  1 	2	3	4	5+	Completeness	Contamination	Strain heterogeneity
+bin.1 	c__Deltaproteobacteria (UID3216)	       83	      247	          155	  2  	242 	3	0	0	 0	       99.32	         1.94	               66.67
+bin.11	o__Pseudomonadales (UID4488)    	      185	      813	          308	102  	696	14	1	0	 0	       90.38	         2.03	               17.65
+bin.12	c__Deltaproteobacteria (UID3218)	       61	      284	          169	 29	  246	 9	0	0	 0	       90.66	         0.30	               33.33
+bin.13	o__Pseudomonadales (UID4488)    	      185	      813	          308	211	  576	25	1	0	 0	       74.44	         2.91	               17.86
 
 ```
 
-Inside the tax_dir directories the user can find inside a tsv file, the classification of the bins.
-As an example, running ` cat tax_out_dir/classify/intermediate_results/gtdbtk.bac120.classification_pplacer.tsv `:
+Inside each tax_dir directory the user can find the classification of the refined bins. As an example, running `cat tax_out_dir/classify/intermediate_results/gtdbtk.bac120.classification_pplacer.tsv| head -5`:
 
 ``` 
 bin.6	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Oscillospirales;f__Oscillospiraceae;g__Pseudoflavonifractor;s__
