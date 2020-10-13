@@ -34,7 +34,8 @@ Reads after read QC:
 
 The reads are assembled with utilization of metaSPAdes option flag(in case of very large datasets it is bettere to use MegaHIT):
 ```
-metawrap assembly -1 /path/to/pure_reads_1.fasta -2 path/to/pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory
+metawrap assembly -1 /path/to/pure_reads_1.fasta -2 path/to/pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
+
 ```
 After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the QUAST assembly report html called `assembly_report.html`. 
 
@@ -54,25 +55,31 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 # Step 2: Prokaryotic module
 Note: Make sure that all the databases and programms required for the MetaWrap run are downloaded.
 
-The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module.
+The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module. The important parameters of minimum completion (-c) and maximum contamination(-x) for the CheckM quaity control are settled to 50 and 10 respectively for the recovery of bacterial contigs, while for archaeal contigs recovery are settled to 40 and 10.
 
 Run the prokayotic module with using MetaWrap:
-``` 
-mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 -1 ~/path/to/final_pure_reads_2.fastq 
+``` mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 -1 ~/path/to/final_pure_reads_2.fastq
 
 ```
 In the final output folder the user can find:
 
 ```
-Annotation_folder_Bacteria Annotation_folder_Archaea
+Annotation_folder_Bacteria Annotation_folder_Archaea checkm_archaea 
+checkm_bacteria  tax_dir_archaea  tax_dir_bacteria 
 
 ```
+Inside the checkm directories the user can find:
 
-Each of these folders contains the following directories 
+```
+bins  checkm.log  check.tsv  lineage.ms  storage
+```
+
+Inside the tax_dir directories the user can find:
+
+Each of the annotation folders contains the following directories 
 
 ```
 bin_funct_annotations  bin_translated_genes  bin_untranslated_genes  prokka_out
-
 ```
 
  The `bin_translated_genes` and  `bin_untranslated_genes files` include the fasta format of translated and unstranslated predicted genes, inside the `prokka_out` folder are the raw PROKKA output files and `bin_funct_annotations`folder contains the functional annotations of each bin in GFF format.
