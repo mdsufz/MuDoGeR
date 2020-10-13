@@ -55,7 +55,7 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 # Step 2: Prokaryotic module
 Note: Make sure that all the databases and programms required for the MetaWrap run are downloaded.
 
-The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module. The important parameters of minimum completion (-c) and maximum contamination(-x) for the CheckM quaity control are settled to 50 and 10 respectively for the recovery of bacterial contigs, while for archaeal contigs recovery are settled to 40 and 10.
+The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module. The important parameters of minimum completion (-c) and maximum contamination(-x) for the CheckM quaity control are settled by default to 50 and 10 respectively for the recovery of bacterial contigs, while for archaeal contigs recovery are settled by default to 40 and 10.
 
 Run the prokayotic module with using MetaWrap:
 ``` 
@@ -69,7 +69,7 @@ Annotation_folder_Bacteria Annotation_folder_Archaea checkm_archaea
 checkm_bacteria  tax_dir_archaea  tax_dir_bacteria 
 
 ```
-Inside each of the checkm directories there is the `bin` directory that contains the bins. Also, inside each checkm directory the user can find a file with completeness and contamination of each bin together with the used markers, called `checkm.tsv`.
+Inside each of the checkm directories there is the `bin` directory that contains the bins. Also, inside each checkm directory the user can find `checkm.tsv`file with completeness and contamination of the re-assembled refined bins.
 
 ```
 cat checkm.tsv  | head -5
