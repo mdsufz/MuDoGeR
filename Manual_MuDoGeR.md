@@ -68,21 +68,36 @@ Annotation_folder_Bacteria Annotation_folder_Archaea checkm_archaea
 checkm_bacteria  tax_dir_archaea  tax_dir_bacteria 
 
 ```
-Inside the checkm directories the user can find:
+Inside each of the checkm directories there is the `bin` directory that contains the bins. Also, inside each checkm directory the user can find a file with completeness and contamination of each bin together with the used markers, called `checkm.tsv`.
 
 ```
-bins  checkm.log  check.tsv  lineage.ms  storage
+cat checkm.tsv  | head -5
+Bin Id	Marker lineage	                # genomes	# markers	# marker sets	 0	  1	  2	3	4	5+	Completeness	Contamination	Strain heterogeneity
+bin.1	 c__Deltaproteobacteria (UID3216)	     83	      247	          155	 2	 242  3	0	0	0	        99.32	         1.94	               66.67
+bin.11	o__Pseudomonadales (UID4488)	        185	      813	          308	102	696 14	1	0	0	        90.38	         2.03	               17.65
+bin.12	c__Deltaproteobacteria (UID3218)	     61	      284	          169	 29	246	 9	0	0	0	        90.66	         0.3	                33.33
+bin.13	o__Pseudomonadales (UID4488)	        185	      813	          308	211	576	25	1	0	0	        74.44	         2.91	               17.86
+
 ```
 
-Inside the tax_dir directories the user can find:
+Inside the tax_dir directories the user can find inside a tsv file, the classification of the bins.
+As an example, running ` cat tax_out_dir/classify/intermediate_results/gtdbtk.bac120.classification_pplacer.tsv `:
 
-Each of the annotation folders contains the following directories 
+``` 
+bin.6	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Oscillospirales;f__Oscillospiraceae;g__Pseudoflavonifractor;s__
+bin.4	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Peptostreptococcales;f__Filifactoraceae;g__Acetoanaerobium;s__
+bin.14	d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Micrococcaceae;g__Glutamicibacter;s__
+bin.9	d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Cellulomonadaceae;g__Actinotalea;s__
+bin.10	d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Propionibacteriales;f__Propionibacteriaceae;g__;s__
+``` 
+
+Each of the annotation folders contains the following directories: 
 
 ```
 bin_funct_annotations  bin_translated_genes  bin_untranslated_genes  prokka_out
 ```
 
- The `bin_translated_genes` and  `bin_untranslated_genes files` include the fasta format of translated and unstranslated predicted genes, inside the `prokka_out` folder are the raw PROKKA output files and `bin_funct_annotations`folder contains the functional annotations of each bin in GFF format.
+The `bin_translated_genes` and  `bin_untranslated_genes files` include the fasta format of translated and unstranslated predicted genes, inside the `prokka_out` folder are the raw PROKKA output files and `bin_funct_annotations`folder contains the functional annotations of each bin in GFF format.
 
 Running `Annotation_folder_Bacteria/bin_funct_annotations/bin.1.orig.gff | head -5`:
 
