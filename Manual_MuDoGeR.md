@@ -35,7 +35,6 @@ Reads after read QC:
 The reads are assembled with utilization of metaSPAdes option flag(in case of very large datasets it is bettere to use MegaHIT):
 ```
 metawrap assembly -1 /path/to/pure_reads_1.fasta -2 path/to/pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
-
 ```
 After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the QUAST assembly report html called `assembly_report.html`. 
 
@@ -49,7 +48,6 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 >NODE_3_length_278391_cov_5.902381
 >NODE_4_length_257954_cov_1138.617195
 >NODE_5_length_248688_cov_1110.129452
-
 ```
 
 # Step 2: Pipelines for prokaryotic genome recovery
@@ -60,14 +58,12 @@ The run of the prokaryotic module leads to the recovery of prokaryotic genomes f
 Run the prokayotic module with using MetaWrap:
 ``` 
 mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 -1 ~/path/to/final_pure_reads_2.fastq
-
 ```
 In the final output folder the user can find:
 
 ```
 Annotation_folder_Bacteria Annotation_folder_Archaea checkm_archaea 
 checkm_bacteria  tax_dir_archaea  tax_dir_bacteria 
-
 ```
 Inside each of the checkm directories there is the `bin` directory that contains the bins. Also, inside each checkm directory the user can find `checkm.tsv`file with completeness and contamination of the re-assembled refined bins.
 
@@ -78,7 +74,6 @@ bin.1 	c__Deltaproteobacteria (UID3216)	       83	      247	          155	  2  	
 bin.11	o__Pseudomonadales (UID4488)    	      185	      813	          308	102  	696	14	1	0	 0	       90.38	         2.03	               17.65
 bin.12	c__Deltaproteobacteria (UID3218)	       61	      284	          169	 29	246	 9	0	0	 0	       90.66	         0.30	               33.33
 bin.13	o__Pseudomonadales (UID4488)    	      185	      813	          308	211	576	25	1	0	 0	       74.44	         2.91	               17.86
-
 ```
 
 Inside each tax_dir directory the user can find the classification of the refined bins. As an example, running `cat tax_out_dir/classify/intermediate_results/gtdbtk.bac120.classification_pplacer.tsv| head -5`:
@@ -137,8 +132,6 @@ The  `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of th
 >Cluster_2	NODE_9_length_8285_cov_3.135358  	   8285
 >Cluster_3	NODE_16_length_6117_cov_3.296107 	   6117
 >Cluster_4	NODE_20_length_5444_cov_5.065875 	   5444
-
-
 ```
 The sequences of the contigs can be found in the `VIRAL_PARTICLES_95-70.fna` file.
 
