@@ -74,10 +74,10 @@ Inside each of the checkm directories there is the `bin` directory that contains
 ```
 cat checkm.tsv  | head -5
 Bin Id	Marker lineage                  	# genomes	# markers	# marker sets	  0  	  1 	2	3	4	5+	Completeness	Contamination	Strain heterogeneity
-bin.1 	c__Deltaproteobacteria (UID3216)	       83	      247	          155	  2  	242 	3	0	0	 0	       99.32	         1.94	               66.67
+bin.1 	c__Deltaproteobacteria (UID3216)	       83	      247	          155	  2  	242 	 3	0	0	 0	       99.32	         1.94	               66.67
 bin.11	o__Pseudomonadales (UID4488)    	      185	      813	          308	102  	696	14	1	0	 0	       90.38	         2.03	               17.65
-bin.12	c__Deltaproteobacteria (UID3218)	       61	      284	          169	 29	  246	 9	0	0	 0	       90.66	         0.30	               33.33
-bin.13	o__Pseudomonadales (UID4488)    	      185	      813	          308	211	  576	25	1	0	 0	       74.44	         2.91	               17.86
+bin.12	c__Deltaproteobacteria (UID3218)	       61	      284	          169	 29	246	 9	0	0	 0	       90.66	         0.30	               33.33
+bin.13	o__Pseudomonadales (UID4488)    	      185	      813	          308	211	576	25	1	0	 0	       74.44	         2.91	               17.86
 
 ```
 
