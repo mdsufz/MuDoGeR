@@ -9,7 +9,9 @@ For running the raw read QC module:
 ``` 
 mudoger read_qc module --skip-bmtagger -1 /path/to/raw_reads_1.fasta -2 /path/to/raw_reads_2.fasta  -t ${NSLOTS:-1} -o /path/to/pure_reads/output/directory
 ```
+In case there are more than one samples they can be run simultaneously as:
 
+`for F in RAW_READS/*_1.fastq; do R=${F%_*}_2.fastq; BASE=${F##*/}; SAMPLE=${BASE%_*}; mudoger read_qc module -1 $F -2 $R -t 1 -o /path/to/pure_reads/output/directory & done`
 
 The output directory of the read quality control module contains:
 ```
@@ -30,11 +32,28 @@ Reads after read QC:
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Read_QC_after_trimming.png)
 
 
+The final QC'ed reads are moved to a new folder:
+```
+mkdir CLEAN_READS
+for i in path/to/output/directory/*; do 
+	b=${i#*/}
+	mv ${i}/final_pure_reads_1.fastq CLEAN_READS/${b}_1.fastq
+	mv ${i}/final_pure_reads_2.fastq CLEAN_READS/${b}_2.fastq
+done
+``` 
+
 ## Step 1.2: Assembly Module
+
+In case of more than one samples the reads of all samples should be concatenated first:
+``` 
+cat CLEAN_READS/ERR*_1.fastq > CLEAN_READS/ALL_READS_1.fastq
+
+cat CLEAN_READS/ERR*_2.fastq > CLEAN_READS/ALL_READS_2.fastq`
+```
 
 The reads are assembled with utilization of metaSPAdes option flag(in case of very large datasets it is bettere to use MegaHIT):
 ```
-metawrap assembly -1 /path/to/pure_reads_1.fasta -2 path/to/pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
+metawrap assembly -1 /path/to/ALL_READS_1.fasta -2 path/to/ALL_READS_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
 ```
 After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the QUAST assembly report html called `assembly_report.html`. 
 
@@ -62,8 +81,8 @@ mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/as
 In the final output folder the user can find:
 
 ```
-Annotation_folder_Bacteria Annotation_folder_Archaea checkm_archaea 
-checkm_bacteria  tax_dir_archaea  tax_dir_bacteria 
+Annotation_folder_Bacteria     Annotation_folder_Archaea     checkm_archaea 
+checkm_bacteria      tax_dir_archaea      tax_dir_bacteria 
 ```
 Inside each of the checkm directories there is the `bin` directory that contains the bins. Also, inside each checkm directory the user can find `checkm.tsv`file with completeness and contamination of the re-assembled refined bins.
 
