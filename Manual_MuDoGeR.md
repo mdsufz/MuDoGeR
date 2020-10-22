@@ -136,12 +136,12 @@ Running the viral module on the assembly fasta file, leads to the identification
 Run MuDoGeR viral  module with all three tools and the de-replication function:
 ``` 
 mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --vifinder --virsorter --vibrant --dereplication -c 70 -i 95 
- ```
+```
 
-In the final output directory four folders are appeared. Three of them contain the results from the independent recovery of each tool while in the fourth the user can found the final de-replicated contigs. The independent recovered contigs of each tool can be usefull for other types of analysis. 
+In the output directory five folders are appeared. The `initial_recovey_folder`  contains the results from the independent recovery of each tool. The independent recovered contigs of each tool can be usefull for other types of analysis. The ` dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and ` quality_folder` the  user can found the results of ,the taxonomy utlizing **vContact** tool and quality control using **vQuality** tool, respectively. In the `final_folder`  the user can find `final_viral.tsv` file with the dereplicate contigs, their quality and taxonomy.
 
 ```
-virfinder_folder   virsorter_folder    vibrant_folder    dereplication_folder
+initial_recovey_folder   dereplication_folder	taxonomy_folder	   quality_folder    final_folder	
 ``` 
 Inside the `dereplication_folder` are only the final output files of the viral module.
 
@@ -160,6 +160,7 @@ The  `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of th
 ```
 The sequences of the contigs can be found in the `VIRAL_PARTICLES_95-70.fna` file.
 
+Running `head -5 final_folder/final_viral.tsv` will give:
 
 
 
