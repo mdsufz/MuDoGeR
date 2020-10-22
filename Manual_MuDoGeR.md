@@ -72,7 +72,7 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 # Step 2: Pipelines for prokaryotic genome recovery
 Note: Make sure that all the databases and programms required for the MetaWrap run are downloaded.
 
-The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module. The important parameters of minimum completion (-c) and maximum contamination(-x) for the CheckM quaity control are settled by default to 50 and 10 respectively for the recovery of bacterial contigs, while for archaeal contigs recovery are settled by default to 40 and 10.
+The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module. The important parameters of minimum completion (-c) and maximum contamination(-x) for the CheckM quaity control are settled by default to 50 and 10 respectively for the recovery of bacterial contigs, while for archaeal contigs recovery are settled by default to 40 and 30.
 
 Run the prokayotic module with using MetaWrap:
 ``` 
@@ -167,7 +167,9 @@ Running `head -5 final_folder/final_viral.tsv` will give:
 
 
 
-## Step 3: Pipelines for viral genomes recovery 
+## Step 4: Pipelines for eukaryotic genomes recovery 
+
+
 
 
 
