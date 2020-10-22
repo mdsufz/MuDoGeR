@@ -168,10 +168,14 @@ Running `head -5 final_folder/final_viral.tsv` will give:
 
 
 ## Step 4: Pipelines for eukaryotic genomes recovery 
+Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file. Also, 
 
+The Eukaryotic module on the Assembly fasta file, leads to the recovery of eukaryotic genomes. The Eukaryotic module starts with the **EukrRep** tool.
 
-
-
+Running the Eukaryotic module:
+```
+mudoger eukaryotic module -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/file -o /path/to/output/folder/file
+```
 
 
 
