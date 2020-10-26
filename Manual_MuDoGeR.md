@@ -95,14 +95,15 @@ bin.12	c__Deltaproteobacteria (UID3218)	       61	      284	          169	 29	24
 bin.13	o__Pseudomonadales (UID4488)    	      185	      813	          308	211	576	25	1	0	 0	       74.44	         2.91	               17.86
 ```
 
-Inside each tax_dir directory the user can find the classification of the refined bins. As an example, running `cat tax_out_dir/classify/intermediate_results/gtdbtk.bac120.classification_pplacer.tsv| head -5`:
+Inside each tax_dir directory the user can find the classification of the refined bins. As an example, running `cat tax_out_dir_bacteria/classify/intermediate_results/gtdbtk.bac120.classification_pplacer.tsv| head -5`:
 
 ``` 
-bin.6	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Oscillospirales;f__Oscillospiraceae;g__Pseudoflavonifractor;s__
-bin.4	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Peptostreptococcales;f__Filifactoraceae;g__Acetoanaerobium;s__
-bin.14	d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Micrococcaceae;g__Glutamicibacter;s__
-bin.9	d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Actinomycetales;f__Cellulomonadaceae;g__Actinotalea;s__
-bin.10	d__Bacteria;p__Actinobacteriota;c__Actinomycetia;o__Propionibacteriales;f__Propionibacteriaceae;g__;s__
+bin.3	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Shewanellaceae;g__Shewanella;s__
+bin.5	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__;s__
+bin.4	d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Rhodocyclaceae;g__Azoarcus_C;s__
+bin.1	d__Bacteria;p__Desulfobacterota;c__Desulfuromonadia;o__Geobacterales;f__Geobacteraceae;g__Geobacter;s__
+bin.2	d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Dysgonomonadaceae;g__Dysgonomonas;s__
+
 ``` 
 
 Each of the annotation folders contains the following directories: 
