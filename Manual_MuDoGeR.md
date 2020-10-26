@@ -76,7 +76,7 @@ The run of the prokaryotic module leads to the recovery of prokaryotic genomes f
 
 Run the prokayotic module with using MetaWrap:
 ``` 
-mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 -1 ~/path/to/final_pure_reads_2.fastq
+mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq
 ```
 In the final output folder the user can find:
 
@@ -175,7 +175,7 @@ The Eukaryotic module on the Assembly fasta file, leads to the recovery of eukar
 
 Running the Eukaryotic module:
 ```
-mudoger eukaryotic module -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/file -o /path/to/output/folder/file
+mudoger eukaryotic module -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/file -o /path/to/output/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
 ```
 
 
