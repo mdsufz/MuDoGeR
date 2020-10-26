@@ -21,7 +21,7 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 * **(2.1)** Bin extraction with MaxBin2, metaBAT2, and CONCOCT 
 * **(2.2)** Unification of multiple binning prediction into an advanced bin set (Bin refinement) 
 * **(2.3)** Quality control using cCheckM 
-* **(2.4)** Classification of genomic bins 
+* **(2.4)** Classification of genomic bins with GTDB
 * **(2.5)** Reassemble the final annotation with PROKKA
 
 ###  (3) Metagenomic recovery of Viral genomes
@@ -31,16 +31,16 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 * **(3.3)** Combination of the headers of the filtered data to a single file, removed repeated sequences and sort by length
 * **(3.4)** Extraction of the viral sequences from the assembly file using the headers
 * **(3.5)** Removal of replicates with de-replication function
-* **(3.6)** Checking the quality of the Viral genomes
+* **(3.6)** Checking the quality of the Viral genomes with VirCheck
 * **(3.7)** Taxonomy with vContact 
-* **(3.6)** PRODIGAL for detect proteins sequences
 
 ###  (4) Metagenomic recovery of Eukaryotic genomes
 * **(4.1)** Classification  of  Eukaryotic genomes with EukRep.
 * **(4.2)** Use of CONCOCT for binning and filtering the Eukaryotic sequences by size.
 * **(4.3)** Then, genes are predicted by using the trained GeneMark-ES model 
-* **(4.4)** MAKER2. 
-* **(4.5)** BUSCO is applied for detection of single copy orthologous genes (SCGs) and will estimate the completeness and contamination of Eukaryotic reads
+* **(4.4)** MAKER2 for annotation
+* **(4.5)** BUSCO is applied for detection of single copy orthologous genes (SCGs) and will estimate the completeness of Eukaryotic contigs
+* **(4.6)** EukCC for estimating the contamination of Eukaryotic contigs
 
 
 # Parts of the MuDoGeR
