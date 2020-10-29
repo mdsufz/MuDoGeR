@@ -121,11 +121,8 @@ NODE_2_length_360965	Prodigal:2.6	CDS	1428	2660	.	-	0ID=EDFJOLLJ_00003;eC_number
 NODE_2_length_360965	Prodigal:2.6	CDS	2816	3616	.	-	0ID=EDFJOLLJ_00004;eC_number=1.17.1.8;Name=dapB;gene=dapB;inference=ab initio prediction:Prodigal:2.6,similar to AA sequence:UniProtKB:P38103;locus_tag=EDFJOLLJ_00004;product=4-hydroxy-tetrahydrodipicolinate reductase
 NODE_2_length_360965	Prodigal:2.6	CDS	3638	4510	.	-	0ID=EDFJOLLJ_00005;eC_number=4.3.3.7;Name=dapA;gene=dapA;inference=ab initio prediction:Prodigal:2.6,similar to AA sequence:UniProtKB:O67216;locus_tag=EDFJOLLJ_00005;product=4-hydroxy-tetrahydrodipicolinate synthase
 
-
-
- 
- 
 ```
+
 For more detailed explanation of the MetaWrap tool the user can study the ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) file 
 
 # Step 3: Pipelines for viral genomes recovery 
@@ -188,7 +185,8 @@ mudoger eukaryotic module2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/outpu
 ```
 After the end of the second step the output folder contains the results from **GeneMark-ES**, **MAKER2**, **BUSCO*** and **EukCC** tools:
 
-The results of **GeneMark-ES** tool can be found by running:
+The results of **GeneMark-ES** tool are located in the `/path/to/output/gmhmm.mod` file
+The results fo the **MAKER2** tool are located in the file
 
 
 
