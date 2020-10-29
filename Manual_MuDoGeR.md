@@ -109,10 +109,23 @@ bin.2	d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Dysgonomona
 Each of the annotation folders contains the following directories: 
 
 ```
+bin_funct_annotations  bin_translated_genes  bin_untranslated_genes  prokka_out
+
 ```
+The functional annotation of the bins can be found in GFF form by running: `cat`
+
+```
+NODE_2_length_360965	Prodigal:2.6	CDS	660	1022	.	-	0ID=EDFJOLLJ_00001;inference=ab initio prediction:Prodigal:2.6;locus_tag=EDFJOLLJ_00001;product=hypothetical protein
+NODE_2_length_360965	Prodigal:2.6	CDS	1019	1306	.	-	0ID=EDFJOLLJ_00002;inference=ab initio prediction:Prodigal:2.6;locus_tag=EDFJOLLJ_00002;product=hypothetical protein
+NODE_2_length_360965	Prodigal:2.6	CDS	1428	2660	.	-	0ID=EDFJOLLJ_00003;eC_number=2.6.1.83;Name=dapL;gene=dapL;inference=ab initio prediction:Prodigal:2.6,similar to AA sequence:UniProtKB:A3DK17;locus_tag=EDFJOLLJ_00003;product=LL-diaminopimelate aminotransferase
+NODE_2_length_360965	Prodigal:2.6	CDS	2816	3616	.	-	0ID=EDFJOLLJ_00004;eC_number=1.17.1.8;Name=dapB;gene=dapB;inference=ab initio prediction:Prodigal:2.6,similar to AA sequence:UniProtKB:P38103;locus_tag=EDFJOLLJ_00004;product=4-hydroxy-tetrahydrodipicolinate reductase
+NODE_2_length_360965	Prodigal:2.6	CDS	3638	4510	.	-	0ID=EDFJOLLJ_00005;eC_number=4.3.3.7;Name=dapA;gene=dapA;inference=ab initio prediction:Prodigal:2.6,similar to AA sequence:UniProtKB:O67216;locus_tag=EDFJOLLJ_00005;product=4-hydroxy-tetrahydrodipicolinate synthase
+
+
 
  
  
+```
 For more detailed explanation of the MetaWrap tool the user can study the ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) file 
 
 # Step 3: Pipelines for viral genomes recovery 
@@ -157,13 +170,25 @@ Running `head -5 final_folder/final_viral.tsv` will give:
 ## Step 4: Pipelines for eukaryotic genomes recovery 
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file. Also, 
 
-The Eukaryotic module on the Assembly fasta file, leads to the recovery of eukaryotic genomes. The Eukaryotic module starts with the **EukrRep** tool.
+The Eukaryotic module on the Assembly fasta file, leads to the recovery of eukaryotic genomes. The Eukaryotic module is separated in 2 steps. The first step starts with the **EukrRep** tool.
 
-Running the Eukaryotic module:
+Running the first step Eukaryotic module:
 ```
-mudoger eukaryotic module -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/file -o /path/to/output/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
+mudoger eukaryotic module1 -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/file -o /path/to/output/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
 ```
 
+In the output of the first step the user can find `euk_concoct_bins` folder which contains the bins produced by CONCOCT with size >= 2.5 Mb.
+
+The second step of Eukaryotic module starts with **GeneMark-ES** and as input the user can use any of the bins produced in the previous step.
+
+Running the second step of Eukaryotic module:
+
+```
+mudoger eukaryotic module2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/output/file
+```
+After the end of the second step the output folder contains the results from **GeneMark-ES**, **MAKER2**, **BUSCO*** and **EukCC** tools:
+
+The results of **GeneMark-ES** tool can be found by running:
 
 
 
