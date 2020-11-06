@@ -146,6 +146,7 @@ NODE_9_length_8285_cov_3.135358	8285	1.0	14	1	0	Not-determined	Genome-fragment	N
 NODE_21_length_5441_cov_6.763832	5441	1.0	8	8	0	Medium-quality	Genome-fragment	89.8	AAI-based	0.0	No	55-bp-DTR
 ```
 
+
 Running `head -5 final_folder/final_viral.tsv` will give:
 
 
