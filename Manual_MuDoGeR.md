@@ -182,7 +182,7 @@ After the end of the second step the output folder contains the results from **G
 
 The results of **GeneMark-ES** tool are located in the `/path/to/output/folder/output/gmhmm.mod` file
 
-The results of the **MAKER2** tool are located in the `/path/to/output/folder/output/maker/euk-ebin.maker.output/OUTPUT.all.maker.proteins.fasta`  file 
+The results of the **MAKER2** tool are located in the `/path/to/output/folder/output/maker/euk-ebin.maker.output/OUTPUT.all.maker.genemark.proteins.fasta`  file 
 
 The results of the **BUSCO** tool are located in the file
 
