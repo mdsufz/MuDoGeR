@@ -120,7 +120,7 @@ mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --vif
 In the output directory five folders are appeared. The `initial_recovey_folder`  contains the results from the independent recovery of each tool. The independent recovered contigs of each tool can be usefull for other types of analysis. The ` dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and ` quality_folder` the  user can found the results of ,the taxonomy utlizing **vContact** tool and quality control using **vQuality** tool, respectively. In the `final_folder`  the user can find `final_viral.tsv` file with the dereplicate contigs, their quality and taxonomy.
 
 ```
-initial_recovey_folder   dereplication_folder	taxonomy_folder	   quality_folder    final_folder	
+initial_recovey_folder   dereplication_folder	taxonomy_folder	   quality_folder 	
 ``` 
 
 
@@ -145,9 +145,7 @@ NODE_7_length_8843_cov_4.647815	8843	1.0	10	5	0	Low-quality	Genome-fragment	15.0
 NODE_9_length_8285_cov_3.135358	8285	1.0	14	1	0	Not-determined	Genome-fragment	NA	NA	0.0	No	No
 NODE_21_length_5441_cov_6.763832	5441	1.0	8	8	0	Medium-quality	Genome-fragment	89.8	AAI-based	0.0	No	55-bp-DTR
 ```
-
-
-Running `head -5 final_folder/final_viral.tsv` will give:
+In the taxonomy_folder the user can find  an overview of the viral clusters in `taxonomy/ viral_cluster_overview.csv` file.
 
 
 ## Step 4: Pipelines for eukaryotic genomes recovery 
