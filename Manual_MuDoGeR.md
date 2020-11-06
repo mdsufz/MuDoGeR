@@ -33,6 +33,17 @@ Reads after read QC:
 
 ## Step 1.2: Assembly Module
 
+### Step 1.2.1 Kmer calculation
+Before the Assembly Module it is possible to calculate unique k-mers in the pure reads (forward or reverse). The size of the k-mer that has to be investigated is usually 33 or 55. Both values have to be calculated.
+
+For kmer calculation the user can run:
+
+``` 
+k-mer module -i /path/to/final_pure_reads_1.fastq -o /path/to/kmer_output_file -k size_kmer
+```
+
+### Step 1.2.2 Assembly
+
 The reads are assembled with utilization of metaSPAdes option flag(in case of very large datasets it is bettere to use MegaHIT):
 ```
 metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to//final_pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
