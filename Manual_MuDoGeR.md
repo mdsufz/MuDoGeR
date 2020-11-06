@@ -122,12 +122,8 @@ In the output directory five folders are appeared. The `initial_recovey_folder` 
 ```
 initial_recovey_folder   dereplication_folder	taxonomy_folder	   quality_folder    final_folder	
 ``` 
-Inside the `dereplication_folder` are only the final output files of the viral module.
 
-``` 
-VIRAL_PARTICLES_95-70.clstr   VIRAL_PARTICLES-nucmer.out.coords   VIRAL_PARTICLES_95-70.fna   VIRAL_PARTICLES-cover.csv   
-VIRAL_PARTICLES-nucmer.out.delta
-``` 
+
 The  `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of the contigs. For example `head -5 dereplication_folder/VIRAL_PARTICLES_95-70.clstr`:
 
 ```
@@ -139,11 +135,18 @@ The  `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of th
 ```
 The sequences of the contigs can be found in the `VIRAL_PARTICLES_95-70.fna` file.
 
+The quality summary of the contigs can be found inside the file `quality_folder/quality_summary.tsv`
+Running:
+```
+head -5 quality_folder/quality_summary.tsv 
+contig_id	contig_length	genome_copies	gene_count	viral_genes	host_genes	checkv_quality	miuvig_quality	completeness	completeness_method	contamination	prophage	termini
+NODE_6_length_9839_cov_5.151165	9839	1.0	16	5	0	Low-quality	Genome-fragment	16.25	AAI-based	0.0	No	No
+NODE_7_length_8843_cov_4.647815	8843	1.0	10	5	0	Low-quality	Genome-fragment	15.0	AAI-based	0.0	No	No
+NODE_9_length_8285_cov_3.135358	8285	1.0	14	1	0	Not-determined	Genome-fragment	NA	NA	0.0	No	No
+NODE_21_length_5441_cov_6.763832	5441	1.0	8	8	0	Medium-quality	Genome-fragment	89.8	AAI-based	0.0	No	55-bp-DTR
+```
+
 Running `head -5 final_folder/final_viral.tsv` will give:
-
-
-
-
 
 
 ## Step 4: Pipelines for eukaryotic genomes recovery 
