@@ -165,13 +165,13 @@ The second step of Eukaryotic module starts with **GeneMark-ES** and as input th
 Running the second step of Eukaryotic module:
 
 ```
-mudoger eukaryotic module2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/output/file
+mudoger eukaryotic module2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/output/folder
 ```
 After the end of the second step the output folder contains the results from **GeneMark-ES**, **MAKER2**, **BUSCO*** and **EukCC** tools:
 
-The results of **GeneMark-ES** tool are located in the `/path/to/output/gmhmm.mod` file
+The results of **GeneMark-ES** tool are located in the `path/to/output/folder/output/gmhmm.mod` file
 
-The results of the **MAKER2** tool are located in the file
+The results of the **MAKER2** tool are located in the `/path/to/output/folder/output/maker/euk-ebin.maker.output/OUTPUT.all.maker.proteins.fasta` file 
 
 The results of the **BUSCO** tool are located in the file
 
