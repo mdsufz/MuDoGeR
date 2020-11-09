@@ -184,12 +184,12 @@ The results of **GeneMark-ES** tool are located in the `/path/to/output/folder/o
 
 The results of the **MAKER2** tool are located in the `/path/to/output/folder/output/maker/euk-ebin.maker.output/OUTPUT.all.maker.genemark.proteins.fasta`  file 
 
-The results of the **BUSCO** tool are located in the file
+The results of the **BUSCO** tool are located in the file `/path/to/output/folder/output/maker/busco/full_table_fbusco.tsv`
 
 The results of the **EukCC** tool are located in the file
 
 
 
 
-
+busc
 
