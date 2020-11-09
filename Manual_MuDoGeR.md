@@ -189,7 +189,3 @@ The results of the **BUSCO** tool are located in the file `/path/to/output/folde
 The results of the **EukCC** tool are located in the file
 
 
-
-
-busc
-
