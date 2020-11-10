@@ -15,7 +15,7 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 
 ### (1) Pre-Processing
 * **(1.1)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
-* **(1.2)** Assembly of the clean metagenomic reads produced in **(1.1)** by running metaWRAP-Assembly module
+* **(1.2)** Kmer calculation of the clean metagenomic reads produced in **(1.1)** module **(1.2.1)** and assembly of the good quality reads by running metaWRAP-Assembly module **(1.2.2)**
 
 ###  (2) Metagenomic recovery of Prokaryotic genomes 
 * **(2.1)** Bin extraction with MaxBin2, metaBAT2, and CONCOCT 
