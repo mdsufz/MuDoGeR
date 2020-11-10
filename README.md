@@ -134,11 +134,13 @@ Options:
 	-c INT		minimum coverage (default=70)
 	-i INT		minimum identity (default=95)
 	
-	--virsorter	viral genome recovery with VirSorter
-	--virfinder	viral genome recovery with VirFinder
-	--vibrant	viral genome recovery with VIBRANT
-	--dereplication	de-replication of recovered viral genomes
-	
+	--virfinder	Recovery of viral data with VirFinder 
+	--virsorter	Recovery of viral data with VirSorter 	
+	--vibrant	Recovery of viral data with VIBRANT
+	--dereplication	Removal of replicate sequences
+	--checkv	Quality control of dereplicated contigs with CheckV		
+	--vcontact2	Taxonomy of dereplicated contigs with vContact2
+	--wish		Host identification of dereplicated contigs with WIsH
 ```
 
 # Citing
