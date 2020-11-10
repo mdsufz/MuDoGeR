@@ -128,7 +128,7 @@ Run MuDoGeR viral  module with all three tools and the de-replication function:
 mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --vifinder --virsorter --vibrant --dereplication -c 70 -i 95 --checkv --vocontact2
 ```
 
-In the output directory five folders are appeared. The `initial_recovey_folder`  contains the results from the independent recovery of each tool. The independent recovered contigs of each tool can be usefull for other types of analysis. The ` dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and ` quality_folder` the  user can found the results of ,the taxonomy utlizing **vContact** tool and quality control using **vQuality** tool, respectively. In the `final_folder`  the user can find `final_viral.tsv` file with the dereplicate contigs, their quality and taxonomy.
+In the output directory five folders are appeared. The `initial_recovey_folder`  contains the results from the independent recovery of each tool. The independent recovered contigs of each tool can be usefull for other types of analysis. The ` dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and ` quality_folder` the  user can found the results of ,the taxonomy utlizing **vContact2** tool and quality control using **CheckV** tool, respectively. In the `final_folder`  the user can find `final_viral.tsv` file with the dereplicate contigs, their quality and taxonomy.
 
 ```
 initial_recovey_folder   dereplication_folder	taxonomy_folder	   quality_folder 	
