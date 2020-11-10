@@ -31,8 +31,9 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 * **(3.3)** Combination of the headers of the filtered data to a single file, removed repeated sequences and sort by length
 * **(3.4)** Extraction of the viral sequences from the assembly file using the headers
 * **(3.5)** Removal of replicates with de-replication function
-* **(3.6)** Checking the quality of the Viral genomes with VirCheck
-* **(3.7)** Taxonomy with vContact 
+* **(3.6)** Checking the quality of the dereplicated contigs with CheckV
+* **(3.7)** Taxonomy of of the dereplicated contigs with vContact
+* **(3.8)** Host identification of the dereplicated contigs using WIsH 
 
 ###  (4) Metagenomic recovery of Eukaryotic genomes
 * **(4.1)** Classification  of  Eukaryotic genomes with EukRep.
