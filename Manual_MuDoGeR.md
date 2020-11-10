@@ -44,11 +44,11 @@ k-mer module -i /path/to/final_pure_reads_1.fastq -o /path/to/kmer_output_file -
 
 ### Step 1.2.2 Assembly
 
-The reads are assembled with utilization of metaSPAdes option flag(in case of very large datasets it is bettere to use MegaHIT):
+The reads are assembled with utilization of metaSPAdes option flag:
 ```
 metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to//final_pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
 ```
-After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the QUAST assembly report html called `assembly_report.html`. 
+After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the `assembly_report.html` file with the QUAST assembly report of the assembly module. 
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Assembly.png)
 
