@@ -156,7 +156,7 @@ NODE_7_length_8843_cov_4.647815	8843	1.0	10	5	0	Low-quality	Genome-fragment	15.0
 NODE_9_length_8285_cov_3.135358	8285	1.0	14	1	0	Not-determined	Genome-fragment	NA	NA	0.0	No	No
 NODE_21_length_5441_cov_6.763832	5441	1.0	8	8	0	Medium-quality	Genome-fragment	89.8	AAI-based	0.0	No	55-bp-DTR
 ```
-In the taxonomy_folder the user can find  an overview of the viral clusters in `taxonomy/ viral_cluster_overview.csv` file.
+In the `taxonomy_folder` the user can find  an overview of the viral clusters in `taxonomy/ viral_cluster_overview.csv` file.
 
 
 ## Step 4: Pipelines for eukaryotic genomes recovery 
