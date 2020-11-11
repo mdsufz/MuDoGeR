@@ -162,14 +162,14 @@ In the `taxonomy_folder` the user can find  an overview of the viral clusters in
 ## Step 4: Pipelines for eukaryotic genomes recovery 
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file. Also, 
 
-The Eukaryotic module on the Assembly fasta file, leads to the recovery of eukaryotic genomes. The Eukaryotic module is separated in 2 steps. The first step starts with the **EukrRep** tool.
+The Eukaryotic module on the Assembly fasta file, leads to the recovery of eukaryotic genomes. The Eukaryotic module is separated in 2 steps. The first step starts with the **EukRep** tool.
 
 Running the first step Eukaryotic module:
 ```
 mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/file -o /path/to/output/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
 ```
 
-In the output of the first step the user can find `euk_concoct_bins` folder which contains the bins produced by CONCOCT with size >= 2.5 Mb.
+In the output of the first step the user can find `euk_concoct_bins` folder which contains the bins produced by **CONCOCT** with size >= 2.5 Mb.
 
 The second step of Eukaryotic module starts with **GeneMark-ES** and as input the user can use any of the bins produced in the previous step.
 
