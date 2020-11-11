@@ -9,6 +9,9 @@ For running the raw read QC module:
 ``` 
 mudoger read_qc module --skip-bmtagger -1 /path/to/raw_reads_1.fasta -2 /path/to/raw_reads_2.fasta  -t ${NSLOTS:-1} -o /path/to/pure_reads/output/directory
 ```
+The `/path/to/raw_reads_1.fasta` indicates the path to file of the forward reads of the used library
+The `/path/to/raw_reads_2.fasta` indicates the path to file of the reversed reads of the used library
+The `/path/to/pure_reads/output/directory` indicates the path to the output directory where the clean reads of the library will fall
 
 
 The output directory of the read quality control module contains:
@@ -33,7 +36,7 @@ Reads after read QC:
 
 ## Step 1.2: Assembly Module
 
-### Step 1.2.1 Kmer calculation
+## Step 1.2Kmer calculation
 Before the Assembly Module it is possible to calculate unique k-mers in the pure reads (forward or reverse). The size of the k-mer that has to be investigated is usually 33 or 55. Both values have to be calculated.
 
 For kmer calculation the user can run:
@@ -42,12 +45,17 @@ For kmer calculation the user can run:
 k-mer module -i /path/to/final_pure_reads_1.fastq -o /path/to/kmer_output_file -k size_kmer
 ```
 
-### Step 1.2.2 Assembly
+## Step 1.3 Assembly
 
 The reads are assembled with utilization of metaSPAdes option flag:
 ```
 metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to//final_pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
 ```
+
+The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads 
+The `path/to//final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
+The `/path/to/assembled_reads/output/directory` indicates the path to the output directory where the assemblies will fall
+
 After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the `assembly_report.html` file with the QUAST assembly report of the assembly module. 
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Assembly.png)
@@ -71,6 +79,14 @@ Run the prokayotic module with using MetaWrap:
 ``` 
 mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq
 ```
+
+The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of the prokaryotic module will fall
+The `/path/to/assembly/file` indicates the path to the file of the assemblies 
+The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads 
+The `path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
+
+indicates the path to the file of the forward clean reads
+
 In the final output folder the user can find:
 
 ```
