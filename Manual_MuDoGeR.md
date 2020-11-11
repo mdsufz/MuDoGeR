@@ -1,7 +1,7 @@
 
-# Step 1: Pre-Processing module
+# Module 1: Pre-Processing module
 
-## Step 1.1: Raw read QC module 
+## Module 1.1: Raw read QC module 
 Note: For the removing of human contaminationation  the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the MetaWrap installation instructions. 
 
 For running the raw read QC module:
@@ -9,9 +9,9 @@ For running the raw read QC module:
 ``` 
 mudoger read_qc module --skip-bmtagger -1 /path/to/raw_reads_1.fasta -2 /path/to/raw_reads_2.fasta  -t ${NSLOTS:-1} -o /path/to/pure_reads/output/directory
 ```
-The `/path/to/raw_reads_1.fasta` indicates the path to file of the forward reads of the used library
-The `/path/to/raw_reads_2.fasta` indicates the path to file of the reversed reads of the used library
-The `/path/to/pure_reads/output/directory` indicates the path to the output directory where the clean reads of the library will fall
+* The `/path/to/raw_reads_1.fasta` indicates the path to file of the forward reads of the used library
+* The `/path/to/raw_reads_2.fasta` indicates the path to file of the reversed reads of the used library
+* The `/path/to/pure_reads/output/directory` indicates the path to the output directory where the clean reads of the library will fall
 
 
 The output directory of the read quality control module contains:
@@ -34,9 +34,7 @@ Reads after read QC:
 
 
 
-## Step 1.2: Assembly Module
-
-## Step 1.2Kmer calculation
+## Module 1.2: K-mer calculation
 Before the Assembly Module it is possible to calculate unique k-mers in the pure reads (forward or reverse). The size of the k-mer that has to be investigated is usually 33 or 55. Both values have to be calculated.
 
 For kmer calculation the user can run:
@@ -45,16 +43,16 @@ For kmer calculation the user can run:
 k-mer module -i /path/to/final_pure_reads_1.fastq -o /path/to/kmer_output_file -k size_kmer
 ```
 
-## Step 1.3 Assembly
+## Module 1.3: Assembly module
 
 The reads are assembled with utilization of metaSPAdes option flag:
 ```
 metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to//final_pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
 ```
 
-The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads 
-The `path/to//final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
-The `/path/to/assembled_reads/output/directory` indicates the path to the output directory where the assemblies will fall
+* The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads 
+* The `path/to//final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
+* The `/path/to/assembled_reads/output/directory` indicates the path to the output directory where the assemblies will fall
 
 After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the `assembly_report.html` file with the QUAST assembly report of the assembly module. 
 
@@ -70,7 +68,7 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 >NODE_5_length_248688_cov_1110.129452
 ```
 
-# Step 2: Pipelines for prokaryotic genome recovery
+# Module 2: Pipelines for prokaryotic genome recovery
 Note: Make sure that all the databases and programms required for the MetaWrap run are downloaded.The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file
 
 The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module. The important parameters of minimum completion (-c) and maximum contamination(-x) for the CheckM quaity control are settled by default to 50 and 10 respectively for the recovery of bacterial contigs, while for archaeal contigs recovery are settled by default to 40 and 30.
@@ -80,10 +78,10 @@ Run the prokayotic module with using MetaWrap:
 mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq
 ```
 
-The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of the prokaryotic module will fall
-The `/path/to/assembly/file` indicates the path to the file of the assemblies 
-The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads 
-The `path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
+* The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of the prokaryotic module will fall
+* The `/path/to/assembly/file` indicates the path to the file of the assemblies 
+* The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads 
+* The `path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
 
 indicates the path to the file of the forward clean reads
 
@@ -134,7 +132,7 @@ NODE_2_length_360965	Prodigal:2.6	CDS	3638	4510	.	-	0ID=EDFJOLLJ_00005;eC_number
 
 For more detailed explanation of the MetaWrap tool the user can study the ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) file 
 
-# Step 3: Pipelines for viral genomes recovery 
+# Module 3: Pipelines for viral genomes recovery 
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file
 
 Running the viral module on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined together and the replicates are been removed. The three viral recovery tools (**VirFinder**, **VIBRANT**, **VirSorter**) are used simultaneously but there is also the choice for the user to run each of them independently or even to skip one of them or to skip the dereplication step.  Before the run of the script is important for the user to decide about the parameters minimum coverege(-c) and minimum identity (-i) used in the dereplication. By default the minimum coverage is 70 and the minimum identity 95. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembly dataset. 
@@ -143,6 +141,9 @@ Run MuDoGeR viral  module with all three tools and the de-replication function:
 ``` 
 mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --vifinder --virsorter --vibrant --dereplication -c 70 -i 95 
 ```
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the viral module will fall
+* The `/path/to/assembly/file` indicates the path to the file of the assemblies 
+
 
 In the output directory five folders are appeared. The `initial_recovey_folder`  contains the results from the independent recovery of each tool. The independent recovered contigs of each tool can be usefull for other types of analysis. The ` dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and ` quality_folder` the  user can found the results of ,the taxonomy utlizing **vContact2** tool and quality control using **CheckV** tool, respectively. 
 
@@ -175,15 +176,22 @@ NODE_21_length_5441_cov_6.763832	5441	1.0	8	8	0	Medium-quality	Genome-fragment	8
 In the `taxonomy_folder` the user can find  an overview of the viral clusters in `taxonomy/ viral_cluster_overview.csv` file.
 
 
-## Step 4: Pipelines for eukaryotic genomes recovery 
+## Module 4: Pipelines for eukaryotic genomes recovery 
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file. Also, 
 
 The Eukaryotic module on the Assembly fasta file, leads to the recovery of eukaryotic genomes. The Eukaryotic module is separated in 2 steps. The first step starts with the **EukRep** tool.
 
-Running the first step Eukaryotic module:
+Running the first part of Eukaryotic module:
 ```
 mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/file -o /path/to/output/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
 ```
+
+* The ` /path/to/output/file` indicates the path to the output directory where the output folders of the eukaryotic module 1 will fall
+* The `/path/to/assembly/file` indicates the path to the file of the assemblies 
+* The `/path/to/prokaryotic/file` indicates the path to a directory where the prokaryotic assemblis will fall after the separation of eukaryotic and prokaryotic assemblies with **EukRep** 
+* The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads 
+* The `path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
+
 
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the bins produced by **CONCOCT** with size >= 2.5 Mb.
 
@@ -194,6 +202,9 @@ Running the second step of Eukaryotic module:
 ```
 mudoger eukaryotic module 2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/output/folder 
 ```
+* The `/path/to/concoct/bin/fasta/file` indicates the path to the bin file
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the eukaryotic module 2 will fall
+
 After the end of the second step the output folder contains the results from **GeneMark-ES**, **MAKER2**, **BUSCO** and **EukCC** tools:
 
 The results of **GeneMark-ES** tool are located in the `/path/to/output/folder/output/gmhmm.mod` file
