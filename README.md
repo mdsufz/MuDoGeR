@@ -11,7 +11,7 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 
 ## MuDoGeR Overview
 
-For detailed description of the MuDoGeR steps, the user can study the ![Module description](https://github.com/mdsufz/MuDoGeR/edit/master/module_description.md) file
+For detailed description of the MuDoGeR steps, the user can study the ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md) file
 
 ### (1) Pre-Processing
 * **(1.1)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
