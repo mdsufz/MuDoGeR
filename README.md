@@ -61,8 +61,7 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 # Installation
 
 ### MetaWRAP
-
-The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/EfthymisF/new/blob/master/Tutorial.md)
+The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md)
 
 ### VirFinder
 
