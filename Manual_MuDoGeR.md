@@ -186,6 +186,6 @@ The results of the **MAKER2** tool are located in the file
 
 The results of the **BUSCO** tool are located in the file 
 
-The results of the **EukCC** tool are located in the file `/path/to/output/folder/eukcc/work_files/gmes/output/gmhmm.mod` 
+The results of the **EukCC** tool are located in the file  
 
 
