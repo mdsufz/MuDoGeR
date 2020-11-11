@@ -11,6 +11,7 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 
 ## MuDoGeR Overview
 
+For the usage of MuDoGeR the user can follow the instructions in the ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file
 For detailed description of the MuDoGeR steps, the user can study the ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md) file
 
 ### (1) Pre-Processing
@@ -20,9 +21,12 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 ###  (2) Metagenomic recovery of Prokaryotic genomes 
 * **(2.1)** Bin extraction with MaxBin2, metaBAT2, and CONCOCT 
 * **(2.2)** Unification of multiple binning prediction into an advanced bin set (Bin refinement) 
-* **(2.3)** Quality control using cCheckM 
-* **(2.4)** Classification of genomic bins with GTDB
-* **(2.5)** Reassemble the final annotation with PROKKA
+* **(2.3)** Quality control using CheckM 
+* **(2.4)**
+* **(2.5)** Classification of genomic bins with GTDB
+* **(2.6)** Reassemble the final annotation with PROKKA
+* **(2.7)** Selection of MAGs
+* **(2.8)** U-bin tool for refinement of prokaryotes
 
 ###  (3) Metagenomic recovery of Viral genomes
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Viral%20Module.png)
@@ -60,21 +64,21 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 
 # Installation
 
+## Prokaryotic module
 ### MetaWRAP
+
 The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md)
 
+## Viral module
+
 ### VirFinder
-
 The instructions for Virfinder installation can be found at ![VirFinder_Manual](https://github.com/jessieren/VirFinder)
-
 ### VirSorter
-
 The instructions for VirSorter installation can be found at ![VirSorter_Manual](https://github.com/simroux/VirSorter) 
-
 ### VIBRANT 
-
 The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](https://github.com/AnantharamanLab/VIBRANT) 
 
+## Eukaryotic module
 ### EukRep
 The instructions for EukRep installation can be found at ![EukRep_Manual](https://github.com/patrickwest/EukRep_Pipeline ) 
 
