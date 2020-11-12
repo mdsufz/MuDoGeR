@@ -16,21 +16,22 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 
 ### (1) Pre-Processing
 * **(1.1)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
-* **(1.2)** Kmer calculation of the clean metagenomic reads produced in **(1.1)** module **(1.2.1)** and assembly of the good quality reads by running metaWRAP-Assembly module **(1.2.2)**
+* **(1.2)** Kmer calculation of the clean metagenomic reads produced in **(1.1)** module 
+* **(1.3)** Assembly of the good quality reads by running metaWRAP-Assembly module
 
 ###  (2) Metagenomic recovery of Prokaryotic genomes 
 
-The steps of the module are shown in Figure 3 and can be excecuted with the scripts found in ![Pipelines for prokaryotic genome recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-pipelines-for-prokaryotic-genome-recovery)
+The steps of the module 2 are shown in Figure 3 and can be excecuted with the scripts found in ![Pipelines for prokaryotic genome recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-pipelines-for-prokaryotic-genome-recovery)
 
 
 * **(2.1)** Bin extraction with MaxBin2, metaBAT2, and CONCOCT 
 * **(2.2)** Unification of multiple binning prediction into an advanced bin set (Bin refinement) 
-* **(2.3)** Quality control using CheckM 
-* **(2.4)**
-* **(2.5)** Classification of genomic bins with GTDB
-* **(2.6)** Reassemble the final annotation with PROKKA
-* **(2.7)** Selection of MAGs
-* **(2.8)** U-bin tool for refinement of prokaryotes
+* **(2.3)** Quality control of the bins produced in **(2.2)** using CheckM 
+* **(2.4)** Filtering of the bins produced in **(2.2)** with higher completeness than one chosen by the user (optional step)
+* **(2.5)** Classification of genomic bins produced in **(2.2)** (or **(2.4)** if the user chooses to) step with GTDB. 
+* **(2.6)** Reassemble the final annotation of the bins produced in  **(2.2)** or (or **(2.4)** if the user chooses to) with PROKKA
+* **(2.7)** Selection of prokaryotic MAGs
+* **(2.8)** U-bin tool for refinement of prokaryotic chosen MAGs 
 
 
 
@@ -44,22 +45,25 @@ The steps of the module 3  are shown in Figure 4 and can be excecuted with the s
 * **(3.2)** Filtering of the recovered genomes
 * **(3.3)** Combination of the headers of the filtered data to a single file, removed repeated sequences and sort by length
 * **(3.4)** Extraction of the viral sequences from the assembly file using the headers
-* **(3.5)** Removal of replicates with de-replication function
+* **(3.5)** Removal of replicates from the assemblies in the extracted file using de-replication function
 * **(3.6)** Checking the quality of the dereplicated contigs with CheckV
-* **(3.7)** Taxonomy of of the dereplicated contigs with vContact
+* **(3.7)** Taxonomy of the dereplicated contigs with vContact 
 * **(3.8)** Host identification of the dereplicated contigs using WIsH 
+* **(3.9)** Selection of viral MAGs
 
 
 ###  (4) Metagenomic recovery of Eukaryotic genomes
 
-The steps of the module 4  are shown in Figure 4 and can be excecuted with the scripts found in ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery)
+The steps of the module 4  are shown in Figure 5 and can be excecuted with the scripts found in ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery)
 
-* **(4.1)** Classification  of  Eukaryotic genomes with EukRep.
-* **(4.2)** Use of CONCOCT for binning and filtering the Eukaryotic sequences by size. The filterin
-* **(4.3)** Then, genes are predicted by using the trained GeneMark-ES model 
-* **(4.4)** MAKER2 for annotation
-* **(4.5)** BUSCO is applied for detection of single copy orthologous genes (SCGs) and will estimate the completeness of Eukaryotic contigs
-* **(4.6)** EukCC for estimating the contamination of Eukaryotic contigs
+* **(4.1)** Classification of Eukaryotic assemblies and removal of prokaryotic assemblies with EukRep
+* **(4.2)** Use of CONCOCT for binning the Eukaryotic assemblies  
+* **(4.3)** Filtering the Eukaryotic bins produced by CONCOCT by size. Bins with size <= 2.5 Mb are removed
+* **(4.4)** In the filtered bins produced **(4.3)** genes are predicted by the trained GeneMark-ES model   
+* **(4.5)** MAKER2 annotates the predicted genes produced by GeneMark-ES 
+* **(4.6)** BUSCO is applied to the annotated genes from for MAKER2, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs
+* **(4.7)** EukCC for estimating the contamination of Eukaryotic contigs
+* **(4.8)** Selection of eukaryotic MAGs
 
 
 # Parts of the MuDoGeR
