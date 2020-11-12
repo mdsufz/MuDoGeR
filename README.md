@@ -51,6 +51,9 @@ The steps of the module 3  are shown in Figure 4 and can be excecuted with the s
 
 
 ###  (4) Metagenomic recovery of Eukaryotic genomes
+
+The steps of the module 4  are shown in Figure 4 and can be excecuted with the scripts found in ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery)
+
 * **(4.1)** Classification  of  Eukaryotic genomes with EukRep.
 * **(4.2)** Use of CONCOCT for binning and filtering the Eukaryotic sequences by size. The filterin
 * **(4.3)** Then, genes are predicted by using the trained GeneMark-ES model 
