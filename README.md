@@ -31,7 +31,7 @@ The steps of the module 2 are shown in Figure 3 and can be excecuted with the sc
 * **(2.e)** Classification of genomic bins produced in **(2.b)** (or **(2.d)** if the user chooses to) step with GTDB. 
 * **(2.f)** Reassemble the final annotation of the bins produced in  **(2.b)** (or **(2.c)** if the user chooses to) with PROKKA
 * **(2.g)** Selection of prokaryotic MAGs
-* **(2.h)** U-bin tool for refinement of prokaryotic chosen MAGs 
+* **(2.h)** U-bin tool for manual curation of of genomes form the chosen MAGs 
 
 
 
