@@ -11,8 +11,8 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 
 ## MuDoGeR Overview
 
-For the usage of MuDoGeR the user can follow the instructions in the ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file
-For detailed description of the MuDoGeR steps, the user can study the ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md) file
+* For the usage of MuDoGeR the user can follow the instructions in the ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file
+* For detailed description of the MuDoGeR steps, the user can study the ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md) file
 
 ### (1) Pre-Processing
 * **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
@@ -84,8 +84,9 @@ The steps of the module 4  are shown in Figure 5 and can be excecuted with the s
 
 ## Prokaryotic module
 ### MetaWRAP
-
 The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md)
+### uBin
+The instructions for the uBin installation can be found at ![uBin_Manual](https://github.com/ProbstLab/uBin-helperscripts.)
 
 ## Viral module
 
@@ -99,6 +100,8 @@ The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](http
 ## Eukaryotic module
 ### EukRep
 The instructions for EukRep installation can be found at ![EukRep_Manual](https://github.com/patrickwest/EukRep_Pipeline ) 
+### EukCC
+The instructions for EukCC installation tool can be found at ![EukCC_Manual](https://github.com/Finn-Lab/EukCC)
 
 
 
