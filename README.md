@@ -19,6 +19,10 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 * **(1.2)** Kmer calculation of the clean metagenomic reads produced in **(1.1)** module **(1.2.1)** and assembly of the good quality reads by running metaWRAP-Assembly module **(1.2.2)**
 
 ###  (2) Metagenomic recovery of Prokaryotic genomes 
+
+The steps of the module are shown in Figure 3 and can be excecuted with the scripts found in ![Pipelines for prokaryotic genome recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-pipelines-for-prokaryotic-genome-recovery)
+
+
 * **(2.1)** Bin extraction with MaxBin2, metaBAT2, and CONCOCT 
 * **(2.2)** Unification of multiple binning prediction into an advanced bin set (Bin refinement) 
 * **(2.3)** Quality control using CheckM 
@@ -28,8 +32,14 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 * **(2.7)** Selection of MAGs
 * **(2.8)** U-bin tool for refinement of prokaryotes
 
+
+
+
 ###  (3) Metagenomic recovery of Viral genomes
+The steps of the module 3  are shown in Figure 4 and can be excecuted with the scripts found in ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-pipelines-for-viral-genomes-recovery)
+
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Viral%20Module.png)
+
 * **(3.1)** Recovery of viral metagenomes using Virfinder, VirSorter and VIBRANT for the prediction of viral sequences . 
 * **(3.2)** Filtering of the recovered genomes
 * **(3.3)** Combination of the headers of the filtered data to a single file, removed repeated sequences and sort by length
@@ -39,9 +49,10 @@ For detailed description of the MuDoGeR steps, the user can study the ![Module d
 * **(3.7)** Taxonomy of of the dereplicated contigs with vContact
 * **(3.8)** Host identification of the dereplicated contigs using WIsH 
 
+
 ###  (4) Metagenomic recovery of Eukaryotic genomes
 * **(4.1)** Classification  of  Eukaryotic genomes with EukRep.
-* **(4.2)** Use of CONCOCT for binning and filtering the Eukaryotic sequences by size.
+* **(4.2)** Use of CONCOCT for binning and filtering the Eukaryotic sequences by size. The filterin
 * **(4.3)** Then, genes are predicted by using the trained GeneMark-ES model 
 * **(4.4)** MAKER2 for annotation
 * **(4.5)** BUSCO is applied for detection of single copy orthologous genes (SCGs) and will estimate the completeness of Eukaryotic contigs
