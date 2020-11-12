@@ -7,12 +7,12 @@ Note: For the removing of human contaminationation  the user will need the bmtag
 For running the raw read QC module:
 
 ``` 
-mudoger read_qc module --skip-bmtagger -1 /path/to/raw_reads_1.fasta -2 /path/to/raw_reads_2.fasta  -t ${NSLOTS:-1} -o /path/to/pure_reads/output/directory
+mudoger read_qc module --skip-bmtagger -1 /path/to/raw_reads_1.fasta -2 /path/to/raw_reads_2.fasta  -t 24 -o /path/to/pure_reads/output/directory
 ```
 * The `/path/to/raw_reads_1.fasta` indicates the path to file of the forward reads of the used library
 * The `/path/to/raw_reads_2.fasta` indicates the path to file of the reversed reads of the used library
 * The `/path/to/pure_reads/output/directory` indicates the path to the output directory where the clean reads of the library will fall
-
+* The `-t 24` indicates the number of threads of read quality control
 
 The output directory of the read quality control module contains:
 ```
@@ -53,6 +53,8 @@ metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to//final_pure_re
 * The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads 
 * The `path/to//final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
 * The `/path/to/assembled_reads/output/directory` indicates the path to the output directory where the assemblies will fall
+* The `-m 200` the amount of memory in gigabytes that the assembly process needs. 
+* THe `-t 96` indicates the number of threads of this process
 
 After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the `assembly_report.html` file with the QUAST assembly report of the assembly module. 
 
@@ -75,7 +77,7 @@ The run of the prokaryotic module leads to the recovery of prokaryotic genomes f
 
 Run the prokayotic module with using MetaWrap:
 ``` 
-mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file ---metawrap -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq
+mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq
 ```
 
 * The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of the prokaryotic module will fall
@@ -143,6 +145,8 @@ mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --vif
 ```
 * The `/path/to/output/folder` indicates the path to the output directory where the output folders of the viral module will fall
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies 
+* The `-c 70` indicates that the default value of the minimum coverege in the de-replication step is 70
+* The `-i 95` indicates that the default value of the minimum identity in the de-replication step is 95
 
 
 In the output directory five folders are appeared. The `initial_recovey_folder`  contains the results from the independent recovery of each tool. The independent recovered contigs of each tool can be usefull for other types of analysis. The ` dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and ` quality_folder` the  user can found the results of ,the taxonomy utlizing **vContact2** tool and quality control using **CheckV** tool, respectively. 
@@ -190,7 +194,7 @@ mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/proka
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies 
 * The `/path/to/prokaryotic/file` indicates the path to a directory where the prokaryotic assemblis will fall after the separation of eukaryotic and prokaryotic assemblies with **EukRep** 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads 
-* The `path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
+* The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
 
 
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the bins produced by **CONCOCT** with size >= 2.5 Mb.
@@ -207,13 +211,12 @@ mudoger eukaryotic module 2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/outp
 
 After the end of the second step the output folder contains the results from **GeneMark-ES**, **MAKER2**, **BUSCO** and **EukCC** tools:
 
-The results of **GeneMark-ES** tool are located in the `/path/to/output/folder/output/gmhmm.mod` file
+The results of **GeneMark-ES** tool are located in the `output/gmhmm.mod` file. The  `output` directory is found inside the initial output directory 
 
-The results of the **MAKER2** tool are located in the file `/path/to/output/folder/maker/euk-ebin.maker.output/OUTPUT.all.maker.genemark.transcripts.fasta
-`
+The results of the **MAKER2** tool are located in the `maker/euk-ebin.maker.output/OUTPUT.all.maker.genemark.transcripts.fasta` file. The maker directory is found  inside the initial output directory 
 
 The results of the **BUSCO** tool are located in the file 
 
-The results of the **EukCC** tool are located in the file  
+The results of the **EukCC** tool are located in the  `eukcc/workfiles/gmes/output/gmhmm.mod` file. The `eukcc` directory is found inside the initial output directory
 
 
