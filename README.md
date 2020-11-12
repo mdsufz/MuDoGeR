@@ -15,8 +15,13 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 * For detailed description of the MuDoGeR steps, the user can study the ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md) file
 
 ### (1) Pre-Processing
+
+The steps of the module 21 are shown in Figure 2 and can be excecuted with the scripts found in: ![Pre-Processing module](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing-module)
+
 * **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
-* **(1.b)** Calculation of the necessary resources for the assembly running. The k-mer of the good quality reads produced in **(1.1)** is first calculated and then the k-mer is added to an equation which will give to the user the amount of memory demanding for the assembly module running
+* **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
+* **(1.b.1)** The k-mer of the good quality reads produced in **(1.1)** is first calculated.The k-mer size which will investigated is 33 and 55.
+* **(1.b.2)** The calculated k-mer is added to an equation which will estimate the amount of memory of the good quality reads which are going to be assembled. 
 * **(1.c)** Assembly of the good quality reads by running metaWRAP-Assembly module
 
 ###  (2) Metagenomic recovery of Prokaryotic genomes 
