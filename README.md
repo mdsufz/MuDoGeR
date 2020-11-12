@@ -102,7 +102,8 @@ The instructions for VirSorter installation can be found at ![VirSorter_Manual](
 ### VIBRANT 
 The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](https://github.com/AnantharamanLab/VIBRANT) 
 ### vContact
-![vContact_Manual](https://github.com/geeklhem/vcontact/blob/master/doc/source/tutorial.rst)
+The instructions for vContact installation can be found at ![vContact_Manual](https://github.com/geeklhem/vcontact/blob/master/doc/source/tutorial.rst)
+
 ## Eukaryotic module
 ### EukRep
 The instructions for EukRep installation can be found at ![EukRep_Manual](https://github.com/patrickwest/EukRep_Pipeline ) 
