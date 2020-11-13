@@ -6,7 +6,7 @@
  ![](https://github.com/mdsufz/MuDoGeR/blob/master/Mudoger_scheme_update.png)
 
 Multi-domain Genome Recovery (MuDoGeR)is a tool developed to help users to recover metagenome assembled genomes from hundreds of samples simultaneously
-The MuDoGeR pipeline process combines a number of pipelines from different tools. It starts with **Read Quality control** of the libraries and **Assembly** of the *"good quality reads"* resulted from the former step. For the next step of data analysis, the pipeline is devided in 3 different branches: **Metawrap** pipeline is used for analayzing Prokaryotic genomes. **Virsorter**, **Virfinder** and **Vibrant** pipelines are followed and combined for the prediction of viral sequences. **EukRep** pipeline is run for metagenomic analysis of Eukaryotic genomes. Also, a strategy developed for mapping the relative abundance of the selected maps in each library.
+The MuDoGeR pipeline process combines a number of pipelines from different tools. It starts with **Read Quality control** of the libraries and **Assembly** of the *"good quality reads"* resulted from the former step. For the next step of data analysis, the pipeline is devided in 3 different branches: **Metawrap** pipeline is used for analayzing Prokaryotic genomes. **Virsorter**, **Virfinder** and **Vibrant** pipelines are followed and combined for the prediction of viral sequences. **EukRep** pipeline is run for metagenomic analysis of Eukaryotic genomes. Also, a strategy was developed for mapping the relative abundance of the selected maps in each library.
  
 
 ## MuDoGeR Overview
@@ -21,7 +21,7 @@ The steps of the module 21 are shown in Figure 2 and can be excecuted with the s
 * **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
 * **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
 * **(1.b.1)** The k-mer of the good quality reads produced in **(1.1)** is first calculated.The k-mer size which will investigated is 33 and 55.
-* **(1.b.2)** The calculated k-mer is added to an equation which will estimate the amount of memory of the good quality reads which are going to be assembled. 
+* **(1.b.2)** The calculated k-mer is added to an equation which will estimate the amount of memory that metaSpades will utilize to assemble the good quality reads. 
 * **(1.c)** Assembly of the good quality reads by running metaWRAP-Assembly module
 
 ###  (2) Metagenomic recovery of Prokaryotic genomes 
