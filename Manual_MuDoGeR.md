@@ -40,9 +40,11 @@ Before the Assembly Module it is possible to calculate unique k-mers in the pure
 For resource calculation the user can run:
 
 ``` 
-Resources module -i /path/to/final_pure_reads_1.fastq -o /path/to/kmer_output_file -k size_kmer
+Resources module -i /path/to/final_pure_reads_1.fastq -l /path/to/output/folder -k size_kmer
 ```
-THe k-mer results is used as function for the following equations which will give the amount of memory necessary for assembly of reads by metaSpades.
+The k-mer results is used as function for the following equations which will give the amount of memory necessary for assembly of reads by metaSpades.
+Inside the output folder the user can find the  `metaspades_prediction.tsv` file which has the amount of memory that MetaSpades utilizes for the assembly of those reads.
+
 
 ## Module 1.3: Assembly module
 
