@@ -22,7 +22,7 @@ The steps of the module 21 are shown in Figure 2 and can be excecuted with the s
 * **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
 * **(1.b.1)** The k-mer of the good quality reads produced in **(1.1)** is first calculated.The k-mer size which will investigated is 33 and 55.
 * **(1.b.2)** The calculated k-mer is added to an equation which will estimate the amount of memory that metaSpades will utilize to assemble the good quality reads. 
-* **(1.c)** Assembly of the good quality reads by running metaWRAP-Assembly module
+* **(1.c)** Assembly of the good quality reads with metaSpades
 
 ###  (2) Metagenomic recovery of Prokaryotic genomes 
 
