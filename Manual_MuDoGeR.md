@@ -34,16 +34,19 @@ Reads after read QC:
 
 
 
-## Module 1.2: K-mer calculation
+## Module 1.2: Resources calculation
 Before the Assembly Module it is possible to calculate unique k-mers in the pure reads (forward or reverse). The size of the k-mer that has to be investigated is usually 33 or 55. Both values have to be calculated.
+As the results in this module are the same using both forward and reverse reads, the user does not have to re-do the module for both of them. 
 
 For resource calculation the user can run:
 
 ``` 
 Resources module -i /path/to/final_pure_reads_1.fastq -l /path/to/output/folder -k size_kmer
 ```
-The k-mer results is used as function for the following equations which will give the amount of memory necessary for assembly of reads by metaSpades.
+The k-mer results is used as function for the following equations which will give the amount of memory necessary for assembly of reads by metaSpades. 
 Inside the output folder the user can find the  `metaspades_prediction.tsv` file which has the amount of memory that MetaSpades utilizes for the assembly of those reads.
+
+
 
 
 ## Module 1.3: Assembly module
