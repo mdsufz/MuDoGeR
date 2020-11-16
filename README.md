@@ -16,6 +16,11 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 
 ### (1) Pre-Processing
 
+
+![](https://github.com/mdsufz/MuDoGeR/blob/master/Pre_processing.png)
+
+Figure 2. **Pre-Processing** 
+
 The steps of the module 21 are shown in Figure 2 and can be excecuted with the scripts found in: ![Pre-Processing module](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing-module)
 
 * **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
