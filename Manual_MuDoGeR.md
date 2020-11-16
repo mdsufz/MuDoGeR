@@ -118,7 +118,7 @@ bin.11	o__Pseudomonadales (UID4488)    	      185	      813	          308	102  	
 bin.12	c__Deltaproteobacteria (UID3218)	       61	      284	          169	 29	246	 9	0	0	 0	       90.66	         0.30	               33.33
 bin.13	o__Pseudomonadales (UID4488)    	      185	      813	          308	211	576	25	1	0	 0	       74.44	         2.91	               17.86
 ```
-
+In case the user chooses to do the filtering after **CheckM**, inside the checkm directories there is also `filtered_checkm.tsv` file where the filtered results of checkm are dropped.
 
 Each of the annotation folders contains the following directories: 
 
