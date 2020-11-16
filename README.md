@@ -30,7 +30,7 @@ The steps of the module 2 are shown in Figure 3 and can be excecuted with the sc
 
 
 * **(2.a)** Bin extraction with MaxBin2, metaBAT2, and CONCOCT 
-* **(2.b)** Unification of multiple binning prediction into an advanced bin set (Bin refinement) 
+* **(2.b)** Unification of multiple binning prediction into an advanced bin set (Bin refinement). The completeness/contamination parameters have been setted to 50/10 for Bacteria and 40/30 for archaea 
 * **(2.c)** Classification of genomic bins produced in **(2.b)** (or **(2.d)** if the user chooses to) step with GTDB.
 * **(2.d)** Quality control of the bins produced in **(2.b)** using CheckM 
 * **(2.e)** Filtering of the bins produced in **(2.b)** with higher completeness than 50. The user here can also change the size of the required completeness (optional step)      
