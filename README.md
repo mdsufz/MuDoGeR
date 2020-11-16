@@ -42,9 +42,12 @@ The steps of the module 2 are shown in Figure 3 and can be excecuted with the sc
 
 
 ###  (3) Metagenomic recovery of Viral genomes
-The steps of the module 3  are shown in Figure 4 and can be excecuted with the scripts found in ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-pipelines-for-viral-genomes-recovery)
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Viral%20Module.png)
+![](https://github.com/mdsufz/MuDoGeR/blob/master/Viral_upgraded_module.png)
+
+Figure 4. **Viral pipeline**
+
+The steps of the module 3  are shown in Figure 4 and can be excecuted with the scripts found in ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-pipelines-for-viral-genomes-recovery)
 
 * **(3.a)** Recovery of viral metagenomes using Virfinder, VirSorter and VIBRANT for the prediction of viral sequences . 
 * **(3.b)** Filtering of the recovered genomes
