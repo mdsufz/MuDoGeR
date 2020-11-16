@@ -31,10 +31,10 @@ The steps of the module 2 are shown in Figure 3 and can be excecuted with the sc
 
 * **(2.a)** Bin extraction with MaxBin2, metaBAT2, and CONCOCT 
 * **(2.b)** Unification of multiple binning prediction into an advanced bin set (Bin refinement) 
-* **(2.c)** Quality control of the bins produced in **(2.b)** using CheckM 
-* **(2.d)** Filtering of the bins produced in **(2.b)** with higher completeness than 50. The user here can also change the size of the required completeness
-* **(2.e)** Classification of genomic bins produced in **(2.b)** (or **(2.d)** if the user chooses to) step with GTDB. 
-* **(2.f)** Reassemble the final annotation of the bins produced in  **(2.b)** (or **(2.c)** if the user chooses to) with PROKKA
+* **(2.c)** Classification of genomic bins produced in **(2.b)** (or **(2.d)** if the user chooses to) step with GTDB.
+* **(2.d)** Quality control of the bins produced in **(2.b)** using CheckM 
+* **(2.e)** Filtering of the bins produced in **(2.b)** with higher completeness than 50. The user here can also change the size of the required completeness (optional step)      
+* **(2.f)** Reassemble the final annotation of the bins produced in  **(2.b)** with PROKKA
 * **(2.g)** Selection of prokaryotic MAGs
 * **(2.h)** U-bin tool for manual curation of of genomes form the chosen MAGs 
 
