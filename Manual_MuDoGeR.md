@@ -80,13 +80,14 @@ The run of the prokaryotic module leads to the recovery of prokaryotic genomes f
 
 Run the prokayotic module with using MetaWrap:
 ``` 
-mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq
+mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq --checkM_filter -v 50
 ```
 
 * The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of the prokaryotic module will fall
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads 
 * The `path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
+* The `-v 50` indicates lower limit of completeness for the filtering after the optional step of CheckM quality control
 
 indicates the path to the file of the forward clean reads
 
