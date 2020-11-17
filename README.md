@@ -17,7 +17,7 @@ The MuDoGeR pipeline process combines a number of pipelines from different tools
 ### (1) Pre-Processing
 
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Pre_processing.png)
+![](https://github.com/mdsufz/MuDoGeR/blob/master/Preprocess_module_update.png)
 
 Figure 2. **Pre-Processing** 
 
