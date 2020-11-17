@@ -43,8 +43,8 @@ For resource calculation the user can run:
 ``` 
 Resources module -i /path/to/final_pure_reads_1.fastq -l /path/to/output/folder -k size_kmer
 ```
-The k-mer results is used as function for the following equations which will give the amount of memory necessary for assembly of reads by metaSpades. 
-Inside the output folder the user can find the  `metaspades_prediction.tsv` file which has the amount of memory that MetaSpades utilizes for the assembly of those reads.
+The k-mer results is used as function by a linear regression model which will give the amount of memory necessary for assembly of reads by metaSpades. 
+Inside the output folder the user can find the  `metaspades_prediction.tsv` file which has the amount of memory that **MetaSpades utilizes** for the assembly of those reads.
 
 
 
@@ -144,11 +144,11 @@ For more detailed explanation of the MetaWrap tool the user can study the ![meta
 # Module 3: Pipelines for viral genomes recovery 
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file
 
-Running the viral module on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined together and the replicates are been removed. The three viral recovery tools (**VirFinder**, **VIBRANT**, **VirSorter**) are used simultaneously but there is also the choice for the user to run each of them independently or even to skip one of them or to skip the dereplication step.  Before the run of the script is important for the user to decide about the parameters minimum coverege(-c) and minimum identity (-i) used in the dereplication. By default the minimum coverage is 70 and the minimum identity 95. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembly dataset. 
+Running the viral module on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined together and the replicates are been removed. The three viral recovery tools (**VirFinder**, **VIBRANT**, **VirSorter**) are used simultaneously but there is also the choice for the user to run each of them independently or even to skip one of them.  Before the run of the script is important for the user to decide about the parameters minimum coverege(-c) and minimum identity (-i) used in the dereplication. By default the minimum coverage is 70 and the minimum identity 95. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembly dataset. 
 
 Run MuDoGeR viral  module with all three tools and the de-replication function:
 ``` 
-mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --vifinder --virsorter --vibrant --dereplication -c 70 -i 95 
+mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --vifinder --virsorter --vibrant -c 70 -i 95 
 ```
 * The `/path/to/output/folder` indicates the path to the output directory where the output folders of the viral module will fall
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies 
@@ -159,7 +159,7 @@ mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --vif
 In the output directory five folders are appeared. The `initial_recovey_folder`  contains the results from the independent recovery of each tool. The independent recovered contigs of each tool can be usefull for other types of analysis. The ` dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and ` quality_folder` the  user can found the results of ,the taxonomy utlizing **vContact2** tool and quality control using **CheckV** tool, respectively. 
 
 ```
-initial_recovey_folder   dereplication_folder	taxonomy_folder	   quality_folder 	
+dereplication_folder    initial_recovey_folder    quality_folder    taxonomy_folder 	
 ``` 
 
 
