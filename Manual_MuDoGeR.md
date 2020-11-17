@@ -100,8 +100,8 @@ indicates the path to the file of the forward clean reads
 In the final output folder the user can find:
 
 ```
-Annotation_Archaea  checkm_archaea  output_tax_dir_archaea     
-Annotation_Bacteria checkm_bacteria output_tax_dir_bacteria           
+Annotation_Archaea   checkm_archaea   archaea_output_tax_dir    
+Annotation_Bacteria  checkm_bacteria  bacteria_output_tax_dir           
 ```
 
 Inside each tax_dir directory the user can find the classification of the refined bins. As an example, running `cat tax_out_dir_bacteria/classify/intermediate_results/gtdbtk.bac120.classification_pplacer.tsv| head -5`:
