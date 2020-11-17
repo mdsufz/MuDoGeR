@@ -77,7 +77,7 @@ The steps of the module 4  are shown in Figure 5 and can be excecuted with the s
 * **(4.b)** Use of **CONCOCT** for binning the Eukaryotic assemblies  
 * **(4.c)** Filtering the Eukaryotic bins produced by **CONCOCT** by size. Bins with size <= 2.5 Mb are removed
 * **(4.d)** In the filtered bins produced in **(4.c)**, genes are predicted by the trained **GeneMark-ES** model   
-* **(4.e)** MAKER2 annotates the predicted genes produced by **GeneMark-ES** 
+* **(4.e)** **MAKER2** annotates the predicted genes produced by **GeneMark-ES** 
 * **(4.f)** **BUSCO** is applied to the annotated genes from for **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs
 * **(4.g)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **(4.c)** 
 * **(4.h)** Selection of eukaryotic MAGs
