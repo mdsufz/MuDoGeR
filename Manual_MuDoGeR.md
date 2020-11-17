@@ -57,7 +57,7 @@ metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to//final_pure_re
 ```
 
 * The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads 
-* The `path/to//final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
+* The `/path/to//final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
 * The `/path/to/assembled_reads/output/directory` indicates the path to the output directory where the assemblies will fall
 * The `-m 200` the amount of memory in gigabytes that the assembly process needs. 
 * THe `-t 96` indicates the number of threads of this process
