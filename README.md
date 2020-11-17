@@ -67,6 +67,8 @@ The steps of the module 3  are shown in Figure 4 and can be excecuted with the s
 ###  (4) Metagenomic recovery of Eukaryotic genomes
 
 
+
+![](https://github.com/mdsufz/MuDoGeR/blob/master/Eukaryotic_module.png)
 Figure 5. **Eukaryotic pipeline**
 
 The steps of the module 4  are shown in Figure 5 and can be excecuted with the scripts found in ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery)
