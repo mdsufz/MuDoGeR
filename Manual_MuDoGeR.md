@@ -1,7 +1,7 @@
 
 # Module 1: Pre-Processing module
 
-## Module 1.1: Raw read QC module 
+## 1.1: Raw read QC module 
 Note: For the removing of human contaminationation  the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the MetaWrap installation instructions. 
 
 For running the raw read QC module:
@@ -34,7 +34,7 @@ Reads after read QC:
 
 
 
-## Module 1.2: Resources calculation
+## 1.2: Resources calculation
 Before the Assembly Module it is possible to calculate unique k-mers in the pure reads (forward or reverse). The size of the k-mer that has to be investigated is usually 33 or 55. Both values have to be calculated.
 As the results in this module are the same using both forward and reverse reads, the user does not have to re-do the module for both of them. 
 
@@ -52,7 +52,7 @@ Inside the output folder the user can find the  `metaspades_prediction.tsv` file
 
 
 
-## Module 1.3: Assembly module
+## 1.3: Assembly module
 
 The reads are assembled with utilization of metaSPAdes option flag:
 ```
