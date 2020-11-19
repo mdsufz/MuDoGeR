@@ -26,10 +26,8 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 
 * **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
 * **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
-
-	**(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is first calculated. The k-mer sizes that will be investigated are 33 and 55.
-	**(1.b.2)** The calculated k-mer is added to an equation which will estimate the amount of memory that metaSpades will utilize to assemble the good quality reads. 
-
+* **(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is first calculated. The k-mer sizes that will be investigated are 33 and 55.	
+* **(1.b.2)** The calculated k-mer is added to an equation which will estimate the amount of memory that metaSpades will utilize to assemble the good quality reads. 
 * **(1.c)** Assembly of the good quality reads with **MetaSpades**
 
 ###  (2) Metagenomic recovery of Prokaryotic genomes 
