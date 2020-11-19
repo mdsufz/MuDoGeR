@@ -47,7 +47,7 @@ The steps of the module 2 are shown in Figure 3 and can be excecuted with the sc
 
 
 
-###  (3) Metagenomic recovery of Viral genomes
+###  (3) Metagenomic recovery of Viral genomes 
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/VIral_pipeline_.png)
 Figure 4. **Viral pipeline**
