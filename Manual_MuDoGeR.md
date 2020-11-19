@@ -12,7 +12,7 @@ mudoger read_qc module --skip-bmtagger -1 /path/to/raw_reads_1.fasta -2 /path/to
 * The `/path/to/raw_reads_1.fasta` indicates the path to file of the forward reads of the used library
 * The `/path/to/raw_reads_2.fasta` indicates the path to file of the reversed reads of the used library
 * The `/path/to/pure_reads/output/directory` indicates the path to the output directory where the clean reads of the library will fall
-* The `-t 24` indicates the number of threads of read quality control
+* The `-t` indicates the number of threads of read quality control
 
 The output directory of the read quality control module contains:
 ```
@@ -43,8 +43,8 @@ For resource calculation the user can run:
 ``` 
 Resources module -i /path/to/final_pure_reads_1.fastq -l /path/to/output/folder 
 ```
- The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads 
- The `/path/to/output/folder` ndicates the path to the folder with resource calculation results
+ * The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads 
+ * The `/path/to/output/folder` ndicates the path to the folder with resource calculation results
  
 The k-mer results is used as function by a linear regression model which will give the amount of memory necessary for assembly of reads by metaSpades. 
 Inside the output folder the user can find the  `metaspades_prediction.tsv` file which has the amount of memory that **MetaSpades** utilizes for the assembly of those reads.
@@ -62,8 +62,8 @@ metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to//final_pure_re
 * The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads 
 * The `/path/to//final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
 * The `/path/to/assembled_reads/output/directory` indicates the path to the output directory where the assemblies will fall
-* The `-m 200` the amount of memory in gigabytes that the assembly process needs. 
-* THe `-t 96` indicates the number of threads of this process
+* The `-m` the amount of memory in gigabytes that the assembly process needs. 
+* THe `-t` indicates the number of threads of this process
 
 After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the `assembly_report.html` file with the QUAST assembly report of the assembly module. 
 
