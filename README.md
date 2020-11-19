@@ -5,28 +5,31 @@
  
  ![](https://github.com/mdsufz/MuDoGeR/blob/master/Mudoger_scheme_update.png)
 
-Multi-domain Genome Recovery (MuDoGeR)is a tool developed to help users to recover metagenome assembled genomes from hundreds of samples simultaneously
-The MuDoGeR pipeline process combines a number of pipelines from different tools. It starts with **Read Quality control** of the libraries and **Assembly** of the *"good quality reads"* resulted from the former step. For the next step of data analysis, the pipeline is devided in 3 different branches: **Metawrap** pipeline is used for analayzing Prokaryotic genomes. **Virsorter**, **Virfinder** and **Vibrant** pipelines are followed and combined for the prediction of viral sequences. **EukRep** pipeline is run for metagenomic analysis of Eukaryotic genomes. Also, a strategy was developed for mapping the relative abundance of the selected maps in each library.
+The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to help users to recover Metagenome-Assembled Genomes from dozens to hundreds of samples simultaneously. The MuDoGeR pipeline combines pipelines from different tools. The MuDoGeR pipeline starts with **Pre-Processing**, which is divided in 2 steps: The first one **Read Quality Control** feeds the **Assembly** and the assemblies will be used for the other pipelines. After **Pre-Processing** of the data, **MuDoGeR** is divided in 3 different branches: **Prokaryotic Genome Recovery**(using **MetaWrap**), **Viral Genome Recovery** (using **Virsorter**, **Virfinder** and **Vibrant**) and **Eukaryotic Genome Recovery** (using **EukRep**). Furthermore, a strategy was developed for mapping the relative abundance of the selected maps in each library. Also, a step was added for bin refinement of the selected Metagenome-Assembled Genomes from Prokaryoted, using **U-bin**.
  
 
 ## MuDoGeR Overview
 
-* For the usage of MuDoGeR the user can follow the instructions in the ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file
-* For detailed description of the MuDoGeR steps, the user can study the ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md) file
+* Instructions for using **MuDoGeR** can be found in the following hyperlink: ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
+* Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md) file
 
 ### (1) Pre-Processing
 
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Preprocess_module_update.png)
 
-Figure 2. **Pre-Processing** 
+**Figure 2.** Module 1 of the MuDoGeR pipeline.
 
-The steps of the module 21 are shown in Figure 2 and can be excecuted with the scripts found in: ![Pre-Processing module](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing-module)
+ The steps of Module 1 are shown in Figure 2 and can be excecuted with the scripts found in: ![Pre-Processing module](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing-module)
+ 
+ The steps of Module 1 can summarized as following:
 
 * **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
 * **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
-* 	**(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is first calculated.The k-mer size which will investigated is 33 and 55.
-* 	**(1.b.2)** The calculated k-mer is added to an equation which will estimate the amount of memory that metaSpades will utilize to assemble the good quality reads. 
+
+	**(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is first calculated. The k-mer sizes that will be investigated are 33 and 55.
+	**(1.b.2)** The calculated k-mer is added to an equation which will estimate the amount of memory that metaSpades will utilize to assemble the good quality reads. 
+
 * **(1.c)** Assembly of the good quality reads with **MetaSpades**
 
 ###  (2) Metagenomic recovery of Prokaryotic genomes 
