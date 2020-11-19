@@ -197,12 +197,12 @@ The Eukaryotic module on the Assembly fasta file, leads to the recovery of eukar
 
 Running the first part of Eukaryotic module:
 ```
-mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/file -o /path/to/output/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
+mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/folder -o /path/to/output/folder -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
 ```
 
-* The ` /path/to/output/file` indicates the path to the output directory where the output folders of the eukaryotic module 1 will fall
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies 
-* The `/path/to/prokaryotic/file` indicates the path to a directory where the prokaryotic assemblis will fall after the separation of eukaryotic and prokaryotic assemblies with **EukRep** 
+* The ` /path/to/output/folder` indicates the path to the output directory where the output folders of the eukaryotic module 1 will fall
+* The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblis will fall after the separation of eukaryotic and prokaryotic assemblies with **EukRep** 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads 
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
 
