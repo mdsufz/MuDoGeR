@@ -25,8 +25,8 @@ The steps of the module 21 are shown in Figure 2 and can be excecuted with the s
 
 * **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc
 * **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
-* **(1.b.1)** The k-mer of the good quality reads produced in **(1.1)** is first calculated.The k-mer size which will investigated is 33 and 55.
-* **(1.b.2)** The calculated k-mer is added to an equation which will estimate the amount of memory that metaSpades will utilize to assemble the good quality reads. 
+* 	**(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is first calculated.The k-mer size which will investigated is 33 and 55.
+* 	**(1.b.2)** The calculated k-mer is added to an equation which will estimate the amount of memory that metaSpades will utilize to assemble the good quality reads. 
 * **(1.c)** Assembly of the good quality reads with **MetaSpades**
 
 ###  (2) Metagenomic recovery of Prokaryotic genomes 
@@ -36,7 +36,7 @@ The steps of the module 2 are shown in Figure 3 and can be excecuted with the sc
 
 * **(2.a)** Bin extraction with **MaxBin2**, **metaBAT2**, and **CONCOCT** 
 * **(2.b)** Unification of multiple binning prediction into an advanced bin set (Bin refinement). The completeness/contamination parameters have been setted to 50/10 for Bacteria and 40/30 for archaea 
-* **(2.c)** Classification of genomic bins produced in **(2.b)** (or **(2.d)** if the user chooses to) step with **GTDB**.
+* **(2.c)** Classification of genomic bins produced in **(2.b)** step with **GTDB-Tk**.
 * **(2.d)** Quality control of the bins produced in **(2.b)** using **CheckM** 
 * **(2.e)** Filtering of the bins produced in **(2.b)** with higher completeness than 50. The user here can also change the size of the required completeness (optional step)      
 * **(2.f)** Reassemble the final annotation of the bins produced in  **(2.b)** with **PROKKA**
@@ -83,14 +83,6 @@ The steps of the module 4  are shown in Figure 5 and can be excecuted with the s
 * **(4.h)** Selection of eukaryotic MAGs
 
 
-# Parts of the MuDoGeR
-
-* **Installation** 
-* **Read Quality control:** Trimming of the reads and removal of possible host reads
-* **Assembly:** Assembly of "good quality" sequences
-* **MetaWRAP pipeline:**  Metagenomic analysis of prokaryotic genomes
-* **Pipelines for viral genomes(VirFinder, VirSorter, Vibrant):** Metagenomic analysis of viral sequences 
-* **EukRep pipeline:** Metagenomic analysis of Eukaryotic genomes
 
 
 
@@ -154,6 +146,7 @@ mudoger -h
 	
 	read_qc		Raw read QC module
 	assembly	Assembly module
+	resources	Calculation of memory required by the MetaSpades, for assembling the good quality reads 
 	prokaryotic	Recovery of Prokaryotic genomes using metaWRAP module
 	viral		Recovery of Viral genomes using VirFinder, VirSorter, VIBRANT module
 	eukaryotic 	Recovery of Eukaryotic genomes using EukRep module
@@ -180,10 +173,10 @@ Options:
 	--virfinder	Recovery of viral data with VirFinder 
 	--virsorter	Recovery of viral data with VirSorter 	
 	--vibrant	Recovery of viral data with VIBRANT
-	--dereplication	Removal of replicate sequences
-	--checkv	Quality control of dereplicated contigs with CheckV		
-	--vcontact2	Taxonomy of dereplicated contigs with vContact2
-	--wish		Host identification of dereplicated contigs with WIsH
+	-dereplication	Removal of replicate sequences
+	-checkv		Quality control of dereplicated contigs with CheckV		
+	-vcontact2	Taxonomy of dereplicated contigs with vContact2
+	-wish		Host identification of dereplicated contigs with WIsH
 ```
 
 # Citing
