@@ -14,7 +14,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 * Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md).
 * Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: ![Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
 * Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: ![Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
-* The simplified usgae of the **MuDoGeR** can be found in the following hyperlink:
+* The simplified usgae of the **MuDoGeR** can be found in the following hyperlink: ![Simplified usage of the MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#using-mudoger).
 
 ### (1) Pre-Processing
 
@@ -130,7 +130,7 @@ The instructions for EukCC installation tool can be found at ![EukCC_Manual](htt
 
 
 
-# Using MuDoGeR
+# Simplified usage of the MuDoGeR
 
 A more detailed tutorial for the MuDoGeR can be found in ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file. In this file, instructions and examples can be found.
 
