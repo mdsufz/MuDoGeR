@@ -12,6 +12,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 
 * Instructions for using **MuDoGeR** can be found in the following hyperlink: ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 * Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md).
+* Detailed instructions for the installation of **MuDoGeR** tools can be found in the following hyperlink ![]
 
 ### (1) Pre-Processing
 
@@ -41,7 +42,7 @@ The different steps of the module 2 are shown in Figure 3 and excecuted with the
 * **(2.e)** Filtering of genomic bins produced in **(2.b)** with quality higher than 50. The user here can also change the size of the required completeness (optional step).      
 * **(2.f)** Annotation of genomic bins produced in  **(2.b)** with **PROKKA**.
 * **(2.g)** Selection of prokaryotic Metagenome-Assembled Genomes.
-* **(2.h)** Refinement of Metagenome-Assembled Genomes using **U-bin** (optional step)
+* **(2.h)** Refinement of Metagenome-Assembled Genomes using **U-bin** (optional step).
 
 ###  (3) Recovery of Viral Metagenome-Assembled Genomes
 
@@ -51,19 +52,19 @@ The different steps of the module 2 are shown in Figure 3 and excecuted with the
 The steps of the module 3  are shown in Figure 4 and excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-pipelines-for-viral-genomes-recovery)
 
 * **(3.a)** Recovery of viral genome metagenomes using **Virfinder**, **VirSorter** and **VIBRANT**.
-* **(3.b)** Filtering of the recovered genomes
-* **(3.c)** In this step, all the Viral Metagenome-Assembled Genomes are combined in a single file. The repeated sequences are removed and they are sorted by length
-* **(3.e)** Extraction of the viral sequences from the assembly file using the headers with the help of a python script
-* **(3.f)** Removal of replicates from the assemblies in the extracted file using de-replication function with minimum coverage/minimum identity 70/95
+* **(3.b)** Filtering of the recovered genomes.
+* **(3.c)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then,removal of the repeated sequences and sorting by length.
+* **(3.e)** Taking of the headers of the file produced in **(3.c)** and assembling of them with the respective sequencies from the assembly file produced by **MetaSpades** in **(1.3)**, for the generation of a fasta file.
+* **(3.f)** Removal of replicates from the assemblies in the extracted file using de-replication function with minimum coverage of 70% and minimum identity of 95%.
 * **(3.g)** Checking the quality of the dereplicated contigs with **CheckV**
-* **(3.h)** Taxonomy of the dereplicated contigs with **vContact** 
+* **(3.h)** Taxonomic classification of the dereplicated contigs with **vContact2** 
 * **(3.i)** Host identification of the dereplicated contigs using **WIsH** 
 * **(3.j)** Selection of viral Metagenome-Assembled Genomes.
 
-###  (4) Metagenomic recovery of Eukaryotic genomes
+###  (4)  Recovery of Eukaryotic Metagenome-Assembled Genomes
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Eykaryotic_module.png)
-**Figure 5.** Eukaryotic pipeline
+**Figure 5.**  Module 4 of the MuDoGeR pipeline.
 
 The steps of the module 4  are shown in Figure 5 and can be excecuted with the scripts found in ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery)
 
