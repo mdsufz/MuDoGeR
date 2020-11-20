@@ -50,9 +50,9 @@ The different steps of the module 2 are shown in Figure 3 and excecuted with the
 
 The steps of the module 3  are shown in Figure 4 and excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-pipelines-for-viral-genomes-recovery)
 
-* **(3.a)** Recovery of viral genome metagenomes using **Virfinder**, **VirSorter** and **VIBRANT**
+* **(3.a)** Recovery of viral genome metagenomes using **Virfinder**, **VirSorter** and **VIBRANT**.
 * **(3.b)** Filtering of the recovered genomes
-* **(3.c)** Combination of the headers of the filtered data to a single file, removed repeated sequences and sort by length
+* **(3.c)** In this step, all the Viral Metagenome-Assembled Genomes are combined in a single file. The repeated sequences are removed and they are sorted by length
 * **(3.e)** Extraction of the viral sequences from the assembly file using the headers with the help of a python script
 * **(3.f)** Removal of replicates from the assemblies in the extracted file using de-replication function with minimum coverage/minimum identity 70/95
 * **(3.g)** Checking the quality of the dereplicated contigs with **CheckV**
