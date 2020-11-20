@@ -12,7 +12,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 
 * Instructions for using **MuDoGeR** can be found in the following hyperlink: ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 * Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md).
-* Detailed instructions for the installation of **MuDoGeR** tools can be found in the following hyperlink ![]
+* Detailed instructions for the installation of **MuDoGeR** tools can be found in the following hyperlink: ![Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
 
 ### (1) Pre-Processing
 
@@ -165,9 +165,9 @@ Options:
 	-c INT		minimum coverage (default=70)
 	-i INT		minimum identity (default=95)
 	
-	--virfinder	Recovery of viral data with VirFinder 
-	--virsorter	Recovery of viral data with VirSorter 	
-	--vibrant	Recovery of viral data with VIBRANT
+	-virfinder	Recovery of viral data with VirFinder 
+	-virsorter	Recovery of viral data with VirSorter 	
+	-vibrant	Recovery of viral data with VIBRANT
 	-dereplication	Removal of replicate sequences
 	-checkv		Quality control of dereplicated contigs with CheckV		
 	-vcontact2	Taxonomy of dereplicated contigs with vContact2
