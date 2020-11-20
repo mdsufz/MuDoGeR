@@ -1,6 +1,5 @@
 
 # Module 1: Pre-Processing module
-
 ## 1.1: Raw read QC module 
 Note: For the removal of human contamination, the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the MetaWrap installation instructions. 
 
@@ -52,7 +51,6 @@ Inside the output folder the user can find the  `metaspades_prediction.tsv` file
 
 
 ## 1.3: Assembly module
-
 The reads are assembled with utilization of **MetaSpades** option flag:
 ```
 metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to//final_pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
@@ -89,7 +87,7 @@ Run the prokayotic module with using MetaWrap:
 mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq --checkM_filter -v 50
 ```
 
-* The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of the prokaryotic module will be saved.
+* The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of the prokaryotic module will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
 * The `path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads. 
@@ -140,32 +138,33 @@ NODE_2_length_360965	Prodigal:2.6	CDS	3638	4510	.	-	0ID=EDFJOLLJ_00005;eC_number
 
 ```
 
-For more detailed explanation of the MetaWrap tool the user can study the ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) file 
+For more detailed explanation of the MetaWrap tool the user can study the ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) file. 
 
-# Module 3: Recovery of Viral Metagenome-Assembled Genomes 
-Note: Make sure that all the viral tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file
+# Module 3: Recovery of Viral Metagenome-Assembled Genomes (wish to be finished)
+Note: Make sure that all the viral tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
 ## 3.1
-Running the viral module on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined together and the replicates are been removed. The three viral recovery tools (**VirFinder**, **VIBRANT**, **VirSorter**) are used simultaneously but there is also the choice for the user to run each of them independently or even to skip one of them.  Before the run of the script is important for the user to decide about the parameters minimum coverege(-c) and minimum identity (-i) used in the dereplication. By default the minimum coverage is 70 and the minimum identity 95. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembly dataset. 
+By using the Module 3 the user will recover Viral Metagenome-Assembled Genomes. Also, by using Module 3 the user can estimate the quality of the viral contigs do taxonomic classification of the viruses. the taxonomy recovers on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated. Also, by using Module 3, the user can estimates the quality of the dereplicated viral contigs, do the taxonomic classification of the viruses. Furthermore, the user can choose to utilize Module 3 for determining the host of each virus. Before running the script, it is important for the user to decide about the parameters **minimum coverege(-c)** and **minimum identity (-i)** used in the dereplication. By default the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
 
-Run MuDoGeR viral  module with all three tools and the de-replication function:
+Run MuDoGeR viral  module:
 ``` 
-mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --vifinder --virsorter --vibrant -c 70 -i 95 
+mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --g /path/to/prokaryotic_hosts/folder -c 70 -i 95 --wish
 ```
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the viral module will fall
-* The `/path/to/assembly/file` indicates the path to the file of the assemblies 
-* The `-c 70` indicates that the default value of the minimum coverege in the de-replication step is 70
-* The `-i 95` indicates that the default value of the minimum identity in the de-replication step is 95
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the viral module will be written.
+* The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
+* The `path/to/prokaryotic_hosts/folder` indicates the path to the directory that contains the genomes of the possible prokaryotic hosts (optional).
+* The `-c` indicates that the default value of the minimum coverege in the de-replication step is 70.
+* The `-i` indicates that the default value of the minimum identity in the de-replication step is 95.
 
 
-In the output directory five folders are appeared. The `initial_recovey_folder`  contains the results from the independent recovery of each tool. The independent recovered contigs of each tool can be usefull for other types of analysis. The ` dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and ` quality_folder` the  user can found the results of ,the taxonomy utlizing **vContact2** tool and quality control using **CheckV** tool, respectively. 
+In the output directory five folders are present. The `initial_recovey_folder`  contains the results from the independent recovery of each tool. The `dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and `quality_folder` the user can find the results of the taxonomic classification utlizing **vContact2** tool and quality control using **CheckV** tool, respectively. In case the user chooses to use the **WiSH** tool, a fifth folder will be present, called `wish_folder`. This folder will contain the results of the host identification analysis.
 
 ```
-dereplication_folder    initial_recovey_folder    quality_folder    taxonomy_folder 	
+dereplication_folder  initial_recovey_folder  quality_folder  taxonomy_folder  wish_folder 	
 ``` 
 
 
-The  `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of the contigs. For example `head -5 dereplication_folder/VIRAL_PARTICLES_95-70.clstr`:
+The `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of the contigs. For example `head -5 dereplication_folder/VIRAL_PARTICLES_95-70.clstr`:
 
 ```
 >Cluster_0	NODE_6_length_9839_cov_5.151165  	   9839
@@ -186,46 +185,51 @@ NODE_7_length_8843_cov_4.647815	8843	1.0	10	5	0	Low-quality	Genome-fragment	15.0
 NODE_9_length_8285_cov_3.135358	8285	1.0	14	1	0	Not-determined	Genome-fragment	NA	NA	0.0	No	No
 NODE_21_length_5441_cov_6.763832	5441	1.0	8	8	0	Medium-quality	Genome-fragment	89.8	AAI-based	0.0	No	55-bp-DTR
 ```
-In the `taxonomy_folder` the user can find  an overview of the viral clusters in `taxonomy/ viral_cluster_overview.csv` file.
+In the `taxonomy_folder` the user can find  an overview of the viral clusters in `taxonomy/viral_cluster_overview.csv` file.
 
 
-## Module 4: Pipelines for eukaryotic genomes recovery 
-Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file. Also, 
+# Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
+Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
-The Eukaryotic module on the Assembly fasta file, leads to the recovery of eukaryotic genomes. The Eukaryotic module is separated in 2 steps. The first step starts with the **EukRep** tool.
+The Eukaryotic module on the Assembly fasta file, leads to the recovery of Eukaryotic Metagenome-Assembled Genomes.
 
+## 4.1
 Running the first part of Eukaryotic module:
 ```
 mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/folder -o /path/to/output/folder -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
 ```
 
-* The `/path/to/assembly/file` indicates the path to the file of the assemblies 
-* The ` /path/to/output/folder` indicates the path to the output directory where the output folders of the eukaryotic module 1 will fall
-* The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblis will fall after the separation of eukaryotic and prokaryotic assemblies with **EukRep** 
-* The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads 
-* The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads 
+* The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the **4.1** will be saved.
+* The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblis will fall after the separation of eukaryotic and prokaryotic assemblies with **EukRep**. 
+* The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
+* The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads. 
 
 
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the bins produced by **CONCOCT** with size >= 2.5 Mb.
 
-The second step of Eukaryotic module starts with **GeneMark-ES** and as input the user can use any of the bins produced in the previous step.
+## 4.2
+The second step of Eukaryotic module starts with **GeneMark-EV** and as input the user can use any of the bins produced in the previous step.
 
 Running the second step of Eukaryotic module:
 
 ```
 mudoger eukaryotic module 2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/output/folder 
 ```
-* The `/path/to/concoct/bin/fasta/file` indicates the path to the bin file
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the eukaryotic module 2 will fall
+* The `/path/to/concoct/bin/fasta/file` indicates the path to the bin file.
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of **4.2** will be written.
 
-After the end of the second step the output folder contains the results from **GeneMark-ES**, **MAKER2**, **BUSCO** and **EukCC** tools:
+After the end of the second step the output folder contains the results from **GeneMark-EV**, **MAKER2**, **BUSCO** and **EukCC** tools:
 
-The results of **GeneMark-ES** tool are located in the `output/gmhmm.mod` file which contains the predicted genes. The  `output` directory is found inside the initial output directory 
+The results of **GeneMark-EV** tool are located in the `genemark/output/gmhmm.mod` file which contains the predicted genes. The  `genemark` directory is found inside the initial output directory.
 
-The results of the **MAKER2** tool are located in the `maker/euk-ebin.maker.output/OUTPUT.all.maker.genemark.transcripts.fasta` file which contains the names and the sequences of the annotated proteins of the predicted genes . The maker directory is found  inside the initial output directory 
+The results of the **EukCC** tool are located in the  `eukcc/workfiles/gmes/output/gmhmm.mod` file. The `eukcc` directory is found inside the initial output directory.
 
-The results of the **BUSCO** tool are located in the file 
+The results of the **MAKER2** tool are located in the `maker/euk-ebin.maker.output/OUTPUT.all.maker.genemark.transcripts.fasta` file which contains the names and the sequences of the annotated proteins of the predicted genes . The maker directory is found  inside the `genemark` directory. 
 
-The results of the **EukCC** tool are located in the  `eukcc/workfiles/gmes/output/gmhmm.mod` file. The `eukcc` directory is found inside the initial output directory
+The results of the **BUSCO** tool are located in the file `maker/busco/full_table_fbusco.tsv`. The busco directory is found inside the `maker` directory. 
+
+
+
 
 
