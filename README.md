@@ -10,9 +10,11 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 
 ## MuDoGeR Overview
 
-* Instructions for using **MuDoGeR** can be found in the following hyperlink: ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
+* Instructions for using the **MuDoGeR** can be found in the following hyperlink: ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 * Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md).
-* Detailed instructions for the installation of **MuDoGeR** tools can be found in the following hyperlink: ![Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
+* Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: ![Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
+* Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: ![Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
+* The simplified usgae of the **MuDoGeR** can be found in the following hyperlink:
 
 ### (1) Pre-Processing
 
@@ -112,7 +114,8 @@ The instructions for EukCC installation tool can be found at ![EukCC_Manual](htt
 
 
 
-# DATABASES
+# DATABASES 
+(Not done yet)
 
 
 |   Database	|     Used 	|
@@ -126,8 +129,6 @@ The instructions for EukCC installation tool can be found at ![EukCC_Manual](htt
 | Indexed hg38 | Read_qc module |
 
 
-
-# DETAILED PIPELINE WALKTHROUGH
 
 # Using MuDoGeR
 
