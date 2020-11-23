@@ -149,13 +149,14 @@ NODE_2_length_360965	Prodigal:2.6	CDS	3638	4510	.	-	0ID=EDFJOLLJ_00005;eC_number
 
 For more detailed explanation of the MetaWrap tool the user can study the ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) file. 
 
-# Module 3: Recovery of Viral Metagenome-Assembled Genomes (wish to be finished)
+# Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
-## 3.1
-By using the Module 3 the user will recover Viral Metagenome-Assembled Genomes. Also, by using Module 3 the user can estimate the quality of the viral contigs do taxonomic classification of the viruses. the taxonomy recovers on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated. Also, by using Module 3, the user can estimates the quality of the dereplicated viral contigs, do the taxonomic classification of the viruses. Furthermore, the user can choose to utilize Module 3 for determining the host of each virus. Before running the script, it is important for the user to decide about the parameters **minimum coverege(-c)** and **minimum identity (-i)** used in the dereplication. By default the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
+## 3.1 
 
-Run MuDoGeR viral  module:
+By using **(3.1)** the user will recover Viral Metagenome-Assembled Genomes. Also, by using **(3.1)** the user can estimate the quality of the viral contigs do taxonomic classification of the viruses. the taxonomy recovers on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated. Also, the user can estimates the quality of the dereplicated viral contigs, do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the host of each virus. Before running the script, it is important for the user to decide about the parameters **minimum coverege(-c)** and **minimum identity (-i)** used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
+
+Running **(3.1)**:
 ``` 
 mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file -c 70 -i 95 --wish --g /path/to/prokaryotic_hosts/folder
 ```
@@ -199,10 +200,12 @@ The results of the host identification are located to `wish_folder/output_result
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
-The Eukaryotic module on the Assembly fasta file, leads to the recovery of Eukaryotic Metagenome-Assembled Genomes.
-
 ## 4.1 Production of Eukaryotic bins
-Running the first part of Eukaryotic module:
+
+In **(4.1)**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. 
+
+Running **(4.1)**:
+
 ```
 mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/folder -o /path/to/output/folder -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
 ```
@@ -214,10 +217,10 @@ mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/proka
 
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the bins produced by **CONCOCT** with size >= 2.5 Mb.
 
-## 4.2 Quality estimation (Parks, 2018) and annotation of Eukaryotic bins
-The second step of Eukaryotic module starts with **GeneMark-EV** and as input the user can use any of the bins produced in the previous step.
+## 4.2 Completeness/contamination estimation and annotation of Eukaryotic bins
+In **(4.2)**, the completeness and contamination of the Eukaryotic bins produced in **(4.1)** are estimated. Additionally, the annotation of these bins is taking place. **(4.2)** starts with **GeneMark-EV** tool, used for the gene prediction in the Eukaryotic bins. As input the user can use any of the bins produced in the previous step. The rest of the tools used in **(4.2)** are **EukCC** (bin contamination estimation), **MAKER2** (for annotation of the bin) and **BUSCO** for (bin completeness estimation). 
 
-Running the second step of Eukaryotic module:
+Running **(4.2)**:
 
 ```
 mudoger eukaryotic module 2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/output/folder 
@@ -227,11 +230,11 @@ mudoger eukaryotic module 2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/outp
 
 After the end of the second step the output folder contains the results from **MAKER2**, **BUSCO** and **EukCC** tools:
 
-The results of the **EukCC** tool are located in the  `eukcc/workfiles/gmes` file. The `eukcc` directory is found inside the initial output directory.
+The results of the **EukCC** tool are located in the `eukcc/workfiles/gmes` file. The `eukcc` directory is found inside the initial output directory.
 
 The results of the **MAKER2** tool are located in the `maker/euk-ebin.maker.output/OUTPUT.all.maker.genemark.transcripts.fasta` file which contains the names and the sequences of the annotated proteins of the predicted genes . The maker directory is found  inside the `genemark` directory. 
 
-The results of the **BUSCO** tool are located in the file `maker/busco/full_table_fbusco.tsv`. The busco directory is found inside the `maker` directory. 
+The results of the **BUSCO** tool are located in the file `maker/busco/full_table_fbusco.csv`. The busco directory is found inside the `maker` directory. 
 
 
 
