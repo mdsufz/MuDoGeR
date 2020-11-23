@@ -45,7 +45,7 @@ Resources module -i /path/to/final_pure_reads_1.fastq -l /path/to/output/folder
  * The `/path/to/output/folder` indicates the path to the folder with resource calculation results.
  
 The k-mer results is used as function by a linear regression model which will give the amount of memory necessary for assembly of reads by **MetaSpades**. 
-Inside the output folder the user can find the  `metaspades_prediction.csv` file which has the amount of memory that **MetaSpades** utilizes for the assembly of those reads.
+Inside the output folder the user can find the `metaspades_prediction.csv` file which has the amount of memory that **MetaSpades** utilizes for the assembly of those reads.
 
 
 ## 1.3: Assembly module
