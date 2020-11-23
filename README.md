@@ -28,7 +28,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 
 * **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  **metaWRAP-Read_qc**.
 * **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
-* **(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is first calculated. The k-mer sizes that will be investigated are 33 and 55.	
+* **(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is calculated. The k-mer sizes that will be investigated are 33 and 55.	
 * **(1.b.2)** The calculated k-mer is added to an equation that is used to estimate the amount of memory that **MetaSpades** utilizes to assemble the good quality reads. 
 * **(1.c)** Assembly of the good quality reads with **MetaSpades**.
 
@@ -39,11 +39,11 @@ The different steps of the module 2 are shown in Figure 3 and excecuted with the
  The steps of Module 2 can be summarized as following:
 
 * **(2.a)** Binning with **MaxBin2**, **metaBAT2**, and **CONCOCT**. 
-* **(2.b)** Dereplication of bins for prior bin refinement. The completeness/contamination parameters have been set to 50/10 for Bacteria and 40/30 for archaea. 
+* **(2.b)** Dereplication of bins for prior bin_refinement. The completeness/contamination parameters have been set to 50%/10% for Bacteria and 40%/30% for Archaea. 
 * **(2.c)** Taxonomic classification of genomic bins produced in **(2.b)** using **GTDB-Tk**.
 * **(2.d)** Generation of quality matrix of genomic bins produced in **(2.b)** using **CheckM**. 
-* **(2.e)** Filtering of genomic bins produced in **(2.b)** with quality higher than 50. The user here can also change the size of the required completeness (optional step).      
-* **(2.f)** Annotation of genomic bins produced in  **(2.b)** with **PROKKA**.
+* **(2.e)** Filtering of genomic bins produced in **(2.b)** with quality higher than 50. THe quality is defined according to Parks (2018). The user here can also change the required quality (optional step).      
+* **(2.f)** Annotation of genomic bins produced in **(2.b)** with **PROKKA**.
 * **(2.g)** Selection of Prokaryotic Metagenome-Assembled Genomes.
 * **(2.h)** Refinement of Prokaryotic Metagenome-Assembled Genomes using **U-bin** (optional step).
 
@@ -58,12 +58,12 @@ The steps of the module 3  are shown in Figure 4 and excecuted in the scripts fi
 
 * **(3.a)** Recovery of viral genome metagenomes using **Virfinder**, **VirSorter** and **VIBRANT**.
 * **(3.b)** Filtering of the recovered genomes.
-* **(3.c)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then,removal of the repeated sequences and sorting by length.
-* **(3.e)** Taking of the headers of the file produced in **(3.c)** and assembling of them with the respective sequencies from the assembly file produced by **MetaSpades** in **(1.3)**, for the generation of a fasta file.
+* **(3.c)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining sequences by length.
+* **(3.e)** Assembly of the headers in the file produced in **(3.c)** with the respective sequences from the assembly file produced by **MetaSpades** in **(1.3)**, for the generation of a fasta file.
 * **(3.f)** Removal of replicates from the assemblies in the extracted file using de-replication function with minimum coverage of 70% and minimum identity of 95%.
-* **(3.g)** Checking the quality of the dereplicated contigs with **CheckV**
-* **(3.h)** Taxonomic classification of the dereplicated contigs with **vContact2** 
-* **(3.i)** Host identification of the dereplicated contigs using **WIsH** 
+* **(3.g)** Checking the quality of the dereplicated contigs with **CheckV**.
+* **(3.h)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
+* **(3.i)** Host identification of the dereplicated contigs using **WIsH**. 
 * **(3.j)** Selection of Viral Metagenome-Assembled Genomes.
 
 ###  (4) Recovery of Eukaryotic Metagenome-Assembled Genomes
@@ -75,22 +75,17 @@ The steps of the module 4  are shown in Figure 5 and can be excecuted with the s
 
  The steps of Module 4 can be summarized as following:
 
-* **(4.a)** Classification of Eukaryotic assemblies and removal of prokaryotic assemblies with **EukRep**
+* **(4.a)** Classification of Eukaryotic assemblies and removal of prokaryotic assemblies with **EukRep**.
 * **(4.b)** Use of **CONCOCT** for binning the Eukaryotic assemblies.  
 * **(4.c)** Filtering the Eukaryotic bins produced by **CONCOCT** by size. Bins with size <= 2.5 Mb are removed.
-* **(4.d)** In the filtered bins produced in **(4.c)**, genes are predicted by the trained **GeneMark-ES** model.   
-* **(4.e)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
-* **(4.f)** **BUSCO** is applied to the annotated genes from for **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
-* **(4.g)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **(4.c)**.
+* **(4.d)** In the filtered bins produced in **(4.c)**, genes are predicted by the trained **GeneMark-EV** model.
+* **(4.e)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **(4.c)**.
+* **(4.f)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
+* **(4.g)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
 * **(4.h)** Selection of Eukaryotic Metagenome-Assembled Genomes.
-
-
-
-
 
 # System requirements
 (not done yet)
-
 
 # Installation
 
@@ -178,7 +173,7 @@ Options:
 	-dereplication	Removal of replicate sequences
 	-checkv		Quality control of dereplicated contigs with CheckV		
 	-vcontact2	Taxonomy of dereplicated contigs with vContact2
-	-wish		Host identification of dereplicated contigs with WIsH
+	--wish		Host identification of dereplicated contigs with WIsH
 ```
 
 # Citing
