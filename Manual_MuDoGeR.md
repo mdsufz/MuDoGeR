@@ -219,9 +219,7 @@ mudoger eukaryotic module 2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/outp
 * The `/path/to/concoct/bin/fasta/file` indicates the path to the bin file.
 * The `/path/to/output/folder` indicates the path to the output directory where the output folders of **4.2** will be written.
 
-After the end of the second step the output folder contains the results from **GeneMark-EV**, **MAKER2**, **BUSCO** and **EukCC** tools:
-
-The results of **GeneMark-EV** tool are located in the `genemark/output/gmhmm.mod` file which contains the predicted genes. The  `genemark` directory is found inside the initial output directory.
+After the end of the second step the output folder contains the results from **MAKER2**, **BUSCO** and **EukCC** tools:
 
 The results of the **EukCC** tool are located in the  `eukcc/workfiles/gmes/output/gmhmm.mod` file. The `eukcc` directory is found inside the initial output directory.
 
