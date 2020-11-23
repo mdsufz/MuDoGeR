@@ -14,7 +14,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 * Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md).
 * Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: ![Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
 * Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: ![System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
-* The simplified usgae of the **MuDoGeR** can be found in the following hyperlink: ![Simplified usage of the MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#using-mudoger).
+* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: ![Simplified usage of the MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#using-mudoger).
 
 ### (1) Pre-Processing
 
@@ -24,7 +24,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 
  The steps of Module 1 are shown in Figure 2 and can be excecuted with the scripts find in the following hyperlink: ![Pre-Processing module](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing-module)
  
- The steps of Module 1 can summarized as following:
+ The steps of Module 1 can be summarized as following:
 
 * **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  **metaWRAP-Read_qc**.
 * **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
@@ -36,6 +36,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 
 The different steps of the module 2 are shown in Figure 3 and excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-pipelines-for-prokaryotic-genome-recovery).
 
+ The steps of Module 2 can be summarized as following:
 
 * **(2.a)** Binning with **MaxBin2**, **metaBAT2**, and **CONCOCT**. 
 * **(2.b)** Dereplication of bins for prior bin refinement. The completeness/contamination parameters have been set to 50/10 for Bacteria and 40/30 for archaea. 
@@ -53,6 +54,8 @@ The different steps of the module 2 are shown in Figure 3 and excecuted with the
 
 The steps of the module 3  are shown in Figure 4 and excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-pipelines-for-viral-genomes-recovery)
 
+ The steps of Module 3 can be summarized as following:
+
 * **(3.a)** Recovery of viral genome metagenomes using **Virfinder**, **VirSorter** and **VIBRANT**.
 * **(3.b)** Filtering of the recovered genomes.
 * **(3.c)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then,removal of the repeated sequences and sorting by length.
@@ -69,6 +72,8 @@ The steps of the module 3  are shown in Figure 4 and excecuted in the scripts fi
 **Figure 5.**  Module 4 of the **MuDoGeR** pipeline.
 
 The steps of the module 4  are shown in Figure 5 and can be excecuted with the scripts found in ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery)
+
+ The steps of Module 4 can be summarized as following:
 
 * **(4.a)** Classification of Eukaryotic assemblies and removal of prokaryotic assemblies with **EukRep**
 * **(4.b)** Use of **CONCOCT** for binning the Eukaryotic assemblies.  
