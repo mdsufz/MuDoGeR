@@ -159,7 +159,7 @@ mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file -c 70
 ```
 * The `/path/to/output/folder` indicates the path to the output directory where the output folders of the viral module will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
-* The `path/to/prokaryotic_hosts/folder` indicates the path to the directory that contains the genomes of the possible prokaryotic hosts (optional).
+* The `/path/to/prokaryotic_hosts/folder` indicates the path to the directory that contains the genomes of the possible prokaryotic hosts (optional).
 * The `-c` indicates that the default value of the minimum coverege in the de-replication step is 70.
 * The `-i` indicates that the default value of the minimum identity in the de-replication step is 95.
 
