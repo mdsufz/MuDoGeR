@@ -49,19 +49,27 @@ Inside the output folder the user can find the `metaspades_prediction.csv` file 
 
 
 ## 1.3: Assembly module
-There are two possible readers for assembling: **MegaHIT** and **metaSPAdes**. Both readers are considered reliable. **MegaHIT** uses lower memory and is faster compared to **metaSPAdes**, but metaSPAdes produced assemblies of higher quality. Because of that, the reads are assembled with **metaSPAdes** option flag by default: 
+There are two possible readers for assembling: **MegaHIT** and **metaSPAdes**. Both readers are considered reliable. **MegaHIT** uses lower memory and is faster compared to **metaSPAdes**, but metaSPAdes produced assemblies of higher quality. In case of very large data sets, the usage of **MegaHIT** option flag is preferable:
+
+```
+metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-megahit -o /path/to/assembled_reads/output/directory 
+```
+
+
+In any other case it is preferable to use **metaSPAdes** option flag as it produces higher quality assemblies:
 
 ```
 metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
 ```
+For both flags:
 
-* The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads. 
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads.
+* The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads. 
 * The `/path/to/assembled_reads/output/directory` indicates the path to the output directory where the assemblies will be saved.
 * The `-m` the amount of memory in gigabytes that the assembly process needs. 
 * The `-t` indicates the number of threads to be used for this process.
 
-After the end of the assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the `assembly_report.html` file with the QUAST assembly report of the assembly module. 
+After the end of the **metaSPAdes** assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the `assembly_report.html` file with the QUAST assembly report of the assembly module. 
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Assembly.png)
 
