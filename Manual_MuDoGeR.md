@@ -152,9 +152,8 @@ For more detailed explanation of the MetaWrap tool the user can study the ![meta
 # Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
-## 3.1 
-
-By using **(3.1)** the user will recover Viral Metagenome-Assembled Genomes. Also, by using **(3.1)** the user can estimate the quality of the viral contigs do taxonomic classification of the viruses. the taxonomy recovers on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated. Also, the user can estimates the quality of the dereplicated viral contigs, do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the host of each virus. Before running the script, it is important for the user to decide about the parameters **minimum coverege(-c)** and **minimum identity (-i)** used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
+## 3.1 Recovery, quality estimation (Parks, 2018), taxonomical classification and host identification of Viral Metagenome-Assembled Genomes
+By using **(3.1)** the user will recover Viral Metagenome-Assembled Genomes. Also, by using **(3.1)** the user can estimate the quality of the viral contigs do taxonomic classification of the viruses. the taxonomy recovers on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated. Also, the user can estimate the quality (Parks, 2018) of the dereplicated viral contigs, do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the host of each virus. Before running the script, it is important for the user to decide about the parameters **minimum coverege(-c)** and **minimum identity (-i)** used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
 
 Running **(3.1)**:
 ``` 
@@ -201,7 +200,6 @@ The results of the host identification are located to `wish_folder/output_result
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
 ## 4.1 Production of Eukaryotic bins
-
 In **(4.1)**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. 
 
 Running **(4.1)**:
@@ -210,7 +208,7 @@ Running **(4.1)**:
 mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/folder -o /path/to/output/folder -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
 ```
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the **4.1** will be saved.
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the **(4.1)** will be saved.
 * The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblis will fall after the separation of eukaryotic and prokaryotic assemblies with **EukRep**. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads. 
@@ -226,7 +224,7 @@ Running **(4.2)**:
 mudoger eukaryotic module 2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/output/folder 
 ```
 * The `/path/to/concoct/bin/fasta/file` indicates the path to the bin file.
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of **4.2** will be written.
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of **(4.2)** will be written.
 
 After the end of the second step the output folder contains the results from **MAKER2**, **BUSCO** and **EukCC** tools:
 
