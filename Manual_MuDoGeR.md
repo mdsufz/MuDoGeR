@@ -108,7 +108,7 @@ bin.1	d__Bacteria;p__Desulfobacterota;c__Desulfuromonadia;o__Geobacterales;f__Ge
 bin.2	d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Dysgonomonadaceae;g__Dysgonomonas;s__
 ``` 
 
-Inside each of the checkm directories there is the `bin` directory that contains their fasta. Also, inside each checkm directory the user can find `checkm.csv`file with completeness and contamination of the re-assembled refined bins.
+Inside each of the checkm directories there is the `bin` directory that contains their fasta. Also, inside each checkm directory the user can find `checkm.csv` file with completeness and contamination of the re-assembled refined bins.
 
 ```
 cat checkm.csv  | head -5
@@ -160,8 +160,6 @@ In the output directory five folders are present. The `initial_recovey_folder`  
 ```
 dereplication_folder  initial_recovey_folder  quality_folder  taxonomy_folder  wish_folder 	
 ``` 
-
-
 The `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of the contigs. For example `head -5 dereplication_folder/VIRAL_PARTICLES_95-70.clstr`:
 
 ```
@@ -173,18 +171,18 @@ The `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of the
 ```
 The sequences of the contigs can be found in the `VIRAL_PARTICLES_95-70.fna` file.
 
-The quality summary of the contigs can be found inside the file `quality_folder/quality_summary.tsv`
+The quality summary of the contigs can be found inside the file `quality_folder/quality_summary.csv`
 Running:
+
 ```
-head -5 quality_folder/quality_summary.tsv 
-contig_id	contig_length	genome_copies	gene_count	viral_genes	host_genes	checkv_quality	miuvig_quality	completeness	completeness_method	contamination	prophage	termini
-NODE_6_length_9839_cov_5.151165	9839	1.0	16	5	0	Low-quality	Genome-fragment	16.25	AAI-based	0.0	No	No
-NODE_7_length_8843_cov_4.647815	8843	1.0	10	5	0	Low-quality	Genome-fragment	15.0	AAI-based	0.0	No	No
-NODE_9_length_8285_cov_3.135358	8285	1.0	14	1	0	Not-determined	Genome-fragment	NA	NA	0.0	No	No
-NODE_21_length_5441_cov_6.763832	5441	1.0	8	8	0	Medium-quality	Genome-fragment	89.8	AAI-based	0.0	No	55-bp-DTR
+head -5 quality_folder/quality_summary.csv 
+contig_id,contig_length,genome_copies,gene_count,viral_genes,host_genes,checkv_quality,miuvig_quality,completeness,completeness_method,contamination,prophage,termini
+NODE_6_length_9839_cov_5.151165,9839,1.0,16,5,0,Low-quality,Genome-fragment,16.25,AAI-based,0.0,No,No
+NODE_7_length_8843_cov_4.647815,8843,1.0,10,5,0,Low-quality,Genome-fragment,15.0,AAI-based,0.0,No,No
+NODE_9_length_8285_cov_3.135358,8285,1.0,14,1,0,Not-determined,Genome-fragment,NA,NA,0.0,No,No
+NODE_21_length_5441_cov_6.763832,5441,1.0,8,8,0,Medium-quality,Genome-fragment,89.8,AAI-based,0.0,No,55-bp-DTR
 ```
 In the `taxonomy_folder` the user can find  an overview of the viral clusters in `taxonomy/viral_cluster_overview.csv` file.
-
 
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
@@ -202,7 +200,6 @@ mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/proka
 * The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblis will fall after the separation of eukaryotic and prokaryotic assemblies with **EukRep**. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads. 
-
 
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the bins produced by **CONCOCT** with size >= 2.5 Mb.
 
