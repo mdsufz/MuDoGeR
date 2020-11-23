@@ -55,7 +55,6 @@ There are two possible readers for assembling: **MegaHIT** and **metaSPAdes**. B
 metawrap assembly module -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-megahit -o /path/to/assembled_reads/output/directory 
 ```
 
-
 In any other case it is preferable to use **metaSPAdes** option flag as it produces higher quality assemblies:
 
 ```
@@ -91,13 +90,17 @@ The run of the prokaryotic module leads to the recovery of prokaryotic genomes f
 
 Run the prokayotic module with using MetaWrap:
 ``` 
-mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq --checkM_filter -q 50
+mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -ca 40 -xa 30 -cb 50 -xb 10 --checkM_filter -q 50
 ```
 
 * The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of the prokaryotic module will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
 * The `path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads. 
+* The `-ca` indicates the minimum completeness for the archaeal bins
+* The `-cb` indicates the minimum completeness for the bacterial bins
+* The `-xa` indicates the minimum contamination for the archaeal bins
+* The `-xb` indicates the minimum completeness for the bacterial bins
 * The `-q` indicates lower limit of quality for the filtering for the optional step of quality control (optional).
 
 In the final output folder the user can find:
