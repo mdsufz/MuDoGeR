@@ -51,7 +51,7 @@ Inside the output folder the user can find the `metaspades_prediction.csv` file 
 ## 1.3: Assembly module
 The reads are assembled with utilization of **MetaSpades** option flag:
 ```
-metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to//final_pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
+metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
 ```
 
 * The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads. 
