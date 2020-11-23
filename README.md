@@ -42,7 +42,7 @@ The different steps of the module 2 are shown in Figure 3 and excecuted with the
 * **(2.b)** Dereplication of bins for prior bin_refinement. The completeness/contamination parameters have been set to 50%/10% for Bacteria and 40%/30% for Archaea. 
 * **(2.c)** Taxonomic classification of the genomic bins produced in **(2.b)** using **GTDB-Tk**.
 * **(2.d)** Generation of quality matrix of genomic bins produced in **(2.b)** using **CheckM**. 
-* **(2.e)** Filtering of genomic bins produced in **(2.b)** with quality higher than 50. THe quality is defined according to Parks (2018). The user here can also change the required quality (optional step).      
+* **(2.e)** Filtering of genomic bins produced in **(2.b)** by quality (Parks (2018)). The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
 * **(2.f)** Annotation of genomic bins produced in **(2.b)** with **PROKKA**.
 * **(2.g)** Selection of Prokaryotic Metagenome-Assembled Genomes.
 * **(2.h)** Refinement of Prokaryotic Metagenome-Assembled Genomes using **U-bin** (optional step).
@@ -58,7 +58,7 @@ The steps of the module 3  are shown in Figure 4 and excecuted in the scripts fi
 
 * **(3.a)** Recovery of viral genome metagenomes using **Virfinder**, **VirSorter** and **VIBRANT**.
 * **(3.b)** Filtering of the recovered genomes.
-* **(3.c)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining sequences by length.
+* **(3.c)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
 * **(3.e)** Assembly of the headers in the file produced in **(3.c)** with the respective sequences from the assembly file produced by **MetaSpades** in **(1.3)**, for the generation of a fasta file.
 * **(3.f)** Removal of replicates from the assemblies in the extracted file using de-replication function with minimum coverage of 70% and minimum identity of 95%.
 * **(3.g)** Checking the quality of the dereplicated contigs with **CheckV**.
