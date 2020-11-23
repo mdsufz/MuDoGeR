@@ -60,7 +60,7 @@ The steps of the module 3  are shown in Figure 4 and excecuted in the scripts fi
 * **(3.b)** Filtering of the recovered genomes. From the results of **VirFinder**, the sequences with p-value > 0.01 and/or length < 1000 bp are removed. From the results of **VirSorter**, only the sequences of categories 1 and 2 are kept. From the results of **VIBRANT**, the combined assemblies of the phages are kept.
 * **(3.c)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
 * **(3.e)** Assembly of the headers in the file produced in **(3.c)** with the respective sequences from the assembly file produced by **MetaSpades** in **(1.3)**, for the generation of a fasta file.
-* **(3.f)** Removal of replicates from the assemblies in the extracted file using dereplication function with minimum coverage of 70% and minimum identity of 95%.
+* **(3.f)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
 * **(3.g)** Checking the quality of the dereplicated contigs with **CheckV**.
 * **(3.h)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
 * **(3.i)** Host identification of the dereplicated contigs using **WIsH**. 
