@@ -45,9 +45,7 @@ Resources module -i /path/to/final_pure_reads_1.fastq -l /path/to/output/folder
  * The `/path/to/output/folder` indicates the path to the folder with resource calculation results.
  
 The k-mer results is used as function by a linear regression model which will give the amount of memory necessary for assembly of reads by **MetaSpades**. 
-Inside the output folder the user can find the  `metaspades_prediction.tsv` file which has the amount of memory that **MetaSpades** utilizes for the assembly of those reads.
-
-
+Inside the output folder the user can find the  `metaspades_prediction.csv` file which has the amount of memory that **MetaSpades** utilizes for the assembly of those reads.
 
 
 ## 1.3: Assembly module
@@ -57,7 +55,7 @@ metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to//final_pure_re
 ```
 
 * The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads. 
-* The `/path/to//final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads.
+* The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads.
 * The `/path/to/assembled_reads/output/directory` indicates the path to the output directory where the assemblies will be saved.
 * The `-m` the amount of memory in gigabytes that the assembly process needs. 
 * The `-t` indicates the number of threads to be used for this process.
