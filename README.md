@@ -56,11 +56,11 @@ The steps of the module 3  are shown in Figure 4 and excecuted in the scripts fi
 
  The steps of Module 3 can be summarized as following:
 
-* **(3.a)** Recovery of viral genome metagenomes using **Virfinder**, **VirSorter** and **VIBRANT**.
+* **(3.a)** Recovery of viral genome metagenomes using **VirFinder**, **VirSorter** and **VIBRANT**.
 * **(3.b)** Filtering of the recovered genomes.
 * **(3.c)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
 * **(3.e)** Assembly of the headers in the file produced in **(3.c)** with the respective sequences from the assembly file produced by **MetaSpades** in **(1.3)**, for the generation of a fasta file.
-* **(3.f)** Removal of replicates from the assemblies in the extracted file using de-replication function with minimum coverage of 70% and minimum identity of 95%.
+* **(3.f)** Removal of replicates from the assemblies in the extracted file using dereplication function with minimum coverage of 70% and minimum identity of 95%.
 * **(3.g)** Checking the quality of the dereplicated contigs with **CheckV**.
 * **(3.h)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
 * **(3.i)** Host identification of the dereplicated contigs using **WIsH**. 
@@ -77,7 +77,7 @@ The steps of the module 4  are shown in Figure 5 and can be excecuted with the s
 
 * **(4.a)** Classification of Eukaryotic assemblies and removal of prokaryotic assemblies with **EukRep**.
 * **(4.b)** Use of **CONCOCT** for binning the Eukaryotic assemblies.  
-* **(4.c)** Filtering the Eukaryotic bins, produced by **CONCOCT**, by size. Bins with size <= 2.5 Mb are removed.
+* **(4.c)** Filtering the Eukaryotic bins, produced from **CONCOCT**, by size. Bins with size <= 2.5 Mb are removed.
 * **(4.d)** In the filtered bins produced in **(4.c)**, genes are predicted by the trained **GeneMark-EV** model.
 * **(4.e)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **(4.c)**.
 * **(4.f)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
@@ -98,7 +98,7 @@ The instructions for the uBin installation can be found at ![uBin_Manual](https:
 ## Viral module
 
 ### VirFinder
-The instructions for Virfinder installation can be found at ![VirFinder_Manual](https://github.com/jessieren/VirFinder).
+The instructions for VirFinder installation can be found at ![VirFinder_Manual](https://github.com/jessieren/VirFinder).
 ### VirSorter
 The instructions for VirSorter installation can be found at ![VirSorter_Manual](https://github.com/simroux/VirSorter). 
 ### VIBRANT 
@@ -142,8 +142,8 @@ mudoger -h
 	Options:
 	
 	read_qc		Raw read QC module
-	assembly	Assembly module
 	resources	Calculation of memory required by the MetaSpades, for assembling the good quality reads 
+	assembly	Assembly module
 	prokaryotic	Recovery of Prokaryotic genomes using metaWRAP module
 	viral		Recovery of Viral genomes using VirFinder, VirSorter, VIBRANT module
 	eukaryotic 	Recovery of Eukaryotic genomes using EukRep module
