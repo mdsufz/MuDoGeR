@@ -40,7 +40,7 @@ The different steps of the module 2 are shown in Figure 3 and excecuted with the
 
 * **(2.a)** Binning with **MaxBin2**, **metaBAT2**, and **CONCOCT**. 
 * **(2.b)** Dereplication of bins for prior bin_refinement. The completeness/contamination parameters have been set to 50%/10% for Bacteria and 40%/30% for Archaea. 
-* **(2.c)** Taxonomic classification of genomic bins produced in **(2.b)** using **GTDB-Tk**.
+* **(2.c)** Taxonomic classification of the genomic bins produced in **(2.b)** using **GTDB-Tk**.
 * **(2.d)** Generation of quality matrix of genomic bins produced in **(2.b)** using **CheckM**. 
 * **(2.e)** Filtering of genomic bins produced in **(2.b)** with quality higher than 50. THe quality is defined according to Parks (2018). The user here can also change the required quality (optional step).      
 * **(2.f)** Annotation of genomic bins produced in **(2.b)** with **PROKKA**.
