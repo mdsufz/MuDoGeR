@@ -214,7 +214,7 @@ mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/proka
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the bins produced by **CONCOCT** with size >= 2.5 Mb.
 
 ## 4.2 Completeness/contamination estimation and annotation of Eukaryotic bins
-In **(4.2)**, the completeness and contamination of the Eukaryotic bins produced in **(4.1)** are estimated. Additionally, the annotation of these bins is taking place. **(4.2)** starts with **GeneMark-EV** tool, used for the gene prediction in the Eukaryotic bins. As input the user can use any of the bins produced in the previous step. The rest of the tools used in **(4.2)** are **EukCC** (bin contamination estimation), **MAKER2** (for annotation of the bin) and **BUSCO** for (bin completeness estimation). 
+In **(4.2)**, the completeness and contamination of the Eukaryotic bins produced in **(4.1)** are estimated. Additionally, the annotation of these bins is taking place. **(4.2)** starts with **GeneMark-EV** tool, used for the gene prediction in the Eukaryotic bins. As input the user can use any of the bins produced in the previous step. The rest of the tools used in **(4.2)** are **EukCC** (bin contamination estimation), **MAKER2** (annotation of the bin) and **BUSCO** for (bin completeness estimation). 
 
 Running **(4.2)**:
 
