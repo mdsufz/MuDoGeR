@@ -146,7 +146,7 @@ By using the Module 3 the user will recover Viral Metagenome-Assembled Genomes. 
 
 Run MuDoGeR viral  module:
 ``` 
-mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --g /path/to/prokaryotic_hosts/folder -c 70 -i 95 --wish
+mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file -c 70 -i 95 --wish --g /path/to/prokaryotic_hosts/folder
 ```
 * The `/path/to/output/folder` indicates the path to the output directory where the output folders of the viral module will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
@@ -154,8 +154,7 @@ mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file --g /
 * The `-c` indicates that the default value of the minimum coverege in the de-replication step is 70.
 * The `-i` indicates that the default value of the minimum identity in the de-replication step is 95.
 
-
-In the output directory five folders are present. The `initial_recovey_folder`  contains the results from the independent recovery of each tool. The `dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and `quality_folder` the user can find the results of the taxonomic classification utlizing **vContact2** tool and quality control using **CheckV** tool, respectively. In case the user chooses to use the **WiSH** tool, a fifth folder will be present, called `wish_folder`. This folder will contain the results of the host identification analysis.
+In the output directory five folders are present. The `initial_recovey_folder` contains the results from the independent recovery of each tool. The `dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and `quality_folder` the user can find the results of the taxonomic classification utlizing **vContact2** tool and quality control using **CheckV** tool, respectively. In case the user chooses to use the **WiSH** tool, a fifth folder will be present, called `wish_folder`. This folder will contain the results of the host identification analysis.
 
 ```
 dereplication_folder  initial_recovey_folder  quality_folder  taxonomy_folder  wish_folder 	
@@ -184,17 +183,18 @@ NODE_21_length_5441_cov_6.763832,5441,1.0,8,8,0,Medium-quality,Genome-fragment,8
 ```
 In the `taxonomy_folder` the user can find  an overview of the viral clusters in `taxonomy/viral_cluster_overview.csv` file.
 
+The results of the host identification are located to `wish_folder/output_results/prediction.list` file. 
+
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
 The Eukaryotic module on the Assembly fasta file, leads to the recovery of Eukaryotic Metagenome-Assembled Genomes.
 
-## 4.1
+## 4.1 Production of Eukaryotic bins
 Running the first part of Eukaryotic module:
 ```
 mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/folder -o /path/to/output/folder -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
 ```
-
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/output/folder` indicates the path to the output directory where the output folders of the **4.1** will be saved.
 * The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblis will fall after the separation of eukaryotic and prokaryotic assemblies with **EukRep**. 
@@ -203,7 +203,7 @@ mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/proka
 
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the bins produced by **CONCOCT** with size >= 2.5 Mb.
 
-## 4.2
+## 4.2 Quality estimation (Parks, 2018) and annotation of Eukaryotic bins
 The second step of Eukaryotic module starts with **GeneMark-EV** and as input the user can use any of the bins produced in the previous step.
 
 Running the second step of Eukaryotic module:
@@ -216,7 +216,7 @@ mudoger eukaryotic module 2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/outp
 
 After the end of the second step the output folder contains the results from **MAKER2**, **BUSCO** and **EukCC** tools:
 
-The results of the **EukCC** tool are located in the  `eukcc/workfiles/gmes/output/gmhmm.mod` file. The `eukcc` directory is found inside the initial output directory.
+The results of the **EukCC** tool are located in the  `eukcc/workfiles/gmes` file. The `eukcc` directory is found inside the initial output directory.
 
 The results of the **MAKER2** tool are located in the `maker/euk-ebin.maker.output/OUTPUT.all.maker.genemark.transcripts.fasta` file which contains the names and the sequences of the annotated proteins of the predicted genes . The maker directory is found  inside the `genemark` directory. 
 
