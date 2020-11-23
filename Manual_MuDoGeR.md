@@ -1,6 +1,6 @@
 
 # Module 1: Pre-Processing module
-## 1.1: Raw read QC module 
+## 1.1: Raw read QC  
 Note: For the removal of human contamination, the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the **MetaWrap** installation instructions. 
 
 For running the raw read QC module:
@@ -48,7 +48,7 @@ The k-mer results is used as function by a linear regression model which will gi
 Inside the output folder the user can find the `metaspades_prediction.csv` file which has the amount of memory that **metaSPAdes** utilizes for the assembly of those reads.
 
 
-## 1.3: Assembly module
+## 1.3: Assembly of good quality reads
 There are two possible readers for assembling: **MegaHIT** and **metaSPAdes**. Both readers are considered reliable. **MegaHIT** uses lower memory and is faster compared to **metaSPAdes**, but metaSPAdes produced assemblies of higher quality. In case of very large data sets, the usage of **MegaHIT** option flag is preferable:
 
 ```
@@ -85,22 +85,20 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 # Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the databases and programms required for the MetaWrap run are downloaded.The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
-## 2.1 
-The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module. The important parameters of minimum completion (-c) and maximum contamination(-x) for the CheckM quaity control are settled by default to 50% and 10% respectively for the recovery of bacterial contigs, while for archaeal contigs recovery are settled by default to 40% and 30% respectively.
+## 2.1 Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation (Parks, 2018), taxonomical classification and annotation of Prokaryotic bins
+The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module. The important parameters of minimum completion (-c) and maximum contamination (-x) for the CheckM quaity control are settled by default to 50% and 10% respectively for the recovery of bacterial contigs, while for archaeal contigs recovery are settled by default to 40% and 30% respectively.
 
-Run the prokayotic module with using MetaWrap:
+Run the prokayotic module:
 ``` 
-mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -ca 40 -xa 30 -cb 50 -xb 10 --checkM_filter -q 50
+mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -c 40 (archaea) 50 (bacteria) -x 30 (archaea) 10 (bacteria) --checkM_filter -q 50
 ```
 
 * The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of the prokaryotic module will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
-* The `path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads. 
-* The `-ca` indicates the minimum completeness for the archaeal bins
-* The `-cb` indicates the minimum completeness for the bacterial bins
-* The `-xa` indicates the minimum contamination for the archaeal bins
-* The `-xb` indicates the minimum completeness for the bacterial bins
+* The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads. 
+* The `-c` indicates the minimum completeness for archaeal and bacterial bins.
+* The `-x` indicates the minimum completeness for archaeal and bacterial bins.
 * The `-q` indicates lower limit of quality for the filtering for the optional step of quality control (optional).
 
 In the final output folder the user can find:
@@ -153,7 +151,7 @@ For more detailed explanation of the MetaWrap tool the user can study the ![meta
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
 ## 3.1 Recovery, quality estimation (Parks, 2018), taxonomical classification and host identification of Viral Metagenome-Assembled Genomes
-By using **(3.1)** the user will recover Viral Metagenome-Assembled Genomes. Also, by using **(3.1)** the user can estimate the quality of the viral contigs do taxonomic classification of the viruses. the taxonomy recovers on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated. Also, the user can estimate the quality (Parks, 2018) of the dereplicated viral contigs, do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the host of each virus. Before running the script, it is important for the user to decide about the parameters **minimum coverege(-c)** and **minimum identity (-i)** used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
+By using **(3.1)** the user will recover Viral Metagenome-Assembled Genomes. Also, by using **(3.1)** the user can estimate the quality of the viral contigs do taxonomic classification of the viruses. the taxonomy recovers on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated. Also, the user can estimate the quality (Parks, 2018) of the dereplicated viral contigs, do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the host of each virus. Before running the script, it is important for the user to decide about the parameters **minimum coverege (-c)** and **minimum identity (-i)** used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
 
 Running **(3.1)**:
 ``` 
