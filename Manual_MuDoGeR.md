@@ -85,7 +85,7 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 # Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the databases and programms required for the MetaWrap run are downloaded.The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
-## 2.1 Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation (Parks, 2018), taxonomical classification and annotation of Prokaryotic bins
+## 2.1 Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomical classification and annotation of Prokaryotic bins
 The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module. The important parameters of minimum completion (-c) and maximum contamination (-x) for the CheckM quaity control are settled by default to 50% and 10% respectively for the recovery of bacterial contigs, while for archaeal contigs recovery are settled by default to 40% and 30% respectively.
 
 Run the prokayotic module:
@@ -150,7 +150,7 @@ For more detailed explanation of the MetaWrap tool the user can study the ![meta
 # Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
-## 3.1 Recovery, quality estimation (Parks, 2018), taxonomical classification and host identification of Viral Metagenome-Assembled Genomes
+## 3.1 Recovery, quality estimation, taxonomical classification and host identification of Viral Metagenome-Assembled Genomes
 By using **(3.1)** the user will recover Viral Metagenome-Assembled Genomes. Also, by using **(3.1)** the user can estimate the quality of the viral contigs do taxonomic classification of the viruses. the taxonomy recovers on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated. Also, the user can estimate the quality (Parks, 2018) of the dereplicated viral contigs, do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the host of each virus. Before running the script, it is important for the user to decide about the parameters **minimum coverege (-c)** and **minimum identity (-i)** used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
 
 Running **(3.1)**:
@@ -197,7 +197,7 @@ The results of the host identification are located to `wish_folder/output_result
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
-## 4.1 Production of Eukaryotic bins
+## 4.1 Recovery of Eukaryotic assemblies and production of Eukaryotic bins
 In **(4.1)**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. 
 
 Running **(4.1)**:
