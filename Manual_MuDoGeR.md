@@ -34,7 +34,7 @@ Reads after read QC:
 
 
 ## 1.2: Resources calculation
-Before the assembly, it is possible to calculate unique k-mers in the pre-processed reads. (forward or reverse). The size of the k-mer that has to be investigated is usually 33 or 55. Both values have to be calculated. As the result of this task are the same using both forward and reverse reads, the user does not have to re-do the task for both of them. 
+Before the assembly, it is possible to calculate unique k-mers in the pre-processed reads(forward or reverse). The size of the k-mer that has to be investigated is usually 33 or 55. Both values have to be calculated. As the result of this task are the same using both forward and reverse reads, the user does not have to re-do the task for both of them. 
 
 For resource calculation the user can run:
 
