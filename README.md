@@ -5,7 +5,7 @@
  
  ![](https://github.com/mdsufz/MuDoGeR/blob/master/Mudoger_scheme_update.png)
 
-The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to help users to recover Metagenome-Assembled Genomes from dozens to hundreds of samples simultaneously. The MuDoGeR pipeline combines pipelines from different tools. The MuDoGeR pipeline starts with **Pre-Processing**, which is divided in 2 steps: The first one **Read Quality Control** feeds the **Assembly** and the assemblies will be used for the other pipelines. After **Pre-Processing** of the data, **MuDoGeR** is divided in 3 different branches: **Prokaryotic Genome Recovery**(using **MetaWrap**), **Viral Genome Recovery** (using **Virsorter**, **Virfinder** and **Vibrant**) and **Eukaryotic Genome Recovery** (using **EukRep**). Furthermore, a strategy was developed for mapping the relative abundance of the selected maps in each library. Also, a step was added for bin refinement of the selected Metagenome-Assembled Genomes from Prokaryoted, using **U-bin**.
+The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs (Parks, 2018)) from dozens to hundreds of samples simultaneously. The **MuDoGeR** pipeline combines pipelines from different tools. The **MuDoGeR** pipeline starts with **Pre-Processing**, which is divided in 2 steps: The first one, **Read Quality Control**, feeds the **Assembly** and the assemblies will be used for the other pipelines. After pre-processing of the data, **MuDoGeR** is divided in 3 different branches: **Recovery of Prokaryotic Metagenome-Assembled Genomes**(using **MetaWrap**), **Recovery of Viral Metagenome-Assembled Genomes** (using **Virsorter**, **Virfinder** and **Vibrant**) and **Recovery of Eukaryotic Metagenome-Assembled Genomes** (using **EukRep**). Furthermore, a strategy was developed for mapping the relative abundance of the selected maps in each library. Also, a step was added for bin_refinement of the selected Metagenome-Assembled Genomes from Prokaryotes, using **U-bin**.
  
 
 ## MuDoGeR Overview
@@ -26,7 +26,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
  
  The steps of Module 1 can summarized as following:
 
-* **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  metaWRAP-Read_qc.
+* **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  **metaWRAP-Read_qc**.
 * **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
 * **(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is first calculated. The k-mer sizes that will be investigated are 33 and 55.	
 * **(1.b.2)** The calculated k-mer is added to an equation that is used to estimate the amount of memory that **MetaSpades** utilizes to assemble the good quality reads. 
@@ -43,8 +43,8 @@ The different steps of the module 2 are shown in Figure 3 and excecuted with the
 * **(2.d)** Generation of quality matrix of genomic bins produced in **(2.b)** using **CheckM**. 
 * **(2.e)** Filtering of genomic bins produced in **(2.b)** with quality higher than 50. The user here can also change the size of the required completeness (optional step).      
 * **(2.f)** Annotation of genomic bins produced in  **(2.b)** with **PROKKA**.
-* **(2.g)** Selection of prokaryotic Metagenome-Assembled Genomes.
-* **(2.h)** Refinement of Metagenome-Assembled Genomes using **U-bin** (optional step).
+* **(2.g)** Selection of Prokaryotic Metagenome-Assembled Genomes.
+* **(2.h)** Refinement of Prokaryotic Metagenome-Assembled Genomes using **U-bin** (optional step).
 
 ###  (3) Recovery of Viral Metagenome-Assembled Genomes
 
@@ -61,23 +61,23 @@ The steps of the module 3  are shown in Figure 4 and excecuted in the scripts fi
 * **(3.g)** Checking the quality of the dereplicated contigs with **CheckV**
 * **(3.h)** Taxonomic classification of the dereplicated contigs with **vContact2** 
 * **(3.i)** Host identification of the dereplicated contigs using **WIsH** 
-* **(3.j)** Selection of viral Metagenome-Assembled Genomes.
+* **(3.j)** Selection of Viral Metagenome-Assembled Genomes.
 
-###  (4)  Recovery of Eukaryotic Metagenome-Assembled Genomes
+###  (4) Recovery of Eukaryotic Metagenome-Assembled Genomes
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Eykaryotic_module.png)
-**Figure 5.**  Module 4 of the MuDoGeR pipeline.
+**Figure 5.**  Module 4 of the **MuDoGeR** pipeline.
 
 The steps of the module 4  are shown in Figure 5 and can be excecuted with the scripts found in ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery)
 
 * **(4.a)** Classification of Eukaryotic assemblies and removal of prokaryotic assemblies with **EukRep**
-* **(4.b)** Use of **CONCOCT** for binning the Eukaryotic assemblies  
-* **(4.c)** Filtering the Eukaryotic bins produced by **CONCOCT** by size. Bins with size <= 2.5 Mb are removed
-* **(4.d)** In the filtered bins produced in **(4.c)**, genes are predicted by the trained **GeneMark-ES** model   
-* **(4.e)** **MAKER2** annotates the predicted genes produced by **GeneMark-ES** 
-* **(4.f)** **BUSCO** is applied to the annotated genes from for **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs
-* **(4.g)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **(4.c)** 
-* **(4.h)** Selection of eukaryotic MAGs
+* **(4.b)** Use of **CONCOCT** for binning the Eukaryotic assemblies.  
+* **(4.c)** Filtering the Eukaryotic bins produced by **CONCOCT** by size. Bins with size <= 2.5 Mb are removed.
+* **(4.d)** In the filtered bins produced in **(4.c)**, genes are predicted by the trained **GeneMark-ES** model.   
+* **(4.e)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
+* **(4.f)** **BUSCO** is applied to the annotated genes from for **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
+* **(4.g)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **(4.c)**.
+* **(4.h)** Selection of Eukaryotic Metagenome-Assembled Genomes.
 
 
 
@@ -91,26 +91,26 @@ The steps of the module 4  are shown in Figure 5 and can be excecuted with the s
 
 ## Prokaryotic module
 ### MetaWRAP
-The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md)
+The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md).
 ### uBin
-The instructions for the uBin installation can be found at ![uBin_Manual](https://github.com/ProbstLab/uBin-helperscripts.)
+The instructions for the uBin installation can be found at ![uBin_Manual](https://github.com/ProbstLab/uBin-helperscripts.).
 
 ## Viral module
 
 ### VirFinder
-The instructions for Virfinder installation can be found at ![VirFinder_Manual](https://github.com/jessieren/VirFinder)
+The instructions for Virfinder installation can be found at ![VirFinder_Manual](https://github.com/jessieren/VirFinder).
 ### VirSorter
-The instructions for VirSorter installation can be found at ![VirSorter_Manual](https://github.com/simroux/VirSorter) 
+The instructions for VirSorter installation can be found at ![VirSorter_Manual](https://github.com/simroux/VirSorter). 
 ### VIBRANT 
-The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](https://github.com/AnantharamanLab/VIBRANT) 
+The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](https://github.com/AnantharamanLab/VIBRANT). 
 ### vContact
-The instructions for vContact installation can be found at ![vContact_Manual](https://github.com/geeklhem/vcontact/blob/master/doc/source/tutorial.rst)
+The instructions for vContact installation can be found at ![vContact_Manual](https://github.com/geeklhem/vcontact/blob/master/doc/source/tutorial.rst).
 
 ## Eukaryotic module
 ### EukRep
-The instructions for EukRep installation can be found at ![EukRep_Manual](https://github.com/patrickwest/EukRep_Pipeline ) 
+The instructions for EukRep installation can be found at ![EukRep_Manual](https://github.com/patrickwest/EukRep_Pipeline ). 
 ### EukCC
-The instructions for EukCC installation tool can be found at ![EukCC_Manual](https://github.com/Finn-Lab/EukCC)
+The instructions for EukCC installation tool can be found at ![EukCC_Manual](https://github.com/Finn-Lab/EukCC).
 
 
 
