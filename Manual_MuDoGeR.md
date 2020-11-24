@@ -1,7 +1,7 @@
 
 # Module 1: Pre-Processing module
 ## 1.1: Raw read QC  
-Note: For the removal of human contamination, the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the **MetaWrap** installation instructions. 
+Note: For the removal of human contamination, the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the **metaWrap** installation instructions. 
 
 For running the raw read QC module:
 
@@ -34,7 +34,7 @@ Reads after read QC:
 
 
 ## 1.2: Resources calculation
-Before the assembly, it is possible to calculate unique k-mers in the pre-processed reads(forward or reverse). The size of the k-mer that has to be investigated is usually 33 or 55. Both values have to be calculated. As the result of this task are the same using both forward and reverse reads, the user does not have to re-do the task for both of them. 
+Before the assembly, it is possible to calculate unique k-mers in the pre-processed reads (forward or reverse). The size of the k-mer that has to be investigated is usually 33 or 55. Both values have to be calculated. As the result of this task is the same using both forward and reverse reads, the user does not have to re-do the task for both of them. 
 
 For resource calculation the user can run:
 
@@ -49,13 +49,13 @@ Inside the output folder the user can find the `metaspades_prediction.csv` file 
 
 
 ## 1.3: Assembly of good quality reads
-There are two possible readers for assembling: **MegaHiT** and **metaSPAdes**. Both readers are considered reliable. **MegaHiT** uses lower memory and is faster compared to **metaSPAdes**, but metaSPAdes produced assemblies of higher quality. In case of very large data sets, the usage of **MegaHiT** option flag is preferable:
+There are two possible readers for assembling: **MegaHiT** and **metaSPAdes**. Both readers are considered reliable. **MegaHiT** uses lower memory and is faster compared to **metaSPAdes**, but metaSPAdes produced assemblies are of higher quality. In case of very large data sets, the usage of **MegaHiT** option flag is preferable:
 
 ```
 metawrap assembly module -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-megahit -o /path/to/assembled_reads/output/directory 
 ```
 
-In any other case it is preferable to use **metaSPAdes** option flag as it produces higher quality assemblies:
+In any other case it is preferable to use **metaSPAdes** option flag as it produces assemblies of higher quality:
 
 ```
 metawrap assembly module -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
@@ -65,7 +65,7 @@ For both flags:
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads.
 * The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads. 
 * The `/path/to/assembled_reads/output/directory` indicates the path to the output directory where the assemblies will be saved.
-* The `-m` the amount of memory in gigabytes that the assembly process needs. 
+* The `-m` indicates the amount of memory in gigabytes that the assembly process needs. 
 * The `-t` indicates the number of threads to be used for this process.
 
 After the end of the **metaSPAdes** assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the `assembly_report.html` file with the QUAST assembly report of the assembly module. 
@@ -86,7 +86,7 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 Note: Make sure that all the databases and programms required for the MetaWrap run are downloaded.The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
 ## 2.1 Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomical classification and annotation of Prokaryotic bins
-The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every MetaWrap module. The important parameters of minimum completion (-c) and maximum contamination (-x) for the CheckM quaity control are settled by default to 50% and 10% respectively for the recovery of bacterial contigs, while for archaeal contigs recovery are settled by default to 40% and 30% respectively.
+The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every **metaWrap** module. The important parameters of minimum completeness (-c) and maximum contamination (-x) in the bin_refinement task, are settled by default to 50% and 10% respectively for the bacterial bins, while for the archaeal bins are settled by default to 40% and 30% respectively.
 
 Run the prokayotic module:
 ``` 
@@ -98,7 +98,7 @@ mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/as
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads. 
 * The `-c` indicates the minimum completeness for archaeal and bacterial bins.
-* The `-x` indicates the minimum completeness for archaeal and bacterial bins.
+* The `-x` indicates the maximum contamination for archaeal and bacterial bins.
 * The `--q` indicates lower limit of quality for the filtering for the optional step of quality control (optional).
 
 In the final output folder the user can find:
@@ -145,13 +145,13 @@ NODE_2_length_360965	Prodigal:2.6	CDS	2816	3616	.	-	0ID=EDFJOLLJ_00004;eC_number
 NODE_2_length_360965	Prodigal:2.6	CDS	3638	4510	.	-	0ID=EDFJOLLJ_00005;eC_number=4.3.3.7;Name=dapA;gene=dapA;inference=ab initio prediction:Prodigal:2.6,similar to AA sequence:UniProtKB:O67216;locus_tag=EDFJOLLJ_00005;product=4-hydroxy-tetrahydrodipicolinate synthase
 ```
 
-For more detailed explanation of the MetaWrap tool the user can study the ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) file. 
+For more detailed explanation of the **metaWrap** tool the user can study the ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) file. 
 
 # Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
 ## 3.1 Recovery, quality estimation, taxonomical classification and host identification of Viral Metagenome-Assembled Genomes
-By using **(3.1)** the user will recover Viral Metagenome-Assembled Genomes. Also, by using **(3.1)** the user can estimate the quality of the viral contigs do taxonomic classification of the viruses. the taxonomy recovers on the assembly fasta file, leads to the identification and recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated. Also, the user can estimate the quality (Parks, 2018) of the dereplicated viral contigs, do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the host of each virus. Before running the script, it is important for the user to decide about the parameters **minimum coverege (-c)** and **minimum identity (-i)** used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
+In **(3.1)**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT** are applied to the assembly fasta file, for the recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated. Also, the user can estimate the quality (Parks, 2018) of the dereplicated viral contigs and do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the prokaryotic host of each virus. Before running the script, it is important for the user to decide about the parameters of minimum coverege (-c) and minimum identity (-i) used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
 
 Running **(3.1)**:
 ``` 
@@ -160,8 +160,8 @@ mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file -c 70
 * The `/path/to/output/folder` indicates the path to the output directory where the output folders of the viral module will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/prokaryotic_hosts/folder` indicates the path to the directory that contains the genomes of the possible prokaryotic hosts (optional).
-* The `-c` indicates that the default value of the minimum coverege in the de-replication step is 70.
-* The `-i` indicates that the default value of the minimum identity in the de-replication step is 95.
+* The `-c` indicates the minimum coverege.
+* The `-i` indicates the minimum identity.
 
 In the output directory five folders are present. The `initial_recovey_folder` contains the results from the independent recovery of each tool. The `dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and `quality_folder` the user can find the results of the taxonomic classification utlizing **vContact2** tool and quality control using **CheckV** tool, respectively. In case the user chooses to use the **WiSH** tool, a fifth folder will be present, called `wish_folder`. This folder will contain the results of the host identification analysis.
 
