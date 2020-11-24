@@ -43,7 +43,7 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
 * **(2.e)** Filtering of genomic bins produced in **(2.d)**, by bin quality (Parks (2018)). The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
 * **(2.f)** Annotation of genomic bins produced in **(2.b)** with **PROKKA**.
 * **(2.g)** Selection of Prokaryotic Metagenome-Assembled Genomes.
-* **(2.h)** Refinement of Prokaryotic Metagenome-Assembled Genomes using **U-bin** (optional step).
+* **(2.h)** Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **U-bin** (optional step).
 
 ###  (3) Recovery of Viral Metagenome-Assembled Genomes
 
