@@ -1,5 +1,3 @@
-# MuDoGeR
-
  # Multi-domain Genome Recovery (MuDoGeR)
  
  
@@ -22,19 +20,19 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 
 **Figure 2.** Module 1 of the MuDoGeR pipeline.
 
- The steps of Module 1 are shown in Figure 2 and can be excecuted with the scripts find in the following hyperlink: ![Pre-Processing module](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing-module)
+ The steps of Module 1 are shown in Figure 2 and can be excecuted with the scripts find in the following hyperlink: ![Pre-Processing module](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing-module).
  
  The steps of Module 1 can be summarized as following:
 
 * **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  **metaWRAP-Read_qc**.
 * **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
 	* **(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is calculated. The k-mer sizes that will be investigated are 33 and 55.  
-	* **(1.b.2)** The calculated k-mer is added to an equation that is used to estimate the amount of memory that **MetaSpades** utilizes to assemble the good quality reads.
-* **(1.c)** Assembly of the good quality reads with **MetaSpades**.
+	* **(1.b.2)** The calculated k-mer is added to an equation that is used to estimate the amount of memory that **metaSPades** utilizes to assemble the good quality reads.
+* **(1.c)** Assembly of the good quality reads with **metaSPades**.
 
 ### (2) Recovery of Prokaryotic Metagenome-Assembled Genomes
 
-The different steps of the module 2 are shown in Figure 3 and excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-pipelines-for-prokaryotic-genome-recovery).
+The different steps of the Module 2 are shown in Figure 3 and excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-pipelines-for-prokaryotic-genome-recovery).
 
  The steps of Module 2 can be summarized as following:
 
@@ -42,7 +40,7 @@ The different steps of the module 2 are shown in Figure 3 and excecuted with the
 * **(2.b)** Dereplication of bins for prior bin_refinement. The completeness/contamination parameters have been set to 50%/10% for Bacteria and 40%/30% for Archaea. 
 * **(2.c)** Taxonomic classification of the genomic bins produced in **(2.b)** using **GTDB-Tk**.
 * **(2.d)** Generation of quality matrix of genomic bins produced in **(2.b)** using **CheckM**. 
-* **(2.e)** Filtering of genomic bins produced in **(2.d)** by bin quality (Parks (2018)). The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
+* **(2.e)** Filtering of genomic bins produced in **(2.d)**, by bin quality (Parks (2018)). The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
 * **(2.f)** Annotation of genomic bins produced in **(2.b)** with **PROKKA**.
 * **(2.g)** Selection of Prokaryotic Metagenome-Assembled Genomes.
 * **(2.h)** Refinement of Prokaryotic Metagenome-Assembled Genomes using **U-bin** (optional step).
@@ -52,26 +50,26 @@ The different steps of the module 2 are shown in Figure 3 and excecuted with the
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/VIral_pipeline_.png)
 **Figure 4.** Module 3 of the MuDoGeR pipeline.
 
-The steps of the module 3  are shown in Figure 4 and excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-pipelines-for-viral-genomes-recovery)
+The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-pipelines-for-viral-genomes-recovery).
 
  The steps of Module 3 can be summarized as following:
 
 * **(3.a)** Recovery of viral genome metagenomes using **VirFinder**, **VirSorter** and **VIBRANT**.
 * **(3.b)** Filtering of the recovered genomes. From the results of **VirFinder**, the sequences with p-value > 0.01 and/or length < 1000 bp are removed. From the results of **VirSorter**, only the sequences of categories 1 and 2 are kept. From the results of **VIBRANT**, the combined assemblies of the phages are kept.
 * **(3.c)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
-* **(3.e)** Assembly of the headers in the file produced in **(3.c)** with the respective sequences from the assembly file produced by **MetaSpades** in **(1.3)**, for the generation of a fasta file.
-* **(3.f)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
-* **(3.g)** Checking the quality of the dereplicated contigs with **CheckV**.
-* **(3.h)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
-* **(3.i)** Host identification of the dereplicated contigs using **WIsH**. 
-* **(3.j)** Selection of Viral Metagenome-Assembled Genomes.
+* **(3.d)** Assembly of the headers in the file produced in **(3.c)** with the respective sequences from the assembly file produced by **metaSPades** in **(1.3)**, for the generation of a fasta file.
+* **(3.e)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
+* **(3.f)** Checking the quality of the dereplicated contigs with **CheckV**.
+* **(3.g)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
+* **(3.h)** Host identification of the dereplicated contigs using **WIsH**. 
+* **(3.i)** Selection of Viral Metagenome-Assembled Genomes.
 
 ###  (4) Recovery of Eukaryotic Metagenome-Assembled Genomes
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Eykaryotic_module.png)
 **Figure 5.**  Module 4 of the **MuDoGeR** pipeline.
 
-The steps of the module 4  are shown in Figure 5 and can be excecuted with the scripts found in ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery)
+The steps of the Module 4  are shown in Figure 5 and can be excecuted with the scripts found in ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery).
 
  The steps of Module 4 can be summarized as following:
 
