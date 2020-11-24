@@ -75,7 +75,7 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
 
 * **(4.a)** Classification of Eukaryotic assemblies and removal of prokaryotic assemblies with **EukRep**.
 * **(4.b)** Use of **CONCOCT** for binning the Eukaryotic assemblies.  
-* **(4.c)** Filtering the Eukaryotic bins, produced from **CONCOCT**, by size. Bins with size <= 2.5 Mb are removed.
+* **(4.c)** Filtering the Eukaryotic bins, produced from **CONCOCT**, by size. Bins with size < 2.5 Mb are removed.
 * **(4.d)** In the filtered bins produced in **(4.c)**, genes are predicted by the trained **GeneMark-EV** model.
 * **(4.e)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **(4.c)**.
 * **(4.f)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
