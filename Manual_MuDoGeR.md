@@ -207,7 +207,7 @@ The results of the host identification are located to `wish_folder/output_result
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
 
 ## 4.1 Recovery of Eukaryotic assemblies and production of Eukaryotic bins
-In **(4.1)**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. 
+In **(4.1)**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. The bins are filtered by size. Bins with size < 2.5 Mb are removed.
 
 Running **(4.1)**:
 
@@ -216,14 +216,14 @@ mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/proka
 ```
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/output/folder` indicates the path to the output directory where the output folders of the **(4.1)** will be saved.
-* The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblis will fall after the separation of eukaryotic and prokaryotic assemblies with **EukRep**. 
+* The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblies will fall after the separation of eukaryotic and prokaryotic assemblies with **EukRep**. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads. 
 
-In the output of the first step the user can find `euk_concoct_bins` folder which contains the bins produced by **CONCOCT** with size >= 2.5 Mb.
+In the output of the first step the user can find `euk_concoct_bins` folder which contains the eukaryotic bins after the filtering.
 
 ## 4.2 Completeness/contamination estimation and annotation of Eukaryotic bins
-In **(4.2)**, the completeness and contamination of the Eukaryotic bins produced in **(4.1)** are estimated. Additionally, the annotation of these bins is taking place. **(4.2)** starts with **GeneMark-EV** tool, used for the gene prediction in the Eukaryotic bins. As input the user can use any of the bins produced in the previous step. The rest of the tools used in **(4.2)** are **EukCC** (bin contamination estimation), **MAKER2** (annotation of the bin) and **BUSCO** for (bin completeness estimation). 
+In **(4.2)**, the completeness and contamination of the Eukaryotic bins produced in **(4.1)** are estimated. Additionally, the annotation of these bins is taking place. **(4.2)** starts with **GeneMark-EV** tool, used for the gene prediction in the Eukaryotic bins. As input the user can use any of the bins produced in the previous step. The rest of the tools used in **(4.2)** are **EukCC** (bin contamination estimation), **MAKER2** (annotation of the bin) and **BUSCO** (bin completeness estimation). 
 
 Running **(4.2)**:
 
