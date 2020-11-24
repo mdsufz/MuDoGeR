@@ -201,7 +201,16 @@ head -5 taxonomy/v-contact_output/genome_by_genome_overview.csv
 3,Achromobacter~phage~phiAxp-1,Caudovirales,Siphoviridae,Unassigned,1_0,Clustered,12,VC_1_0,12,0.7098,1.0,0.7098,4,1,1,1.0
 ``` 
 
-The results of the host identification are located to `wish_folder/output_results/prediction.list` file. 
+The results of the host identification are located to `wish_folder/output_results/prediction.list` file. Running:
+
+```
+head -5 wish_folder/output_results/prediction.list
+"Phage"	"Best hit among provided hosts"	"LogLikelihood"	"p-value if null parameters provided"
+viral-particle-260	ERR1341880_bacbin.1	-1.31937	NA
+viral-particle-216	ERR1341880_bacbin.1	-1.33232	NA
+viral-particle-55	LS08Hbin.1	-1.34156	NA
+viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
+``` 
 
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
