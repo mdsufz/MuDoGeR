@@ -244,7 +244,7 @@ mudoger eukaryotic module 2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/outp
 
 After the end of the second step the output folder contains the results from **MAKER2**, **BUSCO** and **EukCC** tools:
 
-The results of the **EukCC** tool are located in the `eukcc/workfiles/gmes` file. The `eukcc` directory is found inside the initial output directory.
+The results of the **EukCC** tool are located in the `eukcc/eukcc.csv` file. The `eukcc` directory is found inside the initial output directory.
 
 The results of the **MAKER2** tool are located in the `maker/euk-ebin.maker.output/OUTPUT.all.maker.genemark.transcripts.fasta` file which contains the names and the sequences of the annotated proteins of the predicted genes . The maker directory is found  inside the `genemark` directory. 
 
