@@ -90,7 +90,7 @@ The run of the prokaryotic module leads to the recovery of prokaryotic genomes f
 
 Run the prokayotic module:
 ``` 
-mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -c 40 (archaea) 50 (bacteria) -x 30 (archaea) 10 (bacteria) --checkM_filter -q 50
+mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -c 40 (archaea) 50 (bacteria) -x 30 (archaea) 10 (bacteria) --q 50
 ```
 
 * The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of the prokaryotic module will be written.
@@ -99,7 +99,7 @@ mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/as
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads. 
 * The `-c` indicates the minimum completeness for archaeal and bacterial bins.
 * The `-x` indicates the minimum completeness for archaeal and bacterial bins.
-* The `-q` indicates lower limit of quality for the filtering for the optional step of quality control (optional).
+* The `--q` indicates lower limit of quality for the filtering for the optional step of quality control (optional).
 
 In the final output folder the user can find:
 
@@ -155,7 +155,7 @@ By using **(3.1)** the user will recover Viral Metagenome-Assembled Genomes. Als
 
 Running **(3.1)**:
 ``` 
-mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file -c 70 -i 95 --wish --g /path/to/prokaryotic_hosts/folder
+mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file -c 70 -i 95 --g /path/to/prokaryotic_hosts/folder
 ```
 * The `/path/to/output/folder` indicates the path to the output directory where the output folders of the viral module will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
