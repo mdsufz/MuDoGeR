@@ -132,7 +132,7 @@ The instructions for EukCC installation tool can be found at ![EukCC_Manual](htt
 
 A more detailed tutorial for the MuDoGeR can be found in ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file. In this file, instructions and examples can be found.
 
-After all dependencies are in position then the MuDoGeR is ready to run. The run of MuDoGeR is easy and there is a main script that can wrap around all the MuDoGeR's individual module. The individual modules can be called independently.
+After all dependencies are in position then the MuDoGeR is ready to run. The run of **MuDoGeR** is easy and there is a main script that can wrap around all the **MuDoGeR**'s individual module. The individual modules can be called independently.
 
 ```
 mudoger -h
@@ -142,9 +142,9 @@ mudoger -h
 	read_qc		Raw read QC module
 	resources	Calculation of memory required by the MetaSpades, for assembling the good quality reads 
 	assembly	Assembly module
-	prokaryotic	Recovery of Prokaryotic genomes using metaWRAP module
-	viral		Recovery of Viral genomes using VirFinder, VirSorter, VIBRANT module
-	eukaryotic 	Recovery of Eukaryotic genomes using EukRep module
+	prokaryotic	Recovery of Prokaryotic etagenome-Assembled Genomes using metaWRAP module
+	viral		Recovery of Viral Metagenome-Assembled Genomes using VirFinder, VirSorter, VIBRANT module
+	eukaryotic 	Recovery of Eukaryotic Metagenome-Assembled Genomes using EukRep module
 		
 	--help | -h		show this help message
 	--version | -v	show MuDoGeR version
