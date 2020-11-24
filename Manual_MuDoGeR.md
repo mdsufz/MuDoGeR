@@ -44,7 +44,7 @@ Resources -i /path/to/final_pure_reads_1.fastq -l /path/to/output/folder
  * The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads. 
  * The `/path/to/output/folder` indicates the path to the folder with resource calculation results.
  
-The k-mer results is used as function by a linear regression model which will give the amount of memory necessary for assembly of reads by **metaSPAdes**. 
+The k-mer results is used as function by a linear regression model which will give the amount of memory necessary for assembling the reads by **metaSPAdes**. 
 Inside the output folder the user can find the `metaspades_prediction.csv` file which has the amount of memory that **metaSPAdes** utilizes for the assembly of those reads.
 
 
