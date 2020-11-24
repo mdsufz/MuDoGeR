@@ -8,8 +8,8 @@ For running the raw read QC module:
 ``` 
 mudoger read_qc module --skip-bmtagger -1 /path/to/raw_reads_1.fasta -2 /path/to/raw_reads_2.fasta  -t 24 -o /path/to/pure_reads/output/directory
 ```
-* The `/path/to/raw_reads_1.fasta` indicates the path to file of the forward reads of the used library.
-* The `/path/to/raw_reads_2.fasta` indicates the path to file of the reversed reads of the used library.
+* The `/path/to/raw_reads_1.fasta` indicates the path to the file of the forward reads of the used library.
+* The `/path/to/raw_reads_2.fasta` indicates the path to the file of the reversed reads of the used library.
 * The `/path/to/pure_reads/output/directory` indicates the path to the output directory where the clean reads of the library will be saved.
 * The `-t` indicates the number of threads to be used for read quality control.
 
