@@ -6,7 +6,7 @@ Note: For the removal of human contamination, the user will need the bmtagger hg
 For running the raw read QC module:
 
 ``` 
-mudoger read_qc module --skip-bmtagger -1 /path/to/raw_reads_1.fasta -2 /path/to/raw_reads_2.fasta  -t 24 -o /path/to/pure_reads/output/directory
+mudoger read_qc --skip-bmtagger -1 /path/to/raw_reads_1.fasta -2 /path/to/raw_reads_2.fasta  -t 24 -o /path/to/pure_reads/output/directory
 ```
 * The `/path/to/raw_reads_1.fasta` indicates the path to the file of the forward reads of the used library.
 * The `/path/to/raw_reads_2.fasta` indicates the path to the file of the reversed reads of the used library.
@@ -39,7 +39,7 @@ Before the assembly, it is possible to calculate unique k-mers in the pre-proces
 For resource calculation the user can run:
 
 ``` 
-Resources module -i /path/to/final_pure_reads_1.fastq -l /path/to/output/folder 
+Resources -i /path/to/final_pure_reads_1.fastq -l /path/to/output/folder 
 ```
  * The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads. 
  * The `/path/to/output/folder` indicates the path to the folder with resource calculation results.
@@ -52,13 +52,13 @@ Inside the output folder the user can find the `metaspades_prediction.csv` file 
 There are two possible readers for assembling: **MegaHiT** and **metaSPAdes**. Both readers are considered reliable. **MegaHiT** uses lower memory and is faster compared to **metaSPAdes**, but metaSPAdes produced assemblies are of higher quality. In case of very large data sets, the usage of **MegaHiT** option flag is preferable:
 
 ```
-metawrap assembly module -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-megahit -o /path/to/assembled_reads/output/directory 
+metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-megahit -o /path/to/assembled_reads/output/directory 
 ```
 
 In any other case it is preferable to use **metaSPAdes** option flag as it produces assemblies of higher quality:
 
 ```
-metawrap assembly module -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
+metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
 ```
 For both flags:
 
