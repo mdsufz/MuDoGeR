@@ -190,7 +190,16 @@ NODE_7_length_8843_cov_4.647815,8843,1.0,10,5,0,Low-quality,Genome-fragment,15.0
 NODE_9_length_8285_cov_3.135358,8285,1.0,14,1,0,Not-determined,Genome-fragment,NA,NA,0.0,No,No
 NODE_21_length_5441_cov_6.763832,5441,1.0,8,8,0,Medium-quality,Genome-fragment,89.8,AAI-based,0.0,No,55-bp-DTR
 ```
-In the `taxonomy_folder` the user can find  an overview of the viral clusters in `taxonomy/viral_cluster_overview.csv` file.
+In the `taxonomy_folder` the user can find the output inside the `taxonomy/v-contact_output/genome_by_genome_overview.csv` file. Running:
+
+``` 
+head -5 taxonomy/v-contact_output/genome_by_genome_overview.csv
+,Genome,Order,Family,Genus,VC,VC Status,Size,VC Subcluster,VC Subcluster Size,Quality,Adj P-value,Topology Confidence Score,Genera in VC,Families in VC,Orders in VC,Genus Confidence Score
+0,Achromobacter~phage~83-24,Caudovirales,Siphoviridae,Jwxvirus,0_0,Clustered,2,VC_0_0,2,0.193,0.95227493,0.1838,1,1,1,1.0
+1,Achromobacter~phage~JWAlpha,Caudovirales,Podoviridae,Jwalphavirus,7_1,Clustered,11,VC_7_1,11,0.4917,1.0,0.4917,3,1,1,0.9636
+2,Achromobacter~phage~JWX,Caudovirales,Siphoviridae,Jwxvirus,0_0,Clustered,2,VC_0_0,2,0.193,0.95227493,0.1838,1,1,1,1.0
+3,Achromobacter~phage~phiAxp-1,Caudovirales,Siphoviridae,Unassigned,1_0,Clustered,12,VC_1_0,12,0.7098,1.0,0.7098,4,1,1,1.0
+``` 
 
 The results of the host identification are located to `wish_folder/output_results/prediction.list` file. 
 
