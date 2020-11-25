@@ -3,7 +3,7 @@
  
  ![](https://github.com/mdsufz/MuDoGeR/blob/master/Mudoger_scheme_update.png)
 
-The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs (Parks, 2018)) from dozens to hundreds of samples simultaneously. The **MuDoGeR** pipeline combines pipelines from different tools. The **MuDoGeR** pipeline starts with **Pre-Processing**, which is divided in 2 steps: The first one, **Read Quality Control**, feeds the **Assembly** and the assemblies will be used for the other pipelines. After pre-processing of the data, **MuDoGeR** is divided in 3 different branches: **Recovery of Prokaryotic Metagenome-Assembled Genomes** (using **MetaWrap**), **Recovery of Viral Metagenome-Assembled Genomes** (using **VirSorter**, **VirFinder** and **VIBRANT**) and **Recovery of Eukaryotic Metagenome-Assembled Genomes** (using **EukRep**). Furthermore, a strategy was developed for mapping the relative abundance of the selected maps in each library. Also, a step was added for bin_refinement of the selected Metagenome-Assembled Genomes from Prokaryotes, using **U-bin**.
+The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs (Parks, 2018)) from dozens to hundreds of samples simultaneously. The **MuDoGeR** pipeline combines pipelines from different tools. The **MuDoGeR** pipeline starts with **Pre-Processing**, which is divided in 2 steps: The first one, **Read Quality Control**, feeds the **Assembly** and the assemblies will be used for the other pipelines. After pre-processing of the data, **MuDoGeR** is divided in 3 different branches: **Recovery of Prokaryotic Metagenome-Assembled Genomes** (using **MetaWrap**), **Recovery of Viral Metagenome-Assembled Genomes** (using **VirSorter**, **VirFinder** and **VIBRANT**) and **Recovery of Eukaryotic Metagenome-Assembled Genomes** (using **EukRep**). Furthermore, a strategy was developed for mapping the relative abundance of the selected maps in each library. Also, a step was added for bin_refinement of the selected Metagenome-Assembled Genomes from Prokaryotes, using **DAS Tool**  **U-bin**.
  
 
 ## MuDoGeR Overview
@@ -43,7 +43,7 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
 * **(2.e)** Filtering of genomic bins produced in **(2.d)**, by bin quality (Parks (2018)). The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
 * **(2.f)** Annotation of genomic bins produced in **(2.b)** with **PROKKA**.
 * **(2.g)** Selection of Prokaryotic Metagenome-Assembled Genomes.
-* **(2.h)** Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **U-bin** (optional step).
+* **(2.h)** Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin** (optional step).
 
 ###  (3) Recovery of Viral Metagenome-Assembled Genomes
 
