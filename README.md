@@ -14,7 +14,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 * Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: ![System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
 * The simplified usage of the **MuDoGeR** can be found in the following hyperlink: ![Simplified usage of the MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#using-mudoger).
 
-### (1) Pre-Processing
+### Module 1: Pre-Processing 
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Preprocess_module_update.png)
 
@@ -26,8 +26,8 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 
 * **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  **metaWRAP**-Read_qc.
 * **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
-	* **(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is calculated. The k-mer sizes that will be investigated are 33 and 55.  
-	* **(1.b.2)** The calculated k-mer is added to an equation that is used to estimate the amount of memory that **metaSPades** utilizes to assemble the good quality reads.
+    * **(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is calculated. The k-mer sizes that will be investigated are 33 and 55. The results of both k-mer 33 and 55 are combined in a single file  
+    * **(1.b.2)** The calculated k-mer is added to an equation that is used to estimate the amount of memory that **metaSPades** utilizes to assemble the good quality reads.
 * **(1.c)** Assembly of the good quality reads with **metaSPades**.
 
 ### (2) Recovery of Prokaryotic Metagenome-Assembled Genomes
@@ -35,14 +35,16 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
 The different steps of the Module 2 are shown in Figure 3 and excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-pipelines-for-prokaryotic-genome-recovery).
 
  The steps of Module 2 can be summarized as following:
+* **(2.a.)**
+     * **(2.a.1)** Binning with **MaxBin2**, **metaBAT2**, and **CONCOCT**. 
+     * **(2.a.2)** Dereplication of bins for prior bin_refinement. The completeness/contamination parameters have been set to 50%/10% for Bacteria and 40%/30% for Archaea. 
+     * **(2.a.3)** Taxonomic classification of the genomic bins produced in **(2.a.2)** using **GTDB-Tk**.
+     * **(2.a.4)** Generation of quality matrix of genomic bins produced in **(2.a.2)** using **CheckM**. 
+     * **(2.a.5)** Filtering of genomic bins produced in **(2.a.4)**, by bin quality (completeness – 5×contamination (Parks, 2018)). The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
+     * **(2.a.6)** Annotation of genomic bins produced in **(2.a.2)** with **PROKKA**.
 
-* **(2.a)** Binning with **MaxBin2**, **metaBAT2**, and **CONCOCT**. 
-* **(2.b)** Dereplication of bins for prior bin_refinement. The completeness/contamination parameters have been set to 50%/10% for Bacteria and 40%/30% for Archaea. 
-* **(2.c)** Taxonomic classification of the genomic bins produced in **(2.b)** using **GTDB-Tk**.
-* **(2.d)** Generation of quality matrix of genomic bins produced in **(2.b)** using **CheckM**. 
-* **(2.e)** Filtering of genomic bins produced in **(2.d)**, by bin quality (completeness – 5×contamination (Parks, 2018)). The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
-* **(2.f)** Annotation of genomic bins produced in **(2.b)** with **PROKKA**.
-* **(2.g)** Selection of Prokaryotic Metagenome-Assembled Genomes.
+
+* **(2.)** Selection of Prokaryotic Metagenome-Assembled Genomes.
 * **(2.h)** Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin** (optional step).
 
 ###  (3) Recovery of Viral Metagenome-Assembled Genomes
