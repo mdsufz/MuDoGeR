@@ -36,14 +36,13 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
 
  The steps of Module 2 can be summarized as following:
  
-* **(2.a.)**: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomical classification and annotation of Prokaryotic bins
+* **2.a**: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomical classification and annotation of Prokaryotic bins
      * **(2.a.1)** Binning with **MaxBin2**, **metaBAT2**, and **CONCOCT**. 
      * **(2.a.2)** Dereplication of bins for prior bin_refinement. The completeness/contamination parameters have been set to 50%/10% for Bacteria and 40%/30% for Archaea. 
      * **(2.a.3)** Taxonomic classification of the genomic bins produced in **(2.a.2)** using **GTDB-Tk**.
      * **(2.a.4)** Generation of quality matrix of genomic bins produced in **(2.a.2)** using **CheckM**. 
      * **(2.a.5)** Filtering of genomic bins produced in **(2.a.4)**, by bin quality (completeness – 5×contamination (Parks, 2018)). The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
      * **(2.a.6)** Annotation of genomic bins produced in **(2.a.2)** with **PROKKA**.
-
 * **2.b**: Selection of Prokaryotic Metagenome-Assembled Genomes, uBin-refinement and relative abundance.
     * **(2.b.1)** Selection of Prokaryotic Metagenome-Assembled Genomes.
     * **(2.b.2)** Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin** (optional step).
@@ -67,7 +66,7 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
     * **(3.a.6)** Checking the quality (completeness – 5×contamination (Parks, 2018) of the dereplicated contigs with **CheckV**.
     * **(3.a.7)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
     * **(3.a.8)** Host identification of the dereplicated contigs using **WIsH**.    
-* **(3.b)**: Selection of Viral Metagenome-Assembled Genomes, uBin-refinement and relative abundance.
+* **3.b**: Selection of Viral Metagenome-Assembled Genomes and relative abundance.
     * **(3.b.1)** Selection of Viral Metagenome-Assembled Genomes.
     * **(3.b.2)** Construction of relative abundance table for Viral Metagenome-Assembled Genomes.
 
@@ -89,8 +88,8 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
     * **(4.b.3)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
     * **(4.b.4)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
 * **4.c**: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance.
-    * **(4.c.1)**
-    * **(4.c.2)**
+    * **(4.c.1)** Selection of Eukaryotic Metagenome-Assembled Genomes
+    * **(4.c.2)** Construction of relative abundance table
 
 # System requirements
 (not done yet)
