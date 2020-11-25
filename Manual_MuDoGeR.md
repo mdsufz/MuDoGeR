@@ -163,7 +163,7 @@ mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file -c 70
 * The `-c` indicates the minimum coverege.
 * The `-i` indicates the minimum identity.
 
-In the output directory five folders are present. The `initial_recovey_folder` contains the results from the independent recovery of each tool. The `dereplication_folder` includes the dereplication results while in the `taxonomy_folder` and `quality_folder` the user can find the results of the taxonomic classification utlizing **vContact2** tool and quality control using **CheckV** tool, respectively. In case the user chooses to use the **WiSH** tool, a fifth folder will be present, called `wish_folder`. This folder will contain the results of the host identification analysis.
+In the output directory five folders are present. The `initial_recovey_folder` contains the results from the independent recovery of each tool. The `dereplication_folder` includes the dereplication results using **Stampede-clustergenomes**, while in the `taxonomy_folder` and `quality_folder` the user can find the results of the taxonomic classification utlizing **vContact2** tool and quality control using **CheckV** tool, respectively. In case the user chooses to use the **WiSH** tool, a fifth folder will be present, called `wish_folder`. This folder will contain the results of the host identification analysis.
 
 ```
 dereplication_folder  initial_recovey_folder  quality_folder  taxonomy_folder  wish_folder 	
