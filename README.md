@@ -24,18 +24,19 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
  
  The steps of Module 1 can be summarized as following:
 
-* **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  **metaWRAP**-Read_qc.
-* **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
+* **1.a**: Trimming of the metagenomic library and removal of all the host reads by running  **metaWRAP**-Read_qc.
+* **1.b**: Calculation of the amount of resources for the good quality reads of the libraries.
     * **(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is calculated. The k-mer sizes that will be investigated are 33 and 55. The results of both k-mer 33 and 55 are combined in a single file  
     * **(1.b.2)** The calculated k-mer is added to an equation that is used to estimate the amount of memory that **metaSPades** utilizes to assemble the good quality reads.
-* **(1.c)** Assembly of the good quality reads with **metaSPades**.
+* **1.c**: Assembly of the good quality reads with **metaSPades**.
 
 ### (2) Recovery of Prokaryotic Metagenome-Assembled Genomes
 
 The different steps of the Module 2 are shown in Figure 3 and excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-pipelines-for-prokaryotic-genome-recovery).
 
  The steps of Module 2 can be summarized as following:
-* **(2.a.)**
+ 
+* **(2.a.)**: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomical classification and annotation of Prokaryotic bins
      * **(2.a.1)** Binning with **MaxBin2**, **metaBAT2**, and **CONCOCT**. 
      * **(2.a.2)** Dereplication of bins for prior bin_refinement. The completeness/contamination parameters have been set to 50%/10% for Bacteria and 40%/30% for Archaea. 
      * **(2.a.3)** Taxonomic classification of the genomic bins produced in **(2.a.2)** using **GTDB-Tk**.
@@ -43,11 +44,12 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
      * **(2.a.5)** Filtering of genomic bins produced in **(2.a.4)**, by bin quality (completeness – 5×contamination (Parks, 2018)). The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
      * **(2.a.6)** Annotation of genomic bins produced in **(2.a.2)** with **PROKKA**.
 
+* **2.b**: Selection of Prokaryotic Metagenome-Assembled Genomes, uBin-refinement and relative abundance.
+    * **(2.b.1)** Selection of Prokaryotic Metagenome-Assembled Genomes.
+    * **(2.b.2)** Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin** (optional step).
+    * **(2.b.3)** Construction of relative abundance table for Prokaryotic Metagenome-Assembled Genomes.
 
-* **(2.)** Selection of Prokaryotic Metagenome-Assembled Genomes.
-* **(2.h)** Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin** (optional step).
-
-###  (3) Recovery of Viral Metagenome-Assembled Genomes
+### Module 3: Recovery of Viral Metagenome-Assembled Genomes
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/VIral_pipeline_.png)
 **Figure 4.** Module 3 of the MuDoGeR pipeline.
@@ -55,18 +57,21 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
 The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-pipelines-for-viral-genomes-recovery).
 
  The steps of Module 3 can be summarized as following:
+ 
+* **3.a**: Recovery, quality estimation, taxonomical classification and host identification of Viral Metagenome-Assembled Genomes
+    * **(3.a.1)** Recovery of viral genome metagenomes using **VirFinder**, **VirSorter** and **VIBRANT**.
+    * **(3.a.2)** Filtering of the recovered genomes. From the results of **VirFinder**, the sequences with p-value > 0.01 and/or length < 1000 bp are removed. From the results of **VirSorter**, only the sequences of categories 1 and 2 are kept. From the results of **VIBRANT**, the combined assemblies of the phages are kept.
+    * **(3.a.3)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
+    * **(3.a.4)** Assembly of the headers in the file produced in **(3.c)** with the respective sequences from the assembly file produced by **metaSPades** in **1.c**, for the generation of a fasta file.
+    * **(3.a.5)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
+    * **(3.a.6)** Checking the quality (completeness – 5×contamination (Parks, 2018) of the dereplicated contigs with **CheckV**.
+    * **(3.a.7)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
+    * **(3.a.8)** Host identification of the dereplicated contigs using **WIsH**.    
+* **(3.b)**: Selection of Viral Metagenome-Assembled Genomes, uBin-refinement and relative abundance.
+    * **(3.b.1)** Selection of Viral Metagenome-Assembled Genomes.
+    * **(3.b.2)** Construction of relative abundance table for Viral Metagenome-Assembled Genomes.
 
-* **(3.a)** Recovery of viral genome metagenomes using **VirFinder**, **VirSorter** and **VIBRANT**.
-* **(3.b)** Filtering of the recovered genomes. From the results of **VirFinder**, the sequences with p-value > 0.01 and/or length < 1000 bp are removed. From the results of **VirSorter**, only the sequences of categories 1 and 2 are kept. From the results of **VIBRANT**, the combined assemblies of the phages are kept.
-* **(3.c)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
-* **(3.d)** Assembly of the headers in the file produced in **(3.c)** with the respective sequences from the assembly file produced by **metaSPades** in **(1.3)**, for the generation of a fasta file.
-* **(3.e)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
-* **(3.f)** Checking the quality (completeness – 5×contamination (Parks, 2018) of the dereplicated contigs with **CheckV**.
-* **(3.g)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
-* **(3.h)** Host identification of the dereplicated contigs using **WIsH**. 
-* **(3.i)** Selection of Viral Metagenome-Assembled Genomes.
-
-###  (4) Recovery of Eukaryotic Metagenome-Assembled Genomes
+### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Eykaryotic_module.png)
 **Figure 5.**  Module 4 of the MuDoGeR pipeline.
@@ -74,15 +79,18 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
 The steps of the Module 4  are shown in Figure 5 and can be excecuted with the scripts find in the following hyperlink: ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery).
 
  The steps of Module 4 can be summarized as following:
-
-* **(4.a)** Classification of Eukaryotic assemblies and removal of prokaryotic assemblies with **EukRep**.
-* **(4.b)** Use of **CONCOCT** for binning the Eukaryotic assemblies.  
-* **(4.c)** Filtering the Eukaryotic bins, produced from **CONCOCT**, by size. Bins with size < 2.5 Mb are removed.
-* **(4.d)** In the filtered bins produced in **(4.c)**, genes are predicted by the trained **GeneMark-EV** model.
-* **(4.e)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **(4.c)**.
-* **(4.f)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
-* **(4.g)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
-* **(4.h)** Selection of Eukaryotic Metagenome-Assembled Genomes.
+* **4.a**: Recovery of Eukaryotic assemblies and production of Eukaryotic bins.
+    * **(4.a.1)** Classification of Eukaryotic assemblies and removal of prokaryotic assemblies with **EukRep**.
+    * **(4.a.2)** Use of **CONCOCT** for binning the Eukaryotic assemblies.  
+    * **(4.a.3)** Filtering the Eukaryotic bins, produced from **CONCOCT**, by size. Bins with size < 2.5 Mb are removed.
+* **4.b**: Completeness/contamination estimation and annotation of Eukaryotic bins
+    * **(4.b.1)** In the filtered bins produced in **(4.c)**, genes are predicted by the trained **GeneMark-EV** model.
+    * **(4.b.2)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **(4.c)**.
+    * **(4.b.3)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
+    * **(4.b.4)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
+* **4.c**: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance.
+    * **(4.c.1)**
+    * **(4.c.2)**
 
 # System requirements
 (not done yet)
