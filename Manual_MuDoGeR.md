@@ -128,7 +128,7 @@ bin.2,k__Bacteria (UID2570),433,273,183,112,160,1,0,0,0,55.46,0.27,0.00
 bin.3,o__Alteromonadales (UID4837),30,868,324,49,818,1,0,0,0,95.62,0.04,0.00
 bin.4,f__Rhodocyclaceae (UID3972),30,540,241,132,390,18,0,0,0,77.00,2.41,11.11
 ```
-In case the user chooses to do the filtering after **CheckM**, inside the checkm directories there is also `filtered_checkm.csv` file where the filtered results of checkm are saved.
+In case the user chooses to do the filtering after **CheckM** by quality (completeness – 5×contamination (Parks,2018)), inside the checkm directories there is also `filtered_checkm.csv` file where the filtered results of checkm are saved.
 
 Each of the annotation folders contains the following directories: 
 
@@ -151,7 +151,7 @@ For more detailed explanation of the **metaWrap** tool the user can study the ![
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the following hyperlink: ![Viral module](https://github.com/mdsufz/MuDoGeR#viral-module).
 
 ## 3.1: Recovery, quality estimation, taxonomical classification and host identification of Viral Metagenome-Assembled Genomes
-In **(3.1)**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT** are applied to the assembly fasta file, for the recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated with **Stampede-clustergenomes**. Also, the user can estimate the quality (Parks, 2018) of the dereplicated viral contigs and do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the prokaryotic host of each virus. Before running the script, it is important for the user to decide about the parameters of minimum coverege (-c) and minimum identity (-i) used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
+In **(3.1)**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT** are applied to the assembly fasta file, for the recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated with **Stampede-clustergenomes**. Also, the user can estimate the quality ((completeness – 5×contamination (Parks, 2018)) of the dereplicated viral contigs and do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the prokaryotic host of each virus. Before running the script, it is important for the user to decide about the parameters of minimum coverege (-c) and minimum identity (-i) used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
 
 Running **(3.1)**:
 ``` 
