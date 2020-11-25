@@ -30,7 +30,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
     * **(1.b.2)** The calculated k-mer is added to an equation that is used to estimate the amount of memory that **metaSPades** utilizes to assemble the good quality reads.
 * **1.c**: Assembly of the good quality reads with **metaSPades**.
 
-### (2) Recovery of Prokaryotic Metagenome-Assembled Genomes
+### Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
 
 The different steps of the Module 2 are shown in Figure 3 and excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-pipelines-for-prokaryotic-genome-recovery).
 
