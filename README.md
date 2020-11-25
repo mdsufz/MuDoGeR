@@ -88,8 +88,8 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
     * **(4.b.3)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
     * **(4.b.4)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
 * **4.c**: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance.
-    * **(4.c.1)** Selection of Eukaryotic Metagenome-Assembled Genomes
-    * **(4.c.2)** Construction of relative abundance table
+    * **(4.c.1)** Selection of Eukaryotic Metagenome-Assembled Genomes.
+    * **(4.c.2)** Construction of relative abundance table.
 
 # System requirements
 (not done yet)
