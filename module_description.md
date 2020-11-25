@@ -38,11 +38,12 @@ In this step a selection of Prokaryotic Metagenome-Assembled Genomes takes place
 Module 4 is devided into 3 steps:
 
 ### 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins
+
 In the beginning this step, the assembled data-set is separated to Prokaryotic and Eukaryotic assemblies using **EukRep** tool. In case the size of the Eukaryotic assembly file is >= 2.5 Mb, the Eukaryotic recovery modules can continue to the automated binnning with **CONCOCT** tool. The eukaryotic bins  produced by **CONCOCT**. Finally. the bins are filtered by size and those of size < 2.5 Mb are removed. 
 
 ### 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins
 
 In this step, a chain of processes is followed for one of the bins produced in **4.b**: In the beginning, **GeneMark-EV** is applied for gene prediction **(4.b.1)**. Also, the contamination of the bins which were kept after the filtering is estimated by using **EukCC** tool **(4.b.2)**. Then the predicted genes from **GeneMark-EV** are annotated with **Maker2** **(4.b.3)**. Finally the completeness of the annotated proteins is measured using **BUSCO** **(4.b.4)**. 
 
-Finally, a selection of eukaryotic MAGs takes place.
-
+### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance (not done, so maybe more will written)
+In this step, a selection of Eukaryotic Metagenome-Assembled Genomes takes place and the relative abundance table is contructed
