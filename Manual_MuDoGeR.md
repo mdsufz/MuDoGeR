@@ -88,7 +88,7 @@ Note: Make sure that all the databases and programms required for the **metaWrap
 ## 2.a: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomical classification and annotation of Prokaryotic bins
 The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the **metaWrap** tool. The script of the prokaryotic module combines the algorithms of every **metaWrap** module. The important parameters of minimum completeness (-c) and maximum contamination (-x) in the bin_refinement task, are settled by default to 50% and 10% respectively for the bacterial bins, while for the archaeal bins are settled by default to 40% and 30% respectively.
 
-Running **(2.a)** :
+Running **2.a** :
 ``` 
 mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -c 40 (archaea) 50 (bacteria) -x 30 (archaea) 10 (bacteria) --q 50
 ```
