@@ -1,6 +1,6 @@
 
 # Module 1: Pre-Processing 
-## 1.1: Raw Read Quality Control  
+## 1.a: Raw Read Quality Control  
 Note: For the removal of human contamination, the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the **metaWrap** installation instructions. 
 
 For running the raw read QC:
@@ -33,7 +33,7 @@ Reads after read QC:
 
 
 
-## 1.2: Resources calculation
+## 1.b: Resources calculation
 Before the assembly, it is possible to calculate unique k-mers in the pre-processed reads (forward or reverse). The size of the k-mer that has to be investigated is usually 33 or 55. Both values have to be calculated. As the result of this task is the same using both forward and reverse reads, the user does not have to re-do the task for both of them. 
 
 For resource calculation the user can run:
@@ -48,7 +48,7 @@ The k-mer results is used as function by a linear regression model which will gi
 Inside the output folder the user can find the `metaspades_prediction.csv` file which has the amount of memory that **metaSPAdes** utilizes for the assembly of those reads.
 
 
-## 1.3: Assembly of good quality reads
+## 1.c: Assembly of good quality reads
 There are two possible readers for assembling: **MegaHiT** and **metaSPAdes**. Both readers are considered reliable. **MegaHiT** uses lower memory and is faster compared to **metaSPAdes**, but **metaSPAdes** produced assemblies are of higher quality. In case of very large data sets, the usage of **MegaHiT** option flag is preferable:
 
 ```
@@ -85,10 +85,10 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 # Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the databases and programms required for the **metaWrap** run are downloaded.The links for the installation of the tools can be found in the following hyperlink: ![Prokaryotic module](https://github.com/mdsufz/MuDoGeR#prokaryotic-module).
 
-## 2.1: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomical classification and annotation of Prokaryotic bins
+## 2.a: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomical classification and annotation of Prokaryotic bins
 The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the **metaWrap** tool. The script of the prokaryotic module combines the algorithms of every **metaWrap** module. The important parameters of minimum completeness (-c) and maximum contamination (-x) in the bin_refinement task, are settled by default to 50% and 10% respectively for the bacterial bins, while for the archaeal bins are settled by default to 40% and 30% respectively.
 
-Run the prokayotic module:
+Running **(2.a)** :
 ``` 
 mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -c 40 (archaea) 50 (bacteria) -x 30 (archaea) 10 (bacteria) --q 50
 ```
@@ -150,10 +150,10 @@ For more detailed explanation of the **metaWrap** tool the user can study the ![
 # Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the following hyperlink: ![Viral module](https://github.com/mdsufz/MuDoGeR#viral-module).
 
-## 3.1: Recovery, quality estimation, taxonomical classification and host identification of Viral Metagenome-Assembled Genomes
-In **(3.1)**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT** are applied to the assembly fasta file, for the recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated with **Stampede-clustergenomes**. Also, the user can estimate the quality ((completeness – 5×contamination (Parks, 2018)) of the dereplicated viral contigs and do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the prokaryotic host of each virus. Before running the script, it is important for the user to decide about the parameters of minimum coverege (-c) and minimum identity (-i) used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
+## 3.a: Recovery, quality estimation, taxonomical classification and host identification of Viral Metagenome-Assembled Genomes
+In **(3.a)**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT** are applied to the assembly fasta file, for the recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated with **Stampede-clustergenomes**. Also, the user can estimate the quality ((completeness – 5×contamination (Parks, 2018)) of the dereplicated viral contigs and do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the prokaryotic host of each virus. Before running the script, it is important for the user to decide about the parameters of minimum coverege (-c) and minimum identity (-i) used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
 
-Running **(3.1)**:
+Running **(3.a)**:
 ``` 
 mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file -c 70 -i 95 --g /path/to/prokaryotic_hosts/folder
 ```
@@ -215,16 +215,16 @@ viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the following hyperlink: ![Eukaryotic module](https://github.com/mdsufz/MuDoGeR#eukaryotic-module).
 
-## 4.1: Recovery of Eukaryotic assemblies and production of Eukaryotic bins
-In **(4.1)**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. The bins are filtered by size. Bins with size < 2.5 Mb are removed.
+## 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins
+In **(4.a)**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. The bins are filtered by size. Bins with size < 2.5 Mb are removed.
 
-Running **(4.1)**:
+Running **(4.a)**:
 
 ```
 mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/folder -o /path/to/output/folder -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
 ```
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the **(4.1)** will be saved.
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the **(4.a)** will be saved.
 * The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblies will be saved after the separation of eukaryotic and prokaryotic assemblies with **EukRep**. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reversed clean reads. 
@@ -232,15 +232,15 @@ mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/proka
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the eukaryotic bins after the filtering.
 
 ## 4.2: Completeness/contamination estimation and annotation of Eukaryotic bins
-In **(4.2)**, the completeness and contamination of the Eukaryotic bins produced in **(4.1)** are estimated. Additionally, the annotation of these bins is taking place. **(4.2)** starts with **GeneMark-EV** tool, used for the gene prediction in the Eukaryotic bins. As input, the user can use any of the bins produced in **(4.1)**. The rest of the tools used in **(4.2)** are **EukCC** (bin contamination estimation), **MAKER2** (annotation of the bin) and **BUSCO** (bin completeness estimation). 
+In **(4.b)**, the completeness and contamination of the Eukaryotic bins produced in **(4.a)** are estimated. Additionally, the annotation of these bins is taking place. **(4.b)** starts with **GeneMark-EV** tool, used for the gene prediction in the Eukaryotic bins. As input, the user can use any of the bins produced in **(4.a)**. The rest of the tools used in **(4.b)** are **EukCC** (bin contamination estimation), **MAKER2** (annotation of the bin) and **BUSCO** (bin completeness estimation). 
 
-Running **(4.2)**:
+Running **(4.b)**:
 
 ```
 mudoger eukaryotic module 2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/output/folder 
 ```
 * The `/path/to/concoct/bin/fasta/file` indicates the path to the bin file.
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of **(4.2)** will be written.
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of **(4.b)** will be written.
 
 After the end of the second step the output folder contains the results from **MAKER2**, **BUSCO** and **EukCC** tools:
 
