@@ -93,7 +93,7 @@ Running **2.a** :
 mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -c 40 (archaea) 50 (bacteria) -x 30 (archaea) 10 (bacteria) --q 50
 ```
 
-* The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of **(2.1)** will be written.
+* The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of **2.a** will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reversed clean reads. 
@@ -128,7 +128,7 @@ bin.2,k__Bacteria (UID2570),433,273,183,112,160,1,0,0,0,55.46,0.27,0.00
 bin.3,o__Alteromonadales (UID4837),30,868,324,49,818,1,0,0,0,95.62,0.04,0.00
 bin.4,f__Rhodocyclaceae (UID3972),30,540,241,132,390,18,0,0,0,77.00,2.41,11.11
 ```
-In case the user chooses to do the filtering after **CheckM** by quality (completeness – 5×contamination (Parks,2018)), inside the checkm directories there is also `filtered_checkm.csv` file where the filtered results of checkm are saved.
+In case the user chooses to do the filtering after **CheckM** by quality (completeness – 5×contamination (Parks, 2018)), inside the checkm directories there is also `filtered_checkm.csv` file where the filtered results of checkm are saved.
 
 Each of the annotation folders contains the following directories: 
 
@@ -145,7 +145,9 @@ NODE_2_length_360965	Prodigal:2.6	CDS	2816	3616	.	-	0ID=EDFJOLLJ_00004;eC_number
 NODE_2_length_360965	Prodigal:2.6	CDS	3638	4510	.	-	0ID=EDFJOLLJ_00005;eC_number=4.3.3.7;Name=dapA;gene=dapA;inference=ab initio prediction:Prodigal:2.6,similar to AA sequence:UniProtKB:O67216;locus_tag=EDFJOLLJ_00005;product=4-hydroxy-tetrahydrodipicolinate synthase
 ```
 
-For more detailed explanation of the **metaWrap** tool the user can study the ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md) file. 
+For more detailed explanation of the **metaWrap** tool the user can study the instruction is the following hyperlink: ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md)
+
+## 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes, uBin-refinement and relative abundance (not done)
 
 # Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the following hyperlink: ![Viral module](https://github.com/mdsufz/MuDoGeR#viral-module).
@@ -157,7 +159,7 @@ Running **3.a**:
 ``` 
 mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file -c 70 -i 95 --g /path/to/prokaryotic_hosts/folder
 ```
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of **(3.1)** will be written.
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of **3.a** will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/prokaryotic_hosts/folder` indicates the path to the directory that contains the genomes of the possible prokaryotic hosts (optional).
 * The `-c` indicates the minimum coverege.
@@ -211,6 +213,7 @@ viral-particle-216	ERR1341880_bacbin.1	-1.33232	NA
 viral-particle-55	LS08Hbin.1	-1.34156	NA
 viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 ``` 
+## 3.b: Selection of Viral Metagenome-Assembled Genomes and relative abundance (Not done)
 
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the following hyperlink: ![Eukaryotic module](https://github.com/mdsufz/MuDoGeR#eukaryotic-module).
@@ -224,7 +227,7 @@ Running **4.a**:
 mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/folder -o /path/to/output/folder -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
 ```
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the **(4.a)** will be saved.
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the **4.a** will be saved.
 * The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblies will be saved after the separation of eukaryotic and prokaryotic assemblies with **EukRep**. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reversed clean reads. 
@@ -240,7 +243,7 @@ Running **4.b**:
 mudoger eukaryotic module 2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/output/folder 
 ```
 * The `/path/to/concoct/bin/fasta/file` indicates the path to the bin file.
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of **(4.b)** will be written.
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of **4.b** will be written.
 
 After the end of the second step the output folder contains the results from **MAKER2**, **BUSCO** and **EukCC** tools:
 
