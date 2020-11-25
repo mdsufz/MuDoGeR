@@ -93,7 +93,7 @@ Run the prokayotic module:
 mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -c 40 (archaea) 50 (bacteria) -x 30 (archaea) 10 (bacteria) --q 50
 ```
 
-* The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of the prokaryotic module will be written.
+* The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of **(2.1)** will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reversed clean reads. 
@@ -157,7 +157,7 @@ Running **(3.1)**:
 ``` 
 mudoger viral module  -o /path/to/output/folder -f ~/path/to/assembly/file -c 70 -i 95 --g /path/to/prokaryotic_hosts/folder
 ```
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the viral module will be written.
+* The `/path/to/output/folder` indicates the path to the output directory where the output folders of **(3.1)** will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/prokaryotic_hosts/folder` indicates the path to the directory that contains the genomes of the possible prokaryotic hosts (optional).
 * The `-c` indicates the minimum coverege.
@@ -225,9 +225,9 @@ mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/proka
 ```
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/output/folder` indicates the path to the output directory where the output folders of the **(4.1)** will be saved.
-* The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblies will fall after the separation of eukaryotic and prokaryotic assemblies with **EukRep**. 
+* The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblies will be saved after the separation of eukaryotic and prokaryotic assemblies with **EukRep**. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
-* The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads. 
+* The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reversed clean reads. 
 
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the eukaryotic bins after the filtering.
 
