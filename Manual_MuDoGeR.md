@@ -83,10 +83,10 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 ```
 
 # Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
-Note: Make sure that all the databases and programms required for the MetaWrap run are downloaded.The links for the installation can be found in the installation module of the ![README](https://github.com/mdsufz/MuDoGeR/blob/master/README.md) file.
+Note: Make sure that all the databases and programms required for the **metaWrap** run are downloaded.The links for the installation of the tools can be found in the following hyperlink: ![Prokaryotic module](https://github.com/mdsufz/MuDoGeR#prokaryotic-module).
 
 ## 2.1: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomical classification and annotation of Prokaryotic bins
-The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the MetaWrap tool. The script of the prokaryotic module combines the algorithms of every **metaWrap** module. The important parameters of minimum completeness (-c) and maximum contamination (-x) in the bin_refinement task, are settled by default to 50% and 10% respectively for the bacterial bins, while for the archaeal bins are settled by default to 40% and 30% respectively.
+The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the **metaWrap** tool. The script of the prokaryotic module combines the algorithms of every **metaWrap** module. The important parameters of minimum completeness (-c) and maximum contamination (-x) in the bin_refinement task, are settled by default to 50% and 10% respectively for the bacterial bins, while for the archaeal bins are settled by default to 40% and 30% respectively.
 
 Run the prokayotic module:
 ``` 
@@ -96,10 +96,10 @@ mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/as
 * The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of the prokaryotic module will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
-* The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reverse clean reads. 
+* The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reversed clean reads. 
 * The `-c` indicates the minimum completeness for archaeal and bacterial bins.
 * The `-x` indicates the maximum contamination for archaeal and bacterial bins.
-* The `--q` indicates lower limit of quality for the filtering for the optional step of quality control (optional).
+* The `--q` indicates the lower limit of quality for the filtering for the optional step of quality control (optional).
 
 In the final output folder the user can find:
 
