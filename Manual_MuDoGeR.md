@@ -215,10 +215,10 @@ viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the following hyperlink: ![Eukaryotic module](https://github.com/mdsufz/MuDoGeR#eukaryotic-module).
 
-## 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins
-In **(4.a)**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. The bins are filtered by size. Bins with size < 2.5 Mb are removed.
+## 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins (solving still some problems)
+In **4.a**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. The bins are filtered by size. Bins with size < 2.5 Mb are removed.
 
-Running **(4.a)**:
+Running **4.a**:
 
 ```
 mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/folder -o /path/to/output/folder -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
@@ -231,10 +231,10 @@ mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/proka
 
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the eukaryotic bins after the filtering.
 
-## 4.2: Completeness/contamination estimation and annotation of Eukaryotic bins
-In **(4.b)**, the completeness and contamination of the Eukaryotic bins produced in **(4.a)** are estimated. Additionally, the annotation of these bins is taking place. **(4.b)** starts with **GeneMark-EV** tool, used for the gene prediction in the Eukaryotic bins. As input, the user can use any of the bins produced in **(4.a)**. The rest of the tools used in **(4.b)** are **EukCC** (bin contamination estimation), **MAKER2** (annotation of the bin) and **BUSCO** (bin completeness estimation). 
+## 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins
+In **4.b**, the completeness and contamination of the Eukaryotic bins produced in **4.a** are estimated. Additionally, the annotation of these bins is taking place. **4.b** starts with **GeneMark-EV** tool, used for the gene prediction in the Eukaryotic bins. As input, the user can use any of the bins produced in **4.a**. The rest of the tools used in **4.b** are **EukCC** (bin contamination estimation), **MAKER2** (annotation of the bin) and **BUSCO** (bin completeness estimation). 
 
-Running **(4.b)**:
+Running **4.b**:
 
 ```
 mudoger eukaryotic module 2 -f ~/path/to/concoct/bin/fasta/file -o /path/to/output/folder 
