@@ -9,7 +9,7 @@ The **MuDoGeR** Raw Read Quality Control is based on **metaWrap** Read Quality C
 ### 1.b: Calculation of resources utilized from **metaSPades**
 Before the user goes to the assembly module, it is possible to estimate the necessary resources for the assembly of the library produced in quality control module. This can be achieved by estimating the complexity of the forward or reveresed pure reads by k-mer calculation, as they are almost identical. The k-mer is usually estimated in size 33 or 55. Both values should be estimated and  k-mer with sizes of 33 and 55 are combined to a single output file **(1.b.1)**. Using this file the necessary amount of memory that **metaSPades** needs to utilze for assembly the good qulity reads is predicted **(1.b.2)**.
 
-### 1.c: Assembly of Good Quality reads
+### 1.c: Assembly of the good quality reads
 The **MuDoGeR** Assembly is based on **metaWrap** Assembly and is utillized for assembling a set of metagenomic reads. Two possible readers can be chosen for the assembly: **MegaHit** (default) and **metaSPAdes**. **MegaHit** reader requires less memory and is also faster, compared to **metaSPAdes**. On the other hand, **metaSPAdes** reader has been proved more reliable as it produces assemblies of higher quality. Because of that, the usage of **metaSPAdes** reader is preferable except of the cases of large data-set. Fully detailed description of the metaWrap Assembly can be found in the following hyperlink: ![metaWrap Assembly](https://github.com/bxlab/metaWRAP/blob/master/Module_descriptions.md#assembly).  
 
 ## Module 2 Recovery of Prokaryotic Metagenome-Assembled Genomes
