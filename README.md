@@ -24,7 +24,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
  
  The steps of Module 1 can be summarized as following:
 
-* **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  **metaWRAP-Read_qc**.
+* **(1.a)** Trimming of the metagenomic library and removal of all the host reads by running  **metaWRAP**-Read_qc.
 * **(1.b)** Calculation of the amount of resources for the good quality reads of the libraries.
 	* **(1.b.1)** The k-mer of the good quality reads produced in **(1.a)** is calculated. The k-mer sizes that will be investigated are 33 and 55.  
 	* **(1.b.2)** The calculated k-mer is added to an equation that is used to estimate the amount of memory that **metaSPades** utilizes to assemble the good quality reads.
@@ -67,9 +67,9 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
 ###  (4) Recovery of Eukaryotic Metagenome-Assembled Genomes
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Eykaryotic_module.png)
-**Figure 5.**  Module 4 of the **MuDoGeR** pipeline.
+**Figure 5.**  Module 4 of the MuDoGeR pipeline.
 
-The steps of the Module 4  are shown in Figure 5 and can be excecuted with the scripts found in ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery).
+The steps of the Module 4  are shown in Figure 5 and can be excecuted with the scripts find in the following hyperlink: ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery).
 
  The steps of Module 4 can be summarized as following:
 
