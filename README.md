@@ -25,7 +25,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
  The steps of Module 1 can be summarized as following:
 
 * **1.a**: Raw Read Quality Control.
-* **1.b**: Resources calculation utilized from **metaSPades**.
+* **1.b**: Calculation of resources utilized from **metaSPades**.
     * **(1.b.1)** The k-mer of the good quality reads produced in **1.a** is calculated. The k-mer sizes that will be investigated are 33 and 55. The results of both k-mer 33 and 55 are combined in a single file.  
     * **(1.b.2)** The calculated k-mer is added to an equation that is used to estimate the amount of memory that **metaSPades** utilizes to assemble the good quality reads.
 * **1.c**: Assembly of the good quality reads.
