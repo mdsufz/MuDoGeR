@@ -253,7 +253,7 @@ The results of the **MAKER2** tool are located in the `maker/euk-ebin.maker.outp
 
 The results of the **BUSCO** tool are located in the file `maker/busco/full_table_fbusco.csv`. The busco directory is found inside the `maker` directory. 
 
-### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance (not done)
+## 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance (not done)
 
 
 
