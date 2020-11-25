@@ -40,7 +40,7 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
 * **(2.b)** Dereplication of bins for prior bin_refinement. The completeness/contamination parameters have been set to 50%/10% for Bacteria and 40%/30% for Archaea. 
 * **(2.c)** Taxonomic classification of the genomic bins produced in **(2.b)** using **GTDB-Tk**.
 * **(2.d)** Generation of quality matrix of genomic bins produced in **(2.b)** using **CheckM**. 
-* **(2.e)** Filtering of genomic bins produced in **(2.d)**, by bin quality (Parks (2018)). The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
+* **(2.e)** Filtering of genomic bins produced in **(2.d)**, by bin quality (completeness – 5×contamination (Parks, 2018)). The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
 * **(2.f)** Annotation of genomic bins produced in **(2.b)** with **PROKKA**.
 * **(2.g)** Selection of Prokaryotic Metagenome-Assembled Genomes.
 * **(2.h)** Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin** (optional step).
@@ -59,7 +59,7 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
 * **(3.c)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
 * **(3.d)** Assembly of the headers in the file produced in **(3.c)** with the respective sequences from the assembly file produced by **metaSPades** in **(1.3)**, for the generation of a fasta file.
 * **(3.e)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
-* **(3.f)** Checking the quality of the dereplicated contigs with **CheckV**.
+* **(3.f)** Checking the quality (completeness – 5×contamination (Parks, 2018) of the dereplicated contigs with **CheckV**.
 * **(3.g)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
 * **(3.h)** Host identification of the dereplicated contigs using **WIsH**. 
 * **(3.i)** Selection of Viral Metagenome-Assembled Genomes.
