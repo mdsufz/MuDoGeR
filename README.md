@@ -61,7 +61,7 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
     * **(3.a.1)** Recovery of viral genome metagenomes using **VirFinder**, **VirSorter** and **VIBRANT**.
     * **(3.a.2)** Filtering of the recovered genomes. From the results of **VirFinder**, the sequences with p-value > 0.01 and/or length < 1000 bp are removed. From the results of **VirSorter**, only the sequences of categories 1 and 2 are kept. From the results of **VIBRANT**, the combined assemblies of the phages are kept.
     * **(3.a.3)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
-    * **(3.a.4)** Assembly of the headers in the file produced in **(3.c)** with the respective sequences from the assembly file produced by **metaSPades** in **1.c**, for the generation of a fasta file.
+    * **(3.a.4)** Assembly of the headers in the file produced in **3.c** with the respective sequences from the assembly file produced by **metaSPades** in **1.c**, for the generation of a fasta file.
     * **(3.a.5)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
     * **(3.a.6)** Checking the quality (completeness – 5×contamination (Parks, 2018) of the dereplicated contigs with **CheckV**.
     * **(3.a.7)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
@@ -83,8 +83,8 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
     * **(4.a.2)** Use of **CONCOCT** for binning the Eukaryotic assemblies.  
     * **(4.a.3)** Filtering the Eukaryotic bins, produced from **CONCOCT**, by size. Bins with size < 2.5 Mb are removed.
 * **4.b**: Completeness/contamination estimation and annotation of Eukaryotic bins
-    * **(4.b.1)** In the filtered bins produced in **(4.c)**, genes are predicted by the trained **GeneMark-EV** model.
-    * **(4.b.2)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **(4.c)**.
+    * **(4.b.1)** In the filtered bins produced in **4.a**, genes are predicted by the trained **GeneMark-EV** model.
+    * **(4.b.2)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **4.a**.
     * **(4.b.3)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
     * **(4.b.4)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
 * **4.c**: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance.
