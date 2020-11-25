@@ -1,6 +1,6 @@
 
-# Module 1: Pre-Processing module
-## 1.1: Raw read QC  
+# Module 1: Pre-Processing 
+## 1.1: Raw Read Quality Control  
 Note: For the removal of human contamination, the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the **metaWrap** installation instructions. 
 
 For running the raw read QC:
