@@ -3,7 +3,7 @@
 ## 1.1: Raw read QC  
 Note: For the removal of human contamination, the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the **metaWrap** installation instructions. 
 
-For running the raw read QC module:
+For running the raw read QC:
 
 ``` 
 mudoger read_qc --skip-bmtagger -1 /path/to/raw_reads_1.fasta -2 /path/to/raw_reads_2.fasta  -t 24 -o /path/to/pure_reads/output/directory
