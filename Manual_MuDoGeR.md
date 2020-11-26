@@ -215,10 +215,10 @@ viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 ``` 
 ## 3.b: Selection of Viral Metagenome-Assembled Genomes and relative abundance (Not done)
 
-# Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
+# Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (not finished yet)
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the following hyperlink: ![Eukaryotic module](https://github.com/mdsufz/MuDoGeR#eukaryotic-module).
 
-## 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins (solving still some problems)
+## 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins (solving still some problems and we will have an extra threshold)
 In **4.a**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. The bins are filtered by size. Bins with size < 2.5 Mb are removed.
 
 Running **4.a**:
@@ -235,7 +235,7 @@ mudoger eukaryotic module 1 -f ~/path/to/assembly/file --prokarya /path/to/proka
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the eukaryotic bins after the filtering.
 
 ## 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins
-In **4.b**, the completeness and contamination of the Eukaryotic bins produced in **4.a** are estimated. Additionally, the annotation of these bins is taking place. **4.b** starts with **GeneMark-EV** tool, used for the gene prediction in the Eukaryotic bins. As input, the user can use any of the bins produced in **4.a**. The rest of the tools used in **4.b** are **EukCC** (bin contamination estimation), **MAKER2** (annotation of the bin) and **BUSCO** (bin completeness estimation). 
+In **4.b**, the completeness and contamination of the Eukaryotic bins produced in **4.a** are estimated. Additionally, the annotation of these bins is taking place. **4.b** starts with **GeneMark-EV** tool, used for the gene prediction in the Eukaryotic bins. As input, the user can use any of the bins produced in **4.a**. The rest of the tools used in **4.b** are **EukCC** (bin contamination estimation), **MAKER2** (annotation of the bin) and **BUSCO** (bin completeness estimation). The results of **BUSCO** and **EukCC** will be combined together.
 
 Running **4.b**:
 
@@ -251,7 +251,9 @@ The results of the **EukCC** tool are located in the `eukcc/eukcc.csv` file. The
 
 The results of the **MAKER2** tool are located in the `maker/euk-ebin.maker.output/OUTPUT.all.maker.genemark.transcripts.fasta` file which contains the names and the sequences of the annotated proteins of the predicted genes . The maker directory is found  inside the `genemark` directory. 
 
-The results of the **BUSCO** tool are located in the file `maker/busco/full_table_fbusco.csv`. The busco directory is found inside the `maker` directory. 
+The results of the **BUSCO** tool are located in the file `maker/busco/full_table_fbusco.csv`. The busco directory is found inside the `maker` directory.
+
+The combined results of **BUSCO** and **EukCC** are located in ... (when this part is ready I ll put it.)
 
 ## 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance (not done)
 
