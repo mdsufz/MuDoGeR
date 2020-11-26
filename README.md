@@ -1,9 +1,9 @@
  # Multi-Domain Genome Recovery (MuDoGeR)
  
- 
+![](https://github.com/mdsufz/MuDoGeR/blob/master/MuDoGeR_UPDATE.png) 
 
 
-The **Multi-Domain Genome Recovery (MuDoGeR)** pipeline (**Figure 1**) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs (Parks, 2018)) from dozens to hundreds of samples simultaneously. The **MuDoGeR** pipeline combines pipelines from different tools. The **MuDoGeR** pipeline starts with Module 1: **Pre-Processing**, which is divided in 3 steps: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation**, which feed the **1.c** **Assembly** and the assemblies will be used for the other pipelines. After pre-processing of the data, **MuDoGeR** is divided in 3 different branches: Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes** (using **MetaWrap**), Module 3: **Recovery of Viral Metagenome-Assembled Genomes** (using **VirSorter**, **VirFinder** and **VIBRANT**) and Module 4: **Recovery of Eukaryotic Metagenome-Assembled Genomes** (using **EukRep**). Furthermore, a strategy was developed for mapping the relative abundance of the selected maps in each library. Also, a step was added for bin_refinement of the selected Metagenome-Assembled Genomes from Prokaryotes, using **DAS Tool** and **U-bin**.
+The **Multi-Domain Genome Recovery (MuDoGeR)** pipeline (**Figure 1.**) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs (Parks, 2018)) from dozens to hundreds of samples simultaneously. The **MuDoGeR** pipeline combines pipelines from different tools. The **MuDoGeR** pipeline starts with Module 1: **Pre-Processing**, which is divided in 3 steps: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation**, which feed the **1.c** **Assembly** and the assemblies will be used for the other pipelines. After pre-processing of the data, **MuDoGeR** is divided in 3 different branches: Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes** (using **MetaWrap**), Module 3: **Recovery of Viral Metagenome-Assembled Genomes** (using **VirSorter**, **VirFinder** and **VIBRANT**) and Module 4: **Recovery of Eukaryotic Metagenome-Assembled Genomes** (using **EukRep**). Furthermore, a strategy was developed for mapping the relative abundance of the selected maps in each library. Also, a step was added for bin_refinement of the selected Metagenome-Assembled Genomes from Prokaryotes, using **DAS Tool** and **U-bin**.
  
 
 ## MuDoGeR Overview
@@ -15,8 +15,6 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** pipeline (**Figure 1**) is a tool
 * The simplified usage of the **MuDoGeR** can be found in the following hyperlink: ![Simplified usage of the MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#using-mudoger).
 
 ### Module 1: Pre-Processing 
-
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Preprocess_module_update.png)
 
 **Figure 2.** Module 1 of the MuDoGeR pipeline.
 
@@ -50,7 +48,6 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
 
 ### Module 3: Recovery of Viral Metagenome-Assembled Genomes
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/VIral_pipeline_.png)
 **Figure 4.** Module 3 of the MuDoGeR pipeline.
 
 The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-pipelines-for-viral-genomes-recovery).
@@ -72,7 +69,6 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
 
 ### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Eykaryotic_module.png)
 **Figure 5.**  Module 4 of the MuDoGeR pipeline.
 
 The steps of the Module 4  are shown in Figure 5 and can be excecuted with the scripts find in the following hyperlink: ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery).
