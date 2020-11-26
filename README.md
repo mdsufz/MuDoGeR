@@ -34,7 +34,7 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
 
  The steps of Module 2 can be summarized as following:
  
-* **2.a**: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomic classification and annotation of Prokaryotic bins
+* **2.a**: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, taxonomic classification,quality estimation and annotation of Prokaryotic bins
      * **(2.a.1)** Binning with **MaxBin2**, **metaBAT2**, and **CONCOCT**. 
      * **(2.a.2)** Dereplication of bins for prior bin_refinement. The completeness/contamination parameters have been set to 50%/10% for Bacteria and 40%/30% for Archaea. 
      * **(2.a.3)** Taxonomic classification of the genomic bins produced in **(2.a.2)** using **GTDB-Tk**.
