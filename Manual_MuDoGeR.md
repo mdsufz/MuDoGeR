@@ -218,7 +218,7 @@ viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (not finished yet)
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the following hyperlink: ![Eukaryotic module](https://github.com/mdsufz/MuDoGeR#eukaryotic-module).
 
-## 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins (solving still some problems and we will have an extra threshold)
+## 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins 
 In **4.a**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. The bins are filtered by size. Bins with size < 2.5 Mb are removed.
 
 Running **4.a**:
