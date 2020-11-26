@@ -1,7 +1,7 @@
  # Multi-Domain Genome Recovery (MuDoGeR)
  
  
- ![](https://github.com/mdsufz/MuDoGeR/blob/master/MuDoGeR_new.png)
+ ![]()
 
 **Figure 1.** Overview of Multi-Domain Genome Recovery (MuDoGeR) pipeline
 
