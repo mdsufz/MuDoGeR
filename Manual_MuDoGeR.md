@@ -48,7 +48,7 @@ The k-mer results is used as function by a linear regression model which will gi
 Inside the output folder the user can find the `metaspades_prediction.csv` file which has the amount of memory that **metaSPAdes** utilizes for the assembly of those reads.
 
 
-## 1.c: Assembly of good quality reads
+## 1.c: Assembly 
 There are two possible readers for assembling: **MegaHiT** and **metaSPAdes**. Both readers are considered reliable. **MegaHiT** uses lower memory and is faster compared to **metaSPAdes**, but **metaSPAdes** produced assemblies are of higher quality. In case of very large data sets, the usage of **MegaHiT** option flag is preferable:
 
 ```
