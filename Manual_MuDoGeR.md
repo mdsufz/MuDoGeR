@@ -85,7 +85,7 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 # Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the databases and programms required for the **metaWrap** run are downloaded.The links for the installation of the tools can be found in the following hyperlink: ![Prokaryotic module](https://github.com/mdsufz/MuDoGeR#prokaryotic-module).
 
-## 2.a: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomical classification and annotation of Prokaryotic bins
+## 2.a: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomic classification and annotation of Prokaryotic bins
 The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the **metaWrap** tool. The script of the prokaryotic module combines the algorithms of every **metaWrap** module. The important parameters of minimum completeness (-c) and maximum contamination (-x) in the bin_refinement task, are settled by default to 50% and 10% respectively for the bacterial bins, while for the archaeal bins are settled by default to 40% and 30% respectively.
 
 Running **2.a** :
@@ -152,7 +152,7 @@ For more detailed explanation of the **metaWrap** tool the user can study the in
 # Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the following hyperlink: ![Viral module](https://github.com/mdsufz/MuDoGeR#viral-module).
 
-## 3.a: Recovery, quality estimation, taxonomical classification and host identification of Viral Metagenome-Assembled Genomes
+## 3.a: Recovery, quality estimation, taxonomic classification and host identification of Viral Metagenome-Assembled Genomes
 In **3.a**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT** are applied to the assembly fasta file, for the recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated with **Stampede-clustergenomes**. Also, the user can estimate the quality ((completeness – 5×contamination (Parks, 2018)) of the dereplicated viral contigs and do the taxonomic classification of the viruses. Furthermore, the user can choose to determine the prokaryotic host of each virus. Before running the script, it is important for the user to decide about the parameters of minimum coverege (-c) and minimum identity (-i) used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
 
 Running **3.a**:
