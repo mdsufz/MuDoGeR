@@ -85,7 +85,7 @@ Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the to
 # Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the databases and programms required for the **metaWrap** run are downloaded.The links for the installation of the tools can be found in the following hyperlink: ![Prokaryotic module](https://github.com/mdsufz/MuDoGeR#prokaryotic-module).
 
-## 2.a: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, quality estimation, taxonomic classification and annotation of Prokaryotic bins
+## 2.a: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, taxonomic classification, quality estimation and annotation of Prokaryotic bins
 The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the **metaWrap** tool. The script of the prokaryotic module combines the algorithms of every **metaWrap** module. The important parameters of minimum completeness (-c) and maximum contamination (-x) in the bin_refinement task, are settled by default to 50% and 10% respectively for the bacterial bins, while for the archaeal bins are settled by default to 40% and 30% respectively.
 
 Running **2.a** :
