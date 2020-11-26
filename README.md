@@ -1,9 +1,7 @@
  # Multi-Domain Genome Recovery (MuDoGeR)
  
  
- ![](https://github.com/mdsufz/MuDoGeR/blob/master/MuDoGeR_PICTURE.png)
 
-**Figure 1.** Overview of Multi-Domain Genome Recovery (MuDoGeR) pipeline
 
 The **Multi-Domain Genome Recovery (MuDoGeR)** pipeline (**Figure 1**) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs (Parks, 2018)) from dozens to hundreds of samples simultaneously. The **MuDoGeR** pipeline combines pipelines from different tools. The **MuDoGeR** pipeline starts with Module 1: **Pre-Processing**, which is divided in 3 steps: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation**, which feed the **1.c** **Assembly** and the assemblies will be used for the other pipelines. After pre-processing of the data, **MuDoGeR** is divided in 3 different branches: Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes** (using **MetaWrap**), Module 3: **Recovery of Viral Metagenome-Assembled Genomes** (using **VirSorter**, **VirFinder** and **VIBRANT**) and Module 4: **Recovery of Eukaryotic Metagenome-Assembled Genomes** (using **EukRep**). Furthermore, a strategy was developed for mapping the relative abundance of the selected maps in each library. Also, a step was added for bin_refinement of the selected Metagenome-Assembled Genomes from Prokaryotes, using **DAS Tool** and **U-bin**.
  
