@@ -65,7 +65,7 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
     * **(3.a.5)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
     * **(3.a.6)** Checking the quality (completeness – 5×contamination (Parks, 2018) of the dereplicated contigs with **CheckV**.
     * **(3.a.7)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
-    * **(3.a.8)** Host identification of the dereplicated contigs using **WIsH**.    
+    * **(3.a.8)** Host identification of the dereplicated contigs using **WIsH** (optional).    
 * **3.b**: Selection of Viral Metagenome-Assembled Genomes and relative abundance.
     * **(3.b.1)** Selection of Viral Metagenome-Assembled Genomes.
     * **(3.b.2)** Construction of relative abundance table for Viral Metagenome-Assembled Genomes.
