@@ -3,7 +3,7 @@
  
  ![](https://github.com/mdsufz/MuDoGeR/blob/master/Mudoger_scheme_update.png)
 
-The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs (Parks, 2018)) from dozens to hundreds of samples simultaneously. The **MuDoGeR** pipeline combines pipelines from different tools. The **MuDoGeR** pipeline starts with **Pre-Processing**, which is divided in 2 steps: The first one, **Read Quality Control**, feeds the **Assembly** and the assemblies will be used for the other pipelines. After pre-processing of the data, **MuDoGeR** is divided in 3 different branches: **Recovery of Prokaryotic Metagenome-Assembled Genomes** (using **MetaWrap**), **Recovery of Viral Metagenome-Assembled Genomes** (using **VirSorter**, **VirFinder** and **VIBRANT**) and **Recovery of Eukaryotic Metagenome-Assembled Genomes** (using **EukRep**). Furthermore, a strategy was developed for mapping the relative abundance of the selected maps in each library. Also, a step was added for bin_refinement of the selected Metagenome-Assembled Genomes from Prokaryotes, using **DAS Tool** and **U-bin**.
+The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs (Parks, 2018)) from dozens to hundreds of samples simultaneously. The **MuDoGeR** pipeline combines pipelines from different tools. The **MuDoGeR** pipeline starts with Module 1: **Pre-Processing**, which is divided in 3 steps: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation**, which feeds the **1.c** **Assembly** and the assemblies will be used for the other pipelines. After pre-processing of the data, **MuDoGeR** is divided in 3 different branches: Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes** (using **MetaWrap**), Module 3: **Recovery of Viral Metagenome-Assembled Genomes** (using **VirSorter**, **VirFinder** and **VIBRANT**) and Module 4: **Recovery of Eukaryotic Metagenome-Assembled Genomes** (using **EukRep**). Furthermore, a strategy was developed for mapping the relative abundance of the selected maps in each library. Also, a step was added for bin_refinement of the selected Metagenome-Assembled Genomes from Prokaryotes, using **DAS Tool** and **U-bin**.
  
 
 ## MuDoGeR Overview
@@ -25,7 +25,7 @@ The **Multi-domain Genome Recovery (MuDoGeR)** pipeline is a tool developed to h
  The steps of Module 1 can be summarized as following:
 
 * **1.a**: Raw Read Quality Control.
-* **1.b**: Calculation of resources utilized from **metaSPades**.
+* **1.b**: Calculation of resources.
     * **(1.b.1)** The k-mer of the good quality reads produced in **1.a** is calculated. The k-mer sizes that will be investigated are 33 and 55. The results of both k-mer 33 and 55 are combined in a single file.  
     * **(1.b.2)** The calculated k-mer is added to an equation that is used to estimate the amount of memory that **metaSPades** utilizes to assemble the good quality reads.
 * **1.c**: Assembly of the good quality reads.
