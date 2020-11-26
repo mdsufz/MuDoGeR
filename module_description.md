@@ -41,9 +41,9 @@ Module 4 is devided into 3 steps:
 
 In the beginning this step, **(4.a.1)** the assembled data-set is separated to Prokaryotic and Eukaryotic assemblies using **EukRep** tool. **(4.a.2)** In case the size of the Eukaryotic assembly file is >= 2.5 Mb, the Eukaryotic recovery modules can continue to the automated binnning with **CONCOCT** tool. The eukaryotic bins  produced by **CONCOCT**. Finally, **(4.a.3)** the bins are filtered by size and those of size < 2.5 Mb are removed. 
 
-### 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins
+### 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins (there is a tool or threshold not developed yet, so something is missing)
 
-In this step, a chain of processes is followed for one of the bins produced in **4.b**: **(4.b.1)** **GeneMark-EV** is applied for gene prediction. **(4.b.2)** Also, the contamination of the bins which were kept after the filtering is estimated by using **EukCC** tool. **(4.b.3)** The predicted genes from **GeneMark-EV** are annotated with **Maker2**. Finally, **(4.b.4)** the completeness of the annotated proteins is measured using **BUSCO**. 
+In this step, a chain of processes is followed for one of the bins produced in **4.b**: **(4.b.1)** **GeneMark-EV** is applied for gene prediction. **(4.b.2)** Also, the contamination of the bins which were kept after the filtering is estimated by using **EukCC** tool. **(4.b.3)** The predicted genes from **GeneMark-EV** are annotated with **Maker2**. **(4.b.4)** The completeness of the annotated proteins is measured using **BUSCO**. Finally, **(4.b.5)** the results from **BUSCO** and **EukCC** are combined. 
 
 ### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance (not done, so maybe more will written)
-In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes takes place and  **(4.b.2)** the relative abundance table is contructed
+In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes takes place and **(4.b.2)** the relative abundance table is contructed
