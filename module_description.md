@@ -6,7 +6,7 @@ Module 1 is devided into 3 steps:
 ### 1.a: Raw Read Quality Control
 The **MuDoGeR** Raw Read Quality Control is based on **metaWrap** Read Quality Control and is responsible to prepare the raw reads for assembly and alignment. The trimming of the raw reads is based on adapted content and **PHRED** scored with the default setting of Trim-galore. As a result, all the non-high quality sequences are removed. The high quality reads that remained are aligned to the genome of the host with bmtagger, a process that leads to the removal of host contamination and of read pairs with only one aligned read from the metagenomic data. In the final step, **FASTQC** is used to assess read quality improvement. Full detailed description of the Read_qc can be found in the following hyperlink: ![metaWrap Read_qc](https://github.com/bxlab/metaWRAP/blob/master/Module_descriptions.md#read_qc).
 
-### 1.b: Calculation of resources utilized from **metaSPades**
+### 1.b: Calculation of resources
 Before the user goes to the assembly module, it is possible to estimate the necessary resources for the assembly of the library produced in quality control module. **(1.b.1)** This can be achieved by estimating the complexity of the forward or reversed pure reads by k-mer calculation, as they are almost identical. The k-mer is usually estimated in size 33 or 55. Both values k-mer values estimated and  k-mer with sizes of 33 and 55 are combined to a single output file.  **(1.b.2)** Using this file, the necessary amount of memory that **metaSPades** needs to utilze for assembly the good qulity reads is predicted.
 
 ### 1.c: Assembly of the good quality reads
