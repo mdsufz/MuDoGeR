@@ -21,7 +21,7 @@ This step is a combination of tasks included in the **metaWrap** tool(Uritskiy e
 
 ### 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes, uBin-refinement and relative abundance (not done, so maybe more will written)
 
-**(2.b.1)** In the beginning of this step, a selection of Prokaryotic Metagenome-Assembled Genomes takes place. In case the user chooses to, **(2.b.2)** **DAS Tool** (Sieber et al., 2018) and **uBin** (Till et al., 2020) refining tool are used for the manual curation of genomes from the selected metagenomic bins.
+**(2.b.1)** In the beginning of this step, a selection of Prokaryotic Metagenome-Assembled Genomes takes place. In case the user chooses to, **(2.b.2)** **DAS Tool** (Sieber et al., 2018) and **uBin** (Bornemann et al., 2020) refining tool are used for the manual curation of genomes from the selected metagenomic bins.
 
 ## Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Module 3 is devided into 2 steps:
@@ -55,6 +55,7 @@ In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes
 
 
 * Andrews, S. (2010). FASTQC. A quality control tool for high throughput sequence data
+* Bornemann, Till L.V., Sarah P. Esser, Tom L. Stach, Tim Burg, and Alexander J. Probst. “UBin – a Manual Refining Tool for Metagenomic Bins Designed for Educational Purposes.” BioRxiv, January 1, 2020, 2020.07.15.204776. https://doi.org/10.1101/2020.07.15.204776.
 * Dinghua Li, Chi-Man Liu, Ruibang Luo, Kunihiko Sadakane, Tak-Wah Lam, MEGAHIT: an ultra-fast single-node solution for large and complex metagenomics assembly via succinct de Bruijn graph, Bioinformatics, Volume 31, Issue 10, 15 May 2015, Pages 1674–1676, https://doi.org/10.1093/bioinformatics/btv033
 * Clovis Galiez, Matthias Siebert, François Enault, Jonathan Vincent, Johannes Söding, WIsH: who is the host? Predicting prokaryotic hosts from metagenomic phage contigs, Bioinformatics, Volume 33, Issue 19, 01 October 2017, Pages 3113–3114, https://doi.org/10.1093/bioinformatics/btx383
 * Ewing B, Hillier L, Wendl MC, Green P. Base-calling of automated sequencer traces using phred. I. Accuracy assessment. Genome Res. 1998 Mar;8(3):175-85. doi: 10.1101/gr.8.3.175. PMID: 9521921.
@@ -63,9 +64,9 @@ In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes
 * Johannes Alneberg, Brynjar Smári Bjarnason, Ino de Bruijn, Melanie Schirmer, Joshua Quick, Umer Z Ijaz, Leo Lahti, Nicholas J Loman, Anders F Andersson & Christopher Quince. 2014. Binning metagenomic contigs by coverage and composition. Nature Methods, doi: 10.1038/nmeth.3103
 * Kang DD, Li F, Kirton E, et al. MetaBAT 2: an adaptive binning algorithm for robust and efficient genome reconstruction from metagenome assemblies. PeerJ. 2019;7:e7359. Published 2019 Jul 26. doi:10.7717/peerj.7359
 * Kieft, K., Zhou, Z. & Anantharaman, K. VIBRANT: automated recovery, annotation and curation of microbial viruses, and evaluation of viral community function from genomic sequences. Microbiome 8, 90 (2020). https://doi.org/10.1186/s40168-020-00867-0
+* Nayfach, Stephen, Antonio Pedro Camargo, Emiley Eloe-Fadrosh, Simon Roux, and Nikos Kyrpides. “CheckV: Assessing the Quality of Metagenome-Assembled Viral Genomes.” BioRxiv, January 1, 2020, 2020.05.06.081778. https://doi.org/10.1101/2020.05.06.081778.
 * Nurk S, Meleshko D, Korobeynikov A, Pevzner PA. metaSPAdes: a new versatile metagenomic assembler. Genome Res. 2017;27(5):824-834. doi:10.1101/gr.213959.116
-* CheckM
-Parks DH, Imelfort M, Skennerton CT, Hugenholtz P, Tyson GW. 2014. Assessing the quality of microbial genomes recovered from isolates, single cells, and metagenomes. Genome Research, 25: 1043-1055.
+* Parks DH, Imelfort M, Skennerton CT, Hugenholtz P, Tyson GW. 2014. Assessing the quality of microbial genomes recovered from isolates, single cells, and metagenomes. Genome Research, 25: 1043-1055.
 * Parks, D.H., Rinke, C., Chuvochina, M. et al. Recovery of nearly 8,000 metagenome-assembled genomes substantially expands the tree of life. Nat Microbiol 2, 1533–1542 (2017). https://doi.org/10.1038/s41564-017-0012-7
 * Pierre-Alain Chaumeil, Aaron J Mussig, Philip Hugenholtz, Donovan H Parks, GTDB-Tk: a toolkit to classify genomes with the Genome Taxonomy Database, Bioinformatics, Volume 36, Issue 6, 15 March 2020, Pages 1925–1927, https://doi.org/10.1093/bioinformatics/btz848
 * Ren, J., Ahlgren, N.A., Lu, Y.Y. et al. VirFinder: a novel k-mer based tool for identifying viral sequences from assembled metagenomic data. Microbiome 5, 69 (2017). https://doi.org/10.1186/s40168-017-0283-5
@@ -75,27 +76,14 @@ https://doi.org/10.1186/s13059-020-02155-4
 * Seemann T. Prokka: rapid prokaryotic genome annotation. Bioinformatics. 2014 Jul 15;30(14):2068-9. doi: 10.1093/bioinformatics/btu153. Epub 2014 Mar 18. PMID: 24642063.
 * Sieber CMK, Probst AJ, Sharrar A, Thomas BC, Hess M, Tringe SG, Banfield JF. Recovery of genomes from metagenomes via a dereplication, aggregation and scoring strategy. Nat Microbiol. 2018 Jul;3(7):836-843. doi: 10.1038/s41564-018-0171-1. Epub 2018 May 28. PMID: 29807988; PMCID: PMC6786971.
 * Uritskiy, G.V., DiRuggiero, J. & Taylor, J. MetaWRAP—a flexible pipeline for genome-resolved metagenomic data analysis. Microbiome 6, 158 (2018). https://doi.org/10.1186/s40168-018-0541-1
+* West, Patrick T., Alexander J. Probst, Igor V. Grigoriev, Brian C. Thomas, and Jillian F. Banfield. “Genome-Reconstruction for Eukaryotes from Complex Natural Microbial Communities.” BioRxiv, January 1, 2017, 171355. https://doi.org/10.1101/171355.
 * Yu-Wei Wu, Blake A. Simmons, Steven W. Singer, MaxBin 2.0: an automated binning algorithm to recover genomes from multiple metagenomic datasets, Bioinformatics, Volume 32, Issue 4, 15 February 2016, Pages 605–607, https://doi.org/10.1093/bioinformatics/btv638
 
 
-## papers not cetified
-* uBin – a manual refining tool for metagenomic bins designed for educational purposes
-Till L.V. Bornemann, Sarah P. Esser, Tom L. Stach, Tim Burg, Alexander J. Probst
-bioRxiv 2020.07.15.204776; doi: https://doi.org/10.1101/2020.07.15.204776 
-
-* CheckV: assessing the quality of metagenome-assembled viral genomes
-Stephen Nayfach, Antonio Pedro Camargo, Emiley Eloe-Fadrosh Simon Roux,Nikos Kyrpides
-doi: https://doi.org/10.1101/2020.05.06.081778 
-
-Posted May 08, 2020.
 
 
-EukRep
-Genome-reconstruction for eukaryotes from complex natural microbial communities
-Patrick T. West, Alexander J. Probst, Igor V. Grigoriev, Brian C. Thomas, Jillian F. Banfield
-doi: https://doi.org/10.1101/171355 
-Now published in Genome Research doi: 10.1101/gr.228429.117
-2018
+
+ 
 
 
 
