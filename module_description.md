@@ -21,7 +21,7 @@ This step is a combination of tasks included in the **metaWrap** tool. **(2.a.1)
 
 ### 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes, uBin-refinement and relative abundance (not done, so maybe more will written)
 
-**(2.b.1)** In the beginning of this step, a selection of Prokaryotic Metagenome-Assembled Genomes takes place. In case the user chooses to, **(2.b.2)** **DAS Tool** and **uBin** refining tool are used for the manual curation of genomes from the selected metagenomic bins. Finally, **(2.b.3)** the relative abundance table is contructed. 
+**(2.b.1)** In the beginning of this step, a selection of Prokaryotic Metagenome-Assembled Genomes takes place. In case the user chooses to, **(2.b.2)** **DAS Tool** and **uBin** refining tool are used for the manual curation of genomes from the selected metagenomic bins.
 
 ## Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Module 3 is devided into 2 steps:
@@ -32,7 +32,7 @@ In the beginning of this step, three viral recovery tools (**VirFinder**, **VirS
 
 ### **3.b**: Selection of Viral Metagenome-Assembled Genomes and relative abundance (not done, so maybe more will written)
 
-In this step, **(3.b.1)** a selection of Prokaryotic Metagenome-Assembled Genomes takes place and **(3.b.2)** the relative abundance table is constructed.
+In this step, **(3.b.1)** a selection of Prokaryotic Metagenome-Assembled Genomes takes place.
 
 ## Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 Module 4 is devided into 3 steps:
@@ -46,4 +46,43 @@ In the beginning this step, **(4.a.1)** the assembled data-set is separated to P
 In this step, a chain of processes is followed for one of the bins produced in **4.b**: **(4.b.1)** **GeneMark-EV** is applied for gene prediction. **(4.b.2)** Also, the contamination of the bins which were kept after the filtering is estimated by using **EukCC** tool. **(4.b.3)** The predicted genes from **GeneMark-EV** are annotated with **Maker2**. **(4.b.4)** The completeness of the annotated proteins is measured using **BUSCO**. Finally, **(4.b.5)** the results from **BUSCO** and **EukCC** are combined. 
 
 ### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance (not done, so maybe more will written)
-In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes takes place and **(4.b.2)** the relative abundance table is contructed
+In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes takes place.
+
+
+
+
+
+
+
+
+* Andrews, S. (2010). FASTQC. A quality control tool for high throughput sequence data 
+* Bolduc B, Jang HB, Doulcier G, You ZQ, Roux S, Sullivan MB. vConTACT: an iVirus tool to classify double-stranded DNA viruses that infect Archaea and Bacteria. PeerJ. 2017;5:e3243. Published 2017 May 3. doi:10.7717/peerj.3243
+* Dinghua Li, Chi-Man Liu, Ruibang Luo, Kunihiko Sadakane, Tak-Wah Lam, MEGAHIT: an ultra-fast single-node solution for large and complex metagenomics assembly via succinct de Bruijn graph, Bioinformatics, Volume 31, Issue 10, 15 May 2015, Pages 1674–1676, https://doi.org/10.1093/bioinformatics/btv033
+* Ewing B, Hillier L, Wendl MC, Green P. Base-calling of automated sequencer traces using phred. I. Accuracy assessment. Genome Res. 1998 Mar;8(3):175-85. doi: 10.1101/gr.8.3.175. PMID: 9521921.
+* Felipe A. Simão, Robert M. Waterhouse, Panagiotis Ioannidis, Evgenia V. Kriventseva, Evgeny M. Zdobnov, BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs, Bioinformatics, Volume 31, Issue 19, 1 October 2015, Pages 3210–3212, https://doi.org/10.1093/bioinformatics/btv351
+* Holt, C., Yandell, M. MAKER2: an annotation pipeline and genome-database management tool for second-generation genome projects. BMC Bioinformatics 12, 491 (2011). https://doi.org/10.1186/1471-2105-12-491
+* Johannes Alneberg, Brynjar Smári Bjarnason, Ino de Bruijn, Melanie Schirmer, Joshua Quick, Umer Z Ijaz, Leo Lahti, Nicholas J Loman, Anders F Andersson & Christopher Quince. 2014. Binning metagenomic contigs by coverage and composition. Nature Methods, doi: 10.1038/nmeth.3103
+* Kang DD, Li F, Kirton E, et al. MetaBAT 2: an adaptive binning algorithm for robust and efficient genome reconstruction from metagenome assemblies. PeerJ. 2019;7:e7359. Published 2019 Jul 26. doi:10.7717/peerj.7359
+* Kieft, K., Zhou, Z. & Anantharaman, K. VIBRANT: automated recovery, annotation and curation of microbial viruses, and evaluation of viral community function from genomic sequences. Microbiome 8, 90 (2020). https://doi.org/10.1186/s40168-020-00867-0
+* Nurk S, Meleshko D, Korobeynikov A, Pevzner PA. metaSPAdes: a new versatile metagenomic assembler. Genome Res. 2017;27(5):824-834. doi:10.1101/gr.213959.116
+* CheckM
+Parks DH, Imelfort M, Skennerton CT, Hugenholtz P, Tyson GW. 2014. Assessing the quality of microbial genomes recovered from isolates, single cells, and metagenomes. Genome Research, 25: 1043-1055.
+* Parks, D.H., Rinke, C., Chuvochina, M. et al. Recovery of nearly 8,000 metagenome-assembled genomes substantially expands the tree of life. Nat Microbiol 2, 1533–1542 (2017). https://doi.org/10.1038/s41564-017-0012-7
+* Pierre-Alain Chaumeil, Aaron J Mussig, Philip Hugenholtz, Donovan H Parks, GTDB-Tk: a toolkit to classify genomes with the Genome Taxonomy Database, Bioinformatics, Volume 36, Issue 6, 15 March 2020, Pages 1925–1927, https://doi.org/10.1093/bioinformatics/btz848
+* Ren, J., Ahlgren, N.A., Lu, Y.Y. et al. VirFinder: a novel k-mer based tool for identifying viral sequences from assembled metagenomic data. Microbiome 5, 69 (2017). https://doi.org/10.1186/s40168-017-0283-5
+* Roux et al. (2015), VirSorter: mining viral signal from microbial genomic data. PeerJ 3:e985;DOI 10.7717/peerj.985
+* Saary, P., Mitchell, A.L. & Finn, R.D. Estimating the quality of eukaryotic genomes recovered from metagenomic analysis with EukCC. Genome Biol 21, 244 (2020).
+https://doi.org/10.1186/s13059-020-02155-4
+* Seemann T. Prokka: rapid prokaryotic genome annotation. Bioinformatics. 2014 Jul 15;30(14):2068-9. doi: 10.1093/bioinformatics/btu153. Epub 2014 Mar 18. PMID: 24642063.
+* Sieber CMK, Probst AJ, Sharrar A, Thomas BC, Hess M, Tringe SG, Banfield JF. Recovery of genomes from metagenomes via a dereplication, aggregation and scoring strategy. Nat Microbiol. 2018 Jul;3(7):836-843. doi: 10.1038/s41564-018-0171-1. Epub 2018 May 28. PMID: 29807988; PMCID: PMC6786971.
+* Uritskiy, G.V., DiRuggiero, J. & Taylor, J. MetaWRAP—a flexible pipeline for genome-resolved metagenomic data analysis. Microbiome 6, 158 (2018). https://doi.org/10.1186/s40168-018-0541-1
+* Yu-Wei Wu, Blake A. Simmons, Steven W. Singer, MaxBin 2.0: an automated binning algorithm to recover genomes from multiple metagenomic datasets, Bioinformatics, Volume 32, Issue 4, 15 February 2016, Pages 605–607, https://doi.org/10.1093/bioinformatics/btv638
+
+
+
+
+
+
+
+
+
