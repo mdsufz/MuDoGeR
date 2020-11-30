@@ -28,7 +28,7 @@ Module 3 is devided into 2 steps:
 
 ### **3.a**: Recovery, quality estimation, taxonomic classification and host identification of Viral Metagenome-Assembled Genomes
 
-In the beginning of this step, three viral recovery tools (**VirFinder** (Ren et al., 2017), **VirSorter** (Roux et al., 2015), **VIBRANT** (Kieft et al., 2020)) are utilized for the identification and recovery of viral genomes from an assemble metagenomic data-set. **(3.a.1)** Each of the tools is used to recover independently the viral genomes from a given assembled data-set and saves them in seperate folders. **(3.a.2)** Following that, the recovered sequences are filtered. The selection of proper **VirFinder** sequences is based on low q-value (q-value=< 0.01) and high length (length>= 1000 bp), the **VirSorter** chosen sequences are those classified into categories 1 and 2 and from **VIBRANT** the selected sequences are those of the combined assemblies from phages. **(3.a.3)** The headers of **VirSorter** and **VIBRANT** contigs are modified so they can match with those produced from the **VirFinder** results. It is important to note that in contrast with the other two tools, the **VirFinder** output recovery file contains only the headers of the assemblies. Because of that, the headers of the unique filtered sequences from each tool are extracted to a common fasta file and sorted by length. **(3.a.4)** Using the headers including in the common fasta file, the actual sequences from the assembly data-set are extracted and transfered to a new fasta file. **(3.a.5)** Next,the duplicated contigs are removed by dereplication using **Stampede-clustergenomes** tool. The dependencies of the dereplication step are the maximum coverage (-c) 70% and the maximum identity (-i) 95%. The dereplication is followed by **(3.a.6)**  quality estimation and **(3.a.7)** taxonomic classification of the the dereplicated contigs by **CheckV** and **vContact2**, respectively. Finally, if the user chooses to, **(3.a.8)** the hosts of the dereplicated contigs are identified by using **WIsH tool** (Galiez et al., 2017).
+In the beginning of this step, three viral recovery tools (**VirFinder** (Ren et al., 2017), **VirSorter** (Roux et al., 2015), **VIBRANT** (Kieft et al., 2020)) are utilized for the identification and recovery of viral genomes from an assemble metagenomic data-set. **(3.a.1)** Each of the tools is used to recover independently the viral genomes from a given assembled data-set and saves them in seperate folders. **(3.a.2)** Following that, the recovered sequences are filtered. The selection of proper **VirFinder** sequences is based on low q-value (q-value=< 0.01) and high length (length>= 1000 bp), the **VirSorter** chosen sequences are those classified into categories 1 and 2 and from **VIBRANT** the selected sequences are those of the combined assemblies from phages. **(3.a.3)** The headers of **VirSorter** and **VIBRANT** contigs are modified so they can match with those produced from the **VirFinder** results. It is important to note that in contrast with the other two tools, the **VirFinder** output recovery file contains only the headers of the assemblies. Because of that, the headers of the unique filtered sequences from each tool are extracted to a common fasta file and sorted by length. **(3.a.4)** Using the headers including in the common fasta file, the actual sequences from the assembly data-set are extracted and transfered to a new fasta file. **(3.a.5)** Next,the duplicated contigs are removed by dereplication using **Stampede-clustergenomes** tool. The dependencies of the dereplication step are the maximum coverage (-c) 70% and the maximum identity (-i) 95%. The dereplication is followed by **(3.a.6)**  quality estimation and **(3.a.7)** taxonomic classification of the the dereplicated contigs by **CheckV** (Nayfach et al., 2020) and **vContact2**, respectively. Finally, if the user chooses to, **(3.a.8)** the hosts of the dereplicated contigs are identified by using **WIsH tool** (Galiez et al., 2017).
 
 ### **3.b**: Selection of Viral Metagenome-Assembled Genomes and relative abundance (not done, so maybe more will written)
 
@@ -43,7 +43,7 @@ In the beginning this step, **(4.a.1)** the assembled data-set is separated to P
 
 ### 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins (there is a tool or threshold not developed yet, so something is missing)
 
-In this step, a chain of processes is followed for one of the bins produced in **4.b**: **(4.b.1)** **GeneMark-EV** is applied for gene prediction. **(4.b.2)** Also, the contamination of the bins which were kept after the filtering is estimated by using **EukCC** tool (Saary et al., 2020). **(4.b.3)** The predicted genes from **GeneMark-EV** are annotated with **Maker2** (Holt et al., 2011). **(4.b.4)** The completeness of the annotated proteins is measured using **BUSCO**. Finally, **(4.b.5)** the results from **BUSCO** and **EukCC** are combined. 
+In this step, a chain of processes is followed for one of the bins produced in **4.b**: **(4.b.1)** **GeneMark-EV** is applied for gene prediction. **(4.b.2)** Also, the contamination of the bins which were kept after the filtering is estimated by using **EukCC** tool (Saary et al., 2020). **(4.b.3)** The predicted genes from **GeneMark-EV** (Saary et al., 2020) are annotated with **Maker2** (Holt et al., 2011). **(4.b.4)** The completeness of the annotated proteins is measured using **BUSCO** (Simão et al., 2015). Finally, **(4.b.5)** the results from **BUSCO** and **EukCC** are combined. 
 
 ### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance (not done, so maybe more will written)
 In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes takes place.
@@ -55,7 +55,6 @@ In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes
 
 
 * Andrews, S. (2010). FASTQC. A quality control tool for high throughput sequence data
-* Borodovsky, Mark & Lomsadze, Alex & Ivanov, Nikolai & Mills, Ryan. (2003). Eukaryotic Gene Prediction Using GeneMark.hmm. Current protocols in bioinformatics / editoral board, Andreas D. Baxevanis ... [et al.]. Chapter 4. Unit4.6. 10.1002/0471250953.bi0406s01. 
 * Bolduc B, Jang HB, Doulcier G, You ZQ, Roux S, Sullivan MB. vConTACT: an iVirus tool to classify double-stranded DNA viruses that infect Archaea and Bacteria. PeerJ. 2017;5:e3243. Published 2017 May 3. doi:10.7717/peerj.3243
 * Dinghua Li, Chi-Man Liu, Ruibang Luo, Kunihiko Sadakane, Tak-Wah Lam, MEGAHIT: an ultra-fast single-node solution for large and complex metagenomics assembly via succinct de Bruijn graph, Bioinformatics, Volume 31, Issue 10, 15 May 2015, Pages 1674–1676, https://doi.org/10.1093/bioinformatics/btv033
 * Clovis Galiez, Matthias Siebert, François Enault, Jonathan Vincent, Johannes Söding, WIsH: who is the host? Predicting prokaryotic hosts from metagenomic phage contigs, Bioinformatics, Volume 33, Issue 19, 01 October 2017, Pages 3113–3114, https://doi.org/10.1093/bioinformatics/btx383
@@ -80,10 +79,16 @@ https://doi.org/10.1186/s13059-020-02155-4
 * Yu-Wei Wu, Blake A. Simmons, Steven W. Singer, MaxBin 2.0: an automated binning algorithm to recover genomes from multiple metagenomic datasets, Bioinformatics, Volume 32, Issue 4, 15 February 2016, Pages 605–607, https://doi.org/10.1093/bioinformatics/btv638
 
 
+## papers not cetified
 * uBin – a manual refining tool for metagenomic bins designed for educational purposes
 Till L.V. Bornemann, Sarah P. Esser, Tom L. Stach, Tim Burg, Alexander J. Probst
 bioRxiv 2020.07.15.204776; doi: https://doi.org/10.1101/2020.07.15.204776 
 
+* CheckV: assessing the quality of metagenome-assembled viral genomes
+Stephen Nayfach, Antonio Pedro Camargo, Emiley Eloe-Fadrosh Simon Roux,Nikos Kyrpides
+doi: https://doi.org/10.1101/2020.05.06.081778 
+
+Posted May 08, 2020.
 
 
 
