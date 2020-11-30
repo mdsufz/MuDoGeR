@@ -54,7 +54,8 @@ In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes
 ## Refferences
 
 
-* Andrews, S. (2010). FASTQC. A quality control tool for high throughput sequence data 
+* Andrews, S. (2010). FASTQC. A quality control tool for high throughput sequence data
+* Borodovsky, Mark & Lomsadze, Alex & Ivanov, Nikolai & Mills, Ryan. (2003). Eukaryotic Gene Prediction Using GeneMark.hmm. Current protocols in bioinformatics / editoral board, Andreas D. Baxevanis ... [et al.]. Chapter 4. Unit4.6. 10.1002/0471250953.bi0406s01. 
 * Bolduc B, Jang HB, Doulcier G, You ZQ, Roux S, Sullivan MB. vConTACT: an iVirus tool to classify double-stranded DNA viruses that infect Archaea and Bacteria. PeerJ. 2017;5:e3243. Published 2017 May 3. doi:10.7717/peerj.3243
 * Dinghua Li, Chi-Man Liu, Ruibang Luo, Kunihiko Sadakane, Tak-Wah Lam, MEGAHIT: an ultra-fast single-node solution for large and complex metagenomics assembly via succinct de Bruijn graph, Bioinformatics, Volume 31, Issue 10, 15 May 2015, Pages 1674–1676, https://doi.org/10.1093/bioinformatics/btv033
 * Clovis Galiez, Matthias Siebert, François Enault, Jonathan Vincent, Johannes Söding, WIsH: who is the host? Predicting prokaryotic hosts from metagenomic phage contigs, Bioinformatics, Volume 33, Issue 19, 01 October 2017, Pages 3113–3114, https://doi.org/10.1093/bioinformatics/btx383
