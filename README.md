@@ -96,8 +96,20 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
 ## Prokaryotic module
 ### MetaWRAP
 The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md).
+### MaxBin2
+The instructions for the MaxBin2 installation can be found at ![MaxBin2](https://github.com/assemblerflow/flowcraft/blob/master/docs/user/components/maxbin2.rst).
+### MetaBAT2
+The instructions for the  metaBAT2 installation can be found at ![MetaBAT2](https://bioconda.github.io/recipes/metabat2/README.html).
+### CONCOCT 
+The instructions for the CONCOCT installation can be found at ![CONCOCT](https://github.com/BinPro/CONCOCT).
+### CheckM
+The instructions for the CheckM  installation can be found at ![CheckM](https://github.com/Ecogenomics/CheckM).
 ### uBin
 The instructions for the uBin installation can be found at ![uBin_Manual](https://github.com/ProbstLab/uBin-helperscripts.).
+### GTDB-Tk
+The instructions for the GTDB-Tk installation can be found at ![GTDB-Tk](https://github.com/ecogenomics/gtdbtk).
+### DAS_Tool
+The instructions for the DAS_Tool installation can be found at ![DAS_Tool](https://github.com/cmks/DAS_Tool).
 
 ## Viral module
 
@@ -106,16 +118,23 @@ The instructions for VirFinder installation can be found at ![VirFinder_Manual](
 ### VirSorter
 The instructions for VirSorter installation can be found at ![VirSorter_Manual](https://github.com/simroux/VirSorter). 
 ### VIBRANT 
-The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](https://github.com/AnantharamanLab/VIBRANT). 
+The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](https://github.com/AnantharamanLab/VIBRANT).
+### CheckV
+The instructions for CheckV installation can be found at ![CheckV](https://bitbucket.org/berkeleylab/checkv/src/master/).
 ### vContact
 The instructions for vContact installation can be found at ![vContact_Manual](https://github.com/geeklhem/vcontact/blob/master/doc/source/tutorial.rst).
+### WIsH
+The instructions for WIsH installation ![WIsH](https://github.com/soedinglab/wish)
 
 ## Eukaryotic module
 ### EukRep
 The instructions for EukRep installation can be found at ![EukRep_Manual](https://github.com/patrickwest/EukRep_Pipeline ). 
 ### EukCC
-The instructions for EukCC installation tool can be found at ![EukCC_Manual](https://github.com/Finn-Lab/EukCC).
-
+The instructions for EukCC installation can be found at ![EukCC_Manual](https://github.com/Finn-Lab/EukCC).
+### BUSCO
+The instructions for BUSCO installation can be found at ![BUSCO](https://github.com/WenchaoLin/BUSCO-Mod).
+### MAKER2
+The instructions for MAKER2 installation can be found at ![MAKER2](https://github.com/wuying1984/MAKER2_PM_genome_annotation).
 
 
 # DATABASES 
