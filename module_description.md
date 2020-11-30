@@ -39,7 +39,7 @@ Module 4 is devided into 3 steps:
 
 ### 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins
 
-In the beginning this step, **(4.a.1)** the assembled data-set is separated to Prokaryotic and Eukaryotic assemblies using **EukRep** tool. **(4.a.2)** In case the size of the Eukaryotic assembly file is >= 2.5 Mb, the Eukaryotic recovery modules can continue to the automated binnning with **CONCOCT** tool. The eukaryotic bins  produced by **CONCOCT**. Finally, **(4.a.3)** the bins are filtered by size and those of size < 2.5 Mb are removed. 
+In the beginning this step, **(4.a.1)** the assembled data-set is separated to Prokaryotic and Eukaryotic assemblies using **EukRep** tool (West et al., 2018). **(4.a.2)** In case the size of the Eukaryotic assembly file is >= 2.5 Mb, the Eukaryotic recovery modules can continue to the automated binnning with **CONCOCT** tool. The eukaryotic bins  produced by **CONCOCT**. Finally, **(4.a.3)** the bins are filtered by size and those of size < 2.5 Mb are removed. 
 
 ### 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins (there is a tool or threshold not developed yet, so something is missing)
 
@@ -51,11 +51,10 @@ In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes
 
 
 
-## Refferences
+## Refferences (still working on)
 
 
 * Andrews, S. (2010). FASTQC. A quality control tool for high throughput sequence data
-* Bolduc B, Jang HB, Doulcier G, You ZQ, Roux S, Sullivan MB. vConTACT: an iVirus tool to classify double-stranded DNA viruses that infect Archaea and Bacteria. PeerJ. 2017;5:e3243. Published 2017 May 3. doi:10.7717/peerj.3243
 * Dinghua Li, Chi-Man Liu, Ruibang Luo, Kunihiko Sadakane, Tak-Wah Lam, MEGAHIT: an ultra-fast single-node solution for large and complex metagenomics assembly via succinct de Bruijn graph, Bioinformatics, Volume 31, Issue 10, 15 May 2015, Pages 1674–1676, https://doi.org/10.1093/bioinformatics/btv033
 * Clovis Galiez, Matthias Siebert, François Enault, Jonathan Vincent, Johannes Söding, WIsH: who is the host? Predicting prokaryotic hosts from metagenomic phage contigs, Bioinformatics, Volume 33, Issue 19, 01 October 2017, Pages 3113–3114, https://doi.org/10.1093/bioinformatics/btx383
 * Ewing B, Hillier L, Wendl MC, Green P. Base-calling of automated sequencer traces using phred. I. Accuracy assessment. Genome Res. 1998 Mar;8(3):175-85. doi: 10.1101/gr.8.3.175. PMID: 9521921.
@@ -89,6 +88,14 @@ Stephen Nayfach, Antonio Pedro Camargo, Emiley Eloe-Fadrosh Simon Roux,Nikos Kyr
 doi: https://doi.org/10.1101/2020.05.06.081778 
 
 Posted May 08, 2020.
+
+
+EukRep
+Genome-reconstruction for eukaryotes from complex natural microbial communities
+Patrick T. West, Alexander J. Probst, Igor V. Grigoriev, Brian C. Thomas, Jillian F. Banfield
+doi: https://doi.org/10.1101/171355 
+Now published in Genome Research doi: 10.1101/gr.228429.117
+2018
 
 
 
