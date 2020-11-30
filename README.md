@@ -39,7 +39,7 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
      * **(2.a.2)** Dereplication of bins for prior bin_refinement. The completeness/contamination parameters have been set to 50%/10% for Bacteria and 40%/30% for Archaea. 
      * **(2.a.3)** Taxonomic classification of the genomic bins produced in **(2.a.2)** using **GTDB-Tk**.
      * **(2.a.4)** Generation of quality matrix of genomic bins produced in **(2.a.2)** using **CheckM**. 
-     * **(2.a.5)** Filtering of genomic bins produced in **(2.a.4)**, by bin quality (completeness – 5×contamination (Parks, 2018)). The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
+     * **(2.a.5)** Filtering of genomic bins produced in **(2.a.4)**, by bin quality. The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
      * **(2.a.6)** Annotation of genomic bins produced in **(2.a.2)** with **PROKKA**.
 * **2.b**: Selection of Prokaryotic Metagenome-Assembled Genomes, uBin-refinement and relative abundance.
     * **(2.b.1)** Selection of Prokaryotic Metagenome-Assembled Genomes.
