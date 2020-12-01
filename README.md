@@ -96,7 +96,7 @@ The steps of the Module 5 can be summarized as following:
 * **5.b** Relative abundance of Viral Metagenome-Assembled Genomes. 
 	* **(5.b.1)** Calculation of relative abundance of Viral Metagenome-Assembled Genomes.   
 	* **(5.b.2)** Construction of Viral relative abundance table.
-* **(5.c)** Relative abundance of Eukaryotic Metagenome-Assembled Genomes.
+* **5.c** Relative abundance of Eukaryotic Metagenome-Assembled Genomes.
 	* **(5.c.1)** Calculation of relative abundance of Eukaryotic Metagenome-Assembled Genomes.
 	* **(4.c.2)** Construction of Eukaryotic relative abundance table.
 
