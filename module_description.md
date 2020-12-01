@@ -54,7 +54,7 @@ In this step,  **(5.a.1)** the relative abundance of Prokaryotic Metagenome-Asse
 ### 5.b Relative abundance of Viral Metagenome-Assembled Genomes 
 In this step,  **(5.b.1)** the relative abundance of Viral Metagenome-Assembled Genomes is calculated and **(5.b.2)** the relative abundance table of Viral Metagenome-Assembled Genomes is constructed.
 ### 5.c Relative abundance of Eukaryotic Metagenome-Assembled Genomes
-In this step,  **(5.b.1)** the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated and **(5.b.2)** the relative abundance table of Eukaryotic Metagenome-Assembled Genomes is constructed.
+In this step,  **(5.c.1)** the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated and **(5.c.2)** the relative abundance table of Eukaryotic Metagenome-Assembled Genomes is constructed.
 
 ## References (still working on)
 
