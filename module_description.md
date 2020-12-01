@@ -48,10 +48,15 @@ In this step, a chain of processes is followed for one of the bins produced in *
 ### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance (not done, so maybe more will written)
 In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes takes place.
 
+## Module 5 Construction of relative abundace table (not finished yet)
+### 5.a Relative abundance of Prokaryotic Metagenome-Assembled Genomes
+In this step,  **(5.a.1)** the relative abundance of Prokaryotic Metagenome-Assembled Genomes is calculated and **(5.a.2)** the relative abundance table of Prokaryotic Metagenome-Assembled Genomes is constructed.
+### 5.b Relative abundance of Viral Metagenome-Assembled Genomes 
+In this step,  **(5.b.1)** the relative abundance of Viral Metagenome-Assembled Genomes is calculated and **(5.b.2)** the relative abundance table of Viral Metagenome-Assembled Genomes is constructed.
+### 5.c Relative abundance of Eukaryotic Metagenome-Assembled Genomes
+In this step,  **(5.b.1)** the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated and **(5.b.2)** the relative abundance table of Eukaryotic Metagenome-Assembled Genomes is constructed.
 
-
-
-## Refferences (still working on)
+## References (still working on)
 
 
 * Andrews, S. (2010). FASTQC. A quality control tool for high throughput sequence data
