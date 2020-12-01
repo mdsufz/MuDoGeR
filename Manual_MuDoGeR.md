@@ -90,15 +90,17 @@ The run of the prokaryotic module leads to the recovery of prokaryotic genomes f
 
 Running **2.a** :
 ``` 
-mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -c 40 (archaea) 50 (bacteria) -x 30 (archaea) 10 (bacteria) --q 50
+mudoger prokaryotic module -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -ca 40 -cb 50 -xa 30 xb 10 --q 50
 ```
 
 * The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of **2.a** will be written.
 * The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
 * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
 * The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reversed clean reads. 
-* The `-c` indicates the minimum completeness for archaeal and bacterial bins.
-* The `-x` indicates the maximum contamination for archaeal and bacterial bins.
+* The `-ca` indicates the minimum completeness for archaeal bins.
+* The `-xa` indicates the maximum contamination for archaeal bins.
+* The `-cb` indicates the minimum completeness for bacterial bins.
+* The `-xb` indicates the maximum contamination for bacterial bins.
 * The `--q` indicates the lower limit of quality for the filtering for the optional step of quality control (optional).
 
 In the final output folder the user can find:
