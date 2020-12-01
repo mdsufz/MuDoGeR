@@ -149,7 +149,7 @@ NODE_2_length_360965	Prodigal:2.6	CDS	3638	4510	.	-	0ID=EDFJOLLJ_00005;eC_number
 
 For more detailed explanation of the **metaWrap** tool the user can study the instruction is the following hyperlink: ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md)
 
-## 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes, uBin-refinement and relative abundance (not done)
+## 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes, uBin-refinement (not done)
 
 # Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the following hyperlink: ![Viral module](https://github.com/mdsufz/MuDoGeR#viral-module).
@@ -215,7 +215,7 @@ viral-particle-216	ERR1341880_bacbin.1	-1.33232	NA
 viral-particle-55	LS08Hbin.1	-1.34156	NA
 viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 ``` 
-## 3.b: Selection of Viral Metagenome-Assembled Genomes and relative abundance (Not done)
+## 3.b: Selection of Viral Metagenome-Assembled Genomes (Not done)
 
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (not finished yet)
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the following hyperlink: ![Eukaryotic module](https://github.com/mdsufz/MuDoGeR#eukaryotic-module).
@@ -257,7 +257,14 @@ The results of the **BUSCO** tool are located in the file `maker/busco/full_tabl
 
 The combined results of **BUSCO** and **EukCC** are located in ... (when this part is ready I ll put it.)
 
-## 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance (not done)
+## 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes (not done)
+
+# Module 5: Construction of relative abundance table (not done)
+## 5.a Relative abundance of Prokaryotic Metagenome-Assembled Genomes (not done)
+## 5.b Relative abundance of Viral Metagenome-Assembled Genomes (not done)
+## 5.c Relative abundance of Eukaryotic Metagenome-Assembled Genomes(not done)
+
+
 
 
 
