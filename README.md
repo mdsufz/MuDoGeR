@@ -44,7 +44,7 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
 * **2.b**: Selection of Prokaryotic Metagenome-Assembled Genomes, uBin-refinement and relative abundance.
     * **(2.b.1)** Selection of Prokaryotic Metagenome-Assembled Genomes.
     * **(2.b.2)** Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin** (optional step).
-    * **(2.b.3)** Construction of relative abundance table for Prokaryotic Metagenome-Assembled Genomes.
+    * **(2.b.3)** Construction of relative abundance table for Prokaryotic etagenome-Assembled Genomes.
 
 ### Module 3: Recovery of Viral Metagenome-Assembled Genomes
 
@@ -65,7 +65,6 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
     * **(3.a.8)** Host identification of the dereplicated contigs using **WIsH** (optional).    
 * **3.b**: Selection of Viral Metagenome-Assembled Genomes and relative abundance.
     * **(3.b.1)** Selection of Viral Metagenome-Assembled Genomes.
-    * **(3.b.2)** Construction of relative abundance table for Viral Metagenome-Assembled Genomes.
 
 ### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 
@@ -86,7 +85,20 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
     * **(4.b.5)** Combination of **(4.b.4)** and **(4.b.2)** results for quality estimation.
 * **4.c**: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance.
     * **(4.c.1)** Selection of Eukaryotic Metagenome-Assembled Genomes.
-    * **(4.c.2)** Construction of relative abundance table.
+
+
+### Module 5 Relative abundace (not finished yet)
+
+The steps of the Module 5 can be summarized as following:
+* **5.a.** Relative abundance of Prokaryotic Metagenome-Assembled Genomes. 
+	* **(5.a.1)** Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes.   
+	* **(5.a.2)** Construction of Prokaryotic relative abundance table.
+* **5.b** Relative abundance of Viral Metagenome-Assembled Genomes. 
+	* **(5.b.1)** Calculation of relative abundance of Viral Metagenome-Assembled Genomes.   
+	* **(5.b.2)** Construction of Viral relative abundance table.
+* **(5.c)** Relative abundance of Eukaryotic Metagenome-Assembled Genomes.
+	* **(5.c.1)** Calculation of relative abundance of Eukaryotic Metagenome-Assembled Genomes.
+	* **(4.c.2)** Construction of Eukaryotic relative abundance table.
 
 # System requirements
 (not done yet)
