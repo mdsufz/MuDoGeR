@@ -194,6 +194,7 @@ mudoger -h
 	prokaryotic	Recovery of Prokaryotic etagenome-Assembled Genomes 
 	viral		Recovery of Viral Metagenome-Assembled Genomes
 	eukaryotic 	Recovery of Eukaryotic Metagenome-Assembled Genomes
+	relative_abund	Relative abundance calculation
 		
 	--help | -h		show this help message
 	--version | -v	show MuDoGeR version
