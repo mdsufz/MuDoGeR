@@ -10,7 +10,7 @@ The **MuDoGeR** Raw Read Quality Control is based on **metaWrap** Read Quality C
 In case the user is interested in a fine quality assembly, then **metaSPades** reader (Nurk et al., 2017) should be used. Due to the high memory requirements of **metaSPades** (Nurk et al., 2017), prior to the assembly, it is possible to estimate the necessary resources for the assembly of the library produced in quality control module. **(1.b.1)** This can be achieved by estimating the complexity of the forward or reversed pure reads by k-mer calculation, as they are almost identical. The k-mer is usually estimated in size 33 or 55. Both values k-mer values estimated and  k-mer with sizes of 33 and 55 are combined to a single output file. **(1.b.2)** Using this file, the necessary amount of memory that **metaSPades** needs to utilze for assembly the good qulity reads is predicted.
 
 ### 1.c: Assembly
-The **MuDoGeR** Assembly is based on **metaWrap** Assembly and is utillized for assembling a set of metagenomic reads. Two possible readers can be chosen for the assembly: **MegaHit** (default) and **metaSPAdes** (Uritskiy et al., 2018). **MegaHit** (Dinghua et al., 2015) reader requires less memory and is also faster, compared to **metaSPAdes** (if the user decides to utilize **metaSPAdes** we recommend the use of **1.b**). On the other hand, **metaSPAdes** reader (Nurk et al., 2017) has been proved more reliable as it produces assemblies of higher quality (Uritskiy et al., 2018). Because of that, the usage of **metaSPAdes** reader is preferable except of the cases of large data-set (Uritskiy et al., 2018).
+The **MuDoGeR** Assembly is based on **metaWrap** Assembly and is utillized for assembling a set of metagenomic reads. Two possible readers can be chosen for the assembly: **MegaHit** (default) and **metaSPAdes** (Uritskiy et al., 2018). **MegaHit** (Li et al., 2016) reader requires less memory and is also faster, compared to **metaSPAdes** (if the user decides to utilize **metaSPAdes** we recommend the use of **1.b**). On the other hand, **metaSPAdes** reader (Nurk et al., 2017) has been proved more reliable as it produces assemblies of higher quality (Uritskiy et al., 2018). Because of that, the usage of **metaSPAdes** reader is preferable except of the cases of large data-set (Uritskiy et al., 2018).
 
 ## Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
 Module 2 is separated in tasks:
@@ -61,7 +61,6 @@ In this step,  **(5.c.1)** the relative abundance of Eukaryotic Metagenome-Assem
 
 * Andrews, S. (2010). FASTQC. A quality control tool for high throughput sequence data
 * Bornemann, Till L.V., Sarah P. Esser, Tom L. Stach, Tim Burg, and Alexander J. Probst. “UBin – a Manual Refining Tool for Metagenomic Bins Designed for Educational Purposes.” BioRxiv, January 1, 2020, 2020.07.15.204776. https://doi.org/10.1101/2020.07.15.204776.
-* Dinghua Li, Chi-Man Liu, Ruibang Luo, Kunihiko Sadakane, Tak-Wah Lam, MEGAHIT: an ultra-fast single-node solution for large and complex metagenomics assembly via succinct de Bruijn graph, Bioinformatics, Volume 31, Issue 10, 15 May 2015, Pages 1674–1676, https://doi.org/10.1093/bioinformatics/btv033
 * Clovis Galiez, Matthias Siebert, François Enault, Jonathan Vincent, Johannes Söding, WIsH: who is the host? Predicting prokaryotic hosts from metagenomic phage contigs, Bioinformatics, Volume 33, Issue 19, 01 October 2017, Pages 3113–3114, https://doi.org/10.1093/bioinformatics/btx383
 * Ewing B, Hillier L, Wendl MC, Green P. Base-calling of automated sequencer traces using phred. I. Accuracy assessment. Genome Res. 1998 Mar;8(3):175-85. doi: 10.1101/gr.8.3.175. PMID: 9521921.
 * Felipe A. Simão, Robert M. Waterhouse, Panagiotis Ioannidis, Evgenia V. Kriventseva, Evgeny M. Zdobnov, BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs, Bioinformatics, Volume 31, Issue 19, 1 October 2015, Pages 3210–3212, https://doi.org/10.1093/bioinformatics/btv351
@@ -69,6 +68,7 @@ In this step,  **(5.c.1)** the relative abundance of Eukaryotic Metagenome-Assem
 * Johannes Alneberg, Brynjar Smári Bjarnason, Ino de Bruijn, Melanie Schirmer, Joshua Quick, Umer Z Ijaz, Leo Lahti, Nicholas J Loman, Anders F Andersson & Christopher Quince. 2014. Binning metagenomic contigs by coverage and composition. Nature Methods, doi: 10.1038/nmeth.3103
 * Kang DD, Li F, Kirton E, et al. MetaBAT 2: an adaptive binning algorithm for robust and efficient genome reconstruction from metagenome assemblies. PeerJ. 2019;7:e7359. Published 2019 Jul 26. doi:10.7717/peerj.7359
 * Kieft, K., Zhou, Z. & Anantharaman, K. VIBRANT: automated recovery, annotation and curation of microbial viruses, and evaluation of viral community function from genomic sequences. Microbiome 8, 90 (2020). https://doi.org/10.1186/s40168-020-00867-0
+* Li D, Luo R, Liu CM, Leung CM, Ting HF, Sadakane K, Yamashita H, Lam TW. MEGAHIT v1.0: A fast and scalable metagenome assembler driven by advanced methodologies and community practices. Methods. 2016 Jun 1;102:3-11. doi: 10.1016/j.ymeth.2016.02.020. Epub 2016 Mar 21. PMID: 27012178.
 * Nayfach, Stephen, Antonio Pedro Camargo, Emiley Eloe-Fadrosh, Simon Roux, and Nikos Kyrpides. “CheckV: Assessing the Quality of Metagenome-Assembled Viral Genomes.” BioRxiv, January 1, 2020, 2020.05.06.081778. https://doi.org/10.1101/2020.05.06.081778.
 * Nurk S, Meleshko D, Korobeynikov A, Pevzner PA. metaSPAdes: a new versatile metagenomic assembler. Genome Res. 2017;27(5):824-834. doi:10.1101/gr.213959.116
 * Parks DH, Imelfort M, Skennerton CT, Hugenholtz P, Tyson GW. 2014. Assessing the quality of microbial genomes recovered from isolates, single cells, and metagenomes. Genome Research, 25: 1043-1055.
@@ -83,6 +83,7 @@ https://doi.org/10.1186/s13059-020-02155-4
 * Uritskiy, G.V., DiRuggiero, J. & Taylor, J. MetaWRAP—a flexible pipeline for genome-resolved metagenomic data analysis. Microbiome 6, 158 (2018). https://doi.org/10.1186/s40168-018-0541-1
 * West, Patrick T., Alexander J. Probst, Igor V. Grigoriev, Brian C. Thomas, and Jillian F. Banfield. “Genome-Reconstruction for Eukaryotes from Complex Natural Microbial Communities.” BioRxiv, January 1, 2017, 171355. https://doi.org/10.1101/171355.
 * Yu-Wei Wu, Blake A. Simmons, Steven W. Singer, MaxBin 2.0: an automated binning algorithm to recover genomes from multiple metagenomic datasets, Bioinformatics, Volume 32, Issue 4, 15 February 2016, Pages 605–607, https://doi.org/10.1093/bioinformatics/btv638
+
 
 
 
