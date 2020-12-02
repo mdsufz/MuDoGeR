@@ -106,10 +106,11 @@ The steps of the Module 5 can be summarized as following:
 # Installation
 
 ## Pre-Processing Module
-
-## MegaHit
+### TrimGalore
+The instructions for  TrimGalore installation can be found at ![ TrimGalore_Manual](https://github.com/FelixKrueger/TrimGalore).
+### MegaHit
 The instructions for the MegaHit installation can be found at ![MegaHit_Manual](https://github.com/voutcn/megahit).
-
+### MetaSPades
 The instructions for the metaSPAdes installation can be found at ![metaSPAdes_Manual](https://github.com/ablab/spades).
 
 ## Prokaryotic module
