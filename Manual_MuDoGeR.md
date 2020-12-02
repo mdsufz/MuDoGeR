@@ -263,7 +263,7 @@ The combined results of **BUSCO** and **EukCC** are located in ... (when this pa
 ## 5.a Relative abundance of Prokaryotic Metagenome-Assembled Genomes (not done)
 ## 5.b Relative abundance of Viral Metagenome-Assembled Genomes (not done)
 ## 5.c Relative abundance of Eukaryotic Metagenome-Assembled Genomes(not done)
-
+## 5.d Construction of relative abundance table (not done)
 
 
 
