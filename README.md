@@ -138,7 +138,7 @@ The instructions for VirSorter installation can be found at ![VirSorter_Manual](
 ### VIBRANT 
 The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](https://github.com/AnantharamanLab/VIBRANT).
 ### Stampede-clustergenomes
-The instructions for Stampede-clustergenomes can be found at ![Stampede-clustergenomes_Manual](https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/)
+The instructions for Stampede-clustergenomes can be found at ![Stampede-clustergenomes_Manual](https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master)
 ### CheckV
 The instructions for CheckV installation can be found at ![CheckV_Manual](https://github.com/ekzhu/SetSimilaritySearch).
 ### vContact2
