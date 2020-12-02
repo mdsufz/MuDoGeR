@@ -144,7 +144,7 @@ The instructions for CheckV installation can be found at ![CheckV_Manual](https:
 ### vContact2
 The instructions for vContact2 installation can be found at ![vContact2](https://bitbucket.org/MAVERICLab/vcontact2/wiki/Home).
 ### WIsH
-The instructions for WIsH installation ![WIsH_Manual](https://github.com/soedinglab/wish)
+The instructions for WIsH installation ![WIsH_Manual](https://github.com/soedinglab/wish).
 
 ## Eukaryotic module
 ### EukRep
