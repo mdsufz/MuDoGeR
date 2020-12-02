@@ -109,7 +109,7 @@ The instructions for the MegaHit installation can be found at ![MegaHit_Manual](
 ### MetaSPades
 The instructions for the metaSPAdes installation can be found at ![metaSPAdes_Manual](https://github.com/ablab/spades).
 ### FastQC
-Instructions for FastQC installation can be found at ![FastQC_Manual](www.bioinformatics.babraham.ac.uk/projects/fastqc/).
+Instructions for FastQC installation can be found at ![FastQC_Manual](https://github.com/pnnl/fqc).
 
 ## Prokaryotic module
 ### MetaWRAP
