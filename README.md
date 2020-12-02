@@ -142,7 +142,7 @@ The instructions for Stampede-clustergenomes can be found at ![Stampede-clusterg
 ### CheckV
 The instructions for CheckV installation can be found at ![CheckV_Manual](https://github.com/ekzhu/SetSimilaritySearch).
 ### vContact2
-The instructions for vContact2 installation can be found at ![vContact2](https://bitbucket.org/MAVERICLab/vcontact2/wiki/Home).
+The instructions for vContact2 installation can be found at ![vContact2](https://bitbucket.org/MAVERICLab/vcontact2/src/master/).
 ### WIsH
 The instructions for WIsH installation ![WIsH_Manual](https://github.com/soedinglab/wish).
 
