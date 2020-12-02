@@ -19,7 +19,7 @@ Module 2 is separated in tasks:
 
 This step is a combination of tasks included in the **metaWrap** tool(Uritskiy et al., 2018). **(2.a.1)** This step starts with the binning of the assembly data-sets with the use of three wrapped tools: **MaxBin2** (Wu et al., 2016), **metaBAT2** (Kang et al., 2019) and **CONCOCT** (Alneberg et al., 2014). This process results to the production of bin files from each method. Next, **(2.a.2)** the bin_refinement of the bins produced from each tool follows. In the bin_refinement, the minimum completeness and contamination for bacterial bins are 50% and 10% respectively, while the minimum completeness and contamination for the archael bins are 40% and 30% respectively. **(2.a.3)** For the taxonomic classification of the bin sets from Bacteria and Archaea produced in the bin refinement module, **GTDB-Tk** tool (Chaumeil et al., 2020) is used. Furthermore, **(2.a.4)** the quality matrix of the bins produced from bin_refinement, using **CheckM** (Parks et al., 2014). After this step, **(2.a.5)** the user can choose to filter the **CheckM** bins by quality. Bin quality is defined as completeness – 5×contamination (Parks et al., 2018). By default, the quality value is 50, but the user can choose a different value. Finally, **(2.a.6)** the prediction of functional annotation of the bins produced in the bin_refinement is achieved by **PROKKA** (Seemann, 2014), which utilizes a number of softawre tools (Uritskiy et al., 2018).
 
-### 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes, uBin-refinement and relative abundance (not done, so maybe more will written)
+### 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes, uBin-refinement (not done, so maybe more will written)
 
 **(2.b.1)** In the beginning of this step, a selection of Prokaryotic Metagenome-Assembled Genomes takes place. In case the user chooses to, **(2.b.2)** **DAS Tool** (Sieber et al., 2018) and **uBin** (Bornemann et al., 2020) refining tool are used for the manual curation of genomes from the selected metagenomic bins.
 
@@ -30,8 +30,7 @@ Module 3 is devided into 2 steps:
 
 In the beginning of this step, three viral recovery tools (**VirFinder** (Ren et al., 2017), **VirSorter** which recovers prophages (Roux et al., 2015), **VIBRANT** (Kieft et al., 2020)) are utilized for the identification and recovery of viral genomes from an assemble metagenomic data-set. **(3.a.1)** Each of the tools is used to recover independently the viral genomes from a given assembled data-set and saves them in seperate folders. **(3.a.2)** Following that, the recovered sequences are filtered. The selection of proper **VirFinder** sequences is based on low q-value (q-value=< 0.01) and high length (length>= 1000 bp), the **VirSorter** chosen sequences are those classified into categories 1 and 2 and from **VIBRANT** the selected sequences are those of the combined assemblies from phages. **(3.a.3)** The headers of **VirSorter** and **VIBRANT** contigs are modified so they can match with those produced from the **VirFinder** results. It is important to note that in contrast with the other two tools, the **VirFinder** output recovery file contains only the headers of the assemblies. Because of that, the headers of the unique filtered sequences from each tool are extracted to a common fasta file and sorted by length. **(3.a.4)** Using the headers including in the common fasta file, the actual sequences from the assembly data-set are extracted and transfered to a new fasta file. **(3.a.5)** Next,the duplicated contigs are removed by dereplication using **Stampede-clustergenomes** tool. The dependencies of the dereplication step are the maximum coverage (-c) 70% and the maximum identity (-i) 95%. The dereplication is followed by **(3.a.6)**  quality estimation and **(3.a.7)** taxonomic classification of the the dereplicated contigs by **CheckV** (Nayfach et al., 2020) and **vContact2**, respectively. Finally, if the user chooses to, **(3.a.8)** the hosts of the dereplicated contigs are identified by using **WIsH tool** (Galiez et al., 2017).
 
-### **3.b**: Selection of Viral Metagenome-Assembled Genomes and relative abundance (not done, so maybe more will written)
-
+### **3.b**: Selection of Viral Metagenome-Assembled Genomes and relative abundance
 In this step, **(3.b.1)** a selection of Prokaryotic Metagenome-Assembled Genomes takes place.
 
 ## Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
@@ -45,16 +44,18 @@ In the beginning this step, **(4.a.1)** the assembled data-set is separated to P
 
 In this step, a chain of processes is followed for one of the bins produced in **4.b**: **(4.b.1)** **GeneMark-EV** is applied for gene prediction. **(4.b.2)** Also, the contamination of the bins which were kept after the filtering is estimated by using **EukCC** tool (Saary et al., 2020). **(4.b.3)** The predicted genes from **GeneMark-EV** (Saary et al., 2020) are annotated with **Maker2** (Holt et al., 2011). **(4.b.4)** The completeness of the annotated proteins is measured using **BUSCO** (Simão et al., 2015). Finally, **(4.b.5)** the results from **BUSCO** and **EukCC** are combined. 
 
-### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes and relative abundance (not done, so maybe more will written)
+### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes (not done, so maybe more will written)
 In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes takes place.
 
 ## Module 5 Relative abundace (not finished yet)
 ### 5.a Relative abundance of Prokaryotic Metagenome-Assembled Genomes
-In this step,  **(5.a.1)** the relative abundance of Prokaryotic Metagenome-Assembled Genomes is calculated and **(5.a.2)** the relative abundance table of Prokaryotic Metagenome-Assembled Genomes is constructed.
+In this step the relative abundance of Prokaryotic Metagenome-Assembled Genomes is calculated.
 ### 5.b Relative abundance of Viral Metagenome-Assembled Genomes 
-In this step,  **(5.b.1)** the relative abundance of Viral Metagenome-Assembled Genomes is calculated and **(5.b.2)** the relative abundance table of Viral Metagenome-Assembled Genomes is constructed.
+In this step,  **(5.b.1)** the relative abundance of Viral Metagenome-Assembled Genomes is calculated.
 ### 5.c Relative abundance of Eukaryotic Metagenome-Assembled Genomes
-In this step,  **(5.c.1)** the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated and **(5.c.2)** the relative abundance table of Eukaryotic Metagenome-Assembled Genomes is constructed.
+In this step,  **(5.c.1)** the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated.
+### Construction of relative abundance table
+In this step the relative abundance table is constructed.
 
 ## References (still working on)
 
