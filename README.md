@@ -87,7 +87,7 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
     * **(4.c.1)** Selection of Eukaryotic Metagenome-Assembled Genomes.
 
 
-### Module 5 Construction of relative abundace table (not finished yet)
+### Module 5 Relative abundace (not finished yet)
 
 The steps of the Module 5 can be summarized as following:
 * **5.a.** Relative abundance of Prokaryotic Metagenome-Assembled Genomes. 
