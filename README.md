@@ -112,6 +112,8 @@ The instructions for  TrimGalore installation can be found at ![ TrimGalore_Manu
 The instructions for the MegaHit installation can be found at ![MegaHit_Manual](https://github.com/voutcn/megahit).
 ### MetaSPades
 The instructions for the metaSPAdes installation can be found at ![metaSPAdes_Manual](https://github.com/ablab/spades).
+### FastQC
+Instructions for FastQC installation can be found at ![FastQC_Manual](www.bioinformatics.babraham.ac.uk/projects/fastqc/).
 
 ## Prokaryotic module
 ### MetaWRAP
