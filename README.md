@@ -60,7 +60,7 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
     * **(3.a.3)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
     * **(3.a.4)** Assembly of the headers in the file produced in **3.c** with the respective sequences from the assembly file produced by **metaSPades** in **1.c**, for the generation of a fasta file.
     * **(3.a.5)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
-    * **(3.a.6)** Checking the quality (completeness – 5×contamination (Parks, 2018) of the dereplicated contigs with **CheckV**.
+    * **(3.a.6)** Checking the quality of the dereplicated contigs with **CheckV**.
     * **(3.a.7)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
     * **(3.a.8)** Host identification of the dereplicated contigs using **WIsH** (optional).    
 * **3.b**: Selection of Viral Metagenome-Assembled Genomes and relative abundance.
@@ -104,6 +104,13 @@ The steps of the Module 5 can be summarized as following:
 (not done yet)
 
 # Installation
+
+## Pre-Processing Module
+
+## MegaHit
+The instructions for the MegaHit installation can be found at ![MegaHit_Manual](https://github.com/voutcn/megahit).
+
+The instructions for the metaSPAdes installation can be found at ![metaSPAdes_Manual](https://github.com/ablab/spades).
 
 ## Prokaryotic module
 ### MetaWRAP
