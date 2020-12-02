@@ -102,6 +102,8 @@ The steps of the Module 5 can be summarized as following:
 ## Pre-Processing Module
 ### TrimGalore
 The instructions for  TrimGalore installation can be found at ![ TrimGalore_Manual](https://github.com/FelixKrueger/TrimGalore).
+### Bmtagger
+The instructions for the bmtagger installation can be found at ![bmtagger_Manual](ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger)
 ### MegaHit
 The instructions for the MegaHit installation can be found at ![MegaHit_Manual](https://github.com/voutcn/megahit).
 ### MetaSPades
