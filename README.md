@@ -123,7 +123,7 @@ The instructions for the CONCOCT installation can be found at ![CONCOCT_Manual](
 ### CheckM
 The instructions for the CheckM  installation can be found at ![CheckM_Manual](https://github.com/Ecogenomics/CheckM).
 ### uBin
-The instructions for the uBin installation can be found at ![uBin_Manual](https://github.com/ProbstLab/uBin-helperscripts.).
+The instructions for the uBin installation can be found at ![uBin_Manual](https://github.com/ProbstLab/uBin).
 ### GTDB-Tk
 The instructions for the GTDB-Tk installation can be found at ![GTDB-Tk_Manual](https://github.com/ecogenomics/gtdbtk).
 ### DAS_Tool
