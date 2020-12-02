@@ -223,6 +223,7 @@ Options:
 	-checkv		Quality control of dereplicated contigs with CheckV		
 	-vcontact2	Taxonomy of dereplicated contigs with vContact2
 	--wish		Host identification of dereplicated contigs with WIsH
+	-mags_select	Selection of viral MAGs
 ```
 
 # Citing
