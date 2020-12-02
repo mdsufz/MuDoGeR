@@ -140,7 +140,7 @@ The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](http
 ### Stampede-clustergenomes
 The instructions for Stampede-clustergenomes can be found at ![Stampede-clustergenomes_Manual](https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/)
 ### CheckV
-The instructions for CheckV installation can be found at ![CheckV_Manual](https://bitbucket.org/berkeleylab/checkv/src/master/).
+The instructions for CheckV installation can be found at ![CheckV_Manual](https://github.com/ekzhu/SetSimilaritySearch).
 ### vContact2
 The instructions for vContact2 installation can be found at ![vContact2](https://bitbucket.org/MAVERICLab/vcontact2/wiki/Home).
 ### WIsH
