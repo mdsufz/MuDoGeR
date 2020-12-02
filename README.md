@@ -103,7 +103,7 @@ The steps of the Module 5 can be summarized as following:
 ### TrimGalore
 The instructions for  TrimGalore installation can be found at ![ TrimGalore_Manual](https://github.com/FelixKrueger/TrimGalore).
 ### Bmtagger
-The instructions for the bmtagger installation can be found at ![bmtagger_Manual](ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger).
+The instructions for the bmtagger installation can be found by following the webpage: ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger.
 ### MegaHit
 The instructions for the MegaHit installation can be found at ![MegaHit_Manual](https://github.com/voutcn/megahit).
 ### MetaSPades
@@ -117,7 +117,7 @@ The instructions for the metaWrap installation can be found at ![metaWRAP_Manual
 ### MaxBin2
 The instructions for the MaxBin2 installation can be found at ![MaxBin2_Manual](https://github.com/assemblerflow/flowcraft/blob/master/docs/user/components/maxbin2.rst).
 ### MetaBAT2
-The instructions for the  metaBAT2 installation can be found at ![MetaBAT2_Manual](https://bioconda.github.io/recipes/metabat2/README.html).
+The instructions for the  metaBAT2 installation can be found by following the webpage webpage: https://bioconda.github.io/recipes/metabat2/README.html.
 ### CONCOCT 
 The instructions for the CONCOCT installation can be found at ![CONCOCT_Manual](https://github.com/BinPro/CONCOCT).
 ### CheckM
@@ -138,11 +138,11 @@ The instructions for VirSorter installation can be found at ![VirSorter_Manual](
 ### VIBRANT 
 The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](https://github.com/AnantharamanLab/VIBRANT).
 ### Stampede-clustergenomes
-The instructions for Stampede-clustergenomes can be found at ![Stampede-clustergenomes_Manual](https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master)
+The instructions for Stampede-clustergenomes usage cane be found by following the webpage: https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master.
 ### CheckV
 The instructions for CheckV installation can be found at ![CheckV_Manual](https://github.com/ekzhu/SetSimilaritySearch).
 ### vContact2
-The instructions for vContact2 installation can be found at ![vContact2](https://bioconda.github.io/recipes/vcontact2/README.html).
+The instructions for vContact2 installation can be found by following the webpage: https://bioconda.github.io/recipes/vcontact2/README.html.
 ### WIsH
 The instructions for WIsH installation ![WIsH_Manual](https://github.com/soedinglab/wish).
 
