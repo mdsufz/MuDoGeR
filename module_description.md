@@ -4,7 +4,7 @@
 Module 1 is devided into 3 steps:
 
 ### 1.a: Raw Read Quality Control
-The **MuDoGeR** Raw Read Quality Control is based on **metaWrap** Read Quality Control and is responsible to prepare the raw reads for assembly and alignment (Uritskiy et al., 2018). The trimming of the raw reads is based on adapted content and **PHRED** scored with the default setting of Trim-galore (Krueger, 2015). As a result, all the non-high quality sequences are removed. The high quality reads that remained are aligned to the genome of a potential host with bmtagger, a process that leads to the removal of host contamination and of read pairs with only one aligned read from the metagenomic data. In the final step, **FASTQC** is used to assess read quality improvement.
+The **MuDoGeR** Raw Read Quality Control is based on **metaWrap** Read Quality Control and is responsible to prepare the raw reads for assembly and alignment (Uritskiy et al., 2018). The trimming of the raw reads is based on adapted content and **PHRED** scored with the default setting of Trim-galore (Krueger, 2015). As a result, all the non-high quality sequences are removed. The high quality reads that remained are aligned to the genome of a potential host with bmtagger, a process that leads to the removal of host contamination and of read pairs with only one aligned read from the metagenomic data. In the final step, **FASTQC**  is used to assess read quality improvement (Andrews, 2010).
 
 ### 1.b: Calculation of resources
 In case the user is interested in a fine quality assembly, then **metaSPades** reader (Nurk et al., 2017) should be used. Due to the high memory requirements of **metaSPades** (Nurk et al., 2017), prior to the assembly, it is possible to estimate the necessary resources for the assembly of the library produced in quality control module. **(1.b.1)** This can be achieved by estimating the complexity of the forward or reversed pure reads by k-mer calculation, as they are almost identical. The k-mer is usually estimated in size 33 or 55. Both values k-mer values estimated and  k-mer with sizes of 33 and 55 are combined to a single output file. **(1.b.2)** Using this file, the necessary amount of memory that **metaSPades** needs to utilze for assembly the good qulity reads is predicted.
@@ -58,7 +58,7 @@ In this step,  **(5.c.1)** the relative abundance of Eukaryotic Metagenome-Assem
 
 ## References (still working on)
 
-
+* Andrews S. (2010). FastQC: a quality control tool for high throughput sequence data. Available online at: http://www.bioinformatics.babraham.ac.uk/projects/fastqc
 * Bornemann, Till L.V., Sarah P. Esser, Tom L. Stach, Tim Burg, and Alexander J. Probst. “UBin – a Manual Refining Tool for Metagenomic Bins Designed for Educational Purposes.” BioRxiv, January 1, 2020, 2020.07.15.204776. https://doi.org/10.1101/2020.07.15.204776.
 * Clovis Galiez, Matthias Siebert, François Enault, Jonathan Vincent, Johannes Söding, WIsH: who is the host? Predicting prokaryotic hosts from metagenomic phage contigs, Bioinformatics, Volume 33, Issue 19, 01 October 2017, Pages 3113–3114, https://doi.org/10.1093/bioinformatics/btx383.
 * Ewing B, Hillier L, Wendl MC, Green P. Base-calling of automated sequencer traces using phred. I. Accuracy assessment. Genome Res. 1998 Mar;8(3):175-85. doi: 10.1101/gr.8.3.175. PMID: 9521921.
