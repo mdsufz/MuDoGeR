@@ -70,7 +70,7 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
 
 **Figure 5.**  Module 4 of the MuDoGeR pipeline.
 
-The steps of the Module 4  are shown in Figure 5 and can be excecuted with the scripts find in the following hyperlink: ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-pipelines-for-eukaryotic-genomes-recovery).
+The steps of the Module 4  are shown in Figure 5 and can be excecuted with the scripts find in the following hyperlink: ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
 
  The steps of Module 4 can be summarized as following:
 * **4.a**: Recovery of Eukaryotic assemblies and production of Eukaryotic bins.
