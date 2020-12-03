@@ -149,7 +149,8 @@ NODE_2_length_360965	Prodigal:2.6	CDS	3638	4510	.	-	0ID=EDFJOLLJ_00005;eC_number
 
 For more detailed explanation of the **metaWrap** tool the user can study the instruction is the following hyperlink: ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md)
 
-## 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes Representatives, uBin-refinement (not done)
+## 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes (not done)
+## 2.c: Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using DAS Tool and U-bin
 
 # Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the following hyperlink: ![Viral module](https://github.com/mdsufz/MuDoGeR#viral-module).
