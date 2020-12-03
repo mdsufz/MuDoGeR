@@ -262,10 +262,10 @@ The combined results of **BUSCO** and **EukCC** are located in ... (when this pa
 ## 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes (not done)
 
 # Module 5:Relative abundance (not done)
-## 5.a Relative abundance of Prokaryotic Metagenome-Assembled Genomes (not done)
-## 5.b Relative abundance of Viral Metagenome-Assembled Genomes (not done)
-## 5.c Relative abundance of Eukaryotic Metagenome-Assembled Genomes(not done)
-## 5.d Construction of relative abundance table (not done)
+## 5.a Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table(not done)
+## 5.b Calculation of relative abundance of Viral Metagenome-Assembled Genomes and construction of relative abundance table (not done)
+## 5.c Calculation of relative abundance of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance table (not done)
+## 5.d Construction of combined relative abundance table (not done)
 
 
 
