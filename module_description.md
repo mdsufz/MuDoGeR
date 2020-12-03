@@ -24,7 +24,7 @@ This step is a combination of tasks included in the **metaWrap** tool (Uritskiy 
 **(2.b.1)** In the beginning of this step, a selection of Prokaryotic Metagenome-Assembled Genomes takes place. In case the user chooses to, **(2.b.2)** **DAS Tool** (Sieber et al., 2018) and **uBin** (Bornemann et al., 2020) refining tool. The users have the option of using **uBin** to manually refined their Metagenome-Assembled Genomes. The hyperlink of the **uBin** tool can be found in the following hyperlink: ![ubin](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#ubin).
 
 ## Module 3: Recovery of Viral Metagenome-Assembled Genomes
-Module 3 is devided into 2 steps:
+Module 3 is devided into 2 steps: 
 
 ### **3.a**: Recovery, quality estimation, taxonomic classification and host identification of Viral Metagenome-Assembled Genomes
 
