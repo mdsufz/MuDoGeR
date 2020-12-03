@@ -12,7 +12,7 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** pipeline (**Figure 1.**) is a too
 * Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md).
 * Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: ![Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
 * Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: ![System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
-* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: ![Simplified usage of the MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#using-mudoger).
+* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: ![Simplified usage of the MuDoGeR]().
 
 ### Module 1: Pre-Processing 
 
