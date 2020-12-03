@@ -18,7 +18,7 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** pipeline (**Figure 1**) is a tool
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Preprocessing.jpg)
 
- The steps of Module 1 are shown in Figure 2 and can be excecuted with the scripts find in the following hyperlink: ![Pre-Processing module](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
+ The steps of Module 1 are shown in Figure 2 and can be excecuted with the scripts find in the following hyperlink: ![Pre-Processing](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
  
  The steps of Module 1 can be summarized as following:
 
