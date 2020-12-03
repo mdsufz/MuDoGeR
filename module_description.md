@@ -31,7 +31,7 @@ Module 3 is devided into 2 steps:
 In the beginning of this step, three viral recovery tools (**VirFinder** (Ren et al., 2017), **VirSorter** which recovers prophages (Roux et al., 2015), **VIBRANT** (Kieft et al., 2020)) are utilized for the identification and recovery of viral genomes from an assemble metagenomic data-set. **(3.a.1)** Each of the tools is used to recover independently the viral genomes from a given assembled data-set and saves them in seperate folders. **(3.a.2)** Following that, the recovered sequences are filtered. The selection of proper **VirFinder** sequences is based on low q-value (q-value=< 0.01) and high length (length>= 1000 bp), the **VirSorter** chosen sequences are those classified into categories 1 and 2 and from **VIBRANT** the selected sequences are those of the combined assemblies from phages. **(3.a.3)** The headers of **VirSorter** and **VIBRANT** contigs are modified so they can match with those produced from the **VirFinder** results. It is important to note that in contrast with the other two tools, the **VirFinder** output recovery file contains only the headers of the assemblies. Because of that, the headers of the unique filtered sequences from each tool are extracted to a common fasta file and sorted by length. **(3.a.4)** Using the headers including in the common fasta file, the actual sequences from the assembly data-set are extracted and transfered to a new fasta file. **(3.a.5)** Next,the duplicated contigs are removed by dereplication using **Stampede-clustergenomes** tool (Bolduc and Roux, 2017). The dependencies of the dereplication step are the maximum coverage (-c) 70% and the maximum identity (-i) 95%. The dereplication is followed by **(3.a.6)**  quality estimation and **(3.a.7)** taxonomic classification of the the dereplicated contigs by **CheckV** (Nayfach et al., 2020) and **vContact2**(Jang et al., 2019, Bornemann et a., 2020), respectively. Finally, if the user chooses to, **(3.a.8)** the hosts of the dereplicated contigs are identified by using **WIsH tool** (Galiez et al., 2017).
 
 ### **3.b**: Selection of Viral Metagenome-Assembled Genomes and relative abundance
-In this step, **(3.b.1)** a selection of Prokaryotic Metagenome-Assembled Genomes takes place.
+In this step, a selection of Prokaryotic Metagenome-Assembled Genomes takes place.
 
 ## Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 Module 4 is devided into 3 steps:
@@ -45,7 +45,7 @@ In the beginning this step, **(4.a.1)** the assembled data-set is separated to P
 In this step, a chain of processes is followed for one of the bins produced in **4.b**: **(4.b.1)** **GeneMark-EV** is applied for gene prediction. **(4.b.2)** Also, the contamination of the bins which were kept after the filtering is estimated by using **EukCC** tool (Saary et al., 2020). **(4.b.3)** The predicted genes from **GeneMark-EV** (Saary et al., 2020) are annotated with **Maker2** (Holt et al., 2011). **(4.b.4)** The completeness of the annotated proteins is measured using **BUSCO** (Simão et al., 2015). Finally, **(4.b.5)** the results from **BUSCO** and **EukCC** are combined. 
 
 ### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes (not done, so maybe more will written)
-In this step, **(4.b.1)** a selection of Eukaryotic Metagenome-Assembled Genomes takes place.
+In this step a selection of Eukaryotic Metagenome-Assembled Genomes takes place.
 
 ## Module 5 Relative abundace (not finished yet)
 ### 5.a Relative abundance of Prokaryotic Metagenome-Assembled Genomes
