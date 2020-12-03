@@ -16,12 +16,13 @@ The **MuDoGeR** Assembly is based on **metaWrap** Assembly and is utillized for 
 Module 2 is separated in 2 steps:
 
 ### 2.a: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, taxonomic classification, quality estimation and annotation of Prokaryotic bins
-
 This step is a combination of tasks included in the **metaWrap** tool (Uritskiy et al., 2018). **(2.a.1)** This step starts with the binning of the assembly data-sets with the use of three wrapped tools: **MaxBin2** (Wu et al., 2016), **metaBAT2** (Kang et al., 2019) and **CONCOCT** (Alneberg et al., 2014). This process results in the production of bin files from each method. Next, **(2.a.2)** the bin_refinement of the bins produced from each tool follows. In the bin_refinement, the minimum completeness and contamination for bacterial bins are 50% and 10% respectively, while the minimum completeness and contamination for the archael bins are 40% and 30% respectively. **(2.a.3)** For the taxonomic classification of the bin sets from Bacteria and Archaea produced in the bin refinement module, **GTDB-Tk** tool (Chaumeil et al., 2020) is used. Furthermore, **(2.a.4)** the quality matrix of the bins produced from bin_refinement, using **CheckM** (Parks et al., 2014). After this step, **(2.a.5)** the user can choose to filter the **CheckM** bins by quality. Bin quality is defined as completeness – 5×contamination (Parks et al., 2018). By default, the quality value is 50, but the user can choose a different value. Finally, **(2.a.6)** the prediction of functional annotation of the bins produced in the bin_refinement is achieved by **PROKKA** (Seemann, 2014), which utilizes a number of softawre tools.
 
-### 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes, uBin-refinement (not done, so maybe more will written)
+### 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes (not done, so maybe more will written)
+In this step, a selection of Prokaryotic Metagenome-Assembled Genomes takes place.
 
-**(2.b.1)** In the beginning of this step, a selection of Prokaryotic Metagenome-Assembled Genomes takes place. In case the user chooses to, **(2.b.2)** **DAS Tool** (Sieber et al., 2018) and **uBin** (Bornemann et al., 2020) refining tool. The users have the option of using **uBin** to manually refined their Metagenome-Assembled Genomes. The hyperlink of the **uBin** tool can be found in the following hyperlink: ![ubin](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#ubin).
+### 2.c: Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin**
+In case the user chooses to, **DAS Tool** (Sieber et al., 2018) and **uBin** (Bornemann et al., 2020) refining tool. The users have the option of using **uBin** to manually refined their Metagenome-Assembled Genomes. The hyperlink of the **uBin** tool can be found in the following hyperlink: ![ubin](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#ubin).
 
 ## Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Module 3 is devided into 2 steps: 
