@@ -49,7 +49,7 @@ Inside the output folder the user can find the `metaspades_prediction.csv` file 
 
 
 ## 1.c: Assembly 
-There are two possible readers for assembling: **MegaHiT** and **metaSPAdes**. Both readers are considered reliable. **MegaHiT** uses lower memory and is faster compared to **metaSPAdes**, but **metaSPAdes** produced assemblies are of higher quality. In case of very large data sets, the usage of **MegaHiT** option flag is preferable:
+There are two possible tools for assembling data: **MegaHiT** and **metaSPAdes**. Both tools are considered reliable. **MegaHiT** uses lower memory and is faster compared to **metaSPAdes**, but **metaSPAdes** produced assemblies are of higher quality. In case of very large data sets, the usage of **MegaHiT** option flag is preferable:
 
 ```
 metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-megahit -o /path/to/assembled_reads/output/directory 
