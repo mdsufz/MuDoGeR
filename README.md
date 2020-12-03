@@ -117,7 +117,7 @@ The instructions for the metaWrap installation can be found at ![metaWRAP_Manual
 ### MaxBin2
 The instructions for the MaxBin2 installation can be found at ![MaxBin2_Manual](https://github.com/assemblerflow/flowcraft/blob/master/docs/user/components/maxbin2.rst).
 ### MetaBAT2
-The instructions for the  metaBAT2 installation can be found by following the webpage webpage: https://bioconda.github.io/recipes/metabat2/README.html.
+The instructions for the  metaBAT2 installation can be found by following the webpage: https://bioconda.github.io/recipes/metabat2/README.html.
 ### CONCOCT 
 The instructions for the CONCOCT installation can be found at ![CONCOCT_Manual](https://github.com/BinPro/CONCOCT).
 ### CheckM
