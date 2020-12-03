@@ -50,7 +50,7 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
 
 **Figure 4.** Module 3 of the MuDoGeR pipeline.
 
-The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-pipelines-for-viral-genomes-recovery).
+The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-viral-metagenome-assembled-genomes).
 
  The steps of Module 3 can be summarized as following:
  
