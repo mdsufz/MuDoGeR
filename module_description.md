@@ -48,14 +48,14 @@ In this step, a chain of processes is followed for one of the bins produced in *
 In this step a selection of Eukaryotic Metagenome-Assembled Genomes takes place.
 
 ## Module 5 Relative abundace (not finished yet)
-### 5.a Relative abundance of Prokaryotic Metagenome-Assembled Genomes
-In this step the relative abundance of Prokaryotic Metagenome-Assembled Genomes is calculated.
-### 5.b Relative abundance of Viral Metagenome-Assembled Genomes 
-In this step, the relative abundance of Viral Metagenome-Assembled Genomes is calculated.
-### 5.c Relative abundance of Eukaryotic Metagenome-Assembled Genomes
-In this step, the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated.
+### 5.a Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table (not done)
+In this step the relative abundance of Prokaryotic Metagenome-Assembled Genomes is calculated and a relative abundance table is constructed.
+### 5.b Calculation of relative abundance of Viral Metagenome-Assembled Genomes and construction of relative abundance table (not done)
+In this step, the relative abundance of Viral Metagenome-Assembled Genomes is calculated and a relative abundance table is constructed.
+### 5.c Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table (not done)
+In this step, the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated a relative abundance table is constructed.
 ### 5.d Construction of relative abundance table
-In this step the relative abundance table is constructed.
+In this step the combined relative abundance table of the tables contructed in **5.a**, **5.b** and **5.c** is constructed.
 
 ## References
 
