@@ -217,7 +217,9 @@ viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 ``` 
 ## 3.b: Selection of Viral Metagenome-Assembled Genomes (Not done)
 
-# Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (not finished yet)
+# Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes 
+(not finished yet)
+
 Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the following hyperlink: ![Eukaryotic module](https://github.com/mdsufz/MuDoGeR#eukaryotic-module).
 
 ## 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins 
