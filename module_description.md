@@ -57,7 +57,7 @@ In this step, the relative abundance of Eukaryotic Metagenome-Assembled Genomes 
 ### 5.d Construction of relative abundance table
 In this step the relative abundance table is constructed.
 
-## References (still working on)
+## References
 
 * Agarwala R, Morgulis A: BMTagger aka Best Match Tagger is for removing human reads from metagenomics datasets. In., ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/, 3.101 edn: Bioconda; 2010. Accessed 15 Feb 2018.
 * Benjamin Bolduc, Simon Roux 2017. Clustering Viral Genomes in iVirus. protocols.io
