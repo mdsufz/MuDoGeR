@@ -143,7 +143,7 @@ The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](http
 ### Stampede-clustergenomes
 The instructions for Stampede-clustergenomes usage cane be found by following the webpage: https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master.
 ### CheckV
-The instructions for CheckV installation can be found at ![CheckV_Manual](https://github.com/ekzhu/SetSimilaritySearch).
+The instructions for CheckV installation can be found by following the webpage: https://bitbucket.org/berkeleylab/checkv/src/master/.
 ### vContact2
 The instructions for vContact2 installation can be found by following the webpage: https://bioconda.github.io/recipes/vcontact2/README.html.
 ### WIsH
