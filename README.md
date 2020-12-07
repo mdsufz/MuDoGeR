@@ -42,6 +42,10 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
      * **(2.a.5)** Filtering of genomic bins produced in **(2.a.4)**, by bin quality. The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
      * **(2.a.6)** Annotation of genomic bins produced in **(2.a.2)** with **PROKKA**.
 * **2.b**: Selection of Prokaryotic Metagenome-Assembled Genomes.
+	* **(2.b.1)** Grouping of Prokaryotic Metagenome-Assembled Genomes by taxonomy
+	* **(2.b.2)** Separation of the cluster produced in **(2.b.1)**, by species using ANI (Average Nucleotide Identity) splitter with ANI_distance 95.
+	* **(2.b.3)** Separation of the cluster produced in **(2.b.2)**, with bootsrap > 75, by sub-species using ANI (Average Nucleotide Identity) splitter with ANI_distance 99.
+	* **(2.b.4)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.b.3)**.
 * **2.c**: Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin** (optional step).
     
     
