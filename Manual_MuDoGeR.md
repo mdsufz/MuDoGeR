@@ -286,6 +286,7 @@ mudoger 5.a -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folde
 * The `/path/to/libraries/folder` indicates the path to the the folder with the libraries of the sample. 
 * The `~/path/to/output/folder` indicates the path to the output folder where the results will be written.
 
+The output folder contains the results of the **5.a**, in .sam file format.
 
 ## 5.b Calculation of relative abundance of Viral Metagenome-Assembled Genomes and construction of relative abundance table (not done)
 ## 5.c Calculation of relative abundance of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance table (not done)
