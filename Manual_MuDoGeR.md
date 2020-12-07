@@ -259,7 +259,7 @@ In **4.b**, the completeness and contamination of the Eukaryotic bins produced i
 Running **4.b**:
 
 ```
-mudoger 4.b -f ~/path/to/concoct/bin/fasta/file -o /path/to/output/folder 
+mudoger 4.b -f ~/path/to/concoct/bin/fasta/file -o ~/path/to/output/folder 
 ```
 * The `/path/to/concoct/bin/fasta/file` indicates the path to the bin file.
 * The `/path/to/output/folder` indicates the path to the output directory where the output folders of **4.b** will be written.
@@ -276,8 +276,17 @@ The combined results of **BUSCO** and **EukCC** are located in ... (when this pa
 
 ## 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes (not done)
 
-# Module 5:Relative abundance (not done)
-## 5.a Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table(not done)
+# Module 5:Relative abundance (not finished)
+## 5.a Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table
+For calculation of relative abundance and construction of relative abundance table for the Prokaryotic Metagenome-Assembled Genomes Representatives.
+```
+mudoger 5.a -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folder -o ~/path/to/output/folder 
+``` 
+* The `/path/to/representative_bins/folder` indicates the path to the representative bins folder.
+* The `/path/to/libraries/folder` indicates the path to the the folder with the libraries of the sample. 
+* The `~/path/to/output/folder` indicates the path to the output folder where the results will be written.
+
+
 ## 5.b Calculation of relative abundance of Viral Metagenome-Assembled Genomes and construction of relative abundance table (not done)
 ## 5.c Calculation of relative abundance of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance table (not done)
 ## 5.d Construction of combined relative abundance table (not done)
