@@ -160,22 +160,6 @@ The instructions for BUSCO installation can be found at ![BUSCO_Manual](https://
 The instructions for MAKER2 installation can be found at ![MAKER2_Manual](https://github.com/wuying1984/MAKER2_PM_genome_annotation).
 
 
-# DATABASES 
-(Not done yet)
-
-
-|   Database	|     Used 	|
-| ------------- | ------------- |
-|   Checkm_DB	| Prokaryotic module |
-| KRAKEN standard database | Prokaryotic module  |
-| First Header  | Prokaryotic module  |
-| KRAKEN2 standard database  |Prokaryotic module |
-| NCBI_nt  | Prokaryotic module |
-| NCBI_tax  | Prokarytic module |
-| Indexed hg38 | Read_qc module |
-
-
-
 # Simplified usage of the MuDoGeR
 
 A more detailed tutorial for the MuDoGeR can be found in ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file. In this file, instructions and examples can be found.
