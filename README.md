@@ -183,8 +183,6 @@ The Databases can be installed by following the instructons of the following hyp
 * The **VIBRANT** uses python of version >= 3.5
 
 
-
-
 | Databases | 
 |---|
 | KEGG | 
@@ -193,12 +191,13 @@ The Databases can be installed by following the instructons of the following hyp
 
    
 | Programs | 
-|---|---|
+|---|
 | Prodigal version 2.6.3 |    
 | HMMER3 |  
 | gzip | 
 | tar | 
 | wget |
+
 
 | Packages |   
 |---|
