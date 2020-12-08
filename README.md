@@ -227,7 +227,7 @@ The Databases can be installed by following the instructons of the following hyp
 
 ### WIsH
 
-* **WIsH** OpenMP library installed.
+* **WIsH** requires OpenMP library installed.
 
 # Installation
 
