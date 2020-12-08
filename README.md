@@ -100,8 +100,10 @@ The steps of the Module 5 can be summarized as following:
 # System requirements
 (In progress)
 
-## Dependencies
+## Dependencies, databases and libraries
 ### Metawrap
+
+* **Metawrap** uses Python version of 2.7.
 
 | Database |  
 |---|
@@ -112,18 +114,101 @@ The steps of the Module 5 can be summarized as following:
 | NCBI_tax | 
 | Indexed hg38| 
 
-* **Metawrap** uses Python version of 2.7.
+The Databases can be installed by following the instructons of the following hyperlink: ![Databases_metaWrap](https://github.com/bxlab/metaWRAP/blob/master/installation/database_installation.md).
 
 ### GTDB-Tk
 
+* **GTDB-Tk** uses Python version >=3.6.
+
+
+
 | Lirbraries | Version |
-|---| |
+|---|---|
 | DendroPy | >= 4.1.0 |
 | NumPy | >= 1.9.0 |
 | tqdm | >= 4.31.0  |
 
-* **GTDB-Tk** uses Python version >=3.6
 
+| Software | Version |
+|---|---|
+| Prodigal | >= 2.6.2 |
+| HMMER | >= 3.1b2 |
+| pplacer | >= 1.1 |
+| FastANI | >= 1.32 |
+| FastTree | >= 2.1.9 |
+| Mash |>= 2.2 |
+
+* The dependencies of **GTDB-Tk** can be found in the following webpage: https://ecogenomics.github.io/GTDBTk/installing/index.html.
+
+### VIRSORTER
+
+| Software | 
+|---|
+| HMMER of version 3.1b2 | 
+| MCL |
+| Metagene Annotator |
+| MUSCLE | 
+| BLAST+ |
+| DIAMOND | 
+
+
+### CheckV
+
+| Software | Version  |  
+|---|---|
+| DIAMOND | 2.0.4 | 
+| HMMER | 3.3 | 
+| Prodigal | 2.6.3  |  
+
+### vContact2
+
+* The **vContact2**  uses Python of version >=3.7.
+
+| Dependencies | Version | 
+|---|---|
+| biopython | >=1.73 |  
+| hdf5 |>=1.10.4 |  
+| networkx | >=2.2 | 
+| numpy | >=1.15.4 | 
+| pandas | >=0.25.0,<=0.25.3 | 
+| psutil | >=5.5.0 | 
+| pyparsing  | >=2.4.6 |
+| pytables |  >=3.4.0 | 
+| scikit-learn | >=0.20.2 | 
+| scipy | >=1.2.0 |
+
+
+### VIBRANT
+
+* The **VIBRANT** uses python of version >= 3.5
+
+
+
+
+| Databases | 
+|---|
+| KEGG | 
+| Pfam (v32) | 
+| VOG (release 94) |  
+
+   
+| Programs | 
+|---|---|
+| Prodigal version 2.6.3 |    
+| HMMER3 |  
+| gzip | 
+| tar | 
+| wget |
+
+| Packages |   
+|---|
+| BioPython | 
+| Pandas |  
+| Matplotlib   |
+| Seaborn |   
+|Numpy (version >= 1.17.0) |  
+| Scikit-learn (version == 0.21.3)|
+| Pickle |
 
 
 
