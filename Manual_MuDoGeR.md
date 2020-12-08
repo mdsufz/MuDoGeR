@@ -298,6 +298,9 @@ mudoger 5.c -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folde
 * The `/path/to/libraries/folder` indicates the path to the the folder with the libraries of the sample. 
 * The `~/path/to/output/folder` indicates the path to the output folder where the results will be written.
 
+he output folder contains the results of the **5.c**, in .sam file format.
+
+
 ## 5.d Construction of combined relative abundance table (not done)
 
 
