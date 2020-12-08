@@ -100,7 +100,7 @@ The steps of the Module 5 can be summarized as following:
 # System requirements
 (In progress)
 
-## Dependencies, databases and libraries
+## Dependencies, databases and libraries of the tools
 ### Metawrap
 
 * **Metawrap** uses Python version of 2.7.
@@ -209,7 +209,25 @@ The Databases can be installed by following the instructons of the following hyp
 | Scikit-learn (version == 0.21.3)|
 | Pickle |
 
+### Stampede-clustergenomes
+| Packages | Version |    
+|---|---| 
+| Perl | 5.16 |   
+| MUMmer |  3.0 |  
 
+### VirFinder
+
+* **VirFinder** uses R/3.4.4. Also the user need to have OpenMPI/2.1.2 library installed.
+
+| R packages | 
+|---|
+| glmnet |  
+| Rcpp |  
+| qvalue |   
+
+### WIsH
+
+* **WIsH** OpenMP library installed.
 
 # Installation
 
