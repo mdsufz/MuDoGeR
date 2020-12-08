@@ -98,7 +98,34 @@ The steps of the Module 5 can be summarized as following:
 	
 
 # System requirements
-(not done yet)
+(In progress)
+
+## Dependencies
+### Metawrap
+
+| Database |  
+|---|
+| Checkm_DB |   
+| KRAKEN standard database |   
+| KRAKEN2 standard database |  
+| NCBI_nt|   
+| NCBI_tax | 
+| Indexed hg38| 
+
+* **Metawrap** uses Python version of 2.7.
+
+### GTDB-Tk
+
+| Lirbraries | Version |
+|---| |
+| DendroPy | >= 4.1.0 |
+| NumPy | >= 1.9.0 |
+| tqdm | >= 4.31.0  |
+
+* **GTDB-Tk** uses Python version >=3.6
+
+
+
 
 # Installation
 
