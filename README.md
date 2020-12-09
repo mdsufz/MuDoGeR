@@ -287,7 +287,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 * As RepeatMasker (4.0.5) requires some more dependencies, they can be found in the following link: http://www.repeatmasker.org/RepeatMasker/.
 * As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
 * As BEDtools requires some more dependencies, they can be found in the following link: https://bedtools.readthedocs.io/en/latest/content/installation.html.
-* BUSCO wil described in the following hyperlink:
+* BUSCO wil described in the following hyperlink: ![Busco_dependencies](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#busco)
 
 ### BUSCO
 
