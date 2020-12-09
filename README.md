@@ -229,6 +229,9 @@ The Databases can be installed by following the instructons of the following hyp
 
 * **WIsH** requires OpenMP library installed.
 
+### GeneMark
+
+
 # Installation
 
 ## Pre-Processing Module
@@ -245,7 +248,7 @@ Instructions for FastQC installation can be found at ![FastQC_Manual](https://gi
 
 ## Prokaryotic module
 ### MetaWRAP
-The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md).
+The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/bxlab/metaWRAP).
 ### MaxBin2
 The instructions for the MaxBin2 installation can be found at ![MaxBin2_Manual](https://github.com/assemblerflow/flowcraft/blob/master/docs/user/components/maxbin2.rst).
 ### MetaBAT2
@@ -281,8 +284,8 @@ The instructions for WIsH installation ![WIsH_Manual](https://github.com/soeding
 ## Eukaryotic module
 ### EukRep
 The instructions for EukRep installation can be found at ![EukRep_Manual](https://github.com/patrickwest/EukRep_Pipeline ). 
-### EukCC/GeneMark-EV
-The instructions for EukCC/GeneMark installation can be found at ![EukCC/GeneMark-EV_Manual](https://github.com/Finn-Lab/EukCC).
+### EukCC/GeneMark
+The instructions for EukCC/GeneMark installation can be found at ![EukCC/GeneMark_Manual](https://github.com/Finn-Lab/EukCC).
 ### BUSCO
 The instructions for BUSCO installation can be found at ![BUSCO_Manual](https://github.com/WenchaoLin/BUSCO-Mod).
 ### MAKER2
