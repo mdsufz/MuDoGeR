@@ -46,7 +46,7 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
 * **2.b**: Selection of Prokaryotic Metagenome-Assembled Genomes.
 	* **(2.b.1)** Grouping of Prokaryotic Metagenome-Assembled Genomes by taxonomy, using the .tsv file of **GTDB-Tk** results.
 	* **(2.b.2)** Separation of the cluster produced in **(2.b.1)**, by species using ANI (Average Nucleotide Identity) splitter with ANI_distance 95.
-	* **(2.b.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.b.3)**.
+	* **(2.b.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.b.2)**.
 * **2.c**: Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin** (optional step).
     
     
@@ -90,10 +90,9 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
 * **4.c**: Selection of Eukaryotic Metagenome-Assembled Genomes.
 	* **(4.c.1)** Grouping of Prokaryotic Metagenome-Assembled Genomes by taxonomy, using the .tsv file of **GTDB-Tk** results.
 	* **(4.c.2)** Separation of the cluster produced in **(2.b.1)**, by species using ANI (Average Nucleotide Identity) splitter with ANI_distance 95.
-	* **(4.c.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.b.3)**.
+	* **(4.c.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.c.2)**.
 
-### Module 5 Relative abundace (not finished yet)
-
+### Module 5 Relative abundace (not done, wiil after the meeting with rene)
 The steps of the Module 5 can be summarized as following:
 * **5.a** Relative abundance of Prokaryotic Metagenome-Assembled Genomes. 
 * **5.b** Relative abundance of Viral Metagenome-Assembled Genomes. 
