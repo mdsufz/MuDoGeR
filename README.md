@@ -255,7 +255,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 ### GeneMark
 
 | Dependencies | Version |
-|---|
+|---|---|
 | Package Perl | 5.30.0 |
 | Package foss | 2019b |
 
@@ -285,7 +285,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 * As SNAP requires some more dependencies, they can be found in the following hyperlink: ![Compiling_snap](https://github.com/KorfLab/SNAP#compiling).
 * As RepeatModeler(1.0.4)  requires some more dependencies,they can be found in the following hyperlink: ![RepeatModeler_dependencies](https://github.com/Dfam-consortium/TETools).
 * As RepeatMasker (4.0.5) requires some more dependencies, they can be found in the following link: http://www.repeatmasker.org/RepeatMasker/.
-* As Augustus requires some more dependencies, they can be found in the following hyperlink: ! [Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
+* As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
 * As BEDtools requires some more dependencies, they can be found in the following link: https://bedtools.readthedocs.io/en/latest/content/installation.html.
 * BUSCO wil described in the following hyperlink:
 
@@ -301,7 +301,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 | HMMER 3.1b2 |
 | Augustus 3.0.x |
 
-* As Augustus requires some more dependencies, they can be found in the following hyperlink: ! [Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).   
+* As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).   
 
 # Installation
 
