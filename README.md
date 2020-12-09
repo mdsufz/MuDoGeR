@@ -87,7 +87,7 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
     * **(4.b.3)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
     * **(4.b.4)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
     * **(4.b.5)** Combination of **(4.b.4)** and **(4.b.2)** results for quality estimation.
-* **4.c**: Selection of Eukaryotic Metagenome-Assembled Genomes.
+* **4.c**: Selection of Eukaryotic Metagenome-Assembled Genomes Representatives.
 	* **(4.c.1)** Grouping of Prokaryotic Metagenome-Assembled Genomes by taxonomy, using the .tsv file of **GTDB-Tk** results.
 	* **(4.c.2)** Separation of the cluster produced in **(2.b.1)**, by species using ANI (Average Nucleotide Identity) splitter with ANI_distance 95.
 	* **(4.c.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.c.2)**.
