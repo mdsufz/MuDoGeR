@@ -72,7 +72,7 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
 
 ### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 
-**Figure 5.**  Module 4 of the MuDoGeR framework.
+![](https://github.com/mdsufz/MuDoGeR/blob/master/Module4.JPG)
 
 The steps of the Module 4  are shown in Figure 5 and can be excecuted with the scripts find in the following hyperlink: ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
 
