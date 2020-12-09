@@ -43,7 +43,7 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
      * **(2.a.4)** Generation of quality matrix of genomic bins produced in **(2.a.2)** using **CheckM**. 
      * **(2.a.5)** Filtering of genomic bins produced in **(2.a.4)**, by bin quality. The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
      * **(2.a.6)** Annotation of genomic bins produced in **(2.a.2)** with **PROKKA**.
-* **2.b**: Selection of Prokaryotic Metagenome-Assembled Genomes.
+* **2.b**: Selection of Prokaryotic Metagenome-Assembled Genomes Representatives.
 	* **(2.b.1)** Grouping of Prokaryotic Metagenome-Assembled Genomes by taxonomy, using the .tsv file of **GTDB-Tk** results.
 	* **(2.b.2)** Separation of the cluster produced in **(2.b.1)**, by species using ANI (Average Nucleotide Identity) splitter with ANI_distance 95.
 	* **(2.b.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.b.2)**.
@@ -67,7 +67,7 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
     * **(3.a.6)** Checking the quality of the dereplicated contigs with **CheckV**.
     * **(3.a.7)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
     * **(3.a.8)** Host identification of the dereplicated contigs using **WIsH** (optional).    
-* **3.b**: Selection of Viral Metagenome-Assembled Genomes. (after the meeting with rene)
+* **3.b**: Selection of Viral Metagenome-Assembled Genomes Representatives (after the meeting with rene)
    
 
 ### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
