@@ -100,7 +100,7 @@ The steps of the Module 5 can be summarized as following:
 # System requirements
 (In progress)
 
-## Dependencies, databases and libraries of the tools
+## Dependencies
 ### Metawrap
 
 * **Metawrap** uses Python version of 2.7.
@@ -118,10 +118,13 @@ The Databases can be installed by following the instructons of the following hyp
 
 ### GTDB-Tk
 
-* **GTDB-Tk** uses Python version >=3.6.
+* **GTDB-Tk** uses Python version >=3.6 (3.6.4).
+
 
 | Dependencies | Version |
 |---|---|
+| Library OpenMPI | 2.1.2 |
+| Package GCC | 6.4.0-2.28 |
 | Lirbrary DendroPy | >= 4.1.0 |
 | Lirbrary NumPy | >= 1.9.0 |
 | Lirbrary tqdm | >= 4.31.0  |
@@ -133,6 +136,23 @@ The Databases can be installed by following the instructons of the following hyp
 | Software Mash |>= 2.2 |
 
 * The dependencies of **GTDB-Tk** can be found in the following webpage: https://ecogenomics.github.io/GTDBTk/installing/index.html.
+
+### CheckM
+
+* **CheckM** uses Python version 3.7.4.
+
+| Dependencies | Version |
+|---|---|
+| Package GCCcore | 8.3.0 |
+| Software HMMER | >=3.1b1 |
+| Software Prodigal | 2.60 or >=2.6.1 |
+| Software pplacer | >=1.1 |
+| Lirbrary NumPy | >= 1.9.0 |
+| Lirbrary tqdm | >= 4.31.0  |
+| Software Prodigal | >= 2.6.2 |
+
+As pplacer requires also dependencies, these dependencies, together with instructions of how to install them, can be found in the following link: http://matsen.github.io/pplacer/compiling.html.
+
 
 ### VIRSORTER
 
@@ -146,25 +166,27 @@ The Databases can be installed by following the instructons of the following hyp
 | Software DIAMOND |
 | Package gcc/4/8.1-3 | 
 
+
+
 ### CheckV
 
 * For **CheckV** to work the installation of Anaconda3/5.3.0 with python version of 3.6 is required.
-
 
 | Dependencies | Version  |  
 |---|---|
 | Software DIAMOND | 2.0.4 | 
 | Software HMMER | 3.3 | 
-| Software Prodigal | 2.6.3  |  
+| Software Prodigal | 2.6.3 |  
 
 
 ### vContact2
 
-* The **vContact2** uses Anaconda3/5.3.0 and python of version >=3.7 (3.7.4 ).
+* **vContact2** uses Anaconda3/5.3.0 and python of version >=3.7 (3.7.4 ).
 
 | Dependencies | Version | 
 |---|---|
-| GCCcore | 8.3.0 |
+| Package GCCcore | 8.3.0 |
+| Package Java/11.0.2 |
 | biopython | >=1.73 |  
 | hdf5 |>=1.10.4 |  
 | networkx | >=2.2 | 
@@ -179,7 +201,7 @@ The Databases can be installed by following the instructons of the following hyp
 
 ### VIBRANT
 
-* The **VIBRANT** uses python of version >= 3.5 (3.6.6).
+* **VIBRANT** uses python of version >= 3.5 (3.6.6).
 
 | Dependencies | 
 |---|
@@ -197,13 +219,12 @@ The Databases can be installed by following the instructons of the following hyp
 | Pandas |  
 | Matplotlib   |
 | Seaborn |   
-|Numpy (version >= 1.17.0) |  
+| Numpy (version >= 1.17.0) |  
 | Scikit-learn (version == 0.21.3)|
 | Pickle |
 
 ### Stampede-clustergenomes
-* The **Stampede-clustergenomes** uses python of version 2.7.14.
-
+* **Stampede-clustergenomes** uses python of version 2.7.14.
 
 | Packages | Version |    
 |---|---| 
@@ -215,17 +236,17 @@ The Databases can be installed by following the instructons of the following hyp
 | OpenMPI |2.1.2 | 
 | GLib | 2.54.3 | 
 
-
-
 ### VirFinder
 
-* **VirFinder** uses R/3.4.4. Also the user need to have OpenMPI/2.1.2 library installed.
+* **VirFinder** uses R/3.4.4. Also the user need to have OpenMPI/2.1.2 library installed.    
 
-| R packages | 
+| Dependencies | 
 |---|
-| glmnet |  
-| Rcpp |  
-| qvalue |   
+| R package glmnet |  
+| R package Rcpp |  
+| R package qvalue |   
+| Package GCC/6.4.0-2.28 | 
+| Package OpenMPI/2.1.2 | 
 
 ### WIsH
 
@@ -233,12 +254,60 @@ The Databases can be installed by following the instructons of the following hyp
 
 ### GeneMark
 
+| Dependencies | Version |
+|---|
+| Package Perl | 5.30.0 |
+| Package foss | 2019b |
+
+### EukRep
+
+**EukRep** uses python of version 3.6.4.
+ 
+| Dependencies | 
+|---|
+| GCC/6.4.0-2.28 |
+ 
+
+### MAKER2
+
+| Dependencies |  
+|---|
+| RepeatModeler(1.0.4) |
+| RepeatMasker (4.0.5) |
+| GCC/6.4.0-2.28 |
+| RepBase (version used was 20150807) | 
+| MAKER/2.31.10-foss-2019b-1 |  
+| Augustus version 3.3 |  
+| BUSCO version 3 |  
+| SNAP |
+| BEDtools version 2.24.0 |
+
+* As SNAP requires some more dependencies, they can be found in the following hyperlink: ![Compiling_snap](https://github.com/KorfLab/SNAP#compiling).
+* As RepeatModeler(1.0.4)  requires some more dependencies,they can be found in the following hyperlink: ![RepeatModeler_dependencies](https://github.com/Dfam-consortium/TETools).
+* As RepeatMasker (4.0.5) requires some more dependencies, they can be found in the following link: http://www.repeatmasker.org/RepeatMasker/.
+* As Augustus requires some more dependencies, they can be found in the following hyperlink: ! [Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
+* As BEDtools requires some more dependencies, they can be found in the following link: https://bedtools.readthedocs.io/en/latest/content/installation.html.
+* BUSCO wil described in the following hyperlink:
+
+### BUSCO
+
+* **BUSCO** uses python of version 3.6.4.
+
+| Dependencies |  
+|---|
+| Package GCC/6.4.0-2.28 | 
+| Package OpenMPI/2.1.2 |  
+| NCBI BLAST+ |
+| HMMER 3.1b2 |
+| Augustus 3.0.x |
+
+* As Augustus requires some more dependencies, they can be found in the following hyperlink: ! [Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).   
 
 # Installation
 
 ## Pre-Processing Module
 ### TrimGalore
-The instructions for  TrimGalore installation can be found at ![ TrimGalore_Manual](https://github.com/FelixKrueger/TrimGalore).
+The instructions for  TrimGalore installation can be found at ![TrimGalore_Manual](https://github.com/FelixKrueger/TrimGalore).
 ### Bmtagger
 The instructions for the bmtagger installation can be found by following the webpage: https://bioconda.github.io/recipes/bmtagger/README.html.
 ### MegaHit
