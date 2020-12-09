@@ -30,6 +30,7 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a too
 
 ### Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
 
+![](https://github.com/mdsufz/MuDoGeR/blob/master/Module2.JPG)
 
 The different steps of the Module 2 are shown in Figure 3 and excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes]().
 
@@ -45,8 +46,7 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
 * **2.b**: Selection of Prokaryotic Metagenome-Assembled Genomes.
 	* **(2.b.1)** Grouping of Prokaryotic Metagenome-Assembled Genomes by taxonomy, using the .tsv file of **GTDB-Tk** results.
 	* **(2.b.2)** Separation of the cluster produced in **(2.b.1)**, by species using ANI (Average Nucleotide Identity) splitter with ANI_distance 95.
-	* **(2.b.3)** Separation of the cluster produced in **(2.b.2)**, with bootsrap > 75, by sub-species using ANI (Average Nucleotide Identity) splitter with ANI_distance 99.
-	* **(2.b.4)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.b.3)**.
+	* **(2.b.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.b.3)**.
 * **2.c**: Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin** (optional step).
     
     
@@ -67,7 +67,7 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
     * **(3.a.6)** Checking the quality of the dereplicated contigs with **CheckV**.
     * **(3.a.7)** Taxonomic classification of the dereplicated contigs with **vContact2**. 
     * **(3.a.8)** Host identification of the dereplicated contigs using **WIsH** (optional).    
-* **3.b**: Selection of Viral Metagenome-Assembled Genomes.
+* **3.b**: Selection of Viral Metagenome-Assembled Genomes. (after the meeting with rene)
    
 
 ### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
@@ -88,6 +88,9 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
     * **(4.b.4)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
     * **(4.b.5)** Combination of **(4.b.4)** and **(4.b.2)** results for quality estimation.
 * **4.c**: Selection of Eukaryotic Metagenome-Assembled Genomes.
+	* **(4.c.1)** Grouping of Prokaryotic Metagenome-Assembled Genomes by taxonomy, using the .tsv file of **GTDB-Tk** results.
+	* **(4.c.2)** Separation of the cluster produced in **(2.b.1)**, by species using ANI (Average Nucleotide Identity) splitter with ANI_distance 95.
+	* **(4.c.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.b.3)**.
 
 ### Module 5 Relative abundace (not finished yet)
 
@@ -155,8 +158,11 @@ The Databases can be installed by following the instructons of the following hyp
 As pplacer requires also dependencies, these dependencies, together with instructions of how to install them, can be found in the following link: http://matsen.github.io/pplacer/compiling.html.
 
 
-### Ubin
+### Ubin (optional)
 * The pre-requests for **uBin** and how to install them, can be found in the follwoing hyperlink: ![Creating input files for uBin](https://github.com/ProbstLab/uBin-helperscripts#creating-input-files-for-ubin).
+
+### DAS_Tool (optional)
+* The dependencies of **DAS_Tool** can be found in the following hyperlink: ![Dependences](https://github.com/cmks/DAS_Tool#dependencies).
 
 ### VIRSORTER
 
@@ -291,7 +297,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 * As RepeatMasker (4.0.5) requires some more dependencies, they can be found in the following link: http://www.repeatmasker.org/RepeatMasker/.
 * As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
 * As BEDtools requires some more dependencies, they can be found in the following link: https://bedtools.readthedocs.io/en/latest/content/installation.html.
-* BUSCO wil described in the following hyperlink: ![Busco_dependencies](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#busco)
+* BUSCO wil described in the following hyperlink: ![Busco_dependencies](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#busco).
 
 ### BUSCO
 
