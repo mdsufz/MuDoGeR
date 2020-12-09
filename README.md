@@ -16,7 +16,7 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a too
 
 ### Module 1: Pre-Processing 
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Preprocessing.jpg)
+![]()
 
  The steps of Module 1 are shown in Figure 2 and can be excecuted with the scripts find in the following hyperlink: ![Pre-Processing](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
  
@@ -29,6 +29,7 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a too
 * **1.c**: Assembly.
 
 ### Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
+
 
 The different steps of the Module 2 are shown in Figure 3 and excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes]().
 
