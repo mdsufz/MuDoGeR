@@ -154,6 +154,9 @@ The Databases can be installed by following the instructons of the following hyp
 As pplacer requires also dependencies, these dependencies, together with instructions of how to install them, can be found in the following link: http://matsen.github.io/pplacer/compiling.html.
 
 
+### Ubin
+* The pre-requests for **uBin** and how to install them, can be found in the follwoing hyperlink: ![Creating input files for uBin](https://github.com/ProbstLab/uBin-helperscripts#creating-input-files-for-ubin).
+
 ### VIRSORTER
 
 | Dependencies | 
@@ -302,6 +305,22 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 | Augustus 3.0.x |
 
 * As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).   
+
+### EukCC/GeneMark-ES
+* The **EukCC** uses python of version 3.7.4. Also the  **EukCC** needs also installation of the **GeneMark-ES** first which has more dependencies. For the installation of **GeneMark-ES** dependencies the user can run the following command which will install all of them:
+
+```apt install -y cpanminus make gcc  dialog
+cpanm inc::Module::Install::DSL Hash::Merge MCE::Mutex FindBin Test::Pod Logger::Simple  Parallel::ForkManager.pm YAML
+```
+
+| Dependencies |  
+|---|
+| Package GCCcore/8.3.0 | 
+| Package foss/2019b  |  
+| Perl/5.30.0 |
+| Anaconda2/5.3.0 |
+
+
 
 # Installation
 
