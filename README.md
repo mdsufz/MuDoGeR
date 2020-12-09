@@ -32,7 +32,7 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a too
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Module2.JPG)
 
-The different steps of the Module 2 are shown in Figure 3 and excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes]().
+The different steps of the Module 2 are shown in Figure 3 and excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
 
  The steps of Module 2 can be summarized as following:
  
