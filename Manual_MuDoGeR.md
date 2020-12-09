@@ -289,7 +289,7 @@ mudoger 4.c -i ~/path/to/busco_results/file -b ~/path/to/eukcc_results/file -m ~
 Inside the output folder the user can find the `bestbins.csv` that contains the unique taxonomic bins and the `bins_to_brats.txt` file with the bins for the Bin Relative Abundance Table (BRAT) calculation.
 
 
-# Module 5:Relative abundance (not finished)
+# Module 5:Relative abundance 
 ## 5.a Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table
 For calculation of relative abundance and construction of relative abundance table for the Prokaryotic Metagenome-Assembled Genomes Representatives.
 ```
