@@ -120,52 +120,51 @@ The Databases can be installed by following the instructons of the following hyp
 
 * **GTDB-Tk** uses Python version >=3.6.
 
-
-
-| Lirbraries | Version |
+| Dependencies | Version |
 |---|---|
-| DendroPy | >= 4.1.0 |
-| NumPy | >= 1.9.0 |
-| tqdm | >= 4.31.0  |
-
-
-| Software | Version |
-|---|---|
-| Prodigal | >= 2.6.2 |
-| HMMER | >= 3.1b2 |
-| pplacer | >= 1.1 |
-| FastANI | >= 1.32 |
-| FastTree | >= 2.1.9 |
-| Mash |>= 2.2 |
+| Lirbrary DendroPy | >= 4.1.0 |
+| Lirbrary NumPy | >= 1.9.0 |
+| Lirbrary tqdm | >= 4.31.0  |
+| Software Prodigal | >= 2.6.2 |
+| Software HMMER | >= 3.1b2 |
+| Software pplacer | >= 1.1 |
+| Software FastANI | >= 1.32 |
+| Software FastTree | >= 2.1.9 |
+| Software Mash |>= 2.2 |
 
 * The dependencies of **GTDB-Tk** can be found in the following webpage: https://ecogenomics.github.io/GTDBTk/installing/index.html.
 
 ### VIRSORTER
 
-| Software | 
+| Dependencies | 
 |---|
-| HMMER of version 3.1b2 | 
-| MCL |
-| Metagene Annotator |
-| MUSCLE | 
-| BLAST+ |
-| DIAMOND | 
-
+| Software HMMER of version 3.1b2 | 
+| Software MCL |  
+| Software Metagene Annotator |
+| Software MUSCLE | 
+| Software BLAST+ | 
+| Software DIAMOND |
+| Package gcc/4/8.1-3 | 
 
 ### CheckV
 
-| Software | Version  |  
+* For **CheckV** to work the installation of Anaconda3/5.3.0 with python version of 3.6 is required.
+
+
+| Dependencies | Version  |  
 |---|---|
-| DIAMOND | 2.0.4 | 
-| HMMER | 3.3 | 
-| Prodigal | 2.6.3  |  
+| Software DIAMOND | 2.0.4 | 
+| Software HMMER | 3.3 | 
+| Software Prodigal | 2.6.3  |  
+
 
 ### vContact2
 
-* The **vContact2**  uses Python of version >=3.7.
+* The **vContact2** uses Anaconda3/5.3.0 and python of version >=3.7 (3.7.4 ).
 
 | Dependencies | Version | 
 |---|---|
+| GCCcore | 8.3.0 |
 | biopython | >=1.73 |  
 | hdf5 |>=1.10.4 |  
 | networkx | >=2.2 | 
@@ -180,27 +179,20 @@ The Databases can be installed by following the instructons of the following hyp
 
 ### VIBRANT
 
-* The **VIBRANT** uses python of version >= 3.5
+* The **VIBRANT** uses python of version >= 3.5 (3.6.6).
 
-
-| Databases | 
+| Dependencies | 
 |---|
 | KEGG | 
 | Pfam (v32) | 
 | VOG (release 94) |  
-
-   
-| Programs | 
-|---|
+| GCC/7.3.0-2.30 |  
+| OpenMPI/3.1.1 |  
 | Prodigal version 2.6.3 |    
 | HMMER3 |  
 | gzip | 
 | tar | 
 | wget |
-
-
-| Packages |   
-|---|
 | BioPython | 
 | Pandas |  
 | Matplotlib   |
@@ -210,10 +202,20 @@ The Databases can be installed by following the instructons of the following hyp
 | Pickle |
 
 ### Stampede-clustergenomes
+* The **Stampede-clustergenomes** uses python of version 2.7.14.
+
+
 | Packages | Version |    
 |---|---| 
-| Perl | 5.16 |   
-| MUMmer |  3.0 |  
+| Perl | 5.26.0 |   
+| MUMmer |  3.0 |
+| GCCcore | 6.4.0 |  
+| libtool | 2.4.6 |  
+| Perl | 5.26.0 |  
+| OpenMPI |2.1.2 | 
+| GLib | 2.54.3 | 
+
+
 
 ### VirFinder
 
