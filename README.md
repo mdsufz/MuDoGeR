@@ -306,8 +306,8 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 
 * As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).   
 
-### EukCC/GeneMark-ES
-* The **EukCC** uses python of version 3.7.4. Also the  **EukCC** needs also installation of the **GeneMark-ES** first which has more dependencies. For the installation of **GeneMark-ES** dependencies the user can run the following command which will install all of them:
+### EukCC/GeneMark
+* The **EukCC** uses python of version 3.7.4. Also the  **EukCC** needs also installation of the **GeneMark** first which has more dependencies. For the installation of **GeneMark-ES** dependencies the user can run the following command which will install all of them:
 
 ```apt install -y cpanminus make gcc  dialog
 cpanm inc::Module::Install::DSL Hash::Merge MCE::Mutex FindBin Test::Pod Logger::Simple  Parallel::ForkManager.pm YAML
