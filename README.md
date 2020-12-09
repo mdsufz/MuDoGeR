@@ -329,6 +329,12 @@ cpanm inc::Module::Install::DSL Hash::Merge MCE::Mutex FindBin Test::Pod Logger:
 | Perl/5.30.0 |
 | Anaconda2/5.3.0 |
 
+### Ani_Splitter
+| Dependencies |  
+|---|
+| Package GCCcore/8.3.0 | 
+| Package OpenMPI/3.1.4 |  
+| R |
 
 
 # Installation
