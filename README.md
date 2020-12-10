@@ -361,7 +361,20 @@ cpanm inc::Module::Install::DSL Hash::Merge MCE::Mutex FindBin Test::Pod Logger:
 
 * More information about Bowtie 2 can be found by following the webpage: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml.
 * More information about Samtools can be found by following the webpage: http://www.htslib.org/doc/samtools.html.
-* More information about can be found  
+* More information about can be found by following the webpage: http://brat.nlplab.org/installation.html.
+
+### For resource calculation
+
+| Dependencies |  
+|---|
+| Package GCC/8.3.0 |
+| Package OpenMPI/3.1.4 |
+| R/3.6.2-2 |
+
+
+
+
+
 
 # Installation
 
