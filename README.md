@@ -102,7 +102,7 @@ The steps of the Module 5 can be excecuted with the scriots find in the followin
 	
 
 # System requirements
-(In progress)
+MuDoGeR is designed to support only Linux x64 systems. As for the resource requirements,  MuDoGeR framework uses many software that require large amount of memory (e.g GDTB-Tk, MetaWRAP ). Also, the resource requirements varies depending on the amount of the used data. Based on that, we recommend to the user to use 8+ cores and + RAM. In the following session, the dependencies for the tools used in the MuDoGeR framework are listed.
 
 ## Dependencies
 ### Metawrap
@@ -162,9 +162,9 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 * The pre-requests for **uBin** and how to install them, can be found in the follwoing hyperlink: ![Creating input files for uBin](https://github.com/ProbstLab/uBin-helperscripts#creating-input-files-for-ubin).
 
 ### DAS_Tool (optional)
-* The dependencies of **DAS_Tool** can be found in the following hyperlink: ![Dependences](https://github.com/cmks/DAS_Tool#dependencies).
+* The dependencies of **DAS_Tool** can be found in the following hyperlink: ![Dependences_DAS_TOOL](https://github.com/cmks/DAS_Tool#dependencies).
 
-### VIRSORTER
+### VirSorter 
 
 | Dependencies | 
 |---|
@@ -176,7 +176,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 | Software DIAMOND |
 | Package gcc/4/8.1-3 | 
 
-
+The software used in the **VirSorter** can be found also in the following hyperlink: ![Software_VirSorter](https://github.com/simroux/VirSorter#dependencies).
 
 ### CheckV
 
@@ -218,8 +218,8 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 | KEGG | 
 | Pfam (v32) | 
 | VOG (release 94) |  
-| GCC/7.3.0-2.30 |  
-| OpenMPI/3.1.1 |  
+| Package GCC/7.3.0-2.30 |  
+| Package OpenMPI/3.1.1 |  
 | Prodigal version 2.6.3 |    
 | HMMER3 |  
 | gzip | 
@@ -238,13 +238,14 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 
 | Packages | Version |    
 |---|---| 
-| Perl | 5.26.0 |   
 | MUMmer |  3.0 |
 | GCCcore | 6.4.0 |  
 | libtool | 2.4.6 |  
 | Perl | 5.26.0 |  
 | OpenMPI |2.1.2 | 
 | GLib | 2.54.3 | 
+
+Instructions for installation of Perl/5.26.0 and MUMmer/3.0 can be found in the following webpage: https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/.
 
 ### VirFinder
 
@@ -277,6 +278,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 |---|
 | GCC/6.4.0-2.28 |
  
+
 
 ### MAKER2
 
