@@ -18,7 +18,7 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a too
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Module1.JPG)
 
- The steps of Module 1 are shown in Figure 2 and can be excecuted with the scripts find in the following hyperlink: ![Pre-Processing](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
+ The steps of Module 1 are shown in Figure 2 and they are excecuted with the scripts find in the following hyperlink: ![Pre-Processing](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
  
  The steps of Module 1 can be summarized as following:
 
@@ -32,7 +32,7 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a too
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Module2.JPG)
 
-The different steps of the Module 2 are shown in Figure 3 and excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
+The different steps of the Module 2 are shown in Figure 3 and they are excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
 
  The steps of Module 2 can be summarized as following:
  
@@ -54,7 +54,7 @@ The different steps of the Module 2 are shown in Figure 3 and excecuted with the
 
 **Figure 4.** Module 3 of the MuDoGeR framework.
 
-The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-viral-metagenome-assembled-genomes).
+The steps of the Module 3  are shown in Figure 4 and they are excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-viral-metagenome-assembled-genomes).
 
  The steps of Module 3 can be summarized as following:
  
@@ -74,7 +74,7 @@ The steps of the Module 3  are shown in Figure 4 and excecuted in the scripts fi
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Module4.JPG)
 
-The steps of the Module 4  are shown in Figure 5 and can be excecuted with the scripts find in the following hyperlink: ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
+The steps of the Module 4  are shown in Figure 5 and they are excecuted with the scripts find in the following hyperlink: ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
 
  The steps of Module 4 can be summarized as following:
 * **4.a**: Recovery of Eukaryotic assemblies and production of Eukaryotic bins.
