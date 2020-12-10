@@ -82,7 +82,7 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
     * **(4.a.2)** Use of **CONCOCT** for binning the Eukaryotic assemblies.  
     * **(4.a.3)** Filtering the Eukaryotic bins, produced from **CONCOCT**, by size. Bins with size < 2.5 Mb are removed.
 * **4.b**: Completeness/contamination estimation and annotation of Eukaryotic bins
-    * **(4.b.1)** In the filtered bins produced in **4.a**, genes are predicted by the trained **GeneMark-EV** model.
+    * **(4.b.1)** In the filtered bins produced in **4.a**, genes are predicted by the trained **GeneMark-ES** model.
     * **(4.b.2)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **4.a**.
     * **(4.b.3)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
     * **(4.b.4)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
@@ -317,8 +317,8 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 
 * As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).   
 
-### EukCC/GeneMark
-* The **EukCC** uses python of version 3.7.4. Also the  **EukCC** needs also installation of the **GeneMark** first which has more dependencies. For the installation of **GeneMark-ES** dependencies the user can run the following command which will install all of them:
+### EukCC/GeneMark-ES
+* The **EukCC** uses python of version 3.7.4. Also the  **EukCC** needs also installation of the **GeneMark-ES** first which has more dependencies. For the installation of **GeneMark-ES** dependencies the user can run the following command which will install all of them:
 
 ```
 apt install -y cpanminus make gcc  dialog
