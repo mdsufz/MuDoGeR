@@ -50,13 +50,13 @@ In this step a selection of Eukaryotic Metagenome-Assembled Genomes takes place.
 
 ## Module 5 Relative abundace (not finished yet)
 ### 5.a Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table 
-In this step the relative abundance of Prokaryotic Metagenome-Assembled Genomes is calculated and a relative abundance table is constructed.
+In this step the relative abundance of Prokaryotic Metagenome-Assembled Genomes is calculated and a relative abundance table is constructed (Pontus et al., 2012, Pontus et al., 2012).
 
 ### 5.b Calculation of relative abundance of Viral Metagenome-Assembled Genomes and construction of relative abundance table (after meeting with rene) 
-In this step the relative abundance of Viral Metagenome-Assembled Genomes is calculated and a relative abundance table is constructed.
+In this step the relative abundance of Viral Metagenome-Assembled Genomes is calculated and a relative abundance table is constructed(Pontus et al., 2012, Pontus et al., 2012).
 
 ### 5.c Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table 
-In this step, the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated a relative abundance table is constructed.
+In this step, the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated a relative abundance table is constructed(Pontus et al., 2012, Pontus et al., 2012).
 
 ### 5.d Construction of relative abundance table (not done yet)
 In this step the combined relative abundance table of the tables contructed in **5.a**, **5.b** and **5.c** is constructed.
@@ -88,6 +88,8 @@ consistently apply quality and adapter trimming to FastQ files. In.,http://www.b
 * Parks DH, Imelfort M, Skennerton CT, Hugenholtz P, Tyson GW. 2014. Assessing the quality of microbial genomes recovered from isolates, single cells, and metagenomes. Genome Research, 25: 1043-1055.
 * Parks, D.H., Rinke, C., Chuvochina, M. et al. Recovery of nearly 8,000 metagenome-assembled genomes substantially expands the tree of life. Nat Microbiol 2, 1533–1542 (2017). https://doi.org/10.1038/s41564-017-0012-7.
 * Pierre-Alain Chaumeil, Aaron J Mussig, Philip Hugenholtz, Donovan H Parks, GTDB-Tk: a toolkit to classify genomes with the Genome Taxonomy Database, Bioinformatics, Volume 36, Issue 6, 15 March 2020, Pages 1925–1927, https://doi.org/10.1093/bioinformatics/btz848.
+Pontus Stenetorp, Sampo Pyysalo, Goran Topić, Tomoko Ohta, Sophia Ananiadou and Jun'ichi Tsujii (2012). brat: a Web-based Tool for NLP-Assisted Text Annotation. In Proceedings of the Demonstrations Session at EACL 2012.
+Pontus Stenetorp, Sampo Pyysalo, Goran Topić, Sophia Ananiadou and Akiko Aizawa. Normalisation with the Brat Rapid Annotation Tool. In Proceedings of the 5th International Symposium on Semantic Mining in Biomedicine, Zürich, Switzerland, September 2012.
 * Ren, J., Ahlgren, N.A., Lu, Y.Y. et al. VirFinder: a novel k-mer based tool for identifying viral sequences from assembled metagenomic data. Microbiome 5, 69 (2017). https://doi.org/10.1186/s40168-017-0283-5.
 * Roux et al. (2015), VirSorter: mining viral signal from microbial genomic data. PeerJ 3:e985;DOI 10.7717/peerj.985.
 * Saary, P., Mitchell, A.L. & Finn, R.D. Estimating the quality of eukaryotic genomes recovered from metagenomic analysis with EukCC. Genome Biol 21, 244 (2020).
