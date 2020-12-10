@@ -84,7 +84,7 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
 * **4.b**: Completeness/contamination estimation and annotation of Eukaryotic bins
     * **(4.b.1)** In the filtered bins produced in **4.a**, genes are predicted by the trained **GeneMark-ES** model.
     * **(4.b.2)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **4.a**.
-    * **(4.b.3)** **MAKER2** annotates the predicted genes produced by **GeneMark-EV**. 
+    * **(4.b.3)** **MAKER2** annotates the predicted genes produced by **GeneMark-ES**. 
     * **(4.b.4)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
     * **(4.b.5)** Combination of **(4.b.4)** and **(4.b.2)** results for quality estimation.
 * **4.c**: Selection of Eukaryotic Metagenome-Assembled Genomes Representatives.
@@ -98,11 +98,11 @@ The steps of the Module 5 can be excecuted with the scriots find in the followin
 * **5.a** Relative abundance of Prokaryotic Metagenome-Assembled Genomes. 
 * **5.b** Relative abundance of Viral Metagenome-Assembled Genomes. 
 * **5.c** Relative abundance of Eukaryotic Metagenome-Assembled Genomes.
-* **5.d** Construction of the relative abundance table.
+* **5.d** Construction of the relative abundance table.(there is no script)
 	
 
 # System requirements
-MuDoGeR is designed to support only Linux x64 systems. As for the resource requirements,  MuDoGeR framework uses many software that require large amount of memory (e.g GDTB-Tk, MetaWRAP ). Also, the resource requirements varies depending on the amount of the used data. Based on that, we recommend to the user to use 8+ cores and + RAM. In the following session, the dependencies for the tools used in the MuDoGeR framework are listed.
+MuDoGeR is designed to support only Linux x64 systems. As for the resource requirements,  MuDoGeR framework uses many software that require large amount of memory (e.g **GDTB-Tk**, **MetaWRAP** ). Also, the resource requirements varies depending on the amount of the used data. Based on that, we recommend to the user to use 180+ RAM. The user also should take into account the amount of memory required for the assembly. As mentioned above, in the **1.c** step, the user can calculate the amount of memory for **metaSPades** assembly. The user should be aware that in large assembly datasets, higher amount of memory is required. In the following session, the dependencies for the tools used in the MuDoGeR framework are listed. 
 
 ## Dependencies
 ### Metawrap
@@ -265,22 +265,13 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 
 * **WIsH** requires OpenMP library installed.
 
-### GeneMark
-
-| Dependencies | Version |
-|---|---|
-| Package Perl | 5.30.0 |
-| Package foss | 2019b |
-
 ### EukRep
 
-**EukRep** uses python of version 3.6.4.
+* **EukRep** uses python of version 3.6.4.
  
 | Dependencies | 
 |---|
 | GCC/6.4.0-2.28 |
- 
-
 
 ### MAKER2
 
@@ -301,16 +292,16 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 * As RepeatMasker (4.0.5) requires some more dependencies, they can be found in the following link: http://www.repeatmasker.org/RepeatMasker/.
 * As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
 * As BEDtools requires some more dependencies, they can be found in the following link: https://bedtools.readthedocs.io/en/latest/content/installation.html.
-* BUSCO wil described in the following hyperlink: ![Busco_dependencies](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#busco).
+* About Busco, the user can check the following hyperlink:  ![BUSCO_Manual](https://github.com/WenchaoLin/BUSCO-Mod).
 
 ### BUSCO
-
-* **BUSCO** uses python of version 3.6.4.
+* **BUSCO** uses python of version 3.7.4.
 
 | Dependencies |  
 |---|
 | Package GCC/6.4.0-2.28 | 
 | Package OpenMPI/2.1.2 |  
+| foss/2019b |  
 | NCBI BLAST+ |
 | HMMER 3.1b2 |
 | Augustus 3.0.x |
@@ -318,7 +309,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 * As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).   
 
 ### EukCC/GeneMark-ES
-* The **EukCC** uses python of version 3.7.4. Also the  **EukCC** needs also installation of the **GeneMark-ES** first which has more dependencies. For the installation of **GeneMark-ES** dependencies the user can run the following command which will install all of them:
+* The **EukCC** uses python of version 3.7.4. Also the **EukCC** needs also installation of the **GeneMark-ES** first which has more dependencies. For the installation of **GeneMark-ES** dependencies the user can run the following command which will install all of them:
 
 ```
 apt install -y cpanminus make gcc  dialog
@@ -326,14 +317,16 @@ apt install -y cpanminus make gcc  dialog
 cpanm inc::Module::Install::DSL Hash::Merge MCE::Mutex FindBin Test::Pod Logger::Simple  Parallel::ForkManager.pm YAML
 ```
 
-| Dependencies |  
+| Dependencies for **EukCC/GeneMark-ES** |  
 |---|
 | Package GCCcore/8.3.0 | 
 | Package foss/2019b  |  
 | Perl/5.30.0 |
 | Anaconda2/5.3.0 |
+| Package foss-2019b |
 
 ### Ani_Splitter
+
 | Dependencies |  
 |---|
 | Package GCCcore/8.3.0 | 
@@ -352,6 +345,14 @@ cpanm inc::Module::Install::DSL Hash::Merge MCE::Mutex FindBin Test::Pod Logger:
 
 
 ### BRAT 
+
+| Dependencies |  
+|---|
+| Bowtie 2 |
+| Samtools |
+
+* More information about Bowtie 2 can be found by following the webpage: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml.
+* More information about Samtools can be found by following the webpage: http://www.htslib.org/doc/samtools.html.
 
 # Installation
 
@@ -386,7 +387,6 @@ The instructions for the GTDB-Tk installation can be found at ![GTDB-Tk_Manual](
 The instructions for the DAS_Tool installation can be found at ![DAS_Tool_Manual](https://github.com/cmks/DAS_Tool).
 
 ## Viral module
-
 ### VirFinder
 The instructions for VirFinder installation can be found at ![VirFinder_Manual](https://github.com/jessieren/VirFinder).
 ### VirSorter
@@ -412,6 +412,9 @@ The instructions for BUSCO installation can be found at ![BUSCO_Manual](https://
 ### MAKER2
 The instructions for MAKER2 installation can be found at ![MAKER2_Manual](https://github.com/wuying1984/MAKER2_PM_genome_annotation).
 
+## Relative abundance
+### BRAT
+The instructions for BRAT installation can be found at  ![BRAT_Manual](https://github.com/nlplab/brat).
 
 # Simplified usage of the MuDoGeR
 
