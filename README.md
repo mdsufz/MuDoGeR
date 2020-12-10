@@ -107,16 +107,18 @@ MuDoGeR is designed to support only Linux x64 systems. As for the resource requi
 ## Dependencies
 ### Metawrap
 
-* **Metawrap** uses Python version of 2.7.
+* **Metawrap** uses python version of 2.7.14
 
-| Database |  
+|  |  
 |---|
-| Checkm_DB |   
-| KRAKEN standard database |   
-| KRAKEN2 standard database |  
-| NCBI_nt|   
-| NCBI_tax | 
-| Indexed hg38| 
+| Database Checkm_DB |   
+| Database KRAKEN standard database |   
+| Database KRAKEN2 standard database |  
+| Database NCBI_nt|   
+| Database NCBI_tax | 
+| Database Indexed hg38| 
+| GCC/6.4.0-2.28 | 
+| OpenMPI/2.1.2 | 
 
 The Databases can be installed by following the instructons of the following hyperlink: ![Databases_metaWrap](https://github.com/bxlab/metaWRAP/blob/master/installation/database_installation.md).
 
@@ -162,7 +164,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 * The pre-requests for **uBin** and how to install them, can be found in the follwoing hyperlink: ![Creating input files for uBin](https://github.com/ProbstLab/uBin-helperscripts#creating-input-files-for-ubin).
 
 ### DAS_Tool (optional)
-* The dependencies of **DAS_Tool** can be found in the following hyperlink: ![Dependences_DAS_TOOL](https://github.com/cmks/DAS_Tool#dependencies).
+* The dependencies of **DAS_Tool** can be found in the following hyperlink: ![Dependencies_DAS_TOOL](https://github.com/cmks/DAS_Tool#dependencies).
 
 ### VirSorter 
 
@@ -235,7 +237,7 @@ More information about **CheckV** dependencies can be found by following the web
 | Scikit-learn (version == 0.21.3)|
 | Pickle |
 
-* More information about **VIBRANT** dependencies can be found in the following hyperlink: ![VIBRANT_DEPENDENCIES](https://github.com/AnantharamanLab/VIBRANT#requirements-).
+* More information about **VIBRANT** dependencies can be found in the following hyperlink: ![VIBRANT_Dependencies](https://github.com/AnantharamanLab/VIBRANT#requirements-).
 
 ### Stampede-clustergenomes
 * **Stampede-clustergenomes** uses python of version 2.7.14.
@@ -295,6 +297,7 @@ More information about **CheckV** dependencies can be found by following the web
 * As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
 * As BEDtools requires some more dependencies, they can be found in the following link: https://bedtools.readthedocs.io/en/latest/content/installation.html.
 * About Busco, the user can check the following hyperlink:  ![BUSCO_Manual](https://github.com/WenchaoLin/BUSCO-Mod).
+* More information about **MAKER2** dependencies can be found in the following hyperlink: ![Maker2_Software prerequisites](https://github.com/wuying1984/MAKER2_PM_genome_annotation#software-prerequisites).
 
 ### BUSCO
 * **BUSCO** uses python of version 3.7.4.
@@ -309,6 +312,7 @@ More information about **CheckV** dependencies can be found by following the web
 | Augustus 3.0.x |
 
 * As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
+* More information about **BUSCO** dependencies can be found in the following hyperlink:![BUSCO_Dependencies](https://github.com/WenchaoLin/BUSCO-Mod#setup).
 
 ### EukCC/GeneMark-ES
 * The **EukCC** uses python of version 3.7.4. Also the **EukCC** needs also installation of the **GeneMark-ES** first which has more dependencies. For the installation of **GeneMark-ES** dependencies the user can run the following command which will install all of them:
@@ -326,6 +330,8 @@ cpanm inc::Module::Install::DSL Hash::Merge MCE::Mutex FindBin Test::Pod Logger:
 | Perl/5.30.0 |
 | Anaconda2/5.3.0 |
 | Package foss-2019b |
+
+* More information about **EukCC/GeneMark-ES** dependencies can be found by following the webpage: https://eukcc.readthedocs.io/en/latest/install.html#install-via-conda.
 
 ### Ani_Splitter
 
@@ -355,6 +361,7 @@ cpanm inc::Module::Install::DSL Hash::Merge MCE::Mutex FindBin Test::Pod Logger:
 
 * More information about Bowtie 2 can be found by following the webpage: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml.
 * More information about Samtools can be found by following the webpage: http://www.htslib.org/doc/samtools.html.
+* More information about can be found  
 
 # Installation
 
