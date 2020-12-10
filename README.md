@@ -188,6 +188,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 | Software HMMER | 3.3 | 
 | Software Prodigal | 2.6.3 |  
 
+More information about **CheckV** dependencies can be found by following the webpage: https://bitbucket.org/berkeleylab/checkv/src/master/.
 
 ### vContact2
 
@@ -208,6 +209,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 | scikit-learn | >=0.20.2 | 
 | scipy | >=1.2.0 |
 
+*  More information about **vContact2** dependencies can be found by following the webpage: https://bioconda.github.io/recipes/vcontact2/README.html.
 
 ### VIBRANT
 
@@ -233,7 +235,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 | Scikit-learn (version == 0.21.3)|
 | Pickle |
 
-* More information about **VIBRANT** dependencies can be found in the following hyperlink: ![VIBRANT_DEPENDENCIES] https://github.com/AnantharamanLab/VIBRANT#requirements-.
+* More information about **VIBRANT** dependencies can be found in the following hyperlink: ![VIBRANT_DEPENDENCIES](https://github.com/AnantharamanLab/VIBRANT#requirements-).
 
 ### Stampede-clustergenomes
 * **Stampede-clustergenomes** uses python of version 2.7.14.
@@ -306,7 +308,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 | HMMER 3.1b2 |
 | Augustus 3.0.x |
 
-* As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).   
+* As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
 
 ### EukCC/GeneMark-ES
 * The **EukCC** uses python of version 3.7.4. Also the **EukCC** needs also installation of the **GeneMark-ES** first which has more dependencies. For the installation of **GeneMark-ES** dependencies the user can run the following command which will install all of them:
