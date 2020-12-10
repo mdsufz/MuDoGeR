@@ -94,7 +94,7 @@ The steps of the Module 4  are shown in Figure 5 and can be excecuted with the s
 
 ### Module 5 Relative abundace (not done, wiil after the meeting with rene)
 
-The steps of the Module 5 can be excecuted with the scriots find in the following hyperlink: ![Pipelines for Relative abundace ](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5relative-abundance).
+The steps of the Module 5 can be excecuted with the scriots find in the following hyperlink: ![Pipelines for Relative abundace ](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
 * **5.a** Relative abundance of Prokaryotic Metagenome-Assembled Genomes. 
 * **5.b** Relative abundance of Viral Metagenome-Assembled Genomes. 
 * **5.c** Relative abundance of Eukaryotic Metagenome-Assembled Genomes.
