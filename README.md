@@ -176,7 +176,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 | Software DIAMOND |
 | Package gcc/4/8.1-3 | 
 
-The software used in the **VirSorter** can be found also in the following hyperlink: ![Software_VirSorter](https://github.com/simroux/VirSorter#dependencies).
+* The software used in the **VirSorter** can be found also in the following hyperlink: ![Software_VirSorter](https://github.com/simroux/VirSorter#dependencies).
 
 ### CheckV
 
@@ -233,6 +233,8 @@ The software used in the **VirSorter** can be found also in the following hyperl
 | Scikit-learn (version == 0.21.3)|
 | Pickle |
 
+* More information about **VIBRANT** dependencies can be found in the following hyperlink: ![VIBRANT_DEPENDENCIES] https://github.com/AnantharamanLab/VIBRANT#requirements-.
+
 ### Stampede-clustergenomes
 * **Stampede-clustergenomes** uses python of version 2.7.14.
 
@@ -245,7 +247,7 @@ The software used in the **VirSorter** can be found also in the following hyperl
 | OpenMPI |2.1.2 | 
 | GLib | 2.54.3 | 
 
-Instructions for installation of Perl/5.26.0 and MUMmer/3.0 can be found in the following webpage: https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/.
+* Instructions for installation of Perl/5.26.0 and MUMmer/3.0 can be found in the following webpage: https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/.
 
 ### VirFinder
 
