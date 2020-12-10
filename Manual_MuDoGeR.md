@@ -314,7 +314,7 @@ mudoger 5.c -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folde
 he output folder contains the results of the **5.c**, in .sam file format.
 
 
-## 5.d Construction of combined relative abundance table (not done, waiting for rene_meeting)
+## 5.d Construction of combined relative abundance table (no scripts)
 
 
 
