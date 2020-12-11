@@ -41,7 +41,7 @@ Module 4 is devided into 3 steps:
 
 In the beginning this step, **(4.a.1)** the assembled data-set is separated to Prokaryotic and Eukaryotic assemblies using **EukRep** tool (West et al., 2018). **(4.a.2)** In case the size of the Eukaryotic assembly file is >= 2.5 Mb, the Eukaryotic recovery modules can continue to the automated binnning with **CONCOCT** tool. The eukaryotic bins  produced by **CONCOCT**. Finally, **(4.a.3)** the bins are filtered by size and those of size < 2.5 Mb are removed. 
 
-### 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins (there is a tool or threshold not developed yet, so something is missing)
+### 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins 
 
 In this step, a chain of processes is followed for one of the bins produced in **4.b**: **(4.b.1)** **GeneMark-ES** is applied for gene prediction. **(4.b.2)** Also, the contamination of the bins which were kept after the filtering is estimated by using **EukCC** tool (Saary et al., 2020). **(4.b.3)** The predicted genes from **GeneMark-ES** (Saary et al., 2020) are annotated with **Maker2** (Holt et al., 2011). **(4.b.4)** The completeness of the annotated proteins is measured using **BUSCO** (Simão et al., 2015). 
 
