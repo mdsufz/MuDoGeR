@@ -101,7 +101,7 @@ The steps of the Module 5 can be excecuted with the scriots find in the followin
 	
 
 # System requirements
-MuDoGeR is designed to support only Linux x64 systems. As for the resource requirements,  MuDoGeR framework uses many software that require large amount of memory (e.g **GDTB-Tk**, **MetaWRAP** ). Also, the resource requirements varies depending on the amount of the used data. Based on that, we recommend to the user to use 180+ RAM. The user also should take into account the amount of memory required for the assembly. As mentioned above, in the **1.c** step, the user can calculate the amount of memory for **metaSPades** assembly. The user should be aware that in large assembly datasets, higher amount of memory is required. In the following session, the dependencies for the tools used in the MuDoGeR framework are listed. 
+MuDoGeR is designed to support only Linux x64 systems. As for the resource requirements,  MuDoGeR framework uses many software that require large amount of memory (e.g **GDTB-Tk**, **MetaWRAP** ). Also, the resource requirements varies depending on the amount of the used data. Based on that, we recommend the user to use at least 180 GB RAM. The user also should take into account the amount of memory required for the assembly. As mentioned above, in the **1.c** step, the user can calculate the amount of memory for **metaSPades** assembly. The user should be aware that samples with higher diversity require higher amount of memory. In the following session, the dependencies for the tools used in the MuDoGeR framework are listed. 
 
 ## Dependencies
 ### Metawrap
