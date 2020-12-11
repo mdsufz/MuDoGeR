@@ -45,7 +45,7 @@ The different steps of the Module 2 are shown in Figure 3 and they are excecuted
      * **(2.a.6)** Annotation of genomic bins produced in **(2.a.2)** with **PROKKA**.
 * **2.b**: Selection of Prokaryotic Metagenome-Assembled Genomes Representatives.
 	* **(2.b.1)** Grouping of Prokaryotic Metagenome-Assembled Genomes by taxonomy, using the .tsv file of **GTDB-Tk** results.
-	* **(2.b.2)** Separation of the cluster produced in **(2.b.1)** by species, using ANI (Average Nucleotide Identity) splitter with ANI_distance 95.
+	* **(2.b.2)** Separation of the cluster produced in **(2.b.1)** by species, using ANI (Average Nucleotide Identity) splitter, with default ANI_distance 0.95.
 	* **(2.b.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.b.2)**.
 * **2.c**: Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin** (optional step).
     
@@ -86,10 +86,9 @@ The steps of the Module 4  are shown in Figure 5 and they are excecuted with the
     * **(4.b.2)** **EukCC** utilization for estimating the contamination of Eukaryotic filtered bins produced in **4.a**.
     * **(4.b.3)** **MAKER2** annotates the predicted genes produced by **GeneMark-ES**. 
     * **(4.b.4)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single copy orthologous genes (SCGs) and estimation of the completeness of Eukaryotic contigs.
-    * **(4.b.5)** Combination of **(4.b.4)** and **(4.b.2)** results for quality estimation.
 * **4.c**: Selection of Eukaryotic Metagenome-Assembled Genomes Representatives.
 	* **(4.c.1)** Grouping of Eukaryotic Metagenome-Assembled Genomes by taxonomy, using **BUSCO** and **EukCC** results.
-	* **(4.c.2)** Separation of the cluster produced in **(4.c.1)** by species, using ANI (Average Nucleotide Identity) splitter with ANI_distance 95.
+	* **(4.c.2)** Separation of the cluster produced in **(4.c.1)** by species, using ANI (Average Nucleotide Identity) splitter, with deafault ANI_distance 0.95.
 	* **(4.c.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(4.c.2)**.
 
 ### Module 5 Relative abundace (not done, wiil after the meeting with rene)
