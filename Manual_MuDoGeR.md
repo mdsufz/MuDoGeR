@@ -162,7 +162,7 @@ mudoger 2.b -i ~/path/to/gtdb_taxonomy/file -b ~/path/to/bbtools/file -m ~/path/
 * The `/path/to/output/folder` indicates the path to the output folder where the resulted files will be saved.
 * The `-t 95` indicates the threshold for ANI clustering.
 
-Inside the output folder the user can find the `bestbins.csv` file that contains the unique taxonomic bins and the `bins_to_brats.txt` file with the bins for the Bin Relative Abundance Table (BRAT) calculation.
+Inside the output folder the user can find the `bestbins.csv` file that contains the unique taxonomic bins and the `bins_to_brats.txt` file with the selected bins that were chosens as representatives and will be used for the Bin Relative Abundance Table (BRAT) calculation.
 
 
 ## 2.c: Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using DAS Tool and U-bin
