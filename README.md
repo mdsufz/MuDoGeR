@@ -106,9 +106,9 @@ MuDoGeR is designed to support only Linux x64 systems. As for the resource requi
 ## Dependencies
 ### Metawrap
 
-* **Metawrap** uses python version of 2.7.14
+* **Metawrap** uses python version of 2.7.14.
 
-|  |  
+| Dependencies |  
 |---|
 | Database Checkm_DB |   
 | Database KRAKEN standard database |   
@@ -156,7 +156,7 @@ The Databases can be installed by following the instructons of the following hyp
 | Lirbrary tqdm | >= 4.31.0  |
 | Software Prodigal | >= 2.6.2 |
 
-As pplacer requires also dependencies, these dependencies, together with instructions of how to install them, can be found in the following link: http://matsen.github.io/pplacer/compiling.html.
+* As pplacer requires also dependencies, these dependencies, together with instructions of how to install them, can be found in the following link: http://matsen.github.io/pplacer/compiling.html.
 
 
 ### Ubin (optional)
@@ -189,7 +189,7 @@ As pplacer requires also dependencies, these dependencies, together with instruc
 | Software HMMER | 3.3 | 
 | Software Prodigal | 2.6.3 |  
 
-More information about **CheckV** dependencies can be found by following the webpage: https://bitbucket.org/berkeleylab/checkv/src/master/.
+* More information about **CheckV** dependencies can be found by following the webpage: https://bitbucket.org/berkeleylab/checkv/src/master/.
 
 ### vContact2
 
@@ -353,10 +353,14 @@ cpanm inc::Module::Install::DSL Hash::Merge MCE::Mutex FindBin Test::Pod Logger:
 
 ### BRAT 
 
-| Dependencies |  
+| Dependencies | 
 |---|
-| Bowtie 2 |
-| Samtools |
+| Python 3.6.6 |
+| OpenMPI 3.1.1 |
+| GCC 7.3.0-2.30 |
+| datamash-1.3 |
+| Bowtie2 2.3.5.1 |
+| SAM tools 1.9 |
 
 * More information about Bowtie 2 can be found by following the webpage: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml.
 * More information about Samtools can be found by following the webpage: http://www.htslib.org/doc/samtools.html.
