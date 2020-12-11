@@ -233,6 +233,7 @@ viral-particle-55	LS08Hbin.1	-1.34156	NA
 viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 ``` 
 ## 3.b: Selection of Viral Metagenome-Assembled Genomes (Not done waiting for rene_meeting)
+In this step, a selection of Prokaryotic Metagenome-Assembled Genomes takes place.
 
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes 
 
@@ -273,7 +274,7 @@ The results of the **MAKER2** tool are located in the `maker/euk-ebin.maker.outp
 
 The results of the **BUSCO** tool are located in the file `maker/busco/full_table_fbusco.csv`. The busco directory is found inside the `maker` directory.
 
-## 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes Representatives
+## 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes Representatives (test)
 In this special step, the user can pick representative Eukaryotic Metagenome-Assembled Genomes. The threshold for ANI clustering is set by default at 95 but the user has the option to change this value.
 
 Running 4.b:
