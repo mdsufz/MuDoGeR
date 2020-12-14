@@ -67,7 +67,8 @@ The steps of the Module 3  are shown in Figure 4 and they are excecuted in the s
     * **(3.a.6)** Checking the quality of the dereplicated contigs with **CheckV**.
     * **(3.a.7)** Taxonomic classification of the clean contigs produced by **CheckV**,  with **vContact2**. In small datasets, we can use the dereplicated contigs from step **(3.a.5)**.
     * **(3.a.8)** Host identification of the clean contigs produced by **CheckV** the using **WIsH**. In small datasets, we can use the dereplicated contigs. (optional) from **(3.a.5)**.    
-* **3.b**: Selection of Viral Metagenome-Assembled Genomes Representatives (after the meeting with rene)
+* **3.b**: Selection of Viral Metagenome-Assembled Genomes Representatives
+	* **(3.b.1)** Selection of all viruses that yielded taxonomy when using vContact2 plus those larger than 15 Kb.
    
 
 ### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
