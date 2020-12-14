@@ -60,13 +60,13 @@ The steps of the Module 3  are shown in Figure 4 and they are excecuted in the s
  
 * **3.a**: Recovery, quality estimation, taxonomic classification and host identification of Viral Metagenome-Assembled Genomes
     * **(3.a.1)** Recovery of viral genome metagenomes using **VirFinder**, **VirSorter** and **VIBRANT**.
-    * **(3.a.2)** Filtering of the recovered genomes. From the results of **VirFinder**, the sequences with p-value > 0.01 and length <= 1000 bp are removed. From the results of **VirSorter**, which recovers prophages, only the sequences of categories 1 and 2 are kept. From the results of **VIBRANT**, the combined assemblies of the phages are kept.
+    * **(3.a.2)** Filtering of the recovered genomes. From the results of **VirFinder**, the sequences with p-value > 0.01 and length < 1000 bp are removed. From the results of **VirSorter**, which recovers prophages, only the sequences of categories 1 and 2 are kept. From the results of **VIBRANT**, the combined assemblies of the phages are kept.
     * **(3.a.3)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
     * **(3.a.4)** Assembly of the headers in the file produced in **1.c** with the respective sequences from the assembly file produced by **metaSPades** in **1.c**, for the generation of a fasta file.
     * **(3.a.5)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
     * **(3.a.6)** Checking the quality of the dereplicated contigs with **CheckV**.
     * **(3.a.7)** Taxonomic classification of the clean contigs produced by **CheckV**,  with **vContact2**. In small datasets, we can use the dereplicated contigs from step **(3.a.5)**.
-    * **(3.a.8)** Host identification of the clean contigs produced by **CheckV** the using **WIsH**. In small datasets, we can use the dereplicated contigs. (optional) from **(3.a.5)**.    
+    * **(3.a.8)** Host identification of the clean contigs produced by **CheckV**, using **WIsH**. In small datasets, we can use the dereplicated contigs. (optional) from **(3.a.5)**.    
 * **3.b**: Selection of Viral Metagenome-Assembled Genomes Representatives
 	* **(3.b.1)** Selection of all viruses that yielded taxonomy when using vContact2 plus those larger than 15 Kb.
    
