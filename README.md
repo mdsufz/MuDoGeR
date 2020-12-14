@@ -94,7 +94,7 @@ The steps of the Module 4  are shown in Figure 5 and they are excecuted with the
 
 ### Module 5 Relative abundace (not done, wiil after the meeting with rene)
 
-The steps of the Module 5 can be excecuted with the scriots find in the following hyperlink: ![Pipelines for Relative abundace ](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
+The steps of the Module 5 are shown in Figure 6 and they are excecuted with the scriots find in the following hyperlink: ![Pipelines for Relative abundace ](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
 * **5.a** Relative abundance of Prokaryotic Metagenome-Assembled Genomes. 
 	* **(5.a.1)** Merging of Paired-End (PE) reads from each library.
 	* **(5.a.2)** Mapping of the libraries to the indexed prokaryotic bins.
