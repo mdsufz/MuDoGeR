@@ -109,7 +109,7 @@ In the final output folder the user can find:
 arch_ref Annotation_Archaea   checkm_archaea   archaea_output_tax_dir    
 bact_ref Annotation_Bacteria  checkm_bacteria  bacteria_output_tax_dir           
 ```
-Inside the `arch_ref` and the `bact_ref` the user can find the folders with the bins after the bin refinement of archael and bacterial bins, respectively.
+Inside the `arch_ref` and the `bact_ref` the user can find the folders with the bins after the bin_refinement of archael and bacterial bins, respectively.
 
 Inside each tax_dir directory the user can find the classification of the refined bins. As an example, running `cat tax_out_dir_bacteria/classify/intermediate_results/gtdbtk.bac120.classification_pplacer.csv| head -5`:
 
@@ -236,7 +236,7 @@ viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 ## 3.b: Selection of Viral Metagenome-Assembled Genomes 
 (waiting for the commands)
 
-In this step, a selection of Viral Metagenome-Assembled Genomes takes place. The Viral representatives are all viral genomes that yielded taxonomy classification with vContact2 and are larger than XX Kb.
+In this step, a selection of Viral Metagenome-Assembled Genomes takes place. The Viral representatives are all viral genomes that yielded taxonomic classification with vContact2 and are larger than XX Kb.
 
 Running **3.b**:
 
@@ -305,7 +305,7 @@ Inside the output folder the user can find the `bestbins.csv` that contains the 
 # Module 5: Relative abundance 
 (there is information of unread maps to be clarrified)
 ## 5.a Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table
-For calculation of relative abundance and construction of relative abundance table for the Prokaryotic Metagenome-Assembled Genomes Representatives.
+For calculation of relative abundance and construction of relative abundance table for the Prokaryotic Metagenome-Assembled Genomes Representatives, the user can run:
 ```
 mudoger 5.a -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folder -o ~/path/to/output/folder 
 ``` 
@@ -316,7 +316,7 @@ mudoger 5.a -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folde
 The output folder contains the results of the **5.a** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `cat brat_v1.csv` which is a crosstable with libraries in the columns and bins in the rows.
 
 ## 5.b Calculation of relative abundance of Viral Metagenome-Assembled Genomes and construction of relative abundance table 
-For calculation of relative abundance and construction of relative abundance table for the Viral Metagenome-Assembled Genomes Representatives.
+For calculation of relative abundance and construction of relative abundance table for the Viral Metagenome-Assembled Genomes Representatives, the user can run:
 ```
 mudoger 5.b -i ~/path/to/representative_contigs/folder -l ~/path/to/libraries/folder -o ~/path/to/output/folder 
 ``` 
@@ -327,7 +327,7 @@ mudoger 5.b -i ~/path/to/representative_contigs/folder -l ~/path/to/libraries/fo
 The output folder contains the results of the **5.b** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `cat brat_v1.csv` which is a crosstable with libraries in the columns and contigs in the rows.
 
 ## 5.c Calculation of relative abundance of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance table (not done)
-For calculation of relative abundance and construction of relative abundance table for the Eukaryotic Metagenome-Assembled Genomes Representatives.
+For calculation of relative abundance and construction of relative abundance table for the Eukaryotic Metagenome-Assembled Genomes Representatives, the user can run:
 ```
 mudoger 5.c -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folder -o ~/path/to/output/folder 
 ``` 
