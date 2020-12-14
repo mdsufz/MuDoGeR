@@ -106,9 +106,10 @@ mudoger 2.a -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 
 In the final output folder the user can find:
 
 ```
-Annotation_Archaea   checkm_archaea   archaea_output_tax_dir    
-Annotation_Bacteria  checkm_bacteria  bacteria_output_tax_dir           
+arch_ref Annotation_Archaea   checkm_archaea   archaea_output_tax_dir    
+bact_ref Annotation_Bacteria  checkm_bacteria  bacteria_output_tax_dir           
 ```
+Inside the `arch_ref` and the `bact_ref` the user can find the folders with the bins after the bin refinement of archael and bacterial bins, respectively.
 
 Inside each tax_dir directory the user can find the classification of the refined bins. As an example, running `cat tax_out_dir_bacteria/classify/intermediate_results/gtdbtk.bac120.classification_pplacer.csv| head -5`:
 
