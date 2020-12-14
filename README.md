@@ -66,7 +66,7 @@ The steps of the Module 3  are shown in Figure 4 and they are excecuted in the s
     * **(3.a.5)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
     * **(3.a.6)** Checking the quality of the dereplicated contigs with **CheckV**.
     * **(3.a.7)** Taxonomic classification of the clean contigs produced by **CheckV**,  with **vContact2**. In small datasets, we can use the dereplicated contigs from step **(3.a.5)**.
-    * **(3.a.8)** Host identification of the clean contigs produced by **CheckV**, using **WIsH**. In small datasets, we can use the dereplicated contigs. (optional) from **(3.a.5)**.    
+    * **(3.a.8)** Host identification of the clean contigs produced by **CheckV**, using **WIsH**. In small datasets, we can use the dereplicated contigs from **(3.a.5)** (optional).    
 * **3.b**: Selection of Viral Metagenome-Assembled Genomes Representatives
 	* **(3.b.1)** Selection of all viruses that yielded taxonomy when using vContact2 plus those larger than 15 Kb.
    
@@ -94,7 +94,7 @@ The steps of the Module 4  are shown in Figure 5 and they are excecuted with the
 
 ### Module 5 Relative abundace (not done, wiil after the meeting with rene)
 
-The steps of the Module 5 are shown in Figure 6 and they are excecuted with the scriots find in the following hyperlink: ![Pipelines for Relative abundace ](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
+The steps of the Module 5 are shown in Figure 6 and they are excecuted with the scripts find in the following hyperlink: ![Pipelines for Relative abundace ](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
 * **5.a** Relative abundance of Prokaryotic Metagenome-Assembled Genomes. 
 	* **(5.a.1)** Merging of Paired-End (PE) reads from each library.
 	* **(5.a.2)** Mapping of the libraries to the indexed prokaryotic bins.
