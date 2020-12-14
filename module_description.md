@@ -51,13 +51,14 @@ Currently, a selection of Eukaryotic Metagenome-Assembled Genomes Representative
 
 ## Module 5 Relative abundace (not finished yet)
 ### 5.a Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table 
-In this step the relative abundance of Prokaryotic Metagenome-Assembled Genomes is calculated and a relative abundance table is constructed (Pontus et al., 2012, Pontus et al., 2012).
+In this step the relative abundance of Prokaryotic Metagenome-Assembled Genomes is calculated and a relative abundance table is constructed (Pontus et al., 2012, Pontus et al., 2012). First the Paired-End (PE) reads from each library are merged. Then, the libraries are mapped to the indexed prokaryotic bins and the hits are counted. In the next step, a  2 column crosstable is created. The first column of this table contains the names of the pairwise mappings (bin to library) while the second column contains the number of mappings. Finally, information of the unmapped reads are added (This part still needs to be clarified). 
 
 ### 5.b Calculation of relative abundance of Viral Metagenome-Assembled Genomes and construction of relative abundance table (after meeting with rene) 
-In this step the relative abundance of Viral Metagenome-Assembled Genomes is calculated and a relative abundance table is constructed(Pontus et al., 2012, Pontus et al., 2012).
+In this step the relative abundance of Viral Metagenome-Assembled Genomes is calculated using BRAT and a relative abundance table is constructed (Pontus et al., 2012, Pontus et al., 2012). First the Paired-End (PE) reads from each library are merged. Then, the libraries are mapped to the indexed viral contigs and the hits are counted. In the next step, a  2 column crosstable is created. The first column of this table contains the names of the pairwise mappings (contig to library) while the second column contains the number of mappings. Finally, information of the unmapped reads are added (This part still needs to be clarified). 
 
 ### 5.c Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table 
-In this step, the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated a relative abundance table is constructed(Pontus et al., 2012, Pontus et al., 2012).
+In this step, the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated a relative abundance table is constructed (Pontus et al., 2012, Pontus et al., 2012). First the Paired-End (PE) reads from each library are merged. Then, the libraries are mapped to the indexed eukaryotic bins and the number of hits is counted. In the next step, a  2 column crosstable is created. The first column of this table contains the names of the pairwise mappings (bin to library) while the second column contains the number of mappings. Finally, information of the unmapped reads are added (This part still needs to be clarified). 
+
 
 ### 5.d Construction of relative abundance table (not done yet)
 In this step the combined relative abundance table of the tables contructed in **5.a**, **5.b** and **5.c** is constructed.
