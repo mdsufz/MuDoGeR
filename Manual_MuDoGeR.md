@@ -166,8 +166,8 @@ mudoger 2.b -i ~/path/to/gtdb_taxonomy/file -b ~/path/to/bbtools/file -m ~/path/
 Inside the output folder the user can find the `bestbins.csv` file that contains the unique taxonomic bins and the `bins_to_brats.txt` file with the selected bins that were chosens as representatives and will be used for the Bin Relative Abundance Table (BRAT) calculation.
 
 
-## 2.c: Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using DAS Tool and U-bin
-This is an optional step for the Prokaryotic Metagenome-Assembled Genomes. In this step, the user can choose to manually refined the Prokaryotic Metagenome-Assembled Genomes by **u-Bin**. The instructions fo running the **u-Bin** can be found in the following hyperlink: ![uBin_Manual](https://github.com/ProbstLab/uBin).
+## 2.c: Refinement of the bins produced in binning or/and the bins of the selected Representative Metagenome-Assembled Genomes using U-bin (optional step)
+This is an optional step for the Prokaryotic Metagenome-Assembled Genomes. In this step, the user can choose to manually refined the Prokaryotic Metagenome-Assembled Genomes either after binning process replacing **DAS Tool** or after the selection of Prokaryotic Metagenome-Assembled Genomes Representatives by **u-Bin**. The instructions for running the **u-Bin** can be found in the following hyperlink: ![uBin_Manual](https://github.com/ProbstLab/uBin).
 
 # Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the following hyperlink: ![Viral module](https://github.com/mdsufz/MuDoGeR#viral-module).
