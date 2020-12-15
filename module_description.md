@@ -21,8 +21,8 @@ This step is a combination of tasks included in the **metaWrap** tool (Uritskiy 
 ### 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes Representatives
 In this step, a selection of Prokaryotic Metagenome-Assembled Genomes according Nayfach et al. (2020) takes place. It uses average nucleotide identities (ANI) distances and the threshold is 0.95 (species-level OTUs). **(2.b.1)** First, the Prokaryotic Metagenome-Assembled Genomes are grouped by taxonomy. **(2.b.2)** Furthermore, the produced cluster are separated by species using ANI (Average Nucleotide Identity) splitter with default ANI_distance 0.95. Clusters with bootstrap > 75 are represent new species. **(2.b.3)** Finally, there is a selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.b.2)**.
 
-### 2.c: Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using **DAS Tool** and **U-bin**
-In case the user chooses to, **DAS Tool** (Sieber et al., 2018) and **uBin** (Bornemann et al., 2020) refining tool. The users have the option of using **uBin** to manually refined their Metagenome-Assembled Genomes. The hyperlink of the **uBin** tool can be found in the following hyperlink: ![ubin](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#ubin).
+### 2.c: Refinement of the selected Prokaryotic Metagenome-Assembled Genomes using U-bin
+In case the user chooses to  **uBin** (Bornemann et al., 2020) refining tool can be used instead of **DAS Tool** (Sieber et al., 2018) in the bins produced in **(2.a.1)**. The users have also the option of using **uBin** to manually refined the bins produced in **2.b**. The hyperlink of the **uBin** tool can be found in the following hyperlink: ![ubin](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#ubin).
 
 ## Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Module 3 is divided into 2 steps: 
