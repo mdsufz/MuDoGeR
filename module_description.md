@@ -56,7 +56,7 @@ In this step the relative abundance of Prokaryotic Metagenome-Assembled Genomes 
 ### 5.b Calculation of relative abundance of Viral Metagenome-Assembled Genomes and construction of relative abundance table 
 In this step the relative abundance of Viral Metagenome-Assembled Genomes is calculated using BRAT and a relative abundance table is constructed (Pontus et al., 2012, Pontus et al., 2012). First, **(5.b.1)** the Paired-End (PE) reads from each library are merged. Then, **(5.b.2)** the libraries are mapped to the indexed viral contigs and **(5.b.3)** the hits are counted. In the next step, **(5.b.4)** a 2-column crosstable is created, with libraries in the columns and viral contigs in the rows. Finally, **(5.b.5)** information of the unmapped reads is added (This part still needs to be clarified). 
 
-### 5.c Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table 
+### 5.c Calculation of relative abundance of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance table 
 In this step, the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated a relative abundance table is constructed (Pontus et al., 2012, Pontus et al., 2012). First, **(5.c.1)** the Paired-End (PE) reads from each library are merged. Then, **(5.c.2)** the libraries are mapped to the indexed eukaryotic bins and **(5.c.3)** the number of hits is counted. In the next step, **(5.c.4)** a 2-column crosstable is created, with libraries in the columns and eukaryotic bins in the rows. Finally, **(5.c.5)** information of the unmapped reads is added (This part still needs to be clarified). 
 
 
