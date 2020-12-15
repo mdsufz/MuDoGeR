@@ -47,7 +47,7 @@ The different steps of the Module 2 are shown in Figure 3 and they are excecuted
 	* **(2.b.1)** Grouping of Prokaryotic Metagenome-Assembled Genomes by taxonomy, using the .tsv file of **GTDB-Tk** results.
 	* **(2.b.2)** Separation of the cluster produced in **(2.b.1)** by species, using ANI (Average Nucleotide Identity) splitter, with default ANI_distance 0.95.
 	* **(2.b.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.b.2)**.
-* **2.c**: Refinement of the bins produced in **(2.a.1)** or/and the ones produced in **(2.b)** using **U-bin** (optional step).
+* **2.c**: Refinement of the bins produced in binning or/and the bins of the selected Representative Metagenome-Assembled Genomes using **U-bin** (optional step).
     
     
 ### Module 3: Recovery of Viral Metagenome-Assembled Genomes
