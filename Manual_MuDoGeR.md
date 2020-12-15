@@ -169,6 +169,20 @@ Inside the output folder the user can find the `bestbins.csv` file that contains
 ## 2.c: Refinement of the bins produced in binning or/and the bins of the selected Representative Metagenome-Assembled Genomes using U-bin (optional step)
 This is an optional step for the Prokaryotic Metagenome-Assembled Genomes. In this step, the user can choose to manually refined the Prokaryotic Metagenome-Assembled Genomes either after binning process replacing **DAS Tool** or after the selection of Prokaryotic Metagenome-Assembled Genomes Representatives by **u-Bin**. The instructions for running the **u-Bin** can be found in the following hyperlink: ![uBin_Manual](https://github.com/ProbstLab/uBin).
 
+In case the user choose not to use **u-Bin**, then the refinement is done by **DAS Tool** flag which is set by default to the **MuDoGeR** framework. The flag for the prokaryotic bin_refinement with **DAS Tool**:
+```
+metawrap bin_refinement -o ~/path/to/output/directory -A ~/path/to/concoct/bins/directory -B ~/path/to/metabat2/bins/directory  -C ~/path/to/maxbin2/bins/directory -cb 50 -xb 10 -ca 40 -xa 30
+```
+
+* The `/path/to/output/directory` indicates the path to the output directory where the output folders will be saved.
+* The `/path/to/concoct/bins/directory` indicates the path to directory that contains the bins produced by **CONCOCT** tool.
+* The `/path/to/metabat2/bins/directory` indicates the path to directory that contains the bins produced by **metaBAT2** tool.
+* The `/path/to/maxbin2/bins/directory` indicates the path to directory that contains the bins produced by **MaxBin2** tool.
+* The `-ca` indicates the minimum completeness for archaeal bins.
+* The `-xa` indicates the maximum contamination for archaeal bins.
+* The `-cb` indicates the minimum completeness for bacterial bins.
+* The `-xb` indicates the maximum contamination for bacterial bins.
+
 # Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the following hyperlink: ![Viral module](https://github.com/mdsufz/MuDoGeR#viral-module).
 
