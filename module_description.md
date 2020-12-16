@@ -78,7 +78,7 @@ In this step the combined relative abundance table of the tables constructed in 
 * Brown, J., Pirrung, M. & McCue, L. A. FQC Dashboard: integrates FastQC results into a web-based, interactive, and extensible FASTQ quality control tool. Bioinformatics 33, 3137–3139 (2017).
 * Kang, D. D. et al. MetaBAT 2: an adaptive binning algorithm for robust and efficient genome reconstruction from metagenome assemblies. PeerJ 7, e7359 (2019).
 * Kieft, K., Zhou, Z. & Anantharaman, K. VIBRANT: automated recovery, annotation and curation of microbial viruses, and evaluation of viral community function from genomic sequences. Microbiome 8, 90 (2020).1.
-* Krueger, F. FelixKrueger/TrimGalore. (2020).
+* Krueger, F. FelixKrueger/TrimGalore. (2018).
 * Li, D. et al. MEGAHIT v1.0: A fast and scalable metagenome assembler driven by advanced methodologies and community practices. Methods 102, 3–11 (2016).
 * Nayfach, S. et al. A genomic catalog of Earth’s microbiomes. Nature Biotechnology 1–11 (2020) doi:10.1038/s41587-020-0718-6.
 * Nayfach, S., Camargo, A. P., Eloe-Fadrosh, E., Roux, S. & Kyrpides, N. CheckV: assessing the quality of metagenome-assembled viral genomes. bioRxiv 2020.05.06.081778 (2020) doi:10.1101/2020.05.06.081778.
