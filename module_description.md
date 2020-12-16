@@ -4,7 +4,7 @@
 Module 1 is divided into 3 steps:
 
 ### 1.a: Raw Read Quality Control
-The **MuDoGeR** Raw Read Quality Control is based on **metaWrap** Read Quality Control (Uritskiy et al., 2018) and is responsible to prepare the raw reads for assembly and alignment. The trimming of the raw reads is based on adapted content and **PHRED** scored with the default setting of Trim-galore (Krueger, 2015). As a result, all the non-high-quality sequences are removed. The high-quality reads that remained are aligned to the genome of a potential host with bmtagger (Agarwala and Morgulis, 2010), a process that leads to the removal of host contamination and of read pairs with only one aligned read from the metagenomic data. In the final step, **FASTQC** (Brown et al., 2019) is used to assess read quality improvement.
+The **MuDoGeR** Raw Read Quality Control is based on **metaWrap** Read Quality Control (Uritskiy et al., 2018) and is responsible to prepare the raw reads for assembly and alignment. The trimming of the raw reads is based on adapted content and **PHRED** scored with the default setting of Trim-galore (Krueger, 2015). As a result, all the non-high-quality sequences are removed. The high-quality reads that remained are aligned to the genome of a potential host with bmtagger (Agarwala and Morgulis, 2010), a process that leads to the removal of host contamination and of read pairs with only one aligned read from the metagenomic data. In the final step, **FASTQC** (Brown et al., 2017) is used to assess read quality improvement.
 
 ### 1.b: Calculation of resources
 In case the user is interested in a fine quality assembly, then **metaSPades** (Nurk et al., 2017) should be used. Due to the high memory requirements of **metaSPades**, prior to the assembly, it is possible to estimate the necessary resources for the assembly of the library produced in **1.a**. **(1.b.1)** This can be achieved by estimating the complexity of the forward or reversed pure reads by k-mer calculation, as they are almost identical. The k-mer is usually estimated in size 33 or 55. Both k-mer values are estimated and k-mer with sizes of 33 and 55 are combined to a single output file. **(1.b.2)** Using this file, the necessary memory that **metaSPades** needs to utilize for assembly the good-quality reads is predicted.
@@ -66,44 +66,35 @@ In this step, the relative abundance of Eukaryotic Metagenome-Assembled Genomes 
 In this step the combined relative abundance table of the tables constructed in **5.a**, **5.b** and **5.c** is generated.
 
 ## References
-
-* Agarwala R, Morgulis A: BMTagger aka Best Match Tagger is for removing human reads from metagenomics datasets. In., ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/, 3.101 edn: Bioconda; 2010. Accessed 15 Feb 2018.
-* Benjamin Bolduc, Simon Roux 2017. Clustering Viral Genomes in iVirus. protocols.io
-https://dx.doi.org/10.17504/protocols.io.gwebxbe
-* Bolduc B, Jang H Bin, Doulcier G, You Z, Roux S, Sullivan MB. (2017). vConTACT: an iVirus tool to classify
-double-stranded DNA viruses that infect Archaea and Bacteria. PeerJ 5: e3243.
-* Bornemann, Till L.V., Sarah P. Esser, Tom L. Stach, Tim Burg, and Alexander J. Probst. “UBin – a Manual Refining Tool for Metagenomic Bins Designed for Educational Purposes.” BioRxiv, January 1, 2020, 2020.07.15.204776. https://doi.org/10.1101/2020.07.15.204776.
-* Clovis Galiez, Matthias Siebert, François Enault, Jonathan Vincent, Johannes Söding, WIsH: who is the host? Predicting prokaryotic hosts from metagenomic phage contigs, Bioinformatics, Volume 33, Issue 19, 01 October 2017, Pages 3113–3114, https://doi.org/10.1093/bioinformatics/btx383.
-* Ewing B, Hillier L, Wendl MC, Green P. Base-calling of automated sequencer traces using phred. I. Accuracy assessment. Genome Res. 1998 Mar;8(3):175-85. doi: 10.1101/gr.8.3.175. PMID: 9521921.
-* Felipe A. Simão, Robert M. Waterhouse, Panagiotis Ioannidis, Evgenia V. Kriventseva, Evgeny M. Zdobnov, BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs, Bioinformatics, Volume 31, Issue 19, 1 October 2015, Pages 3210–3212, https://doi.org/10.1093/bioinformatics/btv351
-* Holt, C., Yandell, M. MAKER2: an annotation pipeline and genome-database management tool for second-generation genome projects. BMC Bioinformatics 12, 491 (2011). https://doi.org/10.1186/1471-2105-12-491
-* Johannes Alneberg, Brynjar Smári Bjarnason, Ino de Bruijn, Melanie Schirmer, Joshua Quick, Umer Z Ijaz, Leo Lahti, Nicholas J Loman, Anders F Andersson & Christopher Quince. 2014. Binning metagenomic contigs by coverage and composition. Nature Methods, doi: 10.1038/nmeth.3103
-* Jang, H. Bin, Bolduc, B., Zablocki, O., Kuhn, J., Roux, S., Adriaenssens, E., … Sullivan, M. (2019).
-Gene sharing networks to automate genome-based prokaryotic viral taxonomy. BioRxiv, 533240. https://doi.org/10.1101/533240
-* Joseph Brown, Meg Pirrung, Lee Ann McCue, FQC Dashboard: integrates FastQC results into a web-based, interactive, and extensible FASTQ quality control tool, Bioinformatics, Volume 33, Issue 19, 01 October 2017, Pages 3137–3139, https://doi.org/10.1093/bioinformatics/btx373 
-* Kang DD, Li F, Kirton E, et al. MetaBAT 2: an adaptive binning algorithm for robust and efficient genome reconstruction from metagenome assemblies. PeerJ. 2019;7:e7359. Published 2019 Jul 26. doi:10.7717/peerj.7359.
-* Kieft, K., Zhou, Z. & Anantharaman, K. VIBRANT: automated recovery, annotation and curation of microbial viruses, and evaluation of viral community function from genomic sequences. Microbiome 8, 90 (2020). https://doi.org/10.1186/s40168-020-00867-0.
-* Krueger F. Trim Galore!: a wrapper tool around Cutadapt and FastQC to
-consistently apply quality and adapter trimming to FastQ files. In.,http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/, 0.4.5 edn: Bioconda; 2015. Accessed 15 Feb 2018.
-* Li D, Luo R, Liu CM, Leung CM, Ting HF, Sadakane K, Yamashita H, Lam TW. MEGAHIT v1.0: A fast and scalable metagenome assembler driven by advanced methodologies and community practices. Methods. 2016 Jun 1;102:3-11. doi: 10.1016/j.ymeth.2016.02.020. Epub 2016 Mar 21. PMID: 27012178.
-* Nayfach, S., Roux, S., Seshadri, R. et al. A genomic catalog of Earth’s microbiomes. Nat Biotechnol (2020). https://doi.org/10.1038/s41587-020-0718-6.
-* Nayfach, Stephen, Antonio Pedro Camargo, Emiley Eloe-Fadrosh, Simon Roux, and Nikos Kyrpides. “CheckV: Assessing the Quality of Metagenome-Assembled Viral Genomes.” BioRxiv, January 1, 2020, 2020.05.06.081778. https://doi.org/10.1101/2020.05.06.081778.
-* Nurk S, Meleshko D, Korobeynikov A, Pevzner PA. metaSPAdes: a new versatile metagenomic assembler. Genome Res. 2017;27(5):824-834. doi:10.1101/gr.213959.116.
-* Parks DH, Imelfort M, Skennerton CT, Hugenholtz P, Tyson GW. 2014. Assessing the quality of microbial genomes recovered from isolates, single cells, and metagenomes. Genome Research, 25: 1043-1055.
-* Parks, D.H., Rinke, C., Chuvochina, M. et al. Recovery of nearly 8,000 metagenome-assembled genomes substantially expands the tree of life. Nat Microbiol 2, 1533–1542 (2017). https://doi.org/10.1038/s41564-017-0012-7.
-* Pierre-Alain Chaumeil, Aaron J Mussig, Philip Hugenholtz, Donovan H Parks, GTDB-Tk: a toolkit to classify genomes with the Genome Taxonomy Database, Bioinformatics, Volume 36, Issue 6, 15 March 2020, Pages 1925–1927, https://doi.org/10.1093/bioinformatics/btz848.
-* Pontus Stenetorp, Sampo Pyysalo, Goran Topić, Tomoko Ohta, Sophia Ananiadou and Jun'ichi Tsujii (2012). brat: a Web-based Tool for NLP-Assisted Text Annotation. In Proceedings of the Demonstrations Session at EACL 2012.
-
-* Ren, J., Ahlgren, N.A., Lu, Y.Y. et al. VirFinder: a novel k-mer based tool for identifying viral sequences from assembled metagenomic data. Microbiome 5, 69 (2017). https://doi.org/10.1186/s40168-017-0283-5.
-* Roux et al. (2015), VirSorter: mining viral signal from microbial genomic data. PeerJ 3:e985;DOI 10.7717/peerj.985.
-* Saary, P., Mitchell, A.L. & Finn, R.D. Estimating the quality of eukaryotic genomes recovered from metagenomic analysis with EukCC. Genome Biol 21, 244 (2020).
-https://doi.org/10.1186/s13059-020-02155-4.
-* Seemann T. Prokka: rapid prokaryotic genome annotation. Bioinformatics. 2014 Jul 15;30(14):2068-9. doi: 10.1093/bioinformatics/btu153. Epub 2014 Mar 18. PMID: 24642063.
-* Sieber CMK, Probst AJ, Sharrar A, Thomas BC, Hess M, Tringe SG, Banfield JF. Recovery of genomes from metagenomes via a dereplication, aggregation and scoring strategy. Nat Microbiol. 2018 Jul;3(7):836-843. doi: 10.1038/s41564-018-0171-1. Epub 2018 May 28. PMID: 29807988; PMCID: PMC6786971.
-* Uritskiy, G.V., DiRuggiero, J. & Taylor, J. MetaWRAP—a flexible pipeline for genome-resolved metagenomic data analysis. Microbiome 6, 158 (2018). https://doi.org/10.1186/s40168-018-0541-1.
-* West, Patrick T., Alexander J. Probst, Igor V. Grigoriev, Brian C. Thomas, and Jillian F. Banfield. “Genome-Reconstruction for Eukaryotes from Complex Natural Microbial Communities.” BioRxiv, January 1, 2017, 171355. https://doi.org/10.1101/171355.
-* Yu-Wei Wu, Blake A. Simmons, Steven W. Singer, MaxBin 2.0: an automated binning algorithm to recover genomes from multiple metagenomic datasets, Bioinformatics, Volume 32, Issue 4, 15 February 2016, Pages 605–607, https://doi.org/10.1093/bioinformatics/btv638.
-
+* Agarwala R, Morgulis A: BMTagger aka Best Match Tagger is for removing human reads from metagenomics datasets. In., ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/ (2010).
+* Bolduc, B. Clustering Viral Genomes in iVirus. (2017) doi:10.17504/protocols.io.gwebxbe.
+* Bolduc, B. et al. vConTACT: an iVirus tool to classify double-stranded DNA viruses that infect Archaea and Bacteria. PeerJ 5, e3243 (2017).
+* Bornemann, T. L. V., Esser, S. P., Stach, T. L., Burg, T. & Probst, A. J. uBin – a manual refining tool for metagenomic bins designed for educational purposes. bioRxiv 2020.07.15.204776 (2020) doi:10.1101/2020.07.15.204776.
+* Galiez, C., Siebert, M., Enault, F., Vincent, J. & Söding, J. WIsH: who is the host? Predicting prokaryotic hosts from metagenomic phage contigs. Bioinformatics 33, 3113–3114 (2017). * Ewing, B., Hillier, L., Wendl, M. C. & Green, P. Base-calling of automated sequencer traces using phred. I. Accuracy assessment. Genome Res 8, 175–185 (1998).
+* Simão, F. A., Waterhouse, R. M., Ioannidis, P., Kriventseva, E. V. & Zdobnov, E. M. BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs. Bioinformatics 31, 3210–3212 (2015).
+* Holt, C. & Yandell, M. MAKER2: an annotation pipeline and genome-database management tool for second-generation genome projects. BMC Bioinformatics 12, 491 (2011).
+* Alneberg, J. et al. Binning metagenomic contigs by coverage and composition. Nat Methods 11, 1144–1146 (2014).
+* Jang, H. B. et al. Gene sharing networks to automate genome-based prokaryotic viral taxonomy. bioRxiv 533240 (2019) doi:10.1101/533240.
+* Brown, J., Pirrung, M. & McCue, L. A. FQC Dashboard: integrates FastQC results into a web-based, interactive, and extensible FASTQ quality control tool. Bioinformatics 33, 3137–3139 (2017).
+* Kang, D. D. et al. MetaBAT 2: an adaptive binning algorithm for robust and efficient genome reconstruction from metagenome assemblies. PeerJ 7, e7359 (2019).
+* Kieft, K., Zhou, Z. & Anantharaman, K. VIBRANT: automated recovery, annotation and curation of microbial viruses, and evaluation of viral community function from genomic sequences. Microbiome 8, 90 (2020).1.
+* Krueger, F. FelixKrueger/TrimGalore. (2020).
+* Li, D. et al. MEGAHIT v1.0: A fast and scalable metagenome assembler driven by advanced methodologies and community practices. Methods 102, 3–11 (2016).
+* Nayfach, S. et al. A genomic catalog of Earth’s microbiomes. Nature Biotechnology 1–11 (2020) doi:10.1038/s41587-020-0718-6.
+* Nayfach, S., Camargo, A. P., Eloe-Fadrosh, E., Roux, S. & Kyrpides, N. CheckV: assessing the quality of metagenome-assembled viral genomes. bioRxiv 2020.05.06.081778 (2020) doi:10.1101/2020.05.06.081778.
+* Nurk, S., Meleshko, D., Korobeynikov, A. & Pevzner, P. MetaSPAdes: A new versatile metagenomic assembler. Genome Research 27, gr.213959.116 (2017).
+* Parks, D. H., Imelfort, M., Skennerton, C. T., Hugenholtz, P. & Tyson, G. W. CheckM: assessing the quality of microbial genomes recovered from isolates, single cells, and metagenomes. Genome Res 25, 1043–1055 (2015).1.
+* Parks, D. H. et al. Recovery of nearly 8,000 metagenome-assembled genomes substantially expands the tree of life. Nature Microbiology 2, 1533–1542 (2017).
+* Chaumeil, P.-A., Mussig, A. J., Hugenholtz, P. & Parks, D. H. GTDB-Tk: a toolkit to classify genomes with the Genome Taxonomy Database. Bioinformatics 36, 1925–1927 (2020).
+* Stenetorp, P. et al. BRAT: a web-based tool for NLP-assisted text annotation. in Proceedings of the Demonstrations at the 13th Conference of the European Chapter of the Association for Computational Linguistics 102–107 (Association for Computational Linguistics, 2012).
+* Ren, J., Ahlgren, N. A., Lu, Y. Y., Fuhrman, J. A. & Sun, F. VirFinder: a novel k-mer based tool for identifying viral sequences from assembled metagenomic data. Microbiome 5, 69 (2017).
+* Roux, S., Enault, F., Hurwitz, B. L. & Sullivan, M. B. VirSorter: mining viral signal from microbial genomic data. PeerJ 3, e985 (2015).
+* Saary, P., Mitchell, A. L. & Finn, R. D. Estimating the quality of eukaryotic genomes recovered from metagenomic analysis with EukCC. Genome Biology 21, 244 (2020).
+* Seemann, T. Prokka: rapid prokaryotic genome annotation. Bioinformatics 30, 2068–2069 (2014).
+* Sieber, C. M. K. et al. Recovery of genomes from metagenomes via a dereplication, aggregation and scoring strategy. Nat Microbiol 3, 836–843 (2018).
+* Uritskiy, G. V., DiRuggiero, J. & Taylor, J. MetaWRAP-a flexible pipeline for genome-resolved metagenomic data analysis. Microbiome 6, 158 (2018).
+* West, P. T., Probst, A. J., Grigoriev, I. V., Thomas, B. C. & Banfield, J. F. Genome-reconstruction for eukaryotes from complex natural microbial communities. bioRxiv 171355 (2017) doi:10.1101/171355.
+* Wu, Y.-W., Simmons, B. A. & Singer, S. W. MaxBin 2.0: an automated binning algorithm to recover genomes from multiple metagenomic datasets. Bioinformatics 32, 605–607 (2016).
 
 
 
