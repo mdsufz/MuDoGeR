@@ -131,7 +131,7 @@ bin.2,k__Bacteria (UID2570),433,273,183,112,160,1,0,0,0,55.46,0.27,0.00
 bin.3,o__Alteromonadales (UID4837),30,868,324,49,818,1,0,0,0,95.62,0.04,0.00
 bin.4,f__Rhodocyclaceae (UID3972),30,540,241,132,390,18,0,0,0,77.00,2.41,11.11
 ```
-In case the user chooses to do the filtering after **CheckM** by quality (completeness – 5×contamination (Parks, 2018)), inside the checkm directories there is also `filtered_checkm.csv` file where the filtered results of checkm are saved.
+In case the user chooses to do the filtering after **CheckM** by quality (completeness – 5×contamination (Parks, 2017)), inside the checkm directories there is also `filtered_checkm.csv` file where the filtered results of checkm are saved.
 
 Each of the annotation folders contains the following directories: 
 
