@@ -39,7 +39,7 @@ Before the assembly, it is possible to calculate unique k-mers in the pre-proces
 For resource calculation the user can run:
 
 ``` 
-Resources -i /path/to/final_pure_reads_1.fastq -l /path/to/output/folder 
+Resources -i /path/to/final_pure_reads_1.fastq -o /path/to/output/folder 
 ```
  * The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads. 
  * The `/path/to/output/folder` indicates the path to the folder with resource calculation results.
