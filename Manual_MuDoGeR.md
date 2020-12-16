@@ -215,7 +215,7 @@ The `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of the
 ```
 The sequences of the contigs can be found in the `VIRAL_PARTICLES_95-70.fna` file.
 
-The quality summary of the contigs can be found inside the file `quality_folder/quality_summary.csv`
+The quality summary of the contigs can be found inside the `quality_folder/quality_summary.csv` file. 
 Running:
 
 ```
