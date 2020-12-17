@@ -56,7 +56,7 @@ The different steps of the Module 2 are shown in Figure 3 and they are excecuted
 
 The steps of the Module 3  are shown in Figure 4 and they are excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-viral-metagenome-assembled-genomes).
 
- The steps of Module 3 can be summarized as following:
+ The steps of Module 3 can be summarized as following: 
  
 * **3.a**: Recovery, quality estimation, taxonomic classification and host identification of Viral Metagenome-Assembled Genomes
     * **(3.a.1)** Recovery of viral genome metagenomes using **VirFinder**, **VirSorter** and **VIBRANT**.
