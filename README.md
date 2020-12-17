@@ -52,7 +52,7 @@ The different steps of the Module 2 are shown in Figure 3 and they are excecuted
     
 ### Module 3: Recovery of Viral Metagenome-Assembled Genomes
 
-**Figure 4.** Module 3 of the MuDoGeR framework.
+![](https://github.com/mdsufz/MuDoGeR/blob/master/Module3.JPG)
 
 The steps of the Module 3  are shown in Figure 4 and they are excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-viral-metagenome-assembled-genomes).
 
