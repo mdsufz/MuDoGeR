@@ -250,7 +250,7 @@ viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 ## 3.b: Selection of Viral Metagenome-Assembled Genomes 
 (waiting for the commands)
 
-In this step, a selection of Viral Metagenome-Assembled Genomes takes place. The Viral representatives are all viral genomes that yielded taxonomic classification with vContact2 and are larger than XX Kb.
+In this step, a selection of Viral Metagenome-Assembled Genomes takes place. The Viral representatives are all viral genomes that yielded taxonomic classification with vContact2 and are larger than 15 Kb.
 
 Running **3.b**:
 
