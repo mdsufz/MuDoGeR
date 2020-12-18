@@ -52,10 +52,10 @@ Currently, a selection of Eukaryotic Metagenome-Assembled Genomes Representative
 ## Module 5 Relative abundace (not finished yet)
 Module 5 is divided in 4 steps:
 
-### 5.a Calculation of relative abundance of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance table 
+### 5.a Calculation of relative abundance and genome coverage of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
 In this step the relative abundance of Prokaryotic Metagenome-Assembled Genomes is calculated and a relative abundance table is constructed (Stenetorp et al., 2012). First, **(5.a.1)** the Paired-End (PE) reads from each library are merged. Then, **(5.a.2)** the libraries are mapped to the indexed prokaryotic bins and **(5.a.3)** the hits are counted. In the next step, **(5.a.4)** a 2-column crosstable is created, with libraries in the columns and prokaryotic bins in the rows. Then, **(5.a.5)** the percentage of the unmapped reads is calculated. 
 
-### 5.b Calculation of relative abundance of Uncultivated Viral Genomes and construction of relative abundance table 
+### 5.b Calculation of relative abundance genome coverage of Uncultivated Viral Genomes and construction of relative abundance and genome coverage tables 
 In this step the relative abundance of Uncultivated Viral Genomes is calculated using BRAT and a relative abundance table is constructed (Stenetorp et al., 2012). First, **(5.b.1)** the Paired-End (PE) reads from each library are merged. Then, **(5.b.2)** the libraries are mapped to the indexed viral contigs and **(5.b.3)** the hits are counted. In the next step, **(5.b.4)** a 2-column crosstable is created, with libraries in the columns and viral contigs in the rows. Then, **(5.b.5)** the percentage of the unmapped reads is calculated. 
 
 ### 5.c Calculation of relative abundance of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance table 
