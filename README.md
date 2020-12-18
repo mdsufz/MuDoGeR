@@ -3,15 +3,15 @@
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/MUDOGER_FRAMEWORK.JPG)
 
 
-The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs as defined by Parks et al. (2017)) from dozens to hundreds of samples simultaneously. The **MuDoGeR** framework combines pipelines from different tools. The **MuDoGeR** starts with Module 1: **Pre-Processing**, which is divided in 3 steps: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation**, which feed the **1.c** **Assembly**. These assemblies will be used in the other modules. After pre-processing of the data, **MuDoGeR** is divided in 3 different branches: Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes** (using **metaWrap**), Module 3: **Recovery of Viral Metagenome-Assembled Genomes** (using **VirSorter**, **VirFinder** and **VIBRANT**) and Module 4: **Recovery of Eukaryotic Metagenome-Assembled Genomes** (using **EukRep**). Furthermore, in **Module 5**: **Relative Abundance**, a strategy was developed for mapping the relative abundance of the selected MAGs in each library. Also, a step was added for bin_refinement of the selected Metagenome-Assembled Genomes from Prokaryotes, using **U-bin**. References of the used tools can be found in the end of the page.
+The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs as defined by Parks et al. (2017)) and Uncultivated Viral Genomes (UViGs as defined by  Roux (2019)) from dozens to hundreds of samples simultaneously. The **MuDoGeR** framework combines pipelines from different tools. The **MuDoGeR** starts with Module 1: **Pre-Processing**, which is divided in 3 steps: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation**, which feed the **1.c** **Assembly**. These assemblies will be used in the other modules. After pre-processing of the data, **MuDoGeR** is divided in 3 different branches: Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes** (using **metaWrap**), Module 3: **Recovery of Uncultivated Viral Genomes** (using **VirSorter**, **VirFinder** and **VIBRANT**) and Module 4: **Recovery of Eukaryotic Metagenome-Assembled Genomes** (using **EukRep**). Furthermore, in **Module 5**: **Relative Abundance**, a strategy was developed for mapping the relative abundance of the selected MAGs in each library. Also, a step was added for bin_refinement of the selected Metagenome-Assembled Genomes from Prokaryotes, using **U-bin**. References of the used tools can be found in the end of the page.
  
 
 ## MuDoGeR Overview
 
 * Instructions for using the **MuDoGeR** can be found in the following hyperlink: ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 * Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md).
-* Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: ![Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
 * Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: ![System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
+* Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: ![Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
 * The simplified usage of the **MuDoGeR** can be found in the following hyperlink: ![Simplified usage of the MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#simplified-usage-of-the-mudoger).
 
 ### Module 1: Pre-Processing 
@@ -50,7 +50,7 @@ The different steps of the Module 2 are shown in Figure 3 and they are excecuted
 * **2.c**: Refinement of the bins produced in binning or/and the bins of the selected Representative Metagenome-Assembled Genomes using **U-bin** (optional step).
     
     
-### Module 3: Recovery of Viral Metagenome-Assembled Genomes
+### Module 3: Recovery of Uncultivated Viral Genomes 
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Module3.JPG)
 
@@ -58,16 +58,16 @@ The steps of the Module 3  are shown in Figure 4 and they are excecuted in the s
 
  The steps of Module 3 can be summarized as following: 
  
-* **3.a**: Recovery, quality estimation, taxonomic classification and host identification of Viral Metagenome-Assembled Genomes
-    * **(3.a.1)** Recovery of viral genome metagenomes using **VirFinder**, **VirSorter** and **VIBRANT**.
+* **3.a**: Recovery, quality estimation, taxonomic classification and host identification of Uncultivated Viral Genomes 
+    * **(3.a.1)** Recovery of Uncultivated Viral Genomes using **VirFinder**, **VirSorter** and **VIBRANT**.
     * **(3.a.2)** Filtering of the recovered genomes. From the results of **VirFinder**, the sequences with p-value > 0.01 and length < 1000 bp are removed. From the results of **VirSorter**, which recovers prophages, only the sequences of categories 1 and 2 are kept. From the results of **VIBRANT**, the combined assemblies of the phages are kept.
-    * **(3.a.3)** Combination of the headers of all the Viral Metagenome-Assembled Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
+    * **(3.a.3)** Combination of the headers of all the Uncultivated Viral Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
     * **(3.a.4)** Assembly of the headers in the file produced in **1.c** with the respective sequences from the assembly file produced by **metaSPades** in **1.c**, for the generation of a fasta file.
     * **(3.a.5)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
     * **(3.a.6)** Checking the quality of the dereplicated contigs with **CheckV**.
     * **(3.a.7)** Taxonomic classification of the clean contigs produced by **CheckV**,  with **vContact2**. In small datasets, we can use the dereplicated contigs from step **(3.a.5)**.
     * **(3.a.8)** Host identification of the clean contigs produced by **CheckV**, using **WIsH**. In small datasets, we can use the dereplicated contigs from **(3.a.5)** (optional).    
-* **3.b**: Selection of Viral Metagenome-Assembled Genomes Representatives
+* **3.b**: Selection of Uncultivated Viral Genomes 
 	* **(3.b.1)** Selection of all viruses that yielded taxonomy when using vContact2 plus those larger than 15 Kb.
    
 
@@ -96,25 +96,25 @@ The steps of the Module 4  are shown in Figure 5 and they are excecuted with the
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/module5.JPG)
 
 The steps of the Module 5 are shown in Figure 6 and they are excecuted with the scripts find in the following hyperlink: ![Pipelines for Relative abundace ](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
-* **5.a** Relative abundance of Prokaryotic Metagenome-Assembled Genomes. 
+* **5.a** Relative abundance of Prokaryotic Metagenome-Assembled Genomes 
 	* **(5.a.1)** Merging of Paired-End (PE) reads from each library.
 	* **(5.a.2)** Mapping of the libraries to the indexed prokaryotic bins.
 	* **(5.a.3)** Counting of the number of hits. 
 	* **(5.a.4)** Generation of a crosstable with the libraries in the columns and the prokaryotic bins in the rows.
 	* **(5.a.5)** Adding information of unmapped reads. (to be clarrified)
-* **5.b** Relative abundance of Viral Metagenome-Assembled Genomes.
+* **5.b** Relative abundance of Uncultivated Viral Genomes 
 	* **(5.b.1)** Merging of Paired-End (PE) reads from each library.
 	* **(5.b.2)** Mapping of the libraries to the indexed viral contigs.
 	* **(5.b.3)** Counting of the number of hits. 
 	* **(5.b.4)** Generation of a crosstable with the libraries in the columns and the viral contigs in the rows.
 	* **(5.b.5)** Adding information of unmapped reads. (to be clarrified)
-* **5.c** Relative abundance of Eukaryotic Metagenome-Assembled Genomes.
+* **5.c** Relative abundance of Eukaryotic Metagenome-Assembled Genomes
 	* **(5.c.1)** Merging of Paired-End (PE) reads from each library.
 	* **(5.c.2)** Mapping of the libraries to the indexed eukaryotic bins.
 	* **(5.c.3)** Counting of the number of hits. 
 	* **(5.c.4)** Generation of a crosstable with the libraries in the columns and the eukaryotic bins in the rows.
 	* **(5.c.5)** Adding information of unmapped reads. (to be clarrified)
-* **5.d** Construction of the relative abundance table.
+* **5.d** Construction of the relative abundance table
 	
 
 # System requirements
