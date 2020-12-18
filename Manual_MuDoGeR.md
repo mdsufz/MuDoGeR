@@ -183,7 +183,7 @@ metawrap bin_refinement -o ~/path/to/output/directory -A ~/path/to/concoct/bins/
 * The `-cb` indicates the minimum completeness for bacterial bins.
 * The `-xb` indicates the maximum contamination for bacterial bins.
 
-The resulted bins are inside the folders `metawrap_50_10_bins` and `metawrap_40_30_bins` for bacteria and archaea respectively
+The resulted bins are inside the folders `metawrap_50_10_bins` and `metawrap_40_30_bins` for bacteria and archaea respectively.
 
 # Module 3: Recovery of Viral Metagenome-Assembled Genomes
 Note: Make sure that all the viral tools are installed. The links for the installation can be found in the following hyperlink: ![Viral module](https://github.com/mdsufz/MuDoGeR#viral-module).
