@@ -151,7 +151,7 @@ NODE_2_length_360965	Prodigal:2.6	CDS	3638	4510	.	-	0ID=EDFJOLLJ_00005;eC_number
 For more detailed explanation of the **metaWrap** tool the user can study the instruction is the following hyperlink: ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md)
 
 ## 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes Representatives
-In this special step, the user can pick representative Prokaryotic Metagenome-Assembled Genomes. The threshold for ANI clustering is set by default at 95 but the user has the option to change this value.
+In this step, the user can pick representative Prokaryotic Metagenome-Assembled Genomes. The threshold for ANI clustering is set by default at 95 but the user has the option to change this value.
 
 Running 2.b:
 ```
@@ -303,7 +303,7 @@ The results of the **MAKER2** tool are located in the `maker/euk-ebin.maker.outp
 The results of the **BUSCO** tool are located in the file `maker/busco/full_table_fbusco.csv`. The busco directory is found inside the `maker` directory.
 
 ## 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes Representatives (test)
-In this special step, the user can pick representative Eukaryotic Metagenome-Assembled Genomes. The threshold for ANI clustering is set by default at 95 but the user has the option to change this value.
+In this step, the user can pick representative Eukaryotic Metagenome-Assembled Genomes. The threshold for ANI clustering is set by default at 95 but the user has the option to change this value.
 
 Running 4.b:
 ```
