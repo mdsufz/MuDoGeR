@@ -62,8 +62,8 @@ In this step the relative abundance of Uncultivated Viral Genomes is calculated 
 In this step, the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated a relative abundance table is constructed (Stenetorp et al., 2012). First, **(5.c.1)** the Paired-End (PE) reads from each library are merged. Then, **(5.c.2)** the libraries are mapped to the indexed eukaryotic bins and **(5.c.3)** the number of hits is counted. In the next step, **(5.c.4)** a 2-column crosstable is created, with libraries in the columns and eukaryotic bins in the rows. Then, **(5.c.5)** the percentage of the unmapped reads is calculated. 
 
 
-### 5.d Construction of relative abundance table
-In this step the combined relative abundance table of the tables constructed in **5.a**, **5.b** and **5.c** is generated.
+### 5.d Construction of combined relative abundance and combined genome coverage tables 
+In this step the combined relative abundance table of the tables constructed in **5.a**, **5.b** and **5.c** is generated. A combined genome coverage table from the genome coverage tables constructed in **5.a**, **5.b** and **5.c** is formatted.
 
 ## References
 * Agarwala R, Morgulis A: BMTagger aka Best Match Tagger is for removing human reads from metagenomics datasets. In., ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/ (2010).
