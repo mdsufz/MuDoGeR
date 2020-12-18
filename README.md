@@ -114,7 +114,7 @@ The steps of the Module 5 are shown in Figure 6 and they are excecuted with the 
 	* **(5.c.3)** Counting of the number of hits. 
 	* **(5.c.4)** Generation of a crosstable with the libraries in the columns and the eukaryotic bins in the rows.
 	* **(5.c.5)** Adding information of unmapped reads. (to be clarrified)
-* **5.d** Construction of the relative abundance table.(there is no script)
+* **5.d** Construction of the relative abundance table.
 	
 
 # System requirements
