@@ -336,7 +336,7 @@ Also, there is the optional step 5.a.6, in which the user can calculate the geno
 Running **5.a.5**: (it is an opinion) 
 
 ```
-mudoger 5.a.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_per_bin -C ~/path/to/average_number_of_basepairs_per_library -D ~/path/to/coassembly_metadata -E ~/path/to/gtdb_taxonomy_table -o ~/path/to/output/folder 
+mudoger 5.a.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_per_bin -C ~/path/to/average_number_of_basepairs_per_library ~/path/to/gtdb_taxonomy_table -o ~/path/to/output/folder 
 ```
 * The `/path/to/abundance_table` indicates the path to the relative abundance table.
 * The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the basepairs and the total contigs per bin. 
@@ -361,7 +361,7 @@ Also, there is the optional step 5.b.6, in which the user can calculate the geno
 Running **5.b.5**: (it is an opinion)
 
 ```
-mudoger 5.b.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_per_bin -C ~/path/to/average_number_of_basepairs_per_library -D ~/path/to/coassembly_metadata -E ~/path/to/vcontact2_taxonomy_table -o ~/path/to/output/folder 
+mudoger 5.b.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_per_bin -C ~/path/to/average_number_of_basepairs_per_library -o ~/path/to/output/folder 
 ```
 * The `/path/to/abundance_table` indicates the path to the relative abundance table.
 * The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the basepairs and the total contigs per bin. 
@@ -384,7 +384,7 @@ Also, there is the optional step 5.a.6, in which the user can calculate the geno
 Running **5.c.5**:
 
 ```
-mudoger 5.c.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_per_bin -C ~/path/to/average_number_of_basepairs_per_library -D ~/path/to/coassembly_metadata -E ~/path/to/eukcc_taxonomy_table -o ~/path/to/output/folder 
+mudoger 5.c.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_per_bin -C ~/path/to/average_number_of_basepairs_per_library -o ~/path/to/output/folder 
 ```
 * The `/path/to/abundance_table` indicates the path to the relative abundance table.
 * The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the basepairs and the total contigs per bin. 
