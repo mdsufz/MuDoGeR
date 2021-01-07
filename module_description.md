@@ -63,7 +63,7 @@ In this step, the relative abundance of Eukaryotic Metagenome-Assembled Genomes 
 
 
 ### 5.d Construction of combined relative abundance and combined genome coverage tables 
-In the beginning of this step, **(5.d.1)** the combined relative abundance table of the tables constructed in **5.a**, **5.b** and **5.c** is generated. **(5.d.1)** Then, the combined genome coverage table from the genome coverage tables constructed in **5.a**, **5.b** and **5.c** is formatted.
+In the beginning of this step, **(5.d.1)** the combined relative abundance table of the tables constructed in **5.a**, **5.b** and **5.c** is generated. **(5.d.2)** Then, the combined genome coverage table from the genome coverage tables constructed in **5.a**, **5.b** and **5.c** is formatted.
 
 ## References
 * Agarwala R, Morgulis A: BMTagger aka Best Match Tagger is for removing human reads from metagenomics datasets. In., ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/ (2010).
