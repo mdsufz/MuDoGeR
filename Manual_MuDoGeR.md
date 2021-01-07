@@ -265,7 +265,7 @@ Running **3.b**:
 
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes 
 
-Note: Make sure that all the eukaryotic tools are installed. The links for the installation can be found in the following hyperlink: ![Eukaryotic module](https://github.com/mdsufz/MuDoGeR#eukaryotic-module).
+Note: Make sure that all the eukaryotic tools are correctly installed. The links for the installation can be found in the following hyperlink: ![Eukaryotic module](https://github.com/mdsufz/MuDoGeR#eukaryotic-module).
 
 ## 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins 
 In **4.a**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. The bins are filtered by size. Bins with size < 2.5 Mb are removed.
@@ -319,7 +319,9 @@ Inside the output folder the user can find the `bestbins.csv` that contains the 
 
 
 # Module 5: Relative abundance 
-(no bash script yet for genome coverage)
+
+Note: Make sure that all the necessary tools are correctly installed. The links for the installation can be found in the following hyperlink: ![Relative abundance](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#relative-abundance).
+
 ## 5.a Calculation of relative abundance and genome coverage of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
 For calculation of relative abundance and construction of relative abundance table for the Prokaryotic Metagenome-Assembled Genomes Representatives, the user can run:
 ```
