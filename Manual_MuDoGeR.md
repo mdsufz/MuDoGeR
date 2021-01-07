@@ -331,7 +331,7 @@ mudoger 5.a -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folde
 * The `/path/to/libraries/folder` indicates the path to the the folder with the libraries of the sample. 
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
-The output folder contains the results of the **5.a** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `cat prok_brat_v1.csv` which is a crosstable with libraries in the columns and bins in the rows.
+The output folder contains the results of the **5.a** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `cat brat_v1.csv` which is a crosstable with libraries in the columns and bins in the rows.
 
 Also, there is the optional step 5.a.6, in which the user can calculate the genome coverage:
 
@@ -356,7 +356,7 @@ mudoger 5.b -i ~/path/to/representative_contigs/folder -l ~/path/to/libraries/fo
 * The `/path/to/libraries/folder` indicates the path to the the folder with the libraries of the sample. 
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
-The output folder contains the results of the **5.b** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `cat vir_brat_v1.csv` which is a crosstable with libraries in the columns and contigs in the rows.
+The output folder contains the results of the **5.b** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `cat brat_v1.csv` which is a crosstable with libraries in the columns and contigs in the rows.
 
 Also, there is the optional step 5.b.6, in which the user can calculate the genome coverage:
 
@@ -381,7 +381,7 @@ mudoger 5.c -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folde
 * The `/path/to/libraries/folder` indicates the path to the the folder with the libraries of the sample. 
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
-The output folder contains the results of the **5.c** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `cat euk_brat_v1.csv` which is a crosstable with libraries in the columns and bins in the rows.
+The output folder contains the results of the **5.c** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `cat brat_v1.csv` which is a crosstable with libraries in the columns and bins in the rows.
 
 Also, there is the optional step 5.a.6, in which the user can calculate the genome coverage:
 
