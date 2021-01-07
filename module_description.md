@@ -49,7 +49,7 @@ In this step, a chain of processes is followed for one of the bins produced in *
 ### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes Representatives
 Currently, a selection of Eukaryotic Metagenome-Assembled Genomes Representatives has not yet been benchmarked. Therefore, we are using standards benchmarkers with prokaryotic data. Nevertheless, the user can change the parameters. In step **4.c** a selection of Eukaryotic Metagenome-Assembled Genomes takes place. **(4.c.1)** First, the Eukaryotic Metagenome-Assembled Genomes are grouped by taxonomy using the results from **BUSCO** and **EukCC**. **(4.c.2)** Furthermore, the produced cluster are separated by species using ANI (Average Nucleotide Identity) splitter with default ANI_distance 0.95. Clusters with bootstrap > 75 are represent new species. **(4.c.3)** Finally, there is a selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(4.c.2)**.
 
-## Module 5 Relative abundace (not finished yet)
+## Module 5 Relative abundace 
 Module 5 is divided in 4 steps:
 
 ### 5.a Calculation of relative abundance and genome coverage of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
