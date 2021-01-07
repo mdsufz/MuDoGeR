@@ -343,7 +343,7 @@ mudoger 5.a.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_
 * The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of basepairs per library.
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
-
+The result is the `brats_abs_cov.csv` file.
 
 ## 5.b Calculation of relative abundance and genome coverage of Uncultivated Viral Genomes and construction of relative abundance and genome coverage tables
 For calculation of relative abundance and construction of relative abundance table for the Viral Metagenome-Assembled Genomes Representatives, the user can run:
@@ -368,6 +368,8 @@ mudoger 5.b.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_
 * The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of basepairs per library.
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
+The result is the `brats_abs_cov.csv` file.
+
 ## 5.c Calculation of relative abundance and genome coverage of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage  tables
 For calculation of relative abundance and construction of relative abundance table for the Eukaryotic Metagenome-Assembled Genomes Representatives, the user can run:
 ```
@@ -390,6 +392,8 @@ mudoger 5.c.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_
 * The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the basepairs and the total contigs per bin. 
 * The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of basepairs per library.
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
+
+The result is the `brats_abs_cov.csv` file. 
 
 ## 5.d Construction of combined relative abundance and combined genome coverage tables
 (to be tested).
@@ -417,3 +421,6 @@ mudoger 5.d.12 -o ~/path/to/output/folder -A ~/path/to/prok_genome_covarage_tabl
 * The `/path/to/viral_genome_covarage_table` indicates the path to the viral relative abundance table.
 * The `/path/to/euk_genome_covarage_table` indicates the path to the eukaryotic relative abundance table.
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
+
+The final table is found to the output folder as:`final_brats_abs_cov.csv` file.
+
