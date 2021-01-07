@@ -341,8 +341,8 @@ Running **5.a.5**: (it is an opinion)
 mudoger 5.a.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_per_bin -C ~/path/to/average_number_of_basepairs_per_library ~/path/to/gtdb_taxonomy_table -o ~/path/to/output/folder 
 ```
 * The `/path/to/abundance_table` indicates the path to the relative abundance table.
-* The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the basepairs and the total contigs per bin. 
-* The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of basepairs per library.
+* The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the base pairs and the total contigs per bin. 
+* The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of base pairs per library.
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
 The result is the `brats_abs_cov.csv` file.
@@ -366,8 +366,8 @@ Running **5.b.5**: (it is an opinion)
 mudoger 5.b.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_per_bin -C ~/path/to/average_number_of_basepairs_per_library -o ~/path/to/output/folder 
 ```
 * The `/path/to/abundance_table` indicates the path to the relative abundance table.
-* The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the basepairs and the total contigs per bin. 
-* The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of basepairs per library.
+* The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the base pairs and the total contigs per bin. 
+* The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of base pairs per library.
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
 The result is the `brats_abs_cov.csv` file.
@@ -391,8 +391,8 @@ Running **5.c.5**:
 mudoger 5.c.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_per_bin -C ~/path/to/average_number_of_basepairs_per_library -o ~/path/to/output/folder 
 ```
 * The `/path/to/abundance_table` indicates the path to the relative abundance table.
-* The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the basepairs and the total contigs per bin. 
-* The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of basepairs per library.
+* The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the base pairs and the total contigs per bin. 
+* The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of base pairs per library.
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
 The result is the `brats_abs_cov.csv` file. 
