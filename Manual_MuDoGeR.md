@@ -341,8 +341,6 @@ mudoger 5.a.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_
 * The `/path/to/abundance_table` indicates the path to the relative abundance table.
 * The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the basepairs and the total contigs per bin. 
 * The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of basepairs per library.
-* The `/path/to/coassembly_metadata` indicates the path to the file with the co-assembly metadata.
-* The `/path/to/gtdb_taxonomy_table` indicates the path to prokaryotic taxonomy table.
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
 
@@ -368,8 +366,6 @@ mudoger 5.b.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_
 * The `/path/to/abundance_table` indicates the path to the relative abundance table.
 * The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the basepairs and the total contigs per bin. 
 * The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of basepairs per library.
-* The `/path/to/coassembly_metadata` indicates the path to the file with the co-assembly metadata.
-* The `/path/to/vcontact2_taxonomy_table` indicates the path to viral taxonomy table.
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
 ## 5.c Calculation of relative abundance and genome coverage of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage  tables
@@ -393,8 +389,6 @@ mudoger 5.c.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_
 * The `/path/to/abundance_table` indicates the path to the relative abundance table.
 * The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the basepairs and the total contigs per bin. 
 * The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of basepairs per library.
-* The `/path/to/coassembly_metadata` indicates the path to the file with the co-assembly metadata.
-* The `/path/to/eukcc_taxonomy_table` indicates the path to eukaryotic taxonomy table.
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
 ## 5.d Construction of combined relative abundance and combined genome coverage tables
