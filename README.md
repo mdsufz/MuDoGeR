@@ -101,22 +101,22 @@ The steps of the Module 5 are shown in Figure 6 and they are excecuted with the 
 	* **(5.a.2)** Mapping of the libraries to the indexed prokaryotic bins.
 	* **(5.a.3)** Counting of the number of hits. 
 	* **(5.a.4)** Generation of a crosstable with libraries as columns and prokaryotic bin representatives as rows and calculation of the unmapped reads percentage.
-	* **(5.a.5)** Calculation of genome coverage using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin.
+	* **(5.a.5)** Calculation of genome coverage using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin (optional).
 * **5.b** Calculation of relative abundance and genome coverage of Uncultivated Viral Genomes and construction of relative abundance and genome coverage tables
 	* **(5.b.1)** Merging of Paired-End (PE) reads from each library.
 	* **(5.b.2)** Mapping of the libraries to the indexed viral contigs.
 	* **(5.b.3)** Counting of the number of hits. 
 	* **(5.b.4)** Generation of a crosstable with ibraries as columns and viral contig representatives as rows and calculation of the unmapped reads percentage.
-	* **(5.b.5)** Calculation of genome coverage using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin.
+	* **(5.b.5)** Calculation of genome coverage using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin (optional).
 * **5.c** Calculation of relative abundance  and genome coverage of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
 	* **(5.c.1)** Merging of Paired-End (PE) reads from each library.
 	* **(5.c.2)** Mapping of the libraries to the indexed eukaryotic bins.
 	* **(5.c.3)** Counting of the number of hits. 
 	* **(5.c.4)** Generation of a crosstable with libraries as columns and eukaryotic bin representatives as rows and calculation of the unmapped reads percentage.
-	* **(5.c.5)** Calculation of genome coverage using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin.
+	* **(5.c.5)** Calculation of genome coverage using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin(optional).
 * **5.d** Construction of combined abundance tables
 	* **(5.d.1)** Construction of combined Relative Abundance Table.
-	* **(5.d.2)** Construction of coverage Abundance Table (optional).
+	* **(5.d.2)** Construction of combined Coverage Abundance Table (optional).
 
 
 	
