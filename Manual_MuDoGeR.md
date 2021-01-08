@@ -333,7 +333,7 @@ mudoger 5.a -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folde
 
 The output folder contains the results of the **5.a** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `brat_v1.csv` which is a crosstable with libraries in the columns and bins in the rows.
 
-Also, there is the optional step 5.a.6, in which the user can calculate the genome coverage:
+Also, there is the optional step **5.a.5**, in which the user can calculate the genome coverage:
 
 Running **5.a.5**: (it is an opinion) 
 
@@ -358,7 +358,7 @@ mudoger 5.b -i ~/path/to/representative_contigs/folder -l ~/path/to/libraries/fo
 
 The output folder contains the results of the **5.b** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `brat_v1.csv` which is a crosstable with libraries in the columns and contigs in the rows.
 
-Also, there is the optional step 5.b.6, in which the user can calculate the genome coverage:
+Also, there is the optional step **5.b.5**, in which the user can calculate the genome coverage:
 
 Running **5.b.5**: (it is an opinion)
 
@@ -383,7 +383,7 @@ mudoger 5.c -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folde
 
 The output folder contains the results of the **5.c** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `brat_v1.csv` which is a crosstable with libraries in the columns and bins in the rows.
 
-Also, there is the optional step 5.a.6, in which the user can calculate the genome coverage:
+Also, there is the optional step **5.c.5**, in which the user can calculate the genome coverage:
 
 Running **5.c.5**:
 
