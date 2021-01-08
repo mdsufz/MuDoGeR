@@ -28,7 +28,6 @@ In case the user chooses to, **uBin** (Bornemann et al., 2020) refining tool can
 Module 3 is divided into 2 steps: 
 
 ### **3.a**: Recovery, quality estimation, taxonomic classification and host identification of Uncultivated Viral Genomes
-
 In the beginning of this step, three viral recovery tools (**VirFinder** (Ren et al., 2017), **VirSorter** which recovers prophages (Roux et al., 2015) and **VIBRANT** (Kieft et al., 2020)) are utilized for the identification and recovery of Uncultivated Viral genomes (Roux, 2019), from an assemble metagenomic data-set. **(3.a.1)** Each of the tools is used to recover independently the viral genomes from a given assembled data-set and saves them in separate folders. **(3.a.2)** Following that, the recovered sequences are filtered. The selection of proper **VirFinder** sequences is based on low q-value (q-value=< 0.01) and high length (length>= 1000 bp), the **VirSorter** chosen sequences are those classified into categories 1 and 2 and from **VIBRANT** the selected sequences are those of the combined assemblies from phages. **(3.a.3)** The headers of **VirSorter** and **VIBRANT** contigs are modified so they can match with those produced from the **VirFinder** results. It is important to note that in contrast with the other two tools, the **VirFinder** output recovery file contains only the headers of the assemblies. Because of that, the headers of the unique filtered sequences from each tool are extracted to a common fasta file and sorted by length. **(3.a.4)** Using the headers including in the common fasta file, the actual sequences from the assembly data-set are extracted and transferred to a new fasta file. **(3.a.5)** Next, the duplicated contigs are removed by dereplication using **Stampede-clustergenomes** tool (Bolduc and Roux, 2017). The dependencies of the dereplication step are the minimum coverage (-c) 70% and the minimum identity (-i) 95%. The dereplication is followed by **(3.a.6)**  quality estimation  of the dereplicated contigs by **CheckV** (Nayfach et al., 2020). **(3.a.7)** The taxonomic classification of the clean contigs produced by **CheckV** is achieved by **vContact2** (Jang et al., 2019). In case of small datasets, we can use the results of the dereplication process. If the user chooses to, **(3.a.8)** the hosts of the clean contigs, or in case of small datasets, the dereplicated contigs, are identified by using **WIsH tool** (Galiez et al., 2017). 
 
 ### **3.b**: Selection of Uncultivated Viral Genomes
@@ -39,30 +38,27 @@ In **3.b** the user can select viral representatives. **(3.b.1)** The viral repr
 Module 4 is divided into 3 steps:
 
 ### 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins
-
 In the beginning this step, **(4.a.1)** the assembled data-set is separated to Prokaryotic and Eukaryotic assemblies using **EukRep** tool (West et al., 2017). **(4.a.2)** In case the size of the Eukaryotic assembly file is >= 2.5 Mb, the Eukaryotic recovery modules can continue to the automated binning with **CONCOCT** tool. The eukaryotic bins  produced by **CONCOCT**. Finally, **(4.a.3)** the bins are filtered by size and those of size < 2.5 Mb are removed. 
 
-### 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins 
-
+### 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins
 In this step, a chain of processes is followed for one of the bins produced in **4.a**: **(4.b.1)** **GeneMark-ES** is applied for gene prediction. **(4.b.2)** Also, the contamination of the bins which were kept after the filtering is estimated by using **EukCC** tool (Saary et al., 2020). **(4.b.3)** The predicted genes from **GeneMark-ES** (Saary et al., 2020) are annotated with **Maker2** (Holt et al., 2011). **(4.b.4)** The completeness of the annotated proteins is measured using **BUSCO** (Simão et al., 2015). 
 
 ### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes Representatives
 Currently, a selection of Eukaryotic Metagenome-Assembled Genomes Representatives has not yet been benchmarked. Therefore, we are using standards benchmarkers with prokaryotic data. Nevertheless, the user can change the parameters. In step **4.c** a selection of Eukaryotic Metagenome-Assembled Genomes takes place. **(4.c.1)** First, the Eukaryotic Metagenome-Assembled Genomes are grouped by taxonomy using the results from **BUSCO** and **EukCC**. **(4.c.2)** Furthermore, the produced cluster are separated by species using ANI (Average Nucleotide Identity) splitter with default ANI_distance 0.95. Clusters with bootstrap > 75 are represent new species. **(4.c.3)** Finally, there is a selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(4.c.2)**.
 
-## Module 5 Relative abundace 
+## Module 5: Relative abundace 
 Module 5 is divided in 4 steps:
 
-### 5.a Calculation of relative abundance and genome coverage of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
+### 5.a: Calculation of relative abundance and genome coverage of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
 In this step the relative abundance of Prokaryotic Metagenome-Assembled Genomes is calculated and a relative abundance table is constructed (Stenetorp et al., 2012). First, **(5.a.1)** the Paired-End (PE) reads from each library are merged. Then, **(5.a.2)** the libraries are mapped to the indexed prokaryotic bins and **(5.a.3)** the hits are counted. In the next step, **(5.a.4)** a 2-column crosstable is created, with libraries as columns and prokaryotic bin representatives as rows and the percentage of the unmapped reads is calculated. After this, **(5.a.5)** the genome coverage of the mapped reads is calculated, using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin.
 
-### 5.b Calculation of relative abundance and genome coverage of Uncultivated Viral Genomes and construction of relative abundance and genome coverage tables 
+### 5.b: Calculation of relative abundance and genome coverage of Uncultivated Viral Genomes and construction of relative abundance and genome coverage tables 
 In this step the relative abundance of Uncultivated Viral Genomes is calculated using BRAT and a relative abundance table is constructed (Stenetorp et al., 2012). First, **(5.b.1)** the Paired-End (PE) reads from each library are merged. Then, **(5.b.2)** the libraries are mapped to the indexed viral contigs and **(5.b.3)** the hits are counted. In the next step, **(5.b.4)** a 2-column crosstable is created, with libraries as columns and viral contig representatives as rows and the percentage of the unmapped reads is calculated. After this, **(5.b.5)** the genome coverage of the mapped reads is calculated, using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin.
 
-### 5.c Calculation of relative abundance and genome coverage of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
+### 5.c: Calculation of relative abundance and genome coverage of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
 In this step, the relative abundance of Eukaryotic Metagenome-Assembled Genomes is calculated a relative abundance table is constructed (Stenetorp et al., 2012). First, **(5.c.1)** the Paired-End (PE) reads from each library are merged. Then, **(5.c.2)** the libraries are mapped to the indexed eukaryotic bins and **(5.c.3)** the number of hits is counted. In the next step, **(5.c.4)** a 2-column crosstable is created, with libraries as columns and eukaryotic bin representatives as rows and the percentage of the unmapped reads is calculated. After this, **(5.c.5)** the genome coverage of the mapped reads is calculated, using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin.
 
-
-### 5.d Construction of combined relative abundance and combined genome coverage tables 
+### 5.d: Construction of combined relative abundance and combined genome coverage tables 
 In the beginning of this step, **(5.d.1)** the combined relative abundance table of the tables constructed in **5.a**, **5.b** and **5.c** is generated. Then, **(5.d.2)** the combined genome coverage table from the genome coverage tables constructed in **5.a**, **5.b** and **5.c** is formatted.
 
 ## References
