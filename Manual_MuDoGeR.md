@@ -419,9 +419,9 @@ Running **5.d.2**:
 mudoger 5.d.2 -o ~/path/to/output/folder -A ~/path/to/prok_genome_covarage_table -B ~/path/to/viral_genome_covarage_table -C ~/path/to/euk_genome_covarage_table  
 ``` 
 
-* The `/path/to/prok_genome_covarage_table` indicates the path to the prokaryotic relative abundance table.
-* The `/path/to/viral_genome_covarage_table` indicates the path to the viral relative abundance table.
-* The `/path/to/euk_genome_covarage_table` indicates the path to the eukaryotic relative abundance table.
+* The `/path/to/prok_genome_covarage_table` indicates the path to the prokaryotic coverage abundance table.
+* The `/path/to/viral_genome_covarage_table` indicates the path to the viral coverage abundance table.
+* The `/path/to/euk_genome_covarage_table` indicates the path to the eukaryotic coverage abundance table.
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
 The final table is found to the output folder as:`final_brats_abs_cov.csv` file.
