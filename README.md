@@ -185,6 +185,13 @@ The Databases can be installed by following the instructons of the following hyp
 
 ### DAS_Tool (optional)
 * The dependencies of **DAS_Tool** can be found in the following hyperlink: ![Dependencies_DAS_TOOL](https://github.com/cmks/DAS_Tool#dependencies).
+## khmer
+| Dependencies | 
+|---|
+| Python 2.7.x or Python 3.3 | 
+| GCC/8.3.0 |  
+| OpenMPI/3.1.4|
+|R/3.6.2-2|
 
 ### VirSorter 
 
@@ -413,7 +420,8 @@ The instructions for the MegaHit installation can be found at ![MegaHit_Manual](
 The instructions for the metaSPAdes installation can be found at ![metaSPAdes_Manual](https://github.com/ablab/spades).
 ### FastQC
 Instructions for FastQC installation can be found at ![FastQC_Manual](https://github.com/pnnl/fqc).
-
+## khmer
+Instructions for the installation of khmer can be found ar ![khmer]https://github.com/dib-lab/khmer
 ## Prokaryotic module
 ### MetaWRAP
 The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/bxlab/metaWRAP).
