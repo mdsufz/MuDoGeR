@@ -421,7 +421,7 @@ The instructions for the metaSPAdes installation can be found at ![metaSPAdes_Ma
 ### FastQC
 Instructions for FastQC installation can be found at ![FastQC_Manual](https://github.com/pnnl/fqc).
 ## khmer
-Instructions for the installation of khmer can be found ar ![khmer]https://github.com/dib-lab/khmer
+Instructions for the installation of khmer can be found ar ![khmer](https://github.com/dib-lab/khmer).
 ## Prokaryotic module
 ### MetaWRAP
 The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/bxlab/metaWRAP).
