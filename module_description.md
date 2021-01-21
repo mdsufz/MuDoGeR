@@ -64,7 +64,6 @@ In the beginning of this step, **(5.d.1)** the combined relative abundance table
 ## References
 * Agarwala R, Morgulis A: BMTagger aka Best Match Tagger is for removing human reads from metagenomics datasets. In., ftp://ftp.ncbi.nlm.nih.gov/pub/agarwala/bmtagger/ (2010).
 * Bolduc, B. Clustering Viral Genomes in iVirus. (2017) doi:10.17504/protocols.io.gwebxbe.
-* Bolduc, B. et al. vConTACT: an iVirus tool to classify double-stranded DNA viruses that infect Archaea and Bacteria. PeerJ 5, e3243 (2017).
 * Bornemann, T. L. V., Esser, S. P., Stach, T. L., Burg, T. & Probst, A. J. uBin – a manual refining tool for metagenomic bins designed for educational purposes. bioRxiv 2020.07.15.204776 (2020) doi:10.1101/2020.07.15.204776.
 * Galiez, C., Siebert, M., Enault, F., Vincent, J. & Söding, J. WIsH: who is the host? Predicting prokaryotic hosts from metagenomic phage contigs. Bioinformatics 33, 3113–3114 (2017). 
 * Simão, F. A., Waterhouse, R. M., Ioannidis, P., Kriventseva, E. V. & Zdobnov, E. M. BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs. Bioinformatics 31, 3210–3212 (2015).
