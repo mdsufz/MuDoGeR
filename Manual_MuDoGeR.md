@@ -41,7 +41,7 @@ For resource calculation the user can run:
 ``` 
 Resources -i /path/to/final_pure_reads_1.fastq -o /path/to/output/folder 
 ```
- * The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads. 
+ * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
  * The `/path/to/output/folder` indicates the path to the folder with resource calculation results.
  
 The k-mer results is used as function by a linear regression model which will give the amount of memory necessary for assembling the reads by **metaSPAdes**. 
