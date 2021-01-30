@@ -106,7 +106,7 @@ The steps of the Module 5 are shown in Figure 6 and they are excecuted with the 
 	* **(5.b.1)** Merging of Paired-End (PE) reads from each library.
 	* **(5.b.2)** Mapping of the libraries to the indexed viral contigs.
 	* **(5.b.3)** Counting of the number of hits. 
-	* **(5.b.4)** Generation of a crosstable with ibraries as columns and viral contig representatives as rows and calculation of the unmapped reads percentage.
+	* **(5.b.4)** Generation of a crosstable with libraries as columns and viral contig representatives as rows and calculation of the unmapped reads percentage.
 	* **(5.b.5)** Calculation of genome coverage using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin (optional).
 * **5.c** Calculation of relative abundance  and genome coverage of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
 	* **(5.c.1)** Merging of Paired-End (PE) reads from each library.
