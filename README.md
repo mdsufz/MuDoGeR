@@ -484,8 +484,8 @@ mudoger -h
 	read_qc		Raw read QC 
 	resources	Calculation of memory required by the MetaSpades, for assembling the good quality reads 
 	assembly	Assembly 
-	prokaryotic	Recovery of Prokaryotic etagenome-Assembled Genomes 
-	viral		Recovery of Viral Metagenome-Assembled Genomes
+	prokaryotic	Recovery of Prokaryotic Metagenome-Assembled Genomes 
+	viral		Recovery of Uncultivated Viral Genomes
 	eukaryotic 	Recovery of Eukaryotic Metagenome-Assembled Genomes
 	relative_abund	Relative abundance calculation
 		
