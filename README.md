@@ -16,7 +16,7 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a too
 
 ### Module 1: Pre-Processing 
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Module%201.PNG)
+![](https://github.com/mdsufz/MuDoGeR/blob/master/Module%201.PNG) 
 
  The steps of Module 1 are shown in Figure 2 and they are excecuted with the scripts find in the following hyperlink: ![Pre-Processing](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
  
