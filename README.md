@@ -93,7 +93,7 @@ The steps of the Module 4  are shown in Figure 5 and they are excecuted with the
 	* **(4.c.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(4.c.2)**.
 
 ### Module 5 Relative abundace
-![](https://github.com/mdsufz/MuDoGeR/blob/master/module5.JPG)
+![](https://github.com/mdsufz/MuDoGeR/blob/master/Module%205.PNG)
 
 The steps of the Module 5 are shown in Figure 6 and they are excecuted with the scripts find in the following hyperlink: ![Pipelines for Relative abundace ](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
 * **5.a** Calculation of relative abundance and genome coverage of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
