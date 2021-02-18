@@ -1,7 +1,7 @@
 
 # Module 1: Pre-Processing 
 ## 1.a: Raw Read Quality Control  
-Note: For the removal of human contamination, the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the **metaWrap** installation instructions. Also, Make sure that all the databases and programms required for the **Pre_processing** run are correctly installed. The links for the installation of the tools can be found in the following hyperlink: ![Pre-Processing Module ](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#pre-processing-module).
+Note: For the removal of human contamination, the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the **metaWrap** installation instructions. Also, make sure that all the databases and programms required for the **Pre_processing** run are correctly installed. The links for the installation of the tools can be found in the following hyperlink: ![Pre-Processing Module ](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#pre-processing-module).
 
 For running the raw read QC:
 
