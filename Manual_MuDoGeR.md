@@ -250,18 +250,17 @@ viral-particle-55	LS08Hbin.1	-1.34156	NA
 viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 ``` 
 ## 3.b: Selection of Uncultivated Viral Genomes
-(waiting for the commands)
 
-In this step, a selection of Uncultivated Viral Genomes takes place. The Viral representatives are all viral genomes that yielded taxonomic classification with vContact2 and are larger than 15 Kb.
+In this step, a selection of Uncultivated Viral Genomes takes place. The Viral representatives are all viral genomes that yielded taxonomic classification with vContact2 and are larger than 15 Kb. A bash script is required for the selection.
 
 Running **3.b**:
 
 ```
-(The script will be add later)
+mudoger 3.b  -o /path/to/output/file -i /path/to/genome_by_genome_overview_csv -s 15
 ```
-
-
-
+* The `/path/to/output/file` indicates the path to the output directory where the results of **3.b** will be written.
+* The `/path/to/genome_by_genome_overview_csv` indicates the path to the input file with the results from the vcontact2 tool.
+* `-s` indicates the minimum size for the filtering of viral contigs.
 
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes 
 
