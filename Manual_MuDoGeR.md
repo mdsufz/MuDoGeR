@@ -22,17 +22,6 @@ final_pure_reads_2.fastq    post-QC_report
 The `final_pure_reads` files contain the sequences of the trimmed and decontaminated reads. The `pre-QC_report` and `post-QC_report` folders include the html reports for the reads before and after the read quality control. 
 
 
-Raw reads:
-
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Read_QC_before_trimming.png)
-
-
-Reads after read QC:
-
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Read_QC_after_trimming.png)
-
-
-
 ## 1.b: Calculation of resources 
 Before the assembly, it is possible to calculate unique k-mers in the pre-processed reads (forward or reversed). The size of the k-mer that has to be investigated is usually 33 or 55. Both values have to be calculated. As the result of this task is the same using both forward and reversed reads, the user does not have to re-do the task for both of them. 
 
