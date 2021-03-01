@@ -259,7 +259,7 @@ Running **3.b**:
 mudoger 3.b  -o ~/path/to/output/file -i ~/path/to/quality_summary.csv -cv 50 -xv 10 -i 95 -c 70
 ```
 * The `/path/to/output/file` indicates the path to the output directory where the results of **3.b** will be written.
-* The `/path/to/quality_summary.csv ` indicates the path to the input file with the results from the vcontact2 tool.
+* The `/path/to/quality_summary.csv ` indicates the path to the input file with the results from the checkv tool.
 * `-cv` indicates the minimum completeness of the viral contigs.
 * `-xv` indicates the maximum contamination of the viral contigs.
 * `-i` indicates the minimum identity.
