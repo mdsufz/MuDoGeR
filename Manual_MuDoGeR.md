@@ -251,16 +251,19 @@ viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 ``` 
 ## 3.b: Selection of Uncultivated Viral Genomes
 
-In this step, a selection of Uncultivated Viral Genomes takes place. The Viral representatives are all viral genomes that yielded taxonomic classification with vContact2 and are larger than 15 Kb. A bash script is required for the selection.
+In this step, a selection of Uncultivated Viral Genomes takes place. The Viral representatives are all dereplicated viral genomes of medium and high quality (completeness > 50% and contamination < 10%). 
 
 Running **3.b**:
 
 ```
-mudoger 3.b  -o /path/to/output/file -i /path/to/genome_by_genome_overview_csv -s 15
+mudoger 3.b  -o ~/path/to/output/file -i ~/path/to/quality_summary.csv -cv 50 -xv 10 -i 95 -c 70
 ```
 * The `/path/to/output/file` indicates the path to the output directory where the results of **3.b** will be written.
-* The `/path/to/genome_by_genome_overview_csv` indicates the path to the input file with the results from the vcontact2 tool.
-* `-s` indicates the minimum size for the filtering of viral contigs.
+* The `/path/to/quality_summary.csv ` indicates the path to the input file with the results from the vcontact2 tool.
+* `-cv` indicates the minimum completeness of the viral contigs.
+* `-xv` indicates the maximum contamination of the viral contigs.
+* `-i` indicates the minimum identity.
+* `-c` indicates the minimum coverage.
 
 # Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes 
 
@@ -283,7 +286,7 @@ mudoger 4.a -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/folder -o
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the eukaryotic bins after the filtering.
 
 ## 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins 
-In **4.b**, the completeness and contamination of the Eukaryotic bins produced in **4.a** are estimated. Additionally, the annotation of these bins is taking place. **4.b** starts with **GeneMark-ES** tool, used for the gene prediction in the Eukaryotic bins. As input, the user can use any of the bins produced in **4.a**. The rest of the tools used in **4.b** are **EukCC** (bin contamination estimation), **MAKER2** (annotation of the bin) and **BUSCO** (bin completeness estimation). 
+In **4.b**, the completeness and contamination of the Eukaryotic bins produced in **4.a** are estimated. Additionally, the annotation of these bins is taking place. **4.b** starts with **GeneMark-ES** tool, used for the gene prediction in the Eukaryotic bins. As input, the user can use any of the bins produced in **4.a**. The rest of the tools used in **4.b** are **EukCC** (bin completeness, contamination, and taxonomic classification estimation), **MAKER2** (annotation of the bin) and **BUSCO** (completeness of the annotated proteins estimation). 
 
 Running **4.b**:
 
