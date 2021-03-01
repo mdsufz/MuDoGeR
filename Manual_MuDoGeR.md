@@ -161,7 +161,7 @@ mudoger 2.b -i ~/path/to/gtdb_taxonomy/file -b ~/path/to/bbtools/file -m ~/path/
 * The `/path/to/bbtools/file` indicates the path to the file with bbtools.
 * The `/path/to/bins(mags)/folder`  indicates the path to the prokaryotic bins (mags) folder.
 * The `/path/to/output/folder` indicates the path to the output folder where the resulted files will be saved.
-* The `-t 95` indicates the threshold for ANI clustering.
+* The `-t` indicates the threshold for ANI clustering.
 
 Inside the output folder the user can find the `bestbins.csv` file that contains the unique taxonomic bins and the `bins_to_brats.txt` file with the selected bins that were chosens as representatives and will be used for the Bin Relative Abundance Table (BRAT) calculation.
 
@@ -315,7 +315,7 @@ mudoger 4.c -i ~/path/to/busco_results/file -b ~/path/to/eukcc_results/file -m ~
 * The `/path/to/eukcc_results/file` indicates the path to the results of **EukCC**.
 * The `/path/to/bins(mags)/folder`  indicates the path to the the eukaryotic bins (mags) folder.
 * The `/path/to/output/folder` indicates  the path to the output folder where the resulted files will be saved.
-* The `-t 95` indicates the threshold for ANI clustering.
+* The `-t` indicates the threshold for ANI clustering.
 
 Inside the output folder the user can find the `bestbins.csv` that contains the unique taxonomic bins and the `bins_to_brats.txt` file with the bins for the Bin Relative Abundance Table (BRAT) calculation.
 
