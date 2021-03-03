@@ -79,7 +79,7 @@ The run of the prokaryotic module leads to the recovery of prokaryotic genomes f
 
 Running **2.a** :
 ``` 
-mudoger 2.a -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -ca 40 -cb 50 -xa 30 xb 10 --q 50
+mudoger 2.a -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -ca 40 -cb 50 -xa 30 -xb 10 --q 50
 ```
 
 * The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of **2.a** will be written.
