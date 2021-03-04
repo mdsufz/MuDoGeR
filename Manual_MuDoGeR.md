@@ -240,17 +240,15 @@ viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 ``` 
 ## 3.b: Selection of Uncultivated Viral Genomes
 
-In this step, a selection of Uncultivated Viral Genomes takes place. The Viral representatives are all dereplicated viral genomes of medium and high quality (completeness > 50% and contamination < 10%). 
+In this step, a selection of Uncultivated Viral Genomes takes place. The Viral representatives are all dereplicated viral genomes of medium and high quality. A dereplication step is applied to them: 
 
 Running **3.b**:
 
 ```
-mudoger 3.b  -o ~/path/to/output/file -i ~/path/to/quality_summary.csv -cv 50 -xv 10 -i 95 -c 70
+mudoger 3.b   -i ~/path/to/fasta_file -c 70 -i 95
 ```
-* The `/path/to/output/file` indicates the path to the output directory where the results of **3.b** will be written.
-* The `/path/to/quality_summary.csv ` indicates the path to the input file with the results from the checkv tool.
-* `-cv` indicates the minimum completeness of the viral contigs.
-* `-xv` indicates the maximum contamination of the viral contigs.
+
+* The `/path/to/fasta_file` indicates the path to the fasta file with the viruses.
 * `-i` indicates the minimum identity.
 * `-c` indicates the minimum coverage.
 
