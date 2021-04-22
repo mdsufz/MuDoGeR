@@ -155,7 +155,42 @@ do
 	read choose
 	if [ $choose = y -o $choose = Y ];
 	then
+		#INSTALLING EUKREP
 		conda create -y -n eukrep-env -c bioconda eukrep
+
+		#INSTALLING GENEMARKER-ES
+
+		#INSTALLING MARKER2
+
+		#INSTALLING BUSCO
+		conda create -y -n busco-env -c bioconda busco
+
+		#INSTALLING EUKCC
+		conda create -y -n eukcc-env -c bioconda -c conda-forge eukcc
+
+		break
+	elif [ $choose = n -o $choose = N ]
+	then
+		echo "installation denied..."
+		break
+	else
+		echo "command not found, please try again"
+	fi
+done
+
+echo "Do you want to install all the required tools for the Module 5 (Relative Abundance)?[y/n]"
+while :
+do
+	read choose
+	if [ $choose = y -o $choose = Y ];
+	then
+		mkdir downloaded_tools && cd downloaded_tools
+
+		#INSTALLING BRAT
+		wget http://weaver.nlplab.org/~brat/releases/brat-v1.3_Crunchy_Frog.tar.gz
+		tar xzf brat-v1.3_Crunchy_Frog.tar.gz
+		cd brat-v1.3_Crunchy_Frog
+		#./install.sh run as standalone server or as a CGI app
 
 		break
 	elif [ $choose = n -o $choose = N ]
