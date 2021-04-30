@@ -6,12 +6,9 @@ cd mudoger
 
 #creating conda path variable
 
-##conda_path=$(which conda)
-##conda_path=${conda_path%/condabin/*}
-##echo "your conda path: $conda_path"
-
-echo $PATH > path.txt
-grep "miniconda3" path.txt && 
+conda_path=$(which conda)
+conda_path=${conda_path%/condabin/*}
+echo "your conda path: $conda_path"
 
 echo "Do you want to install all the required tools for the Module 1 (Pre-processing)?[y/n]"
 while :
