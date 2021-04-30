@@ -1,13 +1,17 @@
 #!/bin/bash
 
-#creating conda path variable
-conda_path=$(which conda)
-conda_path=${conda_path%/condabin/*}
-echo "your conda path: $conda_path"
-
 #making a directory for mudoger and change directory to it
 mkdir mudoger
 cd mudoger
+
+#creating conda path variable
+
+##conda_path=$(which conda)
+##conda_path=${conda_path%/condabin/*}
+##echo "your conda path: $conda_path"
+
+echo $PATH > path.txt
+grep "miniconda3" path.txt && 
 
 echo "Do you want to install all the required tools for the Module 1 (Pre-processing)?[y/n]"
 while :
@@ -185,13 +189,18 @@ do
 	if [ $choose = y -o $choose = Y ];
 	then
 		mkdir downloaded_tools && cd downloaded_tools
+		conda create -y -n brat-env python=2.7
+		conda activate brat-env
 
 		#INSTALLING BRAT
 		wget http://weaver.nlplab.org/~brat/releases/brat-v1.3_Crunchy_Frog.tar.gz
 		tar xzf brat-v1.3_Crunchy_Frog.tar.gz
 		cd brat-v1.3_Crunchy_Frog
-		#./install.sh run as standalone server or as a CGI app
+		./install.sh -u
+		python standalone.py
 
+		conda deactivate
+		cd ../..
 		break
 	elif [ $choose = n -o $choose = N ]
 	then
