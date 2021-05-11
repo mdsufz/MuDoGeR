@@ -5,9 +5,8 @@ mkdir mudoger
 cd mudoger
 
 #creating conda path variable
-
-conda_path=$(which conda)
-conda_path=${conda_path%/condabin/*}
+echo "Please, enter with your miniconda path (ex. \"/home/profile_name\")"
+read conda_path
 echo "your conda path: $conda_path"
 
 echo "Do you want to install all the required tools for the Module 1 (Pre-processing)?[y/n]"
