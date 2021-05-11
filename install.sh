@@ -5,7 +5,7 @@ mkdir mudoger
 cd mudoger
 
 #creating conda path variable
-echo "Please, enter with your miniconda path (ex. \"/home/profile_name\")"
+echo "Please, enter with your miniconda path (ex. \"/home/profile_name/miniconda3\")"
 read conda_path
 echo "your conda path: $conda_path"
 
