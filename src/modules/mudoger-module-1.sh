@@ -95,5 +95,3 @@ if [ -f "$assembly_folder"/"$output_folder"/final_assembly.fa ];
 then echo  "assembly was succesful" ; 
 else echo "assembly didnt work. please check your resources"; 
 fi
-
-

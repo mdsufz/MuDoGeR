@@ -16,8 +16,7 @@ do
 	if [ $choose = y -o $choose = Y ];
 	then
 		#INSTALLING METAWRAP
-		mkdir cloned_tools
-		cd cloned_tools
+		cd cloned_tools || mkdir cloned_tools && cd cloned_tools
 		git clone https://github.com/bxlab/metaWRAP.git
 		#->configure the config-metawrap file to pointo to the database
 		conda create -y -n metawrap-env python=2.7
@@ -113,7 +112,10 @@ do
 		conda install -n stampede-clustergenomes-env -y -c bioconda mummer
 		cd cloned_tools || mkdir cloned_tools && cd cloned_tools
 		git clone https://bitbucket.org/MAVERICLab/stampede-clustergenomes.git
-		#to run stampede-clustergenomes is necessary to activate the env and run perl $your_path/mudoger/cloned_tools/stampede-clustergenomes/bin/Stampede-clustergenomes.pl
+
+		### to run stampede-clustergenomes is necessary to activate the env and run 
+		### perl $your_path/mudoger/cloned_tools/stampede-clustergenomes/bin/Stampede-clustergenomes.pl
+		
 		cd ..
 
 		#INSTALLING WISH
