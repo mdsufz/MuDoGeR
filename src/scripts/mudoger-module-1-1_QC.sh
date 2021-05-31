@@ -5,8 +5,7 @@
 
 
 ################# STARTING MODULE 1  ###############################################
-output_master="output_folder"
-mkdir -p "$output_master"       # create master output folder
+
 
 ########## 1 QUALITY CONTROL (QC) OF READS  ###################
 ## load conda metawrap conda quality control
@@ -20,9 +19,13 @@ output_folder = $3                # output folder to be created inside master ou
 bm_tag="--skip-bmtagger"          # define if human reads should be filtered out or not
 num_cores = 1                     # number of threads
 
+
+out_qc="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")/qc"          # create output master
+
+#mkdir -p $out_qc
+
 # command of quality control
-metawrap read_qc "$bm_tag" -1 "$forward_library" -2 "$reverse_library" -t "$num_cores" -o 
-"$output_master"/"$output_folder"  &> "$log"
+metawrap read_qc "$bm_tag" -1 "$forward_library" -2 "$reverse_library" -t "$num_cores" -o "$out_qc"  &> "$log"
 
 # leave conda environment
 conda deactivate
