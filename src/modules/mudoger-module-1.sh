@@ -10,10 +10,10 @@ output_folder = $3                # master output folder to be created and defin
 #mkdir -p $out_master
 
 # 1 QUALITY CONTROL (QC) OF READS
-/MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh $forward_library $reverse_library "$3"
+/MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$output_folder"
 
 # 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY
-/MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh $forward_library $reverse_library "$3"
+/MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$forward_library" "$reverse_library" "$output_folder"
 
 # 3 ASSEMBLY
-/MuDoGeR/src/scripts/mudoger-module-1-assembly.sh $forward_library $reverse_library "$3"
+/MuDoGeR/src/scripts/mudoger-module-1-assembly.sh "$forward_library" "$reverse_library" "$output_folder"
