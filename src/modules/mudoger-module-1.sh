@@ -6,14 +6,14 @@ reverse_library = $2              # reverse library path. /path/to/libname_2.fas
 output_folder = $3                # master output folder to be created and defined by user
 
 
-#out_master="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")"          # create output master
-#mkdir -p $out_master
+lib="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")"          # create output master
+mkdir -p $lib
 
 # 1 QUALITY CONTROL (QC) OF READS
 /MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$output_folder"
 
 # 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY
-/MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$forward_library" "$reverse_library" "$output_folder"
+/MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$lib"/qc/final_pure_reads_1.fastq "$lib"/qc/final_pure_reads_2.fastq  "$output_folder"
 
 # 3 ASSEMBLY
-/MuDoGeR/src/scripts/mudoger-module-1-assembly.sh "$forward_library" "$reverse_library" "$output_folder"
+/MuDoGeR/src/scripts/mudoger-module-1-assembly.sh "$lib"/qc/final_pure_reads_1.fastq "$lib"/qc/final_pure_reads_2.fastq  "$output_folder"
