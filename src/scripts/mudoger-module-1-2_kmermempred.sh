@@ -5,9 +5,13 @@
 conda activate conda-env  # conda to be created
 # https://khmer.readthedocs.io/en/v2.1.1/user/install.html
 
+out_kmer="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")/kmer"          # create output master
+
+
+
 # arguments declaration
 lib="$output_master"/"$output_folder"/final_pure_reads_1.fastq # fastq file to be investigated after qc
-kmer_mem_pred = "$output_master"/kmer_mem_predict              # folder where the output will be dumped
+kmer_mem_pred = "$out_kmer"              # folder where the output will be dumped
 mkdir -p "$kmer_mem_pred"
 
 kmers_script="/path/to/unique-kmers.py"    # to be defined where
