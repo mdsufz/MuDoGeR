@@ -11,13 +11,13 @@ output_folder = $4                # output folder to be created inside master ou
 num_cores = 1                     # number of threads
 
 
-mkdir $prok/bact_ref
-outb="$prok/bact_ref"
-mkdir $prok/arch_ref
-outa="$prok/arch_ref"
+#mkdir $prok/bact_ref
+#outb="$prok/bact_ref"
+#mkdir $prok/arch_ref
+#outa="$prok/arch_ref"
 
-con="$prok/concoct_bins"
-met="$prok/metabat2_bins"
-max="$prok/maxbin2_bins"
+#con="$prok/concoct_bins"
+#met="$prok/metabat2_bins"
+#max="$prok/maxbin2_bins"
 
-metawrap  binning -o $bin -t ${NSLOTS:-1} -a $assembly --run-checkm --metabat2 --maxbin2 --concoct  $forward_library $reverse_library
+metawrap  binning -o "$output_folder" -t "$num_cores" -a "$assembly" --run-checkm --metabat2 --maxbin2 --concoct  "$forward_library" "$reverse_library"
