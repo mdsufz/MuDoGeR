@@ -1,53 +1,68 @@
-# PROKARYOTES
-# BE AWARE OF QUOTE MARKS "". THEY MIGHT BECOME PROBLEMATIC
-
-
-mkdir -p "$output_master"       # create master output folder
-
-
-if [[ -d "$3/RAW_READS/$l" ]]; then
-echo "$l already in progress/exists"
-continue
-else 
-
-
-########## 1 INITIAL PROKARYOTIC BINNING  ###################
-## load conda metawrap conda quality control
-conda activate metawrap-env
-
-# arguments declaration
-log="log_qc"                      # definition of path to QC log       
-assembly=$1
-forward_library = $2              # forward library path
-reverse_library = $3              # reverse library path
-output_folder = $4                # output folder to be created inside master output folder
-num_cores = 1                     # number of threads
-
-
-mkdir $prok/bact_ref
-outb="$prok/bact_ref"
-mkdir $prok/arch_ref
-outa="$prok/arch_ref"
-
-con="$prok/concoct_bins"
-met="$prok/metabat2_bins"
-max="$prok/maxbin2_bins"
-
-metawrap  binning -o $bin -t ${NSLOTS:-1} -a $assembly --run-checkm --metabat2 --maxbin2 --concoct  $forward_read $reverse_read
-
-metawrap bin_refinement -o "$outb" -t $num_cores -A "$con" -B "$met" -C "$max" -c 50 -x 10
-
-metawrap bin_refinement -o "$outa" -t $num_cores -A "$con" -B "$met" -C "$max" -c 40 -x 30
-
-ch_inpb="$outb/metawrap_50_10_bins"
-ch_inpa="$outa/metawrap_40_30_bins"
-
-
-metawrap_binning "$2" "$3" "$4" "$5" )
-
-/metawrap_bin_refinement "$2"/refinement-50-10 "$2"/concoct_bins "$2"/maxbin2_bins "$2"/metabat2_bins
-
-/metawrap_bin_refinement-40-30.sh "$2"/refinement-40-30 "$2"/concoct_bins "$2"/maxbin2_bins "$2"/metabat2_bins
+#!/bin/bash
+# PROKARYOTES MODULES FILESYSTEM STRUCTURE
+#   BINNING
+#     INITIAL-BINNING
+#     REFINEMENT-BACTERIA
+#     REFINEMENT-ARCHAEA
+#     BIN-FINAL-SET (REDUNDANCY REMOVAL)
+#   METRICS
+#     CHECKM
+#     GTDBtk
+#     PROKKA
+#     STATS (GENOMIC)
+#       N50, NUM_NUCLEOTIDE, NUM_CONTIGS, ATCG and more...
 
 
 
+libname=$1
+assembly = $2
+forward_library = $3              # forward library path /path/to/libname_1.fastq
+reverse_library = $4             # reverse library path. /path/to/libname_2.fastq
+output_folder = $5              # master output folder to be created and defined by user
+cores=1
+
+
+#lib="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f2 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")"          # create output master
+
+mkdir -p "$libname"/prokaryotes
+
+mkdir -p "$libname"/prokaryotes/binning
+
+# 1 INITIAL BINNING USING METAWRAP (CONCOCT, METABAT2, MAXBIN2)
+mudoger-module-2-1_initial-binning.sh "$assembly"          \
+                                      "$forward_library"   \
+                                      "$reverse_library"   \
+                                      "$libname"/prokaryotes/binning/initial-binning
+
+
+# 2 BIN REFINEMENT USING METAWRAP FOR BACTERIA (50,10)
+mudoger-module-2-2_bin-ref-bacteria.sh "$libname"/prokaryotes/binning/refinement-bac                \
+                                       "$cores"                                                     \
+                                       "$assembly"                                                  \
+                                       "$libname"/prokaryotes/binning/initial-binning/concoct_bins  \
+                                       "$libname"/prokaryotes/binning/initial-binning/maxbin2_bins  \
+                                       "$libname"/prokaryotes/binning/initial-binning/metabat2_bins \
+              
+              
+
+# 3 BIN REFINEMENT USING METAWRAP FOR ARCHAEA (40,30)
+mudoger-module-2-3_bin-ref-archea.sh "$libname"/prokaryotes/binning/refinement-bac                \
+                                     "$cores"                                                     \
+                                     "$assembly"                                                  \
+                                     "$libname"/prokaryotes/binning/initial-binning/concoct_bins  \
+                                     "$libname"/prokaryotes/binning/initial-binning/maxbin2_bins  \
+                                     "$libname"/prokaryotes/binning/initial-binning/metabat2_bins \
+              
+# 4 BIN REDUNANCY REMOVAL
+
+# 5 GTDBtk taxonomy assignment
+
+# 6 CheckM quality control
+
+# 7 PROKKA Annotation
+
+# 8 Metrics: N50, NUM_NUCLEOTIDE, NUM_CONTIGS, ATCG and more...
+
+# 9 WRAPUP INTO NICE TABLE
+
+#
