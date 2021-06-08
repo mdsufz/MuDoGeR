@@ -1,8 +1,6 @@
-
-
 ################### 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY ###################
 ## load conda metawrap conda quality control
-conda activate conda-env  # conda to be created
+conda activate khmer-env  # conda to be created
 # https://khmer.readthedocs.io/en/v2.1.1/user/install.html
 
 out_kmer="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")/kmer"          # create output master
@@ -41,6 +39,7 @@ rm "$kmer_mem_pred"/models.RData
 rm "$kmer_mem_pred"/function_predict_memory.R
 rm "$kmer_mem_pred"/predict.R
 
+conda deactivate
 # finish
 echo “end predict_mem_input”
 date
