@@ -32,6 +32,10 @@ do
 		metawrap
 		conda deactivate
 		
+		conda create -y -n khmer-env python=3.6
+		conda activate khmer-env
+		conda install -c conda-forge r-base
+		conda deactivate
 		break
 	elif [ $choose = n -o $choose = N ]
 	then
