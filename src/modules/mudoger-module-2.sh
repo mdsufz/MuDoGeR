@@ -29,14 +29,14 @@ mkdir -p "$libname"/prokaryotes
 mkdir -p "$libname"/prokaryotes/binning
 
 # 1 INITIAL BINNING USING METAWRAP (CONCOCT, METABAT2, MAXBIN2)
-mudoger-module-2-1_initial-binning.sh "$assembly"          \
+MuDoGeR/src/scripts/mudoger-module-2-1_initial-binning.sh "$assembly"          \
                                       "$forward_library"   \
                                       "$reverse_library"   \
                                       "$libname"/prokaryotes/binning/initial-binning
 
 
 # 2 BIN REFINEMENT USING METAWRAP FOR BACTERIA (50,10)
-mudoger-module-2-2_bin-ref-bacteria.sh "$libname"/prokaryotes/binning/refinement-bac                \
+MuDoGeR/src/scripts/mudoger-module-2-2_bin-ref-bacteria.sh "$libname"/prokaryotes/binning/refinement-bac                \
                                        "$cores"                                                     \
                                        "$assembly"                                                  \
                                        "$libname"/prokaryotes/binning/initial-binning/concoct_bins  \
@@ -46,7 +46,7 @@ mudoger-module-2-2_bin-ref-bacteria.sh "$libname"/prokaryotes/binning/refinement
               
 
 # 3 BIN REFINEMENT USING METAWRAP FOR ARCHAEA (40,30)
-mudoger-module-2-3_bin-ref-archea.sh "$libname"/prokaryotes/binning/refinement-bac                \
+MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname"/prokaryotes/binning/refinement-arc                \
                                      "$cores"                                                     \
                                      "$assembly"                                                  \
                                      "$libname"/prokaryotes/binning/initial-binning/concoct_bins  \
@@ -54,8 +54,28 @@ mudoger-module-2-3_bin-ref-archea.sh "$libname"/prokaryotes/binning/refinement-b
                                      "$libname"/prokaryotes/binning/initial-binning/metabat2_bins \
               
 # 4 BIN REDUNANCY REMOVAL
+cd "$libname"/prokaryotes/binning
+
+lib=$libname;
+bin_count=0; 
+mkdir -p unique_bins; 
+md5sum refinement-bac/metawrap*bins/*fa  >  unique_bins/md5_sum ;
+md5sum refinement-arc/metawrap*bins/*fa  >> unique_bins/md5_sum ;
+cat unique_bins/md5_sum | cut -f1 -d' ' | sort | uniq > unique_bins/md5_unique; 
+
+while read l; 
+do 
+bininit="$(grep "$l" unique_bins/md5_sum  | head -n1 | cut -f3 -d' ')";
+binafter=unique_bins/"$lib"-bin."$bin_count".fa; 
+cp $bininit $binafter ;
+bin_count=$[$bin_count+1];
+done < unique_bins/md5_unique ; 
+
 
 # 5 GTDBtk taxonomy assignment
+
+
+
 
 # 6 CheckM quality control
 
