@@ -12,11 +12,9 @@ lib="$output_master"/"$output_folder"/final_pure_reads_1.fastq # fastq file to b
 kmer_mem_pred = "$out_kmer"              # folder where the output will be dumped
 mkdir -p "$kmer_mem_pred"
 
-kmers_script="/path/to/unique-kmers.py"    # to be defined where
-
 # run khmer for sizes 33 and 55
-python3 "$kmers_script" -k 33 -R "$kmer_mem_pred"/kmer-33 "$lib"
-python3 "$kmers_script" -k 55 -R "$kmer_mem_pred"/kmer-55 "$lib"
+python3 unique-kmers.py -k 33 -R "$kmer_mem_pred"/kmer-33 "$lib"
+python3 unique-kmers.py -k 55 -R "$kmer_mem_pred"/kmer-55 "$lib"
 
 # extract results from khmer and dump into output file
 echo -e "$(echo $1 | rev | cut -f1 -d'/' | rev )\t\c" > "$kmer_mem_pred"/input_for_predictR.tsv
@@ -24,9 +22,9 @@ echo -e "$(cat "$2"/kmer-33 | head -n1 | cut -f1 -d' ')\t\c" >> "$kmer_mem_pred"
 echo -e "$(cat "$2"/kmer-55 | head -n1 | cut -f1 -d' ')" >> "$kmer_mem_pred"/input_for_predictR.tsv
 
 # copy necessary files for memory prediction. those scripts in-house and should be downloadable via git
-cp path/to/function_predict_memory.R  "$kmer_mem_pred"
-cp path/to/models.RData  "$kmer_mem_pred"
-cp path/to/predict.R  "$kmer_mem_pred"
+cp MuDoGeR/tools/mpred_function_predict_memory.R  "$kmer_mem_pred"
+cp MuDoGeR/tools/mpred_models.RData  "$kmer_mem_pred"
+cp MuDoGeR/tools/mpred_predict.R  "$kmer_mem_pred"
 
 # run memory prediction
 cd  "$kmer_mem_pred"                                                # move to the kmer output folder
