@@ -33,9 +33,9 @@ cat metaspades_prediction.tsv | cut -f1,10 > final_prediction.tsv   # parse to f
 cd -                                                                # move back to previous folder
 
 # erase auxiliary files
-rm "$kmer_mem_pred"/models.RData
-rm "$kmer_mem_pred"/function_predict_memory.R
-rm "$kmer_mem_pred"/predict.R
+rm "$kmer_mem_pred"/mpred_models.RData
+rm "$kmer_mem_pred"/mpred_function_predict_memory.R
+rm "$kmer_mem_pred"/mpred_predict.R
 
 conda deactivate
 # finish
