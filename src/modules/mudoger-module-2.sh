@@ -58,11 +58,7 @@ MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh "$libname"/prokaryot
 
 
 # 5 GTDBtk taxonomy assignment
-source /gpfs1/data/msb/tools/GTDB/gtdbtk-v1.3.0/bin/activate
-
-# necessary path variable
-export GTDBTK_DATA_PATH=/gpfs1/data/msb/tools/GTDB/external_data/release95
-
+MuDoGeR/src/scripts/mudoger-module-2-5_bin-dereplication.sh "$libname"/prokaryotes/
 
 
 # 6 CheckM quality control
