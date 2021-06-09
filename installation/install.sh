@@ -34,6 +34,7 @@ do
 		
 		conda create -y -n khmer-env python=3.6
 		conda activate khmer-env
+		pip install khmer==2.1.1
 		conda install -c conda-forge r-base
 		conda deactivate
 		break
