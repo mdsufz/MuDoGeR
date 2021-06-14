@@ -28,6 +28,8 @@ mkdir -p "$libname"/prokaryotes
 
 mkdir -p "$libname"/prokaryotes/binning
 
+mkdir -p "$libname"/prokaryotes/metrics
+
 # 1 INITIAL BINNING USING METAWRAP (CONCOCT, METABAT2, MAXBIN2)
 MuDoGeR/src/scripts/mudoger-module-2-1_initial-binning.sh "$assembly"          \
                                       "$forward_library"   \
@@ -56,12 +58,13 @@ MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname"/prokaryotes/
 # 4 BIN REDUNANCY REMOVAL
 MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh "$libname"/prokaryotes/binning
 
-
 # 5 GTDBtk taxonomy assignment
 MuDoGeR/src/scripts/mudoger-module-2-5_bin-dereplication.sh "$libname"/prokaryotes/
 
-
 # 6 CheckM quality control
+MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh "$libname"/prokaryotes/
+
+
 
 # 7 PROKKA Annotation
 
