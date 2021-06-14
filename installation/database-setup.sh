@@ -5,7 +5,16 @@
 source config
 
 
-while: do read $input
+#while: do read $input
+
+
+### CheckM
+wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
+tar -xvf *.tar.gz
+rm *.gz
+checkm data setRoot     # CheckM will prompt to to chose your storage location
+# On newer versions of CheckM, you would run:
+checkm data setRoot /path/to/your/dir/MY_CHECKM_FOLDER
 
 
 ### GTDB-tk
