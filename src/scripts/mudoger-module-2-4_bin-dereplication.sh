@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # 4 BIN REDUNANCY REMOVAL
-cd "$1"
 
 lib=$libname;
 bin_count=0; 
-mkdir -p unique_bins; 
+
 md5sum refinement-bac/metawrap*bins/*fa  >  unique_bins/md5_sum ;
 md5sum refinement-arc/metawrap*bins/*fa  >> unique_bins/md5_sum ;
 cat unique_bins/md5_sum | cut -f1 -d' ' | sort | uniq > unique_bins/md5_unique; 
