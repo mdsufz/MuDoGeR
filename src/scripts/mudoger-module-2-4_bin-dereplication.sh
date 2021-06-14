@@ -2,7 +2,7 @@
 
 # 4 BIN REDUNANCY REMOVAL
 
-lib=$libname;
+lib=$1;
 bin_count=0; 
 
 md5sum refinement-bac/metawrap*bins/*fa  >  unique_bins/md5_sum ;
