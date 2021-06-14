@@ -24,13 +24,10 @@ cores=1
 
 #lib="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f2 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")"          # create output master
 
-mkdir -p "$libname"/prokaryotes
 
-mkdir -p "$libname"/prokaryotes/binning
-
-mkdir -p "$libname"/prokaryotes/metrics
 
 # 1 INITIAL BINNING USING METAWRAP (CONCOCT, METABAT2, MAXBIN2)
+mkdir -p "$libname"/prokaryotes/binning
 MuDoGeR/src/scripts/mudoger-module-2-1_initial-binning.sh "$assembly"          \
                                       "$forward_library"   \
                                       "$reverse_library"   \
@@ -56,15 +53,17 @@ MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname"/prokaryotes/
                                      "$libname"/prokaryotes/binning/initial-binning/metabat2_bins \
               
 # 4 BIN REDUNANCY REMOVAL
-MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh "$libname"/prokaryotes/binning
+mkdir -p "$libname"/prokaryotes/binning/unique_bins
+cd "$libname"/prokaryotes/binning
+MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh  "$libname" 
+cd -
 
 # 5 GTDBtk taxonomy assignment
-MuDoGeR/src/scripts/mudoger-module-2-5_bin-dereplication.sh "$libname"/prokaryotes/
+mkdir -p "$libname"/prokaryotes/metrics
+MuDoGeR/src/scripts/mudoger-module-2-5_bin-dereplication.sh "$libname"/prokaryotes 
 
 # 6 CheckM quality control
-MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh "$libname"/prokaryotes/
-
-
+MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh "$cores" "$libname"/prokaryotes/ 
 
 # 7 PROKKA Annotation
 
