@@ -60,14 +60,17 @@ cd -
 
 # 5 GTDBtk taxonomy assignment
 mkdir -p "$libname"/prokaryotes/metrics
-MuDoGeR/src/scripts/mudoger-module-2-5_bin-dereplication.sh "$libname"/prokaryotes 
+MuDoGeR/src/scripts/mudoger-module-2-5_bin-dereplication.sh "$libname"/prokaryotes $cores
 
 # 6 CheckM quality control
-MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh "$cores" "$libname"/prokaryotes/ 
+MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh  "$libname"/prokaryotes/ "$cores"
 
 # 7 PROKKA Annotation
+MuDoGeR/src/scripts/mudoger-module-2-7_bin-QC.sh  "$libname"/prokaryotes/ "$cores"
 
 # 8 Metrics: N50, NUM_NUCLEOTIDE, NUM_CONTIGS, ATCG and more...
+MuDoGeR/src/scripts/mudoger-module-2-8_bin-QC.sh  "$libname"/prokaryotes/ "$cores"
+
 
 # 9 WRAPUP INTO NICE TABLE
 
