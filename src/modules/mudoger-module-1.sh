@@ -10,10 +10,10 @@ lib="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f1 -d'/' |
 mkdir -p $lib
 
 # 1 QUALITY CONTROL (QC) OF READS
-MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$output_folder"
+bash -i MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$output_folder"
 
 # 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY
-MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$lib"/qc/final_pure_reads_1.fastq "$lib"/qc/final_pure_reads_2.fastq  "$output_folder"
+bash -i MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$lib"/qc/final_pure_reads_1.fastq "$lib"/qc/final_pure_reads_2.fastq  "$output_folder"
 
 # 3 ASSEMBLY
-MuDoGeR/src/scripts/mudoger-module-1-3_assembly.sh "$lib"/qc/final_pure_reads_1.fastq "$lib"/qc/final_pure_reads_2.fastq  "$output_folder"
+bash -i MuDoGeR/src/scripts/mudoger-module-1-3_assembly.sh "$lib"/qc/final_pure_reads_1.fastq "$lib"/qc/final_pure_reads_2.fastq  "$output_folder"
