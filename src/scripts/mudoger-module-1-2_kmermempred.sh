@@ -9,7 +9,7 @@ out_kmer="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f1 -d
 
 # arguments declaration
 lib="$output_master"/"$output_folder"/final_pure_reads_1.fastq # fastq file to be investigated after qc
-kmer_mem_pred = "$out_kmer"              # folder where the output will be dumped
+kmer_mem_pred="$out_kmer"              # folder where the output will be dumped
 mkdir -p "$kmer_mem_pred"
 
 # run khmer for sizes 33 and 55
