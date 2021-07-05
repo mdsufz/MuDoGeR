@@ -6,10 +6,10 @@ conda activate metawrap-env
 
 # arguments declaration
 log="log_assembly"                # definition of path to assembly log       
-forward_library = $1              # forward library path
-reverse_library = $2              # reverse library path
-output_folder = $3                # output folder to be created inside master output folder
-num_cores = 1                     # number of threads
+forward_library=$1              # forward library path
+reverse_library=$2              # reverse library path
+output_folder=$3                # output folder to be created inside master output folder
+num_cores=1                     # number of threads
 assembler="--metaspades"          # --metaspades or --megahit
 
 out_master="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")"          # create output master
