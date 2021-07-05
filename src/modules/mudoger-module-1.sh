@@ -1,9 +1,9 @@
 # help message
 
 
-forward_library = $1              # forward library path /path/to/libname_1.fastq
-reverse_library = $2              # reverse library path. /path/to/libname_2.fastq
-output_folder = $3                # master output folder to be created and defined by user
+forward_library=$1              # forward library path /path/to/libname_1.fastq
+reverse_library=$2              # reverse library path. /path/to/libname_2.fastq
+output_folder=$3                # master output folder to be created and defined by user
 
 
 lib="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")"          # create output master
