@@ -7,9 +7,10 @@ output_folder=$3                # master output folder to be created and defined
 num_cores=$4                    # number of cores to use
 
 lib="$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )"          # create output master
-mkdir -p $lib
 
 master_output_dir="$output_folder"/"$lib"
+
+mkdir -p "$master_output_dir"
 
 # 1 QUALITY CONTROL (QC) OF READS
 bash -i MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$master_output_dir"/qc "$num_cores"
