@@ -43,5 +43,6 @@ cat "$output_folder"/VIBRANT_filtered_data.txt \
 python extract_fa.py "$output_folder"/dereplication/viral_unique_contigs "$assembly" "$output_folder"/dereplication/uvigs.fa
 
 ##### RUN DEREPLICATION
+Cluster_genomes.pl -f "$output_folder"/dereplication/uvigs.fa  -c 70 -i 95
 
  
