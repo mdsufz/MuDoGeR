@@ -22,3 +22,21 @@ forward_library = $3              # forward library path /path/to/libname_1.fast
 reverse_library = $4             # reverse library path. /path/to/libname_2.fastq
 output_folder = $5              # master output folder to be created and defined by user
 cores=1
+
+# 1 viral investigation
+mkdir -p "$libname"/viruses/investigation
+MuDoGeR/src/scripts/mudoger-module-3-1-viral_investigation.sh "$assembly"   "$forward_library"  "$reverse_library"  "$libname"/viruses/investigation
+
+# 2 viral vcontact2 (taxonomy)
+MuDoGeR/src/scripts/mudoger-module-3-2_vcontact2.sh
+
+# 3 host prediction
+MuDoGeR/src/scripts/mudoger-module-3-3_host-prediction.sh
+
+# 4 vcheck
+MuDoGeR/src/scripts/mudoger-module-3-3_vcheck.sh 
+
+# 5 uvigs metrics
+MuDoGeR/src/scripts/mudoger-module-3-5_uvigs-metrics.sh
+
+
