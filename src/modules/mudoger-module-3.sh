@@ -25,18 +25,18 @@ cores=1
 
 # 1 viral investigation
 mkdir -p "$libname"/viruses/investigation
-MuDoGeR/src/scripts/mudoger-module-3-1-viral_investigation.sh "$assembly"  "$forward_library"  "$reverse_library"  "$libname"/viruses/investigation $cores
+bash -i MuDoGeR/src/scripts/mudoger-module-3-1-viral_investigation.sh "$assembly"  "$forward_library"  "$reverse_library"  "$libname"/viruses/investigation $cores
 
 # 2 viral vcontact2 (taxonomy)
-MuDoGeR/src/scripts/mudoger-module-3-2_vcontact2.sh
+bash -i MuDoGeR/src/scripts/mudoger-module-3-2_vcontact2.sh
 
 # 3 host prediction
-MuDoGeR/src/scripts/mudoger-module-3-3_host-prediction.sh
+bash -i MuDoGeR/src/scripts/mudoger-module-3-3_host-prediction.sh
 
 # 4 vcheck
-MuDoGeR/src/scripts/mudoger-module-3-3_vcheck.sh 
+bash -i MuDoGeR/src/scripts/mudoger-module-3-3_vcheck.sh 
 
 # 5 uvigs metrics
-MuDoGeR/src/scripts/mudoger-module-3-5_uvigs-metrics.sh
+bash -i MuDoGeR/src/scripts/mudoger-module-3-5_uvigs-metrics.sh
 
 
