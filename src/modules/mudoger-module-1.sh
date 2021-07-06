@@ -6,7 +6,7 @@ reverse_library=$2              # reverse library path. /path/to/libname_2.fastq
 output_folder=$3                # master output folder to be created and defined by user
 num_cores=$4                    # number of cores to use
 
-lib="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")"          # create output master
+lib="$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )"          # create output master
 mkdir -p $lib
 
 master_output_dir="$output_folder"/"$lib"
