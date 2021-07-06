@@ -44,5 +44,5 @@ date
 # NOTE: the outputted memory prediction is in mega bytes. 
 # if the assembly resources request is done using gigabytes
 # conversion of megabytes to gigabytes
-mem_mb="$(tail -n1 "$khmer_folder"/final_prediction.tsv    | cut -f2 | cut -f2 -d' ')"
+mem_mb="$(tail -n1 "$khmer_folder"/final_prediction.tsv    | cut -f2 )"
 mem_gb="$(echo $((mem_mb / 1000)))"
