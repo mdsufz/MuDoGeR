@@ -13,8 +13,8 @@ mkdir -p "$khmer_folder"
 # run khmer for sizes 33 and 55
 #python3 unique-kmers.py -k 33 -R "$kmer_mem_pred"/kmer-33 "$lib"
 #python3 unique-kmers.py -k 55 -R "$kmer_mem_pred"/kmer-55 "$lib"
-unique-kmers.py -k 33 -R "$khmer_folder"/kmer-33 "$lib"
-unique-kmers.py -k 55 -R "$khmer_folder"/kmer-55 "$lib"
+unique-kmers.py -k 33 -R "$khmer_folder"/kmer-33 "$fwd_lib"
+unique-kmers.py -k 55 -R "$khmer_folder"/kmer-55 "$fwd_lib"
 
 # extract results from khmer and dump into output file
 echo -e "$(echo "$fwd_lib" | rev | cut -f1 -d'/' | rev )\t\c" > "$khmer_folder"/input_for_predictR.tsv
