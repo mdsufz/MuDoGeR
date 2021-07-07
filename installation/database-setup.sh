@@ -5,7 +5,7 @@ database_location="$1"
 
 mkdir "$database_location"
 
-source config
+source MuDoGeR/installation/config
 ############################################### PROKARYOTES ###############################################
 ### CheckM
 mkdir -p "$database_location"/checkm
