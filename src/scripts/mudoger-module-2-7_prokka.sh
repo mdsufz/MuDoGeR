@@ -12,4 +12,4 @@ source Mudoger/installation/config
 
 unset LD_PRELOAD
 
-metawrap annotate_bins -t $cores -o $1 -b $2
+metawrap annotate_bins -t $cores -o $output_results -b $input_bins_folder
