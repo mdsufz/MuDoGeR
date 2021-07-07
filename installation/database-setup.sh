@@ -28,8 +28,8 @@ fi
 mkdir -p  "$database_location"/"gtdbtk"
 cd "$database_location"/"gtdbtk"
 if [ ! -d gtdbtk_r95_data ]; then
-wget https://data.ace.uq.edu.au/public/gtdb/data/releases/release95/95.0/auxillary_files/gtdbtk_r95_data.tar.gz -P
-gunzip -xvf gtdbtk_r95_data.tar.gz
+wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
+tar xvzf gtdbtk_r95_data.tar.gz
 rm -f gtdbtk_r95_data.tar.gz
 echo  GTDBTK_DATA_PATH="$database_location"/gtdbtk/gtdbtk_r95_data >> config
 else echo "-> your GTDBtk database is ready"
