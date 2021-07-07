@@ -6,7 +6,7 @@ database_location="$1"
 mkdir "$database_location"
 
 source config
-
+############################################### PROKARYOTES ###############################################
 ### CheckM
 mkdir -p "$database_location"/checkm
 cd  "$database_location"/checkm
@@ -30,3 +30,10 @@ gunzip -xvf gtdbtk_r95_data.tar.gz
 rm gtdbtk_r95_data.tar.gz
 echo  GTDBTK_DATA_PATH=$database_location/gtdbtk/gtdbtk_r95_data >> config
 else echo "-> your GTDBtk database is ready"
+
+############################################### VIRUSES ###############################################
+### CheckV
+mkdir -p  "$database_location"/checkv
+cd "$database_location"/"gtdbtk"
+wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
+tar -zxvf checkv-db-v1.0.tar.gz
