@@ -15,7 +15,7 @@ cd  "$database_location"/checkm
 if [ ! -d checkm_data_2015_01_16 ]; then
 wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
 tar -xvf checkm_data_2015_01_16.tar.gz
-rm checkm_data_2015_01_16.tar.gz
+rm -f checkm_data_2015_01_16.tar.gz
 # On newer versions of CheckM, you would run:
 #checkm data setRoot /path/to/your/dir/$MY_CHECKM_FOLDER
 CHECKM_DB="$database_location"/"checkm"/checkm_data_2015_01_16
@@ -29,8 +29,8 @@ cd "$database_location"/"gtdbtk"
 if [ ! -d gtdbtk_r95_data ]; then
 wget https://data.ace.uq.edu.au/public/gtdb/data/releases/release95/95.0/auxillary_files/gtdbtk_r95_data.tar.gz -P 
 gunzip -xvf gtdbtk_r95_data.tar.gz
-rm gtdbtk_r95_data.tar.gz
-echo  GTDBTK_DATA_PATH=$database_location/gtdbtk/gtdbtk_r95_data >> config
+rm -f gtdbtk_r95_data.tar.gz
+echo  GTDBTK_DATA_PATH="$database_location"/gtdbtk/gtdbtk_r95_data >> config
 else echo "-> your GTDBtk database is ready"
 
 ############################################### VIRUSES ###############################################
