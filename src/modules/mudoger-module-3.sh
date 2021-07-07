@@ -31,12 +31,12 @@ bash -i MuDoGeR/src/scripts/mudoger-module-3-1-viral_investigation.sh "$assembly
 bash -i MuDoGeR/src/scripts/mudoger-module-3-2_vcontact2.sh "$libname"/viruses/dereplication/uvigs/uvigs_95-70.fna "$libname"/viruses/taxonomy "$cores"
 
 # 3 host prediction
-bash -i MuDoGeR/src/scripts/mudoger-module-3-3_host-prediction.sh "$libname"/viruses/dereplication/uvigs/uvigs_95-70.fna  "$libname"/prokaryotes/binning/unique_bins
+bash -i MuDoGeR/src/scripts/mudoger-module-3-3_host-prediction.sh "$libname"/viruses/dereplication/uvigs/uvigs_95-70.fna  "$libname"/prokaryotes/binning/unique_bins "$libname"/viruses/dereplication/host_prediction
 
 # 4 vcheck
-bash -i MuDoGeR/src/scripts/mudoger-module-3-4_vcheck.sh 
+bash -i MuDoGeR/src/scripts/mudoger-module-3-4_vcheck.sh "$libname"/viruses/dereplication/uvigs/uvigs_95-70.fna "$libname"/viruses/vcheck_quality
 
 # 5 uvigs metrics
-bash -i MuDoGeR/src/scripts/mudoger-module-3-5_uvigs-metrics.sh
+# bash -i MuDoGeR/src/scripts/mudoger-module-3-5_uvigs-metrics.sh
 
 
