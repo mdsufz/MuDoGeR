@@ -8,7 +8,7 @@ help_message () {
 	echo "	-1 STR			forward fastq reads path"
 	echo "	-2 STR			reverse fastq reads path"
 	echo "	-o STR			output directory path"
-	echo "	-m INT			given Memory to the Assembly process in GB (default=10)"
+#	echo "	-m INT			given Memory to the Assembly process in GB (default=10)"
 	echo "	-t INT			number of threads/cores (default=1)"
 	echo "	--megahit		assemble with megahit (default)"
 	echo "	--metaspades		assemble with metaspades instead of megahit"
@@ -17,8 +17,10 @@ help_message () {
 
 #DEFINE DEFAULT PARAMETERS
 
+# the option memory was desabled as we are using the memory predicted by script 1.2. We need to develop another way if it does not work with the amount of memory predicted. 
+
 output_folder=$(pwd) 		#output path for the downloaded sequences
-memory=10			#given Memory to the Assembly process in GB
+#memory=10			#given Memory to the Assembly process in GB
 num_cores=1 			#number of threads that is going to be used
 megahit=""			#assemble with megahit (default)"
 metaspades=""			#assemble with metaspades instead of megahit"
@@ -31,7 +33,7 @@ while true; do
 		-2) reverse_library=$2; shift 2;;
 		-o) output_folder=$2; shift 2;;
 		-t) num_cores=$2; shift 2;;
-		-m) memory=$2; shift 2;;
+		#-m) memory=$2; shift 2;;
 		--metaspades) metaspades="--metaspades"; shift 2;;
 		-h | --help) help_message; exit 1; shift 1;;
 		--) help_message; exit 1; shift; break ;;
@@ -55,10 +57,9 @@ bash -i MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$revers
 bash -i MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/khmer
 
 # 3 ASSEMBLY
-bash -i MuDoGeR/src/scripts/mudoger-module-1-3_assembly.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/qc/final_pure_reads_2.fastq  "$master_output_dir" "$num_cores" "$memory" "$metaspades"
+bash -i MuDoGeR/src/scripts/mudoger-module-1-3_assembly.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/qc/final_pure_reads_2.fastq  "$master_output_dir" "$num_cores" "$metaspades" #"$memory"
 
-#### add the memory option $5 to the assembly
-#### add the metaspades $6 to the assembly
+
 
 
 
