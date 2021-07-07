@@ -4,8 +4,8 @@
 # given the user input, the config file will be edited and all databases via wget, curl, etc and zipping
 
 database_location="$1"
-config_file = MuDoGeR/installation/config
-
+config_file=MuDoGeR/installation/config
+touch "$config_file"
 
 mkdir "$database_location"
 
