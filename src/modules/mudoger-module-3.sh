@@ -28,13 +28,13 @@ mkdir -p "$libname"/viruses/investigation
 bash -i MuDoGeR/src/scripts/mudoger-module-3-1-viral_investigation.sh "$assembly"  "$forward_library"  "$reverse_library"  "$libname"/viruses/investigation $cores
 
 # 2 viral vcontact2 (taxonomy)
-bash -i MuDoGeR/src/scripts/mudoger-module-3-2_vcontact2.sh
+bash -i MuDoGeR/src/scripts/mudoger-module-3-2_vcontact2.sh "$libname"/viruses/dereplication/uvigs/uvigs_95-70.fna "$libname"/viruses/taxonomy "$cores"
 
 # 3 host prediction
-bash -i MuDoGeR/src/scripts/mudoger-module-3-3_host-prediction.sh
+bash -i MuDoGeR/src/scripts/mudoger-module-3-3_host-prediction.sh "$libname"/viruses/dereplication/uvigs/uvigs_95-70.fna  "$libname"/prokaryotes/binning/unique_bins
 
 # 4 vcheck
-bash -i MuDoGeR/src/scripts/mudoger-module-3-3_vcheck.sh 
+bash -i MuDoGeR/src/scripts/mudoger-module-3-4_vcheck.sh 
 
 # 5 uvigs metrics
 bash -i MuDoGeR/src/scripts/mudoger-module-3-5_uvigs-metrics.sh
