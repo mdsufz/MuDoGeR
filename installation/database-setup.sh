@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # this scripts asks for the desired location of installation for the databases.
 # given the user input, the config file will be edited and all databases via wget, curl, etc and zipping
 
