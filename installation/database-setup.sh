@@ -28,11 +28,11 @@ fi
 ### GTDB-tk
 mkdir -p  "$database_location"/"gtdbtk"
 cd "$database_location"/"gtdbtk"
-if [ ! -d gtdbtk_r95_data ]; then
+if [ ! -d release* ]; then
 wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
-tar xvzf gtdbtk_r95_data.tar.gz
-rm -f gtdbtk_r95_data.tar.gz
-echo  GTDBTK_DATA_PATH="$database_location"/gtdbtk/gtdbtk_r95_data >> "$config_file"
+tar xvzf gtdbtk_data.tar.gz
+rm -f gtdbtk_data.tar.gz
+echo  GTDBTK_DATA_PATH="$database_location"/gtdbtk/gtdbtk_r95_data >> "$config_file" ##FIX HERE
 else echo "-> your GTDBtk database is ready"
 fi
 
