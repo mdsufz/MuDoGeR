@@ -1,19 +1,13 @@
+#!/bin/bash
 
 
+input_uvigs="$1"
+output_checkv="$2"
+cores="$3"
 
 
-module load Anaconda3/5.3.0
-source activate /data/msb/tools/vcheck/conda-vcheck-env
+source activate conda-vcheck
 export CHECKVDB=/data/msb/tools/vcheck/checkv-db-v0.6
 
 
-
-task=""
-
-date
-echo "starting "$task
-
-
-
-#command
-checkv end_to_end  $1 $2 -t 1
+checkv end_to_end  "$input_uvigs" "$output_checkv" -t "$cores"
