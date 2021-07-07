@@ -40,10 +40,11 @@ fi
 ### CheckV
 mkdir -p  "$database_location"/checkv
 cd "$database_location"/checkv
-if [ ! -d checkv-db-v1.0]; then
+if [ ! -d checkv-db-v1.0 ]; then
 wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
 tar -zxvf checkv-db-v1.0.tar.gz
 rm -r checkv-db-v1.0.tar.gz
+#ADD CHECKV DATABASE PATH TO CONFIG FILE
 else echo "-> your CheckV database is ready"
 fi
 
