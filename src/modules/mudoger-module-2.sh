@@ -19,7 +19,7 @@ assembly=$2                    # path to the assembly file
 forward_library=$3             # forward library path /path/to/libname_1.fastq
 reverse_library=$4             # reverse library path. /path/to/libname_2.fastq
 #output_folder=$5              # master output folder to be created and defined by user
-cores=$6
+cores=$5
 
 
 #lib="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f2 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")"          # create output master
