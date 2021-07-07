@@ -14,7 +14,7 @@ extension="fa"
 checkm data setRoot "$CHECKM_DB"
 
 # necessary path variable
-checkm lineage_wf -t $cores  --reduced_tree --tab_table -x $extension -f "$1"/metrics/checkm_qc/outputcheckm.tsv $input_bins_folder $output_results
+checkm lineage_wf -t $cores --reduced_tree --tab_table -x $extension -f "$1"/metrics/checkm_qc/outputcheckm.tsv $input_bins_folder $output_results
 
 
 conda deactivate
