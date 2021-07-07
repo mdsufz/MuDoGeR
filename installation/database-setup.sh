@@ -21,6 +21,7 @@ rm -f checkm_data_2015_01_16.tar.gz
 CHECKM_DB="$database_location"/"checkm"/checkm_data_2015_01_16
 echo  CHECKM_DB="$CHECKM_DB" >> config
 else echo "-> your CheckM database is ready"
+fi
 
 
 ### GTDB-tk
@@ -32,10 +33,11 @@ gunzip -xvf gtdbtk_r95_data.tar.gz
 rm -f gtdbtk_r95_data.tar.gz
 echo  GTDBTK_DATA_PATH="$database_location"/gtdbtk/gtdbtk_r95_data >> config
 else echo "-> your GTDBtk database is ready"
+fi
 
 ############################################### VIRUSES ###############################################
 ### CheckV
-#mkdir -p  "$database_location"/checkv
-#cd "$database_location"/"gtdbtk"
-#wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
-#tar -zxvf checkv-db-v1.0.tar.gz
+mkdir -p  "$database_location"/checkv
+cd "$database_location"/"gtdbtk"
+wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
+tar -zxvf checkv-db-v1.0.tar.gz
