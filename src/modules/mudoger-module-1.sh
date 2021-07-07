@@ -46,6 +46,8 @@ master_output_dir="$output_folder"/"$lib"
 
 mkdir -p "$master_output_dir"
 
+########## CHANGE the path to the scripts below to a variable Ex: "$mudoger"/src...
+
 # 1 QUALITY CONTROL (QC) OF READS
 bash -i MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$master_output_dir"/qc "$num_cores"
 
