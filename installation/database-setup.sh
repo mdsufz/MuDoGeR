@@ -35,7 +35,7 @@ else echo "-> your GTDBtk database is ready"
 
 ############################################### VIRUSES ###############################################
 ### CheckV
-mkdir -p  "$database_location"/checkv
-cd "$database_location"/"gtdbtk"
-wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
-tar -zxvf checkv-db-v1.0.tar.gz
+#mkdir -p  "$database_location"/checkv
+#cd "$database_location"/"gtdbtk"
+#wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
+#tar -zxvf checkv-db-v1.0.tar.gz
