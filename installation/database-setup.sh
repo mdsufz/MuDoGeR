@@ -14,13 +14,13 @@ source "$config_file"
 ### CheckM
 mkdir -p "$database_location"/checkm
 cd  "$database_location"/checkm
-if [ ! -f selected_markers_sets.tsv ]; then #FIX NAMING HERE, THIS FOLDER DOES NOT EXIST AFTER EXTRACTION
+if [ ! -f selected_markers_sets.tsv ]; then
 wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
 tar -xvf checkm_data_2015_01_16.tar.gz
 rm -fr checkm_data_2015_01_16.tar.gz
 # On newer versions of CheckM, you would run:
 #checkm data setRoot /path/to/your/dir/$MY_CHECKM_FOLDER
-CHECKM_DB="$database_location"/"checkm" #Fixed? we need to test
+CHECKM_DB="$database_location"/checkm #Fixed? we need to test
 echo CHECKM_DB="$CHECKM_DB" >> "$config_file"
 else echo "-> your CheckM database is ready"
 fi
@@ -46,6 +46,8 @@ wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
 tar -zxvf checkv-db-v1.0.tar.gz
 rm -fr checkv-db-v1.0.tar.gz
 #ADD CHECKV DATABASE PATH TO CONFIG FILE
+CHECKVDB="$database_location"/checkv/checkv-db-v1.0
+echo CHECKVDB="$CHECKVDB" >> "$config_file"
 else echo "-> your CheckV database is ready"
 fi
 
