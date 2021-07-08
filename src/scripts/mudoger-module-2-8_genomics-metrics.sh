@@ -8,11 +8,11 @@
 output_file="$1"/metrics/stats.tsv
 #echo "genome_name""\t""number_of_scaffolds""\t""largest_scaffold_size""\t""N50"      "\t""N90"
 
-echo -e "genome_name\tgenome_size\tnumber_of_scaffolds\tlargest_scaffold_size\tN50\tN90" > output_file
+echo -e "genome_name\tgenome_size\tnumber_of_scaffolds\tlargest_scaffold_size\tN50\tN90" > $output_file
 for genome in "$1"/*;
 do
 genome_name="$(echo "$genome" | rev | cut -f1 -d'/' | rev )";
-mkdir temp;
+mkdir temp; #check location
 #get contig lengths, ordered from large to small; 1. remove newlines in sequences, 2. remove fasta headers
 # 3. get contig sizes (line lengths) and order them from large to small.
 cat $genome | awk '!/^>/ { printf "%s", $0; n = "\n" } /^>/ { print n $0; n = "" } END { printf "%s", n }'|
@@ -34,6 +34,6 @@ large_contig=$(head -1 temp/contig_lengths.txt);
 rm -fr temp;
 
 #Echo "$genome" "\t" "$Y""\t"$X"\t" "$large_contig"       "\t" "$N50" "\t" "$N90"
-echo -e "$genome_name\t$X\t$Y\t$large_contig\t$N50\t$N90" >> output_file
+echo -e "$genome_name\t$X\t$Y\t$large_contig\t$N50\t$N90" >> $output_file
 done
 
