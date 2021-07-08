@@ -7,7 +7,7 @@ conda activate metawrap-env
 # arguments declaration
 #log="log_qc"                      # definition of path to QC log       
 
-output_folde=$1                # output folder to be created inside master output folder
+output_folder=$1                # output folder to be created inside master output folder
 cores=$2
 assembly=$3
 con=$4
