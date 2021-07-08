@@ -19,10 +19,11 @@ assembly_folder="$master_folder"/assembly
 mkdir -p "$assembly_folder"      # create assembly output folder
 
 kmer_file="$master_folder"/khmer/final_prediction.tsv
-mem_mb="$(grep "$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_')" $kmer_file | cut -f2)"
+#mem_mb="$(grep "$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_')" $kmer_file | cut -f2)"
 
-if [ -z "mem_gb" ]
-then mem_gb=$6
+if [ -z "$6" ]
+then mem_mb="$(grep "$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_')" $kmer_file | cut -f2)"
+else mem_gb="$6"
 fi
 
 if [ -z $mem_mb ]; 
