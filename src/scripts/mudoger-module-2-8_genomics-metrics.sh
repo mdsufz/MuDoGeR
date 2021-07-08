@@ -31,7 +31,7 @@ paste temp/contig_lengths.txt temp/cum_perc.txt > temp/matrix.txt;
 N50=$(awk '$2 >= 0.50' temp/matrix.txt |head -1| awk '{ print $1}');
 N90=$(awk '$2 >= 0.90' temp/matrix.txt |head -1| awk '{ print $1}');
 large_contig=$(head -1 temp/contig_lengths.txt);
-rm -r temp;
+rm -fr temp;
 
 #Echo "$genome" "\t" "$Y""\t"$X"\t" "$large_contig"       "\t" "$N50" "\t" "$N90"
 echo -e "$genome_name\t$X\t$Y\t$large_contig\t$N50\t$N90" >> output_file
