@@ -54,9 +54,9 @@ cores=$5
 #                                     "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins
               
 # 4 BIN REDUNANCY REMOVAL
-mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
+#mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
 #cd "$libname_folder"/prokaryotes/binning
-bash -i MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh  "$libname_folder" 
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh  "$libname_folder" 
 #cd -
 
 # 5 GTDBtk taxonomy assignment
