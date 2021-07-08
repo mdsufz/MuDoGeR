@@ -48,4 +48,8 @@ rm -fr checkv-db-v1.0.tar.gz
 else echo "-> your CheckV database is ready"
 fi
 
+############################################### EUKARYOTES ###############################################
+
+
+
 
