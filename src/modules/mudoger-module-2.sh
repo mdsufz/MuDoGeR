@@ -46,12 +46,12 @@ cores=$5
               
 
 # 3 BIN REFINEMENT USING METAWRAP FOR ARCHAEA (40,30)
-bash -i MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname_folder"/prokaryotes/binning/refinement-arc                \
-                                     "$cores"                                                     \
-                                     "$assembly"                                                  \
-                                     "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins  \
-                                     "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins  \
-                                     "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname_folder"/prokaryotes/binning/refinement-arc                \
+#                                     "$cores"                                                     \
+#                                     "$assembly"                                                  \
+#                                     "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins  \
+#                                     "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins  \
+#                                     "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins
               
 # 4 BIN REDUNANCY REMOVAL
 mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
