@@ -14,7 +14,7 @@ con=$4
 max=$5
 met=$6
 
-source Mudoger/installation/config 
+source Mudoger/installation/config_db
 
 checkm data setRoot "$CHECKM_DB"
 
