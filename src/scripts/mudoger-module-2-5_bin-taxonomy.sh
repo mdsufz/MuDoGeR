@@ -4,7 +4,7 @@
 # loading conda environment
 conda activate gtdbtk-env
 
-source MuDoGeR/installation/config
+source MuDoGeR/installation/config_db
 
 master_folder=$1
 cores=$2
