@@ -1,8 +1,50 @@
 #!/bin/bash
 
-#making a directory for mudoger and change directory to it
-mkdir mudoger
-cd mudoger
+## Try to go the cloned_tools directory
+## If cloned_tools folder does not exist, will
+## create it and enter into this new directory
+go_to_cloned_tools_folder() {
+	cd cloned_tools || mkdir cloned_tools && cd cloned_tools
+}
+
+## Verify if a given conda environment exist
+## Assign the return to a variable called result
+## If result=0: EXIST
+## If result=1: DOES NOT EXIST
+verify_if_conda_env_exist () {
+	local conda_env_name=$1
+	local conda_list=$(conda list -n $conda_env_name)
+	if [ "$conda_list" ];
+	then
+		result=0
+	else
+		result=1
+	fi
+}
+
+## Create a Metawrap conda environment
+clone_and_install_metawrap() {
+	#INSTALLING METAWRAP
+	go_to_cloned_tools_folder
+	git clone https://github.com/bxlab/metaWRAP.git
+	#->configure the config-metawrap file to pointo to the database
+	conda create -y -n metawrap-env python=2.7
+	cd metaWRAP/bin
+	cp -r . $conda_path/envs/metawrap-env/bin
+	cd ../../..
+	conda activate metawrap-env
+	#conda config --add channels defaults
+	#conda config --add channels conda-forge
+	#conda config --add channels bioconda
+	#conda config --add channels ursky
+	conda install -y --only-deps -c ursky metawrap-mg=1.3.2
+	metawrap
+	conda deactivate
+}
+
+#making a directory for mudoger's utilities and change directory to it
+mkdir mudoger_utils
+cd mudoger_utils
 
 #creating conda path variable
 echo "Please, enter with your miniconda path (ex. \"/home/profile_name/miniconda3\")"
@@ -16,26 +58,13 @@ do
 	if [ $choose = y -o $choose = Y ];
 	then
 		#INSTALLING METAWRAP
-		cd cloned_tools || mkdir cloned_tools && cd cloned_tools
-		git clone https://github.com/bxlab/metaWRAP.git
-		#->configure the config-metawrap file to pointo to the database
-		conda create -y -n metawrap-env python=2.7
-		cd metaWRAP/bin
-		cp -r . $conda_path/envs/metawrap-env/bin
-		cd ../../..
-		conda activate metawrap-env
-		conda config --add channels defaults
-		conda config --add channels conda-forge
-		conda config --add channels bioconda
-		conda config --add channels ursky
-		conda install -y --only-deps -c ursky metawrap-mg=1.3.2
-		metawrap
-		conda deactivate
+		clone_and_install_metawrap
 		
+		## INSTALLING KHMER
 		conda create -y -n khmer-env python=3.6
 		conda activate khmer-env
 		pip install khmer==2.1.1
-		conda install -c conda-forge r-base
+		conda install -y -c conda-forge r-base
 		conda deactivate
 		break
 	elif [ $choose = n -o $choose = N ]
@@ -53,12 +82,20 @@ do
 	read choose
 	if [ $choose = y -o $choose = Y ];
 	then	
+
+		#INSTALLING METAWRAP IF NECESSARY
+		verify_if_conda_env_exist "metawrap-env"
+		if [ "$result" = 1 ];
+		then
+			clone_and_install_metawrap
+		fi
+
 		#INSTALLING GTDB-TK
 		conda create -y -n gtdbtk-env
 		conda install -n gtdbtk-env -y -c bioconda gtdbtk
 
 		#INSTALLING UBIN
-		cd cloned_tools || mkdir cloned_tools && cd cloned_tools
+		go_to_cloned_tools_folder
 		git clone https://github.com/ProbstLab/uBin-helperscripts.git
 		cd uBin-helperscripts
 		conda env create -n ubin-env -f uBin_wrapper_reqs.yaml
@@ -82,7 +119,7 @@ do
 	then
 		#INSTALLING VIRSORTER
 		conda create --name virsorter-env -y -c bioconda mcl=14.137 muscle blast perl-bioperl perl-file-which hmmer=3.1b2 perl-parallel-forkmanager perl-list-moreutils diamond=0.9.14
-		cd cloned_tools || mkdir cloned_tools && cd cloned_tools
+		go_to_cloned_tools_folder
 		git clone https://github.com/simroux/VirSorter.git
 		cd VirSorter/Scripts
 		conda install -n virsorter-env -y -c anaconda make
@@ -115,11 +152,11 @@ do
 		conda create -y -n stampede-clustergenomes-env 
 		conda install -n stampede-clustergenomes-env -y -c anaconda perl
 		conda install -n stampede-clustergenomes-env -y -c bioconda mummer
-		cd cloned_tools || mkdir cloned_tools && cd cloned_tools
+		go_to_cloned_tools_folder
 		git clone https://bitbucket.org/MAVERICLab/stampede-clustergenomes.git
 
 		### to run stampede-clustergenomes is necessary to activate the env and run 
-		### perl $your_path/mudoger/cloned_tools/stampede-clustergenomes/bin/Stampede-clustergenomes.pl
+		### perl $your_path/mudoger_utils/cloned_tools/stampede-clustergenomes/bin/Stampede-clustergenomes.pl
 		
 		cd ..
 
@@ -127,7 +164,7 @@ do
 		conda create -y -n wish-env
 		conda install -n wish-env -y -c conda-forge openmp
 		conda install -n wish-env -y -c anaconda make cmake
-		cd cloned_tools || mkdir cloned_tools && cd cloned_tools
+		go_to_cloned_tools_folder
 		git clone https://github.com/soedinglab/WIsH.git
 		cd WIsH
 		conda activate wish-env
