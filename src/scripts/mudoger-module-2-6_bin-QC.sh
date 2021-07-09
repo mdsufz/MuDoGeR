@@ -8,7 +8,7 @@ output_results="$1"/metrics/checkm_qc
 # loading conda environment
 conda activate metawrap-env
 
-source Mudoger/installation/config 
+source Mudoger/installation/config_db
 
 extension="fa"
 checkm data setRoot "$CHECKM_DB"
