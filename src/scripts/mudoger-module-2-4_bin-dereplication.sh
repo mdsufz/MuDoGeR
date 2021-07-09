@@ -17,4 +17,7 @@ bininit="$(grep "$l" "$lib_folder"/prokaryotes/binning/unique_bins/md5_sum  | he
 binafter="$lib_folder"/prokaryotes/binning/unique_bins/"$lib_name"-bin."$bin_count".fa; 
 cp $bininit $binafter ;
 bin_count=$[$bin_count+1];
-done < "$1"/prokaryotes/binning/unique_bins/md5_unique ; 
+done < "$lib_folder"/prokaryotes/binning/unique_bins/md5_unique ; 
+
+rm -f "$lib_folder"/prokaryotes/binning/unique_bins/md5_unique
+rm -f "$lib_folder"/prokaryotes/binning/unique_bins/md5_sum
