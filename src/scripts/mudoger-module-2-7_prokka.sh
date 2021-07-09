@@ -8,7 +8,7 @@ output_results="$1"/metrics/prokka
 # loading conda environment
 conda activate metawrap-env
 
-source Mudoger/installation/config 
+source Mudoger/installation/config_db
 
 unset LD_PRELOAD
 
