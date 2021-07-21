@@ -1,4 +1,5 @@
 #!/bin/bash
+
 ################### 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY ###################
 ## load conda metawrap conda quality control
 conda activate khmer-env  # conda to be created
