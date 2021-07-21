@@ -74,7 +74,7 @@ bash -i MuDoGeR/src/scripts/mudoger-module-2-1_initial-binning.sh "$assembly"   
 				      "$memory"
 
 
- 2 BIN REFINEMENT USING METAWRAP FOR BACTERIA (50,10)
+# 2 BIN REFINEMENT USING METAWRAP FOR BACTERIA (50,10)
 bash -i MuDoGeR/src/scripts/mudoger-module-2-2_bin-ref-bacteria.sh "$libname_folder"/prokaryotes/binning/refinement-bac                \
                                        "$cores"                                                         \
                                        "$assembly"                                                       \
