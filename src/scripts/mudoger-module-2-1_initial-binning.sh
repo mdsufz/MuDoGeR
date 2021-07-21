@@ -19,4 +19,4 @@ memory=$6
 #met="$prok/metabat2_bins"
 #max="$prok/maxbin2_bins"
 
-metawrap binning -o "$output_folder" -t "$num_cores" -a "$assembly" --metabat2 --maxbin2 --concoct "$forward_library" "$reverse_library" -m "$memory" 
+metawrap binning -o "$output_folder" -t "$num_cores" -m "$memory" -a "$assembly" --metabat2 --maxbin2 --concoct "$forward_library" "$reverse_library"  
