@@ -34,7 +34,7 @@ while true; do
 		-o) output_folder=$2; shift 2;;
 		-t) num_cores=$2; shift 2;;
 		#-m) memory=$2; shift 2;;
-		--metaspades) metaspades="--metaspades"; shift 2;;
+		--metaspades) metaspades="--metaspades"; shift 1;;
 		-h | --help) help_message; exit 1; shift 1;;
 		--) help_message; exit 1; shift; break ;;
 		*) break;;
