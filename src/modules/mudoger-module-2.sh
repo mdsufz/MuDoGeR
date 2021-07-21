@@ -13,13 +13,51 @@
 #       N50, NUM_NUCLEOTIDE, NUM_CONTIGS, ATCG and more...
 
 
+help_message () {
+	echo ""
+	echo "Usage: bash -i MuDoGeR/src/modules/mudoger-module-2.sh -1 reads_1.fastq -2 reads_2.fastq -o output_dir -a assembly.fasta"
+	echo "Options:"
+	echo ""
+	echo "	-1 STR			forward fastq reads path"
+	echo "	-2 STR			reverse fastq reads path"
+	echo "	-a STR			assembly path"
+	echo "	-o STR			output directory path"
+#	echo "	-m INT			given Memory to the Assembly process in GB (default=10)"
+	echo "	-t INT			number of threads/cores (default=1)"
+	echo "	-h --help		print this message"
+	echo "";}
 
-libname_folder=$1              # output folder path 
-assembly=$2                    # path to the assembly file
-forward_library=$3             # forward library path /path/to/libname_1.fastq
-reverse_library=$4             # reverse library path. /path/to/libname_2.fastq
-#output_folder=$5              # master output folder to be created and defined by user
-cores=$5
+#DEFINE DEFAULT PARAMETERS
+
+# the option memory was desabled as we are using the memory predicted by script 1.2. We need to develop another way if it does not work with the amount of memory predicted. 
+
+output_folder=$(pwd) 		#output path for the downloaded sequences
+#memory=10			#given Memory to the Assembly process in GB
+num_cores=1 			#number of threads that is going to be used
+
+# loop through input params
+while true; do
+	case "$1" in
+		-1) forward_library=$2; shift 2;;
+		-2) reverse_library=$2; shift 2;;
+		-a) assembly=$2; shift 2;;
+		-o) libname_folder=$2; shift 2;;
+		-t) cores=$2; shift 2;;
+		#-m) memory=$2; shift 2;;
+		-h | --help) help_message; exit 1; shift 1;;
+		--) help_message; exit 1; shift; break ;;
+		*) break;;
+	esac
+done
+
+
+
+#libname_folder=$1              # output folder path 
+#assembly=$2                    # path to the assembly file
+#forward_library=$3             # forward library path /path/to/libname_1.fastq
+#reverse_library=$4             # reverse library path. /path/to/libname_2.fastq
+###########output_folder=$5              # master output folder to be created and defined by user
+#cores=$5
 
 
 #lib="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f2 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")"          # create output master
