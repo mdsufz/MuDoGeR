@@ -13,11 +13,12 @@ assembly=$3
 con=$4
 max=$5
 met=$6
+memory=$7
 
 source Mudoger/installation/config_db
 
 checkm data setRoot "$CHECKM_DB"
 
-metawrap bin_refinement -o "$output_folder" -t $cores -A "$con" -B "$met" -C "$max" -c 40 -x 30
+metawrap bin_refinement -o "$output_folder" -t $cores -A "$con" -B "$met" -C "$max" -c 40 -x 30 -m "$memory"
 
 conda deactivate
