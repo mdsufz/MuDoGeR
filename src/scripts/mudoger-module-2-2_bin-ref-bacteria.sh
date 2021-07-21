@@ -1,3 +1,4 @@
+#!/bin/bash
 ########## 2 PROKARYOTIC REFINEMENT FOR BACTERIA (50,10  ###################
 ## load conda metawrap conda quality control
 conda activate metawrap-env
