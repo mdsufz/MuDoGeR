@@ -5,7 +5,7 @@
 #     REFINEMENT-BACTERIA
 #     REFINEMENT-ARCHAEA
 #     BIN-FINAL-SET (REDUNDANCY REMOVAL)
-#   METRICS
+#     METRICS
 #     CHECKM
 #     GTDBtk
 #     PROKKA
@@ -31,7 +31,7 @@ help_message () {
 
 # the option memory was desabled as we are using the memory predicted by script 1.2. We need to develop another way if it does not work with the amount of memory predicted. 
 
-output_folder=$(pwd) 		#output path for the downloaded sequences
+libname_folder=$(pwd) 		#output path for the downloaded sequences
 memory=10			#given Memory to the Assembly process in GB
 num_cores=1 			#number of threads that is going to be used
 
@@ -75,7 +75,7 @@ bash -i MuDoGeR/src/scripts/mudoger-module-2-1_initial-binning.sh "$assembly"   
 
 
 # 2 BIN REFINEMENT USING METAWRAP FOR BACTERIA (50,10)
-bash -i MuDoGeR/src/scripts/mudoger-module-2-2_bin-ref-bacteria.sh "$libname_folder"/prokaryotes/binning/refinement-bac                \
+bash -i MuDoGeR/src/scripts/mudoger-module-2-2_bin-ref-bacteria.sh "$libname_folder"/prokaryotes/binning/refinement-bac  \
                                        "$cores"                                                         \
                                        "$assembly"                                                       \
                                        "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
@@ -85,7 +85,7 @@ bash -i MuDoGeR/src/scripts/mudoger-module-2-2_bin-ref-bacteria.sh "$libname_fol
               
 
 # 3 BIN REFINEMENT USING METAWRAP FOR ARCHAEA (40,30)
-bash -i MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname_folder"/prokaryotes/binning/refinement-arc                \
+bash -i MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname_folder"/prokaryotes/binning/refinement-arc \
                                      "$cores"                                                        \
                                      "$assembly"                                                       \
                                      "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
