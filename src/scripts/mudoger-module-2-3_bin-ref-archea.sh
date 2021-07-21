@@ -1,3 +1,4 @@
+#!/bin/bash
 
 ########## 2 PROKARYOTIC REFINEMENT FOR ARCHAEA (40,30)  ###################
 ## load conda metawrap conda quality control
