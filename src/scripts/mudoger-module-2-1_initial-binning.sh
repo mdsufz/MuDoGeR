@@ -1,3 +1,4 @@
+#!/bin/bash
 ########## 1 INITIAL PROKARYOTIC BINNING  ###################
 ## load conda metawrap conda quality control
 conda activate metawrap-env
