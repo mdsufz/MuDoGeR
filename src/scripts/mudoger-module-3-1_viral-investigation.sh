@@ -5,22 +5,22 @@
 # arguments declaration
 log="log_vir"                      # definition of path to QC log       
 assembly=$1
-forward_library = $2              # forward library path
-reverse_library = $3              # reverse library path
-output_folder = $4                # output folder to be created inside master output folder
-num_cores = $5                     # number of threads
+#forward_library = $2              # forward library path  # commented because reads are not used
+#reverse_library = $3              # reverse library path   # and thus not necessary
+output_folder = $2                # output folder to be created inside master output folder
+num_cores = $3                     # number of threads
 
 
 ############ VIBRANT
-module load GCC/7.3.0-2.30 OpenMPI/3.1.1 Python/3.6.6
-source /data/msb/tools/vibrant/env_vibrant_v1.2.1/bin/activate
-python /data/msb/tools/vibrant/VIBRANT/VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores
+conda activate vibrant-env
+python VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores
 # fetch results
 cat "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna | 
 grep ">" | sed "s/_fragment_1//g;s/>//g"   > "$output_folder"/VIBRANT_filtered_data.txt
 
 
-######### VIRFINDER 
+######### VIRFINDER
+conda activate virfinder-env
 mkdir -p "$output_folder"/virfinder
 Rscript /data/msb/tools/virfinder/virfinder_script.r "$output_folder"/virfinder "$assembly" "$output_folder"/virfinder/virfinder_output.tsv
 # fetch results
@@ -28,7 +28,7 @@ cat "$output_folder"/virfinder/virfinder_output.tsv | awk -F'\t' '{ if ( $4 <= 0
 awk -F'_' '{ if ( $4 >= 1000) print  }' | cut -f2 | sed "s/\"//g" > "$output_folder"/virfinder/virfinder_filtered_data.txt
 
 ######### VIRSORTER
-source activate /data/msb/tools/virsorter2/virsorter2-conda
+conda activate virsorter-env
 virsorter run all -i "$assembly" -w "$output_folder"/virsorter -j "$num_cores"
 # fetch results
 cat "$output_folder"/virsorter2/final-viral-combined.fa  | grep ">" | sed "s/_fragment_1//g;s/>//g" | 
