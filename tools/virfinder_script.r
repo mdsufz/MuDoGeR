@@ -2,11 +2,10 @@ args <- commandArgs(trailingOnly = TRUE)
 
 
 
-
-library(Rcpp,lib.loc="/data/msb/tools/virfinder/r_packages")
-library(qvalue,lib.loc="/data/msb/tools/virfinder/r_packages")
-library(glmnet,lib.loc="/data/msb/tools/virfinder/r_packages")
-library(VirFinder,lib.loc="/data/msb/tools/virfinder/r_packages")
+library(Rcpp)
+library(qvalue)
+library(glmnet)
+library(VirFinder)
 
 
 setwd(args[1])
