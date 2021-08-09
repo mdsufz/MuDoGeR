@@ -193,8 +193,9 @@ do
 		conda create -y -n checkv-env -c conda-forge -c bioconda checkv
 
 		#INSTALLING VCONTACT2
-		conda create -y -n vcontact2-env -c bioconda vcontact2 prodigal
+		conda create -y -n vcontact2-env -c bioconda vcontact2
 		conda activate vcontact2-env
+		conda install -c bioconda prodigal
 		conda update vcontact2
 		conda deactivate
 
