@@ -117,21 +117,27 @@ do
 	read choose
 	if [ $choose = y -o $choose = Y ];
 	then
-		#INSTALLING VIRSORTER
-		conda create --name virsorter-env -y -c bioconda mcl=14.137 muscle blast perl-bioperl perl-file-which hmmer=3.1b2 perl-parallel-forkmanager perl-list-moreutils diamond=0.9.14
-		go_to_cloned_tools_folder
-		git clone https://github.com/simroux/VirSorter.git
-		cd VirSorter/Scripts
-		conda install -n virsorter-env -y -c anaconda make
-		conda activate virsorter-env
-		make clean
-		make
+		#INSTALLING VIRSORTER 1
+		#conda create --name virsorter-env -y -c bioconda mcl=14.137 muscle blast perl-bioperl perl-file-which hmmer=3.1b2 perl-parallel-forkmanager perl-list-moreutils diamond=0.9.14
+		#go_to_cloned_tools_folder
+		#git clone https://github.com/simroux/VirSorter.git
+		#cd VirSorter/Scripts
+		#conda install -n virsorter-env -y -c anaconda make
+		#conda activate virsorter-env
+		#make clean
+		#make
+		#conda deactivate
+		#cp -r . $conda_path/envs/virsorter-env/bin
+		#cd ..
+		#cp wrapper_phage_contigs_sorter_iPlant.pl $conda_path/envs/virsorter-env/bin
+		#conda install -n virsorter-env -y -c bioconda metagene_annotator
+		#cd ../..
+		
+		#INSTALLING VIRSORTER 2
+		conda create --name virsorter2-env -y -c conda-forge bioconda virsorter=2
+		conda activate virsorter2-env
 		conda deactivate
-		cp -r . $conda_path/envs/virsorter-env/bin
-		cd ..
-		cp wrapper_phage_contigs_sorter_iPlant.pl $conda_path/envs/virsorter-env/bin
-		conda install -n virsorter-env -y -c bioconda metagene_annotator
-		cd ../..
+
 
 		#INSTALLING VIRFINDER
 		conda create -y -n virfinder-env
