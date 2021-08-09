@@ -1,12 +1,10 @@
 #!/bin/bash
-# VIRUS MODULES FILESYSTEM STRUCTURE
-# #!/bin/bash
-# PROKARYOTES MODULES FILESYSTEM STRUCTURE
-#   VIRAL RECOVERY TOOLS
+# VIRUSES MODULES FILESYSTEM STRUCTURE
+#   VIRAL INVESTIGATION
 #     VIRSORTER               submodule 3-1
 #     VIRFINDER               submodule 3-1
 #     VIBRANT                 submodule 3-1
-#     DATA CLEAN DEREPLICATION STEP (STAMPEDE CLUSTERGENOMES) submodule 3-1
+#     DEREPLICATION           submodule 3-1
 #   METRICS
 #     VCONTACT2 (TAXONOMY)     submodule 3-2
 #     WISH (HOST PREDICTION)   submodule 3-3
@@ -28,10 +26,10 @@ mkdir -p "$libname_folder"/viruses/investigation
 bash -i MuDoGeR/src/scripts/mudoger-module-3-1-viral_investigation.sh "$assembly" "$libname_folder"/viruses/investigation $cores
 
 # 2 viral vcontact2 (taxonomy)
-bash -i MuDoGeR/src/scripts/mudoger-module-3-2_vcontact2.sh "$libname"/viruses/dereplication/uvigs/uvigs_95-70.fna "$libname_folder"/viruses/taxonomy "$cores"
+bash -i MuDoGeR/src/scripts/mudoger-module-3-2_vcontact2.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna "$libname_folder"/viruses/taxonomy "$cores"
 
 # 3 host prediction
-bash -i MuDoGeR/src/scripts/mudoger-module-3-3_host-prediction.sh "$libname_folder"/viruses/dereplication/uvigs/uvigs_95-70.fna  "$libname_folder"/prokaryotes/binning/unique_bins "$libname"/viruses/dereplication/host_prediction
+bash -i MuDoGeR/src/scripts/mudoger-module-3-3_host-prediction.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna  "$libname_folder"/prokaryotes/binning/unique_bins "$libname"/viruses/dereplication/host_prediction
 
 # 4 vcheck
 bash -i MuDoGeR/src/scripts/mudoger-module-3-4_vcheck.sh "$libname_folder"/viruses/dereplication/uvigs/uvigs_95-70.fna "$libname_folder"/viruses/vcheck_quality
