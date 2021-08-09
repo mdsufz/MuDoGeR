@@ -160,11 +160,15 @@ do
 		conda install -n stampede-clustergenomes-env -y -c bioconda mummer
 		go_to_cloned_tools_folder
 		git clone https://bitbucket.org/MAVERICLab/stampede-clustergenomes.git
+		cd stampede-clustergenomes/bin
+		cp -r . $conda_path/envs/stampede-clustergenomes-env/bin
+		cd ../../..
+		conda activate stampede-clustergenomes-env
+		conda deactivate
 
 		### to run stampede-clustergenomes is necessary to activate the env and run 
 		### perl $your_path/mudoger_utils/cloned_tools/stampede-clustergenomes/bin/Stampede-clustergenomes.pl
-		
-		cd ..
+		#cd ..
 		
 		#INSTALLING FASTA EXTRACTION ENV
 		conda create -y -n extract-env python=2.7.5
