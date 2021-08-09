@@ -8,9 +8,9 @@
 #     VIBRANT                 submodule 3-1
 #     DATA CLEAN DEREPLICATION STEP (STAMPEDE CLUSTERGENOMES) submodule 3-1
 #   METRICS
-#     VCONTACT2 (TAXONOMY)    submodule 3-2
-#     VCHECK (QUALITY)        submodule 3-3
-#     WISH (HOST PREDICTION)  submodule 3-4
+#     VCONTACT2 (TAXONOMY)     submodule 3-2
+#     WISH (HOST PREDICTION)   submodule 3-3
+#     VCHECK (QUALITY)         submodule 3-4
 #     STATS (GENOMIC)
 #       N50, NUM_NUCLEOTIDE, NUM_CONTIGS, ATCG and more... submodule 3-5
 
