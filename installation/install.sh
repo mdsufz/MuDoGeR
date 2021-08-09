@@ -165,6 +165,11 @@ do
 		### perl $your_path/mudoger_utils/cloned_tools/stampede-clustergenomes/bin/Stampede-clustergenomes.pl
 		
 		cd ..
+		
+		#INSTALLING FASTA EXTRACTION ENV
+		conda create -y -n extract-env python=2.7.5
+		conda activate extract-env
+		conda deactivate
 
 		#INSTALLING WISH
 		conda create -y -n wish-env
