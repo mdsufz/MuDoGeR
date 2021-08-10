@@ -171,7 +171,7 @@ do
 		#cd ..
 		
 		#INSTALLING FASTA EXTRACTION ENV
-		conda create -y -n extract-env python=2.7.5
+		conda create -y -n extract-env -c anaconda python=2.7.5
 		conda activate extract-env
 		conda deactivate
 
