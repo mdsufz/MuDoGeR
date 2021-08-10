@@ -197,7 +197,7 @@ do
 		conda activate vcontact2-env
 		conda install -y -c bioconda vcontact2
 		conda install -y -c bioconda mcl blast diamond
-		conda install -c bioconda prodigal
+		conda install -y -c bioconda prodigal
 		conda update vcontact2
 		# Install ClusterONE
 		go_to_cloned_tools_folder
