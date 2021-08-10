@@ -13,7 +13,7 @@ num_cores=$3                     # number of threads
 
 ############ VIBRANT
 conda activate vibrant-env
-python VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores
+VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores
 # fetch results
 cat "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna | 
 grep ">" | sed "s/_fragment_1//g;s/>//g"   > "$output_folder"/VIBRANT_filtered_data.txt
@@ -22,7 +22,7 @@ conda deactivate
 ######### VIRFINDER
 conda activate virfinder-env
 mkdir -p "$output_folder"/virfinder
-Rscript MuDoGeR/tools/virfinder_script.r "$output_folder"/virfinder "$assembly" "$output_folder"/virfinder/virfinder_output.tsv
+Rscript MuDoGeR/tools/vir_virfinder_script.r "$output_folder"/virfinder "$assembly" "$output_folder"/virfinder/virfinder_output.tsv
 # fetch results
 cat "$output_folder"/virfinder/virfinder_output.tsv | awk -F'\t' '{ if ( $4 <= 0.01) print }' | 
 awk -F'_' '{ if ( $4 >= 1000) print  }' | cut -f2 | sed "s/\"//g" > "$output_folder"/virfinder/virfinder_filtered_data.txt
