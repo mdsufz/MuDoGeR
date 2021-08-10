@@ -5,10 +5,10 @@
 # arguments declaration
 log="log_vir"                      # definition of path to QC log       
 assembly=$1
-#forward_library = $2              # forward library path  # commented because reads are not used
-#reverse_library = $3              # reverse library path   # and thus not necessary
-output_folder = $2                # output folder to be created inside master output folder
-num_cores = $3                     # number of threads
+#forward_library=$2              # forward library path  # commented because reads are not used
+#reverse_library=$3              # reverse library path   # and thus not necessary
+output_folder=$2                # output folder to be created inside master output folder
+num_cores=$3                     # number of threads
 
 
 ############ VIBRANT
