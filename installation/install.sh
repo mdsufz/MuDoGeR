@@ -134,14 +134,14 @@ do
 		#cd ../..
 		
 		#INSTALLING VIRSORTER 2
-		conda create --name virsorter2-env -y -c conda-forge bioconda virsorter=2
-		conda activate virsorter2-env
-		conda deactivate
+		#conda create --name virsorter2-env -y -c conda-forge bioconda virsorter=2
+		#conda activate virsorter2-env
+		#conda deactivate
 
 
 		#INSTALLING VIRFINDER
-		conda create -y -n virfinder-env
-		conda install -n virfinder-env -y -c bioconda r-virfinder
+		#conda create -y -n virfinder-env
+		#conda install -n virfinder-env -y -c bioconda r-virfinder
 
 		#INSTALLING VIBRANT
 		conda create -y -n vibrant-env python=3
@@ -158,56 +158,56 @@ do
 		conda deactivate
 
 		#INSTALLING stampede-clustergenomes
-		conda create -y -n stampede-clustergenomes-env 
-		conda install -n stampede-clustergenomes-env -y -c anaconda perl
-		conda install -n stampede-clustergenomes-env -y -c bioconda mummer
-		go_to_cloned_tools_folder
-		git clone https://bitbucket.org/MAVERICLab/stampede-clustergenomes.git
-		cd stampede-clustergenomes/bin
-		cp -r . $conda_path/envs/stampede-clustergenomes-env/bin
-		cd ../../..
-		conda activate stampede-clustergenomes-env
-		conda deactivate
+		#conda create -y -n stampede-clustergenomes-env 
+		#conda install -n stampede-clustergenomes-env -y -c anaconda perl
+		#conda install -n stampede-clustergenomes-env -y -c bioconda mummer
+		#go_to_cloned_tools_folder
+		#git clone https://bitbucket.org/MAVERICLab/stampede-clustergenomes.git
+		#cd stampede-clustergenomes/bin
+		#cp -r . $conda_path/envs/stampede-clustergenomes-env/bin
+		#cd ../../..
+		#conda activate stampede-clustergenomes-env
+		#conda deactivate
 
 		### to run stampede-clustergenomes is necessary to activate the env and run 
 		### perl $your_path/mudoger_utils/cloned_tools/stampede-clustergenomes/bin/Stampede-clustergenomes.pl
 		#cd ..
 		
 		#INSTALLING FASTA EXTRACTION ENV
-		conda create -y -n extract-env -c anaconda python=2.7.5
-		conda activate extract-env
-		conda deactivate
+		#conda create -y -n extract-env -c anaconda python=2.7.5
+		#conda activate extract-env
+		#conda deactivate
 
 		#INSTALLING WISH
-		conda create -y -n wish-env
-		conda install -n wish-env -y -c conda-forge openmp
-		conda install -n wish-env -y -c anaconda make cmake
-		go_to_cloned_tools_folder
-		git clone https://github.com/soedinglab/WIsH.git
-		cd WIsH
-		conda activate wish-env
-		cmake .
-		make
-		conda deactivate wish-env
-		cp WIsH $conda_path/envs/wish-env/bin
-		cd ../..
+		#conda create -y -n wish-env
+		#conda install -n wish-env -y -c conda-forge openmp
+		#conda install -n wish-env -y -c anaconda make cmake
+		#go_to_cloned_tools_folder
+		#git clone https://github.com/soedinglab/WIsH.git
+		#cd WIsH
+		#conda activate wish-env
+		#cmake .
+		#make
+		#conda deactivate wish-env
+		#cp WIsH $conda_path/envs/wish-env/bin
+		#cd ../..
 
 		#INSTALLING CHECKV
-		conda create -y -n checkv-env -c conda-forge -c bioconda checkv
+		#conda create -y -n checkv-env -c conda-forge -c bioconda checkv
 
 		#INSTALLING VCONTACT2
-		conda create -y -n vcontact2-env python=3 -c bioconda vcontact2
-		conda activate vcontact2-env
-		conda install -y -c bioconda vcontact2
-		conda install -y -c bioconda mcl blast diamond
-		conda install -y -c bioconda prodigal
-		conda update vcontact2
-		# Install ClusterONE
-		go_to_cloned_tools_folder
-		wget http://www.paccanarolab.org/static_content/clusterone/cluster_one-1.0.jar
-		cp cluster_one-1.0.jar $conda_path/envs/vcontact2-env/bin
-		cd .. #CHECK FILE LOCATION
-		conda deactivate
+		#conda create -y -n vcontact2-env python=3 -c bioconda vcontact2
+		#conda activate vcontact2-env
+		#conda install -y -c bioconda vcontact2
+		#conda install -y -c bioconda mcl blast diamond
+		#conda install -y -c bioconda prodigal
+		#conda update vcontact2
+		## Install ClusterONE
+		#go_to_cloned_tools_folder
+		#wget http://www.paccanarolab.org/static_content/clusterone/cluster_one-1.0.jar
+		#cp cluster_one-1.0.jar $conda_path/envs/vcontact2-env/bin
+		#cd .. #CHECK FILE LOCATION
+		#conda deactivate
 
 		break
 	elif [ $choose = n -o $choose = N ]
