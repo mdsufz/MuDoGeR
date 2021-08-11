@@ -153,6 +153,7 @@ do
 		go_to_cloned_tools_folder
 		git clone https://github.com/AnantharamanLab/VIBRANT  
 		cp VIBRANT/databases/VIBRANT_setup.py $conda_path/envs/vibrant-env/bin
+		download-db.sh
 		pip install pickle-mixin
 		conda install -y -c bioconda vibrant==1.2.0
 		conda deactivate
