@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# CATURRITA
 ## Try to go the cloned_tools directory
 ## If cloned_tools folder does not exist, will
 ## create it and enter into this new directory
@@ -151,6 +150,9 @@ do
 		conda install -n vibrant-env -y -c conda-forge tar biopython matplotlib
 		conda install -n vibrant-env -y -c anaconda wget pandas seaborn numpy scikit-learn
 		conda activate vibrant-env
+		go_to_cloned_tools_folder
+		git clone https://github.com/AnantharamanLab/VIBRANT  
+		cp VIBRANT/databases/VIBRANT_setup.py $conda_path/envs/vibrant-env/bin
 		pip install pickle-mixin
 		conda install -y -c bioconda vibrant==1.2.0
 		conda deactivate
