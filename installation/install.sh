@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# CATURRITA
 ## Try to go the cloned_tools directory
 ## If cloned_tools folder does not exist, will
 ## create it and enter into this new directory
