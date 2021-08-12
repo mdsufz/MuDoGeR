@@ -134,7 +134,7 @@ do
 		#cd ../..
 		
 		#INSTALLING VIRSORTER 2
-		conda create --name virsorter2-env -y -c conda-forge bioconda virsorter=2
+		conda create -n virsorter2-env -c conda-forge -c bioconda virsorter=2
 		conda activate virsorter2-env
 		conda deactivate
 
