@@ -136,6 +136,7 @@ do
 		#INSTALLING VIRSORTER 2
 		conda create -n virsorter2-env -y -c conda-forge -c bioconda virsorter=2
 		conda activate virsorter2-env
+		virsorter setup -d $conda_path/envs/virsorter2-env/db -j 1
 		conda deactivate
 
 
