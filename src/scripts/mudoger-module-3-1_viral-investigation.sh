@@ -16,16 +16,18 @@ conda activate vibrant-env
 VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores
 # fetch results
 cat "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna | 
-grep ">" | sed "s/_fragment_1//g;s/>//g"   > "$output_folder"/VIBRANT_filtered_data.txt
+grep ">" | sed "s/_fragment_1//g;s/>//g"   > "$output_folder"/vibrant_filtered_data.txt
 conda deactivate
 
-######### VIRFINDER
+######### VIRFINDER           
 conda activate virfinder-env
+assembly_whole_path="$(realpath "$assembly")"
+output_file="$(realpath "$output_folder"/virfinder)"/virfinder_output.tsv
 mkdir -p "$output_folder"/virfinder
-Rscript MuDoGeR/tools/vir_virfinder_script.r "$output_folder"/virfinder "$assembly" "$output_folder"/virfinder/virfinder_output.tsv
+Rscript MuDoGeR/tools/vir_virfinder_script.r "$output_folder"/virfinder "$assembly_whole_path" "$output_file"
 # fetch results
 cat "$output_folder"/virfinder/virfinder_output.tsv | awk -F'\t' '{ if ( $4 <= 0.01) print }' | 
-awk -F'_' '{ if ( $4 >= 1000) print  }' | cut -f2 | sed "s/\"//g" > "$output_folder"/virfinder/virfinder_filtered_data.txt
+awk -F'_' '{ if ( $4 >= 1000) print  }' | cut -f2 | sed "s/\"//g" > "$output_folder"/virfinder_filtered_data.txt
 conda deactivate
 
 ######### VIRSORTER
