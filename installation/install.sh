@@ -141,23 +141,23 @@ do
 
 
 		#INSTALLING VIRFINDER
-		#conda create -y -n virfinder-env
-		#conda install -n virfinder-env -y -c bioconda r-virfinder
+		conda create -y -n virfinder-env
+		conda install -n virfinder-env -y -c bioconda r-virfinder
 
 		#INSTALLING VIBRANT
-		#conda create -y -n vibrant-env python=3
-		#conda install -n vibrant-env -y -c bioconda prodigal hmmer
-		#conda install -n vibrant-env -y -c ostrokach gzip
-		#conda install -n vibrant-env -y -c conda-forge tar biopython matplotlib
-		#conda install -n vibrant-env -y -c anaconda wget pandas seaborn numpy scikit-learn
-		#conda activate vibrant-env
-		#go_to_cloned_tools_folder
-		#git clone https://github.com/AnantharamanLab/VIBRANT  
-		#cp VIBRANT/databases/VIBRANT_setup.py $conda_path/envs/vibrant-env/bin
-		#download-db.sh
-		#pip install pickle-mixin
-		#conda install -y -c bioconda vibrant==1.2.0
-		#conda deactivate
+		conda create -y -n vibrant-env python=3
+		conda install -n vibrant-env -y -c bioconda prodigal hmmer
+		conda install -n vibrant-env -y -c ostrokach gzip
+		conda install -n vibrant-env -y -c conda-forge tar biopython matplotlib
+		conda install -n vibrant-env -y -c anaconda wget pandas seaborn numpy scikit-learn
+		conda activate vibrant-env
+		go_to_cloned_tools_folder
+		git clone https://github.com/AnantharamanLab/VIBRANT  
+		cp VIBRANT/databases/VIBRANT_setup.py $conda_path/envs/vibrant-env/bin
+		download-db.sh
+		pip install pickle-mixin
+		conda install -y -c bioconda vibrant==1.2.0
+		conda deactivate
 
 		#INSTALLING stampede-clustergenomes
 		#conda create -y -n stampede-clustergenomes-env 
