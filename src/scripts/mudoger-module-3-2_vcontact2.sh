@@ -22,7 +22,7 @@ prodigal -i "$uvigs" -o  "$folder_taxonomy"/viral_genomes.genes -a "$folder_taxo
 vcontact2_gene2genome -p "$folder_taxonomy"/viral_genomes.faa -o "$folder_taxonomy"/viral_genomes_g2g.csv -s 'Prodigal-FAA'
 
 # runs vcontact
-vcontact -t "$cores" --raw-proteins "$folder_taxonomy"/viral_genomes.faa --rel-mode 'Diamond' --proteins-fp "$folder_taxonomy"/viral_genomes_g2g.csv --db 'ProkaryoticViralRefSeq94-Merged' --pcs-mode MCL --vcs-mode ClusterONE --c1-bin cluster_one-1.0.jar --output-dir "$2"/vcontact-output
+vcontact2 -t "$cores" --raw-proteins "$folder_taxonomy"/viral_genomes.faa --rel-mode 'Diamond' --proteins-fp "$folder_taxonomy"/viral_genomes_g2g.csv --db 'ProkaryoticViralRefSeq94-Merged' --pcs-mode MCL --vcs-mode ClusterONE --c1-bin cluster_one-1.0.jar --output-dir "$2"/vcontact-output
 
 
 # process output of vcontact (TO BE DEFINED)
