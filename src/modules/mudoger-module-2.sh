@@ -65,13 +65,13 @@ done
 
 
 # 1 INITIAL BINNING USING METAWRAP (CONCOCT, METABAT2, MAXBIN2)
-mkdir -p "$libname_folder"/prokaryotes/binning
-bash -i MuDoGeR/src/scripts/mudoger-module-2-1_initial-binning.sh "$assembly"            \
-                                      "$forward_library"                                  \
-                                      "$reverse_library"                                   \
-                                      "$libname_folder"/prokaryotes/binning/initial-binning \
-                                      "$cores"                                               \  
-				      "$memory"
+#mkdir -p "$libname_folder"/prokaryotes/binning
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-1_initial-binning.sh "$assembly"            \
+#                                      "$forward_library"                                  \
+#                                      "$reverse_library"                                   \
+#                                      "$libname_folder"/prokaryotes/binning/initial-binning \
+#                                      "$cores"                                               \  
+#				      "$memory"
 
 
 # 2 BIN REFINEMENT USING METAWRAP FOR BACTERIA (50,10)
@@ -85,13 +85,13 @@ bash -i MuDoGeR/src/scripts/mudoger-module-2-2_bin-ref-bacteria.sh "$libname_fol
               
 
 # 3 BIN REFINEMENT USING METAWRAP FOR ARCHAEA (40,30)
-bash -i MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname_folder"/prokaryotes/binning/refinement-arc \
-                                     "$cores"                                                        \
-                                     "$assembly"                                                       \
-                                     "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
-                                     "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins   \
-                                     "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins   \
-				     "$memory" 
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname_folder"/prokaryotes/binning/refinement-arc \
+#                                     "$cores"                                                        \
+#                                     "$assembly"                                                       \
+#                                     "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
+#                                     "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins   \
+#                                     "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins   \
+#				     "$memory" 
               
 # 4 BIN REDUNANCY REMOVAL
 mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
