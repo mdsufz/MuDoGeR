@@ -16,9 +16,10 @@ max=$5
 met=$6
 memory=$7
 
-source Mudoger/installation/config_db
+source MuDoGeR/installation/config_db
 
-checkm data setRoot "$CHECKM_DB"
+#Run only once during database configuration
+#checkm data setRoot "$CHECKM_DB"
 
 metawrap bin_refinement -o "$output_folder" -t $cores -A "$con" -B "$met" -C "$max" -c 40 -x 30 -m "$memory"
 
