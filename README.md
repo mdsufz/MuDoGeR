@@ -1,7 +1,5 @@
  # Multi-Domain Genome Recovery (MuDoGeR)
  
-![ScreenShot](MuDoGeR/tree/master/flowcharts/fig1_20.5.21-min.jpg)
-
  
 ![ScreenShot](https://github.com/LuizMVB/MuDoGeR/blob/master/flowcharts/fig1_20.5.21.png)
 
@@ -11,11 +9,11 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a too
 
 ## MuDoGeR Overview
 
-* Instructions for using the **MuDoGeR** can be found in the following hyperlink: ![Manual MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
-* Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md).
-* Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: ![System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
-* Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: ![Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
-* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: ![Simplified usage of the MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#simplified-usage-of-the-mudoger).
+* Instructions for using the **MuDoGeR** can be found in the following hyperlink: ![Manual MuDoGeR](https://github.com/LuizMVB/MuDoGeR/blob/master/Manual_MuDoGeR.md).
+* Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: ![Module description](https://github.com/LuizMVB/MuDoGeR/blob/master/module_description.md).
+* Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: ![System requirements](https://github.com/LuizMVB/MuDoGeR/blob/master/README.md#system-requirements).
+* Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: ![Installation](https://github.com/LuizMVB/MuDoGeR/blob/master/README.md#installation).
+* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: ![Simplified usage of the MuDoGeR](https://github.com/LuizMVB/MuDoGeR/blob/master/README.md#simplified-usage-of-the-mudoger).
 
 ### Module 1: Pre-Processing 
 
