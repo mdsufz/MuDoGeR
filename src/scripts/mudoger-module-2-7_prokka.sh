@@ -12,7 +12,9 @@ conda activate prokka-env
 
 mkdir -p "$output_results"
 
+
+
 # for each bin, run prokka and dump results inside output folder
-for bin in "$input_bins_folder"/*fa ; do prokka "$bin" --cpus "$cores" --outdir "$output_results"; done
+for bin in "$input_bins_folder"/*fa ; do prokka "$bin" --cpus "$cores" --outdir "$output_results"/"$(echo "$bin" | rev | cut -f1 -d'/' | rev | sed "s/.fa//g")"; done
 
 conda deactivate
