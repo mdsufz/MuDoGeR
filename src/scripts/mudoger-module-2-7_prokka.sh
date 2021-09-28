@@ -15,4 +15,4 @@ mkdir -p "$output_results"
 # for each bin, run prokka and dump results inside output folder
 for bin in "$input_bins_folder"/*fa ; do prokka "$bin" --cpus "$cores" --outdir "$output_results"; done
 
-
+conda deactivate
