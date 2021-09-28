@@ -31,7 +31,6 @@ WIsH -c predict -g /path/to/splittedGenomes_20201218 -m "$output_folder"/modelDi
 
 #5 run R script to get nullparameters.tsv
 cp MuDoGeR/tools/computeNullParameters.R  "$output_folder"/nullmodels
-module load GCC/8.3.0 OpenMPI/3.1.4 R/4.0.0
 cd "$output_folder"/nullmodels
 Rscript computeNullParameters.R 
 
