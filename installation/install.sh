@@ -93,6 +93,15 @@ do
 		#INSTALLING GTDB-TK
 		conda create -y -n gtdbtk-env
 		conda install -n gtdbtk-env -y -c bioconda gtdbtk
+		
+		#INSTALLING PROKKA
+		conda create -y -n prokka-env
+		conda activate prokka-env
+		conda install -y -c conda-forge -c bioconda -c defaults prokka
+		#Test install
+		prokka
+		#Leave env
+		conda deactivate
 
 		#INSTALLING UBIN
 		go_to_cloned_tools_folder
