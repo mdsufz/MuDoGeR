@@ -6,7 +6,7 @@ input_bins_folder="$1"/binning/unique_bins
 output_results="$1"/metrics/prokka
 
 # loading conda environment
-conda activate metawrap-env
+conda activate prokka-env
 
 source MuDoGeR/installation/config_db
 
