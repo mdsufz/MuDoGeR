@@ -35,6 +35,6 @@ cd "$output_folder"/nullmodels
 Rscript computeNullParameters.R 
 
 #6 run prediction with null model
-/WIsH -t 20 -c predict -g "$output_folder"/viral_particles/ -m  "$output_folder"/modelDir -r "$output_folder"/output_results/ -b -n "$output_folder"/nullmodels/nullParameters.tsv
+WIsH -t 20 -c predict -g "$output_folder"/viral_particles/ -m  "$output_folder"/modelDir -r "$output_folder"/output_results/ -b -n "$output_folder"/nullmodels/nullParameters.tsv
 
 
