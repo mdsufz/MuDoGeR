@@ -41,7 +41,7 @@ conda activate virsorter2-env
 virsorter run all -i "$assembly" -w "$output_folder"/virsorter -j "$num_cores"
 # fetch results
 cat "$output_folder"/virsorter/final-viral-combined.fa  | grep ">" | sed "s/_fragment_1//g;s/>//g" | 
-cut -f1 -d "|" > "$output_folder"/virsorter/virsorter2_filtered_data.txt
+cut -f1 -d "|" > "$output_folder"/virsorter2_filtered_data.txt
 conda deactivate
 echo "-----> END VIRSORTER (3/4)"
 
