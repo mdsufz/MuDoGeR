@@ -21,7 +21,7 @@ mkdir -p "$output_folder"/nullmodels
 
 #2 cp and prepare data
 cp "$bins_folder"/*fa "$output_folder"/potential_host_genomes
-python MuDoGeR/tools/split-all-seq.py "$uvigs_file" "$output_folder"/viral_particles/viral-particle
+python3 MuDoGeR/tools/split-all-seq.py "$uvigs_file" "$output_folder"/viral_particles/viral-particle
 
 #3 build viral model
 WIsH -c build -g "$output_folder"/potential_host_genomes/ -m "$output_folder"/modelDir
