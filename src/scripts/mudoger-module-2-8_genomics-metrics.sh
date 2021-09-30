@@ -37,3 +37,19 @@ rm -fr temp;
 echo -e "$genome_name\t$X\t$Y\t$large_contig\t$N50\t$N90" >> $output_file
 done
 
+### summarize results in one table 
+
+echo -e "OTU\tcompleteness\tcontamination\tstr.heterogeneity\ttaxonomy\tgenome_size\t#scaffolds\tlargest_scaff\tN50\tN90\tprokka_known\tprokka_unknown" > genome_metrics.tsv ;
+for d in  binning/unique_bins/*;
+do bin="$(echo $d | rev | cut -f1 -d'/' | rev | sed "s/.fa//g")"; 
+echo -e "$bin\t\c"; 
+tax="$(grep "$bin" metrics/GTDBtk_taxonomy/*.summ* | cut -f2)";
+qual="$(grep "$bin" metrics/checkm_qc/outputcheckm.tsv | cut -f12,13,14 )";
+echo -e "$qual\t\c";
+echo -e "$tax\t\c";
+metrics="$(grep "$bin" metrics/prok_genomes_stats.tsv  | cut -f2-10)";
+echo -e "$metrics\t\c"; 
+prokka_known="$(tail -n +2 metrics/prokka/"$bin"/PROKKA*tsv  | grep -v hypothetical | wc -l )";
+prokka_unknown="$(tail -n +2 metrics/prokka/"$bin"/PROKKA*tsv  | grep hypothetical | wc -l )";
+echo -e "$prokka_known\t$prokka_unknown";done >> genome_metrics.tsv
+
