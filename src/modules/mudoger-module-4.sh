@@ -21,3 +21,12 @@ reverse_library = $4            # reverse library path. /path/to/libname_2.fastq
 output_folder = $5              # master output folder to be created and defined by user
 cores=1
 
+# 1 EUKREP CONTIG FILTERING AND  BINNING USING CONCOCT
+
+mkdir -p "$libname_folder"/eukaryotes/eukaryotic_contigs
+bash -i MuDoGeR/src/scripts/mudoger-module-4-1_eukrep-eukbin-filter.sh "$assembly"       \
+                                      "$forward_library"                                  \
+                                      "$reverse_library"                                   \
+                                      "$libname_folder"/prokaryotes/binning/initial-binning \
+                                      "$cores"                                               \  
+				                               "$memory"
