@@ -25,8 +25,8 @@ cores=1
 
 mkdir -p "$libname_folder"/eukaryotes/eukaryotic_contigs
 bash -i MuDoGeR/src/scripts/mudoger-module-4-1_eukrep-eukbin-filter.sh "$assembly"       \
-                                      "$forward_library"                                  \
-                                      "$reverse_library"                                   \
-                                      "$libname_folder"/prokaryotes/binning/initial-binning \
-                                      "$cores"                                               \  
+                                      "$forward_library"                                 \
+                                      "$reverse_library"                                 \
+                                      "$libname_folder"/eukaryotes			 \
+                                      "$cores"                                           \  
 				                               "$memory"
