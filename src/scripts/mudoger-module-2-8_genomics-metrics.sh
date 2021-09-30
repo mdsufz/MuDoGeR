@@ -9,7 +9,7 @@ output_file="$1"/metrics/stats.tsv
 #echo "genome_name""\t""number_of_scaffolds""\t""largest_scaffold_size""\t""N50"      "\t""N90"
 
 echo -e "genome_name\tgenome_size\tnumber_of_scaffolds\tlargest_scaffold_size\tN50\tN90" > $output_file
-for genome in "$1"/*;
+for genome in "$1"/binning/unique_bins/*.fa;
 do
 genome_name="$(echo "$genome" | rev | cut -f1 -d'/' | rev )";
 mkdir temp; #check location
