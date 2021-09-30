@@ -28,11 +28,11 @@ mkdir -p "$libname_folder"/viruses/investigation
 
 # 3 host prediction
 #commented for testing 
-bash -i MuDoGeR/src/scripts/mudoger-module-3-3_host-prediction.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna  "$libname_folder"/prokaryotes/binning/unique_bins "$libname_folder"/viruses/dereplication/host_prediction
+#bash -i MuDoGeR/src/scripts/mudoger-module-3-3_host-prediction.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna  "$libname_folder"/prokaryotes/binning/unique_bins "$libname_folder"/viruses/dereplication/host_prediction
 
 # 4 vcheck
 #commented for testing
-#bash -i MuDoGeR/src/scripts/mudoger-module-3-4_vcheck.sh "$libname_folder"/viruses/dereplication/uvigs/uvigs_95-70.fna "$libname_folder"/viruses/vcheck_quality
+bash -i MuDoGeR/src/scripts/mudoger-module-3-4_vcheck.sh "$libname_folder"/viruses/dereplication/uvigs/uvigs_95-70.fna "$libname_folder"/viruses/vcheck_quality
 
 # 5 uvigs metrics
 # bash -i MuDoGeR/src/scripts/mudoger-module-3-5_uvigs-metrics.sh
