@@ -6,7 +6,7 @@ output_checkv="$2"
 cores="$3"
 
 
-source activate conda-vcheck
+conda activate checkv-env
 export CHECKVDB=/data/msb/tools/vcheck/checkv-db-v0.6
 
 
