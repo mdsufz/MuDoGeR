@@ -5,7 +5,7 @@
 
 ##### Base of the script: https://github.com/hcdenbakker/N50.sh/blob/master/N50.sh
 
-output_file="$1"/metrics/stats.tsv
+output_file="$1"/metrics/prok_genomes_stats.tsv
 #echo "genome_name""\t""number_of_scaffolds""\t""largest_scaffold_size""\t""N50"      "\t""N90"
 
 echo -e "genome_name\tgenome_size\tnumber_of_scaffolds\tlargest_scaffold_size\tN50\tN90" > $output_file
