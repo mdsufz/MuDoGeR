@@ -244,7 +244,7 @@ do
 		#INSTALLING MARKER2
 
 		#INSTALLING BUSCO
-		conda create -n busco-env -c conda-forge -c bioconda busco=5.2.2
+		conda create -y -n busco-env -c conda-forge -c bioconda busco=5.2.2
 
 		#INSTALLING EUKCC
 		conda create -y -n eukcc-env -c bioconda -c conda-forge eukcc
