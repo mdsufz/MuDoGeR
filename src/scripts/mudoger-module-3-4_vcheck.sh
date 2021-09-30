@@ -7,7 +7,7 @@ cores="$3"
 
 
 conda activate checkv-env
-export CHECKVDB=/data/msb/tools/vcheck/checkv-db-v0.6
+export CHECKVDB=/mnt/databases/checkv/checkv-db-v1.0
 
 
 checkv end_to_end  "$input_uvigs" "$output_checkv" -t "$cores"
