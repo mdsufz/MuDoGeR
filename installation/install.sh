@@ -237,7 +237,7 @@ do
 	if [ $choose = y -o $choose = Y ];
 	then
 		#INSTALLING EUKREP
-		conda create -y -n eukrep-env -c bioconda eukrep
+		conda create -y -n eukrep-env -c bioconda scikit-learn==0.19.2  eukrep
 
 		#INSTALLING GENEMARKER-ES
 
