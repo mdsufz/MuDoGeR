@@ -24,10 +24,10 @@ metawrap binning -o "$output_folder" -t "$num_cores" -a "$output_folder"/eukaryo
 
 
 # keep bins bigger than 2,5mb
-mkdir filtered_bin_size 
+mkdir "$output_folder"/filtered_bin_size 
 for bin in concoct_binning/concoct_bins/*fa; 
 do  size="$(stat $bin | grep Size | cut -f1  | cut -f4 -d' ' )"; 
-if [ $size -gt 2500000 ]; then  cp "$bin" filtered_bin_size ; 
+if [ $size -gt 2500000 ]; then  cp "$bin" "$output_folder"/filtered_bin_size ; 
 else : ; fi ; 
 done
 
