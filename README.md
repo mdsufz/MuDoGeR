@@ -17,7 +17,7 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a too
 
 ### Module 1: Pre-Processing 
 
-![Screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/Module%201.PNG) 
+![Screenshot](https://github.com/LuizMVB/MuDoGeR/blob/c65d851f6439cc4eb8c18672afb5cde9a9165f40/flowcharts/Module%201.PNG) 
 
  The steps of Module 1 are shown in Figure 2 and they are excecuted with the scripts find in the following hyperlink: [Pre-Processing](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
  
@@ -33,7 +33,7 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a too
 
 ![screenshot](https://github.com/LuizMVB/MuDoGeR/blob/master/flowcharts/MODULE_2_21.5.21.png)
 
-The different steps of the Module 2 are shown in Figure 3 and they are excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
+The different steps of the Module 2 are shown in Figure 3 and they are excecuted with the scripts find in the following hyperlink: [Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/LuizMVB/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
 
  The steps of Module 2 can be summarized as following:
  
@@ -53,9 +53,9 @@ The different steps of the Module 2 are shown in Figure 3 and they are excecuted
     
 ### Module 3: Recovery of Uncultivated Viral Genomes 
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Module%203.png) 
+![](https://github.com/LuizMVB/MuDoGeR/blob/c65d851f6439cc4eb8c18672afb5cde9a9165f40/flowcharts/Module%203.png) 
 
-The steps of the Module 3  are shown in Figure 4 and they are excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes).
+The steps of the Module 3  are shown in Figure 4 and they are excecuted in the scripts find in the following hyperlink: [Pipelines for viral genomes recovery](https://github.com/LuizMVB/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes).
 
  The steps of Module 3 can be summarized as following: 
  
