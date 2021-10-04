@@ -15,10 +15,10 @@
 
 
 libname=$1
-assembly = $2
-forward_library = $3            # forward library path /path/to/libname_1.fastq
-reverse_library = $4            # reverse library path. /path/to/libname_2.fastq
-output_folder = $5              # master output folder to be created and defined by user
+assembly=$2
+forward_library=$3            # forward library path /path/to/libname_1.fastq
+reverse_library=$4            # reverse library path. /path/to/libname_2.fastq
+output_folder=$5              # master output folder to be created and defined by user
 cores=1
 
 # 1 EUKREP CONTIG FILTERING AND  BINNING USING CONCOCT
