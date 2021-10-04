@@ -2,8 +2,6 @@
 #!/bin/bash
 
 ########## 1 INITIAL PROKARYOTIC BINNING  ###################
-## load conda metawrap conda quality control
-conda activate metawrap-env
 
 # arguments declaration    
 assembly=$1                     # assembly fasta file
