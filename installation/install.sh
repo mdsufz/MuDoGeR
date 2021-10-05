@@ -240,6 +240,15 @@ do
 		conda create -y -n eukrep-env -c bioconda scikit-learn==0.19.2  eukrep
 
 		#INSTALLING GENEMARKER-ES
+		conda create  -y -n genemark-test
+		conda activate genemark-test
+		perl_mods=/home/centos/mudoger/perl_mods
+		perl -Mlocal::lib="$perl_mods" -MCPAN -e 'CPAN::install(YAML)'
+		perl -Mlocal::lib="$perl_mods" -MCPAN -e 'CPAN::install(Hash::Merge)'
+		perl -Mlocal::lib="$perl_mods" -MCPAN -e 'CPAN::install(Parallel::ForkManager)'
+		perl -Mlocal::lib="$perl_mods" -MCPAN -e 'CPAN::install(MCE::Mutex)'
+		perl -Mlocal::lib="$perl_mods" -MCPAN -e 'CPAN::install(Thread::Queue)'
+		conda deactivate
 
 		#INSTALLING MARKER2
 
