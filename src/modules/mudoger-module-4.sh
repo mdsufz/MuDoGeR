@@ -24,9 +24,19 @@ cores=1
 # 1 EUKREP CONTIG FILTERING AND  BINNING USING CONCOCT
 
 mkdir -p "$libname_folder"/eukaryotes/eukaryotic_contigs
-bash -i MuDoGeR/src/scripts/mudoger-module-4-1_eukrep-eukbin-filter.sh "$assembly"       \
+#bash -i MuDoGeR/src/scripts/mudoger-module-4-1_eukrep-eukbin-filter.sh "$assembly"       \
+#                                      "$forward_library"                                 \
+#                                      "$reverse_library"                                 \
+#                                      "$libname_folder"/eukaryotes			 \
+#                                      "$cores"                                           \  
+#				      "$memory"
+
+bash -i MuDoGeR/src/scripts/mudoger-module-4-2_genemark-maker-busco.sh "$assembly"       \
                                       "$forward_library"                                 \
                                       "$reverse_library"                                 \
                                       "$libname_folder"/eukaryotes			 \
                                       "$cores"                                           \  
-				                               "$memory"
+				      "$memory"
+
+
+
