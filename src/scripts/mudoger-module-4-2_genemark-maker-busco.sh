@@ -18,6 +18,20 @@ echo 'library 2:', reverse_library
 echo 'output folder:',output_folder
 echo 'num cores:',num_cores
 
+big_bins="$output_folder"/eukrep/filtered_bin_size
+annotation="$output_folder"/annotation
+
+echo big_bins, $big_bins
+
+mkdir -p "$annotation"
+
+for bin in "$big_bins"/*; 
+do echo $bin; 
+mkdir -p "$annotation"/"$(echo "$bin" | rev | cut -f1 -d'/' | rev  | sed "s/.fa//g")";
+cp $bin "$annotation"/"$(echo "$bin" | rev | cut -f1 -d'/' | rev  | sed "s/.fa//g")";
+cd "$annotation"/"$(echo "$bin" | rev | cut -f1 -d'/' | rev  | sed "s/.fa//g")";
+cd -;
+done
 
 
 echo 'END mudoger module 4-2'
