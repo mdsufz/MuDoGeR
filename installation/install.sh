@@ -202,6 +202,25 @@ do
 		#conda deactivate wish-env
 		#cp WIsH $conda_path/envs/wish-env/bin
 		#cd ../..
+		
+		current_path="$(pwd)"
+		cd  $conda_path/envs/wish-env/bin
+		cd ..
+		mkdir database
+		cd database
+		wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.1.genomic.fna.gz"
+		wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.2.1.genomic.fna.gz"
+		wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.3.1.genomic.fna.gz"
+		gunzip *
+		cat * > viral_refseq.fna
+		python3 /home/centos/mudoger/MuDoGeR/tools/split-all-seq.py viral_refseq.fna viruses
+		echo 'removing non-phages...'
+		for d in viruses-*fa; do if grep -q phage "$d"; then :; else rm -f "$d"; fi; done
+		echo 'done!'
+		mkdir phages
+		mv viruses* phages
+		rm viral.1.1.genomic.fna  viral.2.1.genomic.fna  viral.3.1.genomic.fna  viral_refseq.fna
+		cd $current_path
 
 		#INSTALLING CHECKV
 		#conda create -y -n checkv-env -c conda-forge -c bioconda checkv
