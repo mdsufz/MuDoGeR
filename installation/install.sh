@@ -207,18 +207,20 @@ do
 		#conda create -y -n checkv-env -c conda-forge -c bioconda checkv
 
 		#INSTALLING VCONTACT2
-		#conda create -y -n vcontact2-env python=3 -c bioconda vcontact2
-		#conda activate vcontact2-env
-		#conda install -y -c bioconda vcontact2
-		#conda install -y -c bioconda mcl blast diamond
-		#conda install -y -c bioconda prodigal
+		conda create -y -n vcontact2-env python=3 -c bioconda vcontact2
+		conda activate vcontact2-env
+		conda install -y -c bioconda vcontact2
+		conda install -y -c bioconda mcl blast diamond
+		conda install -y -c bioconda prodigal
+		conda install pandas==0.25.1
+		condas install numpy==1.16.5
 		#conda update vcontact2
 		## Install ClusterONE
-		#go_to_cloned_tools_folder
-		#wget http://www.paccanarolab.org/static_content/clusterone/cluster_one-1.0.jar
-		#cp cluster_one-1.0.jar $conda_path/envs/vcontact2-env/bin
-		#cd .. #CHECK FILE LOCATION
-		#conda deactivate
+		go_to_cloned_tools_folder
+		wget http://www.paccanarolab.org/static_content/clusterone/cluster_one-1.0.jar
+		cp cluster_one-1.0.jar $conda_path/envs/vcontact2-env/bin
+		cd .. #CHECK FILE LOCATION
+		conda deactivate
 
 		break
 	elif [ $choose = n -o $choose = N ]
