@@ -207,7 +207,7 @@ do
 		#conda create -y -n checkv-env -c conda-forge -c bioconda checkv
 
 		#INSTALLING VCONTACT2
-		conda create -y -n vcontact2-env python=3 -c bioconda vcontact2
+		conda create -y -n vcontact2-env python=3 -c bioconda 
 		conda activate vcontact2-env
 		conda install -y -c bioconda vcontact2
 		conda install -y -c bioconda mcl blast diamond
