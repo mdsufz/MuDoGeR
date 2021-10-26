@@ -20,7 +20,7 @@ read metadata
 echo 'path to metadata file: '$metadata
 echo 'reading '$metadata
 
-out="$(python mdcheck.py $metadata)"
+out="$(python MuDoGeR/tools/mdcheck.py $metadata)"
 
 echo -e "$out"
 
