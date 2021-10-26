@@ -14,7 +14,7 @@ echo -e "\t\t\t\tVersion 1.0.0\n\n"
 help_message () {
         echo""
         echo "Mudoger v=$VERSION"
-        echo "Usage: Mudoger [module]"
+        echo "Usage: mudoger [module]  -m metadata_table.tsv -o output_folder [module_options]"
         echo ""
         echo "  module_1              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
         echo "          read_qc               explanation (only this submodule)"
@@ -56,7 +56,39 @@ mkdir -p "$output_folder"
 echo '--> Folder created'
 
 
+###### loop around samples and run module 1
+#aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata.tsv"  | tr '\t' '\n' | sort |  uniq)"; 
+#for i in $aux; 
+#do echo "module 1 $i" "$output_folder"; 
+#done
 
+
+
+
+if [ "$1" = preprocess ]; then
+	echo mudoger preprocess ${@:2}
+	#time ${PIPES}/mudoger-module-1.sh ${@:2}
+        #
+        ###### loop around samples and run module 1
+        aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata.tsv"  | tr '\t' '\n' | sort |  uniq)"; 
+        for i in $aux; 
+        do echo "module 1 $i" "$output_folder"; 
+        time MuDoGeR/src/modules/mudoger-module-1.sh ${@:2}
+        done
+        
+#elif [ "$1" = phylosift ]; then
+        #echo phylosift.sh ${@:2}
+        #${PIPES}/phylosift.sh ${@:2}
+#	echo "The PHYLOSIFT module of metaWRAP is disabled in this version of metaWRAP"
+#	exit 1
+else
+        comm "Please select a proper module of MuDoGeR."
+        help_message
+        exit 1
+fi
+
+
+###### metawrap configuration
 
 config_file=$(which config-metawrap)
 source $config_file #### DATABASES!!!
