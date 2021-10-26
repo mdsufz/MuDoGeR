@@ -81,7 +81,7 @@ if [ "$active_module" = preprocess ]; then
 	do 
 	r1="$(cat "$md" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_1.f')"; 
 	r2="$(cat "$md" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_2.f')";
-	time $module_script -1 $r1 -2 $r2 -o $output_folder/$i ;
+	time $module_script -1 $r1 -2 $r2 -o $output_folder/$i -t $num_cores;
 	done
 
 else
@@ -92,30 +92,30 @@ fi
 
 
 ###### metawrap configuration
-
-config_file=$(which config-metawrap)
-source $config_file #### DATABASES!!!
-if [[ $? -ne 0 ]]; then
-        echo "cannot find config-metawrap file - something went wrong with the installation!"
-        exit 1
-fi
-if [ "$1" = module_1 ]; then
-        echo mudoger module_1 ${@:2}
-        time ${PIPES}/mudoger-module-1.sh ${@:2}
-        exit 0
-elif [ "$1" = read_qc ]; then
-        time ${PIPES}/read_qc.sh ${@:2}
-        exit 0
-elif [ "$1" = mem_pred ]; then
-        time ${PIPES}/mem_pred.sh ${@:2}
-        exit 0
-elif [ "$1" = assembly ]; then
-        time ${PIPES}/assembly.sh ${@:2}
-        exit 0
-        #### ADD THE REMAINING MODULES AND SUBMODULES
-else
-        comm "Please select a proper module of metaWRAP."
-        help_message
-        exit 1
-fi
+#exit 0
+#config_file=$(which config-metawrap)
+#source $config_file #### DATABASES!!!
+#if [[ $? -ne 0 ]]; then
+#        echo "cannot find config-metawrap file - something went wrong with the installation!"
+#        exit 1
+#fi
+#if [ "$1" = module_1 ]; then
+#        echo mudoger module_1 ${@:2}
+#        time ${PIPES}/mudoger-module-1.sh ${@:2}
+#        exit 0
+#elif [ "$1" = read_qc ]; then
+#        time ${PIPES}/read_qc.sh ${@:2}
+#        exit 0
+#elif [ "$1" = mem_pred ]; then
+#        time ${PIPES}/mem_pred.sh ${@:2}
+#        exit 0
+#elif [ "$1" = assembly ]; then
+#        time ${PIPES}/assembly.sh ${@:2}
+#        exit 0
+#        #### ADD THE REMAINING MODULES AND SUBMODULES
+#else
+#        comm "Please select a proper module of metaWRAP."
+#        help_message
+#        exit 1
+#fi
 
