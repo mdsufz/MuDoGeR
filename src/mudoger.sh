@@ -14,7 +14,7 @@ echo -e "\t\t\t\tVersion 1.0.0\n\n"
 help_message () {
         echo""
         echo "Mudoger v=$VERSION"
-        echo "Usage: mudoger [module]  -m metadata_table.tsv -o output_folder [module_options]"
+        echo "Usage: mudoger [module]  --meta metadata_table.tsv -o output_folder [module_options]"
         echo ""
         echo "  module_1              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
         echo "          read_qc               explanation (only this submodule)"
@@ -38,6 +38,23 @@ help_message () {
   
 mudoger_lettering
 
+
+###################################### while
+while true; do
+	case "$1" in
+		--meta) metadata_table=$2; shift 2;;
+		#-2) reverse_library=$2; shift 2;;
+		#-o) output_folder=$2; shift 2;;
+		#-t) num_cores=$2; shift 2;;
+		#-m) memory=$2; shift 2;;
+		#--metaspades) metaspades="--metaspades"; shift 1;;
+		#-h | --help) help_message; exit 1; shift 1;;
+		#--) help_message; exit 1; shift; break ;;
+		#*) break;;
+	esac
+done
+############################# end 
+
 echo '--> Please provide a path to the metadata file. ($ mudoger -help -md) for explanation'
 read metadata
 echo 'path to metadata file: '$metadata
@@ -56,31 +73,21 @@ mkdir -p "$output_folder"
 echo '--> Folder created'
 
 
-###### loop around samples and run module 1
-#aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata.tsv"  | tr '\t' '\n' | sort |  uniq)"; 
-#for i in $aux; 
-#do echo "module 1 $i" "$output_folder"; 
-#done
-
-
+md="metadata.tsv" 
 
 
 if [ "$1" = preprocess ]; then
 	echo mudoger preprocess ${@:2}
-	#time ${PIPES}/mudoger-module-1.sh ${@:2}
-        #
+	module=MuDoGeR/src/modules/mudoger-module-1.sh
         ###### loop around samples and run module 1
-        aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata.tsv"  | tr '\t' '\n' | sort |  uniq)"; 
-        for i in $aux; 
-        do echo "module 1 $i" "$output_folder"; 
-        time MuDoGeR/src/modules/mudoger-module-1.sh ${@:2}
-        done
-        
-#elif [ "$1" = phylosift ]; then
-        #echo phylosift.sh ${@:2}
-        #${PIPES}/phylosift.sh ${@:2}
-#	echo "The PHYLOSIFT module of metaWRAP is disabled in this version of metaWRAP"
-#	exit 1
+	aux="$(while read l ; do echo "$l" | cut -f1; done < "$md"  | tr '\t' '\n' | sort |  uniq)";
+	for i in $aux; 
+	do 
+	r1="$(cat "$md" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_1.f')"; 
+	r2="$(cat "$md" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_2.f')";
+	time $module -1 $r1 -2 $r2 -o $output_folder/$i ;
+	done
+
 else
         comm "Please select a proper module of MuDoGeR."
         help_message
