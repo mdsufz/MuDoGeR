@@ -38,21 +38,23 @@ help_message () {
   
 mudoger_lettering
 
-
+num_cores=10
+megahit=""
+metaspades=""
 ###################################### while
 while true; do
 	case "$1" in
 		--meta) metadata_table=$2; shift 2;;
-		#-2) reverse_library=$2; shift 2;;
-		#-o) output_folder=$2; shift 2;;
-		#-t) num_cores=$2; shift 2;;
+		-o) output_folder=$2; shift 2;;
+		-t) num_cores=$2; shift 2;;
 		#-m) memory=$2; shift 2;;
-		#--metaspades) metaspades="--metaspades"; shift 1;;
-		#-h | --help) help_message; exit 1; shift 1;;
-		#--) help_message; exit 1; shift; break ;;
-		#*) break;;
+		--metaspades) metaspades="--metaspades"; shift 1;;
+		-h | --help) help_message; exit 1; shift 1;;
+		--) help_message; exit 1; shift; break ;;
+		*) break;;
 	esac
 done
+
 ############################# end 
 
 echo '--> Please provide a path to the metadata file. ($ mudoger -help -md) for explanation'
