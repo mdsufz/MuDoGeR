@@ -76,7 +76,7 @@ if [ "$active_module" = preprocess ]; then
 	echo mudoger preprocess ${@:2}
 	module_script=MuDoGeR/src/modules/mudoger-module-1.sh
         ###### loop around samples and run module 1
-	aux="$(while read l ; do echo "$l" | cut -f1; done < "$md"  | tr '\t' '\n' | sort |  uniq)";
+	aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
 	for i in $aux; 
 	do 
 	r1="$(cat "$md" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_1.f')"; 
