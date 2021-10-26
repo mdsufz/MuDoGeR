@@ -42,9 +42,9 @@ while true; do
 done
 
 
-lib="$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )"          # create output master
+#lib="$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )"          # create output master
 
-master_output_dir="$output_folder"/"$lib"
+master_output_dir="$output_folder"
 
 mkdir -p "$master_output_dir"
 
