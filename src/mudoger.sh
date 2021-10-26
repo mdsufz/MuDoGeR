@@ -14,21 +14,21 @@ echo -e "\t\t\t\tVersion 1.0.0\n\n"
 help_message () {
         echo""
         echo "Mudoger v=$VERSION"
-        echo "Usage: mudoger [module]  --meta metadata_table.tsv -o output_folder [module_options]"
+        echo "Usage: mudoger --module module_name --meta metadata_table.tsv -o output_folder [module_options]"
         echo ""
-        echo "  module_1              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
+        echo "  preprocess              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
         echo "          read_qc               explanation (only this submodule)"
         echo "          mem_pred   explanation (only this submodule)"
         echo "          assembly              explanation (only this submodule)"
         
-        echo "  module_2              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
+        echo "  prokaryotes              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
         echo "          initial_binning       explanation (only this submodule)"
   
-        echo "  module_3              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
+        echo "  viruses              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
                
-        echo "  module_4              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
+        echo "  eukaryotes              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
      
-        echo "  module_5              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
+        echo "  abundance_tables              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
     
         echo ""
         echo "  --help | -h             show this help message"
@@ -41,9 +41,11 @@ mudoger_lettering
 num_cores=10
 megahit=""
 metaspades=""
+
 ###################################### while
 while true; do
 	case "$1" in
+		--module) active_module=$2; shift 2;;
 		--meta) metadata_table=$2; shift 2;;
 		-o) output_folder=$2; shift 2;;
 		-t) num_cores=$2; shift 2;;
@@ -55,39 +57,31 @@ while true; do
 	esac
 done
 
-############################# end 
+#############################  
 
-echo '--> Please provide a path to the metadata file. ($ mudoger -help -md) for explanation'
-read metadata
-echo 'path to metadata file: '$metadata
-echo 'reading '$metadata
-out="$(python MuDoGeR/tools/mdcheck.py $metadata)"
-echo -e "$out"
+
 ### check if there was any problem with metadata file
+out="$(python MuDoGeR/tools/mdcheck.py $metadata_table)"
+echo -e "$out"
 if [[ $out =~ "Closing" ]]; then
    echo -e "\n TIP: run \"mudoger -h\" for help "
    exit 0
 fi
+#############################
 # if everything is okay, proceeds with asking user for output folder
-echo '--> Please provide a path for the output folder. If it does not exist, it will be created'
-read output_folder
 mkdir -p "$output_folder"
-echo '--> Folder created'
 
 
-md="metadata.tsv" 
-
-
-if [ "$1" = preprocess ]; then
+if [ "$active_module" = preprocess ]; then
 	echo mudoger preprocess ${@:2}
-	module=MuDoGeR/src/modules/mudoger-module-1.sh
+	module_script=MuDoGeR/src/modules/mudoger-module-1.sh
         ###### loop around samples and run module 1
 	aux="$(while read l ; do echo "$l" | cut -f1; done < "$md"  | tr '\t' '\n' | sort |  uniq)";
 	for i in $aux; 
 	do 
 	r1="$(cat "$md" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_1.f')"; 
 	r2="$(cat "$md" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_2.f')";
-	time $module -1 $r1 -2 $r2 -o $output_folder/$i ;
+	time $module_script -1 $r1 -2 $r2 -o $output_folder/$i ;
 	done
 
 else
