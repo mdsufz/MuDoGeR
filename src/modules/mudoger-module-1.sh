@@ -57,7 +57,13 @@ else bash -i MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$r
 fi
 
 # 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY
-bash -i MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/khmer
+if [ -f  "$master_output_dir"/khmer/metaspades_prediction.tsv ]; 
+then echo "Memory prediction is done. Please check here: "$master_output_dir"/khmer"
+else echo "run khmer pred"
+#bash -i MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/khmer
+fi
+
+
 
 # 3 ASSEMBLY
 #bash -i MuDoGeR/src/scripts/mudoger-module-1-3_assembly.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/qc/final_pure_reads_2.fastq  "$master_output_dir" "$num_cores" "$metaspades" #"$memory"
