@@ -65,6 +65,7 @@ do
 		conda activate khmer-env
 		pip install khmer==2.1.1
 		conda install -y -c conda-forge r-base
+		conda install -y -c conda-forge readline=6.2
 		conda deactivate
 		break
 	elif [ $choose = n -o $choose = N ]
