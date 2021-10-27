@@ -52,15 +52,12 @@ mkdir -p "$master_output_dir"
 
 # 1 QUALITY CONTROL (QC) OF READS
 if [ -f  "$master_output_dir"/qc/final_pure_reads_1.fastq ]; 		# if one of the outputs is already there, do not run
-then echo "Reads were qc'ed. Please check here:"$master_output_dir"/qc"
+then echo "Reads were already qc'ed. Please check here: "$master_output_dir"/qc"
 else bash -i MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$master_output_dir"/qc "$num_cores"
 fi
-#exit 0
-
-#bash -i MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$master_output_dir"/qc "$num_cores"
 
 # 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY
-#bash -i MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/khmer
+bash -i MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/khmer
 
 # 3 ASSEMBLY
 #bash -i MuDoGeR/src/scripts/mudoger-module-1-3_assembly.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/qc/final_pure_reads_2.fastq  "$master_output_dir" "$num_cores" "$metaspades" #"$memory"
