@@ -51,13 +51,19 @@ mkdir -p "$master_output_dir"
 ########## CHANGE the path to the scripts below to a variable Ex: "$mudoger"/src...
 
 # 1 QUALITY CONTROL (QC) OF READS
-bash -i MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$master_output_dir"/qc "$num_cores"
+if [ -f  "$master_output_dir"/qc/final_pure_reads_1.fastq ]; 
+then echo "reads were qc'ed";
+else echo "run qc"
+fi
+exit 0
+
+#bash -i MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$master_output_dir"/qc "$num_cores"
 
 # 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY
-bash -i MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/khmer
+#bash -i MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/khmer
 
 # 3 ASSEMBLY
-bash -i MuDoGeR/src/scripts/mudoger-module-1-3_assembly.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/qc/final_pure_reads_2.fastq  "$master_output_dir" "$num_cores" "$metaspades" #"$memory"
+#bash -i MuDoGeR/src/scripts/mudoger-module-1-3_assembly.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/qc/final_pure_reads_2.fastq  "$master_output_dir" "$num_cores" "$metaspades" #"$memory"
 
 
 
