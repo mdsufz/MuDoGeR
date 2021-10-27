@@ -51,9 +51,9 @@ mkdir -p "$master_output_dir"
 ########## CHANGE the path to the scripts below to a variable Ex: "$mudoger"/src...
 
 # 1 QUALITY CONTROL (QC) OF READS
-if [ -f  "$master_output_dir"/qc/final_pure_reads_1.fastq ]; 
-then echo "reads were qc'ed";
-else echo "run qc"
+if [ -f  "$master_output_dir"/qc/final_pure_reads_1.fastq ]; 		# if one of the outputs is already there, do not run
+then echo "Reads were qc'ed. Please check here:"$master_output_dir"/qc"
+else bash -i MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$master_output_dir"/qc "$num_cores"
 fi
 #exit 0
 
