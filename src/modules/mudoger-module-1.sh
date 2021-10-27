@@ -55,7 +55,7 @@ if [ -f  "$master_output_dir"/qc/final_pure_reads_1.fastq ];
 then echo "reads were qc'ed";
 else echo "run qc"
 fi
-exit 0
+#exit 0
 
 bash -i MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$master_output_dir"/qc "$num_cores"
 
