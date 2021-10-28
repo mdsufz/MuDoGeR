@@ -51,7 +51,7 @@ while true; do
 done
 
 
-print 'running'
+echo 'running'
 #libname_folder=$1              # output folder path 
 #assembly=$2                    # path to the assembly file
 #forward_library=$3             # forward library path /path/to/libname_1.fastq
@@ -65,13 +65,13 @@ print 'running'
 
 
 # 1 INITIAL BINNING USING METAWRAP (CONCOCT, METABAT2, MAXBIN2)
-#mkdir -p "$libname_folder"/prokaryotes/binning
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-1_initial-binning.sh "$assembly"            \
-#                                      "$forward_library"                                  \
-#                                      "$reverse_library"                                   \
-#                                      "$libname_folder"/prokaryotes/binning/initial-binning \
-#                                      "$cores"                                               \  
-#				      "$memory"
+mkdir -p "$libname_folder"/prokaryotes/binning
+bash -i MuDoGeR/src/scripts/mudoger-module-2-1_initial-binning.sh "$assembly"            \
+                                      "$forward_library"                                  \
+                                      "$reverse_library"                                   \
+                                      "$libname_folder"/prokaryotes/binning/initial-binning \
+                                      "$cores"                                               \  
+				      "$memory"
 
 
 # 2 BIN REFINEMENT USING METAWRAP FOR BACTERIA (50,10)
