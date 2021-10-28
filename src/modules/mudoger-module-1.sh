@@ -66,7 +66,7 @@ fi
 
 
 # 3 ASSEMBLY
-if [ -f  "$master_output_dir"/assembly/final_assembly.fasta]; 
+if [ -f  "$master_output_dir"/assembly/final_assembly.fasta ]; 
 then echo "Assembly is reading. Please check here: "$master_output_dir"/assembly"
 else echo "run assembly"
 #bash -i MuDoGeR/src/scripts/mudoger-module-1-3_assembly.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/qc/final_pure_reads_2.fastq  "$master_output_dir" "$num_cores" "$metaspades" #"$memory"
