@@ -79,13 +79,18 @@ bash -i MuDoGeR/src/scripts/mudoger-module-2-1_initial-binning.sh "$assembly"   
 fi
 
 # 2 BIN REFINEMENT USING METAWRAP FOR BACTERIA (50,10)
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-2_bin-ref-bacteria.sh "$libname_folder"/prokaryotes/binning/refinement-bac  \
-#                                       "$cores"                                                         \
-#                                       "$assembly"                                                       \
-#                                       "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
-#                                       "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins  \
-#                                       "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins  \
-#                                       "$memory"          
+if [ -f  "$libname_folder"/prokaryotes/binning/refinement-bac/metawrap_40_30_bins.stats ];
+then echo "-> Bacterial refinement is done. Please check here: "$libname_folder"/prokaryotes/binning/refinement-bac"
+else
+echo "-> Running bacterial refinement"
+bash -i MuDoGeR/src/scripts/mudoger-module-2-2_bin-ref-bacteria.sh "$libname_folder"/prokaryotes/binning/refinement-bac  \
+                                       "$cores"                                                         \
+                                       "$assembly"                                                       \
+                                       "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
+                                       "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins  \
+                                       "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins  \
+                                       "$memory"       
+fi
               
 
 # 3 BIN REFINEMENT USING METAWRAP FOR ARCHAEA (40,30)
