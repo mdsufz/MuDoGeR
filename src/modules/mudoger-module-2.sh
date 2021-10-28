@@ -65,8 +65,8 @@ echo 'running'
 
 
 # 1 INITIAL BINNING USING METAWRAP (CONCOCT, METABAT2, MAXBIN2)
-if [ -d  "$master_output_dir"/prokaryotes/initial-binning/concoct_bins ]; 		# if one of the outputs is already there, do not run
-then echo "-> Binning already done. Please check here: "$master_output_dir"/prokaryotes/initial-binning"
+if [ -d  "$master_output_dir"/prokaryotes/binning/initial-binning/concoct_bins ]; 		# if one of the outputs is already there, do not run
+then echo "-> Binning already done. Please check here: "$master_output_dir"/prokaryotes/binning/initial-binning"
 else
 echo "-> Running initial binning"
 mkdir -p "$libname_folder"/prokaryotes/binning
