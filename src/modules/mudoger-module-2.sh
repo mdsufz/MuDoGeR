@@ -51,7 +51,7 @@ while true; do
 done
 
 
-
+print 'running'
 #libname_folder=$1              # output folder path 
 #assembly=$2                    # path to the assembly file
 #forward_library=$3             # forward library path /path/to/libname_1.fastq
