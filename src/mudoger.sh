@@ -86,7 +86,7 @@ if [ "$active_module" = preprocess ]; then
 	#echo 'test'
 	done
 	
-if [ "$active_module" = prokaryotes ]; then
+elif [ "$active_module" = prokaryotes ]; then
 	echo mudoger prokaryotes ${@:2}
 	module_script=MuDoGeR/src/modules/mudoger-module-2.sh
         ###### loop around samples and run module 1
@@ -107,7 +107,7 @@ fi
 
 
 ###### metawrap configuration
-#exit 0
+exit 0
 #config_file=$(which config-metawrap)
 #source $config_file #### DATABASES!!!
 #if [[ $? -ne 0 ]]; then
