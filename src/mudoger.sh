@@ -95,8 +95,8 @@ elif [ "$active_module" = prokaryotes ]; then
 	do 
 	r1="$(cat "$metadata_table" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_1.f')"; 
 	r2="$(cat "$metadata_table" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_2.f')";
-	#ime $module_script -1 $r1 -2 $r2 -o $output_folder/$i -t $num_cores;
-	echo $module_script -1 $r1 -2 $r2 -a $output_folder/$i/assembly/final_assembly.fasta -o $output_folder/$i -t $num_cores;
+	time  $module_script -1 $r1 -2 $r2 -a $output_folder/$i/assembly/final_assembly.fasta -o $output_folder/$i -t $num_cores;
+	#echo $module_script -1 $r1 -2 $r2 -a $output_folder/$i/assembly/final_assembly.fasta -o $output_folder/$i -t $num_cores;
 	#echo 'test'
 	done
 else
