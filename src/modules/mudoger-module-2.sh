@@ -79,7 +79,7 @@ bash -i MuDoGeR/src/scripts/mudoger-module-2-1_initial-binning.sh "$assembly"   
 fi
 
 # 2 BIN REFINEMENT USING METAWRAP FOR BACTERIA (50,10)
-if [ -f  "$libname_folder"/prokaryotes/binning/refinement-bac/metawrap_40_30_bins.stats ];
+if [ -f  "$libname_folder"/prokaryotes/binning/refinement-bac/metawrap_50_10_bins.stats ];
 then echo "-> Bacterial refinement is done. Please check here: "$libname_folder"/prokaryotes/binning/refinement-bac"
 else
 echo "-> Running bacterial refinement"
@@ -94,6 +94,10 @@ fi
               
 
 # 3 BIN REFINEMENT USING METAWRAP FOR ARCHAEA (40,30)
+if [ -f  "$libname_folder"/prokaryotes/binning/refinement-bac/metawrap_40_30_bins.stats ];
+then echo "-> Archaeal refinement is done. Please check here: "$libname_folder"/prokaryotes/binning/refinement-arc"
+else
+echo "-> Running archaeal refinement"
 bash -i MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname_folder"/prokaryotes/binning/refinement-arc \
                                      "$cores"                                                        \
                                      "$assembly"                                                       \
@@ -101,6 +105,9 @@ bash -i MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname_folde
                                      "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins   \
                                      "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins   \
 				     "$memory" 
+fi
+
+
               
 # 4 BIN REDUNANCY REMOVAL
 #mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
