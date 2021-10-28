@@ -52,14 +52,14 @@ mkdir -p "$master_output_dir"
 
 # 1 QUALITY CONTROL (QC) OF READS
 if [ -f  "$master_output_dir"/qc/final_pure_reads_1.fastq ]; 		# if one of the outputs is already there, do not run
-then echo "Reads were already qc'ed. Please check here: "$master_output_dir"/qc"
+then echo "-> Reads were already qc'ed. Please check here: "$master_output_dir"/qc"
 else echo "-> Running QC"
 bash -i MuDoGeR/src/scripts/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$master_output_dir"/qc "$num_cores"
 fi
 
 # 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY
 if [ -f  "$master_output_dir"/khmer/metaspades_prediction.tsv ]; 
-then echo "Memory prediction is done. Please check here: "$master_output_dir"/khmer"
+then echo "-> Memory prediction is done. Please check here: "$master_output_dir"/khmer"
 else echo "-> Running khmer pred"
 bash -i MuDoGeR/src/scripts/mudoger-module-1-2_kmermempred.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/khmer
 fi
@@ -73,5 +73,5 @@ else echo "-> Running assembly"
 #bash -i MuDoGeR/src/scripts/mudoger-module-1-3_assembly.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/qc/final_pure_reads_2.fastq  "$master_output_dir" "$num_cores" "$metaspades" #"$memory"
 fi
 
-echo "-> module 1 (preprocess and assembly) is finished
+echo "-> module 1 (preprocess and assembly) is finished"
 
