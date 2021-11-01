@@ -83,13 +83,13 @@ if [ -f  "$libname_folder"/prokaryotes/binning/refinement-bac/metawrap_50_10_bin
 then echo "-> Bacterial refinement is done. Please check here: "$libname_folder"/prokaryotes/binning/refinement-bac"
 else
 echo "-> Running bacterial refinement"
-bash -i MuDoGeR/src/scripts/mudoger-module-2-2_bin-ref-bacteria.sh "$libname_folder"/prokaryotes/binning/refinement-bac  \
-                                       "$cores"                                                         \
-                                       "$assembly"                                                       \
-                                       "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
-                                       "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins  \
-                                       "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins  \
-                                       "$memory"       
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-2_bin-ref-bacteria.sh "$libname_folder"/prokaryotes/binning/refinement-bac  \
+#                                       "$cores"                                                         \
+#                                       "$assembly"                                                       \
+#                                       "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
+#                                       "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins  \
+#                                       "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins  \
+#                                       "$memory"       
 fi
               
 
@@ -98,13 +98,13 @@ if [ -f  "$libname_folder"/prokaryotes/binning/refinement-bac/metawrap_40_30_bin
 then echo "-> Archaeal refinement is done. Please check here: "$libname_folder"/prokaryotes/binning/refinement-arc"
 else
 echo "-> Running archaeal refinement"
-bash -i MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname_folder"/prokaryotes/binning/refinement-arc \
-                                     "$cores"                                                        \
-                                     "$assembly"                                                       \
-                                     "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
-                                     "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins   \
-                                     "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins   \
-				     "$memory" 
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname_folder"/prokaryotes/binning/refinement-arc \
+#                                     "$cores"                                                        \
+#                                     "$assembly"                                                       \
+#                                     "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
+#                                     "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins   \
+#                                     "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins   \
+#				     "$memory" 
 fi
 
 
