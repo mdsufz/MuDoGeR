@@ -13,11 +13,24 @@
 #       N50, NUM_NUCLEOTIDE, NUM_CONTIGS, ATCG and more... submodule 3-5
 
 
+# loop through input params
+while true; do
+	case "$1" in
+		-1) forward_library=$2; shift 2;;
+		-2) reverse_library=$2; shift 2;;
+		-a) assembly=$2; shift 2;;
+		-o) libname_folder=$2; shift 2;;
+		-t) cores=$2; shift 2;;
+		-m) memory=$2; shift 2;;
+		-h | --help) help_message; exit 1; shift 1;;
+		--) help_message; exit 1; shift; break ;;
+		*) break;;
+	esac
+done
 
-
-assembly=$1
-libname_folder=$2              # master output folder to be created and defined by user
-cores=10
+#assembly=$1
+#libname_folder=$2              # master output folder to be created and defined by user
+#cores=10
 
 # 1 viral investigation
 mkdir -p "$libname_folder"/viruses/investigation
