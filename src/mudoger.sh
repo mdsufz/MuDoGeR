@@ -99,6 +99,19 @@ elif [ "$active_module" = prokaryotes ]; then
 	#echo $module_script -1 $r1 -2 $r2 -a $output_folder/$i/assembly/final_assembly.fasta -o $output_folder/$i -t $num_cores;
 	#echo 'test'
 	done
+elif [ "$active_module" = viruses ]; then
+	echo mudoger viruses ${@:2}
+	module_script=MuDoGeR/src/modules/mudoger-module-3.sh
+        ###### loop around samples and run module 1
+	aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
+	for i in $aux; 
+	do 
+	r1="$(cat "$metadata_table" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_1.f')"; 
+	r2="$(cat "$metadata_table" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_2.f')";
+	time  $module_script -1 $r1 -2 $r2 -a $output_folder/$i/assembly/final_assembly.fasta -o $output_folder/$i -t $num_cores;
+	#echo $module_script -1 $r1 -2 $r2 -a $output_folder/$i/assembly/final_assembly.fasta -o $output_folder/$i -t $num_cores;
+	#echo 'test'
+	done
 else
         comm "Please select a proper module of MuDoGeR."
         help_message
