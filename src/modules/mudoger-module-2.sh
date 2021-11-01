@@ -94,7 +94,7 @@ fi
               
 
 # 3 BIN REFINEMENT USING METAWRAP FOR ARCHAEA (40,30)
-if [ -f  "$libname_folder"/prokaryotes/binning/refinement-bac/metawrap_40_30_bins.stats ];
+if [ -f  "$libname_folder"/prokaryotes/binning/refinement-arc/metawrap_40_30_bins.stats ];
 then echo "-> Archaeal refinement is done. Please check here: "$libname_folder"/prokaryotes/binning/refinement-arc"
 else
 echo "-> Running archaeal refinement"
