@@ -38,7 +38,7 @@ help_message () {
   
 mudoger_lettering
 
-num_cores=10
+num_cores=20
 megahit=""
 metaspades=""
 
