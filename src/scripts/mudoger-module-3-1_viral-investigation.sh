@@ -21,6 +21,8 @@ grep ">" | sed "s/_fragment_1//g;s/>//g"   > "$output_folder"/vibrant_filtered_d
 conda deactivate
 echo "-----> END VIBRANT (1/4)"
 
+exit 0
+
 ######### VIRFINDER        
 echo "-----> STARTING VIRFINDER (2/4)"
 conda activate virfinder-env
