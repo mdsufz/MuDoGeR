@@ -119,6 +119,16 @@ else
 fi
 
 
+### wraping up prokaryotic results
+cd $output_folder
+mkdir -p results/prokaryotes/otus;
+for bin in  */prokaryotes/binning/unique_bins/*fa;
+do nbin=OTU_"$c".fa; 
+cp $bin results/prokaryotes/otus/$nbin;
+c=$((c + 1));
+done
+
+
 ###### metawrap configuration
 exit 0
 #config_file=$(which config-metawrap)
