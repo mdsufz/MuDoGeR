@@ -6,6 +6,8 @@ conda activate gtdbtk-env
 
 source MuDoGeR/installation/config_db
 
+GTDBTK_DATA_PATH=/mnt/tools/miniconda2/envs/gtdbtk-env/database/release202
+
 master_folder=$1
 cores=$2
 
