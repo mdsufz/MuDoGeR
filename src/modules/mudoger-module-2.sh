@@ -120,7 +120,7 @@ fi
 
 # 5 GTDBtk taxonomy assignment
 mkdir -p "$libname_folder"/prokaryotes/metrics
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-5_bin-taxonomy.sh "$libname_folder"/prokaryotes "$cores"
+bash -i MuDoGeR/src/scripts/mudoger-module-2-5_bin-taxonomy.sh "$libname_folder"/prokaryotes "$cores"
 
 # 6 CheckM quality control
 if [ -f "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv ];
@@ -138,7 +138,7 @@ fi
 
 
 # 8 Metrics: N50, NUM_NUCLEOTIDE, NUM_CONTIGS, ATCG and more...
-bash -i MuDoGeR/src/scripts/mudoger-module-2-8_genomics-metrics.sh  "$libname_folder"/prokaryotes/ "$cores"
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-8_genomics-metrics.sh  "$libname_folder"/prokaryotes/ "$cores"
 
 # 9 WRAPUP INTO NICE TABLE
 
