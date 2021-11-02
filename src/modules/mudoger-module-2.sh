@@ -119,8 +119,8 @@ fi
 
 
 # 5 GTDBtk taxonomy assignment
-#mkdir -p "$libname_folder"/prokaryotes/metrics
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-5_bin-taxonomy.sh "$libname_folder"/prokaryotes "$cores"
+mkdir -p "$libname_folder"/prokaryotes/metrics
+bash -i MuDoGeR/src/scripts/mudoger-module-2-5_bin-taxonomy.sh "$libname_folder"/prokaryotes "$cores"
 
 # 6 CheckM quality control
 #bash -i MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh  "$libname_folder"/prokaryotes/ "$cores"
