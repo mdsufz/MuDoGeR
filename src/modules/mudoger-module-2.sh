@@ -126,7 +126,6 @@ mkdir -p "$libname_folder"/prokaryotes/metrics
 if [ -f "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv ];
 then echo "-> MAGs quality control is done. Please check: "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv"
 else
-echo 'run checkm'
 bash -i MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh  "$libname_folder"/prokaryotes/ "$cores"
 fi
 
@@ -134,13 +133,12 @@ fi
 if [ -d "$libname_folder"/prokaryotes/metrics/prokka ] ; 
 then echo "-> Rapid prokka annotation is done. Please check: "$libname_folder"/prokaryotes/metrics/prokka"
 else 
-echo 'run prokka'
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-7_prokka.sh  "$libname_folder"/prokaryotes/ "$cores"
+bash -i MuDoGeR/src/scripts/mudoger-module-2-7_prokka.sh  "$libname_folder"/prokaryotes/ "$cores"
 fi
 
 
 # 8 Metrics: N50, NUM_NUCLEOTIDE, NUM_CONTIGS, ATCG and more...
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-8_genomics-metrics.sh  "$libname_folder"/prokaryotes/ "$cores"
+bash -i MuDoGeR/src/scripts/mudoger-module-2-8_genomics-metrics.sh  "$libname_folder"/prokaryotes/ "$cores"
 
 # 9 WRAPUP INTO NICE TABLE
 
