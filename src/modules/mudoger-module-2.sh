@@ -124,7 +124,7 @@ mkdir -p "$libname_folder"/prokaryotes/metrics
 
 # 6 CheckM quality control
 if [ -f "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv ];
-then echo "MAGs quality control is done. Please check: "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv"
+then echo "-> MAGs quality control is done. Please check: "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv"
 else
 echo 'run checkm'
 #bash -i MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh  "$libname_folder"/prokaryotes/ "$cores"
