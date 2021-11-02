@@ -123,7 +123,12 @@ mkdir -p "$libname_folder"/prokaryotes/metrics
 #bash -i MuDoGeR/src/scripts/mudoger-module-2-5_bin-taxonomy.sh "$libname_folder"/prokaryotes "$cores"
 
 # 6 CheckM quality control
-bash -i MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh  "$libname_folder"/prokaryotes/ "$cores"
+if [ -f "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv ];
+then echo "MAGs quality control is done. Please check: "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv"
+else
+echo 'run checkm'
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh  "$libname_folder"/prokaryotes/ "$cores"
+fi
 
 # 7 PROKKA Annotation
 #bash -i MuDoGeR/src/scripts/mudoger-module-2-7_prokka.sh  "$libname_folder"/prokaryotes/ "$cores"
