@@ -135,7 +135,7 @@ if [ -d "$libname_folder"/prokaryotes/metrics/prokka ] ;
 then echo "-> Rapid prokka annotation is done. Please check: "$libname_folder"/prokaryotes/metrics/prokka"
 else 
 echo 'run prokka'
-bash -i MuDoGeR/src/scripts/mudoger-module-2-7_prokka.sh  "$libname_folder"/prokaryotes/ "$cores"
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-7_prokka.sh  "$libname_folder"/prokaryotes/ "$cores"
 fi
 
 
