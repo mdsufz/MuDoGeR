@@ -110,10 +110,10 @@ fi
 
               
 # 4 BIN REDUNANCY REMOVAL
-#mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
-#cd "$libname_folder"/prokaryotes/binning
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh  "$libname_folder" 
-#cd -
+mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
+cd "$libname_folder"/prokaryotes/binning
+bash -i MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh  "$libname_folder" 
+cd -
 
 # 5 GTDBtk taxonomy assignment
 #mkdir -p "$libname_folder"/prokaryotes/metrics
