@@ -110,11 +110,13 @@ fi
 
               
 # 4 BIN REDUNANCY REMOVAL
+if [ -d  "$libname_folder"/prokaryotes/binning/unique_bins ];
+then echo "-> Bin dereplication is done. Please check: "$libname_folder"/prokaryotes/binning/unique_bins"
+else
 mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
-#cd "$libname_folder"/prokaryotes/binning
 bash -i MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh  "$libname_folder" 
-                            #mudoger-module-2-4_bin-dereplication.sh
-#cd -
+fi
+
 
 # 5 GTDBtk taxonomy assignment
 #mkdir -p "$libname_folder"/prokaryotes/metrics
