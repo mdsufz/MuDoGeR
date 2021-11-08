@@ -159,7 +159,7 @@ do
 		conda install -n vibrant-env -y -c bioconda prodigal hmmer
 		conda install -n vibrant-env -y -c ostrokach gzip
 		conda install -n vibrant-env -y -c conda-forge tar biopython matplotlib
-		conda install -n vibrant-env -y -c anaconda wget pandas seaborn numpy scikit-learn
+		conda install -n vibrant-env -y -c anaconda wget pandas seaborn numpy scikit-learn==0.21.3
 		conda activate vibrant-env
 		go_to_cloned_tools_folder
 		git clone https://github.com/AnantharamanLab/VIBRANT  
