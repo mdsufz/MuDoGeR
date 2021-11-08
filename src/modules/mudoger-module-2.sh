@@ -83,13 +83,13 @@ if [ -f  "$libname_folder"/prokaryotes/binning/refinement-bac/metawrap_50_10_bin
 then echo "-> Bacterial refinement is done. Please check here: "$libname_folder"/prokaryotes/binning/refinement-bac"
 else
 echo "-> Running bacterial refinement"
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-2_bin-ref-bacteria.sh "$libname_folder"/prokaryotes/binning/refinement-bac  \
-#                                       "$cores"                                                         \
- #                                      "$assembly"                                                       \
- #                                      "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
- #                                      "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins  \
- #                                      "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins  \
- #                                      "$memory"       
+bash -i MuDoGeR/src/scripts/mudoger-module-2-2_bin-ref-bacteria.sh "$libname_folder"/prokaryotes/binning/refinement-bac  \
+                                       "$cores"                                                         \
+                                       "$assembly"                                                       \
+                                       "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
+                                       "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins  \
+                                       "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins  \
+                                       "$memory"       
 fi
               
 
@@ -98,13 +98,13 @@ if [ -f  "$libname_folder"/prokaryotes/binning/refinement-arc/metawrap_40_30_bin
 then echo "-> Archaeal refinement is done. Please check here: "$libname_folder"/prokaryotes/binning/refinement-arc"
 else
 echo "-> Running archaeal refinement"
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname_folder"/prokaryotes/binning/refinement-arc \
-#                                     "$cores"                                                        \
-#                                     "$assembly"                                                       \
-#                                     "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
-#                                     "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins   \
-#                                     "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins   \
-#				     "$memory" 
+bash -i MuDoGeR/src/scripts/mudoger-module-2-3_bin-ref-archea.sh "$libname_folder"/prokaryotes/binning/refinement-arc \
+                                     "$cores"                                                        \
+                                     "$assembly"                                                       \
+                                     "$libname_folder"/prokaryotes/binning/initial-binning/concoct_bins \
+                                     "$libname_folder"/prokaryotes/binning/initial-binning/maxbin2_bins   \
+                                     "$libname_folder"/prokaryotes/binning/initial-binning/metabat2_bins   \
+				     "$memory" 
 fi
 
 
@@ -114,8 +114,8 @@ if [ -d  "$libname_folder"/prokaryotes/binning/unique_bins ];
 then echo "-> Bin dereplication is done. Please check: "$libname_folder"/prokaryotes/binning/unique_bins"
 else
 echo '-> Run bin redundancy removal.'
-#mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh  "$libname_folder" 
+mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
+bash -i MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh  "$libname_folder" 
 fi
 
 
@@ -125,7 +125,7 @@ if [ -f "$libname_folder"/prokaryotes/metrics/GTDBtk_taxonomy/gtdbtk.log ];
 then echo "-> Bin taxonomy assignment is done. Please check: "$libname_folder"/prokaryotes/binning/unique_bins"
 else
 echo "run bin taxonomy"
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-5_bin-taxonomy.sh "$libname_folder"/prokaryotes "$cores"
+bash -i MuDoGeR/src/scripts/mudoger-module-2-5_bin-taxonomy.sh "$libname_folder"/prokaryotes "$cores"
 fi
 
 # 6 CheckM quality control
@@ -133,7 +133,7 @@ if [ -f "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv ];
 then echo "-> MAGs quality control is done. Please check: "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv"
 else 
 echo " run mags checkm"
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh  "$libname_folder"/prokaryotes/ "$cores"
+bash -i MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh  "$libname_folder"/prokaryotes/ "$cores"
 fi
 
 # 7 PROKKA Annotation
@@ -141,7 +141,7 @@ if [ -d "$libname_folder"/prokaryotes/metrics/prokka ] ;
 then echo "-> Rapid prokka annotation is done. Please check: "$libname_folder"/prokaryotes/metrics/prokka"
 else 
 echo "run annotation"
-#bash -i MuDoGeR/src/scripts/mudoger-module-2-7_prokka.sh  "$libname_folder"/prokaryotes/ "$cores"
+bash -i MuDoGeR/src/scripts/mudoger-module-2-7_prokka.sh  "$libname_folder"/prokaryotes/ "$cores"
 fi
 
 
