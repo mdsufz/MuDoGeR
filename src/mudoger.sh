@@ -121,6 +121,7 @@ fi
 
 ### wraping up prokaryotic results
 cd $output_folder
+c=1
 mkdir -p results/prokaryotes/otus;
 for bin in  */prokaryotes/binning/unique_bins/*fa;
 do nbin=OTU_"$c".fa; 
