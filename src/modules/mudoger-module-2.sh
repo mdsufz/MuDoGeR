@@ -113,27 +113,35 @@ fi
 if [ -d  "$libname_folder"/prokaryotes/binning/unique_bins ];
 then echo "-> Bin dereplication is done. Please check: "$libname_folder"/prokaryotes/binning/unique_bins"
 else
-mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
-bash -i MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh  "$libname_folder" 
+echo '-> Run bin redundancy removal.'
+#mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-4_bin-dereplication.sh  "$libname_folder" 
 fi
 
 
 # 5 GTDBtk taxonomy assignment
 mkdir -p "$libname_folder"/prokaryotes/metrics
-bash -i MuDoGeR/src/scripts/mudoger-module-2-5_bin-taxonomy.sh "$libname_folder"/prokaryotes "$cores"
+if [ -f "$libname_folder"/prokaryotes/metrics/GTDBtk_taxonomy/gtdbtk.log ];
+then echo "-> Bin taxonomy assignment is done. Please check: "$libname_folder"/prokaryotes/binning/unique_bins"
+else
+echo "run bin taxonomy"
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-5_bin-taxonomy.sh "$libname_folder"/prokaryotes "$cores"
+fi
 
 # 6 CheckM quality control
 if [ -f "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv ];
 then echo "-> MAGs quality control is done. Please check: "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv"
-else
-bash -i MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh  "$libname_folder"/prokaryotes/ "$cores"
+else 
+echo " run mags checkm"
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-6_bin-QC.sh  "$libname_folder"/prokaryotes/ "$cores"
 fi
 
 # 7 PROKKA Annotation
 if [ -d "$libname_folder"/prokaryotes/metrics/prokka ] ; 
 then echo "-> Rapid prokka annotation is done. Please check: "$libname_folder"/prokaryotes/metrics/prokka"
 else 
-bash -i MuDoGeR/src/scripts/mudoger-module-2-7_prokka.sh  "$libname_folder"/prokaryotes/ "$cores"
+echo "run annotation"
+#bash -i MuDoGeR/src/scripts/mudoger-module-2-7_prokka.sh  "$libname_folder"/prokaryotes/ "$cores"
 fi
 
 
