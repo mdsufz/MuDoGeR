@@ -18,7 +18,7 @@ then echo '-> Vibrant investigation is done.'
 else
 conda activate vibrant-env
 conda_vib="$(echo $PATH | cut -f1 -d':')"
-echo VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores -m '$conda_vib'/files -d '$conda_vib'/databases
+echo VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores -m "$conda_vib"/files -d "$conda_vib"/databases
 # fetch results
 cat "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna | 
 grep ">" | sed "s/_fragment_1//g;s/>//g"   > "$output_folder"/vibrant_filtered_data.txt
