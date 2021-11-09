@@ -191,6 +191,7 @@ do
 		cp -rf scripts $conda_vib
 		chmod +x  VIBRANT_run.py
 		cp VIBRANT_run.py $conda_vib
+		cp -r databases files $conda_vib
 		#cp VIBRANT/databases/VIBRANT_setup.py $conda_path/envs/vibrant-env/bin
 		#download-db.sh
 		
