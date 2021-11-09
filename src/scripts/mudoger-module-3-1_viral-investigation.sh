@@ -14,7 +14,7 @@ num_cores=$3                     # number of threads
 ############ VIBRANT
 echo "-----> STARTING VIBRANT (1/4)"
 if [ -f "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna ];
-then echo '-> Vibrant investigation is done.'
+then echo '-> Vibrant investigation is done'
 else
 conda activate vibrant-env
 conda_vib="$(echo $PATH | cut -f1 -d':')"
@@ -26,10 +26,13 @@ conda deactivate
 echo "-----> END VIBRANT (1/4)"
 fi
 
-exit 0
+
 
 ######### VIRFINDER        
 echo "-----> STARTING VIRFINDER (2/4)"
+if [ -f "$output_folder"/virfinder/virfinder_output.tsv ];
+then echo '-> Virfinder investigation is done'
+else
 conda activate virfinder-env
 assembly_whole_path="$(realpath "$assembly")"
 output_file="$(realpath "$output_folder"/virfinder)"/virfinder_output.tsv
@@ -40,9 +43,13 @@ cat "$output_folder"/virfinder/virfinder_output.tsv | awk -F'\t' '{ if ( $4 <= 0
 awk -F'_' '{ if ( $4 >= 1000) print  }' | cut -f2 | sed "s/\"//g" > "$output_folder"/virfinder_filtered_data.txt
 conda deactivate
 echo "-----> END VIRFINDER (2/4)"
-
+fi
+exit 0
 
 ######### VIRSORTER
+if [ -f "$output_folder"/virsorter/final-viral-combined.fa ] ;
+then echo '-> Virsoter investigation is done'
+else
 echo "-----> STARTING VIRSORTER (3/4)"
 conda activate virsorter2-env
 virsorter run all -i "$assembly" -w "$output_folder"/virsorter -j "$num_cores"
@@ -51,6 +58,8 @@ cat "$output_folder"/virsorter/final-viral-combined.fa  | grep ">" | sed "s/_fra
 cut -f1 -d "|" > "$output_folder"/virsorter2_filtered_data.txt
 conda deactivate
 echo "-----> END VIRSORTER (3/4)"
+fi
+
 
 ####### GET RESULTS AND PUT THEM TOGETHER
 mkdir -p "$output_folder"/dereplication
@@ -59,9 +68,14 @@ cat $output_folder/*txt | sort -u >  "$output_folder"/dereplication/viral_unique
 
 ### PICK FASTA SEQUENCES OF VIRAL CONTIGS FOR FURTHER DEREPLICATION
 echo "-----> STARTING DEREPLICATION (4/4)"
+if [ -f "$output_folder"/dereplication/uvigs.fa ];
+then :
+else
 conda activate extract-env
 python MuDoGeR/tools/extract_fa.py "$output_folder"/dereplication/viral_unique_contigs "$assembly" "$output_folder"/dereplication/uvigs.fa
 conda deactivate
+fi
+
 
 ##### RUN DEREPLICATION
 conda activate stampede-clustergenomes-env
