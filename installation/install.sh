@@ -156,17 +156,45 @@ do
 
 		#INSTALLING VIBRANT
 		conda create -y -n vibrant-env python=3
-		conda install -n vibrant-env -y -c bioconda prodigal hmmer
-		conda install -n vibrant-env -y -c ostrokach gzip
-		conda install -n vibrant-env -y -c conda-forge tar biopython matplotlib
-		conda install -n vibrant-env -y -c anaconda wget pandas seaborn numpy scikit-learn==0.21.3
 		conda activate vibrant-env
-		go_to_cloned_tools_folder
-		git clone https://github.com/AnantharamanLab/VIBRANT  
-		cp VIBRANT/databases/VIBRANT_setup.py $conda_path/envs/vibrant-env/bin
-		download-db.sh
+		conda install scikit-learn==0.21.3
+		conda install  -y -c conda prodigal hmmer
+		conda install  -y -c ostrokach gzip
+		conda install  -y -c conda-forge tar biopython matplotlib
+		conda install  -y -c anaconda wget pandas seaborn numpy 
 		pip install pickle-mixin
-		conda install -y -c bioconda vibrant==1.2.0
+		#go_to_cloned_tools_folder
+		conda_vib="$(echo $PATH | cut -f1 -d':')"
+		cd $conda_vib
+		git clone https://github.com/AnantharamanLab/VIBRANT  
+		cd VIBRANT/databases
+		wget http://fileshare.csb.univie.ac.at/vog/vog94/vog.hmm.tar.gz
+		wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz
+		wget ftp://ftp.genome.jp/pub/db/kofam/archives/2019-08-10/profiles.tar.gz
+		tar -xzf vog.hmm.tar.gz; 
+		gunzip Pfam-A.hmm.gz ; 
+		tar -xzf profiles.tar.gz 
+		for v in VOG*.hmm; do cat $v >> vog_temp.HMM; done ;
+		for k in profiles/K*.hmm; do cat $k >> kegg_temp.HMM; done
+		rm -f VOG0*.hmm ; rm -f  VOG1*.hmm ; rm -f  VOG2*.hmm ; rm -Rf profiles 
+		hmmfetch -o VOGDB94_phage.HMM -f vog_temp.HMM profile_names/VIBRANT_vog_profiles.txt
+		hmmfetch -o KEGG_profiles_prokaryotes.HMM -f kegg_temp.HMM profile_names/VIBRANT_kegg_profiles.txt
+		mv Pfam-A.hmm Pfam-A_v32.HMM
+		rm -rf vog_temp.HMM kegg_temp.HMM vog.hmm.tar.gz profiles.tar.gz
+		hmmpress VOGDB94_phage.HMM
+		hmmpress KEGG_profiles_prokaryotes.HMM
+		hmmpress Pfam-A_v32.HMM
+		cd ..
+		cd scripts
+		chmod +x *
+		cd ..
+		cp -rf scripts $conda_vib
+		chmod +x  VIBRANT_run.py
+		cp VIBRANT_run.py $conda_vib
+		#cp VIBRANT/databases/VIBRANT_setup.py $conda_path/envs/vibrant-env/bin
+		#download-db.sh
+		
+		#conda install -y -c bioconda vibrant==1.2.0
 		conda deactivate
 
 		#INSTALLING stampede-clustergenomes
