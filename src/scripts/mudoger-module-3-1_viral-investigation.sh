@@ -12,10 +12,11 @@ num_cores=$3                     # number of threads
 
 
 ############ VIBRANT
-echo "-----> STARTING VIBRANT (1/4)"
+
 if [ -f "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna ];
 then echo '-> Vibrant investigation is done'
 else
+echo "-----> STARTING VIBRANT (1/4)"
 conda activate vibrant-env
 conda_vib="$(echo $PATH | cut -f1 -d':')"
 VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores -m "$conda_vib"/files -d "$conda_vib"/databases
@@ -29,10 +30,11 @@ fi
 
 
 ######### VIRFINDER        
-echo "-----> STARTING VIRFINDER (2/4)"
+
 if [ -f "$output_folder"/virfinder/virfinder_output.tsv ];
 then echo '-> Virfinder investigation is done'
 else
+echo "-----> STARTING VIRFINDER (2/4)"
 conda activate virfinder-env
 assembly_whole_path="$(realpath "$assembly")"
 output_file="$(realpath "$output_folder"/virfinder)"/virfinder_output.tsv
@@ -44,7 +46,7 @@ awk -F'_' '{ if ( $4 >= 1000) print  }' | cut -f2 | sed "s/\"//g" > "$output_fol
 conda deactivate
 echo "-----> END VIRFINDER (2/4)"
 fi
-exit 0
+
 
 ######### VIRSORTER
 if [ -f "$output_folder"/virsorter/final-viral-combined.fa ] ;
@@ -67,16 +69,17 @@ cat $output_folder/*txt | sort -u >  "$output_folder"/dereplication/viral_unique
 
 
 ### PICK FASTA SEQUENCES OF VIRAL CONTIGS FOR FURTHER DEREPLICATION
-echo "-----> STARTING DEREPLICATION (4/4)"
+
 if [ -f "$output_folder"/dereplication/uvigs.fa ];
 then :
 else
+echo "-----> STARTING DEREPLICATION (4/4)"
 conda activate extract-env
 python MuDoGeR/tools/extract_fa.py "$output_folder"/dereplication/viral_unique_contigs "$assembly" "$output_folder"/dereplication/uvigs.fa
 conda deactivate
 fi
 
-
+exit 0
 ##### RUN DEREPLICATION
 conda activate stampede-clustergenomes-env
 Cluster_genomes.pl -f "$output_folder"/dereplication/uvigs.fa  -c 70 -i 95
