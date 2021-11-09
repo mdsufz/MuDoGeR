@@ -13,6 +13,9 @@ num_cores=$3                     # number of threads
 
 ############ VIBRANT
 echo "-----> STARTING VIBRANT (1/4)"
+if [ -f "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna ];
+then echo '-> Vibrant investigation is done.'
+else
 conda activate vibrant-env
 VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores
 # fetch results
@@ -20,6 +23,7 @@ cat "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembl
 grep ">" | sed "s/_fragment_1//g;s/>//g"   > "$output_folder"/vibrant_filtered_data.txt
 conda deactivate
 echo "-----> END VIBRANT (1/4)"
+fi
 
 exit 0
 
