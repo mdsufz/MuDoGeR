@@ -142,9 +142,9 @@ cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_
 ### run OTU pick
 #gOTUpick.sh --bb-input path/to/BBMap-input --checkm-input path/to/CheckM-input --gtdb-input path/to/gtdb-input  -m path/to/mags -o path/to/outputdir
 
-#conda activate gOTUpick
-#gOTUpick.sh --bb-input results/prokaryotes/genomic_metrics.tsv --checkm  results/prokaryotes/checkm.tsv --gtdb-input results/prokaryotes/gtdbtk.tsv -m 
-#conda deactivate
+conda activate gOTUpick
+gOTUpick.sh --bb-input results/prokaryotes/genomic_metrics.tsv --checkm  results/prokaryotes/checkm.tsv --gtdb-input results/prokaryotes/gtdbtk.tsv -m results/prokaryotes/mags -o results/prokaryotes/gOTUpick
+conda deactivate
 
 
 
