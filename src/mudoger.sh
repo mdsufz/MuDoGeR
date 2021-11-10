@@ -126,8 +126,9 @@ mkdir -p results/prokaryotes/otus;
 for bin in  */prokaryotes/binning/unique_bins/*fa;
 do nbin=OTU_"$c".fa; 
 cp $bin results/prokaryotes/otus/$nbin;
+echo -e "$(echo "$bin" | rev | cut -f1 -d'/' | rev | cut -f1 -d'-' )\t\c";  echo $nbin;
 c=$((c + 1));
-done
+done > results/prokaryotes/map_otus.tsv
 
 
 ###### metawrap configuration
