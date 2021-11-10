@@ -124,14 +124,34 @@ cd $output_folder
 c=1
 #### renaming bins and creating map table
 mkdir -p results/prokaryotes/otus;
+mkdir -p results/prokaryotes/mags;
 for bin in  */prokaryotes/binning/unique_bins/*fa;
 do nbin=OTU_"$c".fa; 
 cp $bin results/prokaryotes/otus/$nbin;
+cp $bin results/prokaryotes/mags;
 echo -e "$(echo "$bin" | rev | cut -f1 -d'/' | rev | cut -f1 -d'-' )\t\c";  echo $nbin;
 c=$((c + 1));
 done > results/prokaryotes/map_otus.tsv
-### creating metrics information
+### creating metrics information (bbtools)
 cat */prokaryotes/metrics/*prok_genomes* | sort | uniq | tac >  results/prokaryotes/genomic_metrics.tsv
+### checkm
+cat */prokaryotes/metrics/checkm_qc/outputcheckm.tsv | sort | uniq  | grep -v lineage > results/prokaryotes/checkm.tsv
+### gtdbtk
+cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_genome' > results/prokaryotes/gtdbtk.tsv
+
+### run OTU pick
+#gOTUpick.sh --bb-input path/to/BBMap-input --checkm-input path/to/CheckM-input --gtdb-input path/to/gtdb-input  -m path/to/mags -o path/to/outputdir
+
+#conda activate gOTUpick
+#gOTUpick.sh --bb-input results/prokaryotes/genomic_metrics.tsv --checkm  results/prokaryotes/checkm.tsv --gtdb-input results/prokaryotes/gtdbtk.tsv -m 
+#conda deactivate
+
+
+
+
+
+
+
 
 
 
