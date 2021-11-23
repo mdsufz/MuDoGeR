@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 mudoger_lettering(){
 echo -e "\n"
