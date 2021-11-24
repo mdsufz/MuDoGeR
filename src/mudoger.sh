@@ -152,7 +152,9 @@ cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_
 #echo 'ronaldo'
 cd $running_location
 
+
 script=MuDoGeR/src/scripts/gotupick.sh
+chmod +x $script
 
 time $script
 
