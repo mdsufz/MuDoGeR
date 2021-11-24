@@ -146,9 +146,9 @@ cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_
 ##gOTUpick.sh --bb-input results/prokaryotes/genomic_metrics.tsv --checkm  results/prokaryotes/checkm.tsv --gtdb-input results/prokaryotes/gtdbtk.tsv -m results/prokaryotes/mags -o results/prokaryotes/gOTUpick
 #conda deactivate
 
-conda activate metawrap-env
-echo 'ronaldo'
-
+#conda activate metawrap-env
+#echo 'ronaldo'
+time MuDoGeR/src/scripts/gotupick.sh
 
 
 
