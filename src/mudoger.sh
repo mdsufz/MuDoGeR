@@ -98,9 +98,23 @@ elif [ "$active_module" = prokaryotes ]; then
 	r1="$(cat "$metadata_table" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_1.f')"; 
 	r2="$(cat "$metadata_table" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_2.f')";
 	time  $module_script -1 $r1 -2 $r2 -a $output_folder/$i/assembly/final_assembly.fasta -o $output_folder/$i -t $num_cores;
-	#echo $module_script -1 $r1 -2 $r2 -a $output_folder/$i/assembly/final_assembly.fasta -o $output_folder/$i -t $num_cores;
-	#echo 'test'
 	done
+	
+	
+	##################################### 
+	# 1) GROUP ALL RESULTS FROM ALL LIBRARIES INTO ONE INFORMATIVE TABLE
+	# TABLE HAS: BINNAME, LIBRARY, N50, L50, TAXONOMY, COMPLETENESS, CONTAMINATION
+	
+	# 2) RUN GOTUPICK AND LEAVE RESULTS INSIDE ~output/results/prokaryotes/gotupick
+	
+	# 3) prepare inputs for BRATS
+	
+	
+	
+	
+	
+	
+	
 elif [ "$active_module" = viruses ]; then
 	echo mudoger viruses ${@:2}
 	module_script=MuDoGeR/src/modules/mudoger-module-3.sh
