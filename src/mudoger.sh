@@ -42,7 +42,7 @@ num_cores=20
 megahit=""
 metaspades=""
 
-running_location=pwd
+running_location="$(pwd)"
 
 ###################################### while
 while true; do
