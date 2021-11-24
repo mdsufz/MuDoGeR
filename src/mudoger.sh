@@ -149,7 +149,7 @@ cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_
 #conda activate metawrap-env
 #echo 'ronaldo'
 echo "my location"
-$PWD
+pwd
 
 script=MuDoGeR/src/scripts/gotupick.sh
 
