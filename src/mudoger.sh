@@ -42,6 +42,8 @@ num_cores=20
 megahit=""
 metaspades=""
 
+running_location=pwd
+
 ###################################### while
 while true; do
 	case "$1" in
@@ -148,8 +150,7 @@ cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_
 
 #conda activate metawrap-env
 #echo 'ronaldo'
-echo "my location"
-pwd
+cd $running_location
 
 script=MuDoGeR/src/scripts/gotupick.sh
 
