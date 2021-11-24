@@ -148,8 +148,9 @@ cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_
 
 #conda activate metawrap-env
 #echo 'ronaldo'
-time MuDoGeR/src/scripts/gotupick.sh
+script=MuDoGeR/src/scripts/gotupick.sh
 
+time $script
 
 
 
