@@ -167,7 +167,7 @@ cat results/prokaryotes/checkm-header results/prokaryotes/checkm-aux.tsv > resul
 cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_genome' > results/prokaryotes/gtdbtk.tsv
 
 
-
+rm results/prokaryotes/*aux
 
 
 #echo -e "bins\tncontigs" > results/prokaryotes/bins_ncontigs.tsv
