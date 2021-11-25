@@ -168,7 +168,7 @@ cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_
 
 
 rm results/prokaryotes/*aux*
-
+rm results/prokaryotes/*header*
 
 #echo -e "bins\tncontigs" > results/prokaryotes/bins_ncontigs.tsv
 
