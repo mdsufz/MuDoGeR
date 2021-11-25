@@ -138,6 +138,8 @@ fi
 ### wraping up prokaryotic results
 cd $output_folder
 c=1
+checkm_header="Bin Id	Marker lineage	# genomes	# markers	# marker sets	0	12	3	4	5+	Completeness	Contamination	Strain heterogeneity
+"
 #### renaming bins and creating map table
 mkdir -p results/prokaryotes/otus;
 mkdir -p results/prokaryotes/mags;
@@ -149,11 +151,17 @@ echo -e "$(echo "$bin" | rev | cut -f1 -d'/' | rev | cut -f1 -d'-' )\t\c";  echo
 c=$((c + 1));
 done > results/prokaryotes/map_otus.tsv
 ### creating metrics information (bbtools)
-cat */prokaryotes/metrics/*prok_genomes* | sort | uniq | tac >  results/prokaryotes/genomic_metrics.tsv
+cat */prokaryotes/metrics/*prok_genomes* | sort | uniq >  results/prokaryotes/genomic_metrics.tsv
 ### checkm
-cat */prokaryotes/metrics/checkm_qc/outputcheckm.tsv | sort | uniq  | grep -v lineage > results/prokaryotes/checkm.tsv
+cat */prokaryotes/metrics/checkm_qc/outputcheckm.tsv | sort | uniq  | grep -v lineage > results/prokaryotes/checkm-aux.tsv
+cat $checkm_header results/prokaryotes/checkm-aux.tsv results/prokaryotes/checkm.tsv
+rm results/prokaryotes/checkm-aux.tsv
 ### gtdbtk
 cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_genome' > results/prokaryotes/gtdbtk.tsv
+
+
+
+
 
 #echo -e "bins\tncontigs" > results/prokaryotes/bins_ncontigs.tsv
 
