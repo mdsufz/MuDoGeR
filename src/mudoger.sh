@@ -156,9 +156,7 @@ cat */prokaryotes/metrics/checkm_qc/outputcheckm.tsv | sort | uniq  | grep -v li
 cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_genome' > results/prokaryotes/gtdbtk.tsv
 
 for mag in results/prokaryotes/mags/*;
-
-do echo $mag;
-
+do echo -e "$mag\t\c"; cat $mag | grep ">" | wc -l;
 done
 
 ### run OTU pick
