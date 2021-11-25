@@ -152,8 +152,7 @@ done > results/prokaryotes/map_otus.tsv
 ### creating metrics information (bbtools)
 cat */prokaryotes/metrics/*prok_genomes* | sort | uniq >  results/prokaryotes/genomic_metrics.tsv
 ### checkm
-checkm_header="Bin Id	Marker lineage	# genomes	# markers	# marker sets	0	12	3	4	5+	Completeness	Contamination	Strain heterogeneity
-"
+checkm_header="Bin Id	Marker lineage	# genomes	# markers	# marker sets	0	12	3	4	5+	Completeness	Contamination	Strain heterogeneity"
 echo -e "$checkm_header" > results/prokaryotes/checkm-header
 cat */prokaryotes/metrics/checkm_qc/outputcheckm.tsv | sort | uniq  | grep -v lineage > results/prokaryotes/checkm-aux.tsv
 cat results/prokaryotes/checkm-header results/prokaryotes/checkm-aux.tsv > results/prokaryotes/checkm.tsv
