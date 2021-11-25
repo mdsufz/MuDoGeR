@@ -157,7 +157,9 @@ cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_
 
 for mag in results/prokaryotes/mags/*;
 do echo -e "$(echo "$mag" | rev | cut -f1 -d'/' | rev)\t\c"; cat $mag | grep ">" | wc -l;
-done
+done > results/prokaryotes/bins_ncontigs.tsv
+
+#paste results/prokaryotes/bins_ncontigs.tsv
 
 ### run OTU pick
 #gOTUpick.sh --bb-input path/to/BBMap-input --checkm-input path/to/CheckM-input --gtdb-input path/to/gtdb-input  -m path/to/mags -o path/to/outputdir
