@@ -156,7 +156,7 @@ checkm_header="Bin Id	Marker lineage	# genomes	# markers	# marker sets	0	12	3	4	
 "
 echo -e "$checkm_header" > results/prokaryotes/checkm-header
 cat */prokaryotes/metrics/checkm_qc/outputcheckm.tsv | sort | uniq  | grep -v lineage > results/prokaryotes/checkm-aux.tsv
-cat checkm_header results/prokaryotes/checkm-aux.tsv > results/prokaryotes/checkm.tsv
+cat results/prokaryotes/checkm-header results/prokaryotes/checkm-aux.tsv > results/prokaryotes/checkm.tsv
 #rm results/prokaryotes/checkm-aux.tsv results/prokaryotes/checkm-header
 ### gtdbtk
 cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_genome' > results/prokaryotes/gtdbtk.tsv
