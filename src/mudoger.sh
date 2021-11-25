@@ -155,6 +155,12 @@ cat */prokaryotes/metrics/checkm_qc/outputcheckm.tsv | sort | uniq  | grep -v li
 ### gtdbtk
 cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_genome' > results/prokaryotes/gtdbtk.tsv
 
+for mag in results/prokaryotes/mags/*;
+
+do echo $mag;
+
+done
+
 ### run OTU pick
 #gOTUpick.sh --bb-input path/to/BBMap-input --checkm-input path/to/CheckM-input --gtdb-input path/to/gtdb-input  -m path/to/mags -o path/to/outputdir
 
