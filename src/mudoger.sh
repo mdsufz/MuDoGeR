@@ -154,7 +154,7 @@ done > results/prokaryotes/map_otus.tsv
 #echo -e "$ncontigs_header" > results/prokaryotes/ncontigs-header
 cat */prokaryotes/metrics/*prok_genomes* | sort | uniq | tac >  results/prokaryotes/genomic_metrics-aux.tsv
 head -n1 results/prokaryotes/genomic_metrics-aux.tsv > results/prokaryotes/ncontigs-header
-cat results/prokaryotes/genomic_metrics-aux.tsv | tail -n +2 >  results/prokaryotes/genomic_metrics-aux2.tsv
+cat results/prokaryotes/genomic_metrics-aux.tsv | tac | head -n -1 >  results/prokaryotes/genomic_metrics-aux2.tsv
 cat  results/prokaryotes/ncontigs-header results/prokaryotes/genomic_metrics-aux2.tsv > results/prokaryotes/genomic_metrics.tsv
 #cat results/prokaryotes/ncontigs-header results/prokaryotes/genomic_metrics-aux.tsv > results/prokaryotes/genomic_metrics.tsv
 ### checkm
