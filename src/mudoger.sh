@@ -154,7 +154,7 @@ done > results/prokaryotes/map_otus.tsv
 cat */prokaryotes/metrics/*prok_genomes* | sort | uniq >  results/prokaryotes/genomic_metrics.tsv
 ### checkm
 cat */prokaryotes/metrics/checkm_qc/outputcheckm.tsv | sort | uniq  | grep -v lineage > results/prokaryotes/checkm-aux.tsv
-cat $checkm_header results/prokaryotes/checkm-aux.tsv results/prokaryotes/checkm.tsv
+cat $checkm_header results/prokaryotes/checkm-aux.tsv > results/prokaryotes/checkm.tsv
 rm results/prokaryotes/checkm-aux.tsv
 ### gtdbtk
 cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_genome' > results/prokaryotes/gtdbtk.tsv
