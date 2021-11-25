@@ -150,7 +150,7 @@ echo -e "$(echo "$bin" | rev | cut -f1 -d'/' | rev | cut -f1 -d'-' )\t\c";  echo
 c=$((c + 1));
 done > results/prokaryotes/map_otus.tsv
 ### creating metrics information (bbtools)
-ncontigs_header = "bins	ncontigs"
+ncontigs_header="bins	ncontigs"
 echo -e "$ncontigs_header" > results/prokaryotes/ncontigs-header
 cat */prokaryotes/metrics/*prok_genomes* | sort | uniq >  results/prokaryotes/genomic_metrics-aux.tsv
 cat results/prokaryotes/ncontigs-header results/prokaryotes/genomic_metrics-aux.tsv > results/prokaryotes/genomic_metrics.tsv
