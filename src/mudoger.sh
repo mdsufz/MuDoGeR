@@ -167,7 +167,7 @@ cat  results/prokaryotes/header results/prokaryotes/aux2_bins_ncontigs.tsv > res
 
 paste results/prokaryotes/bins_ncontigs.tsv results/prokaryotes/genomic_metrics_aux.tsv
 
-tac results/prokaryotes/genomic_metrics_aux.tsv results/prokaryotes/genomic_metrics.tsv
+tac results/prokaryotes/genomic_metrics_aux.tsv > results/prokaryotes/genomic_metrics.tsv
 
 
 #paste results/prokaryotes/bins_ncontigs.tsv
