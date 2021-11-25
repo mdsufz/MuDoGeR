@@ -150,10 +150,13 @@ echo -e "$(echo "$bin" | rev | cut -f1 -d'/' | rev | cut -f1 -d'-' )\t\c";  echo
 c=$((c + 1));
 done > results/prokaryotes/map_otus.tsv
 ### creating metrics information (bbtools)
-ncontigs_header="bins	ncontigs"
-echo -e "$ncontigs_header" > results/prokaryotes/ncontigs-header
-cat */prokaryotes/metrics/*prok_genomes* | sort | uniq >  results/prokaryotes/genomic_metrics-aux.tsv
-cat results/prokaryotes/ncontigs-header results/prokaryotes/genomic_metrics-aux.tsv > results/prokaryotes/genomic_metrics.tsv
+#ncontigs_header="bins	ncontigs"
+#echo -e "$ncontigs_header" > results/prokaryotes/ncontigs-header
+cat */prokaryotes/metrics/*prok_genomes* | sort | uniq | tac >  results/prokaryotes/genomic_metrics-aux.tsv
+cat results/prokaryotes/genomic_metrics-aux.tsv | head -n -1 >  results/prokaryotes/genomic_metrics-aux2.tsv
+header="$(head -n1 results/prokaryotes/genomic_metrics-aux.tsv)"
+cat "$header" results/prokaryotes/genomic_metrics-aux2.tsv > results/prokaryotes/genomic_metrics.tsv
+#cat results/prokaryotes/ncontigs-header results/prokaryotes/genomic_metrics-aux.tsv > results/prokaryotes/genomic_metrics.tsv
 ### checkm
 checkm_header="Bin Id	Marker lineage	# genomes	# markers	# marker sets	0	12	3	4	5+	Completeness	Contamination	Strain heterogeneity"
 echo -e "$checkm_header" > results/prokaryotes/checkm-header
