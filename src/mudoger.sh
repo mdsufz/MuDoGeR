@@ -157,12 +157,12 @@ cat */prokaryotes/metrics/GTDBtk_taxonomy/*.sum* | sort | uniq  | grep -v 'user_
 
 #echo -e "bins\tncontigs" > results/prokaryotes/bins_ncontigs.tsv
 
-echo -e "bins\tncontigs" > results/prokaryotes/header
-for mag in results/prokaryotes/mags/*;
-do echo -e "$(echo "$mag" | rev | cut -f1 -d'/' | rev)\t\c"; cat $mag | grep ">" | wc -l;
-done > results/prokaryotes/aux_bins_ncontigs.tsv  
+#echo -e "bins\tncontigs" > results/prokaryotes/header
+#for mag in results/prokaryotes/mags/*;
+#do echo -e "$(echo "$mag" | rev | cut -f1 -d'/' | rev)\t\c"; cat $mag | grep ">" | wc -l;
+#done > results/prokaryotes/aux_bins_ncontigs.tsv  
 
-tac results/prokaryotes/aux_bins_ncontigs.tsv > results/prokaryotes/aux2_bins_ncontigs.tsv
+#tac results/prokaryotes/aux_bins_ncontigs.tsv > results/prokaryotes/aux2_bins_ncontigs.tsv
 #cat  results/prokaryotes/header results/prokaryotes/aux2_bins_ncontigs.tsv > results/prokaryotes/bins_ncontigs.tsv
 #paste results/prokaryotes/bins_ncontigs.tsv results/prokaryotes/genomic_metrics.tsv > results/prokaryotes/genomic_metrics_aux.tsv
 #tac results/prokaryotes/genomic_metrics_aux.tsv > results/prokaryotes/genomic_metrics_aux2.tsv
