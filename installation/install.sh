@@ -1,349 +1,195 @@
-#!/bin/bash
+#### LITTLE HELP ####
+## All conda environments is created inside
+## dependencies/conda/envs directory.
+## You can manually activate the environment
+## using the following command
+## $ conda activate path/to/mudoger_env/dependencies/conda/envs/environment_name
 
-## Try to go the cloned_tools directory
-## If cloned_tools folder does not exist, will
-## create it and enter into this new directory
-go_to_cloned_tools_folder() {
-	cd cloned_tools || mkdir cloned_tools && cd cloned_tools
-}
+#### LITTLE HELP ####
+## All modules installed here will be named as "name_env"
+## Ex.: metawrap_env
 
-## Verify if a given conda environment exist
-## Assign the return to a variable called result
-## If result=0: EXIST
-## If result=1: DOES NOT EXIST
-verify_if_conda_env_exist () {
-	local conda_env_name=$1
-	local conda_list=$(conda list -n $conda_env_name)
-	if [ "$conda_list" ];
-	then
-		result=0
-	else
-		result=1
-	fi
-}
+################# INSTALLATION'S PRE-CONFIGURATION #################
 
-## Create a Metawrap conda environment
-clone_and_install_metawrap() {
-	#INSTALLING METAWRAP
-	go_to_cloned_tools_folder
-	git clone https://github.com/bxlab/metaWRAP.git
-	#->configure the config-metawrap file to pointo to the database
-	conda create -y -n metawrap-env python=2.7
-	cd metaWRAP/bin
-	cp -r . $conda_path/envs/metawrap-env/bin
-	cd ../../..
-	conda activate metawrap-env
-	#conda config --add channels defaults
-	#conda config --add channels conda-forge
-	#conda config --add channels bioconda
-	#conda config --add channels ursky
-	conda install -y --only-deps -c ursky metawrap-mg=1.3.2
-	metawrap
-	conda deactivate
-}
+## Here is where MuDoGeR's pre-configuration will 
+## be defined. In general, in config.sh we collect 
+## some MuDoGeR's important paths
 
-#making a directory for mudoger's utilities and change directory to it
-mkdir mudoger_utils
-cd mudoger_utils
+## Importing config.sh
+echo dirname "$dirname"
+echo '----'
 
-#creating conda path variable
-echo "Please, enter with your miniconda path (ex. \"/home/profile_name/miniconda3\")"
-read conda_path
-echo "your conda path: $conda_path"
+MUDOGER_CONDA_ENVIRONMENT_PATH=$CONDA_PREFIX/envs/mudoger_env
+echo MUDOGER_CONDA_ENVIRONMENT_PATH="$MUDOGER_CONDA_ENVIRONMENT_PATH" > $(dirname $0)/temp
+cat $(dirname $0)/temp  $(dirname $0)/.config_std.sh > $(dirname $0)/config.sh
+rm -f $(dirname $0)/temp 
 
-echo "Do you want to install all the required tools for the Module 1 (Pre-processing)?[y/n]"
+#exit 0
+
+source $(dirname $0)/config.sh
+source $(dirname $0)/installation_utils.sh
+
+
+### installing mamba
+conda install -c conda-forge -y mamba
+
+
+## Moving the installation scripts to MuDoGeR's environment
+# check if mudoger_env already exists
+verify_if_mudoger_env_exists "$MUDOGER_CONDA_ENVIRONMENT_PATH"
+if [ $mudoger_there == "yes" ]  # if yes, skip installation
+then  
+echo "Skip mudoger conda env installation. Moving forward..."
+else 
+echo "Installing mudoger conda env..."  # if no, move forward
+start_pre_configuration
+fi
+
+
+										## UNCOMMENT THIS LATER PLEASE - CREATION OF MUDOGER ENVIRONMENT
+echo "your MuDoGeR's path is $MUDOGER_CONDA_ENVIRONMENT_PATH"
+
+
+
+ls $DEPENDENCIES_SCRIPTS_PATH
+
+#cp -R $DEPENDENCIES_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_PATH # modified by rodolfo
+cp -r $DEPENDENCIES_SCRIPTS_PATH $MUDOGER_CONDA_ENVIRONMENT_PATH
+
+#cp -R $INSTALLATION_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_ENVS_PATH # modified by rodolfo
+cp -r $INSTALLATION_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_PATH
+
+#exit 0
+################# CHOOSING WICH MODULE TO INSTALL #################
+
+## Giving the user the option of which modules he wants to install
+## The Module 1. Pre-processing is the base of the other modules in MuDoGeR
+## it's installation is automatically set
+
+echo "### WELCOME TO MuDoGeR! ###"
+echo "Do you want to install all MoDuGeR's Acessories Modules?"
+echo "- Module 2. Recovery of Prokaryotic MAGs"
+echo "- Module 3. Uncultivated viral MAGs"
+echo "- Module 4. Eukaryotic MAGs"
+echo "- Module 5. Relative abundance and genome coverage Table"
 while :
 do
 	read choose
 	if [ $choose = y -o $choose = Y ];
 	then
-		#INSTALLING METAWRAP
-		clone_and_install_metawrap
-		
-		## INSTALLING KHMER
-		conda create -y -n khmer-env python=3.6
-		conda activate khmer-env
-		pip install khmer==2.1.1
-		conda install -y -c conda-forge r-base
-		conda install -y -c conda-forge readline=6.2
-		conda deactivate
+		install_module_2_option=$choose
+		install_module_3_option=$choose
+		install_module_4_option=$choose
+		install_module_5_option=$choose
 		break
 	elif [ $choose = n -o $choose = N ]
 	then
-		echo "installation denied..."
+		echo "Choose the Modules you want to install"
 		break
 	else
-		echo "command not found, please try again"
+		echo "Command not found, please, try again"
 	fi
 done
-
-echo "Do you want to install all the required tools for the Module 2 (Recovery of Procaryotic Metagenome-Assembled Genomes)?[y/n]"
-while :
-do
-	read choose
-	if [ $choose = y -o $choose = Y ];
-	then	
-
-		#INSTALLING METAWRAP IF NECESSARY
-		verify_if_conda_env_exist "metawrap-env"
-		if [ "$result" = 1 ];
+if [ $choose = n -o $choose = N ];
+then
+	echo "Do you want to install Module 2 (Recovery of Prokaryotic MAGs)? [Y/N]"
+	while :
+	do
+		read choose
+		if [ $choose = y -o $choose = Y ];
 		then
-			clone_and_install_metawrap
+			install_module_2_option=$choose
+			break
+		elif [ $choose = n -o $choose = N ]
+		then
+			echo "Installation of Module 2 denied"
+			break
+		else
+			echo "Command not found, please, try again"
 		fi
+	done
 
-		#INSTALLING GTDB-TK
-		conda create -y -n gtdbtk-env
-		conda install -n gtdbtk-env -y -c bioconda gtdbtk
-		
-		#INSTALLING PROKKA
-		conda create -y -n prokka-env
-		conda activate prokka-env
-		conda install -y -c conda-forge -c bioconda -c defaults prokka
-		#Test install
-		prokka
-		#Leave env
-		conda deactivate
+	echo "Do you want to install Module 3 (Uncultivated viral MAGs)? [Y/N]"
+	while :
+	do
+		read choose
+		if [ $choose = y -o $choose = Y ];
+		then
+			install_module_3_option=$choose
+			break
+		elif [ $choose = n -o $choose = N ]
+		then
+			echo "Installation of Module 3 denied"
+			break
+		else
+			echo "Command not found, please, try again"
+		fi
+	done
 
-		#INSTALLING UBIN
-		go_to_cloned_tools_folder
-		git clone https://github.com/ProbstLab/uBin-helperscripts.git
-		cd uBin-helperscripts
-		conda env create -n ubin-env -f uBin_wrapper_reqs.yaml
-		cd ../..
+	echo "Do you want to install Module 4 (Eucaryotic MAGs)? [Y/N]"
+	while :
+	do
+		read choose
+		if [ $choose = y -o $choose = Y ];
+		then
+			install_module_4_option=$choose
+			break
+		elif [ $choose = n -o $choose = N ]
+		then
+			echo "Installation of Module 4 denied"
+			break
+		else
+			echo "Command not found, please, try again"
+		fi
+	done
 
-		break
-	elif [ $choose = n -o $choose = N ]
-	then
-		echo "installation denied..."
-		break
-	else
-		echo "command not found, please try again"
-	fi
-done
+	echo "Do you want to install Module 5 (Relative abundance and genome coverage Table)? [Y/N]"
+	while :
+	do
+		read choose
+		if [ $choose = y -o $choose = Y ];
+		then
+			install_module_4_option=$choose
+			break
+		elif [ $choose = n -o $choose = N ]
+		then
+			echo "Installation of Module 4 denied"
+			break
+		else
+			echo "Command not found, please, try again"
+		fi
+	done
+fi
 
-echo "Do you want to install all the required tools for the Module 3 (Recovery of Uncutivated Viral Genomes)?[y/n]"
-while :
-do
-	read choose
-	if [ $choose = y -o $choose = Y ];
-	then
-		#INSTALLING VIRSORTER 1
-		#conda create --name virsorter-env -y -c bioconda mcl=14.137 muscle blast perl-bioperl perl-file-which hmmer=3.1b2 perl-parallel-forkmanager perl-list-moreutils diamond=0.9.14
-		#go_to_cloned_tools_folder
-		#git clone https://github.com/simroux/VirSorter.git
-		#cd VirSorter/Scripts
-		#conda install -n virsorter-env -y -c anaconda make
-		#conda activate virsorter-env
-		#make clean
-		#make
-		#conda deactivate
-		#cp -r . $conda_path/envs/virsorter-env/bin
-		#cd ..
-		#cp wrapper_phage_contigs_sorter_iPlant.pl $conda_path/envs/virsorter-env/bin
-		#conda install -n virsorter-env -y -c bioconda metagene_annotator
-		#cd ../..
-		
-		#INSTALLING VIRSORTER 2
-		conda create -n virsorter2-env -y -c conda-forge -c bioconda virsorter=2
-		conda activate virsorter2-env
-		virsorter setup -d $conda_path/envs/virsorter2-env/db -j 1
-		conda deactivate
+################# INSTALLING CHOSEN MODULES #################
+
+## The Module 1. Pre-processing is the base of the other modules in MuDoGeR
+## it's installation is automatically set
+
+echo "The MuDoGeR's installation will begin.."
 
 
-		#INSTALLING VIRFINDER
-		conda create -y -n virfinder-env
-		conda install -n virfinder-env -y -c bioconda r-virfinder
+coffe_time
 
-		#INSTALLING VIBRANT
-		conda create -y -n vibrant-env python=3
-		conda activate vibrant-env
-		conda install scikit-learn==0.21.3
-		conda install  -y -c conda prodigal hmmer
-		conda install  -y -c ostrokach gzip
-		conda install  -y -c conda-forge tar biopython matplotlib
-		conda install  -y -c anaconda wget pandas seaborn numpy 
-		pip install pickle-mixin
-		#go_to_cloned_tools_folder
-		conda_vib="$(echo $PATH | cut -f1 -d':')"
-		cd $conda_vib
-		git clone https://github.com/AnantharamanLab/VIBRANT  
-		cd VIBRANT/databases
-		wget http://fileshare.csb.univie.ac.at/vog/vog94/vog.hmm.tar.gz
-		wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz
-		wget ftp://ftp.genome.jp/pub/db/kofam/archives/2019-08-10/profiles.tar.gz
-		tar -xzf vog.hmm.tar.gz; 
-		gunzip Pfam-A.hmm.gz ; 
-		tar -xzf profiles.tar.gz 
-		for v in VOG*.hmm; do cat $v >> vog_temp.HMM; done ;
-		for k in profiles/K*.hmm; do cat $k >> kegg_temp.HMM; done
-		rm -f VOG0*.hmm ; rm -f  VOG1*.hmm ; rm -f  VOG2*.hmm ; rm -Rf profiles 
-		hmmfetch -o VOGDB94_phage.HMM -f vog_temp.HMM profile_names/VIBRANT_vog_profiles.txt
-		hmmfetch -o KEGG_profiles_prokaryotes.HMM -f kegg_temp.HMM profile_names/VIBRANT_kegg_profiles.txt
-		mv Pfam-A.hmm Pfam-A_v32.HMM
-		rm -rf vog_temp.HMM kegg_temp.HMM vog.hmm.tar.gz profiles.tar.gz
-		hmmpress VOGDB94_phage.HMM
-		hmmpress KEGG_profiles_prokaryotes.HMM
-		hmmpress Pfam-A_v32.HMM
-		cd ..
-		cd scripts
-		chmod +x *
-		cd ..
-		cp -rf scripts $conda_vib
-		chmod +x  VIBRANT_run.py
-		cp VIBRANT_run.py $conda_vib
-		cp -r databases files $conda_vib
-		#cp VIBRANT/databases/VIBRANT_setup.py $conda_path/envs/vibrant-env/bin
-		#download-db.sh
-		
-		#conda install -y -c bioconda vibrant==1.2.0
-		conda deactivate
 
-		#INSTALLING stampede-clustergenomes
-		conda create -y -n stampede-clustergenomes-env 
-		conda install -n stampede-clustergenomes-env -y -c anaconda perl
-		conda install -n stampede-clustergenomes-env -y -c bioconda mummer
-		go_to_cloned_tools_folder
-		git clone https://bitbucket.org/MAVERICLab/stampede-clustergenomes.git
-		cd stampede-clustergenomes/bin
-		cp -r . $conda_path/envs/stampede-clustergenomes-env/bin
-		cd ../../..
-		conda activate stampede-clustergenomes-env
-		conda deactivate
+call_installation_script install_module_1
 
-		### to run stampede-clustergenomes is necessary to activate the env and run 
-		perl $your_path/mudoger_utils/cloned_tools/stampede-clustergenomes/bin/Stampede-clustergenomes.pl
-		#cd ..
-		
-		#INSTALLING FASTA EXTRACTION ENV
-		conda create -y -n extract-env -c anaconda python=2.7.5
-		conda activate extract-env
-		conda deactivate
+echo '----> stopping code install.sh line 150'
+#exit 0
 
-		#INSTALLING WISH
-		conda create -y -n wish-env
-		conda install -n wish-env -y -c conda-forge openmp
-		conda install -n wish-env -y -c anaconda make cmake
-		go_to_cloned_tools_folder
-		git clone https://github.com/soedinglab/WIsH.git
-		cd WIsH
-		conda activate wish-env
-		cmake .
-		make
-		conda deactivate wish-env
-		cp WIsH $conda_path/envs/wish-env/bin
-		cd ../..
-		
-		current_path="$(pwd)"
-		cd  $conda_path/envs/wish-env/bin
-		cd ..
-		mkdir database
-		cd database
-		wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.1.genomic.fna.gz"
-		wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.2.1.genomic.fna.gz"
-		wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.3.1.genomic.fna.gz"
-		gunzip *
-		cat * > viral_refseq.fna
-		python3 /home/centos/mudoger/MuDoGeR/tools/split-all-seq.py viral_refseq.fna viruses
-		echo 'removing non-phages...'
-		for d in viruses-*fa; do if grep -q phage "$d"; then :; else rm -f "$d"; fi; done
-		echo 'done!'
-		mkdir phages
-		mv viruses* phages
-		rm viral.1.1.genomic.fna  viral.2.1.genomic.fna  viral.3.1.genomic.fna  viral_refseq.fna
-		cd $current_path
-
-		#INSTALLING CHECKV
-		conda create -y -n checkv-env -c conda-forge -c bioconda checkv
-
-		#INSTALLING VCONTACT2
-		conda create -y -n vcontact2-env python=3 -c bioconda 
-		conda activate vcontact2-env
-		conda install -y -c bioconda vcontact2
-		conda install -y -c bioconda mcl blast diamond
-		conda install -y -c bioconda prodigal
-		conda install pandas==0.25.1
-		condas install numpy==1.16.5
-		#conda update vcontact2
-		## Install ClusterONE
-		go_to_cloned_tools_folder
-		wget http://www.paccanarolab.org/static_content/clusterone/cluster_one-1.0.jar
-		cp cluster_one-1.0.jar $conda_path/envs/vcontact2-env/bin
-		cd .. #CHECK FILE LOCATION
-		conda deactivate
-
-		break
-	elif [ $choose = n -o $choose = N ]
-	then
-		echo "installation denied..."
-		break
-	else
-		echo "command not found, please try again..."
-	fi
-done
-
-echo "Do you want to install all the required tools for the Module 4 (Recovery of Eukaryotic Metagenome-Assembled Genomes)?[y/n]"
-while :
-do
-	read choose
-	if [ $choose = y -o $choose = Y ];
-	then
-		#INSTALLING EUKREP
-		conda create -y -n eukrep-env -c bioconda scikit-learn==0.19.2  eukrep
-
-		#INSTALLING GENEMARKER-ES
-		conda create  -y -n genemark-test
-		conda activate genemark-test
-		perl_mods=/home/centos/mudoger/perl_mods
-		perl -Mlocal::lib="$perl_mods" -MCPAN -e 'CPAN::install(YAML)'
-		perl -Mlocal::lib="$perl_mods" -MCPAN -e 'CPAN::install(Hash::Merge)'
-		perl -Mlocal::lib="$perl_mods" -MCPAN -e 'CPAN::install(Parallel::ForkManager)'
-		perl -Mlocal::lib="$perl_mods" -MCPAN -e 'CPAN::install(MCE::Mutex)'
-		perl -Mlocal::lib="$perl_mods" -MCPAN -e 'CPAN::install(Thread::Queue)'
-		conda deactivate
-
-		#INSTALLING MARKER2
-
-		#INSTALLING BUSCO
-		conda create -y -n busco-env -c conda-forge -c bioconda busco=5.2.2
-
-		#INSTALLING EUKCC
-		conda create -y -n eukcc-env -c bioconda -c conda-forge eukcc
-
-		break
-	elif [ $choose = n -o $choose = N ]
-	then
-		echo "installation denied..."
-		break
-	else
-		echo "command not found, please try again"
-	fi
-done
-
-echo "Do you want to install all the required tools for the Module 5 (Relative Abundance)?[y/n]"
-while :
-do
-	read choose
-	if [ $choose = y -o $choose = Y ];
-	then
-		mkdir downloaded_tools && cd downloaded_tools
-		conda create -y -n brat-env python=2.7
-		conda activate brat-env
-
-		#INSTALLING BRAT
-		wget http://weaver.nlplab.org/~brat/releases/brat-v1.3_Crunchy_Frog.tar.gz
-		tar xzf brat-v1.3_Crunchy_Frog.tar.gz
-		cd brat-v1.3_Crunchy_Frog
-		./install.sh -u
-		python standalone.py
-
-		conda deactivate
-		cd ../..
-		break
-	elif [ $choose = n -o $choose = N ]
-	then
-		echo "installation denied..."
-		break
-	else
-		echo "command not found, please try again"
-	fi
-done
+if [ -z $install_module_2 ];
+then
+	call_installation_script install_module_2
+fi
+if [ -z $install_module_3 ];
+then
+	call_installation_script install_module_3
+fi
+if [ -z $install_module_4 ];
+then
+	call_installation_script install_module_4
+fi
+if [ -z $install_module_5 ];
+then
+	call_installation_script install_module_5
+fi
