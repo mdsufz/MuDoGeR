@@ -1,4 +1,4 @@
-MUDOGER_CONDA_ENVIRONMENT_PATH=/home/brizolat/tools/conda/anaconda2/envs/mudoger_env
+MUDOGER_CONDA_ENVIRONMENT_PATH=/mnt/tools/miniconda2/envs/mudoger_env
 echo "------> loading config.sh"
 #source $(dirname $0)/installation_utils.sh
 
