@@ -11,7 +11,7 @@ source installation/config.sh
 call_installation_script() {
     command="$1"
     for i; do
-        bash "$MUDOGER_INSTALLATION_SCRIPTS_PATH/${command}.sh" "${arg}"
+        bash -i "$MUDOGER_INSTALLATION_SCRIPTS_PATH/${command}.sh" "${arg}"
     done
 }
 
