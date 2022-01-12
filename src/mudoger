@@ -60,10 +60,11 @@ while true; do
 done
 
 #############################  
-
+dependencies="$(echo "$(which mudoger)" | sed "s/bin\/mudoger/dependencies/g")"
+bin="$(echo "$(which mudoger)" | sed "s/bin\/mudoger/dependencies/g")"
 
 ### check if there was any problem with metadata file
-out="$(python MuDoGeR/tools/mdcheck.py $metadata_table)"
+out="$(python "$dependencies"/mdcheck.py $metadata_table)"
 echo -e "$out"
 if [[ $out =~ "Closing" ]]; then
    echo -e "\n TIP: run \"mudoger -h\" for help "
@@ -91,7 +92,7 @@ if [ "$active_module" = preprocess ]; then
 	
 elif [ "$active_module" = prokaryotes ]; then
 	echo mudoger prokaryotes ${@:2}
-	module_script=MuDoGeR/src/modules/mudoger-module-2.sh
+	module_script=mudoger-module-2.sh
         ###### loop around samples and run module 1
 	aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
 	for i in $aux; 
