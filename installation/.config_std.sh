@@ -25,3 +25,5 @@ INSTALLATION_SCRIPTS_PATH=installation/installation_scripts
 
 MUDOGER_WORK_SCRIPTS=src/scripts
 MUDOGER_WORK_MODULES=src/modules
+MUDOGER_MASTER_SCRIPT=src/mudoger
+
