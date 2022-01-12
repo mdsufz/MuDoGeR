@@ -1,5 +1,6 @@
 #!/bin/bash
 
+conda activate mudoger_env
 help_message () {
 	echo ""
 	echo "Usage: bash -i MuDoGeR/src/modules/mudoger-module-1.sh -1 reads_1.fastq -2 reads_2.fastq -o output_dir"
@@ -75,3 +76,4 @@ fi
 
 echo "-> module 1 (preprocess and assembly) is finished"
 
+conda deactivate
