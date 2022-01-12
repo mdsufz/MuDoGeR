@@ -68,8 +68,8 @@ core_env="$(echo $PATH | cut -f1 -d':')"
 echo "----"
 echo "$core_env"
 
-source $(dirname $0)/config.sh
-source $(dirname $0)/installation_utils.sh
+source installation/config.sh
+source installation/installation_utils.sh
 
 echo $MUDOGER_WORK_SCRIPTS
 echo $MUDOGER_WORK_MODULES
