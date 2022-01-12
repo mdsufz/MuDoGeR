@@ -49,13 +49,16 @@ master_output_dir="$output_folder"
 
 mkdir -p "$master_output_dir"
 
+config_path="$(which config.sh)"
+source $config_path
+
 ########## CHANGE the path to the scripts below to a variable Ex: "$mudoger"/src...
 
 # 1 QUALITY CONTROL (QC) OF READS
 if [ -f  "$master_output_dir"/qc/final_pure_reads_1.fastq ]; 		# if one of the outputs is already there, do not run
 then echo "-> Reads were already qc'ed. Please check here: "$master_output_dir"/qc"
 else echo "-> Running QC"
-mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$master_output_dir"/qc "$num_cores"
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-1-1_QC.sh "$forward_library" "$reverse_library" "$master_output_dir"/qc "$num_cores"
 fi
 
 # 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY
