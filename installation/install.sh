@@ -54,10 +54,10 @@ echo "your MuDoGeR's path is $MUDOGER_CONDA_ENVIRONMENT_PATH"
 ls $DEPENDENCIES_SCRIPTS_PATH
 
 #cp -R $DEPENDENCIES_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_PATH # modified by rodolfo
-cp -r $DEPENDENCIES_SCRIPTS_PATH $MUDOGER_CONDA_ENVIRONMENT_PATH
+cp -rf $DEPENDENCIES_SCRIPTS_PATH $MUDOGER_CONDA_ENVIRONMENT_PATH
 
 #cp -R $INSTALLATION_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_ENVS_PATH # modified by rodolfo
-cp -r $INSTALLATION_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_PATH
+cp -rf $INSTALLATION_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_PATH
 
 echo "----"
 core_env="$(echo $PATH | cut -f1 -d':')"
@@ -67,6 +67,10 @@ conda activate mudoger_env
 core_env="$(echo $PATH | cut -f1 -d':')"
 echo "----"
 echo "$core_env"
+
+echo $MUDOGER_WORK_SCRIPTS
+echo $MUDOGER_WORK_MODULES
+
 echo 'install line 62 end'
 exit 0
 ################# CHOOSING WICH MODULE TO INSTALL #################
