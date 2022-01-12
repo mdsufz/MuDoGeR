@@ -22,3 +22,6 @@ DEPENDENCIES_SCRIPTS_PATH=installation/dependencies
 DEPENDENCIES_SCRIPTS_PATH=installation/dependencies # modified by rodolfo
 
 INSTALLATION_SCRIPTS_PATH=installation/installation_scripts
+
+MUDOGER_WORK_SCRIPTS=src/scripts
+MUDOGER_WORK_MODULES=src/modules
