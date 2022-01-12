@@ -197,8 +197,8 @@ coffe_time
 
 call_installation_script install_module_1
 
-echo '----> stopping code install.sh line 150'
-#exit 0
+echo '----> stopping code install.sh line 200'
+exit 0
 
 if [ -z $install_module_2 ];
 then
