@@ -59,7 +59,8 @@ cp -r $DEPENDENCIES_SCRIPTS_PATH $MUDOGER_CONDA_ENVIRONMENT_PATH
 #cp -R $INSTALLATION_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_ENVS_PATH # modified by rodolfo
 cp -r $INSTALLATION_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_PATH
 
-#exit 0
+echo 'install line 62 end'
+exit 0
 ################# CHOOSING WICH MODULE TO INSTALL #################
 
 ## Giving the user the option of which modules he wants to install
