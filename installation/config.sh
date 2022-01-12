@@ -28,3 +28,5 @@ INSTALLATION_SCRIPTS_PATH=installation/installation_scripts
 MUDOGER_WORK_SCRIPTS=src/scripts
 MUDOGER_WORK_MODULES=src/modules
 
+echo 'hey'
+
