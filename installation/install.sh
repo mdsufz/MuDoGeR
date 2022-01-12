@@ -24,6 +24,8 @@ echo MUDOGER_CONDA_ENVIRONMENT_PATH="$MUDOGER_CONDA_ENVIRONMENT_PATH" > $(dirnam
 cat $(dirname $0)/temp  $(dirname $0)/.config_std.sh > $(dirname $0)/config.sh
 rm -f $(dirname $0)/temp 
 
+
+
 #exit 0
 
 source $(dirname $0)/config.sh
@@ -78,9 +80,10 @@ chmod +x $MUDOGER_WORK_SCRIPTS/*
 chmod +x $MUDOGER_WORK_MODULES/*
 chmod +x $MUDOGER_MASTER_SCRIPT 
 
-yes | cp -rf $MUDOGER_WORK_SCRIPTS/* $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
-yes | cp -rf $MUDOGER_WORK_MODULES/* $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
-yes | cp -r $MUDOGER_MASTER_SCRIPT  $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
+yes | cp -rf $MUDOGER_WORK_SCRIPTS/*  $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
+yes | cp -rf $MUDOGER_WORK_MODULES/*  $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
+yes | cp -rf $MUDOGER_MASTER_SCRIPT   $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
+yes | cp -rf $(dirname $0)/config.sh  $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
 
 echo 'install line 62 end'
 #exit 0
