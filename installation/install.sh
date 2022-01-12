@@ -82,7 +82,7 @@ yes | cp -rf $MUDOGER_WORK_MODULES/* $MUDOGER_CONDA_ENVIRONMENT_PATH
 
 
 echo 'install line 62 end'
-exit 0
+#exit 0
 ################# CHOOSING WICH MODULE TO INSTALL #################
 
 ## Giving the user the option of which modules he wants to install
