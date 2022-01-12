@@ -15,7 +15,10 @@ exit 0
 
 ########## 1 QUALITY CONTROL (QC) OF READS  ###################
 ## load conda metawrap conda quality control
-conda activate metawrap-env
+config_path="$(which config.sh)"
+source $config_path
+
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap_env
 
 # arguments declaration
 log="log_qc"                      # definition of path to QC log       
