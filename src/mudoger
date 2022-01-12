@@ -77,8 +77,7 @@ mkdir -p "$output_folder"
 
 if [ "$active_module" = preprocess ]; then
 	echo mudoger preprocess ${@:2}
-	module_script=MuDoGeR/src/modules/mudoger-module-1.sh
-	module_script=mudoger-module-1.sh			# update rodolfo 12.01.21
+	module_script=mudoger-module-1.sh			
         ###### loop around samples and run module 1
 	aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
 	for i in $aux; 
