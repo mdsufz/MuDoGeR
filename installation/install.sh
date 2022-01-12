@@ -74,6 +74,13 @@ source installation/installation_utils.sh
 echo $MUDOGER_WORK_SCRIPTS
 echo $MUDOGER_WORK_MODULES
 
+chmod +x $MUDOGER_WORK_SCRIPTS/*
+chmod +x $MUDOGER_WORK_MODULES/*
+
+yes | cp -rf $MUDOGER_WORK_SCRIPTS/* $MUDOGER_CONDA_ENVIRONMENT_PATH
+yes | cp -rf $MUDOGER_WORK_MODULES/* $MUDOGER_CONDA_ENVIRONMENT_PATH
+
+
 echo 'install line 62 end'
 exit 0
 ################# CHOOSING WICH MODULE TO INSTALL #################
