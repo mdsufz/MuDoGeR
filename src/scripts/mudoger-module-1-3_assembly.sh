@@ -2,7 +2,10 @@
 
 ################### 3 ASSEMBLY  #########################################################
 ## load conda metawrap conda quality control
-conda activate metawrap-env
+conda activate mudoger_env
+config_path="$(which config.sh)"
+source $config_path
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap-env
 
 
 # arguments declaration
