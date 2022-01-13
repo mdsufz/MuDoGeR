@@ -1,8 +1,13 @@
 #!/bin/bash
 
 ################### 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY ###################
+
+conda activate mudoger_env
+config_path="$(which config.sh)"
+source $config_path
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/khmer-env
 ## load conda metawrap conda quality control
-conda activate khmer-env  # conda to be created
+#conda activate   # conda to be created
 # https://khmer.readthedocs.io/en/v2.1.1/user/install.html
 
 #out_kmer="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")/kmer"          # create output master
