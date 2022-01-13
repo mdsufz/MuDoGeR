@@ -1,6 +1,8 @@
 #!/bin/bash
 
 ################### 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY ###################
+echo '---------- STARTING MODULE 1-2 KMER'
+
 
 conda activate mudoger_env
 config_path="$(which config.sh)"
