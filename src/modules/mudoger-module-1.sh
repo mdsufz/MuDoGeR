@@ -74,7 +74,7 @@ fi
 if [ -f  "$master_output_dir"/assembly/final_assembly.fasta ]; 
 then echo "-> Assembly is reading. Please check here: "$master_output_dir"/assembly"
 else echo "-> Running assembly"
-#bash -i MuDoGeR/src/scripts/mudoger-module-1-3_assembly.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/qc/final_pure_reads_2.fastq  "$master_output_dir" "$num_cores" "$metaspades" #"$memory"
+bash -i MuDoGeR/src/scripts/mudoger-module-1-3_assembly.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/qc/final_pure_reads_2.fastq  "$master_output_dir" "$num_cores" "$metaspades" #"$memory"
 fi
 
 echo "-> module 1 (preprocess and assembly) is finished"
