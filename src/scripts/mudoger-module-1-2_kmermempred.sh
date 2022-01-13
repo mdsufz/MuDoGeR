@@ -2,17 +2,11 @@
 
 ################### 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY ###################
 echo '---------- STARTING MODULE 1-2 KMER'
-
-
 conda activate mudoger_env
 config_path="$(which config.sh)"
 source $config_path
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/khmer_env
-## load conda metawrap conda quality control
-#conda activate   # conda to be created
-# https://khmer.readthedocs.io/en/v2.1.1/user/install.html
 
-#out_kmer="$( echo "$output_folder"/"$(echo "$forward_library" | rev | cut -f1 -d'/' | rev | cut -f1 -d'.' | cut -f1 -d'_' )")/kmer"          # create output master
 
 # arguments declaration
 fwd_lib="$1"                   # fastq file to be investigated after qc
@@ -20,8 +14,6 @@ khmer_folder="$2"              # folder where the output will be dumped
 mkdir -p "$khmer_folder"
 
 # run khmer for sizes 33 and 55
-#python3 unique-kmers.py -k 33 -R "$kmer_mem_pred"/kmer-33 "$lib"
-#python3 unique-kmers.py -k 55 -R "$kmer_mem_pred"/kmer-55 "$lib"
 unique-kmers.py -k 33 -R "$khmer_folder"/kmer-33 "$fwd_lib"
 unique-kmers.py -k 55 -R "$khmer_folder"/kmer-55 "$fwd_lib"
 
