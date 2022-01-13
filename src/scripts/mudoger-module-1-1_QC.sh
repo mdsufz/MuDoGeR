@@ -6,7 +6,7 @@
 
 
 ################# STARTING MODULE 1  ###############################################
-echo '---------- STARTING MODULE 1'
+echo '---------- STARTING MODULE 1-1 QC'
 echo $PATH
 
 echo 'close module 1 1 qc line 12'
