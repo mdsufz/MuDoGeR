@@ -15,6 +15,7 @@ exit 0
 
 ########## 1 QUALITY CONTROL (QC) OF READS  ###################
 ## load conda metawrap conda quality control
+conda activate mudoger_env
 config_path="$(which config.sh)"
 source $config_path
 
