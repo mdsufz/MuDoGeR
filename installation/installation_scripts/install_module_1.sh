@@ -45,6 +45,7 @@ echo '----> mamba install metawrap'
 mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y --only-deps -c ursky -c bioconda -c conda-forge -c defaults metawrap-mg=1.3.2
 mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y -c bioconda fastqc
 mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y -c bioconda trim-galore 
+mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y -c bioconda megahit
 echo '----> done'
 
 ### INSTALLING KHMER ###
