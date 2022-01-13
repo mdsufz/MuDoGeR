@@ -7,7 +7,7 @@ echo '---------- STARTING MODULE 1-2 KMER'
 conda activate mudoger_env
 config_path="$(which config.sh)"
 source $config_path
-conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/khmer-env
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/khmer_env
 ## load conda metawrap conda quality control
 #conda activate   # conda to be created
 # https://khmer.readthedocs.io/en/v2.1.1/user/install.html
