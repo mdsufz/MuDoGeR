@@ -22,8 +22,8 @@ while True:
 
         isfile=os.path.isfile(filepath.replace("\"",""))
         if isfile == False:
-            print '\n--> Oops, it looks like the metadata file provided is incorrect.'
-            print '    Please make sure all file paths are correct. Closing now.'
+            print '(\n--> Oops, it looks like the metadata file provided is incorrect.)'
+            print '(    Please make sure all file paths are correct. Closing now.)'
             exit=1
             break
 
@@ -41,6 +41,6 @@ while True:
 f.close()
 
 if exit != 1:
-    print '\n-> Files are present'
-    print '--> Number of samples',len(ids_dic)
-    print '--> Number of groups',len(groups_dic)
+    print '(\n-> Files are present')
+    print '(--> Number of samples',len(ids_dic))
+    print '(--> Number of groups',len(groups_dic))
