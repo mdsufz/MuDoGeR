@@ -31,9 +31,9 @@ echo -e "$(cat "$khmer_folder"/kmer-33 | head -n1 | cut -f1 -d' ')\t\c" >> "$khm
 echo -e "$(cat "$khmer_folder"/kmer-55 | head -n1 | cut -f1 -d' ')" >> "$khmer_folder"/input_for_predictR.tsv
 
 # copy necessary files for memory prediction. those scripts in-house and should be downloadable via git
-cp MuDoGeR/tools/mpred_function_predict_memory.R  "$khmer_folder"
-cp MuDoGeR/tools/mpred_models.RData  "$khmer_folder"
-cp MuDoGeR/tools/mpred_predict.R  "$khmer_folder"
+cp "$MUDOGER_DEPENDENCIES_PATH"/mpred_function_predict_memory.R  "$khmer_folder"
+cp "$MUDOGER_DEPENDENCIES_PATH"/mpred_models.RData  "$khmer_folder"
+cp "$MUDOGER_DEPENDENCIES_PATH"/mpred_predict.R  "$khmer_folder"
 
 # run memory prediction
 cd  "$khmer_folder"                                                # move to the kmer output folder
