@@ -1,7 +1,12 @@
 #!/bin/bash
 ########## 2 PROKARYOTIC REFINEMENT FOR BACTERIA (50,10  ###################
 ## load conda metawrap conda quality control
-conda activate metawrap-env
+echo '------- START MODULE 2-2 BIN REFINEMENT FOR BACTERIA'
+## load conda metawrap conda quality control
+conda activate mudoger_env
+config_path="$(which config.sh)"
+source $config_path
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap-env
 
 
 
