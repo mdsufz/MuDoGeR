@@ -24,7 +24,8 @@ memory=$7
 source MuDoGeR/installation/config_db
 
 #Run only once during database installation configuration
-#checkm data setRoot "$CHECKM_DB"
+echo ${CHECKM_DB} | checkm data setRoot ${CHECKM_DB}
+
 
 metawrap bin_refinement -o "$output_folder" -t $cores -A "$con" -B "$met" -C "$max" -c 50 -x 10 -m "$memory"
 
