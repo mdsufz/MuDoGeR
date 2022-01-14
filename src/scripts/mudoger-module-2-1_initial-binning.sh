@@ -1,8 +1,12 @@
 #!/bin/bash
 
-########## 1 INITIAL PROKARYOTIC BINNING  ###################
+##########  INITIAL PROKARYOTIC BINNING  ###################
+echo '------- START MODULE 2-1 INITIAL BINNING'
 ## load conda metawrap conda quality control
-conda activate metawrap-env
+conda activate mudoger_env
+config_path="$(which config.sh)"
+source $config_path
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap-env
 
 # arguments declaration    
 assembly=$1                     # assembly fasta file
