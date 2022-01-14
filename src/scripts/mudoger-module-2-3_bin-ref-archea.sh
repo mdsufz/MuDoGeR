@@ -2,7 +2,12 @@
 
 ########## 2 PROKARYOTIC REFINEMENT FOR ARCHAEA (40,30)  ###################
 ## load conda metawrap conda quality control
-conda activate metawrap-env
+echo '------- START MODULE 2-2 BIN REFINEMENT FOR ARCHEAE'
+## load conda metawrap conda quality control
+conda activate mudoger_env
+config_path="$(which config.sh)"
+source $config_path
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap-env
 
 
 # arguments declaration
