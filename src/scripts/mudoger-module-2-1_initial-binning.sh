@@ -6,7 +6,7 @@ echo '------- START MODULE 2-1 INITIAL BINNING'
 conda activate mudoger_env
 config_path="$(which config.sh)"
 source $config_path
-conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap-env
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap_env
 
 # arguments declaration    
 assembly=$1                     # assembly fasta file
