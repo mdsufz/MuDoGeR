@@ -12,18 +12,20 @@ mkdir "$database_location"
 source "$config_file"
 ############################################### PROKARYOTES ###############################################
 ### CheckM
+echo 'installing checkm database ...'
 mkdir -p "$database_location"/checkm
 cd  "$database_location"/checkm
-if [ ! -f selected_markers_sets.tsv ]; then
+if [ ! -f selected_marker_sets.tsv ]; then
 wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
 tar -xvf checkm_data_2015_01_16.tar.gz
 rm -fr checkm_data_2015_01_16.tar.gz
 # On newer versions of CheckM, you would run:
 #checkm data setRoot /path/to/your/dir/$MY_CHECKM_FOLDER
 CHECKM_DB="$database_location"/checkm #Fixed? we need to test
-echo CHECKM_DB="$CHECKM_DB" >> "$config_file"
+echo CHECKM_DB="$CHECKM_DB" >> "$config_path"
 else echo "-> your CheckM database is ready"
 fi
+
 
 ### GTDB-tk
 mkdir -p  "$database_location"/"gtdbtk"
