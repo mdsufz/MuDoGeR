@@ -7,7 +7,7 @@ echo '------- START MODULE 2-2 BIN REFINEMENT FOR ARCHEAE'
 conda activate mudoger_env
 config_path="$(which config.sh)"
 source $config_path
-conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap-env
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap_env
 
 
 # arguments declaration
