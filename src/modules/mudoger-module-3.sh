@@ -28,18 +28,22 @@ while true; do
 	esac
 done
 
+conda activate mudoger_env
+config_path="$(which config.sh)"
+source $config_path
+
 #assembly=$1
 #libname_folder=$2              # master output folder to be created and defined by user
 #cores=10
 
 # 1 viral investigation
 mkdir -p "$libname_folder"/viruses/investigation
-bash -i MuDoGeR/src/scripts/mudoger-module-3-1_viral-investigation.sh "$assembly" "$libname_folder"/viruses/investigation $cores
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-1_viral-investigation.sh "$assembly" "$libname_folder"/viruses/investigation $cores
 
 exit 0
 # 2 viral vcontact2 (taxonomy)
 #echo "-> start vcontact"
-#bash -i MuDoGeR/src/scripts/mudoger-module-3-2_vcontact2.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna "$libname_folder"/viruses/taxonomy "$cores"
+#bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-2_vcontact2.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna "$libname_folder"/viruses/taxonomy "$cores"
 
 # 3 host prediction
 #commented for testing 
