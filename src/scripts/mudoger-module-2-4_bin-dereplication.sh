@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 4 BIN REDUNANCY REMOVAL
-
+echo '------- START MODULE 2-4 BIN REDUNDANCY REMOVAL'
 lib_folder=$1;
 bin_count=0;
 
