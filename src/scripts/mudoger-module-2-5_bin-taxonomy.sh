@@ -6,7 +6,7 @@ echo '------- START MODULE 2-5 BIN TAXONOMY'
 conda activate mudoger_env
 config_path="$(which config.sh)"
 source $config_path
-conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/gtdbtk-env
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/gtdbtk_env
 
 source MuDoGeR/installation/config_db
 
