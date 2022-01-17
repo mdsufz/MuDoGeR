@@ -105,24 +105,15 @@ elif [ "$active_module" = prokaryotes ]; then
 	time  $module_script -1 $r1 -2 $r2 -a $output_folder/$i/assembly/final_assembly.fasta -o $output_folder/$i -t $num_cores;
 	done
 	
-	
 	##################################### 
 	# 1) GROUP ALL RESULTS FROM ALL LIBRARIES INTO ONE INFORMATIVE TABLE
 	# TABLE HAS: BINNAME, LIBRARY, N50, L50, TAXONOMY, COMPLETENESS, CONTAMINATION
-	
 	# 2) RUN GOTUPICK AND LEAVE RESULTS INSIDE ~output/results/prokaryotes/gotupick
-	
-	# 3) prepare inputs for BRATS
-	
-	
-	
-	
-	
-	
+	# 3) prepare inputs for BRATS	
 	
 elif [ "$active_module" = viruses ]; then
 	echo mudoger viruses ${@:2}
-	module_script=MuDoGeR/src/modules/mudoger-module-3.sh
+	module_script=mudoger-module-3.sh
         ###### loop around samples and run module 1
 	aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
 	for i in $aux; 
