@@ -4,11 +4,14 @@
 # given the user input, the config file will be edited and all databases via wget, curl, etc and zipping
 
 database_location="$1"
-config_file=MuDoGeR/installation/config #Path problem! The script does not know where this config is
-touch "$config_file"
+#config_file=MuDoGeR/installation/config #Path problem! The script does not know where this config is
+
+
+#touch "$config_file"
 
 mkdir "$database_location"
-
+conda activate mudoger_env
+config_file="$(which config.sh)"
 source "$config_file"
 ############################################### PROKARYOTES ###############################################
 ### CheckM
