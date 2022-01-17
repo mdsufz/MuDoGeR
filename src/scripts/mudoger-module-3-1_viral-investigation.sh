@@ -10,14 +10,17 @@ assembly=$1
 output_folder=$2                # output folder to be created inside master output folder
 num_cores=$3                     # number of threads
 
-
+conda activate mudoger_env
+config_path="$(which config.sh)"
+source $config_path
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/vibrant-env
 ############ VIBRANT
 
 if [ -f "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna ];
 then echo '-> Vibrant investigation is done'
 else
 echo "-----> STARTING VIBRANT (1/4)"
-conda activate vibrant-env
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/vibrant-env
 conda_vib="$(echo $PATH | cut -f1 -d':')"
 VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores -m "$conda_vib"/files -d "$conda_vib"/databases
 # fetch results
@@ -35,7 +38,7 @@ if [ -f "$output_folder"/virfinder/virfinder_output.tsv ];
 then echo '-> Virfinder investigation is done'
 else
 echo "-----> STARTING VIRFINDER (2/4)"
-conda activate virfinder-env
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/virfinder-env
 assembly_whole_path="$(realpath "$assembly")"
 output_file="$(realpath "$output_folder"/virfinder)"/virfinder_output.tsv
 mkdir -p "$output_folder"/virfinder
@@ -53,7 +56,7 @@ if [ -f "$output_folder"/virsorter/final-viral-combined.fa ] ;
 then echo '-> Virsoter investigation is done'
 else
 echo "-----> STARTING VIRSORTER (3/4)"
-conda activate virsorter2-env
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/virsorter2-env
 virsorter run all -i "$assembly" -w "$output_folder"/virsorter -j "$num_cores"
 # fetch results
 cat "$output_folder"/virsorter/final-viral-combined.fa  | grep ">" | sed "s/_fragment_1//g;s/>//g" | 
@@ -74,14 +77,14 @@ if [ -f "$output_folder"/dereplication/uvigs.fa ];
 then :
 else
 echo "-----> STARTING DEREPLICATION (4/4)"
-conda activate extract-env
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/extract-env
 python MuDoGeR/tools/extract_fa.py "$output_folder"/dereplication/viral_unique_contigs "$assembly" "$output_folder"/dereplication/uvigs.fa
 conda deactivate
 fi
 
 exit 0
 ##### RUN DEREPLICATION
-conda activate stampede-clustergenomes-env
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/stampede-clustergenomes-env
 Cluster_genomes.pl -f "$output_folder"/dereplication/uvigs.fa  -c 70 -i 95
 conda deactivate
 echo "-----> END DEREPLICATION (4/4)"
