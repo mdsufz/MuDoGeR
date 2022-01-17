@@ -13,7 +13,6 @@ num_cores=$3                     # number of threads
 conda activate mudoger_env
 config_path="$(which config.sh)"
 source $config_path
-conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/vibrant-env
 ############ VIBRANT
 
 if [ -f "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna ];
