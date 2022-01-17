@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ### VIRAL INVESTIGATION - VIRSORTER, VIRFINDER, VIBRANT And STAMPEDE DEREPLICATION
-
+echo '------- START MODULE 3-1 VIRAL INVESTIGATION'
 # arguments declaration
 log="log_vir"                      # definition of path to QC log       
 assembly=$1
