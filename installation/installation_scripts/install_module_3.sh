@@ -27,18 +27,29 @@ conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env && virsorter setup
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virfinder_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virfinder_env-c bioconda r-virfinder
 
+echo 'LET US INSTALL VIBRANT'
+read var
+
 ## CREATING ENVIRONMENT AND INSTALLING VIBRANT ##
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env install -y -c bioconda vibrant
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env python=3 bioconda::vibrant==1.2.0 bioconda::prodigal bioconda::hmmer ostrokach::gzip conda-forge::tar conda-forge::biopython conda-forge::matplotlib anaconda::wget anaconda::pandas anaconda::seaborn anaconda::numpy anaconda::scikit-learn==0.21.3
 
 git clone $VIBRANT_GIT_URL $MUDOGER_CLONED_TOOLS_PATH
 
 #TODO: REVIEW AND IPROVE
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
+echo conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
+
+echo 'trying to run conda activate'
+read var
 
 pip install pickle-mixin
 
 VIBRANT_DB_DIR=$MUDOGER_CLONED_TOOLS_PATH/VIBRANT/databases
+
+cho 'let us download '$VIBRANT_DB_DIR
+read var
 
 wget http://fileshare.csb.univie.ac.at/vog/vog94/vog.hmm.tar.gz -P $VIBRANT_DB_DIR
 wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz -P $VIBRANT_DB_DIR
