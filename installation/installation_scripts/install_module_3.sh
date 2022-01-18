@@ -14,16 +14,18 @@ echo "### INSTALLING MODULE 3. RECOVERY OF UVIGS ###"
 source installation/config.sh              # modified by rodolfo
 source installation/installation_utils.sh  # modified by rodolfo
 ## Checking if some tool already have a conda environment created
-verify_if_conda_env_exist virsorter2_env
-verify_if_conda_env_exist virfinder_env
-verify_if_conda_env_exist vibrant_env
+
+
+
 
 ## CREATING ENVIRONMENT, INSTALLING VIRSORTER 2 AND SETUP DATABASE ##
+verify_if_conda_env_exist virsorter2_env
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env 
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env -c conda-forge -c bioconda virsorter=2
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env && virsorter setup -d $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env/db -j 1 && conda deactivate
 
 ## CREATING ENVIRONMENT AND INSTALLING VIRFINDER ##
+verify_if_conda_env_exist virfinder_env
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virfinder_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virfinder_env-c bioconda r-virfinder
 
@@ -31,6 +33,7 @@ echo 'LET US INSTALL VIBRANT'
 read var
 
 ## CREATING ENVIRONMENT AND INSTALLING VIBRANT ##
+verify_if_conda_env_exist vibrant_env
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env install -y -c bioconda vibrant
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env python=3 bioconda::vibrant==1.2.0 bioconda::prodigal bioconda::hmmer ostrokach::gzip conda-forge::tar conda-forge::biopython conda-forge::matplotlib anaconda::wget anaconda::pandas anaconda::seaborn anaconda::numpy anaconda::scikit-learn==0.21.3
