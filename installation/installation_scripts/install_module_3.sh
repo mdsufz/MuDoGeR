@@ -54,7 +54,7 @@ wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz -P $
 wget ftp://ftp.genome.jp/pub/db/kofam/archives/2019-08-10/profiles.tar.gz -P $VIBRANT_DB_DIR
 
 tar -xzf $VIBRANT_DB_DIR/vog.hmm.tar.gz -C $VIBRANT_DB_DIR
-gunzip Pfam-A.hmm.gz -d $VIBRANT_DB_DIR
+gunzip $VIBRANT_DB_DIR/Pfam-A.hmm.gz -d $VIBRANT_DB_DIR
 tar -xzf $VIBRANT_DB_DIR/profiles.tar.gz -C $VIBRANT_DB_DIR
 
 for v in $VIBRANT_DB_DIR/VOG*.hmm;
