@@ -16,8 +16,8 @@
 ## some MuDoGeR's important paths
 
 ## Importing config.sh
-echo dirname "$dirname"
-echo '----'
+#echo dirname "$dirname"
+#echo '----'
 
 MUDOGER_CONDA_ENVIRONMENT_PATH=$CONDA_PREFIX/envs/mudoger_env
 echo MUDOGER_CONDA_ENVIRONMENT_PATH="$MUDOGER_CONDA_ENVIRONMENT_PATH" > $(dirname $0)/temp
