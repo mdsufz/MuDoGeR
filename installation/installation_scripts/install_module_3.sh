@@ -40,54 +40,7 @@ git clone $VIBRANT_GIT_URL $MUDOGER_CLONED_TOOLS_PATH
 #TODO: REVIEW AND IPROVE
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
 echo conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-
-
 pip install pickle-mixin
-
-VIBRANT_DB_DIR=$MUDOGER_CLONED_TOOLS_PATH/VIBRANT/databases
-
-cho 'let us download '$VIBRANT_DB_DIR
-read var
-
-wget http://fileshare.csb.univie.ac.at/vog/vog94/vog.hmm.tar.gz -P $VIBRANT_DB_DIR
-wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz -P $VIBRANT_DB_DIR
-wget ftp://ftp.genome.jp/pub/db/kofam/archives/2019-08-10/profiles.tar.gz -P $VIBRANT_DB_DIR
-
-tar -xzf $VIBRANT_DB_DIR/vog.hmm.tar.gz -C $VIBRANT_DB_DIR
-gunzip $VIBRANT_DB_DIR/Pfam-A.hmm.gz -d $VIBRANT_DB_DIR
-tar -xzf $VIBRANT_DB_DIR/profiles.tar.gz -C $VIBRANT_DB_DIR
-
-for v in $VIBRANT_DB_DIR/VOG*.hmm;
-do 
-    cat $v >> $VIBRANT_DB_DIR/vog_temp.HMM; 
-done
-
-for k in $VIBRANT_DB_DIR/profiles/K*.hmm; 
-do 
-    cat $k >> $VIBRANT_DB_DIR/kegg_temp.HMM; 
-done
-
-rm -f $VIBRANT_DB_DIR/VOG0*.hmm
-rm -f  $VIBRANT_DB_DIR/VOG1*.hmm
-rm -f  $VIBRANT_DB_DIR/VOG2*.hmm
-rm -Rf $VIBRANT_DB_DIR/profiles
-
-hmmfetch -o $VIBRANT_DB_DIR/VOGDB94_phage.HMM -f $VIBRANT_DB_DIR/vog_temp.HMM $VIBRANT_DB_DIR/profile_names/VIBRANT_vog_profiles.txt
-hmmfetch -o $VIBRANT_DB_DIR/KEGG_profiles_prokaryotes.HMM -f $VIBRANT_DB_DIR/kegg_temp.HMM $VIBRANT_DB_DIR/profile_names/VIBRANT_kegg_profiles.txt
-mv $VIBRANT_DB_DIR/Pfam-A.hmm $VIBRANT_DB_DIR/Pfam-A_v32.HMM
-rm -rf $VIBRANT_DB_DIR/vog_temp.HMM $VIBRANT_DB_DIR/kegg_temp.HMM $VIBRANT_DB_DIR/vog.hmm.tar.gz $VIBRANT_DB_DIR/profiles.tar.gz
-hmmpress $VIBRANT_DB_DIR/VOGDB94_phage.HMM
-hmmpress $VIBRANT_DB_DIR/KEGG_profiles_prokaryotes.HMM
-hmmpress $VIBRANT_DB_DIR/Pfam-A_v32.HMM
-
-chmod +x $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/scripts/*
-
-cp -rf $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/scripts $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-chmod +x $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/VIBRANT_run.py
-cp $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/VIBRANT_run.py $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-cp -r $VIBRANT_DB_DIR files $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-
-conda deactivate
 
 ## CREATING ENVIRONMENT AND INSTALLING stampede-clustergenomes ##
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/stampede_clustergenomes_env 
