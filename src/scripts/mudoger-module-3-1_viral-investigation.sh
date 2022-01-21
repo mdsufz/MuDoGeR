@@ -12,7 +12,9 @@ num_cores=$3                     # number of threads
 
 conda activate mudoger_env
 config_path="$(which config.sh)"
+database="${config_path/config.database}"
 source $config_path
+source $database
 ############ VIBRANT
 
 if [ -f "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna ];
@@ -21,15 +23,16 @@ else
 echo "-----> STARTING VIBRANT (1/4)"
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/vibrant_env
 conda_vib="$(echo $PATH | cut -f1 -d':')"
-VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores -m "$conda_vib"/files -d "$conda_vib"/databases
+echo VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores -m "$conda_vib"/files -d $database/vibrant
+#VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores -m "$conda_vib"/files -d "$conda_vib"/databases
 # fetch results
-cat "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna | 
-grep ">" | sed "s/_fragment_1//g;s/>//g"   > "$output_folder"/vibrant_filtered_data.txt
+#cat "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna | 
+#grep ">" | sed "s/_fragment_1//g;s/>//g"   > "$output_folder"/vibrant_filtered_data.txt
 conda deactivate
 echo "-----> END VIBRANT (1/4)"
 fi
 
-
+exit 0
 
 ######### VIRFINDER        
 
