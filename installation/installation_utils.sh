@@ -48,7 +48,7 @@ verify_if_conda_env_exist() {
     env_path=$MUDOGER_DEPENDENCIES_ENVS_PATH/$1
     if [[ -d $env_path ]] && [[ ! -z $1 ]];
     then
-        echo "ERROR: Environment $1 already exist in path: $env_path"
+        echo "-> Environment $1 already exist in path: $env_path"
         PRESENT='yes'
     else
         PRESENT='no'
