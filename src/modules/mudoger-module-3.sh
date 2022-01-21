@@ -28,7 +28,7 @@ while true; do
 	esac
 done
 
-conda activate mudoger_env
+#conda activate mudoger_env
 config_path="$(which config.sh)"
 source $config_path
 
