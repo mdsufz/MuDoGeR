@@ -2,7 +2,7 @@
 "$( echo MUDOGER_CONDA_ENVIRONMENT_PATH)"
 "$MUDOGER_CONDA_ENVIRONMENT_PATH"
 $MUDOGER_CONDA_ENVIRONMENT_PATH
-echo "------> loading config.sh"
+#echo "------> loading config.sh"
 #source $(dirname $0)/installation_utils.sh
 
 #conda activate
