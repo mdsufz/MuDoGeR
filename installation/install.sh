@@ -61,20 +61,20 @@ yes | cp -rf $DEPENDENCIES_SCRIPTS_PATH $MUDOGER_CONDA_ENVIRONMENT_PATH
 #cp -R $INSTALLATION_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_ENVS_PATH # modified by rodolfo
 yes | cp -rf $INSTALLATION_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_PATH
 
-echo "----"
-core_env="$(echo $PATH | cut -f1 -d':')"
-echo "$core_env"
-echo "----"
+#echo "----"
+#core_env="$(echo $PATH | cut -f1 -d':')"
+#echo "$core_env"
+#echo "----"
 conda activate mudoger_env
 core_env="$(echo $PATH | cut -f1 -d':')"
-echo "----"
-echo "$core_env"
+#echo "----"
+#echo "$core_env"
 
 source installation/config.sh
 source installation/installation_utils.sh
 
-echo $MUDOGER_WORK_SCRIPTS
-echo $MUDOGER_WORK_MODULES
+#echo $MUDOGER_WORK_SCRIPTS
+#echo $MUDOGER_WORK_MODULES
 
 chmod +x $MUDOGER_WORK_SCRIPTS/*
 chmod +x $MUDOGER_WORK_MODULES/*
@@ -86,7 +86,7 @@ yes | cp -rf $MUDOGER_WORK_MODULES/*  $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
 yes | cp -rf $MUDOGER_MASTER_SCRIPT   $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
 yes | cp -rf $(dirname $0)/config.sh  $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
 
-echo 'install line 62 end'
+#echo 'install line 62 end'
 #exit 0
 ################# CHOOSING WICH MODULE TO INSTALL #################
 
