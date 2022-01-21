@@ -49,11 +49,13 @@ verify_if_conda_env_exist() {
     if [[ -d $env_path ]] && [[ ! -z $1 ]];
     then
         echo "ERROR: Environment $1 already exist in path: $env_path"
-        exit 1
+        PRESENT='yes'
     else
-        echo "$env_path doesn't exist yet"
+        PRESENT='no'
+        #echo "$env_path doesn't exist yet"
     fi
 }
+
 
 #### DESCRIPTION #### 
 ## Verify if the main mudoger conda environment exists
