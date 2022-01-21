@@ -1,4 +1,4 @@
-echo "------> loading installation_utils.sh"
+#echo "------> loading installation_utils.sh"
 source installation/config.sh
 #### DESCRIPTION #### 
 ## Call a given installation script from the instalation script path
