@@ -12,7 +12,7 @@ num_cores=$3                     # number of threads
 
 conda activate mudoger_env
 config_path="$(which config.sh)"
-database="${config_path/config.database}"
+database="${config_path/config/database}"
 source $config_path
 source $database
 ############ VIBRANT
@@ -23,8 +23,8 @@ else
 echo "-----> STARTING VIBRANT (1/4)"
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/vibrant_env
 conda_vib="$(echo $PATH | cut -f1 -d':')"
-echo VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores -m "$conda_vib"/files -d $database/vibrant
-#VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores -m "$conda_vib"/files -d "$conda_vib"/databases
+VIBRANT_FILES="$(echo $PATH | sed "s/:/\n/g" | grep vibrant_env  | sed "s/bin/share\/vibrant-1.2.0\/files/g")"
+VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores -m "$VIBRANT_FILES" -d $DATABASES_LOCATION/vibrant
 # fetch results
 #cat "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna | 
 #grep ">" | sed "s/_fragment_1//g;s/>//g"   > "$output_folder"/vibrant_filtered_data.txt
@@ -35,7 +35,7 @@ fi
 exit 0
 
 ######### VIRFINDER        
-
+dependencies="$(echo $PATH | cut -f1 -d':' | sed "s/bin/dependencies/g")"
 if [ -f "$output_folder"/virfinder/virfinder_output.tsv ];
 then echo '-> Virfinder investigation is done'
 else
@@ -44,7 +44,7 @@ conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/virfinder_env
 assembly_whole_path="$(realpath "$assembly")"
 output_file="$(realpath "$output_folder"/virfinder)"/virfinder_output.tsv
 mkdir -p "$output_folder"/virfinder
-Rscript MuDoGeR/tools/vir_virfinder_script.r "$output_folder"/virfinder "$assembly_whole_path" "$output_file"
+Rscript $dependencies/vir_virfinder_script.r "$output_folder"/virfinder "$assembly_whole_path" "$output_file"
 # fetch results
 cat "$output_folder"/virfinder/virfinder_output.tsv | awk -F'\t' '{ if ( $4 <= 0.01) print }' | 
 awk -F'_' '{ if ( $4 >= 1000) print  }' | cut -f2 | sed "s/\"//g" > "$output_folder"/virfinder_filtered_data.txt
