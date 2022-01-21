@@ -1,5 +1,5 @@
 MUDOGER_CONDA_ENVIRONMENT_PATH=/mnt/tools/miniconda2/envs/mudoger_env
-echo "------> loading config.sh"
+#echo "------> loading config.sh"
 #source $(dirname $0)/installation_utils.sh
 
 #conda activate
@@ -27,6 +27,4 @@ INSTALLATION_SCRIPTS_PATH=installation/installation_scripts
 
 MUDOGER_WORK_SCRIPTS=src/scripts
 MUDOGER_WORK_MODULES=src/modules
-
-echo 'hey'
 
