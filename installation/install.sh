@@ -201,6 +201,8 @@ coffe_time
 
 
 call_installation_script install_module_1
+call_installation_script install_module_3
+exit
 
 #echo '----> stopping code install.sh line 200'
 #exit 0
