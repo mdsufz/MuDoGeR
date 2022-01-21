@@ -32,7 +32,7 @@ conda deactivate
 echo "-----> END VIBRANT (1/4)"
 fi
 
-exit 0
+#exit 0
 
 ######### VIRFINDER        
 dependencies="$(echo $PATH | cut -f1 -d':' | sed "s/bin/dependencies/g")"
@@ -84,7 +84,7 @@ python MuDoGeR/tools/extract_fa.py "$output_folder"/dereplication/viral_unique_c
 conda deactivate
 fi
 
-exit 0
+#exit 0
 ##### RUN DEREPLICATION
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/stampede_clustergenomes_env
 Cluster_genomes.pl -f "$output_folder"/dereplication/uvigs.fa  -c 70 -i 95
