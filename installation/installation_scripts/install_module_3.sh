@@ -59,7 +59,7 @@ else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/stampede_clustergenomes_env 
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/stampede_clustergenomes_env anaconda::perl bioconda::mummer
 git clone $STAMPEDE_CLUSTERGENOMES_GIT_URL $MUDOGER_CLONED_TOOLS_PATH/stampede-clustergenomes
-cp -r $MUDOGER_CLONED_TOOLS_PATH/stampede-clustergenomes/bin $MUDOGER_DEPENDENCIES_ENVS_PATH/stampede_clustergenomes_env/bin
+cp -r $MUDOGER_CLONED_TOOLS_PATH/stampede-clustergenomes/bin/* $MUDOGER_DEPENDENCIES_ENVS_PATH/stampede_clustergenomes_env/bin
 fi
 
 
