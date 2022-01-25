@@ -84,9 +84,14 @@ python MuDoGeR/tools/extract_fa.py "$output_folder"/dereplication/viral_unique_c
 conda deactivate
 fi
 
-#exit 0
 ##### RUN DEREPLICATION
+if [ ! -f "$output_folder"/dereplication/uvigs_95-70.fna ];
+then
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/stampede_clustergenomes_env
 Cluster_genomes.pl -f "$output_folder"/dereplication/uvigs.fa  -c 70 -i 95
 conda deactivate
 echo "-----> END DEREPLICATION (4/4)"
+else
+echo "-> Dereplication is done";
+fi
+
