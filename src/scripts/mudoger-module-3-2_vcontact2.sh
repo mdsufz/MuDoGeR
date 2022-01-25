@@ -5,15 +5,22 @@
 # ADJUST PATHS OF TOOLS CALLED IN THE SCRIPT BELOW
 
 
+conda activate mudoger_env
+config_path="$(which config.sh)"
+database="${config_path/config/database}"
+source $config_path
+source $database
+
+
 uvigs="$1"
 folder_taxonomy="$2"
 cores="$3"
 
 date
 # creates output directory
-mkdir $2
+mkdir -p $2
 
-conda activate vcontact2-env
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/vcontact2_env
 
 # runs prodigal to generate 1st input to vcontact
 echo "-> step 1/4"
