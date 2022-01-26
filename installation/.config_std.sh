@@ -16,7 +16,7 @@ METAWRAP_GIT_URL=https://github.com/bxlab/metaWRAP.git
 UBIN_GIT_URL=https://github.com/ProbstLab/uBin-helperscripts.git
 VIBRANT_GIT_URL=https://github.com/AnantharamanLab/VIBRANT
 STAMPEDE_CLUSTERGENOMES_GIT_URL=https://bitbucket.org/MAVERICLab/stampede-clustergenomes.git
-WHISH_GIT_URL=https://github.com/soedinglab/WIsH.git
+WISH_GIT_URL=https://github.com/soedinglab/WIsH.git
 
 DEPENDENCIES_SCRIPTS_PATH=installation/dependencies
 DEPENDENCIES_SCRIPTS_PATH=installation/dependencies # modified by rodolfo
