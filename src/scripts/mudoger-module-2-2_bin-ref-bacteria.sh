@@ -7,7 +7,8 @@ conda activate mudoger_env
 config_path="$(which config.sh)"
 source $config_path
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap_env
-
+source $config_path
+source $database
 
 
 # arguments declaration
@@ -21,7 +22,6 @@ max=$5
 met=$6
 memory=$7
 
-source MuDoGeR/installation/config_db
 
 #Run only once during database installation configuration
 echo ${CHECKM_DB} | checkm data setRoot ${CHECKM_DB}
