@@ -92,10 +92,12 @@ conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env conda-forge::openmp anaconda::make anaconda::cmake
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env
 git clone $WISH_GIT_URL $MUDOGER_CLONED_TOOLS_PATH/WIsH
-cmake $MUDOGER_CLONED_TOOLS_PATH/WIsH
-make $MUDOGER_CLONED_TOOLS_PATH/WIsH
+cd $MUDOGER_CLONED_TOOLS_PATH/WIsH
+cmake .
+make
+cp WIsH $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env/bin
+cd -
 conda deactivate
-cp -r $MUDOGER_CLONED_TOOLS_PATH/WIsH $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env/bin
 WISH_DB_DIR=$MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env/database
 mkdir $WISH_DB_DIR
 fi
