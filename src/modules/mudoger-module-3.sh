@@ -40,14 +40,13 @@ source $config_path
 mkdir -p "$libname_folder"/viruses/investigation
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-1_viral-investigation.sh "$assembly" "$libname_folder"/viruses/investigation $cores
 
-exit 0
+
 # 2 viral vcontact2 (taxonomy)
-#echo "-> start vcontact"
-#bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-2_vcontact2.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna "$libname_folder"/viruses/taxonomy "$cores"
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-2_vcontact2.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna "$libname_folder"/viruses/taxonomy "$cores"
 
 # 3 host prediction
 #commented for testing 
-#bash -i MuDoGeR/src/scripts/mudoger-module-3-3_host-prediction.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna  "$libname_folder"/prokaryotes/binning/unique_bins "$libname_folder"/viruses/dereplication/host_prediction
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-3_host-prediction.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna  "$libname_folder"/prokaryotes/binning/unique_bins "$libname_folder"/viruses/dereplication/host_prediction
 
 # 4 vcheck
 #commented for testing
