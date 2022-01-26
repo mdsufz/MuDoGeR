@@ -16,7 +16,7 @@ source installation/installation_utils.sh  # modified by rodolfo
 ## Checking if some tool already have a conda environment created
 
 
-
+############################################################################
 ## CREATING ENVIRONMENT, INSTALLING VIRSORTER 2 AND SETUP DATABASE ##
 verify_if_conda_env_exist virsorter2_env
 if [ $PRESENT == 'yes' ]
@@ -26,7 +26,7 @@ conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env
 conda install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env -c conda-forge -c bioconda virsorter#=2
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env && virsorter setup -d $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env/db -j 1 && conda deactivate
 fi
-
+############################################################################
 ## CREATING ENVIRONMENT AND INSTALLING VIRFINDER ##
 verify_if_conda_env_exist virfinder_env
 if [ $PRESENT == 'yes' ]
@@ -36,6 +36,7 @@ conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virfinder_env
 conda install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virfinder_env-c bioconda r-virfinder
 fi
 
+############################################################################
 ## CREATING ENVIRONMENT AND INSTALLING VIBRANT ##
 verify_if_conda_env_exist vibrant_env
 if [ $PRESENT == 'yes' ]
@@ -50,7 +51,7 @@ echo conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
 pip install pickle-mixin
 fi
 
-
+############################################################################
 ## CREATING ENVIRONMENT AND INSTALLING stampede-clustergenomes ##
 verify_if_conda_env_exist stampede_clustergenomes_env
 if [ $PRESENT == 'yes' ]
@@ -62,10 +63,7 @@ git clone $STAMPEDE_CLUSTERGENOMES_GIT_URL $MUDOGER_CLONED_TOOLS_PATH/stampede-c
 cp -rf $MUDOGER_CLONED_TOOLS_PATH/stampede-clustergenomes/bin/* $MUDOGER_DEPENDENCIES_ENVS_PATH/stampede_clustergenomes_env/bin
 fi
 
-
-### to run stampede-clustergenomes is necessary to activate the env and run 
-### perl $your_path/mudoger_utils/cloned_tools/stampede-clustergenomes/bin/Stampede-clustergenomes.pl
-
+############################################################################
 ## CREATING ENVIRONMENT AND INSTALLING FASTA EXTRACTION ENV
 verify_if_conda_env_exist extract_env
 if [ $PRESENT == 'yes' ]
@@ -75,22 +73,25 @@ conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/extract_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/extract_env anaconda::python=2.7.5
 fi
 
+
+#verify_if_conda_env_exist extract_env
+#if [ $PRESENT == 'yes' ]
+#then :;
+#else
+#conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env
+#mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env conda-forge::openmp anaconda::make anaconda::cmake
+#fi
+
+############################################################################
 ## WISH
-verify_if_conda_env_exist extract_env
+verify_if_conda_env_exist wish_env
 if [ $PRESENT == 'yes' ]
 then :;
 else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env conda-forge::openmp anaconda::make anaconda::cmake
-
-$WHISH_GIT_URL $MUDOGER_CLONED_TOOLS_PATH
-fi
-
-verify_if_conda_env_exist wish_env
-if [ $PRESENT == 'yes' ]
-then :;
-else
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env
+git clone $WISH_GIT_URL $MUDOGER_CLONED_TOOLS_PATH/WIsH
 cmake $MUDOGER_CLONED_TOOLS_PATH/WIsH
 make $MUDOGER_CLONED_TOOLS_PATH/WIsH
 conda deactivate
@@ -119,6 +120,7 @@ fi
 #mv $WISH_DB_DIR/viruses* $WISH_DB_DIR/phages
 #rm -rf $WISH_DB_DIR/viral.1.1.genomic.fna  $WISH_DB_DIR/viral.2.1.genomic.fna  $WISH_DB_DIR/viral.3.1.genomic.fna  $WISH_DB_DIR/viral_refseq.fna
 
+############################################################################
 #INSTALLING CHECKV
 verify_if_conda_env_exist checkv_env
 if [ $PRESENT == 'yes' ]
@@ -128,6 +130,7 @@ else :
 #mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/checkv_env -c conda-forge -c bioconda checkv
 fi
 
+############################################################################
 #INSTALLING VCONTACT2
 verify_if_conda_env_exist vcontact2_env
 if [ $PRESENT == 'yes' ]
