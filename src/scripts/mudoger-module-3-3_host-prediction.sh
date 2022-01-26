@@ -4,8 +4,15 @@
 # 1 is the viral multi fasta file
 # 2 is the bins folder
 # 3 is the output folder
+conda activate mudoger_env
+config_path="$(which config.sh)"
+database="${config_path/config/database}"
+source $config_path
+source $database
 
-conda activate wish-env
+
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/wish_env
+
 
 uvigs_file="$1"
 bins_folder="$2"
