@@ -33,7 +33,7 @@ if [ $PRESENT == 'yes' ]
 then :;
 else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virfinder_env
-conda install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virfinder_env-c bioconda r-virfinder
+conda install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virfinder_env -c bioconda r-virfinder
 fi
 
 ############################################################################
