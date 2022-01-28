@@ -70,7 +70,7 @@ if [ $PRESENT == 'yes' ]
 then :;
 else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/extract_env
-mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/extract_env anaconda::python=2.7.5
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/extract_env python=2
 fi
 
 
