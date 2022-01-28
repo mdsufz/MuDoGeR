@@ -80,7 +80,7 @@ then :
 else
 echo "-----> STARTING DEREPLICATION (4/4)"
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/extract_env
-python MuDoGeR/tools/extract_fa.py "$output_folder"/dereplication/viral_unique_contigs "$assembly" "$output_folder"/dereplication/uvigs.fa
+python "$MUDOGER_DEPENDENCIES_PATH"/extract_fa.py "$output_folder"/dereplication/viral_unique_contigs "$assembly" "$output_folder"/dereplication/uvigs.fa
 conda deactivate
 fi
 
