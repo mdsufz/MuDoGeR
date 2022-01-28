@@ -51,7 +51,7 @@ fi
 if [ ! -f "$folder_taxonomy"/AUX-2 ];
 then
 echo "-> step 4/4"
-cat "$folder_taxonomy"/vcontact-output/genome_by_genome_overview.csv  | grep NODE    | cut -f1 -d',' > "$folder_taxonomy"/AUX-1
+cat "$folder_taxonomy"/vcontact-output/genome_by_genome_overview.csv  | grep length   | cut -f1 -d',' > "$folder_taxonomy"/AUX-1
 while read l; do   grep "$l" "$folder_taxonomy"/vcontact-output/genome_by_genome_overview.csv  |  cut -f1,2,19 -d','  ; done < "$folder_taxonomy"/AUX-1 > "$folder_taxonomy"/AUX-2
 conda deactivate
 else :
