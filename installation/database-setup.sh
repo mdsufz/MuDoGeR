@@ -38,7 +38,7 @@ fi;
 done
 
 mv $WISH_DB_DIR/viruses* $WISH_DB_DIR/phages
-rm -rf $WISH_DB_DIR/viral.1.1.genomic.fna  $WISH_DB_DIR/viral.2.1.genomic.fna  $WISH_DB_DIR/viral.3.1.genomic.fna  $WISH_DB_DIR/viral_refseq.fna
+rm -rf $WISH_DB_DIR/viral.1.1.genomic.fna  $WISH_DB_DIR/viral.2.1.genomic.fna  $WISH_DB_DIR/viral.3.1.genomic.fna  $WISH_DB_DIR/viral.4.1.genomic.fna $WISH_DB_DIR/viral_refseq.fna
 
 
 
