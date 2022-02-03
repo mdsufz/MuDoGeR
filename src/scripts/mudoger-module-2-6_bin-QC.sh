@@ -1,12 +1,16 @@
 #!/bin/bash
 
 
-cores="$2"
-input_bins_folder="$1"/binning/unique_bins
-output_results="$1"/metrics/checkm_qc
-
 # loading conda environment
-conda activate metawrap-env
+conda activate mudoger_env
+config_path="$(which config.sh)"
+database="${config_path/config/database}"
+source $config_path
+source $database
+
+
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap_env
+
 
 source MuDoGeR/installation/config_db
 
