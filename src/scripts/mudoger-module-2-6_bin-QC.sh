@@ -12,7 +12,6 @@ source $database
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap_env
 
 
-source MuDoGeR/installation/config_db
 
 extension="fa"
 
