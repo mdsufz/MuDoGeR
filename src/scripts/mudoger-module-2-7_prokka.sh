@@ -1,14 +1,21 @@
 #!/bin/bash
 
 
+# loading conda environment
+conda activate mudoger_env
+config_path="$(which config.sh)"
+database="${config_path/config/database}"
+source $config_path
+source $database
+
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/prokka_env
+
+
+
 cores="$2"
 input_bins_folder="$1"/binning/unique_bins
 output_results="$1"/metrics/prokka
 
-
-
-# loading conda environment
-conda activate prokka-env
 
 mkdir -p "$output_results"
 
