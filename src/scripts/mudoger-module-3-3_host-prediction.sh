@@ -37,10 +37,11 @@ WIsH -c build -g "$output_folder"/potential_host_genomes/ -m "$output_folder"/mo
 WIsH -c predict -g /mnt/tools/miniconda2/envs/wish-env/database/phages/ -m "$output_folder"/modelDir -r "$output_folder"/nullmodels -b "$output_folder"/nullmodels
 
 #5 run R script to get nullparameters.tsv
-cp MuDoGeR/tools/computeNullParameters.R  "$output_folder"/nullmodels
+cp "$MUDOGER_DEPENDENCIES_PATH"/computeNullParameters.R  "$output_folder"/nullmodels
 cd "$output_folder"/nullmodels
-Rscript computeNullParameters.R 
+Rscript computeNullParameters.R
 cd -
+
 
 #6 run prediction with null model
 WIsH -t 20 -c predict -g "$output_folder"/viral_particles/ -m  "$output_folder"/modelDir -r "$output_folder"/output_results/ -b 1 -n "$output_folder"/nullmodels/nullParameters.tsv
