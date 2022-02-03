@@ -10,7 +10,37 @@ conda activate mudoger_env
 config_file="$(which config.sh)"
 source "$config_file"
 echo DATABASES_LOCATION="$database_location" > ${config_file/config/database}
-exit 0
+
+
+
+
+
+########################################################## WISH
+
+WISH_DB_DIR=$database_location/wish
+mkdir -p $WISH_DB_DIR
+wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.1.genomic.fna.gz" -P $WISH_DB_DIR
+wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.2.1.genomic.fna.gz" -P $WISH_DB_DIR
+wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.3.1.genomic.fna.gz" -P $WISH_DB_DIR
+wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.4.1.genomic.fna.gz" -P $WISH_DB_DIR
+
+gunzip $WISH_DB_DIR/*
+cat $WISH_DB_DIR/* > $WISH_DB_DIR/viral_refseq.fna
+python3 $MUDOGER_DEPENDENCIES_PATH/split-all-seq.py $WISH_DB_DIR/viral_refseq.fna $WISH_DB_DIR/viruses
+
+for d in $WISH_DB_DIR/viruses-*fa; 
+do 
+    if grep -q phage "$d"; 
+    then :; 
+else 
+    rm -f "$d"; 
+fi; 
+done
+
+mv $WISH_DB_DIR/viruses* $WISH_DB_DIR/phages
+rm -rf $WISH_DB_DIR/viral.1.1.genomic.fna  $WISH_DB_DIR/viral.2.1.genomic.fna  $WISH_DB_DIR/viral.3.1.genomic.fna  $WISH_DB_DIR/viral_refseq.fna
+
+
 
 ########################################################## VIBRANT
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
