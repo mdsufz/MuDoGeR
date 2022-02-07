@@ -29,6 +29,8 @@ while true; do
 done
 
 
+config_path="$(which config.sh)"
+source $config_path
 # 1 EUKREP CONTIG FILTERING AND  BINNING USING CONCOCT
 
 mkdir -p "$libname_folder"/eukaryotes/eukaryotic_contigs
