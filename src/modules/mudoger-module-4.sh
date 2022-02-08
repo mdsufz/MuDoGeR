@@ -41,7 +41,7 @@ bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-1_eukrep-eukbin-fil
                                       "$cores"                                           \  
 				      "$memory"
 
-bash -i MuDoGeR/src/scripts/mudoger-module-4-2_genemark-maker-busco.sh "$assembly"       \
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-2_genemark-maker-busco.sh "$assembly"       \
                                       "$forward_library"                                 \
                                       "$reverse_library"                                 \
                                       "$libname_folder"/eukaryotes			 \
