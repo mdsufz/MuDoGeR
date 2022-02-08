@@ -1,6 +1,6 @@
 #!/bin/bash
 
-########## 1 INITIAL PROKARYOTIC BINNING  ###################
+
 
 # arguments declaration    
 assembly=$1                     # assembly fasta file
