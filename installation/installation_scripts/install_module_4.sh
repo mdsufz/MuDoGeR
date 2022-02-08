@@ -9,13 +9,7 @@ source installation/config.sh              # modified by rodolfo
 source installation/installation_utils.sh  # modified by rodolfo
 
 ## CREATING EUKREP ENVIRONMENT
-conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/eukrep_env
-mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/eukrep_env pip
-conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/eukrep_env
-pip install --upgrade setuptools
-mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/eukrep_env -c bioconda eukrep
-mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/eukrep_env -c bioconda scikit-learn==0.19.2 
-conda deactivate
+conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/eukrep_env -c bioconda  scikit-learn==0.19.2 eukrep
 
 ## CREATING GENEMARKER-ES
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/genemarker_env
