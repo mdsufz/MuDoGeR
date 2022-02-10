@@ -46,7 +46,7 @@ bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-2_vcontact2.sh "$li
 
 # 3 host prediction
 #commented for testing 
-bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-3_host-prediction.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna  "$libname_folder"/prokaryotes/binning/unique_bins "$libname_folder"/viruses/dereplication/host_prediction
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-3_host-prediction.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna  "$libname_folder"/prokaryotes/binning/unique_bins "$libname_folder"/viruses/host_prediction
 
 # 4 vcheck
 #commented for testing
