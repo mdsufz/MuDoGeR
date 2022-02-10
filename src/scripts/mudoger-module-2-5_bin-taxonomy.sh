@@ -16,7 +16,7 @@ source $database
 #Run only once during database installation configuration
 echo ${CHECKM_DB} | checkm data setRoot ${CHECKM_DB}
 
-GTDBTK_DATA_PATH="$DATABASES_LOCATION"/gtdbtk/release202
+GTDBTK_DATA_PATH="$DATABASES_LOCATION"/gtdbtk/release*
 
 master_folder=$1
 cores=$2
