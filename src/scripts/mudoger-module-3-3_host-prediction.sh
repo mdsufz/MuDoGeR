@@ -47,7 +47,7 @@ cd -
 #6 run prediction with null model
 WIsH -t 20 -c predict -g "$output_folder"/uvigs/ -m  "$output_folder"/modelDir -r "$output_folder"/output_results/ -b 1 -n "$output_folder"/nullmodels/nullParameters.tsv
 else
-echo "--> Host prediction is finished"
+echo "-> Host prediction is finished"
 fi
 
 
