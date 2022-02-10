@@ -102,25 +102,6 @@ WISH_DB_DIR=$MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env/database
 mkdir $WISH_DB_DIR
 fi
 
-#if [
-#wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.1.genomic.fna.gz" -P $WISH_DB_DIR
-#wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.2.1.genomic.fna.gz" -P $WISH_DB_DIR
-#wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.3.1.genomic.fna.gz" -P $WISH_DB_DIR
-#gunzip $WISH_DB_DIR/*
-#cat $WISH_DB_DIR/* > $WISH_DB_DIR/viral_refseq.fna
-#python3 $MUDOGER_DEPENDENCIES_PATH/split-all-seq.py $WISH_DB_DIR/viral_refseq.fna $WISH_DB_DIR/viruses
-
-#for d in $WISH_DB_DIR/viruses-*fa; 
-#do 
-#    if grep -q phage "$d"; 
-#    then :; 
-#else 
-#    rm -f "$d"; 
-#fi; 
-#done
-
-#mv $WISH_DB_DIR/viruses* $WISH_DB_DIR/phages
-#rm -rf $WISH_DB_DIR/viral.1.1.genomic.fna  $WISH_DB_DIR/viral.2.1.genomic.fna  $WISH_DB_DIR/viral.3.1.genomic.fna  $WISH_DB_DIR/viral_refseq.fna
 
 ############################################################################
 #INSTALLING CHECKV
