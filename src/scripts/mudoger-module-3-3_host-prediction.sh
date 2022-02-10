@@ -26,6 +26,8 @@ mkdir -p "$output_folder"/uvigs
 mkdir -p "$output_folder"/output_results
 mkdir -p "$output_folder"/nullmodels
 
+if [ ! -f "$output_folder"/output_results/prediction.list ];
+then
 #2 cp and prepare data
 yes | cp "$bins_folder"/*fa "$output_folder"/potential_host_genomes
 python3 "$(echo $PATH | cut -f1 -d':' | sed "s/conda\/envs\/wish_env\/bin//g" )"/split-all-seq.py "$uvigs_file" "$output_folder"/uvigs/uvig
@@ -42,8 +44,10 @@ cd "$output_folder"/nullmodels
 Rscript computeNullParameters.R
 cd -
 
-
 #6 run prediction with null model
 WIsH -t 20 -c predict -g "$output_folder"/uvigs/ -m  "$output_folder"/modelDir -r "$output_folder"/output_results/ -b 1 -n "$output_folder"/nullmodels/nullParameters.tsv
+else
+echo "--> Host prediction is finished"
+fi
 
 
