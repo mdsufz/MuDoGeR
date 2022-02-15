@@ -1,6 +1,7 @@
  # Multi-Domain Genome Recovery (MuDoGeR)
  
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Mudoger_pipeline.PNG)
+ 
+![ScreenShot](https://github.com/LuizMVB/MuDoGeR/blob/master/flowcharts/fig1_20.5.21.png)
 
 
 The **Multi-Domain Genome Recovery (MuDoGeR)** pipeline (**Figure 1**) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs as defined by Parks et al. (2018)) and Uncultivated Viral Genomes (UViGs as defined by  Roux (2019)) from dozens to hundreds of samples simultaneously. The **MuDoGeR** pipeline combines pipelines from different tools. The **MuDoGeR** starts with Module 1: **Pre-Processing**, which is divided in 3 steps: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation**, which feed the **1.c** **Assembly**. These assemblies will be used in the other modules. After pre-processing of the data, **MuDoGeR** is divided in 3 different branches: Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes** (using **metaWrap**), Module 3: **Recovery of Uncultivated Viral Genomes** (using **VirSorter**, **VirFinder** and **VIBRANT**) and Module 4: **Recovery of Eukaryotic Metagenome-Assembled Genomes** (using **EukRep**). Furthermore, in **Module 5**: **Relative Abundance**, a strategy was developed for mapping the relative abundance of the selected MAGs and UViGs in each library. Also, a step was added for bin_refinement of the selected Metagenome-Assembled Genomes from Prokaryotes, using **U-bin**. References of the used tools can be found in the end of the page.
@@ -8,17 +9,17 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** pipeline (**Figure 1**) is a tool
 
 ## MuDoGeR Overview
 
-* Instructions for using the **MuDoGeR** can be found in the following hyperlink: ![Manual MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
-* Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: ![Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md).
-* Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: ![System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
-* Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: ![Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
-* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: ![Simplified usage of the MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#simplified-usage-of-the-mudoger).
+* Instructions for using the **MuDoGeR** can be found in the following hyperlink: [Manual MuDoGeR](https://github.com/LuizMVB/MuDoGeR/blob/master/Manual_MuDoGeR.md).
+* Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: [Module description](https://github.com/LuizMVB/MuDoGeR/blob/master/module_description.md).
+* Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: [System requirements](https://github.com/LuizMVB/MuDoGeR/blob/master/README.md#system-requirements).
+* Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: [Installation](https://github.com/LuizMVB/MuDoGeR/blob/master/README.md#installation).
+* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: [Simplified usage of the MuDoGeR](https://github.com/LuizMVB/MuDoGeR/blob/master/README.md#simplified-usage-of-the-mudoger).
 
 ### Module 1: Pre-Processing 
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Module%201.PNG) 
+![Screenshot](https://github.com/LuizMVB/MuDoGeR/blob/c65d851f6439cc4eb8c18672afb5cde9a9165f40/flowcharts/Module%201.PNG) 
 
- The steps of Module 1 are shown in Figure 2 and they are excecuted with the scripts find in the following hyperlink: ![Pre-Processing](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
+ The steps of Module 1 are shown in Figure 2 and they are excecuted with the scripts find in the following hyperlink: [Pre-Processing](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
  
  The steps of Module 1 can be summarized as following:
 
@@ -30,9 +31,9 @@ The **Multi-Domain Genome Recovery (MuDoGeR)** pipeline (**Figure 1**) is a tool
 
 ### Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Module%202.png)
+![screenshot](https://github.com/LuizMVB/MuDoGeR/blob/master/flowcharts/MODULE_2_21.5.21.png)
 
-The different steps of the Module 2 are shown in Figure 3 and they are excecuted with the scripts find in the following hyperlink: ![Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
+The different steps of the Module 2 are shown in Figure 3 and they are excecuted with the scripts find in the following hyperlink: [Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/LuizMVB/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
 
  The steps of Module 2 can be summarized as following:
  
@@ -52,9 +53,9 @@ The different steps of the Module 2 are shown in Figure 3 and they are excecuted
     
 ### Module 3: Recovery of Uncultivated Viral Genomes 
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Module%203.png) 
+![](https://github.com/LuizMVB/MuDoGeR/blob/c65d851f6439cc4eb8c18672afb5cde9a9165f40/flowcharts/Module%203.png) 
 
-The steps of the Module 3  are shown in Figure 4 and they are excecuted in the scripts find in the following hyperlink: ![Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes).
+The steps of the Module 3  are shown in Figure 4 and they are excecuted in the scripts find in the following hyperlink: [Pipelines for viral genomes recovery](https://github.com/LuizMVB/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes).
 
  The steps of Module 3 can be summarized as following: 
  
@@ -73,9 +74,9 @@ The steps of the Module 3  are shown in Figure 4 and they are excecuted in the s
 
 ### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Module%204.png)
+[](https://github.com/mdsufz/MuDoGeR/blob/master/Module%204.png)
 
-The steps of the Module 4  are shown in Figure 5 and they are excecuted with the scripts find in the following hyperlink: ![Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
+The steps of the Module 4  are shown in Figure 5 and they are excecuted with the scripts find in the following hyperlink: [Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
 
  The steps of Module 4 can be summarized as following:
 * **4.a**: Recovery of Eukaryotic assemblies and production of Eukaryotic bins.
@@ -93,9 +94,9 @@ The steps of the Module 4  are shown in Figure 5 and they are excecuted with the
 	* **(4.c.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(4.c.2)**.
 
 ### Module 5 Relative abundace
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Module%205.PNG)
+[](https://github.com/mdsufz/MuDoGeR/blob/master/Module%205.PNG)
 
-The steps of the Module 5 are shown in Figure 6 and they are excecuted with the scripts find in the following hyperlink: ![Pipelines for Relative abundace ](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
+The steps of the Module 5 are shown in Figure 6 and they are excecuted with the scripts find in the following hyperlink: [Pipelines for Relative abundace ](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
 * **5.a** Calculation of relative abundance and genome coverage of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
 	* **(5.a.1)** Merging of Paired-End (PE) reads from each library.
 	* **(5.a.2)** Mapping of the libraries to the indexed prokaryotic bins.
@@ -140,7 +141,7 @@ MuDoGeR is designed to support only Linux x64 systems. As for the resource requi
 | GCC/6.4.0-2.28 | 
 | OpenMPI/2.1.2 | 
 
-The Databases can be installed by following the instructons of the following hyperlink: ![Databases_metaWrap](https://github.com/bxlab/metaWRAP/blob/master/installation/database_installation.md).
+The Databases can be installed by following the instructons of the following hyperlink: [Databases_metaWrap](https://github.com/bxlab/metaWRAP/blob/master/installation/database_installation.md).
 
 ### GTDB-Tk
 
@@ -181,10 +182,10 @@ The Databases can be installed by following the instructons of the following hyp
 
 
 ### Ubin (optional)
-* The pre-requests for **uBin** and how to install them, can be found in the follwoing hyperlink: ![Creating input files for uBin](https://github.com/ProbstLab/uBin-helperscripts#creating-input-files-for-ubin).
+* The pre-requests for **uBin** and how to install them, can be found in the follwoing hyperlink: [Creating input files for uBin](https://github.com/ProbstLab/uBin-helperscripts#creating-input-files-for-ubin).
 
 ### DAS_Tool (optional)
-* The dependencies of **DAS_Tool** can be found in the following hyperlink: ![Dependencies_DAS_TOOL](https://github.com/cmks/DAS_Tool#dependencies).
+* The dependencies of **DAS_Tool** can be found in the following hyperlink: [Dependencies_DAS_TOOL](https://github.com/cmks/DAS_Tool#dependencies).
 ## khmer
 | Dependencies | 
 |---|
@@ -205,7 +206,7 @@ The Databases can be installed by following the instructons of the following hyp
 | Software DIAMOND |
 | Package gcc/4/8.1-3 | 
 
-* The software used in the **VirSorter** can be found also in the following hyperlink: ![Software_VirSorter](https://github.com/simroux/VirSorter#dependencies).
+* The software used in the **VirSorter** can be found also in the following hyperlink: [Software_VirSorter](https://github.com/simroux/VirSorter#dependencies).
 
 ### CheckV
 
@@ -264,7 +265,7 @@ The Databases can be installed by following the instructons of the following hyp
 | Scikit-learn (version == 0.21.3)|
 | Pickle |
 
-* More information about **VIBRANT** dependencies can be found in the following hyperlink: ![VIBRANT_Dependencies](https://github.com/AnantharamanLab/VIBRANT#requirements-).
+* More information about **VIBRANT** dependencies can be found in the following hyperlink: [VIBRANT_Dependencies](https://github.com/AnantharamanLab/VIBRANT#requirements-).
 
 ### Stampede-clustergenomes
 * **Stampede-clustergenomes** uses python of version 2.7.14.
@@ -318,13 +319,13 @@ The Databases can be installed by following the instructons of the following hyp
 | SNAP |
 | BEDtools version 2.24.0 |
 
-* As SNAP requires some more dependencies, they can be found in the following hyperlink: ![Compiling_snap](https://github.com/KorfLab/SNAP#compiling).
-* As RepeatModeler(1.0.4)  requires some more dependencies,they can be found in the following hyperlink: ![RepeatModeler_dependencies](https://github.com/Dfam-consortium/TETools).
+* As SNAP requires some more dependencies, they can be found in the following hyperlink: [Compiling_snap](https://github.com/KorfLab/SNAP#compiling).
+* As RepeatModeler(1.0.4)  requires some more dependencies,they can be found in the following hyperlink: [RepeatModeler_dependencies](https://github.com/Dfam-consortium/TETools).
 * As RepeatMasker (4.0.5) requires some more dependencies, they can be found in the following link: http://www.repeatmasker.org/RepeatMasker/.
-* As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
+* As Augustus requires some more dependencies, they can be found in the following hyperlink: [Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
 * As BEDtools requires some more dependencies, they can be found in the following link: https://bedtools.readthedocs.io/en/latest/content/installation.html.
-* About Busco, the user can check the following hyperlink:  ![BUSCO_Manual](https://github.com/WenchaoLin/BUSCO-Mod).
-* More information about **MAKER2** dependencies can be found in the following hyperlink: ![Maker2_Software prerequisites](https://github.com/wuying1984/MAKER2_PM_genome_annotation#software-prerequisites).
+* About Busco, the user can check the following hyperlink:  [BUSCO_Manual](https://github.com/WenchaoLin/BUSCO-Mod).
+* More information about **MAKER2** dependencies can be found in the following hyperlink: [Maker2_Software prerequisites](https://github.com/wuying1984/MAKER2_PM_genome_annotation#software-prerequisites).
 
 ### BUSCO
 * **BUSCO** uses python of version 3.7.4.
@@ -338,8 +339,8 @@ The Databases can be installed by following the instructons of the following hyp
 | HMMER 3.1b2 |
 | Augustus 3.0.x |
 
-* As Augustus requires some more dependencies, they can be found in the following hyperlink: ![Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
-* More information about **BUSCO** dependencies can be found in the following hyperlink:![BUSCO_Dependencies](https://github.com/WenchaoLin/BUSCO-Mod#setup).
+* As Augustus requires some more dependencies, they can be found in the following hyperlink: [Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
+* More information about **BUSCO** dependencies can be found in the following hyperlink:[BUSCO_Dependencies](https://github.com/WenchaoLin/BUSCO-Mod#setup).
 
 ### EukCC/GeneMark-ES
 * The **EukCC** uses python of version 3.7.4. Also the **EukCC** needs also installation of the **GeneMark-ES** first which has more dependencies. For the installation of **GeneMark-ES** dependencies the user can run the following command which will install all of them:
@@ -411,17 +412,17 @@ cpanm inc::Module::Install::DSL Hash::Merge MCE::Mutex FindBin Test::Pod Logger:
 
 ## Pre-Processing Module
 ### TrimGalore
-The instructions for  TrimGalore installation can be found at ![TrimGalore_Manual](https://github.com/FelixKrueger/TrimGalore).
+The instructions for  TrimGalore installation can be found at [TrimGalore_Manual](https://github.com/FelixKrueger/TrimGalore).
 ### Bmtagger
 The instructions for the bmtagger installation can be found by following the webpage: https://bioconda.github.io/recipes/bmtagger/README.html.
 ### MegaHit
-The instructions for the MegaHit installation can be found at ![MegaHit_Manual](https://github.com/voutcn/megahit).
+The instructions for the MegaHit installation can be found at [MegaHit_Manual](https://github.com/voutcn/megahit).
 ### MetaSPades
-The instructions for the metaSPAdes installation can be found at ![metaSPAdes_Manual](https://github.com/ablab/spades).
+The instructions for the metaSPAdes installation can be found at [metaSPAdes_Manual](https://github.com/ablab/spades).
 ### FastQC
-Instructions for FastQC installation can be found at ![FastQC_Manual](https://github.com/pnnl/fqc).
+Instructions for FastQC installation can be found at [FastQC_Manual](https://github.com/pnnl/fqc).
 ## khmer
-Instructions for the installation of khmer can be found ar ![khmer](https://github.com/dib-lab/khmer).
+Instructions for the installation of khmer can be found ar [khmer](https://github.com/dib-lab/khmer).
 ## Prokaryotic module
 ### MetaWRAP
 The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/bxlab/metaWRAP).
@@ -430,23 +431,23 @@ The instructions for the MaxBin2 installation can be found at ![MaxBin2_Manual](
 ### MetaBAT2
 The instructions for the  metaBAT2 installation can be found by following the webpage: https://bioconda.github.io/recipes/metabat2/README.html.
 ### CONCOCT 
-The instructions for the CONCOCT installation can be found at ![CONCOCT_Manual](https://github.com/BinPro/CONCOCT).
+The instructions for the CONCOCT installation can be found at [CONCOCT_Manual](https://github.com/BinPro/CONCOCT).
 ### CheckM
-The instructions for the CheckM  installation can be found at ![CheckM_Manual](https://github.com/Ecogenomics/CheckM).
+The instructions for the CheckM  installation can be found at [CheckM_Manual](https://github.com/Ecogenomics/CheckM).
 ### uBin
-The instructions for the uBin installation can be found at ![uBin_Manual](https://github.com/ProbstLab/uBin).
+The instructions for the uBin installation can be found at [uBin_Manual](https://github.com/ProbstLab/uBin).
 ### GTDB-Tk
-The instructions for the GTDB-Tk installation can be found at ![GTDB-Tk_Manual](https://github.com/ecogenomics/gtdbtk).
+The instructions for the GTDB-Tk installation can be found at [GTDB-Tk_Manual](https://github.com/ecogenomics/gtdbtk).
 ### DAS_Tool
-The instructions for the DAS_Tool installation can be found at ![DAS_Tool_Manual](https://github.com/cmks/DAS_Tool).
+The instructions for the DAS_Tool installation can be found at [DAS_Tool_Manual](https://github.com/cmks/DAS_Tool).
 
 ## Viral module
 ### VirFinder
-The instructions for VirFinder installation can be found at ![VirFinder_Manual](https://github.com/jessieren/VirFinder).
+The instructions for VirFinder installation can be found at [VirFinder_Manual](https://github.com/jessieren/VirFinder).
 ### VirSorter
-The instructions for VirSorter installation can be found at ![VirSorter_Manual](https://github.com/simroux/VirSorter). 
+The instructions for VirSorter installation can be found at [VirSorter_Manual](https://github.com/simroux/VirSorter). 
 ### VIBRANT 
-The instructions for VIBRANT installation can be found at ![VIBRANT_Manual](https://github.com/AnantharamanLab/VIBRANT).
+The instructions for VIBRANT installation can be found at [VIBRANT_Manual](https://github.com/AnantharamanLab/VIBRANT).
 ### Stampede-clustergenomes
 The instructions for Stampede-clustergenomes usage cane be found by following the webpage: https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master.
 ### CheckV
@@ -454,25 +455,25 @@ The instructions for CheckV installation can be found by following the webpage: 
 ### vContact2
 The instructions for vContact2 installation can be found by following the webpage: https://bioconda.github.io/recipes/vcontact2/README.html.
 ### WIsH
-The instructions for WIsH installation ![WIsH_Manual](https://github.com/soedinglab/wish).
+The instructions for WIsH installation [WIsH_Manual](https://github.com/soedinglab/wish).
 
 ## Eukaryotic module
 ### EukRep
-The instructions for EukRep installation can be found at ![EukRep_Manual](https://github.com/patrickwest/EukRep_Pipeline ). 
+The instructions for EukRep installation can be found at [EukRep_Manual](https://github.com/patrickwest/EukRep_Pipeline ). 
 ### EukCC/GeneMark
-The instructions for EukCC/GeneMark installation can be found at ![EukCC/GeneMark_Manual](https://github.com/Finn-Lab/EukCC).
+The instructions for EukCC/GeneMark installation can be found at [EukCC/GeneMark_Manual](https://github.com/Finn-Lab/EukCC).
 ### BUSCO
-The instructions for BUSCO installation can be found at ![BUSCO_Manual](https://github.com/WenchaoLin/BUSCO-Mod).
+The instructions for BUSCO installation can be found at [BUSCO_Manual](https://github.com/WenchaoLin/BUSCO-Mod).
 ### MAKER2
-The instructions for MAKER2 installation can be found at ![MAKER2_Manual](https://github.com/wuying1984/MAKER2_PM_genome_annotation).
+The instructions for MAKER2 installation can be found at [MAKER2_Manual](https://github.com/wuying1984/MAKER2_PM_genome_annotation).
 
 ## Relative abundance
 ### BRAT
-The instructions for BRAT installation can be found at  ![BRAT_Manual](https://github.com/nlplab/brat).
+The instructions for BRAT installation can be found at  [BRAT_Manual](https://github.com/nlplab/brat).
 
 # Simplified usage of the MuDoGeR
 
-A more detailed tutorial for the MuDoGeR can be found in ![Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file. In this file, instructions and examples can be found.
+A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file. In this file, instructions and examples can be found.
 
 After all dependencies are in position then the MuDoGeR is ready to run. The run of **MuDoGeR** is easy and there is a main script that can wrap around all the **MuDoGeR**'s individual module. The individual modules can be called independently.
 
