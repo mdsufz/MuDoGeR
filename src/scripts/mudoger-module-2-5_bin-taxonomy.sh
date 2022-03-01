@@ -14,7 +14,7 @@ conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/gtdbtk_env
 #Run only once during database installation configuration
 #echo ${CHECKM_DB} | checkm data setRoot ${CHECKM_DB}
 
-GTDBTK_DATA_PATH="$DATABASES_LOCATION"/gtdbtk/release*
+GTDBTK_DATA_PATH="$DATABASES_LOCATION"gtdbtk/release*
 
 master_folder=$1
 cores=$2
