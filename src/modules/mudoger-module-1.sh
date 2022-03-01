@@ -24,7 +24,7 @@ output_folder=$(pwd) 		#output path for the downloaded sequences
 #memory=10			#given Memory to the Assembly process in GB
 num_cores=1 			#number of threads that is going to be used
 megahit=""			#assemble with megahit (default)"
-metaspades=""			#assemble with metaspades instead of megahit"
+metaspades="--metaspades"			#assemble with metaspades instead of megahit"
 
 
 # loop through input params

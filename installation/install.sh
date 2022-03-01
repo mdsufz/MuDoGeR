@@ -102,6 +102,7 @@ do
 	read choose
 	if [ $choose = y -o $choose = Y ];
 	then
+            	echo "------> Intalling all modules"
 		install_module_2_option=$choose
 		install_module_3_option=$choose
 		install_module_4_option=$choose
@@ -197,26 +198,33 @@ echo "The MuDoGeR's installation will begin.."
 coffe_time
 
 
-call_installation_script install_module_1
-call_installation_script install_module_3
-exit
+#call_installation_script install_module_1
+#call_installation_script install_module_2
+#call_installation_script install_module_3
+#exit
 
 #echo '----> stopping code install.sh line 200'
 #exit 0
 
-if [ -z $install_module_2 ];
+echo $install_module_2_option
+
+if [ ! -z $install_module_2_option ];
 then
+	echo "-----> installing module 2"
 	call_installation_script install_module_2
 fi
-if [ -z $install_module_3 ];
+if [ ! -z $install_module_3_option ];
 then
+    	echo "-----> installing module 3"
 	call_installation_script install_module_3
 fi
-if [ -z $install_module_4 ];
+if [ ! -z $install_module_4_option ];
 then
+    	echo "-----> installing module 4"
 	call_installation_script install_module_4
 fi
-if [ -z $install_module_5 ];
+if [ ! -z $install_module_5_option ];
 then
+    	echo "-----> installing module 5"
 	call_installation_script install_module_5
 fi
