@@ -20,7 +20,7 @@ mkdir $MUDOGER_DEPENDENCIES_ENVS_PATH/genemarker_env/GENEMARK_MAIN
 
 
 ## CREATING MAKER ENV
-conda create y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/maker2_env
+conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/maker2_env
 #conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/maker2_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/maker2_env anaconda::perl conda-forge::gcc conda-forge::h5py bioconda::perl-dbi bioconda::perl-module-build bioconda::perl-inline-c bioconda::perl-bit-vector bioconda::perl-io-all bioconda::perl-forks bioconda::perl-dbd-sqlite bioconda::perl-dbd-pg bioconda::perl-perl-unsafe-signals bioconda::perl-want bioconda::perl-bioperl bioconda::perl-bioperl-core bioconda::hmmer bioconda::snap bioconda::augustus bioconda::trf bioconda::blast bioconda::exonerate
 
