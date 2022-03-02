@@ -123,9 +123,9 @@ fi
 # 5 GTDBtk taxonomy assignment
 mkdir -p "$libname_folder"/prokaryotes/metrics
 if [ -f "$libname_folder"/prokaryotes/metrics/GTDBtk_taxonomy/gtdbtk.log ];
-then echo "-> Bin taxonomy assignment is done. Please check: "$libname_folder"/prokaryotes/binning/unique_bins"
+then echo "-> Bin taxonomy assignment is done. Please check: "$libname_folder"/prokaryotes/metrics/GTDBtk_taxonomy"
 else
-echo "run bin taxonomy"
+echo "-> Run bin taxonomy"
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-2-5_bin-taxonomy.sh "$libname_folder"/prokaryotes "$cores"
 fi
 
@@ -133,15 +133,15 @@ fi
 if [ -f "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv ];
 then echo "-> MAGs quality control is done. Please check: "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv"
 else 
-echo " run mags checkm"
-bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-2-6_bin-QC.sh  "$libname_folder"/prokaryotes/ "$cores"
+echo "-> Run mags checkm"
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-2-6_bin-QC.sh "$libname_folder"/prokaryotes/ "$cores"
 fi
 
 # 7 PROKKA Annotation
 if [ -d "$libname_folder"/prokaryotes/metrics/prokka ] ; 
 then echo "-> Rapid prokka annotation is done. Please check: "$libname_folder"/prokaryotes/metrics/prokka"
 else 
-echo "run annotation"
+echo "Run Prokka annotation"
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-2-7_prokka.sh  "$libname_folder"/prokaryotes/ "$cores"
 fi
 
