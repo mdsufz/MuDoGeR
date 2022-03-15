@@ -11,7 +11,7 @@ source $database
 # load gtdbtk env
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/gtdbtk_env
 
-GTDBTK_DATA_PATH="$DATABASES_LOCATION"gtdbtk/release*
+GTDBTK_DATA_PATH=$(realpath "$DATABASES_LOCATION"gtdbtk/release*)
 
 master_folder=$1
 cores=$2
