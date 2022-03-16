@@ -26,8 +26,8 @@ conda_vib="$(echo $PATH | cut -f1 -d':')"
 VIBRANT_FILES="$(echo $PATH | sed "s/:/\n/g" | grep vibrant_env  | sed "s/bin/share\/vibrant-1.2.0\/files/g")"
 VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores -m "$VIBRANT_FILES" -d $DATABASES_LOCATION/vibrant
 # fetch results
-#cat "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna | 
-#grep ">" | sed "s/_fragment_1//g;s/>//g"   > "$output_folder"/vibrant_filtered_data.txt
+cat "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna | 
+grep ">" | sed "s/_fragment_1//g;s/>//g"   > "$output_folder"/vibrant_filtered_data.txt
 conda deactivate
 echo "-----> END VIBRANT (1/4)"
 fi
