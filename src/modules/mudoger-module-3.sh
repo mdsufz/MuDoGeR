@@ -103,7 +103,7 @@ then echo "-> Viral quality check already done. Please check here: "$libname_fol
 else
 echo "-> Running Viral quality check"
 
-bash -i MuDoGeR/src/scripts/mudoger-module-3-4_vcheck.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna \
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-4_vcheck.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna \
 "$libname_folder"/viruses/vcheck_quality \
 "$cores"
 
