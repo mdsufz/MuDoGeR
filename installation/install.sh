@@ -91,7 +91,7 @@ yes | cp -rf $(dirname $0)/config.sh  $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
 ## The Module 1. Pre-processing is the base of the other modules in MuDoGeR
 ## it's installation is automatically set
 
-echo "### WELCOME TO MuDoGeR! ###"
+echo "\n### WELCOME TO MuDoGeR! ###\n"
 echo "Do you want to install all MoDuGeR's Acessories Modules?"
 echo "- Module 2. Recovery of Prokaryotic MAGs"
 echo "- Module 3. Uncultivated viral MAGs"
@@ -175,11 +175,11 @@ then
 		read choose
 		if [ $choose = y -o $choose = Y ];
 		then
-			install_module_4_option=$choose
+			install_module_5_option=$choose
 			break
 		elif [ $choose = n -o $choose = N ]
 		then
-			echo "Installation of Module 4 denied"
+			echo "Installation of Module 5 denied"
 			break
 		else
 			echo "Command not found, please, try again"
@@ -192,7 +192,7 @@ fi
 ## The Module 1. Pre-processing is the base of the other modules in MuDoGeR
 ## it's installation is automatically set
 
-echo "The MuDoGeR's installation will begin.."
+echo "\nThe MuDoGeR's installation will begin..\n"
 
 
 coffe_time
@@ -206,7 +206,7 @@ coffe_time
 #echo '----> stopping code install.sh line 200'
 #exit 0
 
-echo $install_module_2_option
+echo $install_module_4_option
 
 if [ ! -z $install_module_2_option ];
 then
