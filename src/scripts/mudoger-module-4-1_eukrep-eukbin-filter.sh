@@ -35,7 +35,10 @@ echo -e "\n --->RUNNING CONCOCT BINNING"
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/metawrap_env
 mkdir -p "$output_folder"/eukaryotes_bins
 metawrap binning -o "$output_folder"/eukaryotes_bins -t "$num_cores" -a "$output_folder"/eukaryotic_contigs.fa --concoct "$forward_library" "$reverse_library" 
-
+mv "$output_folder"/eukaryotes_bins/concoct_bins/* "$output_folder"/eukaryotes_bins
+rm -fr "$output_folder"/eukaryotes_bins/concoct_bins/
+rm -fr "$output_folder"/eukaryotes_bins/work_files/
+touch "$output_folder"/.euk_bin_done
 conda deactivate
 echo -e "\n --->END CONCOCT BINNING"
 #End CONCOCT binning
