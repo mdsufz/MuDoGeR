@@ -23,8 +23,8 @@ memory=$6
 #run eukrep
 echo -e "\n --->RUNNING EUKREP"
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/eukrep_env
-mkdir -p "$output_folder"/eukaryotes_contigs
-EukRep -i "$assembly" --prokarya "$output_folder"/prokaryotic_contigs.fa -o "$output_folder"/eukaryotes_contigs/eukaryotic_contigs.fa
+
+EukRep -i "$assembly" --prokarya "$output_folder"/prokaryotic_contigs.fa -o "$output_folder"/eukaryotic_contigs.fa
 
 conda deactivate
 echo -e "\n --->END EUKREP"
