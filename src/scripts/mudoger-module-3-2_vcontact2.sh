@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# TO DO STILL:
-# FIX ENVIRONMENT WITH VCONTACT INSTALLED INSIDE
-# ADJUST PATHS OF TOOLS CALLED IN THE SCRIPT BELOW
-
 
 conda activate mudoger_env
 config_path="$(which config.sh)"
