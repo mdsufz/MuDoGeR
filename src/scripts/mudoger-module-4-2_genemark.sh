@@ -29,11 +29,14 @@ output_folder="$1/genemarker_annotation"            #output folder
 echo -e "\n --->RUNNING GENEMARK"
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/genemarker_env
 mkdir -p $output_folder
+cd $output_folder
 for bin_path in $filtered_euk_bins_folder/*; do
+cp $bin_path $output_folder
 bin=`echo ${bin_path} | rev | cut -f1 -d'/' | rev`
 perl $genemarker_scripts_folder/gmes_petap.pl  --ES -min_contig 3000 --sequence $output_folder/"$bin" 
 done
 conda deactivate
+cd -
 echo -e "\n --->END GENEMARK"
 
 #fi
