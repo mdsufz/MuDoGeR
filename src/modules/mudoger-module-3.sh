@@ -98,7 +98,7 @@ fi
 # 4 vcheck
 
 #bash -i MuDoGeR/src/scripts/mudoger-module-3-4_vcheck.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna "$libname_folder"/viruses/vcheck_quality "$cores"
-if [ -d  "$libname_folder"/viruses/vcheck_quality/quality_summary.tsv ]; 		# if one of the outputs is already there, do not run
+if [ -f  "$libname_folder"/viruses/vcheck_quality/quality_summary.tsv ]; 		# if one of the outputs is already there, do not run
 then echo "-> Viral quality check already done. Please check here: "$libname_folder"/viruses/vcheck_quality/quality_summary.tsv"
 else
 echo "-> Running Viral quality check"
