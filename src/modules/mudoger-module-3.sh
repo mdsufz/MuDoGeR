@@ -27,6 +27,7 @@ help_message () {
 	echo "	-h --help		print this message"
 	echo "";}
 
+cores=10
 # loop through input params
 while true; do
 	case "$1" in
@@ -46,13 +47,8 @@ conda activate mudoger_env
 config_path="$(which config.sh)"
 source $config_path
 
-#assembly=$1
-#libname_folder=$2              # master output folder to be created and defined by user
-#cores=10
 
 # 1 viral investigation
-#mkdir -p "$libname_folder"/viruses/investigation
-#bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-1_viral-investigation.sh "$assembly" "$libname_folder"/viruses/investigation $cores
 
 if [ -f  "$libname_folder"/viruses/investigation/vibrant_filtered_data.txt ] && [ -f  "$libname_folder"/viruses/investigation/virfinder_filtered_data.txt ] && [ -f  "$libname_folder"/viruses/investigation/virsorter2_filtered_data.txt ]; 		# if the outputs is already there, do not run
 then echo "-> Viral investigation already done. Please check here: "$libname_folder"/viruses/investigation/"
@@ -67,7 +63,7 @@ fi
 
 
 # 2 viral vcontact2 (taxonomy)
-#bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-2_vcontact2.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna "$libname_folder"/viruses/taxonomy "$cores"
+
 
 if [ -f  "$libname_folder"/viruses/taxonomy/vcontact-output/genome_by_genome_overview.csv ]; 		# if one of the outputs is already there, do not run
 then echo "-> Viral taxonomy already done. Please check here: "$libname_folder"/viruses/taxonomy/vcontact-output/genome_by_genome_overview.csv"
@@ -82,8 +78,6 @@ fi
 
 # 3 host prediction
 
-#bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-3_host-prediction.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna  "$libname_folder"/prokaryotes/binning/unique_bins "$libname_folder"/viruses/host_prediction
-
 if [ -f  "$libname_folder"/viruses/host_prediction/output_results/prediction.list ]; 		# if one of the outputs is already there, do not run
 then echo "-> Running Viral Host Prediction already done. Please check here: "$libname_folder"/viruses/host_prediction/output_results/prediction.list"
 else
@@ -97,7 +91,6 @@ fi
 
 # 4 vcheck
 
-#bash -i MuDoGeR/src/scripts/mudoger-module-3-4_vcheck.sh "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna "$libname_folder"/viruses/vcheck_quality "$cores"
 if [ -f  "$libname_folder"/viruses/vcheck_quality/quality_summary.tsv ]; 		# if one of the outputs is already there, do not run
 then echo "-> Viral quality check already done. Please check here: "$libname_folder"/viruses/vcheck_quality/quality_summary.tsv"
 else
