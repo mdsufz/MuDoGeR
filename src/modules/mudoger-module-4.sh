@@ -57,31 +57,36 @@ bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-1_eukrep-eukbin-fil
                                       "$libname_folder"/eukaryotes			 \
                                       "$cores"                                           \  
 				      "$memory"
+
 echo -e "\n EUK BIN CALCULATION DONE"
 
 #     GENEMARK (GENE PREDICTION)      submodule 4-2
 
-bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-2_genemark.sh "$libname_folder"/eukaryotes			 
+if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
+   echo -e "\nNo relevant eukaryotic found "
+else
+   bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-2_genemark.sh "$libname_folder"/eukaryotes	
+fi
 
 echo -e "\n GENEMARK DONE"
 
-
-
 #     EUKCC (QUALITY ASSESSMENT)      submodule 4-3
 
-bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-3_eukcc.sh "$libname_folder"/eukaryotes  \
+if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
+   echo -e "\nNo relevant eukaryotic found "
+else
+   bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-3_eukcc.sh "$libname_folder"/eukaryotes  \
 									"$cores"
+fi
 
+echo -e "\n EUKCC DONE"
 
-exit 0 	
 #     MAKER (GENE ANNOTATION)         submodule 4-4
 
-bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-2_genemark-maker-busco.sh "$assembly"       \
-                                      "$forward_library"                                 \
-                                      "$reverse_library"                                 \
-                                      "$libname_folder"/eukaryotes			 \
-                                      "$cores"                                           \  
-				      "$memory"
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-4_maker2.sh "$libname_folder"/eukaryotes \
+									 "$cores"
+				      
+exit 0 
 
 #     BUSCO (COMPLETENSS COMPUTATION) submodule 4-5
 
