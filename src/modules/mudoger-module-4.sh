@@ -63,7 +63,7 @@ echo -e "\n EUK BIN CALCULATION DONE"
 #     GENEMARK (GENE PREDICTION)      submodule 4-2
 
 if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
-   echo -e "\nNo relevant eukaryotic found "
+   echo -e "\nNo relevant eukaryotic found"; touch no_euk_bins_for_genemark
 else
    bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-2_genemark.sh "$libname_folder"/eukaryotes	
 fi
@@ -73,7 +73,7 @@ echo -e "\n GENEMARK DONE"
 #     EUKCC (QUALITY ASSESSMENT)      submodule 4-3
 
 if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
-   echo -e "\nNo relevant eukaryotic found "
+   echo -e "\nNo relevant eukaryotic found"; touch no_euk_bins_for_eukcc
 else
    bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-3_eukcc.sh "$libname_folder"/eukaryotes  \
 									"$cores"
@@ -82,10 +82,18 @@ fi
 echo -e "\n EUKCC DONE"
 
 #     MAKER (GENE ANNOTATION)         submodule 4-4
+				      
+if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
+   echo -e "\nNo relevant eukaryotic found"; touch no_euk_bins_for_maker2
+else
 
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-4_maker2.sh "$libname_folder"/eukaryotes \
 									 "$cores"
-				      
+									 
+fi
+
+echo -e "\n MAKER2 DONE"
+
 exit 0 
 
 #     BUSCO (COMPLETENSS COMPUTATION) submodule 4-5
