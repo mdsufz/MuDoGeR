@@ -36,10 +36,10 @@ for genemark_bin_result_path in $genemark_results_folder/*; do
 bin=`echo "$(basename $genemark_bin_result_path)" | cut -f1 -d '_'`
 genemark_gmhm_file=$genemark_bin_result_path/gmhmm.mod
 bin_file_path=$genemark_bin_result_path/$bin
-#if [ -f  $output_folder/"$bin"_genemark/genemark.gtf ];
-#then
-#:
-#else
+if [ -d  $output_folder/"$bin"_maker2/*output ];
+then
+:
+else
 
 mkdir -p $output_folder/"$bin"_maker2
 cd $output_folder/"$bin"_maker2
@@ -47,7 +47,6 @@ cp $bin_file_path $output_folder/"$bin"_maker2
 
 maker -CTL
 sed '0,/genome=/{s/genome=/genome='$bin'/}' $output_folder/"$bin"_maker2/maker_opts.ctl #do it only for first occurance
-#sed -i 's|genome=|genome='$bin'|' $output_folder/"$bin"_maker2/maker_opts.ctl 
 sed -i 's|gmhmm=|gmhmm='$genemark_gmhm_file'|g' $output_folder/"$bin"_maker2/maker_opts.ctl
 sed -i 's|model_org=all|model_org=|g' $output_folder/"$bin"_maker2/maker_opts.ctl
 
@@ -60,7 +59,7 @@ cd $output_folder/"$bin"_maker2/*output
 fasta_merge -d *_master_datastore_index.log -o OUTPUT
 
 cd -
-#fi
+fi
 done
 conda deactivate
 
