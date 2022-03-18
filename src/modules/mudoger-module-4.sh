@@ -63,21 +63,17 @@ echo -e "\n EUK BIN CALCULATION DONE"
 
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-2_genemark.sh "$libname_folder"/eukaryotes			 
 
-
-exit 0 	
+echo -e "\n GENEMARK DONE"
 
 
 
 #     EUKCC (QUALITY ASSESSMENT)      submodule 4-3
 
-bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-2_genemark-maker-busco.sh "$assembly"       \
-                                      "$forward_library"                                 \
-                                      "$reverse_library"                                 \
-                                      "$libname_folder"/eukaryotes			 \
-                                      "$cores"                                           \  
-				      "$memory"
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-3_eukcc.sh "$libname_folder"/eukaryotes  \
+									"$cores"
 
 
+exit 0 	
 #     MAKER (GENE ANNOTATION)         submodule 4-4
 
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-2_genemark-maker-busco.sh "$assembly"       \
