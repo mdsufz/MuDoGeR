@@ -1,1 +1,51 @@
+#!/bin/bash
 
+########## RUNNING EUKCC ###################
+
+# loading conda environment and adjusting the paths
+conda activate mudoger_env
+config_path="$(which config.sh)"
+database="${config_path/config/database}"
+source $config_path
+source $database
+
+#Set eukcc database location
+eukcc_db_path="$DATABASES_LOCATION/eukccdb"
+
+
+# arguments declaration    
+euk_folder=$1 #"$libname_folder"/eukaryotes
+
+filtered_euk_bins_folder="$1/filtered_euk_bins"     #folder containing the filtered eukaryotic bins
+output_folder="$1/eukcc_quality"            #output folder
+
+num_core=$2
+
+
+# Run EUKCC
+
+echo -e "\n --->RUNNING EUKCC"
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/eukcc_env
+mkdir -p $output_folder
+
+for bin_path in $filtered_euk_bins_folder/*; do
+
+bin=`echo ${bin_path} | rev | cut -f1 -d'/' | rev`
+
+#if [ -f  $output_folder/"$bin"_genemark/genemark.gtf ];
+#then
+#:
+#else
+
+mkdir -p $output_folder/"$bin"_eukcc
+#cd $output_folder/"$bin"_eukcc
+
+eukcc --db $eukcc_db_path --ncores $num_core --ncorespplacer 1  --outdir $output_folder/"$bin"_eukcc $bin_path
+#cd -
+#fi
+done
+conda deactivate
+
+echo -e "\n --->END EUKCC QUALITY CALCULATION"
+
+#End EUKCC
