@@ -40,7 +40,7 @@ bin=`echo ${bin_path} | rev | cut -f1 -d'/' | rev`
 mkdir -p $output_folder/"$bin"_eukcc
 #cd $output_folder/"$bin"_eukcc
 
-eukcc --db $eukcc_db_path --ncores $num_core --ncorespplacer 1  --outdir $output_folder/"$bin"_eukcc $bin_path
+eukcc single --db $eukcc_db_path --threads $num_core --out $output_folder/"$bin"_eukcc $bin_path
 #cd -
 #fi
 done
