@@ -150,6 +150,8 @@ if [ ! -d eukcc2_db_ver_1.1 ]; then
 wget http://ftp.ebi.ac.uk/pub/databases/metagenomics/eukcc/eukcc2_db_ver_1.1.tar.gz
 tar -xzvf eukcc2_db_ver_1.1.tar.gz
 rm -fr eukcc2_db_ver_1.1.tar.gz
+mv eukcc2_db_ver_1.1/* ./
+rm -fr eukcc2_db_ver_1.1/
 #ADD EUKCC DATABASE PATH TO CONFIG FILE
 #export EUKCC2_DB=$(realpath eukcc2_db_ver_1.1)
 #echo EUKCC2_DB="$EUKCC2_DB" >> "$config_file"
