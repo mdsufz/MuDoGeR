@@ -46,7 +46,8 @@ cd $output_folder/"$bin"_maker2
 cp $bin_file_path $output_folder/"$bin"_maker2
 
 maker -CTL
-sed -i 's|genome=|genome='$bin'|' $output_folder/"$bin"_maker2/maker_opts.ctl #do it only for first occurance
+sed '0,/genome=/{s/genome=/genome='$bin'/}' $output_folder/"$bin"_maker2/maker_opts.ctl #do it only for first occurance
+#sed -i 's|genome=|genome='$bin'|' $output_folder/"$bin"_maker2/maker_opts.ctl 
 sed -i 's|gmhmm=|gmhmm='$genemark_gmhm_file'|g' $output_folder/"$bin"_maker2/maker_opts.ctl
 sed -i 's|model_org=all|model_org=|g' $output_folder/"$bin"_maker2/maker_opts.ctl
 
