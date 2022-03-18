@@ -32,17 +32,17 @@ for bin_path in $filtered_euk_bins_folder/*; do
 
 bin=`echo ${bin_path} | rev | cut -f1 -d'/' | rev`
 
-#if [ -f  $output_folder/"$bin"_genemark/genemark.gtf ];
-#then
-#:
-#else
+if [ -f  $output_folder/"$bin"_eukcc/eukcc.csv ];
+then
+:
+else
 
 mkdir -p $output_folder/"$bin"_eukcc
-#cd $output_folder/"$bin"_eukcc
+
 
 eukcc single --db $eukcc_db_path --threads $num_core --out $output_folder/"$bin"_eukcc $bin_path
-#cd -
-#fi
+
+fi
 done
 conda deactivate
 
