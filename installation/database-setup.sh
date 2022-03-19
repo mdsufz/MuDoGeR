@@ -21,8 +21,7 @@ echo 'installing checkm database ...'
 wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
 tar -xvf checkm_data_2015_01_16.tar.gz
 rm -fr checkm_data_2015_01_16.tar.gz
-# On newer versions of CheckM, you would run:
-#checkm data setRoot /path/to/your/dir/$MY_CHECKM_FOLDER
+
 CHECKM_DB="$database_location"/checkm #Fixed? we need to test
 echo CHECKM_DB="$CHECKM_DB" >> "$config_path"
 else echo "-> your CheckM database is ready"
@@ -36,8 +35,7 @@ if [ ! -d release*  ]; then
 wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
 tar xvzf gtdbtk_data.tar.gz
 rm -fr gtdbtk_data.tar.gz
-#echo  GTDBTK_DATA_PATH="$database_location"/gtdbtk/gtdbtk_r95_data >> "$config_file" ##FIX HERE
-#echo GTDBTK_DATA_PATH="$(ls "$database_location"/gtdbtk/release*)" >>  "$config_file" # fixed? we need to test
+
 else echo "-> your GTDBtk database is ready"
 fi
 
@@ -135,9 +133,7 @@ if [ ! -d checkv-db-v1.0 ]; then
 wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
 tar -zxvf checkv-db-v1.0.tar.gz
 rm -fr checkv-db-v1.0.tar.gz
-#ADD CHECKV DATABASE PATH TO CONFIG FILE
-#CHECKVDB="$database_location"/checkv/checkv-db-v1.0
-#echo CHECKVDB="$CHECKVDB" >> "$config_file"
+
 else echo "-> your CheckV database is ready"
 fi
 
@@ -152,9 +148,18 @@ tar -xzvf eukcc2_db_ver_1.1.tar.gz
 rm -fr eukcc2_db_ver_1.1.tar.gz
 mv eukcc2_db_ver_1.1/* ./
 rm -fr eukcc2_db_ver_1.1/
-#ADD EUKCC DATABASE PATH TO CONFIG FILE
-#export EUKCC2_DB=$(realpath eukcc2_db_ver_1.1)
-#echo EUKCC2_DB="$EUKCC2_DB" >> "$config_file"
+
 else echo "-> your EUKCC database is ready"
 fi
 
+### BUSCO eukaryotes database
+
+mkdir -p  "$database_location"/buscodbs
+cd "$database_location"/buscodbs
+if [ ! -d eukcc2_db_ver_1.1 ]; then
+
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/busco_env
+busco --download_path "$database_location"/buscodbs --download "eukaryota"
+
+else echo "-> your BUSCO eukaryotes database is ready"
+fi
