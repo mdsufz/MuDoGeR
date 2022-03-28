@@ -49,6 +49,7 @@ source $config_path
 #     EUKREP                          submodule 4-1
 #     METAWARAP CONCOCT               submodule 4-1
 #     SIZE FILTERING                  submodule 4-1
+echo -e "\n EUK BIN CALCULATION STARTED"
 
 mkdir -p "$libname_folder"/eukaryotes/
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-1_eukrep-eukbin-filter.sh "$assembly"       \
@@ -61,6 +62,7 @@ bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-1_eukrep-eukbin-fil
 echo -e "\n EUK BIN CALCULATION DONE"
 
 #     GENEMARK (GENE PREDICTION)      submodule 4-2
+echo -e "\n GENEMARK STARTED"
 
 if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
    echo -e "\nNo relevant eukaryotic found"; touch no_euk_bins_for_genemark
@@ -71,6 +73,7 @@ fi
 echo -e "\n GENEMARK DONE"
 
 #     EUKCC (QUALITY ASSESSMENT)      submodule 4-3
+echo -e "\n EUKCC STARTED"
 
 if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
    echo -e "\nNo relevant eukaryotic found"; touch no_euk_bins_for_eukcc
@@ -82,6 +85,7 @@ fi
 echo -e "\n EUKCC DONE"
 
 #     MAKER (GENE ANNOTATION)         submodule 4-4
+echo -e "\n MAKER2 STARTED"
 				      
 if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
    echo -e "\nNo relevant eukaryotic found"; touch no_euk_bins_for_maker2
@@ -94,17 +98,19 @@ fi
 
 echo -e "\n MAKER2 DONE"
 
+
+#     BUSCO (COMPLETENSS CALCULATION) submodule 4-5
+echo -e "\n BUSCO STARTED"
+if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
+   echo -e "\nNo relevant eukaryotic found"; touch no_euk_bins_for_busco
+else
+
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-5_busco.sh "$libname_folder"/eukaryotes \
+									 "$cores"
+
+fi
+echo -e "\n BUSCO DONE"
+
 exit 0 
-
-#     BUSCO (COMPLETENSS COMPUTATION) submodule 4-5
-
-bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-2_genemark-maker-busco.sh "$assembly"       \
-                                      "$forward_library"                                 \
-                                      "$reverse_library"                                 \
-                                      "$libname_folder"/eukaryotes			 \
-                                      "$cores"                                           \  
-				      "$memory"
-
-
 
 
