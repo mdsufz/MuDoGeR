@@ -30,7 +30,7 @@ mkdir -p $output_folder
 
 for bin_path in $maker2_genes_folder/*; do
 
-bin=`${bin_path} | rev | cut -f1 -d'/' | cut -d '.' -f2- | rev`
+bin=`echo ${bin_path} | rev | cut -f1 -d'/' | cut -d '.' -f2- | rev`
 
 if [ -f  $output_folder/"$bin"_busco/run_lineage_name/full_table.tsv ];
 then
