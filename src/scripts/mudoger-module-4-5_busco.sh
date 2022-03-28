@@ -27,7 +27,7 @@ num_core=$2
 echo -e "\n --->RUNNING BUSCO"
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/busco_env
 mkdir -p $output_folder
-
+cd $output_folder
 for bin_path in $maker2_genes_folder/*; do
 
 bin=`echo ${bin_path} | rev | cut -f1 -d'/' | cut -d '.' -f2- | rev`
@@ -38,12 +38,14 @@ then
 else
 
 #mkdir -p $output_folder/"$bin"_busco/
+#cd $output_folder/"$bin"_busco/
 sequence_path=$bin_path/"$bin".maker.output/OUTPUT.all.maker.genemark.proteins.fasta
 
-busco -i $sequence_path -l "$busco_db_path"/lineages/eukaryota_odb10 -m protein -o $output_folder/"$bin"_busco/ -c $num_core
+busco -i $sequence_path -l "$busco_db_path"/lineages/eukaryota_odb10 -m protein -o "$bin"_busco -c $num_core
 
 fi
 done
+cd -
 conda deactivate
 
 echo -e "\n --->END BUSCO CALCULATION"
