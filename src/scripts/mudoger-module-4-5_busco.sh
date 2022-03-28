@@ -32,13 +32,11 @@ for bin_path in $maker2_genes_folder/*; do
 
 bin=`echo ${bin_path} | rev | cut -f1 -d'/' | cut -d '.' -f2- | rev`
 
-if [ -f  $output_folder/"$bin"_busco/run_lineage_name/full_table.tsv ];
+if [ -f  $output_folder/"$bin"_busco/run_eukaryota_odb10/full_table.tsv ];
 then
 :
 else
 
-#mkdir -p $output_folder/"$bin"_busco/
-#cd $output_folder/"$bin"_busco/
 sequence_path=$bin_path/"$bin".maker.output/OUTPUT.all.maker.genemark.proteins.fasta
 
 busco -i $sequence_path -l "$busco_db_path"/lineages/eukaryota_odb10 -m protein -o "$bin"_busco -c $num_core
