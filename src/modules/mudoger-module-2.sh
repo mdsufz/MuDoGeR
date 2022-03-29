@@ -149,7 +149,7 @@ fi
 # 8 Metrics: N50, NUM_NUCLEOTIDE, NUM_CONTIGS, ATCG and more...
 
 if [ -f "$libname_folder"/prokaryotes/metrics/genome_statistics/genome_metrics.tsv ] && [ "$libname_folder"/prokaryotes/metrics/genome_statistics/prok_genomes_stats.tsv ];
-then echo "-> MAGs statistics is done. Please check: "$libname_folder"/prokaryotes/metrics/prok_genomes_stats.tsv"
+then echo "-> MAGs statistics is done. Please check: "$libname_folder"/prokaryotes/metrics/genome_statistics/prok_genomes_stats.tsv"
 else 
 echo "-> Run MAGs STATS"
 bash -i MuDoGeR/src/scripts/mudoger-module-2-8_genomics-metrics.sh  "$libname_folder"/prokaryotes/ "$cores"
