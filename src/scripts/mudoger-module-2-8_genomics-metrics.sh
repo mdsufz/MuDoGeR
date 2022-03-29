@@ -15,7 +15,10 @@ source $database
 # load bbtools env
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/bbtools_env
 
-output_file="$1"/metrics/prok_genomes_stats.tsv
+mkdir -p "$1"/metrics/genome_statistics
+
+output_path="$1"/metrics/genome_statistics
+output_file="$output_path"/prok_genomes_stats.tsv
 cores=$2
 test_file="$1"/metrics/test_prok_genomes_stats.tsv
 
@@ -56,7 +59,7 @@ done
 
 ### summarize results in one table 
 
-echo -e "OTU\tcompleteness\tcontamination\tstr.heterogeneity\ttaxonomy\tgenome_size\t#scaffolds\tlargest_scaff\tN50\tN90\tprokka_known\tprokka_unknown" > "$1"/metrics/genome_metrics.tsv ;
+echo -e "OTU\tcompleteness\tcontamination\tstr.heterogeneity\ttaxonomy\tgenome_size\t#scaffolds\tlargest_scaff\tN50\tN90\tprokka_known\tprokka_unknown" > $output_path/genome_metrics.tsv ;
 for d in  $1/binning/unique_bins/*;
 do bin="$(echo $d | rev | cut -f1 -d'/' | rev | sed "s/.fa//g")"; 
 echo -e "$bin\t\c"; 
@@ -68,13 +71,13 @@ metrics="$(grep "$bin" $1/metrics/prok_genomes_stats.tsv  | cut -f2-10)";
 echo -e "$metrics\t\c"; 
 prokka_known="$(tail -n +2 $1/metrics/prokka/"$bin"/PROKKA*tsv  | grep -v hypothetical | wc -l )";
 prokka_unknown="$(tail -n +2 $1/metrics/prokka/"$bin"/PROKKA*tsv  | grep hypothetical | wc -l )";
-echo -e "$prokka_known\t$prokka_unknown";done >> "$1"/metrics/genome_metrics.tsv
+echo -e "$prokka_known\t$prokka_unknown";done >> $output_path/genome_metrics.tsv
 
 
 ##Run BBTOOLS on selected MAGs
 cd "$1"/binning/unique_bins/
 
-statswrapper.sh *.fa > $1/metrics/bbtools.tsv
+statswrapper.sh *.fa > $output_path/bbtools.tsv
 
 cd -
 
