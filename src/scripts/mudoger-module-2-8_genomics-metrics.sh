@@ -20,11 +20,11 @@ mkdir -p "$1"/metrics/genome_statistics
 output_path="$1"/metrics/genome_statistics
 output_file="$output_path"/prok_genomes_stats.tsv
 cores=$2
-test_file="$1"/metrics/test_prok_genomes_stats.tsv
+
 
 #Create file
 echo -e "genome_name\tgenome_size\tnumber_of_scaffolds\tlargest_scaffold_size\tN50\tN90" > $output_file
-echo -e "genome_name\tgenome_size\tnumber_of_scaffolds\tlargest_scaffold_size\tN50\tN90" > $test_file
+
 for genome in "$1"/binning/unique_bins/*.fa;
 do
 genome_name="$(echo "$genome" | rev | cut -f1 -d'/' | rev )";
@@ -49,7 +49,6 @@ N50=$(awk '$2 >= 0.50' $temp_path/matrix.txt |head -1| awk '{ print $1}');
 N90=$(awk '$2 >= 0.90' $temp_path/matrix.txt |head -1| awk '{ print $1}');
 large_contig=$(head -1 $temp_path/contig_lengths.txt);
 
-echo -e "$genome_name\t$X\t$Y\t$large_contig\t$N50\t$N90" >> $test_file
 
 rm -fr $temp_path;
 
