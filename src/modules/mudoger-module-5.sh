@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 #BRAT: a tool to calculate relative abundance of fasta files in fastq files
@@ -42,10 +41,10 @@ help_message() {
 		echo "Output types:"
 		echo ""
 		echo "--absolute-values"	
-		echo "	calculate absolute number of reads mapped)."
+		echo "	calculate absolute number of reads mapped."
 		echo ""
 		echo "--coverage"	
-		echo "	calculate coverage)."
+		echo "	calculate coverage."
 		echo ""
 		echo "--relative-abundance"	
 		echo "	calculate relative abundance."
@@ -117,6 +116,7 @@ else
 	if [ "$(ls *.fa | wc -l)" -eq 0 ]; then
 		echo "Warning: There is no mag/bin inside FASTA/bins directory. Exiting..."; exit 1;
 	fi
+	cd -
 fi
 
 #Checking if directory for FASTA exists and has files inside
@@ -127,13 +127,12 @@ else
 	if [ "$(ls *.fastq | wc -l)" -eq 0 ]; then
 		echo "Warning: There is no sample inside the reads directory. Exiting..."; exit 1;
 	fi
+	cd -
 fi
 
 cd $WORKDIR
 
-echo -e "\nTHE PIPELINE STARTS\n"
-
-
+echo -e "\nTHE PIPELINE STARTED\n"
 
 
 #Module 5 - BRATs for MuDoGer
