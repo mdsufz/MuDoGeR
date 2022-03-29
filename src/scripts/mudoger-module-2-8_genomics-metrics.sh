@@ -67,7 +67,7 @@ tax="$(grep "$bin" $1/metrics/GTDBtk_taxonomy/*.summ* | cut -f2)";
 qual="$(grep "$bin" $1/metrics/checkm_qc/outputcheckm.tsv | cut -f12,13,14 )";
 echo -e "$qual\t\c";
 echo -e "$tax\t\c";
-metrics="$(grep "$bin" $1/metrics/prok_genomes_stats.tsv  | cut -f2-10)";
+metrics="$(grep "$bin" $output_path/prok_genomes_stats.tsv  | cut -f2-10)";
 echo -e "$metrics\t\c"; 
 prokka_known="$(tail -n +2 $1/metrics/prokka/"$bin"/PROKKA*tsv  | grep -v hypothetical | wc -l )";
 prokka_unknown="$(tail -n +2 $1/metrics/prokka/"$bin"/PROKKA*tsv  | grep hypothetical | wc -l )";
