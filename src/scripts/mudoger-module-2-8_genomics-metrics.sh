@@ -6,7 +6,7 @@
 ##### Base of the script: https://github.com/hcdenbakker/N50.sh/blob/master/N50.sh
 # loading conda environment
 echo '------- START MODULE 2-8 BIN METRICS'
-conda activate bbtools_env
+conda activate mudoger_env
 config_path="$(which config.sh)"
 database="${config_path/config/database}"
 source $config_path
@@ -67,8 +67,8 @@ echo -e "$tax\t\c";
 metrics="$(grep "$bin" $1/metrics/prok_genomes_stats.tsv  | cut -f2-10)";
 echo -e "$metrics\t\c"; 
 prokka_known="$(tail -n +2 $1/metrics/prokka/"$bin"/PROKKA*tsv  | grep -v hypothetical | wc -l )";
-prokka_unknown="$(tail -n +2 metrics/prokka/"$bin"/PROKKA*tsv  | grep hypothetical | wc -l )";
-echo -e "$prokka_known\t$prokka_unknown";done >> genome_metrics.tsv
+prokka_unknown="$(tail -n +2 $1/metrics/prokka/"$bin"/PROKKA*tsv  | grep hypothetical | wc -l )";
+echo -e "$prokka_known\t$prokka_unknown";done >> "$1"/metrics/genome_metrics.tsv
 
 
 ##Run BBTOOLS on selected MAGs
