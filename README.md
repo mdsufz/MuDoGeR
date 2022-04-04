@@ -61,23 +61,23 @@ Module 2 workflow is shown in Figure 3. A detailed description of its execution 
     
 ### Module 3: Recovery of Uncultivated Viral Genomes 
 
-![](https://github.com/LuizMVB/MuDoGeR/blob/c65d851f6439cc4eb8c18672afb5cde9a9165f40/flowcharts/Module%203.png) 
+![](https://github.com/JotaKas/MuDoGeR/blob/c65d851f6439cc4eb8c18672afb5cde9a9165f40/flowcharts/Module%203.png) 
 
-The steps of the Module 3  are shown in Figure 4 and they are excecuted in the scripts find in the following hyperlink: [Pipelines for viral genomes recovery](https://github.com/LuizMVB/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes).
+The steps of the Module 3  are shown in Figure 4. A detailed description of its execution and outputs are found here: [Pipelines for viral genomes recovery](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes).
 
  The steps of Module 3 can be summarized as following: 
  
-* **3.a**: Recovery, quality estimation, taxonomic classification and host identification of Uncultivated Viral Genomes 
-    * **(3.a.1)** Recovery of Uncultivated Viral Genomes using **VirFinder**, **VirSorter** and **VIBRANT**.
-    * **(3.a.2)** Filtering of the recovered genomes. From the results of **VirFinder**, the sequences with p-value > 0.01 and length < 1000 bp are removed. From the results of **VirSorter**, which recovers prophages, only the sequences of categories 1 and 2 are kept. From the results of **VIBRANT**, the combined assemblies of the phages are kept.
-    * **(3.a.3)** Combination of the headers of all the Uncultivated Viral Genomes in a single file. Then, removal of the headers of the repeated sequences and sorting the remaining headers by sequence length.
-    * **(3.a.4)** Assembly of the headers in the file produced in **3.a.3** with the respective sequences from the assembly file produced by **metaSPades** in **1.c**, for the generation of a fasta file.
-    * **(3.a.5)** Removal of replicates from the assemblies in the extracted file using **Stampede-clustergenomes** with minimum coverage of 70% and minimum identity of 95%.
-    * **(3.a.6)** Checking the quality of the dereplicated contigs with **CheckV**.
-    * **(3.a.7)** Taxonomic classification of the clean contigs produced by **CheckV**,  with **vContact2**. In small datasets, we can use the dereplicated contigs from step **(3.a.5)**.
-    * **(3.a.8)** Host identification of the clean contigs produced by **CheckV**, using **WIsH**. In small datasets, we can use the dereplicated contigs from **(3.a.5)** (optional).    
-* **3.b**: Selection of Uncultivated Viral Genomes 
-	* **(3.b.1)** Selection of all viruses that yielded taxonomy when using vContact2 plus those larger than 15 Kb.
+* **3.a**: Recovery of Uncultivated Viral Genomes (Uvigs)
+    * **(3.a.1)** Recovery of Uvigs using **VirFinder**, **VirSorter** and **VIBRANT**.
+    * **(3.a.2)** Filtering of the Uvigs.
+    * **(3.a.3)** Dereplication of the Uvigs.
+ * **3.b**: Taxonomic annotation and Quality estimation of Uvigs
+    * **(3.b.1)** Taxonomic classification from the dereplicated Uvigs with **vContact2**.
+    * **(3.b.2)** Checking the quality of the dereplicated contigs with **CheckV**.
+* **3.c**: Host identification of the dereplicated Uvigs using **WIsH**. This step is only done automaticaly if you generate the prokaryotic MAGs using MuDoGeR as well. 
+* **3.d**: Selection of Uvigs
+    * **(3.d.1)** Selection of all viruses that yielded taxonomy when using vContact2 plus those larger than 15 Kb.
+    * **(3.d.2)** Selection based on the quality determined by **CheckV**
    
 
 ### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes
