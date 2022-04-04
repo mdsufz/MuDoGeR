@@ -1,54 +1,62 @@
  # Multi-Domain Genome Recovery (MuDoGeR)
  
  
-![ScreenShot](https://github.com/LuizMVB/MuDoGeR/blob/master/flowcharts/fig1_20.5.21.png)
+![ScreenShot](https://github.com/JotaKas/MuDoGeR/blob/master/flowcharts/fig1_20.5.21.png)
 
 
-The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs as defined by Parks et al. (2018)) and Uncultivated Viral Genomes (UViGs as defined by  Roux (2019)) from dozens to hundreds of samples simultaneously. The **MuDoGeR** framework combines pipelines from different tools. The **MuDoGeR** starts with Module 1: **Pre-Processing**, which is divided in 3 steps: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation**, which feed the **1.c** **Assembly**. These assemblies will be used in the other modules. After pre-processing of the data, **MuDoGeR** is divided in 3 different branches: Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes** (using **metaWrap**), Module 3: **Recovery of Uncultivated Viral Genomes** (using **VirSorter**, **VirFinder** and **VIBRANT**) and Module 4: **Recovery of Eukaryotic Metagenome-Assembled Genomes** (using **EukRep**). Furthermore, in **Module 5**: **Relative Abundance**, a strategy was developed for mapping the relative abundance of the selected MAGs and UViGs in each library. Also, a step was added for bin_refinement of the selected Metagenome-Assembled Genomes from Prokaryotes, using **U-bin**. References of the used tools can be found in the end of the page.
+The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs as defined by Parks et al. (2018)) and Uncultivated Viral Genomes (UViGs as defined by  Roux (2019)) from whole-genome sequence (WGS) samples simultaneously. The **MuDoGeR** framework act as a wrapper of several tools. It was designed to be an easy-to-use tool that outputs ready-to-use comprehensive files.
+
+The **MuDoGeR** starts with Module 1: **Pre-Processing**, which covers: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation** and **1.c** **Assembly**. The assembled sequences should be used in all the other modules.
+
+After pre-processing of the data, **MuDoGeR** is divided in 3 different branches:
+Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes**
+Module 3: **Recovery of Uncultivated Viral Genomes**
+Module 4: **Recovery of Eukaryotic Metagenome-Assembled Genomes**
+
+Furthermore, in **Module 5**: **Relative Abundance**, there are the selection of the MAGs from the group of processed WGS samples, and the calculation of the coverage and relative abundance table of the selected MAGs and UViGs within the sample's group. References of the used tools can be found in the end of the page.
  
 
 ## MuDoGeR Overview
 
-* Instructions for using the **MuDoGeR** can be found in the following hyperlink: [Manual MuDoGeR](https://github.com/LuizMVB/MuDoGeR/blob/master/Manual_MuDoGeR.md).
-* Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: [Module description](https://github.com/LuizMVB/MuDoGeR/blob/master/module_description.md).
-* Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: [System requirements](https://github.com/LuizMVB/MuDoGeR/blob/master/README.md#system-requirements).
-* Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: [Installation](https://github.com/LuizMVB/MuDoGeR/blob/master/README.md#installation).
-* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: [Simplified usage of the MuDoGeR](https://github.com/LuizMVB/MuDoGeR/blob/master/README.md#simplified-usage-of-the-mudoger).
+* Instructions for using the **MuDoGeR** can be found in the following hyperlink: [Manual MuDoGeR](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md).
+* Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: [Module description](https://github.com/JotaKas/MuDoGeR/blob/master/module_description.md).
+* Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: [System requirements](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#system-requirements).
+* Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: [Installation](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#installation).
+* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: [Simplified usage of the MuDoGeR](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#simplified-usage-of-the-mudoger).
 
 ### Module 1: Pre-Processing 
 
-![Screenshot](https://github.com/LuizMVB/MuDoGeR/blob/c65d851f6439cc4eb8c18672afb5cde9a9165f40/flowcharts/Module%201.PNG) 
+![Screenshot](https://github.com/JotaKas/MuDoGeR/blob/master/flowcharts/Module%201.PNG) 
 
- The steps of Module 1 are shown in Figure 2 and they are excecuted with the scripts find in the following hyperlink: [Pre-Processing](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
+The steps of Module 1 are shown in Figure 2. A detailed description of its execution and outputs are found here: [Pre-Processing description](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
  
  The steps of Module 1 can be summarized as following:
 
 * **1.a**: Raw Read Quality Control.
-* **1.b**: Calculation of resources.
-    * **(1.b.1)** The k-mer of the good quality reads produced in **1.a** is calculated by **khmer**. The k-mer sizes that will be investigated are 33 and 55. The results of both k-mer 33 and 55 are combined in a single file.  
-    * **(1.b.2)** The calculated k-mer is added to an equation that is used to estimate the amount of memory that **metaSPades** utilizes to assemble the good-quality reads.
+* **1.b**: Calculation of memory requirements for the assembly process.
+    * **(1.b.1)** The k-mer (33-mer and 55-mer) of the quality-controled reads produced in **1.a** is calculated.  
+    * **(1.b.2)** The calculated k-mer is used within and trained machine learning model to estimate the amount of memory that **metaSPades** utilizes to assemble the reads.
 * **1.c**: Assembly.
 
 ### Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
 
-![screenshot](https://github.com/LuizMVB/MuDoGeR/blob/master/flowcharts/MODULE_2_21.5.21.png)
+![screenshot](https://github.com/JotaKas/MuDoGeR/blob/master/flowcharts/MODULE_2_21.5.21.png)
 
-The different steps of the Module 2 are shown in Figure 3 and they are excecuted with the scripts find in the following hyperlink: [Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/LuizMVB/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
+Module 2 workflow is shown in Figure 3. A detailed description of its execution and outputs are found here: [Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
 
  The steps of Module 2 can be summarized as following:
  
-* **2.a**: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, taxonomic classification,quality estimation and annotation of Prokaryotic bins
-     * **(2.a.1)** Binning with **MaxBin2**, **metaBAT2**, and **CONCOCT**. 
-     * **(2.a.2)** Dereplication of bins for prior bin_refinement. The completeness/contamination parameters have been set to 50%/10% for Bacteria and 40%/30% for Archaea. 
-     * **(2.a.3)** Taxonomic classification of the genomic bins produced in **(2.a.2)** using **GTDB-Tk**.
-     * **(2.a.4)** Generation of quality matrix of genomic bins produced in **(2.a.2)** using **CheckM**. 
-     * **(2.a.5)** Filtering of genomic bins produced in **(2.a.4)**, by bin quality. The minimum quality for the filtering is set by default at 50. In this step, the user can also change the required quality (optional step).      
-     * **(2.a.6)** Annotation of genomic bins produced in **(2.a.2)** with **PROKKA**.
-* **2.b**: Selection of Prokaryotic Metagenome-Assembled Genomes Representatives.
-	* **(2.b.1)** Grouping of Prokaryotic Metagenome-Assembled Genomes by taxonomy, using the .tsv file of **GTDB-Tk** results.
-	* **(2.b.2)** Separation of the cluster produced in **(2.b.1)** by species, using ANI (Average Nucleotide Identity) splitter, with default ANI_distance 0.95.
-	* **(2.b.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(2.b.2)**.
-* **2.c**: Refinement of the bins produced in binning or/and the bins of the selected Representative Metagenome-Assembled Genomes using **U-bin** (optional step).
+* **2.a**: Binning and bin refinement of the Prokaryotic bins.
+     * **(2.a.1)** Binning with **MaxBin2**, **metaBAT2**, and **CONCOCT**.
+     * **(2.a.2)** Bacterial bins refinement and archea bins refinement.
+     * **(2.a.3)** Dereplication of the recovered prokaryotic bins.
+* **2.b**: Taxonomic classification, quality estimation, selection of Prokaryotic MAGs.
+     * **(2.b.1)** Taxonomic classification of the prokaryotic bins produced in **(2.a.3)** using **GTDB-Tk**.
+     * **(2.b.2)** Generation of quality matrix of the prokaryotic bins produced in **(2.a.3)** using **CheckM**. 
+     * **(2.b.3)** Selection of the prokaryotic MAGs using the information retrieved in **(2.b.1)** and **(2.b.2)**.
+* **2.c**: Sequence metrics calculation and gene annotation.
+     * **(2.c.1)** Sequence metric calculation from the selected MAGs.
+     * **(2.c.2)** Prokaryotic MAGs gene annotation with **PROKKA**.
     
     
 ### Module 3: Recovery of Uncultivated Viral Genomes 
