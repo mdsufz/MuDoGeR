@@ -6,7 +6,7 @@
 
 help_message() {
 		echo ""
-		echo "Example usage: gOTUpick.sh --bb-input path/to/BBMap-input --checkm-input path/to/CheckM-input --gtdb-input path/to/gtdb-input 
+		echo "Example usage: gOTUpick.sh --bb-input path/to/BBMap-output --checkm-input path/to/CheckM-output --gtdb-input path/to/gtdb-output 
 				      -m path/to/mags -o path/to/outputdir" 
 		echo ""
 		echo ""
@@ -16,13 +16,13 @@ help_message() {
 		echo "	display this help page"
 		echo ""
 		echo "--bb-input <value>"
-		echo "	absolute path to input file from BBMap"
+		echo "	absolute path to output file from BBMap"
 		echo ""
 		echo "--checkm-input <value>"
-		echo "	absolute path to input file from CheckM"
+		echo "	absolute path to output file from CheckM"
 		echo ""
 		echo "--gtdb-input <value>"
-		echo "	absolute path to input file from GTDB-Tk"
+		echo "	absolute path to output file from GTDB-Tk"
 		echo ""
 		echo "-m <value>"
 		echo "	absolute path to a directory where mags/bins in fasta format are stored"
@@ -178,15 +178,16 @@ else
 	TAXFILE="allgtdb.tsv"
 fi
 
-echo -e "\nPlease enter your anaconda path (ex: /home/user_name/anaconda3):" #needed to find where auxiliary scripts are located 
-read conda_path
-echo -e "\nYour anaconda path: $conda_path" 
+#echo -e "\nPlease enter your anaconda path (ex: /home/user_name/anaconda3):" #needed to find where auxiliary scripts are located 
+#read conda_path
+#echo -e "\nYour anaconda path: $conda_path" 
 
 echo -e "\nStarting first step: Grouping by taxonomy"
 
 #The Python script organize-bins-tax.py groups the good-quality bins/MAGs based on the taxonomy assigned by GTDB-Tk.
-python3 $conda_path/envs/gOTUpick/bin/organize-bins-tax.py $TAXFILE $MAGS $WORKDIR/tax_groups
-
+#python3 $conda_path/envs/gOTUpick/bin/organize-bins-tax.py $TAXFILE $MAGS $WORKDIR/tax_groups
+python3 organize-bins-tax.py $TAXFILE $MAGS $WORKDIR/tax_groups
+cd -
 cd $WORKDIR/tax_groups
 
 if [ "$(ls | wc -l)" -eq 0 ]; then
@@ -202,7 +203,7 @@ else
 fi
 	
 echo -e "\nGrouping by taxonomy is finished. Starting next step: Calculation of ANI distances\n"
-
+cd -
 ########CALCULATION OF ANI DISTANCES########
 
 cd $WORKDIR
@@ -226,7 +227,7 @@ do
 done
 
 #Copying GTDB-taxonomy files for each group into the folders in ANI_distances directory
-
+cd -
 cd ANI_distances
 
 for i in gr*
@@ -235,7 +236,7 @@ do
 done
 
 echo -e "\nCalculation of ANI distances is finished. Starting next step: Clustering\n"
-
+cd -
 ########CLUSTERING MAGS/BINS INSIDE EACH GROUP USING CALCULATED ANI DISTANCES########
 
 #Running aniSplitter.R with threshold ANI=95 (this is the default value). 
@@ -245,33 +246,35 @@ cd $WORKDIR
 
 for i in $WORKDIR/ANI_distances/gr*
 do 
-	$conda_path/envs/gOTUpick/bin/aniSplitter.R -t group_taxonomy_gtdb -d $i -f fastani-out-1500-0.txt -s $SEED -a $ANI_1 -i $BOOTSTRAP 2> $i/log.txt
+	#$conda_path/envs/gOTUpick/bin/aniSplitter.R -t group_taxonomy_gtdb -d $i -f fastani-out-1500-0.txt -s $SEED -a $ANI_1 -i $BOOTSTRAP 2> $i/log.txt
+	Rscript aniSplitter.R -t group_taxonomy_gtdb -d $i -f fastani-out-1500-0.txt -s $SEED -a $ANI_1 -i $BOOTSTRAP 2> $i/log.txt
 	if [ ! -s $i/cluster_summary.tsv ]; then echo "Warning: Something went wrong with aniSplitter. Exiting..."; exit 1; fi
 done
 
 #aniSplitter was designed to do generate one output per folder. Remember that you might have more than one folder (i.e. tax group).
 #To summarize the results of multiple outputs we employ the python script summarize-anisplitter-results.py.
-
+cd -
 mkdir -p $WORKDIR/results
 cd $WORKDIR/ANI_distances
 
 for i in gr*
 do
-	python3 $conda_path/envs/gOTUpick/bin/summarize-anisplitter-results.py $i $ANI_1
+	#python3 $conda_path/envs/gOTUpick/bin/summarize-anisplitter-results.py $i $ANI_1
+	python3 summarize-anisplitter-results.py $i $ANI_1
 done > $WORKDIR/results/groups_ANI$ANI_1.tsv
 
 if [ ! -s $WORKDIR/results/groups_ANI$ANI_1.tsv ]; then echo "Warning: Something went wrong with summarizing aniSplitter results. Exiting..."; exit 1; fi
 
 sed -i '1i original_group\tbin\tbootstrap\tnew_group\tani\tbootstrap_status' $WORKDIR/results/groups_ANI$ANI_1.tsv
-
-cd ..
+cd -
+cd $WORKDIR/
 
 #Combining all ANI results (those obtained from fastANI) in a single file
 cat $WORKDIR/ANI_distances/gr*/fastani-out* > $WORKDIR/all_fastani-out-1500-0.txt
 
 #Creating a new directory called ANI_OTU95
 mkdir -p $WORKDIR/ANI_OTU$ANI_1
-
+cd -
 cd $WORKDIR/ANI_OTU$ANI_1
 
 #Creating folders in the directory ANI_OTU95 for the clusters obtained after the running anisplitter with the threshold ANI=95 
@@ -330,22 +333,24 @@ fi
 #Running ANI splitter with the threshold ANI=99 (default) on clusters in the ANI_OTU95 directory
 for i in gr*
 do 
-	$conda_path/envs/gOTUpick/bin/aniSplitter.R -t group_taxonomy_gtdb -d $i -f fastani-out-1500-0.txt -s $SEED -a $ANI_2 -i $BOOTSTRAP 2> $i/log.txt
+	#$conda_path/envs/gOTUpick/bin/aniSplitter.R -t group_taxonomy_gtdb -d $i -f fastani-out-1500-0.txt -s $SEED -a $ANI_2 -i $BOOTSTRAP 2> $i/log.txt
+	Rscript aniSplitter.R -t group_taxonomy_gtdb -d $i -f fastani-out-1500-0.txt -s $SEED -a $ANI_2 -i $BOOTSTRAP 2> $i/log.txt
 	if [ ! -s $i/cluster_summary.tsv ]; then echo "Warning: Something went wrong with aniSplitter. Exiting..."; exit 1; fi
 done
-
+cd -
 #Running summarize-anisplitter-results.py script using a threshold of 99 and storing the results in the result folder.
 cd $WORKDIR/ANI_OTU$ANI_1
 
 for i in gr*
 do 
-	python3 $conda_path/envs/gOTUpick/bin/summarize-anisplitter-results.py $i $ANI_2
+	#python3 $conda_path/envs/gOTUpick/bin/summarize-anisplitter-results.py $i $ANI_2
+	python3 summarize-anisplitter-results.py $i $ANI_2
 done > $WORKDIR/results/groups_ANI$ANI_2.tsv
 
 if [ ! -s $WORKDIR/results/groups_ANI$ANI_2.tsv ]; then echo "Warning: Something went wrong with summarizing aniSplitter results. Exiting..."; exit 1; fi
 
 sed -i '1i original_group\tbin\tbootstrap\tnew_group\tani\tbootstrap_status' $WORKDIR/results/groups_ANI$ANI_2.tsv
-
+cd -
 #Comparing groups_95 and groups_99 we need to know which clusters were further divided at 99 and which were not,then create a definitive file with the new "groups"
 
 #Figuring out which bins did not get new clusters at 99
@@ -402,7 +407,7 @@ sed -i '1i bin\toriginal_group\tbootstrap\tnew_group\tani\tbootstrap_status\tcom
 
 
 echo -e "\nClustering is finished. Starting next step: Selecting representative mags/bins\n"
-
+cd -
 ########SELECTING REPRESENTATIVE MAGS/BINS######
 
 #In this part, the best bin per cluster will be selected. To do that, the highest quality score (completeness - 5 x contamination) is checked. 
@@ -412,7 +417,8 @@ cd $WORKDIR/results
 
 #Running the script "pick_rep.R" to chose the best bins; the output will be a file containing best bins (bestbins.tsv)
 
-Rscript $conda_path/envs/gOTUpick/bin/pick_rep.R $WORKDIR/results/final_groups_qual.tsv
+#Rscript $conda_path/envs/gOTUpick/bin/pick_rep.R $WORKDIR/results/final_groups_qual.tsv
+Rscript pick_rep.R $WORKDIR/results/final_groups_qual.tsv
 
 if [ ! -s $WORKDIR/results/bestbins_metadata.tsv ]; then echo "Something went wrong while picking representatives per cluster. Exiting..."; exit 1; fi 
 
@@ -421,9 +427,9 @@ if [ ! -s $WORKDIR/results/bestbins_metadata.tsv ]; then echo "Something went wr
 #Therefore, in the end we need to remember to add the unique tax that were not even included in the ANI analysis.
 #They will be representative bins of their own taxonomy because they are unique.
 #Note that the folder unique_tax was only created if there are bins with unique taxonomy.
+cd -
 
 
-cd $WORKDIR
 mkdir -p $WORKDIR/final_output #Creating the folder to store final output
 
 if [ -d "$WORKDIR/tax_groups/unique_tax" ]; then 
@@ -436,10 +442,11 @@ if [ -d "$WORKDIR/tax_groups/unique_tax" ]; then
 	sed -i '1i bin\tcluster_id' $WORKDIR/final_output/bestbins.txt
 
 else
+	cd $WORKDIR
 	cat $WORKDIR/bestbins_metadata.tsv | cut -f1,4 | tail -n+2 > $WORKDIR/final_output/bestbins.txt
 	sed -i '1i bin\tcluster_id' $WORKDIR/final_output/bestbins.txt
 fi
 
 if [ ! -s $WORKDIR/final_output/bestbins.txt ]; then echo "Something went wrong while creating final output file. Exiting..."; exit 1; fi 
-
+cd -
 echo -e "\nThat's the end of gOTUpick. Enjoy your clusters and representative bins. Goodbye!"
