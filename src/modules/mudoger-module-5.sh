@@ -2,6 +2,7 @@
 
 #BRAT: a tool to calculate relative abundance of fasta files in fastq files
 #MERGE RESULTS and run BRAT
+#Running bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/$module_script -o $output_folder -t $num_cores $brat_type;
 #The user should have initial data to use BRAT: output from GTDB-Tk, output from CheckM, output from BBMap, the recovered bins/FASTA in fasta format, and Quality Controlled Pair End reads.
 
 help_message() {
@@ -130,7 +131,6 @@ else
 	cd -
 fi
 
-cd $WORKDIR
 
 echo -e "\nTHE PIPELINE STARTED\n"
 
@@ -143,18 +143,63 @@ echo -e "\nTHE PIPELINE STARTED\n"
 # THREAD =number of threads
 
 
-# install parallel # may need another way that does not use “sudo”
-sudo apt install parallel 
+conda activate mudoger_env
+config_path="$(which config.sh)"
+source $config_path
+
+#     OTUpick                         submodule 5-1
+#     Mapping process	              submodule 5-2
+
+if [ "$brat_type" = "--complete" ]; then
+
+	echo -e "\n EUK BIN CALCULATION STARTED"
+
+	mkdir -p "$libname_folder"/eukaryotes/
+	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-1_eukrep-eukbin-filter.sh "$assembly"       \
+                                      "$forward_library"                                 \
+                                      "$reverse_library"                                 \
+                                      "$libname_folder"/eukaryotes			 \
+                                      "$cores"                                           \  
+				      "$memory"
+
+	echo -e "\n EUK BIN CALCULATION DONE"
+	
+elif [ "$brat_type" = "--reduced" ]; then
+
+	#     OTU picking      submodule 5-1
+	echo -e "\n OTU picking STARTED"
+
+	#if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
+   	#	echo -e "\nNo relevant eukaryotic found"; touch "$libname_folder"/eukaryotes/no_euk_bins_for_genemark
+	#else
+   		bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-1_prokOTUpicking.sh "$libname_folder"/eukaryotes	
+	#fi
+
+	echo -e "\n GENEMARK DONE"
+	
+fi
+
+
+
+
+exit 1
+
+
+
+
+
+
+
 
 
 
 #1.0 index bins
 
-echo "                                      STARTING: 1.0 index bins"
+#echo "                                      STARTING: 1.0 index bins"
 
-cd $FASTA
-for bin in *.fa ; do echo "${bin/.fa/}"; done > aux
-parallel -j $THREAD /data/msb/tools/bowtie2/bowtie2-2.4.1-linux-x86_64/bowtie2-build {}.fa {} < aux
+#cd $FASTA
+#for bin in *.fa ; do echo "${bin/.fa/}"; done > aux
+#parallel -j $THREAD /data/msb/tools/bowtie2/bowtie2-2.4.1-linux-x86_64/bowtie2-build {}.fa {} < aux
 #rm -f aux
 
 # old command
