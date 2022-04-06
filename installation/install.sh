@@ -25,15 +25,8 @@ cat $(dirname $0)/temp  $(dirname $0)/.config_std.sh > $(dirname $0)/config.sh
 rm -f $(dirname $0)/temp 
 
 
-
-#exit 0
-
 source $(dirname $0)/config.sh
 source $(dirname $0)/installation_utils.sh
-
-
-### installing mamba
-conda install -c conda-forge -y mamba
 
 
 ## Moving the installation scripts to MuDoGeR's environment
@@ -48,30 +41,21 @@ start_pre_configuration
 fi
 
 
-										## UNCOMMENT THIS LATER PLEASE - CREATION OF MUDOGER ENVIRONMENT
 echo "your MuDoGeR's path is $MUDOGER_CONDA_ENVIRONMENT_PATH"
 
 
-#cp -R $DEPENDENCIES_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_PATH # modified by rodolfo
 yes | cp -rf $DEPENDENCIES_SCRIPTS_PATH $MUDOGER_CONDA_ENVIRONMENT_PATH
 
-#cp -R $INSTALLATION_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_ENVS_PATH # modified by rodolfo
 yes | cp -rf $INSTALLATION_SCRIPTS_PATH $MUDOGER_DEPENDENCIES_PATH
 
-#echo "----"
-#core_env="$(echo $PATH | cut -f1 -d':')"
-#echo "$core_env"
-#echo "----"
+
 conda activate mudoger_env
 core_env="$(echo $PATH | cut -f1 -d':')"
-#echo "----"
-#echo "$core_env"
+
 
 source installation/config.sh
 source installation/installation_utils.sh
 
-#echo $MUDOGER_WORK_SCRIPTS
-#echo $MUDOGER_WORK_MODULES
 
 chmod +x $MUDOGER_WORK_SCRIPTS/*
 chmod +x $MUDOGER_WORK_MODULES/*
@@ -83,8 +67,6 @@ yes | cp -rf $MUDOGER_WORK_MODULES/*  $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
 yes | cp -rf $MUDOGER_MASTER_SCRIPT   $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
 yes | cp -rf $(dirname $0)/config.sh  $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
 
-#echo 'install line 62 end'
-#exit 0
 ################# CHOOSING WICH MODULE TO INSTALL #################
 
 ## Giving the user the option of which modules he wants to install
@@ -192,21 +174,12 @@ fi
 ## The Module 1. Pre-processing is the base of the other modules in MuDoGeR
 ## it's installation is automatically set
 
-echo "\nThe MuDoGeR's installation will begin..\n"
+echo -e "\nThe MuDoGeR's installation will begin..\n"
 
 
 coffe_time
 
 
-#call_installation_script install_module_1
-#call_installation_script install_module_2
-#call_installation_script install_module_3
-#exit
-
-#echo '----> stopping code install.sh line 200'
-#exit 0
-
-echo $install_module_4_option
 
 if [ ! -z $install_module_2_option ];
 then
