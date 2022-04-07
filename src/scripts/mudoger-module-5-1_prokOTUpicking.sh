@@ -10,19 +10,54 @@ database="${config_path/config/database}"
 source $config_path
 source $database
 
+#Input parameters
+$WORKDIR="$1"
+$metadata_table="$2"
+cores="$3"
 
-bbtools_results_path="$1"
-checkm_results_path="$2"
-gtdbtk_results_path="$3"
-mags_results_path="$4"
-output_path="$5"
-cores="$6"
+#Define dependent parameters
+bbtools_input_path="prokaryotes/metrics/genome_statistics/bbtools.tsv"
+checkm_input_path="prokaryotes/metrics/checkm_qc/outputcheckm.tsv"
+gtdbtk_input_path="prokaryotes/metrics/GTDBtk_taxonomy/gtdbtk.bac120.summary.tsv"
+bins_input_path="prokaryotes/binning/unique_bins/"
 
+#Define output files path
+all_bins_path="$WORKDIR/mapping_results/all_bins"
+all_metrics_path="$WORKDIR/mapping_results/all_metrics"
+gOTUpick_results_path="$WORKDIR/mapping_results/gOTUpick_results"
 
+#gOTU pick started
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env
 
-mkdir -p $output_path
+mkdir -p $all_bins_path
+mkdir -p $all_metrics_path
+mkdir -p $gOTUpick_results_path
+
+#Concat results metrics for all samples
+awk '
+    FNR==1 && NR!=1 { while (/^<header>/) getline; }
+    1 {print}
+' $WORKDIR/*/$bbtools_input_path >$all_metrics_path/bbtools_all.txt
 
 
-bash -i gOTUpick.sh --fastANI-thread $cores --bb-input path/to/BBMap-input --checkm-input path/to/CheckM-input --gtdb-input path/to/gtdb-input -m path/to/mags -o path/to/outputdir
+awk '
+    FNR==1 && NR!=1 { while (/^<header>/) getline; }
+    1 {print}
+' $WORKDIR/*/$checkm_input_path >$all_metrics_path/checkm_all.txt
+
+
+awk '
+    FNR==1 && NR!=1 { while (/^<header>/) getline; }
+    1 {print}
+' $WORKDIR/*/$gtdbtk_input_path >$all_metrics_path/gtdbtk_all.txt
+
+
+#copy unique bins
+cp $WORKDIR/*/$bins_input_path/* $all_bins_path
+
+
+#Run
+
+
+bash -i gOTUpick.sh --fastANI-thread $cores --bb-input $all_metrics_path/bbtools_all.txt --checkm-input $all_metrics_path/checkm_all.txt --gtdb-input $all_metrics_path/gtdbtk_all.txt -m $all_bins_path -o $gOTUpick_results_path
 
