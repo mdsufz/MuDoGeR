@@ -18,6 +18,8 @@ help_message() {
 		echo "-h, --help"
 		echo "	display this help page"
 		echo ""
+		echo "--meta <value>"
+		echo "	absolute path to metadata file as explained in MuDoGeR github documentation"
 		echo "-f <value>"
 		echo "	absolute path to a directory where fasta files are are stored (.fa)"
 		echo ""
@@ -57,9 +59,7 @@ help_message() {
 #"FASTA" is the path to the directory where FASTA/bins are found. 
 #"READS" is the path to the directory where samples are found. 
 
-WORKDIR=None; FASTA=None; READS=None; THREAD=1; reduced=false; complete=false; absolute=false; coverage=false; relative=false
-
-# WORKDIR=None; BB=None; CHECKM=None; GTDB=None; FASTA=None; READS=None; FRAGLEN=1500; MINFRAC=0; THREAD=2; SEED=2020; ANI_1=95; ANI_2=99; BOOTSTRAP=1000; prefilter=true
+#WORKDIR=None; FASTA=None; READS=None; THREAD=1; reduced=true; complete=false; absolute=false; coverage=false; relative=false
 
 OPTS='getopt -o f:r:o:t --long reduced:,complete:,absolute-values:,coverage:,relative-abundance:,help -- "$@" '
 
@@ -68,10 +68,11 @@ if [ $? -ne 0 ]; then echo "Warning: Something unexpected happened" help_message
 while true 
 do
 	case $1 in
-		-f) FASTA="$2"; shift 2;;
-		-r) READS="$2"; shift 2;;
+		#-f) FASTA="$2"; shift 2;;
+		#-r) READS="$2"; shift 2;;
 		-o) WORKDIR="$2"; shift 2;;
-		-o) THREAD="$2"; shift 2;;
+		-t) THREAD="$2"; shift 2;;
+		--meta) metadata_table=$2; shift 2;;
 		--reduced) reduced=true; shift 1;; 
 		--complete) complete=true; shift 1;; 
 		--absolute-values) absolute=true; shift 1;; 
@@ -82,11 +83,19 @@ do
 	esac
 done
 
-#Checking if all non-optional parameters are entered correctly
-if [ "$WORKDIR" = "None" ] || [ "$FASTA" = "None" ]  || [ "$READS" = "None" ] ; then 
-	echo "Non-optional parameters for input or output were not entered"
+#Checking if output path are entered correctly
+if [ "$WORKDIR" = "None" ] || [ "$metadata_table" = "None" ] ; then 
+	echo "Non-optional parameter for BRAT type was not entered. Please select output path -o path/to/output/folder and metadata table"
 	help_message; exit 1
 fi
+
+#Checking if all non-optional parameters are entered correctly
+#if [ "$FASTA" = "None" ]  || [ "$READS" = "None" ] ; then 
+#	echo -e "Non-optional parameters for fasta files or reads were not entered\n"
+#	echo "Attempting using the expected automatic parameters assumed by MuDoGeR"
+#	
+	
+#fi
 
 #Checking if all non-optional parameters are entered correctly
 if [ "$reduced" = "false" ] && [ "$complete" = "false" ]; then 
@@ -102,34 +111,12 @@ fi
 
 #Checking if all non-optional parameters are entered correctly
 if [ "$absolute" = "false" ] && [ "$coverage" = "false" ] && [ "$relative" = "false" ]; then 
-	echo "Non-optional parameters for output type were not entered"
+	echo "Non-optional parameters for output type were not entered. Please only select one option, --absolute-values ,--coverage or--relative-abundance."
 	help_message; exit 1
 fi
 
 #Checking if output directory already exists
-if [ ! -d $WORKDIR ]; then mkdir -p $WORKDIR; fi
-
-#Checking if directory for FASTA exists and has files inside
-if [ ! -d $FASTA ]; then
-	echo "Warning: The directory for FASTA/bins does not exist . Exiting..."; exit 1;
-else 
-	cd $FASTA
-	if [ "$(ls *.fa | wc -l)" -eq 0 ]; then
-		echo "Warning: There is no mag/bin inside FASTA/bins directory. Exiting..."; exit 1;
-	fi
-	cd -
-fi
-
-#Checking if directory for FASTA exists and has files inside
-if [ ! -d $READS ]; then
-	echo "Warning: The directory for reads does not exist . Exiting..."; exit 1;
-else 
-	cd $READS
-	if [ "$(ls *.fastq | wc -l)" -eq 0 ]; then
-		echo "Warning: There is no sample inside the reads directory. Exiting..."; exit 1;
-	fi
-	cd -
-fi
+if [ ! -d $WORKDIR/mapping_results ]; then mkdir -p $WORKDIR/mapping_results; fi
 
 
 echo -e "\nTHE PIPELINE STARTED\n"
@@ -172,10 +159,10 @@ elif [ "$brat_type" = "--reduced" ]; then
 	#if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
    	#	echo -e "\nNo relevant eukaryotic found"; touch "$libname_folder"/eukaryotes/no_euk_bins_for_genemark
 	#else
-   		bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-1_prokOTUpicking.sh "$libname_folder"/eukaryotes	
+   		bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-1_prokOTUpicking.sh $WORKDIR $metadata_table $THREAD
 	#fi
 
-	echo -e "\n GENEMARK DONE"
+	echo -e "\n OTU picking DONE"
 	
 fi
 
