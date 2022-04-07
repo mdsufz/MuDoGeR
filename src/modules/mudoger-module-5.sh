@@ -59,7 +59,15 @@ help_message() {
 #"FASTA" is the path to the directory where FASTA/bins are found. 
 #"READS" is the path to the directory where samples are found. 
 
-#WORKDIR=None; FASTA=None; READS=None; THREAD=1; reduced=true; complete=false; absolute=false; coverage=false; relative=false
+WORKDIR=None;
+#FASTA=None; 
+#READS=None;
+THREAD=1;
+reduced=false;
+complete=false;
+absolute=false;
+coverage=false;
+relative=false
 
 OPTS='getopt -o f:r:o:t --long reduced:,complete:,absolute-values:,coverage:,relative-abundance:,help -- "$@" '
 
@@ -151,7 +159,7 @@ if [ "$brat_type" = "--complete" ]; then
 
 	echo -e "\n EUK BIN CALCULATION DONE"
 	
-elif [ "$brat_type" = "--reduced" ]; then
+elif [ "$reduced" = "true" ]; then
 
 	#     OTU picking      submodule 5-1
 	echo -e "\n OTU picking STARTED"
