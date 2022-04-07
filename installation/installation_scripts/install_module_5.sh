@@ -21,7 +21,7 @@ verify_if_conda_env_exist brat_env
 if [ $PRESENT == 'yes' ]
 then :;
 else
-conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/brat_env bioconda::bowtie2 bioconda::pandaseq conda-forge::gcc conda-forge::openmpi conda-forge::r-base=3.6 bioconda::samtools bioconda::datamash
+mamba create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/brat_env bioconda::bowtie2 bioconda::pandaseq conda-forge::gcc conda-forge::openmpi conda-forge::r-base=3.6 bioconda::samtools bioconda::datamash
 
 fi
 ############################################################################
@@ -33,7 +33,7 @@ if [ $PRESENT == 'yes' ]
 then :;
 else
 
-conda create --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/otupick_env -y -f $MUDOGER_DEPENDENCIES_PATH/otupick_dependencies/environment.yml
+mamba create --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/otupick_env -y -f $MUDOGER_DEPENDENCIES_PATH/otupick_dependencies/environment.yml
 mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/otupick_env -c anaconda gawk
 
 cp -r $MUDOGER_DEPENDENCIES_PATH/otupick_dependencies/* $MUDOGER_DEPENDENCIES_ENVS_PATH/otupick_env/bin
