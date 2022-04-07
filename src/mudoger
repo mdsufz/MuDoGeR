@@ -16,20 +16,21 @@ help_message () {
         echo "Mudoger v=$VERSION"
         echo "Usage: mudoger --module module_name --meta metadata_table.tsv -o output_folder [module_options]"
         echo ""
-        echo "  preprocess              runs all steps from module 1 (read_qc, kmer memory prediction and assembly)"
-        echo "          read_qc         explanation (only this submodule)"
-        echo "          mem_pred   	explanation (only this submodule)"
-        echo "          assembly	explanation (only this submodule)"
+	echo "  --meta              metadata table with your samples, as explained in the github documentation"
+        echo "  --module preprocess              runs all steps from module 1 (read_qc, kmer memory prediction and assembly)"
+        echo "          	read_qc         explanation (only this submodule)"
+        echo "          	mem_pred   	explanation (only this submodule)"
+        echo "          	assembly	explanation (only this submodule)"
         
-        echo "  prokaryotes              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
-        echo "          initial_binning       explanation (only this submodule)"
+        echo "  --module prokaryotes              runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
+        echo "          	initial_binning       explanation (only this submodule)"
   
-        echo "  viruses			runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
+        echo "  --module viruses			runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
                
-        echo "  eukaryotes		runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
+        echo "  --module eukaryotes		runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
      
-        echo "  abundance_tables	runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
-	echo "          BRAT type         can be --complete and --reduced (default: --reduced)"
+        echo "  --module abundance_tables	runs all steps from module 1 (read_qc, kmer mem prediction and assembly)"
+	echo "          	BRAT type         can be --complete and --reduced (default: --reduced)"
     
         echo ""
         echo "  --help | -h		show this help message"
@@ -153,12 +154,9 @@ elif [ "$active_module" = abundance_tables ]; then
 	#Necessary inputs: path to output folder containing all samples to be calculated abundance, cores
 	echo mudoger abundance_tables ${@:2}
 	module_script=mudoger-module-5.sh
-	if [ "$brat_type" = "--complete" ]; then
 
-		bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/$module_script -o $output_folder -t $num_cores $brat_type;
-	elif [ "$brat_type" = "--reduced" ]; then
+	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/$module_script --meta $metadata_table -o $output_folder -t $num_cores $brat_type;
 		
-		bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/$module_script -o $output_folder -t $num_cores $brat_type;
 	fi
 
 else
