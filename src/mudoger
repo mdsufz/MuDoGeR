@@ -46,6 +46,9 @@ metaspades=""
 memory=""
 running_location="$(pwd)"
 brat_type="--reduced"
+brat_abs=""
+brat_cov=""
+brat_relativ=""
 
 ###################################### while
 while true; do
@@ -57,6 +60,9 @@ while true; do
 		-m) memory=$2; shift 2;;
 		--metaspades) metaspades="--metaspades"; shift 1;;
 		--complete) brat_type="--complete"; shift 1;;
+		--absolute-values) brat_abs="--absolute-values"; shift 1;; 
+		--coverage) brat_cov="--coverage"; shift 1;; 
+		--relative-abundance) brat_relativ="--relative-abundance"; shift 1;;
 		-h | --help) help_message; exit 1; shift 1;;
 		--) help_message; exit 1; shift; break ;;
 		*) break;;
@@ -150,7 +156,7 @@ elif [ "$active_module" = abundance_tables ]; then
 	echo mudoger abundance_tables ${@:2}
 	module_script=mudoger-module-5.sh
 
-	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/$module_script --meta $metadata_table -o $output_folder -t $num_cores $brat_type;	
+	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/$module_script --meta $metadata_table -o $output_folder -t $num_cores $brat_type $brat_abs $brat_cov $brat_relativ;	
 	
 else
         comm "Please select a proper module of MuDoGeR."
