@@ -73,7 +73,7 @@ yes | cp -rf $(dirname $0)/config.sh  $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
 ## The Module 1. Pre-processing is the base of the other modules in MuDoGeR
 ## it's installation is automatically set
 
-echo "\n### WELCOME TO MuDoGeR! ###\n"
+echo -e "\n### WELCOME TO MuDoGeR! ###\n"
 echo "Do you want to install all MoDuGeR's Acessories Modules?"
 echo "- Module 2. Recovery of Prokaryotic MAGs"
 echo "- Module 3. Uncultivated viral MAGs"
