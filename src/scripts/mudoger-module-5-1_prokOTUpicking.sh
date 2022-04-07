@@ -22,9 +22,9 @@ gtdbtk_input_path="prokaryotes/metrics/GTDBtk_taxonomy/gtdbtk.bac120.summary.tsv
 bins_input_path="prokaryotes/binning/unique_bins/"
 
 #Define output files path
-all_bins_path="$WORKDIR/mapping_results/all_bins"
-all_metrics_path="$WORKDIR/mapping_results/all_metrics"
-gOTUpick_results_path="$WORKDIR/mapping_results/gOTUpick_results"
+all_bins_path="'$WORKDIR'/mapping_results/all_bins"
+all_metrics_path="'$WORKDIR'/mapping_results/all_metrics"
+gOTUpick_results_path="'$WORKDIR'/mapping_results/gOTUpick_results"
 
 #gOTU pick started
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env
@@ -58,6 +58,6 @@ cp $WORKDIR/*/$bins_input_path/* $all_bins_path
 
 #Run
 
-
 bash -i gOTUpick.sh --fastANI-thread $cores --bb-input $all_metrics_path/bbtools_all.txt --checkm-input $all_metrics_path/checkm_all.txt --gtdb-input $all_metrics_path/gtdbtk_all.txt -m $all_bins_path -o $gOTUpick_results_path
 
+conda deactivate
