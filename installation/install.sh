@@ -84,7 +84,7 @@ do
 	read choose
 	if [ $choose = y -o $choose = Y ];
 	then
-            	echo "------> Intalling all modules"
+            	echo "------> Installing all modules"
 		install_module_2_option=$choose
 		install_module_3_option=$choose
 		install_module_4_option=$choose
