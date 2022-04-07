@@ -144,23 +144,18 @@ elif [ "$active_module" = eukaryotes ]; then
 	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/$module_script -1 $r1 -2 $r2 -a $output_folder/$i/assembly/final_assembly.fasta -o $output_folder/$i -t $num_cores;
 
 	done
-else
-        comm "Please select a proper module of MuDoGeR."
-        help_message
-        exit 1
-fi
-
+	
 elif [ "$active_module" = abundance_tables ]; then
 	#Necessary inputs: path to output folder containing all samples to be calculated abundance, cores
 	echo mudoger abundance_tables ${@:2}
 	module_script=mudoger-module-5.sh
 
-	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/$module_script --meta $metadata_table -o $output_folder -t $num_cores $brat_type;
-		
-	fi
-
+	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/$module_script --meta $metadata_table -o $output_folder -t $num_cores $brat_type;	
+	
 else
         comm "Please select a proper module of MuDoGeR."
         help_message
         exit 1
+
+
 fi
