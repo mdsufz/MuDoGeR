@@ -33,7 +33,7 @@ if [ $PRESENT == 'yes' ]
 then :;
 else
 
-mamba create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/otupick_env --file $MUDOGER_DEPENDENCIES_PATH/otupick_dependencies/environment.yml
+conda env create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/otupick_env --file $MUDOGER_DEPENDENCIES_PATH/otupick_dependencies/environment.yml
 mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/otupick_env -c anaconda gawk
 
 cp -r $MUDOGER_DEPENDENCIES_PATH/otupick_dependencies/* $MUDOGER_DEPENDENCIES_ENVS_PATH/otupick_env/bin
