@@ -35,25 +35,22 @@ mkdir -p $gOTUpick_results_path
 
 #Concat results metrics for all samples
 awk '
-    FNR==1 && NR!=1 { while (/^<header>/) getline; }
-    1 {print}
+    FNR==1 && NR!=1 {next;}{print}
 ' $WORKDIR/*/$bbtools_input_path >$all_metrics_path/bbtools_all.txt
 
 
 awk '
-    FNR==1 && NR!=1 { while (/^<header>/) getline; }
-    1 {print}
+    FNR==1 && NR!=1 {next;}{print}
 ' $WORKDIR/*/$checkm_input_path >$all_metrics_path/checkm_all.txt
 
 
 awk '
-    FNR==1 && NR!=1 { while (/^<header>/) getline; }
-    1 {print}
+    FNR==1 && NR!=1 {next;}{print}
 ' $WORKDIR/*/$gtdbtk_input_path >$all_metrics_path/gtdbtk_all.txt
 
 
 #copy unique bins
-cp $WORKDIR/*/$bins_input_path/* $all_bins_path
+yes | cp $WORKDIR/*/$bins_input_path/* $all_bins_path
 
 
 #Run
