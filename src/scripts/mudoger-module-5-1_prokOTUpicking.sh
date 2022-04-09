@@ -36,17 +36,17 @@ mkdir -p $gOTUpick_results_path
 #Concat results metrics for all samples
 awk '
     FNR==1 && NR!=1 {next;}{print}
-' $WORKDIR/*/$bbtools_input_path >$all_metrics_path/bbtools_all.txt
+' $WORKDIR/*/$bbtools_input_path >$all_metrics_path/bbtools_all.tsv
 
 
 awk '
     FNR==1 && NR!=1 {next;}{print}
-' $WORKDIR/*/$checkm_input_path >$all_metrics_path/checkm_all.txt
+' $WORKDIR/*/$checkm_input_path >$all_metrics_path/checkm_all.tsv
 
 
 awk '
     FNR==1 && NR!=1 {next;}{print}
-' $WORKDIR/*/$gtdbtk_input_path >$all_metrics_path/gtdbtk_all.txt
+' $WORKDIR/*/$gtdbtk_input_path >$all_metrics_path/gtdbtk_all.tsv
 
 
 #copy unique bins
@@ -55,6 +55,6 @@ yes | cp $WORKDIR/*/$bins_input_path/* $all_bins_path
 
 #Run
 
-bash -i gOTUpick.sh --fastANI-thread $cores --bb-input $all_metrics_path/bbtools_all.txt --checkm-input $all_metrics_path/checkm_all.txt --gtdb-input $all_metrics_path/gtdbtk_all.txt -m $all_bins_path -o $gOTUpick_results_path
+bash -i "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/gOTUpick.sh --fastANI-thread $cores --bb-input $all_metrics_path/bbtools_all.txt --checkm-input $all_metrics_path/checkm_all.txt --gtdb-input $all_metrics_path/gtdbtk_all.txt -m $all_bins_path -o $gOTUpick_results_path
 
 conda deactivate
