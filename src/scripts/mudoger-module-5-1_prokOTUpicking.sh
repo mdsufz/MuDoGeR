@@ -39,6 +39,17 @@ awk '
     FNR==1 && NR!=1 {next;}{print}
 ' $WORKDIR/*/$bbtools_input_path >$all_metrics_path/bbtools_all.tsv
 
+awk -F$'\t' '{print $NF}' $all_metrics_path/bbtools_all.tsv | rev | cut -d '/' -f1 | sed 's/af.//1' | rev > $all_metrics_path/aux
+
+awk -F"\t" '{OFS=FS}{ $20="" ; print }' $all_metrics_path/bbtools_all.tsv > $all_metrics_path/bbtools_all_tmp.tsv
+
+paste --delimiters='\t' $all_metrics_path/bbtools_all_tmp.tsv $all_metrics_path/aux > $all_metrics_path/bbtools_all_final.tsv
+
+mv -f $all_metrics_path/bbtools_all_final.tsv $all_metrics_path/bbtools_all.tsv
+
+rm -f $all_metrics_path/bbtools_all_tmp.tsv
+rm -f $all_metrics_path/aux
+rm -f $all_metrics_path/bbtools_all_final.tsv
 
 awk '
     FNR==1 && NR!=1 {next;}{print}
