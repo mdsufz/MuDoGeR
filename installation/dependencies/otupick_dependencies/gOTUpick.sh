@@ -64,6 +64,15 @@ help_message() {
 #"ANI_2" is the ANI threshold used in second clustering. "BOOTSTRAP" is the number of iterations for bootstraping.
 #"prefilter" defines whether low quality mags/bins will be filtered out. 
 
+#Manage envs and path
+conda activate mudoger_env
+config_path="$(which config.sh)"
+database="${config_path/config/database}"
+source $config_path
+source $database
+
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env
+
 WORKDIR=None; BB=None; CHECKM=None; GTDB=None; MAGS=None; FRAGLEN=1500; MINFRAC=0; THREAD=2; SEED=2020; ANI_1=95; ANI_2=99; BOOTSTRAP=1000; prefilter=true
 
 OPTS='getopt -o m:o:s:b:h --long bb-input:,checkm-input:,gtdb-input:,fastANI-fragLen:,fastANI-minFraction:,fastANI-thread:,a1:,a2:,
@@ -137,19 +146,19 @@ head -n+1 $BB > .header_bbtools.tsv
 tail -n+2 $BB | sort -k20,20 > .sorted_content_bbtools.tsv
 cat .header_bbtools.tsv .sorted_content_bbtools.tsv > sorted_bbtools.tsv
 mv sorted_bbtools.tsv $BB
-rm .header_bbtools.tsv .sorted_content_bbtools.tsv
+rm -f .header_bbtools.tsv .sorted_content_bbtools.tsv
 
 head -n+1 $CHECKM > .header_output-checkm.tsv
 tail -n+2 $CHECKM | sort -k1,1 > .sorted_content_output-checkm.tsv
 cat .header_output-checkm.tsv .sorted_content_output-checkm.tsv > sorted_output-checkm.tsv
 mv sorted_output-checkm.tsv $CHECKM
-rm .header_output-checkm.tsv .sorted_content_output-checkm.tsv
+rm -f .header_output-checkm.tsv .sorted_content_output-checkm.tsv
 
 head -n+1 $GTDB > .header_gtdb_taxonomy.tsv
 tail -n+2 $GTDB | sort -k1,1 > .sorted_content_gtdb_taxonomy.tsv
 cat .header_gtdb_taxonomy.tsv .sorted_content_gtdb_taxonomy.tsv > sorted_gtdb_taxonomy.tsv
 mv sorted_gtdb_taxonomy.tsv $GTDB
-rm .header_gtdb_taxonomy.tsv .sorted_content_gtdb_taxonomy.tsv
+rm -f .header_gtdb_taxonomy.tsv .sorted_content_gtdb_taxonomy.tsv
 
 
 
@@ -161,7 +170,7 @@ mkdir -p $WORKDIR/tax_groups
 #The following block of code filters out low-quality genomes, only if the user did not disable it by choosing the option "no-prefilter".
 
 if [ "$prefilter" = "true" ]; then
-	paste <(tail -n+2 $BB) <(tail -n+2 $CHECKM) | awk 'BEGIN {FS="\t"}; $7 >= 10000 && ($32 - (5*$33)) >= 50 {print $20}' > goodqual.ids
+	paste <(tail -n+2 $BB) <(tail -n+2 $CHECKM) | awk 'BEGIN {FS="\t"}; $7 >= 10000 && ($32 - (5*$33)) >= 50 {print $20}' | rev | cut -d '/' -f1 | sed 's/af.//1' | rev > goodqual.ids
 	
 	#Creating the a new GTDB file which has the taxonomy information only for good-quality bins/MAGs.
 	while read l; 
@@ -186,7 +195,7 @@ echo -e "\nStarting first step: Grouping by taxonomy"
 
 #The Python script organize-bins-tax.py groups the good-quality bins/MAGs based on the taxonomy assigned by GTDB-Tk.
 #python3 $conda_path/envs/gOTUpick/bin/organize-bins-tax.py $TAXFILE $MAGS $WORKDIR/tax_groups
-python3 organize-bins-tax.py $TAXFILE $MAGS $WORKDIR/tax_groups
+python3 "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/organize-bins-tax.py $TAXFILE $MAGS $WORKDIR/tax_groups
 cd -
 cd $WORKDIR/tax_groups
 
@@ -247,7 +256,7 @@ cd $WORKDIR
 for i in $WORKDIR/ANI_distances/gr*
 do 
 	#$conda_path/envs/gOTUpick/bin/aniSplitter.R -t group_taxonomy_gtdb -d $i -f fastani-out-1500-0.txt -s $SEED -a $ANI_1 -i $BOOTSTRAP 2> $i/log.txt
-	Rscript aniSplitter.R -t group_taxonomy_gtdb -d $i -f fastani-out-1500-0.txt -s $SEED -a $ANI_1 -i $BOOTSTRAP 2> $i/log.txt
+	Rscript "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/aniSplitter.R -t group_taxonomy_gtdb -d $i -f fastani-out-1500-0.txt -s $SEED -a $ANI_1 -i $BOOTSTRAP 2> $i/log.txt
 	if [ ! -s $i/cluster_summary.tsv ]; then echo "Warning: Something went wrong with aniSplitter. Exiting..."; exit 1; fi
 done
 
@@ -260,7 +269,7 @@ cd $WORKDIR/ANI_distances
 for i in gr*
 do
 	#python3 $conda_path/envs/gOTUpick/bin/summarize-anisplitter-results.py $i $ANI_1
-	python3 summarize-anisplitter-results.py $i $ANI_1
+	python3 "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/summarize-anisplitter-results.py $i $ANI_1
 done > $WORKDIR/results/groups_ANI$ANI_1.tsv
 
 if [ ! -s $WORKDIR/results/groups_ANI$ANI_1.tsv ]; then echo "Warning: Something went wrong with summarizing aniSplitter results. Exiting..."; exit 1; fi
@@ -334,7 +343,7 @@ fi
 for i in gr*
 do 
 	#$conda_path/envs/gOTUpick/bin/aniSplitter.R -t group_taxonomy_gtdb -d $i -f fastani-out-1500-0.txt -s $SEED -a $ANI_2 -i $BOOTSTRAP 2> $i/log.txt
-	Rscript aniSplitter.R -t group_taxonomy_gtdb -d $i -f fastani-out-1500-0.txt -s $SEED -a $ANI_2 -i $BOOTSTRAP 2> $i/log.txt
+	Rscript "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/aniSplitter.R -t group_taxonomy_gtdb -d $i -f fastani-out-1500-0.txt -s $SEED -a $ANI_2 -i $BOOTSTRAP 2> $i/log.txt
 	if [ ! -s $i/cluster_summary.tsv ]; then echo "Warning: Something went wrong with aniSplitter. Exiting..."; exit 1; fi
 done
 cd -
@@ -344,7 +353,7 @@ cd $WORKDIR/ANI_OTU$ANI_1
 for i in gr*
 do 
 	#python3 $conda_path/envs/gOTUpick/bin/summarize-anisplitter-results.py $i $ANI_2
-	python3 summarize-anisplitter-results.py $i $ANI_2
+	python3 "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/summarize-anisplitter-results.py $i $ANI_2
 done > $WORKDIR/results/groups_ANI$ANI_2.tsv
 
 if [ ! -s $WORKDIR/results/groups_ANI$ANI_2.tsv ]; then echo "Warning: Something went wrong with summarizing aniSplitter results. Exiting..."; exit 1; fi
@@ -418,7 +427,7 @@ cd $WORKDIR/results
 #Running the script "pick_rep.R" to chose the best bins; the output will be a file containing best bins (bestbins.tsv)
 
 #Rscript $conda_path/envs/gOTUpick/bin/pick_rep.R $WORKDIR/results/final_groups_qual.tsv
-Rscript pick_rep.R $WORKDIR/results/final_groups_qual.tsv
+Rscript "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/pick_rep.R $WORKDIR/results/final_groups_qual.tsv
 
 if [ ! -s $WORKDIR/results/bestbins_metadata.tsv ]; then echo "Something went wrong while picking representatives per cluster. Exiting..."; exit 1; fi 
 
