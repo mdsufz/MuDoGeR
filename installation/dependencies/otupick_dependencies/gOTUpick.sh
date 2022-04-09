@@ -145,19 +145,19 @@ echo -e "\nTHE PIPELINE STARTS\n"
 head -n+1 $BB > .header_bbtools.tsv
 tail -n+2 $BB | sort -k20,20 > .sorted_content_bbtools.tsv
 cat .header_bbtools.tsv .sorted_content_bbtools.tsv > sorted_bbtools.tsv
-mv sorted_bbtools.tsv $BB
+mv -f sorted_bbtools.tsv $BB
 rm -f .header_bbtools.tsv .sorted_content_bbtools.tsv
 
 head -n+1 $CHECKM > .header_output-checkm.tsv
 tail -n+2 $CHECKM | sort -k1,1 > .sorted_content_output-checkm.tsv
 cat .header_output-checkm.tsv .sorted_content_output-checkm.tsv > sorted_output-checkm.tsv
-mv sorted_output-checkm.tsv $CHECKM
+mv -f sorted_output-checkm.tsv $CHECKM
 rm -f .header_output-checkm.tsv .sorted_content_output-checkm.tsv
 
 head -n+1 $GTDB > .header_gtdb_taxonomy.tsv
 tail -n+2 $GTDB | sort -k1,1 > .sorted_content_gtdb_taxonomy.tsv
 cat .header_gtdb_taxonomy.tsv .sorted_content_gtdb_taxonomy.tsv > sorted_gtdb_taxonomy.tsv
-mv sorted_gtdb_taxonomy.tsv $GTDB
+mv -f sorted_gtdb_taxonomy.tsv $GTDB
 rm -f .header_gtdb_taxonomy.tsv .sorted_content_gtdb_taxonomy.tsv
 
 
