@@ -36,6 +36,7 @@ else
 conda env create --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/otupick_env --file $MUDOGER_DEPENDENCIES_PATH/otupick_dependencies/environment.yml
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/otupick_env -c anaconda gawk
 
+chmod +x $MUDOGER_DEPENDENCIES_PATH/otupick_dependencies/*
 cp -r $MUDOGER_DEPENDENCIES_PATH/otupick_dependencies/* $MUDOGER_DEPENDENCIES_ENVS_PATH/otupick_env/bin
 
 #Checking if scripts are copied succesfully
