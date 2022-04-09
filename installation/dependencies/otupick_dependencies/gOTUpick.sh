@@ -231,13 +231,13 @@ echo "fastANI is starting..."
 #Running fastANI to calculate ANI distances 
 for i in ANI_distances/gr*
 do 
-	fastANI --ql $i/paths* --rl $i/paths* -o $i/fastani-out-1500-0.txt --fragLen $FRAGLEN --minFraction $MINFRAC -t $THREAD
+	fastANI -o $i/fastani-out-1500-0.txt --fragLen $FRAGLEN --minFraction $MINFRAC -t $THREAD --ql $i/paths* --rl $i/paths*
 	if [ ! -s $i/fastani-out-1500-0.txt ]; then echo "Warning: Something went wrong with fastANI. Exiting..."; exit 1; fi
 done
 
 #Copying GTDB-taxonomy files for each group into the folders in ANI_distances directory
 cd -
-cd ANI_distances
+cd $WORKDIR/ANI_distances
 
 for i in gr*
 do 
