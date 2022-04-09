@@ -11,8 +11,8 @@ source $config_path
 source $database
 
 #Input parameters
-$WORKDIR="$1"
-$metadata_table="$2"
+WORKDIR="$1"
+metadata_table="$2"
 cores="$3"
 
 #Define dependent parameters
@@ -22,9 +22,9 @@ gtdbtk_input_path="prokaryotes/metrics/GTDBtk_taxonomy/gtdbtk.bac120.summary.tsv
 bins_input_path="prokaryotes/binning/unique_bins/"
 
 #Define output files path
-all_bins_path="'$WORKDIR'/mapping_results/all_bins"
-all_metrics_path="'$WORKDIR'/mapping_results/all_metrics"
-gOTUpick_results_path="'$WORKDIR'/mapping_results/gOTUpick_results"
+all_bins_path="$WORKDIR/mapping_results/all_bins"
+all_metrics_path="$WORKDIR/mapping_results/all_metrics"
+gOTUpick_results_path="$WORKDIR/mapping_results/gOTUpick_results"
 
 #gOTU pick started
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env
