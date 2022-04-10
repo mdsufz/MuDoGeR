@@ -69,7 +69,7 @@ The steps of Module 3  are shown in Figure 4. A detailed description of its exec
     * **(3.a.1)** Recovery of Uvigs using **VirFinder**, **VirSorter** and **VIBRANT**.
     * **(3.a.2)** Filtering of the Uvigs.
     * **(3.a.3)** Dereplication of the Uvigs.
- * **3.b**: Taxonomic annotation and Quality estimation of Uvigs
+ * **3.b**: Taxonomic estimation and Quality estimation of Uvigs
     * **(3.b.1)** Taxonomic classification from the dereplicated Uvigs with **vContact2**.
     * **(3.b.2)** Checking the quality of the dereplicated contigs with **CheckV**.
 * **3.c**: Host identification of the dereplicated Uvigs using **WIsH**. This step is only done automatically if you generate the prokaryotic MAGs using MuDoGeR as well. 
@@ -202,16 +202,18 @@ $ bash -i installation/database-setup.sh -o /path/to/save/databases
 
 Some tools used in module 4 (GENEMARK and MAKER2) require the user to provide information to the developers. Consequently, we could not implement an automatic installation and setup script. However, we created a tutorial to finish the module 4 setup.
 
-The module 4 setup tutorial is found in [Module 4 setup](https://github.com/JotaKas/MuDoGeR/blob/master/installation/module4_complete_installation.md)
+The module 4 setup tutorial is found in [Module 4 setup](https://github.com/JotaKas/MuDoGeR/blob/master/installation/genemark_maker2_installation.md)
 
 
 # Simplified usage of the MuDoGeR
 
-A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) file. In this file, instructions and examples can be found.
+MuDoGeR was designed to work module by module, starting from pre-process (Module 1). Additional modularity will be added in future updates to allow the user to run specific parts of the pipeline.
 
-After all dependencies are in position then the MuDoGeR is ready to run. The run of **MuDoGeR** is easy and there is a main script that can wrap around all the **MuDoGeR**'s individual module. The individual modules can be called independently.
+Once MuDoGeR is installed, you can test it as follows:
+```console
+$ conda activate mudoger_env
+$ mudoger --help
 
-```
 mudoger -h
 	Usage: mudoger [module] --help
 	Options:
@@ -227,32 +229,46 @@ mudoger -h
 	--help | -h		show this help message
 	--version | -v	show MuDoGeR version
 	--show-config	show where the mudoger configuration files are stored
+```
 
- ```
+**MuDoGeR** is an easy-to-use wrapper of several tools organized within modules. The individual modules can be called independently.
 
-Each of the modules is run seperately. As an example to run the viral module:
+The pipeline requires,as input, a metadata table in tsv format containing the samples to be processed and the path to its raw sequence reads. An example metadata file is as follows:
+```
+$ cat metadata.tsv
+
+EA_ERX4593008   /path/to/EA_ERX4593008/raw_reads_1.fastq
+EA_ERX4593008   /path/to/EA_ERX4593008/raw_reads_2.fastq
+EA_ERX4593009   /path/to/EA_ERX4593009/raw_reads_1.fastq
+EA_ERX4593009   /path/to/EA_ERX4593009/raw_reads_2.fastq
+EA_ERX4593010   /path/to/EA_ERX4593010/raw_reads_1.fastq
+EA_ERX4593010   /path/to/EA_ERX4593010/raw_reads_2.fastq
+EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_1.fastq
+EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_2.fastq
 
 ```
-mudoger viral module -h
 
-Usage: mudoger viral module [options] -o output_dir -f assembly.fasta 
-Options:
-	
-	-o STR          output directory
-	-f STR          assembly fasta file
-	--g STR		host folder directory
-	-c INT		minimum coverage (default=70)
-	-i INT		minimum identity (default=95)
-	
-	-virfinder	Recovery of viral data with VirFinder 
-	-virsorter	Recovery of viral data with VirSorter 	
-	-vibrant	Recovery of viral data with VIBRANT
-	-dereplication	Removal of replicate sequences
-	-checkv		Quality control of dereplicated contigs with CheckV		
-	-vcontact2	Taxonomy of dereplicated contigs with vContact2
-	--wish		Host identification of dereplicated contigs with WIsH
-	-mags_select	Selection of viral MAGs
+A simplified use of MuDoGeR can be done as follows:
+
+```console
+
+$ mudoger --module preprocess --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
+
+$ mudoger --module prokaryotes ---meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
+
+$ mudoger --module viruses --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
+
+$ mudoger --module eukaryotes --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
+
+$ mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --coverage --relative-abundance
+
 ```
+
+In order for MuDoGeR to work automaticaly, from start to finish, we use a specific folder structure.
+
+
+A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md).
+
 
 # Citing
 
