@@ -137,7 +137,6 @@ The software used during the pipeline are detailed described here: [Dependencies
 MuDoGeR is designed to support only Linux x64 systems. As for the resource requirements, the MuDoGeR framework uses software that requires a large amount of RAM (e.g **GDTB-Tk**, **MetaWRAP** ). Specific resource requirements vary depending on your data and its sequencing depth. We recommend the user provide at least 180 GB of RAM.
 For the assembly process, **MuDoGeR** attempt to calculate the amount of memory necessary for **metaSPades** (on step **1.b**). The user should be aware that samples with higher expected diversity require a higher amount of memory.
 
-
 # Installation
 
 **1 - Install miniconda**
@@ -160,9 +159,50 @@ $ export PATH=~/miniconda3/bin:$PATH
 
 **2 - Install MuDoGeR**
 
+Once you have miniconda installed and on your PATH you can properly install MuDoGeR.
+The MuDoGeR environment can be complex, and the installation script was designed to install and set up all necessary bioinformatics tools.
 
+```console
 
+#Create the mudoger conda environment
+$ conda create mudoger_env
 
+#activate environmet
+$ conda activate mudoger_env
+
+#clone repository
+
+$ git clone https://github.com/JotaKas/MuDoGeR.git
+
+$ cd MuDoGeR
+
+#Run installation script as follows
+$ bash -i installation/install.sh
+
+#Follow the instructions on the screen
+
+```
+**3 - Install necessary databases**
+
+Several bioinformatics tools used within MuDoGeR require specific databases to work. We developed a database download and set up tool to make our lives easier. Make sure to run the database setup after MuDoGeR is installed.
+
+Use this script if you want MuDoGeR to take care of everything. 
+
+```console
+
+#Go to MuDoGeR cloned directory
+cd MuDoGeR
+
+#Run database setup script
+$ bash -i installation/database-setup.sh -o /path/to/save/databases
+
+```
+
+**4 - Additional module 4 (eukaryotes) instructions**
+
+Some tools used in module 4 (GENEMARK and MAKER2) require the user to provide information to the developers. Consequently, we could not implement an automatic installation and setup script. However, we created a tutorial to finish the module 4 setup.
+
+The module 4 setup tutorial is found in [Module 4 setup](https://github.com/JotaKas/MuDoGeR/blob/master/installation/module4_complete_installation.md)
 
 
 # Simplified usage of the MuDoGeR
