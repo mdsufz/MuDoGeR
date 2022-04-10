@@ -298,6 +298,31 @@ $ mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/out
 
 MuDoGeR is designed to completely run all multi-domain genome recovery pipeline. In order for MuDoGeR to work automaticaly, from start to finish, we use a specific folder structure. Please, read the [Manual_MuDoGeR](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md) if you would like to manipulate MuDoGeR. 
 
+The two level folder structure is as follows:
+```console
+.
+├── sample_1
+│   ├── assembly
+│   ├── eukaryotes
+│   ├── khmer
+│   ├── prokaryotes
+│   ├── qc
+│   └── viruses
+├── sample_2
+│   ├── assembly
+│   ├── eukaryotes
+│   ├── khmer
+│   ├── prokaryotes
+│   ├── qc
+│   └── viruses
+└── mapping_results
+    ├── all_bins
+    ├── all_metrics
+    └── gOTUpick_results
+    └── abundance_results
+
+```
+
 A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 
 
