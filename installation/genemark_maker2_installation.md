@@ -39,7 +39,7 @@ $ source "$config_file"
       **gmes_linux_64.tar.gz** and  **gm_key_64.gz**
 
 
-6. RETRIEVE PATH TO GENEMARK ENV (this environment is already created and ready once you installed module 4 tools by running install.sh) [Installation](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#installation)
+6. RETRIEVE PATH TO GENEMARK ENV (this environment is already created and ready once you installed module 4 tools by running install.sh. See [Installation](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#installation))
 
 ```console
 $ genemarker_environment="$MUDOGER_DEPENDENCIES_ENVS_PATH/genemarker_env"
@@ -116,7 +116,7 @@ $ conda deactivate
     ```
 
 
-2. RETRIEVE PATH TO MUDOGER_ENV (this environment is already created and ready once you used install.sh) [Installation](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#installation))
+2. RETRIEVE PATH TO MUDOGER_ENV (this environment is already created and ready once you used install.sh. See [Installation](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#installation))
 
 ```console
 $ maker2_environment="$MUDOGER_DEPENDENCIES_ENVS_PATH/maker2_env" 
@@ -157,7 +157,7 @@ $ mv snap $maker2_environment/MAKER_MAIN/maker/exe
 ```
 
 
-8. COPY SOME SCRIPTS FROM YOUR GENEMARK INSTALLATION (Installation done [previously](https://github.com/JotaKas/MuDoGeR/blob/master/installation/genemark_maker2_installation.md##Complete GENEMARK installation), just copied the necessaries bin)
+8. COPY SOME SCRIPTS FROM YOUR GENEMARK INSTALLATION (Installation done [previously](https://github.com/JotaKas/MuDoGeR/blob/master/installation/genemark_maker2_installation.md#complete-genemark-installation), just copied the necessaries bin)
 ```console
 $ cp -r $MUDOGER_DEPENDENCIES_ENVS_PATH/genemarker_env/GENEMARK_MAIN/gmes_linux_64/* $MUDOGER_DEPENDENCIES_ENVS_PATH/maker2_env/bin/
 ```
@@ -193,16 +193,16 @@ $ conda activate $maker2_environment
 $ cd $maker2_environment/MAKER_MAIN/maker/exe/RepeatMasker/
 ```
 
-    You will be prompt to enter some tools paths to configure repeatmasker.
-    Maker sure your maker2 enviroment is activated. It was created during initial [installation](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#installation)
+   You will be prompt to enter some tools paths to configure repeatmasker.
+   Maker sure your maker2 enviroment is activated. It was created during initial [installation](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#installation)
     Ideally it should automatically find everything. If that is the case, just hit enter when prompt.
     
 ```console
 $ perl ./configure
 ```
-    Hit enter if TRF path is correct
-    Select 3 (HMMER) as search engine and set as default (Y)
-    Hit 5 to be done and wait databse configuration
+   Hit enter if TRF path is correct
+   Select 3 (HMMER) as search engine and set as default (Y)
+   Hit 5 to be done and wait databse configuration
 ```console
 $ cd - #return
 ```
@@ -213,7 +213,7 @@ $ cd - #return
 $ cd $maker2_environment/MAKER_MAIN/maker/src
 $ perl Build.PL #(Currently answer N to set MPI)
 ```
-    If any Perl dependency was not properly installed, for any reason, please run the following for the each dependency
+   If any Perl dependency was not properly installed, for any reason, please run the following for the each dependency
 ```console
 $ cpanm FAILED::DEPENDENCY
 $ #ex: cpanm Bit::Vector
