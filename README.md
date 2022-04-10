@@ -214,21 +214,53 @@ Once MuDoGeR is installed, you can test it as follows:
 $ conda activate mudoger_env
 $ mudoger --help
 
-mudoger -h
-	Usage: mudoger [module] --help
-	Options:
-	
-	read_qc		Raw read QC 
-	resources	Calculation of memory required by the MetaSpades, for assembling the good quality reads 
-	assembly	Assembly 
-	prokaryotic	Recovery of Prokaryotic Metagenome-Assembled Genomes 
-	viral		Recovery of Uncultivated Viral Genomes
-	eukaryotic 	Recovery of Eukaryotic Metagenome-Assembled Genomes
-	relative_abund	Relative abundance calculation
-		
-	--help | -h		show this help message
-	--version | -v	show MuDoGeR version
-	--show-config	show where the mudoger configuration files are stored
+
+	███    ███ ██    ██ ██████   ██████   ██████  ███████ ██████  
+	████  ████ ██    ██ ██   ██ ██    ██ ██       ██      ██   ██ 
+	██ ████ ██ ██    ██ ██   ██ ██    ██ ██   ███ █████   ██████  
+	██  ██  ██ ██    ██ ██   ██ ██    ██ ██    ██ ██      ██   ██ 
+	██      ██  ██████  ██████   ██████   ██████  ███████ ██   ██ 
+			Multi-Domain Genome Recovery
+				Version 1.0.0
+
+
+
+Mudoger v=1.0.0
+Usage: mudoger --module module_name --meta metadata_table.tsv -o output_folder [module_options]
+
+  --meta              		 Metadata table with your samples, as explained in the github documentation
+  --module preprocess            Run all steps from module 1 (read_qc, kmer memory prediction and assembly)
+          	read_qc
+          	mem_pred
+          	assembly
+  --module prokaryotes              Recovery of Prokaryotic Metagenome-Assembled Genomes
+          	initial_binning
+          	bac_bin_ref
+          	arc_bin_ref
+          	bin_dereplication
+          	tax_assignment
+          	bin_quality
+          	gene_annotation
+          	seq_metrics
+  --module viruses		Recovery of Uncultivated Viral Genomes
+          	uvigs_recov
+          	uvigs_tax
+          	host_pred
+          	uvigs_quality
+          	uvigs_metrics
+  --module eukaryotes		Recovery of Eukaryotic Metagenome-Assembled Genomes
+          	euk_recov
+          	gene_pred
+          	euk_quality
+          	gene_annotation
+          	euk_scg
+  --module abundance_tables	Abundance calculation
+          	brat_type       can be --complete or --reduced (default: --reduced)
+          	mapping_type	can be --absolute-values, --coverage, and --relative-abundance
+
+  --help | -h		show this help message
+  --version | -v	show mudoger version
+
 ```
 
 **MuDoGeR** is an easy-to-use wrapper of several tools organized within modules. The individual modules can be called independently.
@@ -264,8 +296,7 @@ $ mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/out
 
 ```
 
-In order for MuDoGeR to work automaticaly, from start to finish, we use a specific folder structure.
-
+MuDoGeR is designed to completely run all multi-domain genome recovery pipeline. In order for MuDoGeR to work automaticaly, from start to finish, we use a specific folder structure. Please, read the [Manual_MuDoGeR](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md) if you would like to manipulate MuDoGeR. 
 
 A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 
