@@ -1,62 +1,100 @@
-######### COMPLETING INSTALLATION FOR GENEMARK #########
-#0) Activate mudoger_env
-conda activate mudoger_env
-config_file="$(which config.sh)"
-source "$config_file"
+# Finish Module 4 installation
 
-MUDOGER_DEPENDENCIES_ENVS_PATH=$MUDOGER_DEPENDENCIES_ENVS_PATH
-# 1) ACCESS GENEMARK WEBPAGE
+### Activate MuDoGeR environment and load config file
+
+```console
+$ conda activate mudoger_env
+$ config_file="$(which config.sh)"
+$ source "$config_file"
+
+```
+## Complete GENEMARK installation
+
+1. ACCESS GENEMARK WEBPAGE
+
 http://opal.biology.gatech.edu/GeneMark/license_download.cgi
 
-# 2) SELECT OPTIONS
-# GeneMark-ES/ET/EP ver 4.68_lic and LINUX 64
+2. SELECT OPTIONS 
 
-# 3) FILL IN THE CREDENTIALS WITH YOUR NAME, E-MAIL, INSTITUTION, ETC... 
+GeneMark-ES/ET/EP ver 4.68_lic and LINUX 64
 
-# 4) CLICK ON 'I agree the terms of this license agreement'
+3. FILL IN THE CREDENTIALS WITH YOUR NAME, E-MAIL, INSTITUTION, ETC... 
 
-# 5) DOWNLOAD THE 64_bit key and the program files 
-#ex_files: wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_HZzc0/gmes_linux_64.tar.gz
-#ex_key: wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_HZzc0/gm_key_64.gz
+4. CLICK ON 'I agree the terms of this license agreement'
 
-# 5.1) You should have the following files:
-#gmes_linux_64.tar.gz  gm_key_64.gz
+5. DOWNLOAD THE 64_bit key and the program files provided
 
-# 6) RETRIEVE PATH TO GENEMARK ENV (this environment is already created and ready with install_module_4.sh)
-genemarker_environment="$MUDOGER_DEPENDENCIES_ENVS_PATH/genemarker_env"
+It should look something like the following:
 
-# 7) PLACE BOTH FILES INSIDE A <CONDA_GENEMARK>/GENEMARK_MAIN. 
-cp /path/to/gmes_linux_64.tar.gz  $genemarker_environment/GENEMARK_MAIN
-cp /path/to/gm_key_64.gz  $genemarker_environment/GENEMARK_MAIN
+```console
+$ wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_HZzc0/gmes_linux_64.tar.gz
+$ wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_HZzc0/gm_key_64.gz
+```
+
+  5.1 You should have the following files:
+    gmes_linux_64.tar.gz  gm_key_64.gz
+
+6. RETRIEVE PATH TO GENEMARK ENV (this environment is already created and ready once you installed module 4 tools by running install.sh) [Installation](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#installation)
+
+```console
+$ genemarker_environment="$MUDOGER_DEPENDENCIES_ENVS_PATH/genemarker_env"
+```
+
+7. COPY THE FILES TO THE FOLLOWING SPECIFIC FOLDER (remember to first run the install.sh script)
+
+```console
+$ cp /path/to/gmes_linux_64.tar.gz  $genemarker_environment/GENEMARK_MAIN
+$ cp /path/to/gm_key_64.gz  $genemarker_environment/GENEMARK_MAIN
+
 # IT SHOULD LOOK LIKE THIS:
-ls  $genemarker_environment/GENEMARK_MAIN
-gmes_linux_64.tar.gz  gm_key_64.gz
+$ ls  $genemarker_environment/GENEMARK_MAIN
+$ gmes_linux_64.tar.gz  gm_key_64.gz
+```
 
+8. ENTER THE FOLDER AND DECOMPRESS FILES
 
-# 8) ENTER INSIDE FOLDER AND DECOMPRESS FILES
-cd  $genemarker_environment/GENEMARK_MAIN
-gunzip *
+```console
+$ cd  $genemarker_environment/GENEMARK_MAIN
+$ gunzip *
+```
 
-# 9) COPY AND RENAME KEY FILE TO HOME FOLDER 
-cp gm_key_64 ~/.gm_key
+9. COPY AND RENAME KEY FILE TO YOUR HOME FOLDER 
 
-# 10) DECOMPRESS TOOL 
+```console
+$ cp gm_key_64 ~/.gm_key
+```
+
+10. DECOMPRESS TOOL
+
+```console
 tar -xvf gmes_linux_64.tar 
+```
 
-# 11) ACTIVATE THE genemark_env CONDA 
-conda activate $genemarker_environment
+11. ACTIVATE THE genemark_env CONDA ENVIRONMENT (created during the installation procedure)
 
-# 12) GET PERL PATH
+```console
+$ conda activate $genemarker_environment
+```
+
+12. GET PERL PATH
+
+```console
 perl_path="$(which perl)"
-
 cd - #return
-# 13) CONFIGURE GENEMARK TO USE THE CORRECT PERL
+```
+
+13. CONFIGURE GENEMARK TO USE THE CORRECT PERL
+
+```console
 cd $genemarker_environment/GENEMARK_MAIN/gmes_linux_64
 perl change_path_in_perl_scripts.pl "$perl_path"
-
 cd - #return
-# 14) Return to mudoger_env
-conda deactivate
+```
+
+14. Return to mudoger_env
+```console
+$ conda deactivate
+```
 
 ######### COMPLETING INSTALLATION FOR MAKER2 #########
 
