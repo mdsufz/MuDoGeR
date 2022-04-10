@@ -12,27 +12,32 @@ $ source "$config_file"
 
 1. ACCESS GENEMARK WEBPAGE
 
-http://opal.biology.gatech.edu/GeneMark/license_download.cgi
+  http://opal.biology.gatech.edu/GeneMark/license_download.cgi
+
 
 2. SELECT OPTIONS 
 
-GeneMark-ES/ET/EP ver 4.68_lic and LINUX 64
+      **GeneMark-ES/ET/EP ver 4.68_lic and LINUX 64**
+
 
 3. FILL IN THE CREDENTIALS WITH YOUR NAME, E-MAIL, INSTITUTION, ETC... 
 
+
 4. CLICK ON 'I agree the terms of this license agreement'
+
 
 5. DOWNLOAD THE 64_bit key and the program files provided
 
-It should look something like the following:
+      It should look something like the following:
 
-```console
-$ wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_HZzc0/gmes_linux_64.tar.gz
-$ wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_HZzc0/gm_key_64.gz
-```
+        ```console
+        $ wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_HZzc0/gmes_linux_64.tar.gz
+        $ wget http://topaz.gatech.edu/GeneMark/tmp/GMtool_HZzc0/gm_key_64.gz
+        ```
 
-  5.1 You should have the following files:
-    gmes_linux_64.tar.gz  gm_key_64.gz
+      You should have the following files:
+      **gmes_linux_64.tar.gz  gm_key_64.gz**
+
 
 6. RETRIEVE PATH TO GENEMARK ENV (this environment is already created and ready once you installed module 4 tools by running install.sh) [Installation](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#installation)
 
@@ -67,7 +72,7 @@ $ cp gm_key_64 ~/.gm_key
 10. DECOMPRESS TOOL
 
 ```console
-tar -xvf gmes_linux_64.tar 
+$ tar -xvf gmes_linux_64.tar 
 ```
 
 11. ACTIVATE THE genemark_env CONDA ENVIRONMENT (created during the installation procedure)
@@ -79,16 +84,16 @@ $ conda activate $genemarker_environment
 12. GET PERL PATH
 
 ```console
-perl_path="$(which perl)"
-cd - #return
+$ perl_path="$(which perl)"
+$ cd - #return
 ```
 
 13. CONFIGURE GENEMARK TO USE THE CORRECT PERL
 
 ```console
-cd $genemarker_environment/GENEMARK_MAIN/gmes_linux_64
-perl change_path_in_perl_scripts.pl "$perl_path"
-cd - #return
+$ cd $genemarker_environment/GENEMARK_MAIN/gmes_linux_64
+$ perl change_path_in_perl_scripts.pl "$perl_path"
+$ cd - #return
 ```
 
 14. Return to mudoger_env
@@ -96,7 +101,8 @@ cd - #return
 $ conda deactivate
 ```
 
-######### COMPLETING INSTALLATION FOR MAKER2 #########
+
+## COMPLETING INSTALLATION FOR MAKER2
 
 # 1) DOWNLOAD MAKER (Registration required)
 
