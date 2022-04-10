@@ -156,7 +156,7 @@ fi
 
 mkdir -p  "$database_location"/buscodbs
 cd "$database_location"/buscodbs
-if [ ! -d eukcc2_db_ver_1.1 ]; then
+if [ ! -d "$database_location"/buscodbs/lineages/eukaryota_odb10 ]; then
 
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/busco_env
 busco --download_path "$database_location"/buscodbs --download "eukaryota"
