@@ -191,7 +191,7 @@ Use this script if you want MuDoGeR to take care of everything.
 ```console
 
 #Go to MuDoGeR cloned directory
-cd MuDoGeR
+$ cd MuDoGeR
 
 #Run database setup script
 $ bash -i installation/database-setup.sh -o /path/to/save/databases
