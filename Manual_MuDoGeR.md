@@ -1,26 +1,42 @@
 
-# Module 1: Pre-Processing 
-## 1.a: Raw Read Quality Control  
-Note: For the removal of human contamination, the user will need the bmtagger hg38 index to remove the human or use another host genome for the filtering  against with the `-x` option as it can be found in the **metaWrap** installation instructions. Also, Make sure that all the databases and programms required for the **Pre_processing** run are correctly installed. The links for the installation of the tools can be found in the following hyperlink: ![Pre-Processing Module ](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#pre-processing-module).
+# Module 1: Pre-Processing
 
-For running the raw read QC:
+For running module 1 use
 
-``` 
-mudoger read_qc --skip-bmtagger -1 /path/to/raw_reads_1.fasta -2 /path/to/raw_reads_2.fasta  -t 24 -o /path/to/pure_reads/output/directory
+```console
+$ mudoger --module preprocess --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --metaspades -m 100
 ```
-* The `/path/to/raw_reads_1.fasta` indicates the path to the file of the forward reads of the used library.
-* The `/path/to/raw_reads_2.fasta` indicates the path to the file of the reversed reads of the used library.
-* The `/path/to/pure_reads/output/directory` indicates the path to the output directory where the clean reads of the library will be saved.
-* The `-t` indicates the number of threads to be used for read quality control.
+The available parameter for module 1 are:
+* -o output directory
+* -m  Given RAM to assembly
+* -t number of threads/cores
+* Assembler. Can be --megahit [default] or --metaspades
 
-The output directory of the read quality control module contains:
+--meta metadata table containing the sample names and its raw reads path in tsv format as follows:
+```console
+$ cat metadata.tsv
+
+EA_ERX4593008   /path/to/EA_ERX4593008/raw_reads_1.fastq
+EA_ERX4593008   /path/to/EA_ERX4593008/raw_reads_2.fastq
+EA_ERX4593009   /path/to/EA_ERX4593009/raw_reads_1.fastq
+EA_ERX4593009   /path/to/EA_ERX4593009/raw_reads_2.fastq
+EA_ERX4593010   /path/to/EA_ERX4593010/raw_reads_1.fastq
+EA_ERX4593010   /path/to/EA_ERX4593010/raw_reads_2.fastq
+EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_1.fastq
+EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_2.fastq
+```
+
+## 1.a: Raw Read Quality Control  
+For quality control, MuDoGeR uses the implementation present in [metaWRAP](https://github.com/bxlab/metaWRAP). The quality controled procedure currently applied is to trimm raw reads based on adapted content and PHRED scored with the default setting of Trim-galore. Future updates will allow the option to remove host contamination using different databases.
+
+
+The output directory of the read quality control module (***sample_name/qc***) contains:
 ```
 final_pure_reads_1.fastq    pre-QC_report
 final_pure_reads_2.fastq    post-QC_report 
 ```
 
 The `final_pure_reads` files contain the sequences of the trimmed and decontaminated reads. The `pre-QC_report` and `post-QC_report` folders include the html reports for the reads before and after the read quality control. 
-
 
 Raw reads:
 
@@ -32,55 +48,62 @@ Reads after read QC:
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Read_QC_after_trimming.png)
 
 
-
 ## 1.b: Calculation of resources 
-Before the assembly, it is possible to calculate unique k-mers in the pre-processed reads (forward or reversed). The size of the k-mer that has to be investigated is usually 33 or 55. Both values have to be calculated. As the result of this task is the same using both forward and reversed reads, the user does not have to re-do the task for both of them. 
+After quality control, MuDoGeR estimates the required RAM for assembly.
 
-For resource calculation the user can run:
-
-``` 
-Resources -i /path/to/final_pure_reads_1.fastq -o /path/to/output/folder 
-```
- * The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
- * The `/path/to/output/folder` indicates the path to the folder with resource calculation results.
+Innitialy, it count the 33 and 55 unique k-mers from the quality-controlled reads (final_pure_reads_1.fastq) in the pre-processed reads (forward or reversed).
  
-The k-mer results is used as function by a linear regression model which will give the amount of memory necessary for assembling the reads by **metaSPAdes**. 
-Inside the output folder the user can find the `metaspades_prediction.csv` file which has the amount of memory that **metaSPAdes** utilizes for the assembly of those reads.
+The k-mer count is used by a linear regression model to predict the amount of memory necessary for assembling the reads with **metaSPAdes**. 
+Inside the calculation of resources output folder (***sample_name/khmer***) the user can find the following files:
+```
+final_prediction.tsv  input_for_predictR.tsv  kmer-33  kmer-55  metaspades_prediction.tsv
+```
+The ```final_prediction.tsv``` file contains the final RAM estimation in MB for assemblying the sample with **metaspades**
 
 
 ## 1.c: Assembly 
-There are two possible tools for assembling data: **MegaHiT** and **metaSPAdes**. Both tools are considered reliable. **MegaHiT** uses lower memory and is faster compared to **metaSPAdes**, but **metaSPAdes** produced assemblies are of higher quality. In case of very large data sets, the usage of **MegaHiT** option flag is preferable:
+There are two possible tools for assembling data: **MegaHiT** and **metaSPAdes**. Both tools are considered reliable. **MegaHiT** uses lower memory and is faster compared to **metaSPAdes**, but **metaSPAdes** tends to produced longer contigs. In case of very large data sets, the user may use **MegaHiT**.
+
+The assembly output folder (***sample_name/assembly***) should contain the following:
 
 ```
-metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-megahit -o /path/to/assembled_reads/output/directory 
+assembly_report.html  final_assembly.fasta  megahit  metaspades  QUAST_out
 ```
 
-In any other case it is preferable to use **metaSPAdes** option flag:
-
-```
-metawrap assembly -1 /path/to/final_pure_reads_1.fasta -2 path/to/final_pure_reads_2.fastq -m 200 -t 96 --use-metaspades -o /path/to/assembled_reads/output/directory 
-```
-For both flags:
-
-* The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reversed clean reads.
-* The `/path/to/final_pure_reads_1.fasta` indicates the path to the file of the forward clean reads. 
-* The `/path/to/assembled_reads/output/directory` indicates the path to the output directory where the assemblies will be saved.
-* The `-m` indicates the amount of memory in gigabytes that the assembly process needs. 
-* The `-t` indicates the number of threads to be used for this process.
-
-After the end of the **metaSPAdes** assembly process, inside the output directory the user can find the folder `Assembly_folder`. Inside this folder is the assembly file called `final_assembly.fasta` and the `assembly_report.html` file with the QUAST assembly report of the assembly module. 
+The ```final_assembly.fasta``` is the assembled sequences that is going to be used in the other modules.
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Assembly.png)
 
-Using `grep > Assembly_output/assembly.fasta | head -5`, the user can see the top five longer sequences.
+## Module 1 final considerations
 
-``` 
->NODE_1_length_369741_cov_7.638564
->NODE_2_length_360965_cov_1208.183270
->NODE_3_length_278391_cov_5.902381
->NODE_4_length_257954_cov_1138.617195
->NODE_5_length_248688_cov_1110.129452
+Please, be aware of the folder struture expected as a result from module 1.
+
+```console
+output/path/
+         └── sample_name
+             ├── assembly
+             │   ├── assembly_report.html
+             │   ├── final_assembly.fasta
+             │   ├── megahit
+             │   ├── metaspades
+             │   └── QUAST_out
+             ├── khmer
+             │   ├── final_prediction.tsv
+             │   ├── input_for_predictR.tsv
+             │   ├── kmer-33
+             │   ├── kmer-55
+             │   └── metaspades_prediction.tsv
+             └── qc
+                 ├── final_pure_reads_1.fastq
+                 ├── final_pure_reads_2.fastq
+                 ├── post-QC_report
+                 └── pre-QC_report
+
 ```
+
+If you want to use the other MuDoGeR modules, you can copy the showed folder structure with your own data and use the same *** -o output/path *** when running the other modules. 
+The relevant files generated in Module 1 used for the other modules are ***assembly/final_assembly.fasta***, ***qc/final_pure_reads_1.fastq***, and ***qc/final_pure_reads_2.fastq***. Please, make sure your resulted files are specificaly as final_assembly.fasta and final_pure_reads_1/2.fastq.
+
 
 # Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the databases and programms required for the **metaWrap** run are correctly installed. The links for the installation of the tools can be found in the following hyperlink: ![Prokaryotic module](https://github.com/mdsufz/MuDoGeR#prokaryotic-module).
