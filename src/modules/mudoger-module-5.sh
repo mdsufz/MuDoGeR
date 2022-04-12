@@ -162,15 +162,26 @@ if [ "$brat_type" = "--complete" ]; then
 elif [ "$reduced" = "true" ]; then
 
 	#     OTU picking      submodule 5-1
-	echo -e "\n OTU picking STARTED"
-
-	#if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
-   	#	echo -e "\nNo relevant eukaryotic found"; touch "$libname_folder"/eukaryotes/no_euk_bins_for_genemark
-	#else
+	
+	if [ -f $WORKDIR/mapping_results/gOTUpick_results/final_output/bestbins.txt ]; then
+   		echo -e "\nGenome OTU pick already done. Check '$WORKDIR'/mapping_results/gOTUpick_results/final_output/bestbins.txt";
+	else
+		echo -e "\n OTU picking STARTED"
    		bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-1_prokOTUpicking.sh $WORKDIR $metadata_table $THREAD
+		echo -e "\n OTU picking DONE"
+	fi
+	
+	#     Perform reduced Brat      submodule 5-2
+	
+	#if [ -f $WORKDIR/mapping_results/gOTUpick_results/final_output/bestbins.txt ]; then
+   	#	echo -e "\nGenome OTU pick already done. Check '$WORKDIR'/mapping_results/gOTUpick_results/final_output/bestbins.txt";
+	#else
+		echo -e "\n Reduced BRAT STARTED"
+   		bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-2_reducedBRAT.sh $WORKDIR $metadata_table $THREAD
+		echo -e "\n Reduced BRAT DONE"
 	#fi
 
-	echo -e "\n OTU picking DONE"
+	
 	
 fi
 
