@@ -1,5 +1,10 @@
+#MuDoGeR 1.0 Manual
 
-# Module 1: Pre-Processing
+MuDoGeR version 1.0 was designed to be an easy-to-use genome recovery tool. Therefore, we created a setup procedure that requires little user input. Consequently, one important aspect of MuDoGeR usage is the output folder architecture. The folder and files names and architecture are important for the pipeline to work smoothly. If you want to prepare your data using other tools, and later use MuDoGeR, please keep the folder structure and file naming according to the MuDoGeR requirements. 
+
+Following you have a usage tutorial for each module. Each ** Module's final consideration ** section has the description of the expected folder and files names output.
+
+## Module 1: Pre-Processing
 
 For running module 1 use
 
@@ -26,8 +31,8 @@ EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_1.fastq
 EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_2.fastq
 ```
 
-## 1.a: Raw Read Quality Control  
-For quality control, MuDoGeR uses the implementation present in [metaWRAP](https://github.com/bxlab/metaWRAP). The quality controled procedure currently applied is to trimm raw reads based on adapted content and PHRED scored with the default setting of Trim-galore. Future updates will allow the option to remove host contamination using different databases.
+### 1.a: Raw Read Quality Control  
+For quality control, MuDoGeR uses the implementation present in [metaWRAP](https://github.com/bxlab/metaWRAP). The quality control procedure currently applied is to trim raw reads based on adapted content and PHRED scored with the default setting of Trim-galore. Future updates will allow the option to remove host contamination using different databases.
 
 
 The output directory of the read quality control module (***sample_name/qc***) contains:
@@ -43,25 +48,25 @@ Raw reads:
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Read_QC_before_trimming.png)
 
 
-Reads after read QC:
+Reads after QC:
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Read_QC_after_trimming.png)
 
 
-## 1.b: Calculation of resources 
+### 1.b: Calculation of resources 
 After quality control, MuDoGeR estimates the required RAM for assembly.
 
-Innitialy, it count the 33 and 55 unique k-mers from the quality-controlled reads (final_pure_reads_1.fastq) in the pre-processed reads (forward or reversed).
+Initially, it counts the 33 and 55 unique k-mers from the quality-controlled reads (final_pure_reads_1.fastq) in the pre-processed reads (forward or reversed).
  
 The k-mer count is used by a linear regression model to predict the amount of memory necessary for assembling the reads with **metaSPAdes**. 
 Inside the calculation of resources output folder (***sample_name/khmer***) the user can find the following files:
 ```
 final_prediction.tsv  input_for_predictR.tsv  kmer-33  kmer-55  metaspades_prediction.tsv
 ```
-The ```final_prediction.tsv``` file contains the final RAM estimation in MB for assemblying the sample with **metaspades**
+The ```final_prediction.tsv``` file contains the final RAM estimation in MB for assembling the sample with **metaspades**
 
 
-## 1.c: Assembly 
+### 1.c: Assembly 
 There are two possible tools for assembling data: **MegaHiT** and **metaSPAdes**. Both tools are considered reliable. **MegaHiT** uses lower memory and is faster compared to **metaSPAdes**, but **metaSPAdes** tends to produced longer contigs. In case of very large data sets, the user may use **MegaHiT**.
 
 The assembly output folder (***sample_name/assembly***) should contain the following:
@@ -70,13 +75,13 @@ The assembly output folder (***sample_name/assembly***) should contain the follo
 assembly_report.html  final_assembly.fasta  megahit  metaspades  QUAST_out
 ```
 
-The ```final_assembly.fasta``` is the assembled sequences that is going to be used in the other modules.
+The ```final_assembly.fasta``` is the assembled sequences that are going to be used in the other modules.
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Assembly.png)
 
-## Module 1 final considerations
+### Module 1 final considerations
 
-Please, be aware of the folder struture expected as a result from module 1.
+Please, be aware of the folder structure expected as a result of module 1.
 
 ```console
 output/path/
@@ -105,7 +110,7 @@ If you want to use the other MuDoGeR modules, you can copy the showed folder str
 The relevant files generated in Module 1 used for the other modules are ***assembly/final_assembly.fasta***, ***qc/final_pure_reads_1.fastq***, and ***qc/final_pure_reads_2.fastq***. Please, make sure your resulted files are specificaly as final_assembly.fasta and final_pure_reads_1/2.fastq.
 
 
-# Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
+## Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
 Note: Make sure that all the databases and programms required for the **metaWrap** run are correctly installed. The links for the installation of the tools can be found in the following hyperlink: ![Prokaryotic module](https://github.com/mdsufz/MuDoGeR#prokaryotic-module).
 
 ## 2.a: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, taxonomic classification, quality estimation and annotation of Prokaryotic bins
@@ -208,10 +213,10 @@ metawrap bin_refinement -o ~/path/to/output/directory -A ~/path/to/concoct/bins/
 
 The resulted bins are inside the folders `metawrap_50_10_bins` and `metawrap_40_30_bins` for bacteria and archaea respectively.
 
-# Module 3: Recovery of Uncultivated Viral Genomes
+## Module 3: Recovery of Uncultivated Viral Genomes
 Note: Make sure that all the viral tools are correctly installed. The links for the installation can be found in the following hyperlink: ![Viral module](https://github.com/mdsufz/MuDoGeR#viral-module).
 
-## 3.a: Recovery, quality estimation, taxonomic classification and host identification of Uncultivated Viral Genomes
+### 3.a: Recovery, quality estimation, taxonomic classification and host identification of Uncultivated Viral Genomes
 In **3.a**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT** are applied to the assembly fasta file, for the recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated with **Stampede-clustergenomes**. Also, the user can estimate the quality of the dereplicated viral contigs (**CheckV**). Also, the user can do the taxonomic classification of the the clean contigs produced by **CheckV** or in case of small data-sets the dereplicated viral contigs with **vContact2**. Furthermore, the user can choose to determine the prokaryotic host of each virus. Before running the script, it is important for the user to decide about the parameters of minimum coverege (-c) and minimum identity (-i) used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
 
 Running **3.a**:
@@ -272,7 +277,7 @@ viral-particle-216	ERR1341880_bacbin.1	-1.33232	NA
 viral-particle-55	LS08Hbin.1	-1.34156	NA
 viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
 ``` 
-## 3.b: Selection of Uncultivated Viral Genomes
+### 3.b: Selection of Uncultivated Viral Genomes
 
 In this step, a selection of Uncultivated Viral Genomes takes place. The Viral representatives are all viral genomes that yielded taxonomic classification with vContact2 and are larger than 15 Kb. A bash script is required for the selection.
 
@@ -285,11 +290,11 @@ mudoger 3.b  -o /path/to/output/file -i /path/to/genome_by_genome_overview_csv -
 * The `/path/to/genome_by_genome_overview_csv` indicates the path to the input file with the results from the vcontact2 tool.
 * `-s` indicates the minimum size for the filtering of viral contigs.
 
-# Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes 
+## Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes 
 
 Note: Make sure that all the eukaryotic tools are correctly installed. The links for the installation can be found in the following hyperlink: ![Eukaryotic module](https://github.com/mdsufz/MuDoGeR#eukaryotic-module).
 
-## 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins 
+### 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins 
 In **4.a**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. The bins are filtered by size. Bins with size < 2.5 Mb are removed.
 
 Running **4.a**:
@@ -305,7 +310,7 @@ mudoger 4.a -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/folder -o
 
 In the output of the first step the user can find `euk_concoct_bins` folder which contains the eukaryotic bins after the filtering.
 
-## 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins 
+### 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins 
 In **4.b**, the completeness and contamination of the Eukaryotic bins produced in **4.a** are estimated. Additionally, the annotation of these bins is taking place. **4.b** starts with **GeneMark-ES** tool, used for the gene prediction in the Eukaryotic bins. As input, the user can use any of the bins produced in **4.a**. The rest of the tools used in **4.b** are **EukCC** (bin contamination estimation), **MAKER2** (annotation of the bin) and **BUSCO** (bin completeness estimation). 
 
 Running **4.b**:
@@ -324,7 +329,7 @@ The results of the **MAKER2** tool are located in the `maker/euk-ebin.maker.outp
 
 The results of the **BUSCO** tool are located in the file `maker/busco/full_table_fbusco.csv`. The busco directory is found inside the `maker` directory.
 
-## 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes Representatives (test)
+### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes Representatives (test)
 In this step, the user can pick representative Eukaryotic Metagenome-Assembled Genomes. The threshold for ANI clustering is set by default at 95 but the user has the option to change this value.
 
 Running 4.b:
@@ -340,11 +345,11 @@ mudoger 4.c -i ~/path/to/busco_results/file -b ~/path/to/eukcc_results/file -m ~
 Inside the output folder the user can find the `bestbins.csv` that contains the unique taxonomic bins and the `bins_to_brats.txt` file with the bins for the Bin Relative Abundance Table (BRAT) calculation.
 
 
-# Module 5: Relative abundance 
+## Module 5: Relative abundance 
 
 Note: Make sure that all the necessary tools are correctly installed. The links for the installation can be found in the following hyperlink: ![Relative abundance](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#relative-abundance).
 
-## 5.a Calculation of relative abundance and genome coverage of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
+### 5.a Calculation of relative abundance and genome coverage of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
 For calculation of relative abundance and construction of relative abundance table for the Prokaryotic Metagenome-Assembled Genomes Representatives, the user can run:
 ```
 mudoger 5.a -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folder -o ~/path/to/output/folder 
@@ -369,7 +374,7 @@ mudoger 5.a.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_
 
 The result is the `brats_abs_cov.csv` file.
 
-## 5.b Calculation of relative abundance and genome coverage of Uncultivated Viral Genomes and construction of relative abundance and genome coverage tables
+### 5.b Calculation of relative abundance and genome coverage of Uncultivated Viral Genomes and construction of relative abundance and genome coverage tables
 For calculation of relative abundance and construction of relative abundance table for the Viral Metagenome-Assembled Genomes Representatives, the user can run:
 ```
 mudoger 5.b -i ~/path/to/representative_contigs/folder -l ~/path/to/libraries/folder -o ~/path/to/output/folder 
@@ -394,7 +399,7 @@ mudoger 5.b.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_
 
 The result is the `brats_abs_cov.csv` file.
 
-## 5.c Calculation of relative abundance and genome coverage of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage  tables
+### 5.c Calculation of relative abundance and genome coverage of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage  tables
 For calculation of relative abundance and construction of relative abundance table for the Eukaryotic Metagenome-Assembled Genomes Representatives, the user can run:
 ```
 mudoger 5.c -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folder -o ~/path/to/output/folder 
@@ -419,7 +424,7 @@ mudoger 5.c.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_
 
 The result is the `brats_abs_cov.csv` file. 
 
-## 5.d Construction of combined relative abundance and combined genome coverage tables
+### 5.d Construction of combined relative abundance and combined genome coverage tables
 (to be tested).
 
 ```
