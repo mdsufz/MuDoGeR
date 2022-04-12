@@ -1,8 +1,8 @@
-#MuDoGeR 1.0 Manual
+# MuDoGeR 1.0 Manual
 
 MuDoGeR version 1.0 was designed to be an easy-to-use genome recovery tool. Therefore, we created a setup procedure that requires little user input. Consequently, one important aspect of MuDoGeR usage is the output folder architecture. The folder and files names and architecture are important for the pipeline to work smoothly. If you want to prepare your data using other tools, and later use MuDoGeR, please keep the folder structure and file naming according to the MuDoGeR requirements. 
 
-Following you have a usage tutorial for each module. Each ** Module's final consideration ** section has the description of the expected folder and files names output.
+Following you have a usage tutorial for each module. Each **Module's final consideration** section has the description of the expected folder and files names output.
 
 ## Module 1: Pre-Processing
 
