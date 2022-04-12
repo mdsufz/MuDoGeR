@@ -94,36 +94,13 @@ The steps of Module 4  are shown in Figure 5. A detailed description of its exec
     * **(4.b.2)** Completeness and contamination estimation of the Eukaryotic filtered bins produced in **4.a** using **EukCC**.
     * **(4.b.3)** **MAKER2** annotates the predicted genes produced by **GeneMark**. 
     * **(4.b.4)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single-copy orthologous genes (SCGs) and estimation of completeness of Eukaryotic contigs.
-* **4.c**: Selection of eMAGS. (CHECK HERE IF NECESSARY!!!!!!!!!!!!!!!)
-	* **(4.c.1)** Grouping of eMAGs using **BUSCO** and **EukCC** results.
-	* **(4.c.2)** Separation of the cluster produced in **(4.c.1)** by species, using ANI (Average Nucleotide Identity) splitter, with deafault ANI_distance 0.95.
-	* **(4.c.3)** Selection of representative Metagenome-Assembled Genomes, from the clusters produced in **(4.c.2)**.
+
 
 ### Module 5 Relative abundace
 [](https://github.com/JotaKas/MuDoGeR/blob/master/Module%205.PNG)
 
-The steps of the Module 5 are shown in Figure 6. A detailed description of its execution and outputs are found here: [Pipelines for Relative abundace ](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
-* **5.a** Calculation of relative abundance and genome coverage of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
-	* **(5.a.1)** Merging of Paired-End (PE) reads from each library.
-	* **(5.a.2)** Mapping of the libraries to the indexed prokaryotic bins.
-	* **(5.a.3)** Counting of the number of hits. 
-	* **(5.a.4)** Generation of a crosstable with libraries as columns and prokaryotic bin representatives as rows and calculation of the unmapped reads percentage.
-	* **(5.a.5)** Calculation of genome coverage using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin (optional).
-* **5.b** Calculation of relative abundance and genome coverage of Uncultivated Viral Genomes and construction of relative abundance and genome coverage tables
-	* **(5.b.1)** Merging of Paired-End (PE) reads from each library.
-	* **(5.b.2)** Mapping of the libraries to the indexed viral contigs.
-	* **(5.b.3)** Counting of the number of hits. 
-	* **(5.b.4)** Generation of a crosstable with libraries as columns and viral contig representatives as rows and calculation of the unmapped reads percentage.
-	* **(5.b.5)** Calculation of genome coverage using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin (optional).
-* **5.c** Calculation of relative abundance  and genome coverage of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
-	* **(5.c.1)** Merging of Paired-End (PE) reads from each library.
-	* **(5.c.2)** Mapping of the libraries to the indexed eukaryotic bins.
-	* **(5.c.3)** Counting of the number of hits. 
-	* **(5.c.4)** Generation of a crosstable with libraries as columns and eukaryotic bin representatives as rows and calculation of the unmapped reads percentage.
-	* **(5.c.5)** Calculation of genome coverage using the BRAT results, the average number of base pairs per library and the number of base pairs and the total contigs per bin(optional).
-* **5.d** Construction of combined abundance tables
-	* **(5.d.1)** Construction of combined Relative Abundance Table.
-	* **(5.d.2)** Construction of combined Coverage Abundance Table (optional).
+
+**UNDER DEVELOPMENT**
 
 
 
