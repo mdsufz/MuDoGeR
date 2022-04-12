@@ -152,9 +152,7 @@ if [ -f "$libname_folder"/prokaryotes/metrics/genome_statistics/genome_metrics.t
 then echo "-> MAGs statistics is done. Please check: "$libname_folder"/prokaryotes/metrics/genome_statistics/prok_genomes_stats.tsv"
 else 
 echo "-> Run MAGs STATS"
-bash -i MuDoGeR/src/scripts/mudoger-module-2-8_genomics-metrics.sh  "$libname_folder"/prokaryotes/ "$cores"
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-2-8_genomics-metrics.sh  "$libname_folder"/prokaryotes/ "$cores"
 fi
 
-# 9 WRAPUP INTO NICE TABLE
 
-#
