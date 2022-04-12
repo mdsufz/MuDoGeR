@@ -13,15 +13,10 @@ source $config_path
 source $database
 
 
-viruses_folder="$1"viruses
+viruses_folder="$1"/viruses
 output_folder="$1"
 
 
-#path_to_lib='/Users/toscan/Documents/trabalho/ufz/mudoger/A/'
-
-viruses_folder=$path_to_lib'viruses'
-
-#lib="$(echo $path_to_lib | rev | cut -f2 -d'/' | rev )"
 host_results=$viruses_folder'/host_prediction/output_results'
 derep=$viruses_folder'/investigation/dereplication'
 uvigs=$viruses_folder'/host_prediction/uvigs'
@@ -45,7 +40,10 @@ cat $viruses_folder'/.header' $viruses_folder'/.viruses_summary_raw.tsv' > $viru
 else :; 
 fi
 
-# FIlter Good quality bins (Complet - 5*Contamination >= 50) based on CheckM
-#cat $output_path/genome_metrics.tsv | awk 'BEGIN {FS="\t"};NR==1; ($2 - (5*$3)) >= 50' > "$1"/MAGS_results.tsv
+rm -f $viruses_folder'/.header'
+rm -f $viruses_folder'/.viruses_summary_raw.tsv'
+
+#Filter Good quality Uvigs based on CheckV
+cat $viruses_folder'/viruses_summary.tsv' | awk 'BEGIN {FS="\t"};NR==1; $10 == High-quality' > $viruses_folder/Uvigs_high_quality.tsv
 
 
