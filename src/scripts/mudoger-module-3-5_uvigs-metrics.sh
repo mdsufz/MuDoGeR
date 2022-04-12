@@ -44,6 +44,6 @@ rm -f $viruses_folder'/.header'
 rm -f $viruses_folder'/.viruses_summary_raw.tsv'
 
 #Filter Good quality Uvigs based on CheckV
-cat $viruses_folder'/viruses_summary.tsv' | awk 'BEGIN {FS="\t"};NR==1; $10 == High-quality' > $viruses_folder/Uvigs_high_quality.tsv
+awk -F "\t" 'NR==1;{ if($10 == "High-quality") { print } }' $viruses_folder'/viruses_summary.tsv' > $viruses_folder/Uvigs_high_quality.tsv
 
 
