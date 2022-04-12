@@ -103,6 +103,13 @@ bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-4_vcheck.sh "$libna
 fi
 
 # 5 uvigs metrics
-#bash -i MuDoGeR/src/scripts/mudoger-module-3-5_uvigs-metrics.sh
 
+if [ -f  "$libname_folder"/viruses/viruses_summary.tsv ]; 		# if one of the outputs is already there, do not run
+then echo "-> Viral metrics already done. Please check here: "$libname_folder"/viruses/viruses_summary.tsv"
+else
+echo "-> Running Viral metrics"
+
+bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-5_uvigs-metrics.sh "$libname_folder"
+
+fi
 
