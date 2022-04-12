@@ -78,6 +78,9 @@ cd "$1"/binning/unique_bins/
 
 statswrapper.sh *.fa > $output_path/bbtools.tsv
 
+# FIlter Good quality bins (Complet - 5*Contamination >= 50) based on CheckM
+cat $output_path/genome_metrics.tsv | awk 'BEGIN {FS="\t"};NR==1; ($2 - (5*$3)) >= 50' > "$1"/MAGS_results.tsv
+
 cd -
 
 conda deactivate
