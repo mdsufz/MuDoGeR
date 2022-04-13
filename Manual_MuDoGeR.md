@@ -1,15 +1,15 @@
 # MuDoGeR Manual v1.0
 
-```console
-	███    ███ ██    ██ ██████   ██████   ██████  ███████ ██████  
-	████  ████ ██    ██ ██   ██ ██    ██ ██       ██      ██   ██ 
-	██ ████ ██ ██    ██ ██   ██ ██    ██ ██   ███ █████   ██████  
-	██  ██  ██ ██    ██ ██   ██ ██    ██ ██    ██ ██      ██   ██ 
-	██      ██  ██████  ██████   ██████   ██████  ███████ ██   ██ 
-			Multi-Domain Genome Recovery
-				Version 1.0.0
+			```console
+				███    ███ ██    ██ ██████   ██████   ██████  ███████ ██████  
+				████  ████ ██    ██ ██   ██ ██    ██ ██       ██      ██   ██ 
+				██ ████ ██ ██    ██ ██   ██ ██    ██ ██   ███ █████   ██████  
+				██  ██  ██ ██    ██ ██   ██ ██    ██ ██    ██ ██      ██   ██ 
+				██      ██  ██████  ██████   ██████   ██████  ███████ ██   ██ 
+						Multi-Domain Genome Recovery
+							Version 1.0.0
 
-```
+			```
 
 MuDoGeR version 1.0 was designed to be an easy-to-use genome recovery tool. Therefore, we created a setup procedure that requires little user input. Consequently, one important aspect of MuDoGeR usage is the output folder architecture. The folder and files names and architecture are important for the pipeline to work smoothly. If you want to prepare your data using other tools, and later use MuDoGeR, please keep the folder structure and file naming according to the MuDoGeR requirements. 
 
@@ -402,59 +402,104 @@ The ***viruses_summary.tsv*** contains the compiled information from each Uvig (
 
 
 
-## Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes 
+## Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (eMAGs)
 
-Note: Make sure that all the eukaryotic tools are correctly installed. The links for the installation can be found in the following hyperlink: ![Eukaryotic module](https://github.com/mdsufz/MuDoGeR#eukaryotic-module).
+The recovery of the eMAGs module integrates **EukRep** for selecting the eukaryotic contigs from the initial assembly, the **CONCOCT** binner, **GeneMark** for prediction of eukaryotic genes, **EukCC** for for quality estimation from eukaryiotic sequences, **MAKER2** for gene annotation, and **BUSCO** for detection of single-copy orthologous genes.
 
-### 4.a: Recovery of Eukaryotic assemblies and production of Eukaryotic bins 
-In **4.a**, the **EukRep** separates the eukaryotic from the prokaryotic assemblies and then eukaryotic bins are produced by **CONCOCT**. The bins are filtered by size. Bins with size < 2.5 Mb are removed.
+The tools that require specific databases in the eukaryotic module are **EukCC**, **BUSCO**, and **MAKER2**. **BUSCO** and **EukCC** databases  should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/JotaKas/MuDoGeR#installation). 
 
-Running **4.a**:
+Module 4 requires specific configuration that can't be done automatically. Please, make sure you follow the instructions [here](https://github.com/JotaKas/MuDoGeR/blob/master/installation/genemark_maker2_installation.md) to complete **GeneMark** and **MAKER2** installation.
+
+For running module 4 use:
+
+```console
+$ mudoger --module eukaryotes --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
+```
+
+### 4.a: Recovery and binning of Eukaryotic assemblies
+
+The eMAGs recovery starts with ***final_assembly.fasta*** as input to the **EukRep** tool. This splits the contigs within the assembled sequences into ***prokaryotic_contigs.fa*** and ***eukaryotic_contigs.fa***. Following, the eukaryotic contigs serve as input to the **CONCOCT** binner. Finally, the resulted eukaryotic bins are filtered by minimum size (by default we use 1.5 MB) and considered eMAGs.
+
+After successfully running step 4.a, you should have the following folder structure:
 
 ```
-mudoger 4.a -f ~/path/to/assembly/file --prokarya /path/to/prokaryotic/folder -o /path/to/output/folder -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq 
-```
-* The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of the **4.a** will be saved.
-* The `/path/to/prokaryotic/folder` indicates the path to a directory where the prokaryotic assemblies will be saved after the separation of eukaryotic and prokaryotic assemblies with **EukRep**. 
-* The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
-* The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reversed clean reads. 
-
-In the output of the first step the user can find `euk_concoct_bins` folder which contains the eukaryotic bins after the filtering.
-
-### 4.b: Completeness/contamination estimation and annotation of Eukaryotic bins 
-In **4.b**, the completeness and contamination of the Eukaryotic bins produced in **4.a** are estimated. Additionally, the annotation of these bins is taking place. **4.b** starts with **GeneMark-ES** tool, used for the gene prediction in the Eukaryotic bins. As input, the user can use any of the bins produced in **4.a**. The rest of the tools used in **4.b** are **EukCC** (bin contamination estimation), **MAKER2** (annotation of the bin) and **BUSCO** (bin completeness estimation). 
-
-Running **4.b**:
+sample_name
+     └── eukaryotes
+		├── eukaryotes_bins
+		│   ├── bin.0.fa
+		│   ├── bin.10.fa
+		│   ├── bin.11.fa
+		│   └── bin.8.fa
+		├── eukaryotic_contigs.fa
+		├── filtered_euk_bins
+		│   └── bin.8.fa
+		└── prokaryotic_contigs.fa
 
 ```
-mudoger 4.b -f ~/path/to/concoct/bin/fasta/file -o ~/path/to/output/folder 
+
+The main result of step 4.a.1 is the eMAGs fasta files located within the ***filtered_euk_bins*** folder.
+
+### 4.b: Completeness and contamination estimation and annotation of Eukaryotic bins
+
+The second part of eMAGs recovery starts by predicting eukaryiotic genes using **GeneMark**. The input for this step are the eMAGs recovered in step 4.a located within the ***filtered_euk_bins*** folder. Following **EukCC** is used to calculate quality and completeness from the eMAGs recovered in 4.a.
+
+For the annotation of eukaryotic genes, MuDoGeR feeds the **MAKER2** tool with the eukaryotic bins and the necessary files generated by **GeneMark** for each eMAG. Finally, **BUSCO** receives the **MAKER2** genes as input for detecting single-copy orthologous genes (SCGs)
+
+
+After successfully running step 4.b, you should have the following folder structure:
+
 ```
-* The `/path/to/concoct/bin/fasta/file` indicates the path to the bin file.
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of **4.b** will be written.
+sample_name
+     └── eukaryotes
+		├── eukaryotes_bins
+		│   ├── bin.0.fa
+		│   ├── bin.10.fa
+		│   ├── bin.11.fa
+		│   └── bin.8.fa
+		├── eukaryotic_contigs.fa
+		├── eukcc_quality
+		│   └── bin.8.fa_eukcc
+		│       ├── eukcc.csv
+		│       ├── eukcc.log
+		│       └── savestate.json.gz
+		├── euk_completeness
+		│   ├── bin.8_busco
+		│   │   ├── logs
+		│   │   ├── run_eukaryota_odb10
+		│   │   ├── short_summary.specific.eukaryota_odb10.bin.8_busco.json
+		│   │   └── short_summary.specific.eukaryota_odb10.bin.8_busco.txt
+		│   └── busco_downloads
+		│       └── file_versions.tsv
+		├── filtered_euk_bins
+		│   └── bin.8.fa
+		├── genemarker_annotation
+		│   └── bin.8.fa_genemark
+		│       ├── bin.8.fa
+		│       ├── data
+		│       ├── genemark.gtf
+		│       ├── gmes.log
+		│       ├── gmhmm.mod
+		│       ├── info
+		│       ├── output
+		│       ├── run
+		│       └── run.cfg
+		├── maker2_gene_annotation
+		│   └── bin.8.fa_maker2
+		│       ├── bin.8.fa
+		│       ├── bin.8.maker.output
+		│       ├── maker_bopts.ctl
+		│       ├── maker_evm.ctl
+		│       ├── maker_exe.ctl
+		│       └── maker_opts.ctl
+		└── prokaryotic_contigs.fa
 
-After the end of the second step the output folder contains the results from **MAKER2**, **BUSCO** and **EukCC** tools:
 
-The results of the **EukCC** tool are located in the `eukcc/eukcc.csv` file. The `eukcc` directory is found inside the initial output directory.
-
-The results of the **MAKER2** tool are located in the `maker/euk-ebin.maker.output/OUTPUT.all.maker.genemark.transcripts.fasta` file which contains the names and the sequences of the annotated proteins of the predicted genes . The maker directory is found  inside the `genemark` directory. 
-
-The results of the **BUSCO** tool are located in the file `maker/busco/full_table_fbusco.csv`. The busco directory is found inside the `maker` directory.
-
-### 4.c: Selection of Eukaryotic Metagenome-Assembled Genomes Representatives (test)
-In this step, the user can pick representative Eukaryotic Metagenome-Assembled Genomes. The threshold for ANI clustering is set by default at 95 but the user has the option to change this value.
-
-Running 4.b:
 ```
-mudoger 4.c -i ~/path/to/busco_results/file -b ~/path/to/eukcc_results/file -m ~/path/to/bins(mags)/folder -o ~/path/to/output/folder -t 95
-``` 
-* The `/path/to/busco_results/file` indicates the path to the file with the results from **BUSCO**. The user should use its .tsv form
-* The `/path/to/eukcc_results/file` indicates the path to the results of **EukCC**.
-* The `/path/to/bins(mags)/folder`  indicates the path to the the eukaryotic bins (mags) folder.
-* The `/path/to/output/folder` indicates  the path to the output folder where the resulted files will be saved.
-* The `-t 95` indicates the threshold for ANI clustering.
 
-Inside the output folder the user can find the `bestbins.csv` that contains the unique taxonomic bins and the `bins_to_brats.txt` file with the bins for the Bin Relative Abundance Table (BRAT) calculation.
+The results from **GeneMark** are calculated for each eMAG and you may find them in ***eukaryotes/genemarker_annotation/eMAG.fa_genemark***. The annotated genes are located in the ***genemark.gtf*** file. The model created for the eMAG, the ***gmhmm.mod*** is then used by **MAKER2**.
+A summary of the quality results calculated buy **EukCC** can be found in ***eukaryotes/eukcc_quality/eMAG.fa_eukcc/eukcc.csv***.
+The main results from the **MAKER2** annotation can be found for each eMAG within the folder ***eukaryotes/maker2_gene_annotation/eMAG.fa_maker2/eMAG.maker.output/***
+Finally, you can find **BUSCO** results in the files ***eukaryotes/euk_completeness/eMAG_busco/short_summary.specific.eukaryota_odb10.eMAG_busco.txt*** and ***eukaryotes/euk_completeness/eMAG_busco/run_eukaryota_odb10/full_table.tsv***.
 
 
 ## Module 5: Relative abundance 
