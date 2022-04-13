@@ -79,7 +79,7 @@ The ```final_assembly.fasta``` is the assembled sequences that are going to be u
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/master/Assembly.png)
 
-### Module 1 final considerations
+## Module 1 final considerations
 
 Please, be aware of the folder structure expected as a result of module 1.
 
@@ -110,108 +110,113 @@ If you want to use the other MuDoGeR modules, you can copy the showed folder str
 The relevant files generated in Module 1 used for the other modules are ***assembly/final_assembly.fasta***, ***qc/final_pure_reads_1.fastq***, and ***qc/final_pure_reads_2.fastq***. Please, make sure your resulted files are specificaly as final_assembly.fasta and final_pure_reads_1/2.fastq.
 
 
-## Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes
-Note: Make sure that all the databases and programms required for the **metaWrap** run are correctly installed. The links for the installation of the tools can be found in the following hyperlink: ![Prokaryotic module](https://github.com/mdsufz/MuDoGeR#prokaryotic-module).
+## Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes (MAGs)
 
-## 2.a: Binning of Prokaryotic Metagenome-Assembled Genomes, bin_refinement, taxonomic classification, quality estimation and annotation of Prokaryotic bins
-The run of the prokaryotic module leads to the recovery of prokaryotic genomes from the assembly dataset by utillizing the **metaWrap** tool. The script of the prokaryotic module combines the algorithms of every **metaWrap** module. The important parameters of minimum completeness (-c) and maximum contamination (-x) in the bin_refinement task, are settled by default to 50% and 10% respectively for the bacterial bins, while for the archaeal bins are settled by default to 40% and 30% respectively. For users that would like to alter these default values, check the flags `-ca`, `-xa`, `-cb` and `-xb` from the scripts.
+This module integrates the prokariotic binning procedure implemented in **metaWrap** using **Metabat2**, **Maxbin2**, and **CONCOCT** binners, a MuDoGeR bin dereplacation method, the **GTDB-tk** taxonomic annotation, **CheckM** quality estimation, **Prokka** metagenomic gene annotation,  MuDoGeR sequence metrics and **BBtools** sequence metrics calculation tools.
 
-Running **2.a** :
-``` 
-mudoger 2.a -o /path/to/metawrap/output/directory -f ~/path/to/assembly/file -1 ~/path/to/final_pure_reads_1.fastq -2 ~/path/to/final_pure_reads_2.fastq -ca 40 -cb 50 -xa 30 xb 10 --q 50
+The tools that require specific databases in this module are **GTDB-tk** and **CheckM**. Both should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/JotaKas/MuDoGeR#installation)
+
+For running module 2 use
+
+```console
+$ mudoger --module preprocess --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
 ```
+Additional modularity for this module is scheduled to happen.
 
-* The `/path/to/metawrap/output/directory` indicates the path to the output directory where the output folders of **2.a** will be written.
-* The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
-* The `/path/to/final_pure_reads_1.fastq` indicates the path to the file of the forward clean reads. 
-* The `/path/to/final_pure_reads_2.fastq` indicates the path to the file of the reversed clean reads. 
-* The `-ca` indicates the minimum completeness for archaeal bins.
-* The `-xa` indicates the maximum contamination for archaeal bins.
-* The `-cb` indicates the minimum completeness for bacterial bins.
-* The `-xb` indicates the maximum contamination for bacterial bins.
-* The `--q` indicates the lower limit of quality for the filtering for the optional step of quality control (optional).
+## 2.a: Prokaryotic sequences binning
 
-In the final output folder the user can find:
+The binnig process starts by using **Metabat2**, **Maxbin2**, and **CONCOCT** to bin the sequences from the ***final_assembly.fasta*** file.
+Following, the results from all binners are used to refine bacterial bins. For bacterial bins, the refinement process uses 50% minimum completeness and 10% maximum contamination as default. For archeal bins, the refinement process uses 40% minimum completeness and 30% maximum contamination as default. The refinement process used is implemented in **metaWrap**. Finally, MuDoGeR removes redundant bins. 
 
+After a successful run of prokaryotic sequence binning you should have the following folder structure:
 ```
-arch_ref Annotation_Archaea   checkm_archaea   archaea_output_tax_dir    
-bact_ref Annotation_Bacteria  checkm_bacteria  bacteria_output_tax_dir           
-```
-Inside the `arch_ref` and the `bact_ref` the user can find the folders with the bins after the bin_refinement of archael and bacterial bins, respectively.
-
-Inside each tax_dir directory the user can find the classification of the refined bins. As an example, running `cat tax_out_dir_bacteria/classify/intermediate_results/gtdbtk.bac120.classification_pplacer.csv| head -5`:
-
-``` 
-bin.3,d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Enterobacterales;f__Shewanellaceae;g__Shewanella;s__
-bin.5,d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Burkholderiaceae;g__;s__
-bin.4,d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Burkholderiales;f__Rhodocyclaceae;g__Azoarcus_C;s__
-bin.1,d__Bacteria;p__Desulfobacterota;c__Desulfuromonadia;o__Geobacterales;f__Geobacteraceae;g__Geobacter;s__
-bin.2,d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Dysgonomonadaceae;g__Dysgonomonas;s__
-``` 
-
-Inside each of the checkm directories there is the `bin` directory that contains their fasta. Also, inside each checkm directory the user can find `checkm.csv` file with completeness and contamination of the re-assembled refined bins.
+sample_name
+    └── prokaryotes
+        └── binning
+            ├── initial-binning
+            ├── refinement-arc
+            ├── refinement-bac
+            └── unique_bins
 
 ```
-cat checkm.csv  | head -5
-Bin Id,Marker lineage,# genomes,# markers,# marker sets,0,1,2,3,4,5+,Completeness,Contamination,Strain heterogeneity
-bin.1,c__Deltaproteobacteria (UID3216),83,247,155,17,227,3,0,0,0,96.09,1.94,66.67
-bin.2,k__Bacteria (UID2570),433,273,183,112,160,1,0,0,0,55.46,0.27,0.00
-bin.3,o__Alteromonadales (UID4837),30,868,324,49,818,1,0,0,0,95.62,0.04,0.00
-bin.4,f__Rhodocyclaceae (UID3972),30,540,241,132,390,18,0,0,0,77.00,2.41,11.11
-```
-In case the user chooses to do the filtering after **CheckM** by quality (completeness – 5×contamination (Parks, 2018)), inside the checkm directories there is also `filtered_checkm.csv` file where the filtered results of checkm are saved.
+Inside the ***unique_bins*** folder you should have all unique prokaryotic bins found in your sample.
 
-Each of the annotation folders contains the following directories: 
+
+## 2.b: Taxonomic classification, quality estimation, and gene annotation.
+
+After the binning step is completed, the resulted bins are taxonomic annotated using the **GTDB-tk** software and its most updated database. Following, the unique_bins are checked for quality using the **CheckM** tool. Finally, the recovered prokaryotic bins are annotated using **Prokka**.
+
+After successfully running step 2.b, you should have the following folder structure:
 
 ```
-bin_funct_annotations  bin_translated_genes  bin_untranslated_genes  prokka_out
-```
-The functional annotation of the bins can be found in GFF form. As an example running: `cat Annotation_folder_bacteria/bin_funct_annotations/bin.1.gff | head -5`:
+sample_name
+    ├── binning
+    │   ├── initial-binning
+    │   ├── refinement-arc
+    │   ├── refinement-bac
+    │   └── unique_bins
+    │       ├── bin.0.fa
+    │       ├── bin.10.fa
+    │       └── bin.11.fa
+    └── metrics
+        ├── checkm_qc
+        │   ├── bins
+        │   ├── lineage.ms
+        │   ├── outputcheckm.tsv
+        │   └── storage
+        ├── GTDBtk_taxonomy
+        │   ├── align
+        │   ├── classify
+        │   ├── gtdbtk.ar122.markers_summary.tsv
+        │   ├── gtdbtk.bac120.classify.tree 
+        │   ├── gtdbtk.bac120.filtered.tsv 
+        │   ├── gtdbtk.bac120.markers_summary.tsv 
+        │   ├── gtdbtk.bac120.msa.fasta 
+        │   ├── gtdbtk.bac120.summary.tsv 
+        │   ├── gtdbtk.bac120.user_msa.fasta 
+        │   ├── gtdbtk.failed_genomes.tsv 
+        │   ├── gtdbtk.log
+        │   ├── gtdbtk.translation_table_summary.tsv 
+        │   ├── gtdbtk.warnings.log
+        │   └── identify
+        └── prokka
+            ├── bin.0.fa/
+            ├── bin.10.fa/
+            └── bin.11.fa/
 
 ```
-NODE_2_length_360965	Prodigal:2.6	CDS	660	1022	.	-	0ID=EDFJOLLJ_00001;inference=ab initio prediction:Prodigal:2.6;locus_tag=EDFJOLLJ_00001;product=hypothetical protein
-NODE_2_length_360965	Prodigal:2.6	CDS	1019	1306	.	-	0ID=EDFJOLLJ_00002;inference=ab initio prediction:Prodigal:2.6;locus_tag=EDFJOLLJ_00002;product=hypothetical protein
-NODE_2_length_360965	Prodigal:2.6	CDS	1428	2660	.	-	0ID=EDFJOLLJ_00003;eC_number=2.6.1.83;Name=dapL;gene=dapL;inference=ab initio prediction:Prodigal:2.6,similar to AA sequence:UniProtKB:A3DK17;locus_tag=EDFJOLLJ_00003;product=LL-diaminopimelate aminotransferase
-NODE_2_length_360965	Prodigal:2.6	CDS	2816	3616	.	-	0ID=EDFJOLLJ_00004;eC_number=1.17.1.8;Name=dapB;gene=dapB;inference=ab initio prediction:Prodigal:2.6,similar to AA sequence:UniProtKB:P38103;locus_tag=EDFJOLLJ_00004;product=4-hydroxy-tetrahydrodipicolinate reductase
-NODE_2_length_360965	Prodigal:2.6	CDS	3638	4510	.	-	0ID=EDFJOLLJ_00005;eC_number=4.3.3.7;Name=dapA;gene=dapA;inference=ab initio prediction:Prodigal:2.6,similar to AA sequence:UniProtKB:O67216;locus_tag=EDFJOLLJ_00005;product=4-hydroxy-tetrahydrodipicolinate synthase
+
+Inside the ***metrics*** folder, you should have one folder for each tool. Inside ***prokka*** you will find one folder for each bin containing the outputs from the tool.
+The resulted files will be used by MuDoGeR to generate a more comprehensive report of the bins, as well as further processing. If you would like to know more about the outputs of each tool, please check their respective documentation.
+
+
+## 2.c: Sequence metrics calculation and selection of Prokaryotic MAGs.
+
+Finally, MuDoGeR calculates some relevant metrics from the recovered bins, such as genome_size, number_of_scaffolds, largest_scaffold_size, N50, and N90. In addition, it also counts the number of annotated and unknown genes by prokka. **BBtools** is also used to extract sequence metrics. Later, MuDoGeR merges the results from the other tools and calculates the sequence quality (completeness – 5×contamination (Parks, 2018)). Bins with quality greater than or equal to 50 are considered MAGs and have their information summarised in the ***MAGS_results.tsv*** file.
+
+After successfully running step 2.c, you should have the following folder structure:
+
 ```
+sample_name
+    ├── binning
+    │   ├── initial-binning
+    │   ├── refinement-arc
+    │   ├── refinement-bac
+    │   └── unique_bins
+    ├── MAGS_results.tsv
+    └── metrics
+        ├── checkm_qc
+        ├── genome_statistics
+        │   ├── bbtools.tsv
+        │   ├── genome_metrics.tsv
+        │   └── prok_genomes_stats.tsv
+        ├── GTDBtk_taxonomy
+        └── prokka
 
-For more detailed explanation of the **metaWrap** tool the user can study the instruction is the following hyperlink: ![metaWrap/Usage_tutorial](https://github.com/bxlab/metaWRAP/blob/master/Usage_tutorial.md)
-
-## 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes Representatives
-In this step, the user can pick representative Prokaryotic Metagenome-Assembled Genomes. The threshold for ANI clustering is set by default at 95 but the user has the option to change this value.
-
-Running 2.b:
 ```
-mudoger 2.b -i ~/path/to/gtdb_taxonomy/file -b ~/path/to/bbtools/file -m ~/path/to/bins(mags)/folder -o ~/path/to/output/folder -t 95
-``` 
-* The `/path/to/gtdb_taxonomy/file` indicates the path to the taxonomy file, generated by **GTDB-Tk**. The user should choose its .tsv form.
-* The `/path/to/bbtools/file` indicates the path to the file with bbtools.
-* The `/path/to/bins(mags)/folder`  indicates the path to the the prokaryotic bins (mags) folder.
-* The `/path/to/output/folder` indicates the path to the output folder where the resulted files will be saved.
-* The `-t 95` indicates the threshold for ANI clustering.
-
-Inside the output folder the user can find the `bestbins.csv` file that contains the unique taxonomic bins and the `bins_to_brats.txt` file with the selected bins that were chosens as representatives and will be used for the Bin Relative Abundance Table (BRAT) calculation.
+The ***MAGS_results.tsv*** contains relevant annotations from the recovered MAGs. You can also check the annotated genes for each MAG by looking at the ***.gtf*** output by ***Prokka*** for each MAG.
 
 
-## 2.c: Refinement of the bins produced in binning or/and the bins of the selected Representative Metagenome-Assembled Genomes using U-bin (optional step)
-This is an optional step for the Prokaryotic Metagenome-Assembled Genomes. In this step, the user can choose to manually refined the Prokaryotic Metagenome-Assembled Genomes either after binning process replacing **DAS Tool** or after the selection of Prokaryotic Metagenome-Assembled Genomes Representatives by **u-Bin**. The instructions for running the **u-Bin** can be found in the following hyperlink: ![uBin_Manual](https://github.com/ProbstLab/uBin).
-
-In case the user choose not to use **u-Bin**, then the refinement is done by **DAS Tool** flag which is set by default to the **MuDoGeR** framework. The flag for the prokaryotic bin_refinement with **DAS Tool**:
-```
-metawrap bin_refinement -o ~/path/to/output/directory -A ~/path/to/concoct/bins/directory -B ~/path/to/metabat2/bins/directory  -C ~/path/to/maxbin2/bins/directory -cb 50 -xb 10 -ca 40 -xa 30
-```
-
-* The `/path/to/output/directory` indicates the path to the output directory where the output folders will be saved.
-* The `/path/to/concoct/bins/directory` indicates the path to directory that contains the bins produced by **CONCOCT** tool.
-* The `/path/to/metabat2/bins/directory` indicates the path to directory that contains the bins produced by **metaBAT2** tool.
-* The `/path/to/maxbin2/bins/directory` indicates the path to directory that contains the bins produced by **MaxBin2** tool.
-* The `-ca` indicates the minimum completeness for archaeal bins.
-* The `-xa` indicates the maximum contamination for archaeal bins.
-* The `-cb` indicates the minimum completeness for bacterial bins.
-* The `-xb` indicates the maximum contamination for bacterial bins.
-
-The resulted bins are inside the folders `metawrap_50_10_bins` and `metawrap_40_30_bins` for bacteria and archaea respectively.
 
 ## Module 3: Recovery of Uncultivated Viral Genomes
 Note: Make sure that all the viral tools are correctly installed. The links for the installation can be found in the following hyperlink: ![Viral module](https://github.com/mdsufz/MuDoGeR#viral-module).
@@ -452,4 +457,21 @@ mudoger 5.d.2 -o ~/path/to/output/folder -A ~/path/to/prok_genome_covarage_table
 * The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
 
 The final table is found to the output folder as:`final_brats_abs_cov.csv` file.
+
+
+## 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes Representatives
+In this step, the user can pick representative Prokaryotic Metagenome-Assembled Genomes. The threshold for ANI clustering is set by default at 95 but the user has the option to change this value.
+
+Running 2.b:
+```
+mudoger 2.b -i ~/path/to/gtdb_taxonomy/file -b ~/path/to/bbtools/file -m ~/path/to/bins(mags)/folder -o ~/path/to/output/folder -t 95
+``` 
+* The `/path/to/gtdb_taxonomy/file` indicates the path to the taxonomy file, generated by **GTDB-Tk**. The user should choose its .tsv form.
+* The `/path/to/bbtools/file` indicates the path to the file with bbtools.
+* The `/path/to/bins(mags)/folder`  indicates the path to the the prokaryotic bins (mags) folder.
+* The `/path/to/output/folder` indicates the path to the output folder where the resulted files will be saved.
+* The `-t 95` indicates the threshold for ANI clustering.
+
+Inside the output folder the user can find the `bestbins.csv` file that contains the unique taxonomic bins and the `bins_to_brats.txt` file with the selected bins that were chosens as representatives and will be used for the Bin Relative Abundance Table (BRAT) calculation.
+
 
