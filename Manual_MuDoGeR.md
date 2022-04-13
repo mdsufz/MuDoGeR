@@ -119,7 +119,7 @@ The tools that require specific databases in this module are **GTDB-tk** and **C
 For running module 2 use
 
 ```console
-$ mudoger --module preprocess --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
+$ mudoger --module prokaryotes --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
 ```
 Additional modularity for this module is scheduled to happen.
 
@@ -218,11 +218,58 @@ The ***MAGS_results.tsv*** contains relevant annotations from the recovered MAGs
 
 
 
-## Module 3: Recovery of Uncultivated Viral Genomes
-Note: Make sure that all the viral tools are correctly installed. The links for the installation can be found in the following hyperlink: ![Viral module](https://github.com/mdsufz/MuDoGeR#viral-module).
+## Module 3: Recovery of Uncultivated Viral Genomes (Uvigs)
 
-### 3.a: Recovery, quality estimation, taxonomic classification and host identification of Uncultivated Viral Genomes
-In **3.a**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT** are applied to the assembly fasta file, for the recovery of the viral genomes contained in that. The indepentent results of each tool, combined and dereplicated with **Stampede-clustergenomes**. Also, the user can estimate the quality of the dereplicated viral contigs (**CheckV**). Also, the user can do the taxonomic classification of the the clean contigs produced by **CheckV** or in case of small data-sets the dereplicated viral contigs with **vContact2**. Furthermore, the user can choose to determine the prokaryotic host of each virus. Before running the script, it is important for the user to decide about the parameters of minimum coverege (-c) and minimum identity (-i) used in the dereplication. By default, the minimum coverage is 70% and the minimum identity 95%. However the user is free to change the dereplication parameters depending on the aims of the metagenomic analysis or the assembled dataset. 
+The recovery of Uvigs module integrates the viral sequence recovery tools **VirSorter**, **VirFinder** and **VIBRANT**. Later, the sequeces are dereplicated using **Stampede-clustergenomes**. Following the Uvigs are analysed and taxonomicaly estimated using ***Vcontact2**, and quality estimated with **CheckV**. MuDoGeR also uses **WiSH** to predict the prokaryotic hosts from the Uvigs. Finally, MuDoGeR compiles the outputs from the used tools and select high-quality Uvigs.
+
+The tools that require specific databases in the viral module are **VIBRANT**, **WiSH**, and **CheckV**. All the databases should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/JotaKas/MuDoGeR#installation)
+
+For running module 3 use
+
+```console
+$ mudoger --module viruses --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
+```
+
+### 3.a: Recovery of Uncultivated Viral Genomes
+In **3.a**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT** are applied to the assembly fasta file ***final_assembly.fasta*** created during the preprocess module. Sequences recovered with **VirFinder** with p-value > 0.01 and length < 1000 bp are removed. Later, the indepentent results of each tool are combined and dereplicated with **Stampede-clustergenomes** using 70% minimum coverage and 95% minimum identity.
+
+
+After successfully running step 3.a, you should have the following folder structure:
+
+```
+sample_name
+   └── investigation
+      ├── dereplication
+      │   ├── uvigs_95-70.clstr
+      │   ├── uvigs_95-70.fna
+      │   ├── uvigs-cover.csv
+      │   ├── uvigs.fa
+      │   ├── uvigs_mapping.txt
+      │   ├── uvigs-nucmer.out.coords
+      │   ├── uvigs-nucmer.out.delta
+      │   └── viral_unique_contigs
+      ├── vibrant
+      │   └── VIBRANT_final_assembly
+      ├── vibrant_filtered_data.txt
+      ├── virfinder
+      │   └── virfinder_output.tsv
+      ├── virfinder_filtered_data.txt
+      ├── virsorter
+      │   ├── config.yaml
+      │   ├── final-viral-boundary.tsv
+      │   ├── final-viral-combined.fa
+      │   ├── final-viral-score.tsv
+      │   ├── iter-0
+      │   └── log
+      └── virsorter2_filtered_data.txt
+
+```
+
+
+
+
+
+Also, the user can estimate the quality of the dereplicated viral contigs (**CheckV**). Also, the user can do the taxonomic classification of the the clean contigs produced by **CheckV** or in case of small data-sets the dereplicated viral contigs with **vContact2**. Furthermore, the user can choose to determine the prokaryotic host of each virus. Before running the script, it is important for the user to decide about the parameters of minimum coverege (-c) and minimum identity (-i) used in the dereplication. 
 
 Running **3.a**:
 ``` 
