@@ -48,11 +48,11 @@ Module 2 workflow is shown in Figure 3. A detailed description of its execution 
      * **(2.a.1)** Binning with **MaxBin2**, **metaBAT2**, and **CONCOCT**.
      * **(2.a.2)** Bacterial bins refinement and archea bins refinement.
      * **(2.a.3)** Dereplication of the recovered prokaryotic bins.
-* **2.b**: Taxonomic classification, quality estimation, selection of Prokaryotic MAGs.
+* **2.b**: Taxonomic classification, quality estimation, and gene annotation. selection of Prokaryotic MAGs.
      * **(2.b.1)** Taxonomic classification of the prokaryotic bins produced in **(2.a.3)** using **GTDB-Tk**.
      * **(2.b.2)** Generation of quality matrix of the prokaryotic bins produced in **(2.a.3)** using **CheckM**. 
-     * **(2.b.3)** Selection of the prokaryotic MAGs using the information retrieved in **(2.b.1)** and **(2.b.2)**.
-* **2.c**: Sequence metrics calculation and gene annotation.
+     * **(2.b.3)** Prokaryotic MAGs gene annotation with **PROKKA**.
+* **2.c**: Sequence metrics calculation and selection of Prokaryotic MAGs.
      * **(2.c.1)** Sequence metric calculation from the selected MAGs.
      * **(2.c.2)** Prokaryotic MAGs gene annotation with **PROKKA**.
     
@@ -69,7 +69,7 @@ The steps of Module 3  are shown in Figure 4. A detailed description of its exec
     * **(3.a.1)** Recovery of Uvigs using **VirFinder**, **VirSorter** and **VIBRANT**.
     * **(3.a.2)** Filtering of the Uvigs.
     * **(3.a.3)** Dereplication of the Uvigs.
- * **3.b**: Taxonomic estimation and Quality estimation of Uvigs
+ * **3.b**: Taxonomic and Quality estimation of Uvigs
     * **(3.b.1)** Taxonomic classification from the dereplicated Uvigs with **vContact2**.
     * **(3.b.2)** Checking the quality of the dereplicated contigs with **CheckV**.
 * **3.c**: Host identification of the dereplicated Uvigs using **WIsH**. This step is only done automatically if you generate the prokaryotic MAGs using MuDoGeR as well. 
@@ -110,6 +110,8 @@ The steps of Module 4  are shown in Figure 5. A detailed description of its exec
 
 Hopefully, you won't have to worry too much about it. We designed an installation script that should take care of every dependency for you.
 The software used during the pipeline are detailed described here: [Dependencies description](https://github.com/JotaKas/MuDoGeR/blob/master/dependencies_description.md).
+
+Keep in mind that the MuDoGeR pipeline requires some computer power. The complete software installation requires approximately 170 GB, but maker2 uses 99 GB of that space since it requires the database to be installed in a specific manner. See [Module 4 setup](https://github.com/JotaKas/MuDoGeR/blob/master/installation/genemark_maker2_installation.md). The complete database requirements, considering all tools, is around 439.9 GB.
 
 MuDoGeR is designed to support only Linux x64 systems. As for the resource requirements, the MuDoGeR framework uses software that requires a large amount of RAM (e.g **GDTB-Tk**, **MetaWRAP** ). Specific resource requirements vary depending on your data and its sequencing depth. We recommend the user provide at least 180 GB of RAM.
 For the assembly process, **MuDoGeR** attempt to calculate the amount of memory necessary for **metaSPades** (on step **1.b**). The user should be aware that samples with higher expected diversity require a higher amount of memory.
