@@ -150,39 +150,40 @@ After successfully running step 2.b, you should have the following folder struct
 
 ```
 sample_name
-    ├── binning
-    │   ├── initial-binning
-    │   ├── refinement-arc
-    │   ├── refinement-bac
-    │   └── unique_bins
-    │       ├── bin.0.fa
-    │       ├── bin.10.fa
-    │       └── bin.11.fa
-    └── metrics
-        ├── checkm_qc
-        │   ├── bins
-        │   ├── lineage.ms
-        │   ├── outputcheckm.tsv
-        │   └── storage
-        ├── GTDBtk_taxonomy
-        │   ├── align
-        │   ├── classify
-        │   ├── gtdbtk.ar122.markers_summary.tsv
-        │   ├── gtdbtk.bac120.classify.tree 
-        │   ├── gtdbtk.bac120.filtered.tsv 
-        │   ├── gtdbtk.bac120.markers_summary.tsv 
-        │   ├── gtdbtk.bac120.msa.fasta 
-        │   ├── gtdbtk.bac120.summary.tsv 
-        │   ├── gtdbtk.bac120.user_msa.fasta 
-        │   ├── gtdbtk.failed_genomes.tsv 
-        │   ├── gtdbtk.log
-        │   ├── gtdbtk.translation_table_summary.tsv 
-        │   ├── gtdbtk.warnings.log
-        │   └── identify
-        └── prokka
-            ├── bin.0.fa/
-            ├── bin.10.fa/
-            └── bin.11.fa/
+     └── prokaryotes
+             ├── binning
+             │   ├── initial-binning
+             │   ├── refinement-arc
+             │   ├── refinement-bac
+             │   └── unique_bins
+             │       ├── bin.0.fa
+             │       ├── bin.10.fa
+             │       └── bin.11.fa
+             └── metrics
+                 ├── checkm_qc
+                 │   ├── bins
+                 │   ├── lineage.ms
+                 │   ├── outputcheckm.tsv
+                 │   └── storage
+                 ├── GTDBtk_taxonomy
+                 │   ├── align
+                 │   ├── classify
+                 │   ├── gtdbtk.ar122.markers_summary.tsv
+                 │   ├── gtdbtk.bac120.classify.tree 
+                 │   ├── gtdbtk.bac120.filtered.tsv 
+                 │   ├── gtdbtk.bac120.markers_summary.tsv 
+                 │   ├── gtdbtk.bac120.msa.fasta 
+                 │   ├── gtdbtk.bac120.summary.tsv 
+                 │   ├── gtdbtk.bac120.user_msa.fasta 
+                 │   ├── gtdbtk.failed_genomes.tsv 
+                 │   ├── gtdbtk.log
+                 │   ├── gtdbtk.translation_table_summary.tsv 
+                 │   ├── gtdbtk.warnings.log
+                 │   └── identify
+                 └── prokka
+                     ├── bin.0.fa/
+                     ├── bin.10.fa/
+                     └── bin.11.fa/
 
 ```
 
@@ -198,20 +199,21 @@ After successfully running step 2.c, you should have the following folder struct
 
 ```
 sample_name
-    ├── binning
-    │   ├── initial-binning
-    │   ├── refinement-arc
-    │   ├── refinement-bac
-    │   └── unique_bins
-    ├── MAGS_results.tsv
-    └── metrics
-        ├── checkm_qc
-        ├── genome_statistics
-        │   ├── bbtools.tsv
-        │   ├── genome_metrics.tsv
-        │   └── prok_genomes_stats.tsv
-        ├── GTDBtk_taxonomy
-        └── prokka
+     └── prokaryotes
+             ├── binning
+             │   ├── initial-binning
+             │   ├── refinement-arc
+             │   ├── refinement-bac
+             │   └── unique_bins
+             ├── MAGS_results.tsv
+             └── metrics
+                 ├── checkm_qc
+                 ├── genome_statistics
+                 │   ├── bbtools.tsv
+                 │   ├── genome_metrics.tsv
+                 │   └── prok_genomes_stats.tsv
+                 ├── GTDBtk_taxonomy
+                 └── prokka
 
 ```
 The ***MAGS_results.tsv*** contains relevant annotations from the recovered MAGs. You can also check the annotated genes for each MAG by looking at the ***.gtf*** output by ***Prokka*** for each MAG.
@@ -220,7 +222,7 @@ The ***MAGS_results.tsv*** contains relevant annotations from the recovered MAGs
 
 ## Module 3: Recovery of Uncultivated Viral Genomes (Uvigs)
 
-The recovery of Uvigs module integrates the viral sequence recovery tools **VirSorter**, **VirFinder** and **VIBRANT**. Later, the sequeces are dereplicated using **Stampede-clustergenomes**. Following the Uvigs are analysed and taxonomicaly estimated using ***Vcontact2**, and quality estimated with **CheckV**. MuDoGeR also uses **WiSH** to predict the prokaryotic hosts from the Uvigs. Finally, MuDoGeR compiles the outputs from the used tools and select high-quality Uvigs.
+The recovery of the Uvigs module integrates the viral sequence recovery tools **VirSorter**, **VirFinder**, and **VIBRANT**. Later, the sequences are dereplicated using **Stampede-clustergenomes**. Following the Uvigs are analyzed and taxonomically estimated using ***Vcontact2**, and quality is estimated with **CheckV**. MuDoGeR also uses **WiSH** to predict the prokaryotic hosts from the Uvigs. Finally, MuDoGeR compiles the outputs from the used tools and selects high-quality Uvigs.
 
 The tools that require specific databases in the viral module are **VIBRANT**, **WiSH**, and **CheckV**. All the databases should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/JotaKas/MuDoGeR#installation)
 
@@ -231,116 +233,163 @@ $ mudoger --module viruses --meta /path/to/metadata.tsv -o /path/to/output/folde
 ```
 
 ### 3.a: Recovery of Uncultivated Viral Genomes
-In **3.a**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT** are applied to the assembly fasta file ***final_assembly.fasta*** created during the preprocess module. Sequences recovered with **VirFinder** with p-value > 0.01 and length < 1000 bp are removed. Later, the indepentent results of each tool are combined and dereplicated with **Stampede-clustergenomes** using 70% minimum coverage and 95% minimum identity.
+
+In **3.a**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT** are applied to the assembly fasta file ***final_assembly.fasta*** created during the preprocess module. Sequences recovered with **VirFinder** with p-value > 0.01 and length < 1000 bp are removed. Later, the independent results of each tool are combined and dereplicated with **Stampede-clustergenomes** using 70% minimum coverage and 95% minimum identity.
 
 
 After successfully running step 3.a, you should have the following folder structure:
 
 ```
 sample_name
-   └── investigation
-      ├── dereplication
-      │   ├── uvigs_95-70.clstr
-      │   ├── uvigs_95-70.fna
-      │   ├── uvigs-cover.csv
-      │   ├── uvigs.fa
-      │   ├── uvigs_mapping.txt
-      │   ├── uvigs-nucmer.out.coords
-      │   ├── uvigs-nucmer.out.delta
-      │   └── viral_unique_contigs
-      ├── vibrant
-      │   └── VIBRANT_final_assembly
-      ├── vibrant_filtered_data.txt
-      ├── virfinder
-      │   └── virfinder_output.tsv
-      ├── virfinder_filtered_data.txt
-      ├── virsorter
-      │   ├── config.yaml
-      │   ├── final-viral-boundary.tsv
-      │   ├── final-viral-combined.fa
-      │   ├── final-viral-score.tsv
-      │   ├── iter-0
-      │   └── log
-      └── virsorter2_filtered_data.txt
+     └── viruses
+          └── investigation
+             ├── dereplication
+             │   ├── uvigs_95-70.clstr
+             │   ├── uvigs_95-70.fna
+             │   ├── uvigs-cover.csv
+             │   ├── uvigs.fa
+             │   ├── uvigs_mapping.txt
+             │   ├── uvigs-nucmer.out.coords
+             │   ├── uvigs-nucmer.out.delta
+             │   └── viral_unique_contigs
+             ├── vibrant
+             │   └── VIBRANT_final_assembly
+             ├── vibrant_filtered_data.txt
+             ├── virfinder
+             │   └── virfinder_output.tsv
+             ├── virfinder_filtered_data.txt
+             ├── virsorter
+             │   ├── config.yaml
+             │   ├── final-viral-boundary.tsv
+             │   ├── final-viral-combined.fa
+             │   ├── final-viral-score.tsv
+             │   ├── iter-0
+             │   └── log
+             └── virsorter2_filtered_data.txt
 
 ```
 
+The files ***vibrant_filtered_data.txt***, ***virfinder_filtered_data.txt***, and ***virsorter2_filtered_data.txt*** contains the names from the sequences identified as Uvigs. Those are the files used during the next steps.
+
+The final outputs from this step are inside the ***dereplication*** folder. The file ***dereplication/uvigs_95-70.fna*** contains the viral sequences dereplicated, and the file file ***dereplication/uvigs_95-70.clstr*** contains the clusters formed from all identified Uvigs. 
 
 
+### 3.b: Taxonomic and Quality estimation of Uvigs
 
+Initially, MuDoGeR uses the ***dereplication/uvigs_95-70.fna*** file in **prodigal** to produce the amino acid sequence from the Uvigs. These amino acid sequences are input for the **vContact** analysis and taxonomical estimation. Following, viral sequence quality is calculated using **CheckV**.
 
-Also, the user can estimate the quality of the dereplicated viral contigs (**CheckV**). Also, the user can do the taxonomic classification of the the clean contigs produced by **CheckV** or in case of small data-sets the dereplicated viral contigs with **vContact2**. Furthermore, the user can choose to determine the prokaryotic host of each virus. Before running the script, it is important for the user to decide about the parameters of minimum coverege (-c) and minimum identity (-i) used in the dereplication. 
-
-Running **3.a**:
-``` 
-mudoger 3.a  -o /path/to/output/folder -f ~/path/to/assembly/file -c 70 -i 95 --g /path/to/prokaryotic_hosts/folder
-```
-* The `/path/to/output/folder` indicates the path to the output directory where the output folders of **3.a** will be written.
-* The `/path/to/assembly/file` indicates the path to the file of the assemblies. 
-* The `/path/to/prokaryotic_hosts/folder` indicates the path to the directory that contains the genomes of the possible prokaryotic hosts (optional).
-* The `-c` indicates the minimum coverege.
-* The `-i` indicates the minimum identity.
-
-In the output directory five folders are present. The `initial_recovey_folder` contains the results from the independent recovery of each tool. The `dereplication_folder` includes the dereplication results using **Stampede-clustergenomes**, while in the `taxonomy_folder` and `quality_folder` the user can find the results of the taxonomic classification utlizing **vContact2** tool and quality control using **CheckV** tool, respectively. In case the user chooses to use the **WiSH** tool, a fifth folder will be present, called `wish_folder`. This folder will contain the results of the host identification analysis of either the clean contigs produced by **CheckV** or in case of small data-sets the dereplicated contigs.
+After successfully running step 3.b, you should have the following folder structure:
 
 ```
-dereplication_folder  initial_recovey_folder  quality_folder  taxonomy_folder  wish_folder 	
-``` 
-The `VIRAL_PARTICLES_95-70.clstr` file contains the header and the length of the contigs. For example `head -5 dereplication_folder/VIRAL_PARTICLES_95-70.clstr`:
+sample_name
+     └── viruses
+           ├── investigation
+           │   └── CONTENT_FROM_THE_Uvigs_RECOVERY_SHOWN_BEFORE
+           ├── taxonomy
+           │   ├── AUX-1
+           │   ├── AUX-2
+           │   ├── vcontact-output
+           │   │   ├── c1.clusters
+           │   │   ├── c1.ntw
+           │   │   ├── genome_by_genome_overview.csv
+           │   │   ├── merged_df.csv
+           │   │   ├── merged.dmnd
+           │   │   ├── merged.faa
+           │   │   ├── merged.self-diamond.tab
+           │   │   ├── merged.self-diamond.tab.abc
+           │   │   ├── merged.self-diamond.tab.mci
+           │   │   ├── merged.self-diamond.tab_mcl20.clusters
+           │   │   ├── merged.self-diamond.tab_mcxload.tab
+           │   │   ├── modules_mcl_5.0.clusters
+           │   │   ├── modules_mcl_5.0_modules.pandas
+           │   │   ├── modules_mcl_5.0_pcs.pandas
+           │   │   ├── modules.ntwk
+           │   │   ├── sig1.0_mcl2.0_clusters.csv
+           │   │   ├── sig1.0_mcl2.0_contigs.csv
+           │   │   ├── sig1.0_mcl2.0_modsig1.0_modmcl5.0_minshared3_link_mod_cluster.csv
+           │   │   ├── sig1.0_mcl5.0_minshared3_modules.csv
+           │   │   ├── vConTACT_contigs.csv
+           │   │   ├── vConTACT_pcs.csv
+           │   │   ├── vConTACT_profiles.csv
+           │   │   ├── vConTACT_proteins.csv
+           │   │   └── viral_cluster_overview.csv
+           │   ├── viral_genomes.faa
+           │   ├── viral_genomes_g2g.csv
+           │   └── viral_genomes.genes
+           └── vcheck_quality
+              ├── complete_genomes.tsv
+              ├── completeness.tsv
+              ├── contamination.tsv
+              ├── proviruses.fna
+              ├── quality_summary.tsv
+              ├── tmp
+              │   └──checkv_only_files 
+              └── viruses.fna
 
 ```
->Cluster_0	NODE_6_length_9839_cov_5.151165  	   9839
->Cluster_1	NODE_7_length_8843_cov_4.647815  	   8843
->Cluster_2	NODE_9_length_8285_cov_3.135358  	   8285
->Cluster_3	NODE_16_length_6117_cov_3.296107 	   6117
->Cluster_4	NODE_20_length_5444_cov_5.065875 	   5444
-```
-The sequences of the contigs can be found in the `VIRAL_PARTICLES_95-70.fna` file.
 
-The quality summary of the contigs can be found inside the `quality_folder/quality_summary.csv` file. 
-Running:
+The main output from **vContact** used by MuDoGeR is the ***vcontact-output/genome_by_genome_overview.csv***. There you can find the estimated viral taxonomy and confidence score. For a more detailed explanation, please check the **vContact** documentation. Finally, you can find the outputs from **CheckV** inside the ***vcheck_quality*** folder. The resulted file from **CheckV** is organized in ***vcheck_quality/quality_summary.tsv***
 
-```
-head -5 quality_folder/quality_summary.csv 
-contig_id,contig_length,genome_copies,gene_count,viral_genes,host_genes,checkv_quality,miuvig_quality,completeness,completeness_method,contamination,prophage,termini
-NODE_6_length_9839_cov_5.151165,9839,1.0,16,5,0,Low-quality,Genome-fragment,16.25,AAI-based,0.0,No,No
-NODE_7_length_8843_cov_4.647815,8843,1.0,10,5,0,Low-quality,Genome-fragment,15.0,AAI-based,0.0,No,No
-NODE_9_length_8285_cov_3.135358,8285,1.0,14,1,0,Not-determined,Genome-fragment,NA,NA,0.0,No,No
-NODE_21_length_5441_cov_6.763832,5441,1.0,8,8,0,Medium-quality,Genome-fragment,89.8,AAI-based,0.0,No,55-bp-DTR
-```
-In the `taxonomy_folder` the user can find the output inside the `taxonomy/v-contact_output/genome_by_genome_overview.csv` file. Running:
 
-``` 
-head -5 taxonomy/v-contact_output/genome_by_genome_overview.csv
-,Genome,Order,Family,Genus,VC,VC Status,Size,VC Subcluster,VC Subcluster Size,Quality,Adj P-value,Topology Confidence Score,Genera in VC,Families in VC,Orders in VC,Genus Confidence Score
-0,Achromobacter~phage~83-24,Caudovirales,Siphoviridae,Jwxvirus,0_0,Clustered,2,VC_0_0,2,0.193,0.95227493,0.1838,1,1,1,1.0
-1,Achromobacter~phage~JWAlpha,Caudovirales,Podoviridae,Jwalphavirus,7_1,Clustered,11,VC_7_1,11,0.4917,1.0,0.4917,3,1,1,0.9636
-2,Achromobacter~phage~JWX,Caudovirales,Siphoviridae,Jwxvirus,0_0,Clustered,2,VC_0_0,2,0.193,0.95227493,0.1838,1,1,1,1.0
-3,Achromobacter~phage~phiAxp-1,Caudovirales,Siphoviridae,Unassigned,1_0,Clustered,12,VC_1_0,12,0.7098,1.0,0.7098,4,1,1,1.0
-``` 
 
-The results of the host identification are located to `wish_folder/output_results/prediction.list` file. Running:
+### 3.c: Host identification of the dereplicated Uvigs
+
+The Viral-Host identification process is done based on the **WiSH** software. For MuDoGeR to run it automatically, please keep the defined folder structure from the Prokaryotes recovery and Viral recovery. MuDoGeR will use the results from Module 2 and Module 3 to calculate the Viral-Host potential. 
+
+After successfully running step 3.c, you should have the following folder structure:
 
 ```
-head -5 wish_folder/output_results/prediction.list
-"Phage"	"Best hit among provided hosts"	"LogLikelihood"	"p-value if null parameters provided"
-viral-particle-260	ERR1341880_bacbin.1	-1.31937	NA
-viral-particle-216	ERR1341880_bacbin.1	-1.33232	NA
-viral-particle-55	LS08Hbin.1	-1.34156	NA
-viral-particle-241	ERR1341880_bacbin.1	-1.29327	NA
-``` 
-### 3.b: Selection of Uncultivated Viral Genomes
-
-In this step, a selection of Uncultivated Viral Genomes takes place. The Viral representatives are all viral genomes that yielded taxonomic classification with vContact2 and are larger than 15 Kb. A bash script is required for the selection.
-
-Running **3.b**:
+sample_name
+     └── viruses
+           ├── host_prediction
+           │   ├── modelDir
+           │   │   ├── sample_name-bin.0.mm
+           │   │   └── sample_name-bin.1.mm
+           │   ├── nullmodels
+           │   │   ├── computeNullParameters.R
+           │   │   ├── llikelihood.matrix
+           │   │   └── nullParameters.tsv
+           │   ├── output_results
+           │   │   ├── llikelihood.matrix
+           │   │   └── prediction.list
+           │   ├── potential_host_genomes
+           │   │   ├── sample_name-bin.0.fa
+           │   │   └── sample_name-bin.1.fa
+           │   └── uvigs
+           │       ├── sample_name_uvig-0.fa
+           │       └── sample_name_uvig-1000.fa
+           ├── investigation
+           │   └── CONTENT_FROM_THE_Uvigs_RECOVERY_SHOWN_BEFORE
+           ├── taxonomy
+           │   └── CONTENT_FROM_THE_Uvigs_TAXONOMY_SHOWN_BEFORE
+           └── vcheck_quality
+                └── CONTENT_FROM_THE_Uvigs_CheckV_SHOWN_BEFORE
 
 ```
-mudoger 3.b  -o /path/to/output/file -i /path/to/genome_by_genome_overview_csv -s 15
+Inside the ***host_prediction*** folder you will find the Models created by **WiSH** for the prokaryotic MAGs. Inside the ***potential_host_genomes*** you will find the MAGs recovered in Module 2, and inside the ***uvigs*** folder, you have the fasta files for the viral sequences recovered in Module 3. Finally, you will have your main output in ***host_prediction/output_results/prediction.list***. There you will have the Uvigs name, the best provided MAGs match, the LogLikelihood, and the p-value for the match.
+
+
+### 3.d: Selection of Uvigs
+
+Finally, MuDoGeR retrieves all the previously created files and creates a summary table for the recovered Uvigs. A quality filter is also applied.
+
+After successfully running step 3.d, you should have the following folder structure:
+
 ```
-* The `/path/to/output/file` indicates the path to the output directory where the results of **3.b** will be written.
-* The `/path/to/genome_by_genome_overview_csv` indicates the path to the input file with the results from the vcontact2 tool.
-* `-s` indicates the minimum size for the filtering of viral contigs.
+sample_name
+     └── viruses
+          ├── host_prediction
+          ├── investigation
+          ├── taxonomy
+          ├── Uvigs_high_quality.tsv
+          ├── vcheck_quality
+          └── viruses_summary.tsv
+
+```
+
+The ***viruses_summary.tsv*** contains the compiled information from each Uvig (original_contig, uvig_length, provirus, proviral_length, gene_count, viral_genes, host_genes, checkv_quality, miuvig_quality, completeness, completeness_method, contamination, kmer_freq, warnings, putative_host, and likelihood). The ***Uvigs_high_quality.tsv*** is a subset from ***viruses_summary.tsv*** with only high quality Uvigs.
+
+
 
 ## Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes 
 
@@ -399,126 +448,5 @@ Inside the output folder the user can find the `bestbins.csv` that contains the 
 
 ## Module 5: Relative abundance 
 
-Note: Make sure that all the necessary tools are correctly installed. The links for the installation can be found in the following hyperlink: ![Relative abundance](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#relative-abundance).
-
-### 5.a Calculation of relative abundance and genome coverage of Prokaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage tables
-For calculation of relative abundance and construction of relative abundance table for the Prokaryotic Metagenome-Assembled Genomes Representatives, the user can run:
-```
-mudoger 5.a -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folder -o ~/path/to/output/folder 
-``` 
-* The `/path/to/representative_bins/folder` indicates the path to the representative bins folder.
-* The `/path/to/libraries/folder` indicates the path to the folder with the libraries of the sample. 
-* The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
-
-The output folder contains the results of the **5.a** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `brat_v1.csv` which is a crosstable with libraries in the columns and bins in the rows.
-
-Also, there is the optional step **5.a.5**, in which the user can calculate the genome coverage:
-
-Running **5.a.5**: (it is an opinion) 
-
-```
-mudoger 5.a.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_per_bin -C ~/path/to/average_number_of_basepairs_per_library -o ~/path/to/output/folder 
-```
-* The `/path/to/abundance_table` indicates the path to the relative abundance table.
-* The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the base pairs and the total contigs per bin. 
-* The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of base pairs per library.
-* The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
-
-The result is the `brats_abs_cov.csv` file.
-
-### 5.b Calculation of relative abundance and genome coverage of Uncultivated Viral Genomes and construction of relative abundance and genome coverage tables
-For calculation of relative abundance and construction of relative abundance table for the Viral Metagenome-Assembled Genomes Representatives, the user can run:
-```
-mudoger 5.b -i ~/path/to/representative_contigs/folder -l ~/path/to/libraries/folder -o ~/path/to/output/folder 
-``` 
-* The `/path/to/representative_contigs/folder` indicates the path to the representative contigs folder.
-* The `/path/to/libraries/folder` indicates the path to the folder with the libraries of the sample. 
-* The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
-
-The output folder contains the results of the **5.b** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `brat_v1.csv` which is a crosstable with libraries in the columns and contigs in the rows.
-
-Also, there is the optional step **5.b.5**, in which the user can calculate the genome coverage:
-
-Running **5.b.5**: (it is an opinion)
-
-```
-mudoger 5.b.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_per_bin -C ~/path/to/average_number_of_basepairs_per_library -o ~/path/to/output/folder 
-```
-* The `/path/to/abundance_table` indicates the path to the relative abundance table.
-* The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the base pairs and the total contigs per bin. 
-* The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of base pairs per library.
-* The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
-
-The result is the `brats_abs_cov.csv` file.
-
-### 5.c Calculation of relative abundance and genome coverage of Eukaryotic Metagenome-Assembled Genomes and construction of relative abundance and genome coverage  tables
-For calculation of relative abundance and construction of relative abundance table for the Eukaryotic Metagenome-Assembled Genomes Representatives, the user can run:
-```
-mudoger 5.c -i ~/path/to/representative_bins/folder -l ~/path/to/libraries/folder -o ~/path/to/output/folder 
-``` 
-* The `/path/to/representative_bins/folder` indicates the path to the representative bins folder.
-* The `/path/to/libraries/folder` indicates the path to the folder with the libraries of the sample. 
-* The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
-
-The output folder contains the results of the **5.c** in .sam file format. Also, inside the output folder, there is a `mappings` folder which contains the file `brat_v1.csv` which is a crosstable with libraries in the columns and bins in the rows.
-
-Also, there is the optional step **5.c.5**, in which the user can calculate the genome coverage:
-
-Running **5.c.5**:
-
-```
-mudoger 5.c.5 -A ~/path/to/abundance_table -B ~/path/to/basepairs_total_contigs_per_bin -C ~/path/to/average_number_of_basepairs_per_library -o ~/path/to/output/folder 
-```
-* The `/path/to/abundance_table` indicates the path to the relative abundance table.
-* The `/path/to/basepairs_total_contigs_per_bin` indicates the path to the table with the base pairs and the total contigs per bin. 
-* The `/path/to/average_number_of_basepairs_per_library` indicates the path to the table with the average number of base pairs per library.
-* The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
-
-The result is the `brats_abs_cov.csv` file. 
-
-### 5.d Construction of combined relative abundance and combined genome coverage tables
-(to be tested).
-
-```
-mudoger 5.d.1  -o ~/path/to/output/folder -A ~/path/to/prok_relative_abundance_table -B ~/path/to/viral_relative_abundance_table -C ~/path/to/euk_relative_abundance_table  
-``` 
-
-* The `/path/to/prok_relative_abundance_table` indicates the path to the prokaryotic relative abundance table.
-* The `/path/to/viral_relative_abundance_table` indicates the path to the viral relative abundance table.
-* The `/path/to/euk_relative_abundance_table` indicates the path to the eukaryotic relative abundance table.
-* The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
-
-The final table is found to the output folder as: `final_brat.csv` 
-
-Also, there is the optional step 5.d.2, in which the user can create the combined genome coverage table:
-
-Running **5.d.2**:
-
-```
-mudoger 5.d.2 -o ~/path/to/output/folder -A ~/path/to/prok_genome_covarage_table -B ~/path/to/viral_genome_covarage_table -C ~/path/to/euk_genome_covarage_table  
-``` 
-
-* The `/path/to/prok_genome_covarage_table` indicates the path to the prokaryotic coverage abundance table.
-* The `/path/to/viral_genome_covarage_table` indicates the path to the viral coverage abundance table.
-* The `/path/to/euk_genome_covarage_table` indicates the path to the eukaryotic coverage abundance table.
-* The `/path/to/output/folder` indicates the path to the output folder where the results will be saved.
-
-The final table is found to the output folder as:`final_brats_abs_cov.csv` file.
-
-
-## 2.b: Selection of Prokaryotic Metagenome-Assembled Genomes Representatives
-In this step, the user can pick representative Prokaryotic Metagenome-Assembled Genomes. The threshold for ANI clustering is set by default at 95 but the user has the option to change this value.
-
-Running 2.b:
-```
-mudoger 2.b -i ~/path/to/gtdb_taxonomy/file -b ~/path/to/bbtools/file -m ~/path/to/bins(mags)/folder -o ~/path/to/output/folder -t 95
-``` 
-* The `/path/to/gtdb_taxonomy/file` indicates the path to the taxonomy file, generated by **GTDB-Tk**. The user should choose its .tsv form.
-* The `/path/to/bbtools/file` indicates the path to the file with bbtools.
-* The `/path/to/bins(mags)/folder`  indicates the path to the the prokaryotic bins (mags) folder.
-* The `/path/to/output/folder` indicates the path to the output folder where the resulted files will be saved.
-* The `-t 95` indicates the threshold for ANI clustering.
-
-Inside the output folder the user can find the `bestbins.csv` file that contains the unique taxonomic bins and the `bins_to_brats.txt` file with the selected bins that were chosens as representatives and will be used for the Bin Relative Abundance Table (BRAT) calculation.
-
+UNDER DEVELOPMENT
 
