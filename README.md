@@ -166,6 +166,8 @@ Several bioinformatics tools used within MuDoGeR require specific databases to w
 Use this script if you want MuDoGeR to take care of everything. 
 
 ```console
+#Make sure mudoger_env is activated
+$ conda activate mudoger_env
 
 #Go to MuDoGeR cloned directory
 $ cd MuDoGeR
@@ -175,7 +177,7 @@ $ bash -i installation/database-setup.sh -o /path/to/save/databases
 
 ```
 
-**4 - Additional module 4 (eukaryotes) instructions**
+**4 - Additional module 4 (eukaryotes) installation instructions**
 
 Some tools used in module 4 (GENEMARK and MAKER2) require the user to provide information to the developers. Consequently, we could not implement an automatic installation and setup script. However, we created a tutorial to finish the module 4 setup.
 
