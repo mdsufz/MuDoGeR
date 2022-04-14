@@ -4,7 +4,9 @@
 ![ScreenShot](https://github.com/JotaKas/MuDoGeR/blob/master/flowcharts/fig1_20.5.21.png)
 
 
+
 The **Multi-Domain Genome Recovery (MuDoGeR)** framework (**Figure 1**) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs as defined by Parks et al. (2018)) and Uncultivated Viral Genomes (UViGs as defined by  Roux (2019)) from whole-genome sequence (WGS) samples simultaneously. The **MuDoGeR** framework act as a wrapper of several tools. It was designed to be an easy-to-use tool that outputs ready-to-use comprehensive files.
+
 
 The **MuDoGeR** starts with Module 1: **Pre-Processing**, which covers: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation** and **1.c** **Assembly**. The assembled sequences should be used in all the other modules.
 
@@ -76,7 +78,7 @@ The steps of Module 3  are shown in Figure 4. A detailed description of its exec
 * **3.d**: Selection of Uvigs
     * **(3.d.1)** Selection of all viruses that yielded taxonomy when using vContact2 plus those larger than 15 Kb.
     * **(3.d.2)** Selection based on the quality determined by **CheckV**
-   
+
 
 ### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (eMAGs)
 

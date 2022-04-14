@@ -8,7 +8,6 @@
 				██      ██  ██████  ██████   ██████   ██████  ███████ ██   ██ 
 						Multi-Domain Genome Recovery
 							Version 1.0.0
-
 ```
 
 MuDoGeR version 1.0 was designed to be an easy-to-use genome recovery tool. Therefore, we created a setup procedure that requires little user input. Consequently, one important aspect of MuDoGeR usage is the output folder architecture. The folder and files names and architecture are important for the pipeline to work smoothly. If you want to prepare your data using other tools, and later use MuDoGeR, please keep the folder structure and file naming according to the MuDoGeR requirements. 
@@ -22,6 +21,7 @@ For running module 1 use
 ```console
 $ mudoger --module preprocess --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --metaspades -m 100
 ```
+
 The available parameter for module 1 are:
 * -o output directory
 * -m  Given RAM to assembly
@@ -50,7 +50,7 @@ The output directory of the read quality control module (***sample_name/qc***) c
 ```console
 final_pure_reads_1.fastq    pre-QC_report
 final_pure_reads_2.fastq    post-QC_report 
-```
+
 
 The `final_pure_reads` files contain the sequences of the trimmed and decontaminated reads. The `pre-QC_report` and `post-QC_report` folders include the html reports for the reads before and after the read quality control. 
 
@@ -134,7 +134,7 @@ $ mudoger --module prokaryotes --meta /path/to/metadata.tsv -o /path/to/output/f
 ```
 Additional modularity for this module is scheduled to happen.
 
-## 2.a: Prokaryotic sequences binning
+### 2.a: Prokaryotic sequences binning
 
 The binnig process starts by using **Metabat2**, **Maxbin2**, and **CONCOCT** to bin the sequences from the ***final_assembly.fasta*** file.
 Following, the results from all binners are used to refine bacterial bins. For bacterial bins, the refinement process uses 50% minimum completeness and 10% maximum contamination as default. For archeal bins, the refinement process uses 40% minimum completeness and 30% maximum contamination as default. The refinement process used is implemented in **metaWrap**. Finally, MuDoGeR removes redundant bins. 
@@ -153,7 +153,7 @@ sample_name
 Inside the ***unique_bins*** folder you should have all unique prokaryotic bins found in your sample.
 
 
-## 2.b: Taxonomic classification, quality estimation, and gene annotation.
+### 2.b: Taxonomic classification, quality estimation, and gene annotation.
 
 After the binning step is completed, the resulted bins are taxonomic annotated using the **GTDB-tk** software and its most updated database. Following, the unique_bins are checked for quality using the **CheckM** tool. Finally, the recovered prokaryotic bins are annotated using **Prokka**.
 
@@ -202,7 +202,7 @@ Inside the ***metrics*** folder, you should have one folder for each tool. Insid
 The resulted files will be used by MuDoGeR to generate a more comprehensive report of the bins, as well as further processing. If you would like to know more about the outputs of each tool, please check their respective documentation.
 
 
-## 2.c: Sequence metrics calculation and selection of Prokaryotic MAGs.
+### 2.c: Sequence metrics calculation and selection of Prokaryotic MAGs.
 
 Finally, MuDoGeR calculates some relevant metrics from the recovered bins, such as genome_size, number_of_scaffolds, largest_scaffold_size, N50, and N90. In addition, it also counts the number of annotated and unknown genes by prokka. **BBtools** is also used to extract sequence metrics. Later, MuDoGeR merges the results from the other tools and calculates the sequence quality (completeness – 5×contamination (Parks, 2018)). Bins with quality greater than or equal to 50 are considered MAGs and have their information summarised in the ***MAGS_results.tsv*** file.
 
@@ -228,7 +228,6 @@ sample_name
 
 ```
 The ***MAGS_results.tsv*** contains relevant annotations from the recovered MAGs. You can also check the annotated genes for each MAG by looking at the ***.gtf*** output by ***Prokka*** for each MAG.
-
 
 
 ## Module 3: Recovery of Uncultivated Viral Genomes (Uvigs)
@@ -342,7 +341,6 @@ sample_name
 The main output from **vContact** used by MuDoGeR is the ***vcontact-output/genome_by_genome_overview.csv***. There you can find the estimated viral taxonomy and confidence score. For a more detailed explanation, please check the **vContact** documentation. Finally, you can find the outputs from **CheckV** inside the ***vcheck_quality*** folder. The resulted file from **CheckV** is organized in ***vcheck_quality/quality_summary.tsv***
 
 
-
 ### 3.c: Host identification of the dereplicated Uvigs
 
 The Viral-Host identification process is done based on the **WiSH** software. For MuDoGeR to run it automatically, please keep the defined folder structure from the Prokaryotes recovery and Viral recovery. MuDoGeR will use the results from Module 2 and Module 3 to calculate the Viral-Host potential. 
@@ -444,7 +442,6 @@ The main result of step 4.a.1 is the eMAGs fasta files located within the ***fil
 The second part of eMAGs recovery starts by predicting eukaryiotic genes using **GeneMark**. The input for this step are the eMAGs recovered in step 4.a located within the ***filtered_euk_bins*** folder. Following **EukCC** is used to calculate quality and completeness from the eMAGs recovered in 4.a.
 
 For the annotation of eukaryotic genes, MuDoGeR feeds the **MAKER2** tool with the eukaryotic bins and the necessary files generated by **GeneMark** for each eMAG. Finally, **BUSCO** receives the **MAKER2** genes as input for detecting single-copy orthologous genes (SCGs)
-
 
 After successfully running step 4.b, you should have the following folder structure:
 
