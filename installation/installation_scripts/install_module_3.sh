@@ -107,10 +107,10 @@ fi
 #INSTALLING CHECKV
 verify_if_conda_env_exist checkv_env
 if [ $PRESENT == 'yes' ]
-then ;
+then :;
+else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/checkv_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/checkv_env -c conda-forge -c bioconda checkv
-else :
 fi
 
 ############################################################################

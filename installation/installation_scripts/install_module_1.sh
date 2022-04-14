@@ -42,6 +42,7 @@ echo '--> stoping now install module 1 line 38'
 echo '----> mamba install metawrap'
 conda install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y --only-deps -c ursky -c bioconda -c conda-forge -c defaults metawrap-mg=1.3.2
 conda install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y -c bioconda bwa samtools quast megahit trim-galore fastqc
+conda update --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y spades
 echo '----> done'
 fi
 

@@ -15,13 +15,7 @@ cores="$3"
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/checkv_env
 
 
-CHECKVDB="$DATABASES_LOCATION"/checkv/checkv-db-v1.0
+export CHECKVDB="$DATABASES_LOCATION"checkv/checkv-db-v1.0
 
 
 checkv end_to_end  "$input_uvigs" "$output_checkv" -t "$cores"
-~                                                                                                                 
-~                                                                                                                 
-~                                                                                                                 
-~                                                                                                                 
-~                                                                                                                 
-~                                                                                   
