@@ -1,6 +1,6 @@
 # MuDoGeR Manual v1.0
 
-			```console
+```console
 				███    ███ ██    ██ ██████   ██████   ██████  ███████ ██████  
 				████  ████ ██    ██ ██   ██ ██    ██ ██       ██      ██   ██ 
 				██ ████ ██ ██    ██ ██   ██ ██    ██ ██   ███ █████   ██████  
@@ -9,7 +9,7 @@
 						Multi-Domain Genome Recovery
 							Version 1.0.0
 
-			```
+```
 
 MuDoGeR version 1.0 was designed to be an easy-to-use genome recovery tool. Therefore, we created a setup procedure that requires little user input. Consequently, one important aspect of MuDoGeR usage is the output folder architecture. The folder and files names and architecture are important for the pipeline to work smoothly. If you want to prepare your data using other tools, and later use MuDoGeR, please keep the folder structure and file naming according to the MuDoGeR requirements. 
 
@@ -47,7 +47,7 @@ For quality control, MuDoGeR uses the implementation present in [metaWRAP](https
 
 
 The output directory of the read quality control module (***sample_name/qc***) contains:
-```
+```console
 final_pure_reads_1.fastq    pre-QC_report
 final_pure_reads_2.fastq    post-QC_report 
 ```
@@ -71,7 +71,7 @@ Initially, it counts the 33 and 55 unique k-mers from the quality-controlled rea
  
 The k-mer count is used by a linear regression model to predict the amount of memory necessary for assembling the reads with **metaSPAdes**. 
 Inside the calculation of resources output folder (***sample_name/khmer***) the user can find the following files:
-```
+```console
 final_prediction.tsv  input_for_predictR.tsv  kmer-33  kmer-55  metaspades_prediction.tsv
 ```
 The ```final_prediction.tsv``` file contains the final RAM estimation in MB for assembling the sample with **metaspades**
@@ -82,7 +82,7 @@ There are two possible tools for assembling data: **MegaHiT** and **metaSPAdes**
 
 The assembly output folder (***sample_name/assembly***) should contain the following:
 
-```
+```console
 assembly_report.html  final_assembly.fasta  megahit  metaspades  QUAST_out
 ```
 
@@ -140,7 +140,7 @@ The binnig process starts by using **Metabat2**, **Maxbin2**, and **CONCOCT** to
 Following, the results from all binners are used to refine bacterial bins. For bacterial bins, the refinement process uses 50% minimum completeness and 10% maximum contamination as default. For archeal bins, the refinement process uses 40% minimum completeness and 30% maximum contamination as default. The refinement process used is implemented in **metaWrap**. Finally, MuDoGeR removes redundant bins. 
 
 After a successful run of prokaryotic sequence binning you should have the following folder structure:
-```
+```console
 sample_name
     └── prokaryotes
         └── binning
@@ -159,7 +159,7 @@ After the binning step is completed, the resulted bins are taxonomic annotated u
 
 After successfully running step 2.b, you should have the following folder structure:
 
-```
+```console
 sample_name
      └── prokaryotes
              ├── binning
@@ -208,7 +208,7 @@ Finally, MuDoGeR calculates some relevant metrics from the recovered bins, such 
 
 After successfully running step 2.c, you should have the following folder structure:
 
-```
+```console
 sample_name
      └── prokaryotes
              ├── binning
@@ -250,7 +250,7 @@ In **3.a**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT*
 
 After successfully running step 3.a, you should have the following folder structure:
 
-```
+```console
 sample_name
      └── viruses
           └── investigation
@@ -291,7 +291,7 @@ Initially, MuDoGeR uses the ***dereplication/uvigs_95-70.fna*** file in **prodig
 
 After successfully running step 3.b, you should have the following folder structure:
 
-```
+```console
 sample_name
      └── viruses
            ├── investigation
@@ -349,7 +349,7 @@ The Viral-Host identification process is done based on the **WiSH** software. Fo
 
 After successfully running step 3.c, you should have the following folder structure:
 
-```
+```console
 sample_name
      └── viruses
            ├── host_prediction
@@ -386,7 +386,7 @@ Finally, MuDoGeR retrieves all the previously created files and creates a summar
 
 After successfully running step 3.d, you should have the following folder structure:
 
-```
+```console
 sample_name
      └── viruses
           ├── host_prediction
@@ -422,7 +422,7 @@ The eMAGs recovery starts with ***final_assembly.fasta*** as input to the **EukR
 
 After successfully running step 4.a, you should have the following folder structure:
 
-```
+```console
 sample_name
      └── eukaryotes
 		├── eukaryotes_bins
@@ -448,7 +448,7 @@ For the annotation of eukaryotic genes, MuDoGeR feeds the **MAKER2** tool with t
 
 After successfully running step 4.b, you should have the following folder structure:
 
-```
+```console
 sample_name
      └── eukaryotes
 		├── eukaryotes_bins
