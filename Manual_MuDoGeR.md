@@ -125,7 +125,7 @@ The relevant files generated in Module 1 used for the other modules are ***assem
 
 This module integrates the prokariotic binning procedure implemented in **metaWrap** using **Metabat2**, **Maxbin2**, and **CONCOCT** binners, a MuDoGeR bin dereplacation method, the **GTDB-tk** taxonomic annotation, **CheckM** quality estimation, **Prokka** metagenomic gene annotation,  MuDoGeR sequence metrics and **BBtools** sequence metrics calculation tools.
 
-The tools that require specific databases in this module are **GTDB-tk** and **CheckM**. Both should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/JotaKas/MuDoGeR#installation)
+The tools that require specific databases in this module are **GTDB-tk** and **CheckM**. Both should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/mdsufz/MuDoGeR#installation)
 
 For running module 2 use
 
@@ -234,7 +234,7 @@ The ***MAGS_results.tsv*** contains relevant annotations from the recovered MAGs
 
 The recovery of the Uvigs module integrates the viral sequence recovery tools **VirSorter**, **VirFinder**, and **VIBRANT**. Later, the sequences are dereplicated using **Stampede-clustergenomes**. Following the Uvigs are analyzed and taxonomically estimated using ***Vcontact2**, and quality is estimated with **CheckV**. MuDoGeR also uses **WiSH** to predict the prokaryotic hosts from the Uvigs. Finally, MuDoGeR compiles the outputs from the used tools and selects high-quality Uvigs.
 
-The tools that require specific databases in the viral module are **VIBRANT**, **WiSH**, and **CheckV**. All the databases should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/JotaKas/MuDoGeR#installation)
+The tools that require specific databases in the viral module are **VIBRANT**, **WiSH**, and **CheckV**. All the databases should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/mdsufz/MuDoGeR#installation)
 
 For running module 3 use
 
@@ -404,9 +404,9 @@ The ***viruses_summary.tsv*** contains the compiled information from each Uvig (
 
 The recovery of the eMAGs module integrates **EukRep** for selecting the eukaryotic contigs from the initial assembly, the **CONCOCT** binner, **GeneMark** for prediction of eukaryotic genes, **EukCC** for for quality estimation from eukaryiotic sequences, **MAKER2** for gene annotation, and **BUSCO** for detection of single-copy orthologous genes.
 
-The tools that require specific databases in the eukaryotic module are **EukCC**, **BUSCO**, and **MAKER2**. **BUSCO** and **EukCC** databases  should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/JotaKas/MuDoGeR#installation). 
+The tools that require specific databases in the eukaryotic module are **EukCC**, **BUSCO**, and **MAKER2**. **BUSCO** and **EukCC** databases  should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/mdsufz/MuDoGeR#installation). 
 
-Module 4 requires specific configuration that can't be done automatically. Please, make sure you follow the instructions [here](https://github.com/JotaKas/MuDoGeR/blob/master/installation/genemark_maker2_installation.md) to complete **GeneMark** and **MAKER2** installation.
+Module 4 requires specific configuration that can't be done automatically. Please, make sure you follow the instructions [here](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md) to complete **GeneMark** and **MAKER2** installation.
 
 For running module 4 use:
 
