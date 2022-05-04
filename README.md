@@ -1,7 +1,7 @@
  # Multi-Domain Genome Recovery (MuDoGeR)
  
  
-![ScreenShot](https://github.com/JotaKas/MuDoGeR/blob/master/flowcharts/fig1_20.5.21.png)
+![ScreenShot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/fig1_20.5.21.png)
 
 
 
@@ -19,16 +19,16 @@ Furthermore, in **Module 5**: **Relative Abundance**, there are the selection of
 
 ## MuDoGeR Overview
 
-* Instructions for using the **MuDoGeR** can be found in the following hyperlink: [Manual MuDoGeR](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md).
-* Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: [Module description](https://github.com/JotaKas/MuDoGeR/blob/master/module_description.md).
-* Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: [System requirements](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#system-requirements).
-* Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: [Installation](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#installation).
-* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: [Simplified usage of the MuDoGeR](https://github.com/JotaKas/MuDoGeR/blob/master/README.md#simplified-usage-of-the-mudoger).
+* Instructions for using the **MuDoGeR** can be found in the following hyperlink: [Manual MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
+* Detailed description of the **MuDoGeR** steps can be found in the following hyperlink: [Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md).
+* Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: [System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
+* Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: [Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
+* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: [Simplified usage of the MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#simplified-usage-of-the-mudoger).
 ### Module 1: Pre-Processing 
 
-![Screenshot](https://github.com/JotaKas/MuDoGeR/blob/master/flowcharts/Module%201.PNG) 
+![Screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/Module%201.PNG) 
 
-The steps of Module 1 are shown in Figure 2. A detailed description of its execution and outputs are found here: [Pre-Processing description](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
+The steps of Module 1 are shown in Figure 2. A detailed description of its execution and outputs are found here: [Pre-Processing description](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
  
  The steps of Module 1 can be summarized as follows:
 
@@ -40,9 +40,9 @@ The steps of Module 1 are shown in Figure 2. A detailed description of its execu
 
 ### Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes (MAGs)
 
-![screenshot](https://github.com/JotaKas/MuDoGeR/blob/master/flowcharts/MODULE_2_21.5.21.png)
+![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/MODULE_2_21.5.21.png)
 
-Module 2 workflow is shown in Figure 3. A detailed description of its execution and outputs are found here: [Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
+Module 2 workflow is shown in Figure 3. A detailed description of its execution and outputs are found here: [Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
 
  The steps of Module 2 can be summarized as following:
  
@@ -61,9 +61,9 @@ Module 2 workflow is shown in Figure 3. A detailed description of its execution 
     
 ### Module 3: Recovery of Uncultivated Viral Genomes (Uvigs)
 
-![](https://github.com/JotaKas/MuDoGeR/blob/c65d851f6439cc4eb8c18672afb5cde9a9165f40/flowcharts/Module%203.png) 
+![](https://github.com/mdsufz/MuDoGeR/blob/c65d851f6439cc4eb8c18672afb5cde9a9165f40/flowcharts/Module%203.png) 
 
-The steps of Module 3  are shown in Figure 4. A detailed description of its execution and outputs are found here: [Pipelines for viral genomes recovery](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes).
+The steps of Module 3  are shown in Figure 4. A detailed description of its execution and outputs are found here: [Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes).
 
  The steps of Module 3 can be summarized as follows: 
  
@@ -82,9 +82,9 @@ The steps of Module 3  are shown in Figure 4. A detailed description of its exec
 
 ### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (eMAGs)
 
-[](https://github.com/JotaKas/MuDoGeR/blob/master/Module%204.png)
+[](https://github.com/mdsufz/MuDoGeR/blob/master/Module%204.png)
 
-The steps of Module 4  are shown in Figure 5. A detailed description of its execution and outputs are found here:  [Pipelines for eukaryotic genomes recovery](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
+The steps of Module 4  are shown in Figure 5. A detailed description of its execution and outputs are found here:  [Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
 
  The steps of Module 4 can be summarized as follows:
 * **4.a**: Recovery and binning of Eukaryotic assemblies.
@@ -99,7 +99,7 @@ The steps of Module 4  are shown in Figure 5. A detailed description of its exec
 
 
 ### Module 5 Relative abundace
-[](https://github.com/JotaKas/MuDoGeR/blob/master/Module%205.PNG)
+[](https://github.com/mdsufz/MuDoGeR/blob/master/Module%205.PNG)
 
 
 **UNDER DEVELOPMENT**
@@ -111,9 +111,9 @@ The steps of Module 4  are shown in Figure 5. A detailed description of its exec
 **Warning:** complex dependencies ahead!
 
 Hopefully, you won't have to worry too much about it. We designed an installation script that should take care of every dependency for you.
-The software used during the pipeline are detailed described here: [Dependencies description](https://github.com/JotaKas/MuDoGeR/blob/master/dependencies_description.md).
+The software used during the pipeline are detailed described here: [Dependencies description](https://github.com/mdsufz/MuDoGeR/blob/master/dependencies_description.md).
 
-Keep in mind that the MuDoGeR pipeline requires some computer power. The complete software installation requires approximately 170 GB, but maker2 uses 99 GB of that space since it requires the database to be installed in a specific manner. See [Module 4 setup](https://github.com/JotaKas/MuDoGeR/blob/master/installation/genemark_maker2_installation.md). The complete database requirements, considering all tools, is around 439.9 GB.
+Keep in mind that the MuDoGeR pipeline requires some computer power. The complete software installation requires approximately 170 GB, but maker2 uses 99 GB of that space since it requires the database to be installed in a specific manner. See [Module 4 setup](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md). The complete database requirements, considering all tools, is around 439.9 GB.
 
 MuDoGeR is designed to support only Linux x64 systems. As for the resource requirements, the MuDoGeR framework uses software that requires a large amount of RAM (e.g **GDTB-Tk**, **MetaWRAP** ). Specific resource requirements vary depending on your data and its sequencing depth. We recommend the user provide at least 180 GB of RAM.
 For the assembly process, **MuDoGeR** attempt to calculate the amount of memory necessary for **metaSPades** (on step **1.b**). The user should be aware that samples with higher expected diversity require a higher amount of memory.
@@ -153,7 +153,7 @@ $ conda activate mudoger_env
 
 #clone repository
 
-$ git clone https://github.com/JotaKas/MuDoGeR.git
+$ git clone https://github.com/mdsufz/MuDoGeR.git
 
 $ cd MuDoGeR
 
@@ -185,7 +185,7 @@ $ bash -i installation/database-setup.sh -o /path/to/save/databases
 
 Some tools used in module 4 (GENEMARK and MAKER2) require the user to provide information to the developers. Consequently, we could not implement an automatic installation and setup script. However, we created a tutorial to finish the module 4 setup.
 
-The module 4 setup tutorial is found in [Module 4 setup](https://github.com/JotaKas/MuDoGeR/blob/master/installation/genemark_maker2_installation.md)
+The module 4 setup tutorial is found in [Module 4 setup](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md)
 
 
 # Simplified usage of the MuDoGeR
@@ -279,7 +279,7 @@ $ mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/out
 
 ```
 
-MuDoGeR is designed to completely run all multi-domain genome recovery pipeline. In order for MuDoGeR to work automaticaly, from start to finish, we use a specific folder structure. Please, read the [Manual_MuDoGeR](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md) if you would like to manipulate MuDoGeR. 
+MuDoGeR is designed to completely run all multi-domain genome recovery pipeline. In order for MuDoGeR to work automaticaly, from start to finish, we use a specific folder structure. Please, read the [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) if you would like to manipulate MuDoGeR. 
 
 The two level folder structure is as follows:
 ```console
@@ -306,7 +306,7 @@ The two level folder structure is as follows:
 
 ```
 
-A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https://github.com/JotaKas/MuDoGeR/blob/master/Manual_MuDoGeR.md).
+A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 
 
 # Citing
