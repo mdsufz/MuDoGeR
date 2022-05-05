@@ -102,7 +102,6 @@ bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-2-3_bin-ref-archea.sh
 fi
 
 
-              
 # 4 BIN REDUNANCY REMOVAL
 if [ -d  "$libname_folder"/prokaryotes/binning/unique_bins ];
 then echo "-> Bin dereplication is done. Please check: "$libname_folder"/prokaryotes/binning/unique_bins"
@@ -110,13 +109,6 @@ else
 echo '-> Run bin redundancy removal.'
 mkdir -p "$libname_folder"/prokaryotes/binning/unique_bins
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-2-4_bin-dereplication.sh  "$libname_folder" 
-fi
-
-
-if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
-   echo -e "\nNo relevant eukaryotic found"; touch "$libname_folder"/eukaryotes/no_euk_bins_for_genemark
-else
-   bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-2_genemark.sh "$libname_folder"/eukaryotes	
 fi
 
 
@@ -129,12 +121,6 @@ echo "-> Run bin taxonomy"
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-2-5_bin-taxonomy.sh "$libname_folder"/prokaryotes "$cores"
 fi
 
-
-if [ -z "$(ls -A "$libname_folder"/eukaryotes/filtered_euk_bins/)" ]; then
-   echo -e "\nNo relevant eukaryotic found"; touch "$libname_folder"/eukaryotes/no_euk_bins_for_genemark
-else
-   bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-4-2_genemark.sh "$libname_folder"/eukaryotes	
-fi
 
 # 6 CheckM quality control
 if [ -f "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv ];
