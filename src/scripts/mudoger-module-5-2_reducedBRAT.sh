@@ -43,10 +43,24 @@ for bin in *.fa ;
   do echo -e "\nIndexing $bin" 
   bowtie2-build "$bin" "${bin/.fa/}";
 done
+
+#Run mapping with bowtie2
+aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
+for i in $aux; 
+	do 
+	r1=$project_folder/$i/qc/final_pure_reads_1.fastq; 
+	r2=$project_folder/$i/qc/final_pure_reads_2.fastq;
+	bowtie2 -p $cores -x $i -1 $r1 -2 $r2 -S $i.map.sam;
+  #Convert SAM to BAM and sort
+  samtools sort -o $i.map.sorted.bam -@ $cores -O bam $l.map.sam;
+  
+done
+
 cd -
-
-
-
 
 #deactivate env
 conda deactivate
+
+
+
+
