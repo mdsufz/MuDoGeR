@@ -101,6 +101,33 @@ The steps of Module 4  are shown in Figure 5. A detailed description of its exec
 ### Module 5 Relative abundace
 [](https://github.com/mdsufz/MuDoGeR/blob/master/Module%205.PNG)
 
+The steps of Module 5  are shown in Figure 6. A detailed description of its execution and outputs are found here: [Pipelines for abundance calculation](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
+Essentially, module 5 maps the quality-controlled reads of your sample on the recovered MAGs or annotated prokaryotic genes. We designed three possible mapping types to calculate abundance: **reduced**, **complete**, or **genes**. A detailed description of their differences can be found [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance)
+
+The steps of Module 5 can be summarized as follows. Depending on your choice, your samples will be mapped following steps on **5.a**, **5.b** , or **5.c**: 
+
+* **5.a**: Complete relative abundance calculation
+    * **(5.a.1)** Select MAGs from all samples within the provided metadata table.
+    * **(5.a.2)** Calculate MAGs size, the number of quality-controlled reads and the average read length of all samples to be mapped.
+    * **(5.a.3)** Index MAGs.
+    * **(5.a.4)** Map reads from samples on their respective recovered MAGs.
+    * **(5.a.5)** Calculate MAGs absolute number of hits, relative abundance, and coverage.
+ * **5.b**: Reduced relative abundance calculation
+    * **(5.b.1)** Group recovered MAGs of all samples within the provided metadata table using **gOTUpick**.
+    * **(5.b.2)** Select the highest quality MAG within the **gOTUpick** groups as the group's representative MAG.
+    * **(5.b.3)** Calculate representative MAGs size, the number of quality-controlled reads, and the average read length of all samples to be mapped.
+    * **(5.b.4)** Index selected MAGs
+    * **(5.b.5)** Map reads from the sample on the representatives MAGs from the **gOTUpick** group.
+    * **(5.b.6)** Calculate representative MAGs absolute number of hits, relative abundance, and coverage tables.
+* **5.c**: Genes relative abundance calculation. Currently working only on prokaryotic genes
+    * **(5.c.1)** Select MAGs from all samples within the provided metadata table
+    * **(5.c.2)** Index MAGs.
+    * **(5.c.3)** Map reads from samples on their respective recovered MAGs.
+    * **(5.c.4)** Convert the .gff file from **PROKKA** gene annotation on each MAG to .gtf.
+    * **(5.c.5)** Calculate average read length of all mapped samples.
+    * **(5.c.6)** Calculate gene lenght from **PROKKA** .gtf file.
+    * **(5.c.7)** Calculate genes absolute number of hits, relative abudance, coverage, and TPM tables for each MAG.
+
 
 **UNDER DEVELOPMENT**
 
@@ -238,7 +265,7 @@ Usage: mudoger --module module_name --meta metadata_table.tsv -o output_folder [
           	gene_annotation
           	euk_scg
   --module abundance_tables	Abundance calculation
-          	brat_type       can be --complete or --reduced (default: --reduced)
+          	brat_type       can be --complete , --reduced or --genes (default: --reduced)
           	mapping_type	can be --absolute-values, --coverage, and --relative-abundance
 
   --help | -h		show this help message

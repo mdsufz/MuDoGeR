@@ -503,3 +503,34 @@ Finally, you can find **BUSCO** results in the files ***eukaryotes/euk_completen
 
 UNDER DEVELOPMENT
 
+Module 5 of MuDoGeR maps the quality-controlled reads to the recovered MAGs and Uvigs to calculate their abundance within the WGS samples.
+
+Consequently, MuDoGeR requires as input the path to the quality-controlled reads and the path to the recovered MAGs and Uvigs sequences.
+
+MuDoGeR provides three mapping pipelines, called --reduced , --complete , and --genes
+
+When using the --complete flag, MuDoGeR maps the WGS reads from a sample to the recovered MAGs from the same WGS sample. Therefore, the mapping occurs only within the sample. This flag outputs an abundance table for each MAG and Uvigs found in the sample.
+
+When using the --reduced flag, MuDoGeR collects the MAGs recovered from all WGS samples provided in the --meta metadata table and groups them based on ANI 95 distance measure. Later, MuDoGeR selects the highest quality MAG within the group and maps it to the WGS reads from the samples where the MAGs from the group were recovered. This flag outputs an abundance table with samples in columns and representative MAGs and Uvigs as rows. 
+
+In addition, you can use the --gene flag to map the WGS quality-controlled reads to all the prokka annotated genes found in all MAGs in that sample.
+
+MuDoGeR has 3 output formats for calculating abundance: --absolute-values, --coverage, and --relative-abundance. They can be used simultaneously.
+
+You can run module 5 as follows:
+
+mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --reduced --absolute-values --coverage --relative-abundance
+
+After a succesul run of module 5, you should have the following folder structure:
+```console
+output/folder
+	└── mapping_results
+	    ├── all_bins
+	    ├── all_metrics
+	    └── gOTUpick_results
+	    └── abundance_results
+```
+Inside the ```gOTUpick_results``` folder, you should find the list of MAGs selected for the mapping if the ```--reduced``` flag is used.
+Inside the ```abundance_results``` folder, you should have the list of MAGs abundance per sample if you selected the ```--complete``` flag or the abundance tables calculated if you selected the ```--reduced``` flag. The output files are named according to the selected output calculation method (--absolute-values, --coverage, and --relative-abundance). If you select the --gene flag, you should find the gene abundance tables for each MAG within the prokaryotes folder for each sample. The gene abundance tables should be under a new folder named ```gene_abundaces``` inside the ```prokaryotes``` folder.
+
+

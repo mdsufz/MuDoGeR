@@ -33,7 +33,7 @@ help_message () {
 
 libname_folder=$(pwd) 		#output path for the downloaded sequences
 memory=10			#given Memory to the Assembly process in GB
-num_cores=1 			#number of threads that is going to be used
+cores=1 			#number of threads that is going to be used
 
 # loop through input params
 while true; do
@@ -52,13 +52,6 @@ done
 
 
 echo 'running'
-#libname_folder=$1              # output folder path 
-#assembly=$2                    # path to the assembly file
-#forward_library=$3             # forward library path /path/to/libname_1.fastq
-#reverse_library=$4             # reverse library path. /path/to/libname_2.fastq
-###########output_folder=$5              # master output folder to be created and defined by user
-#cores=$5
-
 
 conda activate mudoger_env
 config_path="$(which config.sh)"
@@ -109,7 +102,6 @@ bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-2-3_bin-ref-archea.sh
 fi
 
 
-              
 # 4 BIN REDUNANCY REMOVAL
 if [ -d  "$libname_folder"/prokaryotes/binning/unique_bins ];
 then echo "-> Bin dereplication is done. Please check: "$libname_folder"/prokaryotes/binning/unique_bins"
@@ -128,6 +120,7 @@ else
 echo "-> Run bin taxonomy"
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-2-5_bin-taxonomy.sh "$libname_folder"/prokaryotes "$cores"
 fi
+
 
 # 6 CheckM quality control
 if [ -f "$libname_folder"/prokaryotes/metrics/checkm_qc/outputcheckm.tsv ];
