@@ -67,6 +67,6 @@ yes | cp $WORKDIR/*/$bins_input_path/* $all_bins_path
 
 #Run
 
-bash -i "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/gOTUpick.sh --fastANI-thread $cores $prefilter --bb-input $all_metrics_path/bbtools_all.tsv --checkm-input $all_metrics_path/checkm_all.tsv --gtdb-input $all_metrics_path/gtdbtk_all.tsv -m $all_bins_path -o $gOTUpick_results_path
+bash -i "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/gOTUpick.sh --fastANI-thread $cores $prefilter --bb-input $all_metrics_path/bbtools_all.tsv --checkm-input $all_metrics_path/checkm_all.tsv --gtdb-input $all_metrics_path/gtdbtk_all.tsv -m $all_bins_path -o $gOTUpick_results_path --a2 95
 
 conda deactivate
