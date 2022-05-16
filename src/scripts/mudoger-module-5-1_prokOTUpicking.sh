@@ -69,4 +69,22 @@ yes | cp $WORKDIR/*/$bins_input_path/* $all_bins_path
 
 bash -i "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/gOTUpick.sh --fastANI-thread $cores $prefilter --bb-input $all_metrics_path/bbtools_all.tsv --checkm-input $all_metrics_path/checkm_all.tsv --gtdb-input $all_metrics_path/gtdbtk_all.tsv -m $all_bins_path -o $gOTUpick_results_path --a2 95
 
+#Create auxiliary results files
+
+awk 'NR==1 {printf("%s\t%s\n", $0, "representative_bin")}  NR>1 {printf("%s\t%s\n", $0, "*") }' $gOTUpick_results_path/final_output/bestbins.txt > $gOTUpick_results_path/final_output/repbin_aux
+
+awk '{ print $2, "\t" ,$4}' $gOTUpick_results_path/results/final_groups.tsv | tail -n +2 > $gOTUpick_results_path/final_output/aux_final_groups
+
+cat $gOTUpick_results_path/final_output/repbin_aux $gOTUpick_results_path/final_output/aux_final_groups > $gOTUpick_results_path/final_output/concat_file.tsv
+
+awk 'BEGIN{OFS=","} {$1=$1; print}' $gOTUpick_results_path/final_output/concat_file.tsv > $gOTUpick_results_path/final_output/concat_file.csv
+
+awk -F "\"*,\"*" '!seen[$1,$2]++' $gOTUpick_results_path/final_output/concat_file.csv | sort -k2 -t, > $gOTUpick_results_path/final_output/final_groups_output.csv
+
+rm -f $gOTUpick_results_path/final_output/repbin_aux
+rm -f $gOTUpick_results_path/final_output/aux_final_groups
+rm -f $gOTUpick_results_path/final_output/concat_file.tsv
+rm -f $gOTUpick_results_path/final_output/concat_file.csv
+
+
 conda deactivate
