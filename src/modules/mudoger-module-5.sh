@@ -200,15 +200,11 @@ elif [ "$reduced" = "true" ]; then
 elif [ "$genes" = "true" ]; then
 
 	#Gene mapping on assembly	submodule 5-3
-	if [ -f $WORKDIR/mapping_results/gOTUpick_results/final_output/bestbins.txt ]; then
-   		echo -e "\nGenome OTU pick already done. Check '$WORKDIR'/mapping_results/gOTUpick_results/final_output/bestbins.txt";
-	else
-		echo -e "\n Gene mapping STARTED"
-   		bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-3_genemap.sh $WORKDIR \
-											$metadata_table \
-											$THREAD
-		echo -e "\n Gene mapping DONE"
-	fi
+	echo -e "\n Gene mapping STARTED"
+	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-3_genemap.sh $WORKDIR \
+										$metadata_table \
+										$THREAD
+	echo -e "\n Gene mapping DONE"
 
 
 
