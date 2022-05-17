@@ -67,7 +67,8 @@ reduced=false;
 complete=false;
 absolute=false;
 coverage=false;
-relative=false
+relative=false;
+genes=false;
 
 OPTS='getopt -o f:r:o:t --long reduced:,complete:,absolute-values:,coverage:,relative-abundance:,help -- "$@" '
 
@@ -82,7 +83,8 @@ do
 		-t) THREAD="$2"; shift 2;;
 		--meta) metadata_table=$2; shift 2;;
 		--reduced) reduced=true; shift 1;; 
-		--complete) complete=true; shift 1;; 
+		--complete) complete=true; shift 1;;
+		--genes) genes=true; shift 1;; 
 		--absolute-values) absolute=true; shift 1;; 
 		--coverage) coverage=true; shift 1;; 
 		--relative-abundance) relative=true; shift 1;; 
@@ -106,7 +108,7 @@ fi
 #fi
 
 #Checking if all non-optional parameters are entered correctly
-if [ "$reduced" = "false" ] && [ "$complete" = "false" ]; then 
+if [ "$reduced" = "false" ] && [ "$complete" = "false" ] && [ "$genes" = "false" ]; then 
 	echo "Non-optional parameter for BRAT type was not entered. Please select --reduced or --complete."
 	help_message; exit 1
 fi
@@ -142,10 +144,24 @@ conda activate mudoger_env
 config_path="$(which config.sh)"
 source $config_path
 
-#     OTUpick                         submodule 5-1
-#     Mapping process	              submodule 5-2
+#	OTUpick                         submodule 5-1
+#	Bin Mapping process             submodule 5-2
+#	Gene mapping on assembly	submodule 5-3
 
-if [ "$brat_type" = "--complete" ]; then
+echo -e "\n MAP CALCULATION STARTED"
+
+#   OTU picking      submodule 5-1
+
+if [ -f $WORKDIR/mapping_results/gOTUpick_results/final_output/bestbins.txt ]; then
+	echo -e "\nGenome OTU pick already done. Check '$WORKDIR'/mapping_results/gOTUpick_results/final_output/bestbins.txt";
+else
+	echo -e "\n OTU picking STARTED"
+	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-1_prokOTUpicking.sh $WORKDIR $metadata_table $THREAD
+	echo -e "\n OTU picking DONE"
+fi
+	
+
+if [ "$complete" = "true" ]; then
 
 	echo -e "\n EUK BIN CALCULATION STARTED"
 
@@ -181,10 +197,22 @@ elif [ "$reduced" = "true" ]; then
 		echo -e "\n Reduced BRAT DONE"
 	#fi
 
-	
-	
-fi
+elif [ "$genes" = "true" ]; then
 
+	#Gene mapping on assembly	submodule 5-3
+	if [ -f $WORKDIR/mapping_results/gOTUpick_results/final_output/bestbins.txt ]; then
+   		echo -e "\nGenome OTU pick already done. Check '$WORKDIR'/mapping_results/gOTUpick_results/final_output/bestbins.txt";
+	else
+		echo -e "\n Gene mapping STARTED"
+   		bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-3_genemap.sh $WORKDIR \
+											$metadata_table \
+											$THREAD
+		echo -e "\n Gene mapping DONE"
+	fi
+
+
+
+fi
 
 
 
