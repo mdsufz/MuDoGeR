@@ -20,72 +20,85 @@ metadata_table="$2"
 cores="$3"
 
 #Define dependent parameters
-assembly_input_path="prokaryotes/metrics/genome_statistics/bbtools.tsv"
-qc_input_path="prokaryotes/metrics/checkm_qc/outputcheckm.tsv"
+assembly_input_file="assembly/final_assembly.fasta"
+qc_input_path="qc/"
 
 #Define output files path
-all_bins_path="$WORKDIR/mapping_results/all_bins"
-all_metrics_path="$WORKDIR/mapping_results/all_metrics"
-gOTUpick_results_path="$WORKDIR/mapping_results/gOTUpick_results"
+genemap_results_path="$WORKDIR/mapping_results/assembly_gene_map/raw_mapping"
+functional_assembly_path="$WORKDIR/mapping_results/assembly_gene_map/functional_annotation/"
+genelength_results_path="$WORKDIR/mapping_results/assembly_gene_map/genelength/"
+genemap_count_results_path="$WORKDIR/mapping_results/assembly_gene_map/map_absolute_count/"
+genemap_cov_results_path="$WORKDIR/mapping_results/assembly_gene_map/map_coverage_norm/"
+genemap_tpm_results_path="$WORKDIR/mapping_results/assembly_gene_map/map_tpm_norm/"
 
-#gOTU pick started
-conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env
+#Gene mapping started
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/brat_env
 
-mkdir -p $all_bins_path
-mkdir -p $all_metrics_path
-mkdir -p $gOTUpick_results_path
-
-#Concat results metrics for all samples
-awk '
-    FNR==1 && NR!=1 {next;}{print}
-' $WORKDIR/*/$bbtools_input_path >$all_metrics_path/bbtools_all.tsv
-
-awk -F$'\t' '{print $NF}' $all_metrics_path/bbtools_all.tsv | rev | cut -d '/' -f1 | sed 's/af.//1' | rev > $all_metrics_path/aux
-
-awk -F"\t" '{OFS=FS}{ $20="" ; print }' $all_metrics_path/bbtools_all.tsv > $all_metrics_path/bbtools_all_tmp.tsv
-
-paste --delimiters='\t' $all_metrics_path/bbtools_all_tmp.tsv $all_metrics_path/aux > $all_metrics_path/bbtools_all_final.tsv
-
-mv -f $all_metrics_path/bbtools_all_final.tsv $all_metrics_path/bbtools_all.tsv
-
-rm -f $all_metrics_path/bbtools_all_tmp.tsv
-rm -f $all_metrics_path/aux
-rm -f $all_metrics_path/bbtools_all_final.tsv
-
-awk '
-    FNR==1 && NR!=1 {next;}{print}
-' $WORKDIR/*/$checkm_input_path >$all_metrics_path/checkm_all.tsv
+mkdir -p $genemap_results_path
+mkdir -p $functional_assembly_path
+mkdir -p $genelength_results_path
+mkdir -p $genemap_count_results_path
 
 
-awk '
-    FNR==1 && NR!=1 {next;}{print}
-' $WORKDIR/*/$gtdbtk_input_path >$all_metrics_path/gtdbtk_all.tsv
+# loop around samples
+cd $genemap_results_path
 
+aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
+for i in $aux; 
+do
 
-#copy unique bins
-yes | cp $WORKDIR/*/$bins_input_path/* $all_bins_path
+#Run bowtie2-build
+bowtie2-build $WORKDIR/$i/$assembly_input_file $i.reference;
 
+#Run mapping with bowtie2
+bowtie2 -p $cores -x $i.reference -1 $WORKDIR/$i/$qc_input_path/final_pure_reads_1.fastq -2 $WORKDIR/$i/$qc_input_path/final_pure_reads_2.fastq -S $i.map.sam;
 
-#Run
+#Convert SAM to BAM and sort
+samtools sort -o $i.map.sorted.bam -@ $cores -O bam $i.map.sam;
 
-bash -i "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/gOTUpick.sh --fastANI-thread $cores $prefilter --bb-input $all_metrics_path/bbtools_all.tsv --checkm-input $all_metrics_path/checkm_all.tsv --gtdb-input $all_metrics_path/gtdbtk_all.tsv -m $all_bins_path -o $gOTUpick_results_path --a2 95
+done
 
-#Create auxiliary results files
+cd -
+conda deactivate
 
-awk 'NR==1 {printf("%s\t%s\n", $0, "representative_bin")}  NR>1 {printf("%s\t%s\n", $0, "*") }' $gOTUpick_results_path/final_output/bestbins.txt > $gOTUpick_results_path/final_output/repbin_aux
+#Run functional annotation with prokka
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/prokka_env
 
-awk '{ print $2, "\t" ,$4}' $gOTUpick_results_path/results/final_groups.tsv | tail -n +2 > $gOTUpick_results_path/final_output/aux_final_groups
+aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
+for i in $aux; 
+do
 
-cat $gOTUpick_results_path/final_output/repbin_aux $gOTUpick_results_path/final_output/aux_final_groups > $gOTUpick_results_path/final_output/concat_file.tsv
+#Run prokka on assembly
+prokka $WORKDIR/$i/$assembly_input_file --outdir $functional_assembly_path/$i --prefix $i --metagenome --cpus $cores;
 
-awk 'BEGIN{OFS=","} {$1=$1; print}' $gOTUpick_results_path/final_output/concat_file.tsv > $gOTUpick_results_path/final_output/concat_file.csv
+#Covert gff to gtf
+grep -v "#" $functional_assembly_path/$i/$i.gff | grep "ID=" | cut -f1 -d ';' | sed 's/ID=//g' | cut -f1,4,5,7,9 |  awk -v OFS='\t' '{print $1,"PROKKA","CDS",$2,$3,".",$4,".","gene_id " $5}' > $functional_assembly_path/$i/$i.gtf
 
-awk -F "\"*,\"*" '!seen[$1,$2]++' $gOTUpick_results_path/final_output/concat_file.csv | sort -k2 -t, > $gOTUpick_results_path/final_output/final_groups_output.csv
-
-rm -f $gOTUpick_results_path/final_output/repbin_aux
-rm -f $gOTUpick_results_path/final_output/aux_final_groups
-rm -f $gOTUpick_results_path/final_output/concat_file.tsv
-rm -f $gOTUpick_results_path/final_output/concat_file.csv
-
+done
 
 conda deactivate
+
+#Run count the reads mapped
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/htseq_env
+
+cd $genemap_results_path
+
+aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
+for i in $aux; 
+do
+
+if [[ -f "$genemap_count_results_path/$i.count" ]]; then
+echo "$genemap_count_results_path/$i.count already exists"
+continue
+else
+echo "Counting $i started"
+htseq-count -r pos -t CDS -f bam $i.map.sorted.bam $functional_assembly_path/$i/$i.gtf > $genemap_count_results_path/$i.count
+fi
+
+done
+cd -
+
+conda deactivate
+
+### Missing covarege and TPM calculation ####
+
