@@ -65,7 +65,7 @@ megahit=""
 metaspades=""
 memory=""
 running_location="$(pwd)"
-brat_type="--reduced"
+brat_type=""
 brat_abs=""
 brat_cov=""
 brat_relativ=""
@@ -80,6 +80,8 @@ while true; do
 		-m) memory=$2; shift 2;;
 		--metaspades) metaspades="--metaspades"; shift 1;;
 		--complete) brat_type="--complete"; shift 1;;
+		--reduced) brat_type="--reduced"; shift 1;;
+		--genes) brat_type="--genes"; shift 1;;
 		--absolute-values) brat_abs="--absolute-values"; shift 1;; 
 		--coverage) brat_cov="--coverage"; shift 1;; 
 		--relative-abundance) brat_relativ="--relative-abundance"; shift 1;;
