@@ -46,8 +46,15 @@ done
 cd $project_folder/mapping_results/all_bins/
 
 for bin in *.fa ; 
-  do echo -e "\nIndexing $bin" 
+  do
+  echo -e "\nIndexing $bin"
+  if [ -f  $project_folder/mapping_results/all_bins/${bin/.fa/}.rev.1.bt2 ];
+  then echo "-> Bowtie-build already done. Please check here: $project_folder/mapping_results/all_bins/${bin/.fa/}.rev.1.bt2"
+  else
+  echo "-> Running bowtie-build"
   bowtie2-build "$bin" "${bin/.fa/}";
+  fi
+  
 done
 
 cd -
