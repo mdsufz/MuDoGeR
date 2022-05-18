@@ -34,6 +34,24 @@ genemap_count_results_path="$WORKDIR/mapping_results/assembly_gene_map/map_absol
 genemap_cov_results_path="$WORKDIR/mapping_results/assembly_gene_map/map_coverage_norm/"
 genemap_tpm_results_path="$WORKDIR/mapping_results/assembly_gene_map/map_tpm_norm/"
 
+#Check if all Reads and Assembly are ready 
+#Checking if all non-optional parameters are entered correctly
+aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
+for i in $aux; 
+do
+
+if [ -f "$WORKDIR/$i/$assembly_input_file" ]  && [ -f "$WORKDIR/$i/$qc_input_path/final_pure_reads_1.fastq" ] ; then 
+	continue
+else
+  echo -e "Non-optional parameters for fasta files or reads were not entered\n"
+  echo -e "Reads or assembly from $i not found\n"
+	echo "Please organize your folder structure according to the MuDoGeR standards."
+	exit 1
+	
+fi
+
+done
+
 #Gene mapping started
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/brat_env
 
