@@ -40,7 +40,8 @@ for bin_path in $project_folder/mapping_results/all_bins/*.fa;
   echo ${size} ${bin/.fa/} > "$output_folder/genome_size/${bin/.fa/}.genome-size"
   rm -f $output_folder/genome_size/aux;
   
-done 
+done
+cat $output_folder/genome_size/*.genome-size > $output_folder/genomes_sizes
 
 #Indexing bins
 cd $project_folder/mapping_results/all_bins/
@@ -60,9 +61,9 @@ done
 cd -
 
 #Merge Pair-end reads
-mkdir -p $output_forder/merged_reads
+mkdir -p $output_folder/merged_reads
 
-cd $output_forder/merged_reads
+cd $output_folder/merged_reads
 
 aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
 for i in $aux; 
@@ -71,19 +72,19 @@ for i in $aux;
 	r2=$project_folder/$i/qc/final_pure_reads_2.fastq;
 	
 	#Merge reads in pandaseq
-  	pandaseq -f "$r1" -r "$r2" -w "$output_forder/merged_reads/$i.fasta"
+  	pandaseq -f "$r1" -r "$r2" -w "$output_folder/merged_reads/$i.fasta"
 	
 	#Count number of reads in merged file
   	echo "Calculating number of reads from $i"
-  	num_reads=`wc -l "$output_forder/merged_reads/$i.fasta"`
-  	echo -e "$i\t$num_reads" >> $output_forder/merged_reads/total_reads_per_lib.tsv;
+  	num_reads=`wc -l "$output_folder/merged_reads/$i.fasta"`
+  	echo -e "$i\t$num_reads" >> $output_folder/merged_reads/total_reads_per_lib.tsv;
 	
 	#Calculate average read size in lib
 	cat $i.fasta | grep -v ">" > aux;
 	seqs_num="$(wc -l aux | cut -f1 -d' ' )" ;
 	size="$(wc -c aux | cut -f1 -d' ' )";
 	frag_avg_size="$((size/seqs_num))";
-	echo -e "$i\t$frag_avg_size" >> $output_forder/merged_reads/avg_reads_len.tsv;
+	echo -e "$i\t$frag_avg_size" >> $output_folder/merged_reads/avg_reads_len.tsv;
 	rm -f aux
   
 done
@@ -96,9 +97,9 @@ cd $project_folder/mapping_results/all_bins/
 for d in *.fa; 
 	do 
 	bin=$project_folder/mapping_results/all_bins/${d/.fa/};
-	for l in "$output_forder"/merged_reads/*.fasta;
+	for l in "$output_folder"/merged_reads/*.fasta;
 	do 
-	output="$output_forder"/mappings/"${d/.fa/}"-LIB-"$(echo $l | rev | cut -f1 -d'/' | rev | sed "s/.fasta/.txt/g")";
+	output="$output_folder"/mappings/"${d/.fa/}"-LIB-"$(echo $l | rev | cut -f1 -d'/' | rev | sed "s/.fasta/.txt/g")";
 	echo "$bin" "$l" "$output" ;
 	done;
 done > "$output_folder"/map_list
