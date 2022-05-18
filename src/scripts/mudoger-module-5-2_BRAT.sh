@@ -72,7 +72,7 @@ for i in $aux;
 	r2=$project_folder/$i/qc/final_pure_reads_2.fastq;
 	
 	#Merge reads in pandaseq
-  	pandaseq -f "$r1" -r "$r2" -w "$output_folder/merged_reads/$i.fasta"
+  	pandaseq -d rbfkms -T $cores -f "$r1" -r "$r2" -w "$output_folder/merged_reads/$i.fasta"
 	
 	#Count number of reads in merged file
   	echo "Calculating number of reads from $i"
