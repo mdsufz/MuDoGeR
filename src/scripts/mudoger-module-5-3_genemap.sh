@@ -36,9 +36,7 @@ conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/brat_env
 
 mkdir -p $genemap_results_path
 mkdir -p $functional_assembly_path
-mkdir -p $genelength_results_path
 mkdir -p $genemap_count_results_path
-
 
 # loop around samples
 cd $genemap_results_path
@@ -48,13 +46,35 @@ for i in $aux;
 do
 
 #Run bowtie2-build
+
+if [ -f  $genemap_results_path/$i.reference.1.bt2 ];
+then echo "-> Bowtie-build already done. Please check here: "$genemap_results_path"/$i.reference"
+else
+echo "-> Running bowtie-build"
+
 bowtie2-build $WORKDIR/$i/$assembly_input_file $i.reference;
 
+fi
+
 #Run mapping with bowtie2
+if [ -f  $genemap_results_path/$i.map.sam ];
+then echo "-> Map already done. Please check here: $genemap_results_path/$i.map.sam"
+else
+echo "-> Mapping reads started"
+
 bowtie2 -p $cores -x $i.reference -1 $WORKDIR/$i/$qc_input_path/final_pure_reads_1.fastq -2 $WORKDIR/$i/$qc_input_path/final_pure_reads_2.fastq -S $i.map.sam;
 
+fi
+
 #Convert SAM to BAM and sort
+if [ -f  $genemap_results_path/$i.map.sorted.bam ];
+then echo "-> Sorting .sam file already done. Please check here: $genemap_results_path/$i.map.sorted.bam"
+else
+echo "-> Sorting .sam file"
+
 samtools sort -o $i.map.sorted.bam -@ $cores -O bam $i.map.sam;
+
+fi
 
 done
 
@@ -68,11 +88,26 @@ aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t
 for i in $aux; 
 do
 
+
 #Run prokka on assembly
+if [ -f  $functional_assembly_path/$i/$i.gff ];
+then echo "-> Gene annotation already done. Please check here: $functional_assembly_path/$i/$i.gff"
+else
+echo "-> Gene annotation started"
+
 prokka $WORKDIR/$i/$assembly_input_file --outdir $functional_assembly_path/$i --prefix $i --metagenome --cpus $cores;
 
-#Covert gff to gtf
+fi
+
+#Covert .gff to .gtf
+if [ -f  $functional_assembly_path/$i/$i.gtf ];
+then echo "-> GTF file already done. Please check here: $functional_assembly_path/$i/$i.gtf"
+else
+echo "-> Converting to GTF file"
+
 grep -v "#" $functional_assembly_path/$i/$i.gff | grep "ID=" | cut -f1 -d ';' | sed 's/ID=//g' | cut -f1,4,5,7,9 |  awk -v OFS='\t' '{print $1,"PROKKA","CDS",$2,$3,".",$4,".","gene_id " $5}' > $functional_assembly_path/$i/$i.gtf
+
+fi
 
 done
 
@@ -100,5 +135,41 @@ cd -
 
 conda deactivate
 
-### Missing covarege and TPM calculation ####
+## ADD IF TO CHECK IF USER WANTS TO CALCULATE ##
 
+
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/brat_env
+
+mkdir -p $genelength_results_path
+
+rm -f $WORKDIR/mapping_results/assembly_gene_map/avg_reads_len.tsv
+aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
+for i in $aux; 
+do
+
+#Calculate average read length from samples
+awk NR%4==2{sum+=length($0)}END{print sum/(NR/4)} $i.fastq >> $WORKDIR/mapping_results/assembly_gene_map/avg_reads_len.tsv
+
+#Calculate gene length
+if [[ -f "$genelength_results_path/$i.genelength" ]]; then
+echo "$genelength_results_path/$i.genelength already exists"
+continue
+else
+
+cut -f4,5,9 $functional_assembly_path/$i/$i.gtf | sed 's/gene_id //g' | gawk '{print $3,$2-$1+1}' | tr ' ' '\t' > $genelength_results_path/$i.genelength
+
+fi
+
+#Calculate gene coverage in the sample
+if [[ -f "$genemap_cov_results_path/$i.genecoverage" ]]; then
+echo "$genemap_cov_results_path/$i.genecoverage already exists"
+continue
+else
+
+cut -f4,5,9 $functional_assembly_path/$i/$i.gtf | sed 's/gene_id //g' | gawk '{print $3,$2-$1+1}' | tr ' ' '\t' > $genelength_results_path/$i.genelength
+
+fi
+
+done
+
+conda deactivate
