@@ -18,6 +18,9 @@ source $database
 WORKDIR="$1"
 metadata_table="$2"
 cores="$3"
+absolute=$4;
+coverage=$5;
+relative=$6;
 
 #Define dependent parameters
 assembly_input_file="assembly/final_assembly.fasta"
@@ -135,51 +138,59 @@ cd -
 
 conda deactivate
 
-## ADD IF TO CHECK IF USER WANTS TO CALCULATE ##
+#Calculating Coverage
 
+if [ "$coverage" = "true" ] || [ "$relative" = "true" ]; then
 
-conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/cov_env
+  conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/cov_env
 
-mkdir -p $genelength_results_path
-mkdir -p $genemap_cov_results_path
-mkdir -p $genemap_tpm_results_path
+  mkdir -p $genelength_results_path
+  mkdir -p $genemap_cov_results_path
+  if [ "$relative" = "true" ]; then
+    mkdir -p $genemap_tpm_results_path
+  fi
 
-cd $genemap_cov_results_path
+  cd $genemap_cov_results_path
 
-rm -f $WORKDIR/mapping_results/assembly_gene_map/avg_reads_len.tsv
-aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
-for i in $aux; 
-do
+  rm -f $WORKDIR/mapping_results/assembly_gene_map/avg_reads_len.tsv
+  aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
+  for i in $aux; 
+  do
 
-#Calculate average read length from samples
-echo "Calculating average read lenght from $i"
-avg_len=`awk 'NR%4==2{sum+=length($0)}END{print sum/(NR/4)}' $WORKDIR/$i/$qc_input_path/final_pure_reads_1.fastq`
-echo -e "$i\t$avg_len" >> $WORKDIR/mapping_results/assembly_gene_map/avg_reads_len.tsv
+  #Calculate average read length from samples
+  echo "Calculating average read lenght from $i"
+  avg_len=`awk 'NR%4==2{sum+=length($0)}END{print sum/(NR/4)}' $WORKDIR/$i/$qc_input_path/final_pure_reads_1.fastq`
+  echo -e "$i\t$avg_len" >> $WORKDIR/mapping_results/assembly_gene_map/avg_reads_len.tsv
 
-#Calculate gene length
-if [[ -f "$genelength_results_path/$i.genelength" ]]; then
-echo "$genelength_results_path/$i.genelength already exists"
-continue
-else
+  #Calculate gene length
+  if [[ -f "$genelength_results_path/$i.genelength" ]]; then
+  echo "$genelength_results_path/$i.genelength already exists"
+  continue
+  else
 
-cut -f4,5,9 $functional_assembly_path/$i/$i.gtf | sed 's/gene_id //g' | gawk '{print $3,$2-$1+1}' | tr ' ' '\t' > $genelength_results_path/$i.genelength
+  cut -f4,5,9 $functional_assembly_path/$i/$i.gtf | sed 's/gene_id //g' | gawk '{print $3,$2-$1+1}' | tr ' ' '\t' > $genelength_results_path/$i.genelength
 
+  fi
+
+  #Calculate gene coverage and TPM in the sample
+  if [[ -f "$genemap_cov_results_path/$i.cov" ]]; then
+  echo "$genemap_cov_results_path/$i.cov already exists"
+  continue
+  else
+
+  avg_len=$(cat $WORKDIR/mapping_results/assembly_gene_map/avg_reads_len.tsv | grep "$i"); python "$MUDOGER_DEPENDENCIES_PATH"/tpm_cov_table_mudoger.py -n $i -c $genemap_count_results_path/$i.count -i <(echo -e "$avg_len") -l $genelength_results_path/$i.genelength
+
+  mv $i.cov $genemap_cov_results_path/$i.cov
+  if [ "$relative" = "true" ]; then
+    mv $i.tpm $genemap_tpm_results_path/$i.tpm
+  elif [ "$relative" = "false" ]; then
+    rm -f $i.tpm
+  fi
+  
+  fi
+
+  done
+
+  cd -
+  conda deactivate
 fi
-
-#Calculate gene coverage and TPM in the sample
-if [[ -f "$genemap_cov_results_path/$i.cov" ]]; then
-echo "$genemap_cov_results_path/$i.cov already exists"
-continue
-else
-
-avg_len=$(cat $WORKDIR/mapping_results/assembly_gene_map/avg_reads_len.tsv | grep "$i"); python "$MUDOGER_DEPENDENCIES_PATH"/tpm_cov_table_mudoger.py -n $i -c $genemap_count_results_path/$i.count -i <(echo -e "$avg_len") -l $genelength_results_path/$i.genelength
-
-mv $i.cov $genemap_cov_results_path/$i.cov
-mv $i.tpm $genemap_tpm_results_path/$i.tpm
-
-fi
-
-done
-
-cd -
-conda deactivate
