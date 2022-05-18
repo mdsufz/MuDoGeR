@@ -35,9 +35,9 @@ mkdir -p $output_folder/genome_size
 for bin_path in $project_folder/mapping_results/all_bins/*.fa;
   do  bin="$(echo "$bin_path" | rev | cut -f1 -d'/' | rev )";
   echo -e "\nCalculating genome size from $bin"
-  cat "$bin_path" | grep -v ">" > $output_folder/genome_size/genome_size/aux;
-  size="$(wc -c $output_folder/genome_size/genome_size/aux | cut -f1 -d' ' )";
-  echo ${size} ${bin/.fa/} > "$output_folder/genome_size/genome_size/${bin/.fa/}.genome-size"
+  cat "$bin_path" | grep -v ">" > $output_folder/genome_size/aux;
+  size="$(wc -c $output_folder/genome_size/aux | cut -f1 -d' ' )";
+  echo ${size} ${bin/.fa/} > "$output_folder/genome_size/${bin/.fa/}.genome-size"
   rm -f $output_folder/genome_size/aux;
   
 done 
