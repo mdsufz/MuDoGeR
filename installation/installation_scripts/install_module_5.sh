@@ -92,5 +92,6 @@ else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/cov_env python=3.7
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/cov_env
 pip install pandas
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/cov_env -c anaconda gawk
 conda deactivate
 fi
