@@ -80,3 +80,17 @@ conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/htseq_env
 pip install HTSeq
 conda deactivate
 fi
+
+
+############################################################################
+
+## CREATE ENVIRONMENT AND INSTALLING Cov and TPM calculation ##
+verify_if_conda_env_exist cov_env
+if [ $PRESENT == 'yes' ]
+then :;
+else
+conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/cov_env python=3.7
+conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/cov_env
+pip install pandas
+conda deactivate
+fi
