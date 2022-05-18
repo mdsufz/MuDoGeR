@@ -13,7 +13,7 @@ source $database
 
 #Input data
 project_folder=$1
-meta_table=$2
+metadata_table=$2
 cores=$3
 absolute=$4;
 coverage=$5;
