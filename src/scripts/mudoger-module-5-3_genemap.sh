@@ -152,7 +152,9 @@ for i in $aux;
 do
 
 #Calculate average read length from samples
-awk NR%4==2{sum+=length($0)}END{print sum/(NR/4)} $WORKDIR/$i/$qc_input_path/final_pure_reads_1.fastq >> $WORKDIR/mapping_results/assembly_gene_map/avg_reads_len.tsv
+echo "Calculating average read lenght from $i"
+avg_len=`awk 'NR%4==2{sum+=length($0)}END{print sum/(NR/4)}' $WORKDIR/$i/$qc_input_path/final_pure_reads_1.fastq`
+echo -e "$i\t$avg_len" >> $WORKDIR/mapping_results/assembly_gene_map/avg_reads_len.tsv
 
 #Calculate gene length
 if [[ -f "$genelength_results_path/$i.genelength" ]]; then
