@@ -22,17 +22,27 @@ reduced=$7
 complete=$8
 
 #Process inputs
-output_folder=$project_folder/mapping_results/genome_bins_mapping
+output_folder=$project_folder/mapping_results/genome_otu_mapping
 
 # load brat env
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/brat_env
 
 mkdir -p $output_folder
 
-#Copy bins and Calculate genome size
+#Copy OTUs based on the results from gOTUpick (5-1) 
 mkdir -p $output_folder/genome_size
+mkdir -p $output_folder/otus_fasta
 
-for bin_path in $project_folder/mapping_results/all_bins/*.fa;
+tail -n +2 $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.txt > $output_folder/otus_fasta/aux
+while read l;
+	do
+	otu=$(echo $l | cut -f1 -d " ")
+	yes | cp -fr $project_folder/mapping_results/all_bins/$otu $output_folder/otus_fasta
+done < $output_folder/otus_fasta/aux
+rm -f $output_folder/otus_fasta/aux
+	
+#Calculate genome size
+for bin_path in $output_folder/otus_fasta/*.fa;
   do  bin="$(echo "$bin_path" | rev | cut -f1 -d'/' | rev )";
   echo -e "\nCalculating genome size from $bin"
   cat "$bin_path" | grep -v ">" > $output_folder/genome_size/aux;
@@ -43,14 +53,14 @@ for bin_path in $project_folder/mapping_results/all_bins/*.fa;
 done
 cat $output_folder/genome_size/*.genome-size > $output_folder/genomes_sizes
 
-#Indexing bins
-cd $project_folder/mapping_results/all_bins/
+#Indexing otus
+cd $output_folder/otus_fasta
 
 for bin in *.fa ; 
   do
   echo -e "\nIndexing $bin"
-  if [ -f  $project_folder/mapping_results/all_bins/${bin/.fa/}.rev.1.bt2 ];
-  then echo "-> Bowtie-build already done. Please check here: $project_folder/mapping_results/all_bins/${bin/.fa/}.rev.1.bt2"
+  if [ -f  $output_folder/otus_fasta/${bin/.fa/}.rev.1.bt2 ];
+  then echo "-> Bowtie-build already done. Please check here: $output_folder/otus_fasta/${bin/.fa/}.rev.1.bt2"
   else
   echo "-> Running bowtie-build"
   bowtie2-build "$bin" "${bin/.fa/}";
@@ -91,18 +101,35 @@ done
 
 cd -
 
-#Create job array for Complete
-cd $project_folder/mapping_results/all_bins/
+if [ "$complete" = "true" ]; then
+	#Create job array for Complete
+	cd $output_folder/otus_fasta
+	mkdir -p "$output_folder"/map_results_complete/
+	
+	for d in *.fa; 
+		do 
+		bin=$output_folder/otus_fasta/${d/.fa/};
+		for l in "$output_folder"/merged_reads/*.fasta;
+		do 
+		output="$output_folder"/map_results_complete/"${d/.fa/}"-LIB-"$(echo $l | rev | cut -f1 -d'/' | rev | sed "s/.fasta/.txt/g")";
+		echo "$bin" "$l" "$output" ;
+		done;
+	done > "$output_folder"/map_list_complete
+	
+	#Map according to map_list
+	while read l;
+		do
+		bin=$(echo $l | cut -f1 -d " ");
+		lib=$(echo $l | cut -f2 -d " ");
+		out=$(echo $l | cut -f3 -d " ");
+		
+		bowtie2 --threads $cores -x "$bin" -f "$lib" | samtools view --threads $cores  -F 4 | cut -f1 | sort -u | wc -l > "$out"
+		
+	done < "$output_folder"/map_list_complete
 
-for d in *.fa; 
-	do 
-	bin=$project_folder/mapping_results/all_bins/${d/.fa/};
-	for l in "$output_folder"/merged_reads/*.fasta;
-	do 
-	output="$output_folder"/mappings/"${d/.fa/}"-LIB-"$(echo $l | rev | cut -f1 -d'/' | rev | sed "s/.fasta/.txt/g")";
-	echo "$bin" "$l" "$output" ;
-	done;
-done > "$output_folder"/map_list
+
+fi
+
 
 #deactivate env
 conda deactivate
