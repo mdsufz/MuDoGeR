@@ -8,14 +8,14 @@
 The **Multi-Domain Genome Recovery v1.0 (MuDoGeR v1.0)** framework (**Figure 1**) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs as defined by Parks et al. (2018)) and Uncultivated Viral Genomes (UViGs as defined by  Roux (2019)) from whole-genome sequence (WGS) samples simultaneously. The **MuDoGeR v1.0** framework act as a wrapper of several tools. It was designed to be an easy-to-use tool that outputs ready-to-use comprehensive files.
 
 
-The **MuDoGeR** starts with Module 1: **Pre-Processing**, which covers: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation** and **1.c** **Assembly**. The assembled sequences should be used in all the other modules.
+The **MuDoGeR** starts with Module 1: **Pre-Processing**, which covers: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation** and **1.c** **Assembly**. The assembled libraries should be used in all the other modules.
 
 After pre-processing of the data, **MuDoGeR** is divided into 3 different branches:
 Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes**
 Module 3: **Recovery of Uncultivated Viral Genomes**
 Module 4: **Recovery of Eukaryotic Metagenome-Assembled Genomes**
 
-Furthermore, in **Module 5**: **Relative Abundance**, there are the selection of the MAGs from the group of processed WGS samples, and the calculation of the coverage and relative abundance table of the selected MAGs and UViGs within the sample's group. References of the used tools can be found at the end of the page.
+Furthermore, in **Module 5**: **Relative Abundance**, users may select Open Reading Frames (genes), bins or MAGs from the group of processed WGS samples, and the calculation of the coverage and relative abundance table of the selected MAGs and UViGs within the sample's group. References of the used tools can be found at the end of the page.
 
 ## MuDoGeR Overview
 
