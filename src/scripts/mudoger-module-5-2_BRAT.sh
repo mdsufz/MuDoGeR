@@ -96,21 +96,21 @@ for i in $aux;
 	#Count number of reads in merged file
 	if [ "$relative" = "true" ]; then
 		
-		if [ -f  $output_folder/merged_reads/total_reads_per_lib.tsv ]; then
-			echo "-> Total number of reads from $i counted. Please check here: $output_folder/merged_reads/total_reads_per_lib.tsv"
-  		else
+		#if [ -f  $output_folder/merged_reads/total_reads_per_lib.tsv ]; then
+		#	echo "-> Total number of reads from $i counted. Please check here: $output_folder/merged_reads/total_reads_per_lib.tsv"
+  		#else
 			echo "-> Counting reads from $i"
   			num_reads=`wc -l "$output_folder/merged_reads/$i.fasta"`
   			echo -e "$i\t$num_reads" >> $output_folder/merged_reads/total_reads_per_lib.tsv;
-		fi
+		#fi
 	fi
 	
 	#Calculate average read size in lib
 	if [ "$coverage" = "true" ]; then
 	
-		if [ -f  $output_folder/merged_reads/avg_reads_len.tsv ]; then
-			echo "-> Average read size from $i calculated. Please check here: $output_folder/merged_reads/avg_reads_len.tsv "
-		else
+		#if [ -f  $output_folder/merged_reads/avg_reads_len.tsv ]; then
+		#	echo "-> Average read size from $i calculated. Please check here: $output_folder/merged_reads/avg_reads_len.tsv "
+		#else
 			echo "-> Calculating average read size from $i"
 			cat $i.fasta | grep -v ">" > aux;
 			seqs_num="$(wc -l aux | cut -f1 -d' ' )";
@@ -118,7 +118,7 @@ for i in $aux;
 			frag_avg_size="$((size/seqs_num))";
 			echo -e "$i\t$frag_avg_size" >> $output_folder/merged_reads/avg_reads_len.tsv;
 			rm -f aux
-		fi
+		#fi
 	
 	fi
   
