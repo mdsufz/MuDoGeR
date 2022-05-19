@@ -168,17 +168,17 @@ if [ "$complete" = "true" ]; then
 		cat $d;
 	done > "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv
 	cd -
-	cat "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv | datamash -sW crosstab 1,2 unique 3 > map_complete_absolute_n_hits_table.tsv
+	cat "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_complete/map_complete_absolute_n_hits_table.tsv
 	
 	#Calculate coverage and relative abd tables
 	if [ "$coverage" = "true" ]; then
 		
 		while read l;
 		do
-			num_hits="$(echo $l | cut -f3 -d" ")";
-			lib="$(echo $l | cut -f2 -d" ")";
-			bin="$(echo $l | cut -f1 -d" ")";
-			frag_size="$(grep -w $lib $output_folder/merged_reads/avg_reads_len.tsv | cut -f1 -d ' ')";
+			num_hits="$(echo $l | cut -f3)";
+			lib="$(echo $l | cut -f2)";
+			bin="$(echo $l | cut -f1)";
+			frag_size="$(grep -w $lib $output_folder/merged_reads/avg_reads_len.tsv | cut -f2)";
 			gen_size="$(grep -w $bin $output_folder/genomes_sizes | cut -f1 -d ' ')";
 			hits_times_frag="$(($num_hits*$frag_size))";
 			coverage="$(($hits_times_frag/$gen_size))";
@@ -194,7 +194,7 @@ if [ "$complete" = "true" ]; then
 			num_hits="$(echo $l | cut -f3 -d" ")" ;
 			lib="$(echo $l | cut -f2 -d" ")";
 			bin="$(echo $l | cut -f1 -d" ")";
-			total_n_reads="$(grep -w $lib $output_folder/merged_reads/total_reads_per_lib.tsv | cut -f2 -d ' ')";
+			total_n_reads="$(grep -w $lib $output_folder/merged_reads/total_reads_per_lib.tsv | cut -f2)";
 			r_abundance="$(  bc -l <<< $num_hits/$total_n_reads)";
 			echo "$bin" "$lib" "$r_abundance";
 		done < "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv > "$output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv
