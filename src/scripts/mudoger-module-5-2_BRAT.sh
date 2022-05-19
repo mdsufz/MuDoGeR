@@ -101,6 +101,7 @@ done
 
 cd -
 
+#Run complete if selected
 if [ "$complete" = "true" ]; then
 	#Create job array for Complete
 	cd $output_folder/otus_fasta
@@ -123,13 +124,158 @@ if [ "$complete" = "true" ]; then
 		lib=$(echo $l | cut -f2 -d " ");
 		out=$(echo $l | cut -f3 -d " ");
 		
-		bowtie2 --threads $cores -x "$bin" -f "$lib" | samtools view --threads $cores  -F 4 | cut -f1 | sort -u | wc -l > "$out"
+		if [[ -f "$out" ]]; then
+			
+			continue
+		else
+		
+			bowtie2 --threads $cores -x "$bin" -f "$lib" | samtools view --threads $cores  -F 4 | cut -f1 | sort -u | wc -l > "$out"
+		fi
 		
 	done < "$output_folder"/map_list_complete
-
+	cd -
+	
+	# Create table
+	cd "$output_folder"/map_results_complete/
+	for d in *.txt;
+		do 
+		echo -e "$d\t\c" | sed "s/-LIB-/\t/g" | sed "s/.txt//g";
+		cat $d;
+	done > "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv
+	cd -
+	cat "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv | datamash -sW crosstab 1,2 unique 3 > map_complete_absolute_n_hits_table.tsv
+	
+	#Calculate coverage and relative abd tables
+	if [ "$coverage" = "true" ]; then
+		
+		while read l;
+		do
+			num_hits="$(echo $l | cut -f3 -d" ")";
+			lib="$(echo $l | cut -f2 -d" ")";
+			bin="$(echo $l | cut -f1 -d" ")";
+			frag_size="$(grep -w $lib $output_folder/merged_reads/avg_reads_len.tsv | cut -f1 -d ' ')";
+			gen_size="$(grep -w $bin $output_folder/genomes_sizes | cut -f1 -d ' ')";
+			hits_times_frag="$(($num_hits*$frag_size))";
+			coverage="$(($hits_times_frag/$gen_size))";
+			echo "$bin" "$lib" "$coverage";
+		done < "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv > "$output_folder"/map_results_complete/map_complete_coverage_list.tsv
+		
+		# transform in cross table 
+		cat "$output_folder"/map_results_complete/map_complete_coverage_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_complete/map_complete_coverage_table.tsv
+	fi	
+	if [ "$relative" = "true" ]; then
+		while read l;
+		do 
+			num_hits="$(echo $l | cut -f3 -d" ")" ;
+			lib="$(echo $l | cut -f2 -d" ")";
+			bin="$(echo $l | cut -f1 -d" ")";
+			total_n_reads="$(grep -w $lib $output_folder/merged_reads/total_reads_per_lib.tsv | cut -f2 -d ' ')";
+			r_abundance="$(  bc -l <<< $num_hits/$total_n_reads)";
+			echo "$bin" "$lib" "$r_abundance";
+		done < "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv > "$output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv
+		# transform in cross table
+		cat "$output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_complete/map_complete_relative_abundance_table.tsv
+	fi
 
 fi
 
+#Run reduced if selected
+
+if [ "$reduced" = "true" ]; then
+	#Create job array for Reduced
+	cd $output_folder/otus_fasta
+	mkdir -p "$output_folder"/map_results_reduced/
+	
+	cat $project_folder/mapping_results/gOTUpick_results/final_output/final_groups_output.csv | grep "*" > "$output_folder"/aux_rep
+	rm -f "$output_folder"/map_list_reduced
+	touch "$output_folder"/map_list_reduced
+	while read l; 
+		do
+		group=$(echo $l | cut -f2 -d ",");
+		rep_bin=$(echo $l | cut -f1 -d ",");
+		echo $group;
+		if [ $group = "unique" ]; then
+			lib=$(echo $rep_bin | cut -f1 -d "-");
+			w_bin="$output_folder/otus_fasta/$(echo $rep_bin | sed "s/.fa//g")";
+			w_lib="$output_folder/merged_reads/$lib.fasta"
+			w_out="$output_folder/map_results_reduced/$(echo $rep_bin | sed "s/.fa//g")-LIB-$lib.txt"
+			echo "$w_bin" "$w_lib" "$w_out" >> "$output_folder"/map_list_reduced
+		else	
+			cat $project_folder/mapping_results/gOTUpick_results/final_output/final_groups_output.csv | grep "$group" > "$output_folder"/aux_group
+			while read b;
+				do
+				lib=$(echo $b | cut -f1 -d "," | cut -f1 -d "-");
+				w_bin="$output_folder/otus_fasta/$(echo $rep_bin | sed "s/.fa//g")";
+				w_lib="$output_folder/merged_reads/$lib.fasta"
+				w_out="$output_folder/map_results_reduced/$(echo $rep_bin | sed "s/.fa//g")-LIB-$lib.txt"
+				echo "$w_bin" "$w_lib" "$w_out" >> "$output_folder"/map_list_reduced
+			done < "$output_folder"/aux_group
+		fi
+	done < "$output_folder"/aux_rep
+	rm -f "$output_folder"/aux_rep
+	rm -f "$output_folder"/aux_group
+	
+	#Map according to map_list
+	while read l;
+		do
+		bin=$(echo $l | cut -f1 -d " ");
+		lib=$(echo $l | cut -f2 -d " ");
+		out=$(echo $l | cut -f3 -d " ");
+		
+		if [[ -f "$out" ]]; then
+			
+			continue
+		else
+		
+			bowtie2 --threads $cores -x "$bin" -f "$lib" | samtools view --threads $cores  -F 4 | cut -f1 | sort -u | wc -l > "$out"
+		fi
+		
+	done < "$output_folder"/map_list_reduced
+	cd -
+	
+	# Create table
+	cd "$output_folder"/map_results_reduced/
+	for d in *.txt;
+		do 
+		echo -e "$d\t\c" | sed "s/-LIB-/\t/g" | sed "s/.txt//g";
+		cat $d;
+	done > "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv
+	cd -
+	cat "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv | datamash -sW crosstab 1,2 unique 3 > map_reduced_absolute_n_hits_table.tsv
+	
+	#Calculate coverage and relative abd tables
+	if [ "$coverage" = "true" ]; then
+		
+		while read l;
+		do
+			num_hits="$(echo $l | cut -f3 -d" ")";
+			lib="$(echo $l | cut -f2 -d" ")";
+			bin="$(echo $l | cut -f1 -d" ")";
+			frag_size="$(grep -w $lib $output_folder/merged_reads/avg_reads_len.tsv | cut -f1 -d ' ')";
+			gen_size="$(grep -w $bin $output_folder/genomes_sizes | cut -f1 -d ' ')";
+			hits_times_frag="$(($num_hits*$frag_size))";
+			coverage="$(($hits_times_frag/$gen_size))";
+			echo "$bin" "$lib" "$coverage";
+		done < "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv > "$output_folder"/map_results_reduced/map_reduced_coverage_list.tsv
+		
+		# transform in cross table 
+		cat "$output_folder"/map_results_reduced/map_reduced_coverage_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_reduced/map_reduced_coverage_table.tsv
+	fi
+	if [ "$relative" = "true" ]; then
+		while read l;
+		do 
+			num_hits="$(echo $l | cut -f3 -d" ")" ;
+			lib="$(echo $l | cut -f2 -d" ")";
+			bin="$(echo $l | cut -f1 -d" ")";
+			total_n_reads="$(grep -w $lib $output_folder/merged_reads/total_reads_per_lib.tsv | cut -f2 -d ' ')";
+			r_abundance="$(  bc -l <<< $num_hits/$total_n_reads)";
+			echo "$bin" "$lib" "$r_abundance";
+		done < "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv > "$output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv
+		# transform in cross table
+		cat "$output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_reduced/map_reduced_relative_abundance_table.tsv
+	fi
+
+fi
 
 #deactivate env
 conda deactivate
