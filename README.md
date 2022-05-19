@@ -135,9 +135,8 @@ The steps of Module 5 can be summarized as follows. Depending on your choice, yo
 
 # System requirements
 
-**Warning:** complex dependencies ahead!
+**MuDoGeR makes it easy to install the dependences of all dependencies.** A total of XX tools and XX dependencies are present in MuDoGeR. Hopefully, you won't have to worry too much about it. We designed an installation script that should take care of every dependency for you.
 
-Hopefully, you won't have to worry too much about it. We designed an installation script that should take care of every dependency for you.
 The software used during the pipeline are detailed described here: [Dependencies description](https://github.com/mdsufz/MuDoGeR/blob/master/dependencies_description.md).
 
 Keep in mind that the MuDoGeR pipeline requires some computer power. The complete software installation requires approximately 170 GB, but maker2 uses 99 GB of that space since it requires the database to be installed in a specific manner. See [Module 4 setup](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md). The complete database requirements, considering all tools, is around 439.9 GB.
