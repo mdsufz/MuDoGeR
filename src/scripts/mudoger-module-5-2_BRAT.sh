@@ -30,7 +30,6 @@ conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/brat_env
 mkdir -p $output_folder
 
 #Copy OTUs based on the results from gOTUpick (5-1) 
-mkdir -p $output_folder/genome_size
 mkdir -p $output_folder/otus_fasta
 
 tail -n +2 $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.txt > $output_folder/otus_fasta/aux
@@ -40,18 +39,22 @@ while read l;
 	yes | cp -fr $project_folder/mapping_results/all_bins/$otu $output_folder/otus_fasta
 done < $output_folder/otus_fasta/aux
 rm -f $output_folder/otus_fasta/aux
-	
-#Calculate genome size
-for bin_path in $output_folder/otus_fasta/*.fa;
-  do  bin="$(echo "$bin_path" | rev | cut -f1 -d'/' | rev )";
-  echo -e "\nCalculating genome size from $bin"
-  cat "$bin_path" | grep -v ">" > $output_folder/genome_size/aux;
-  size="$(wc -c $output_folder/genome_size/aux | cut -f1 -d' ' )";
-  echo ${size} ${bin/.fa/} > "$output_folder/genome_size/${bin/.fa/}.genome-size"
-  rm -f $output_folder/genome_size/aux;
-  
-done
-cat $output_folder/genome_size/*.genome-size > $output_folder/genomes_sizes
+
+if [ "$coverage" = "true" ]; then
+
+	mkdir -p $output_folder/genome_size
+	#Calculate genome size
+	for bin_path in $output_folder/otus_fasta/*.fa;
+	  do  bin="$(echo "$bin_path" | rev | cut -f1 -d'/' | rev )";
+	  echo -e "\nCalculating genome size from $bin"
+	  cat "$bin_path" | grep -v ">" > $output_folder/genome_size/aux;
+	  size="$(wc -c $output_folder/genome_size/aux | cut -f1 -d' ' )";
+	  echo ${size} ${bin/.fa/} > "$output_folder/genome_size/${bin/.fa/}.genome-size"
+	  rm -f $output_folder/genome_size/aux;
+
+	done
+	cat $output_folder/genome_size/*.genome-size > $output_folder/genomes_sizes
+fi
 
 #Indexing otus
 cd $output_folder/otus_fasta
@@ -81,17 +84,22 @@ for i in $aux;
 	r1=$project_folder/$i/qc/final_pure_reads_1.fastq; 
 	r2=$project_folder/$i/qc/final_pure_reads_2.fastq;
 	
-	#Merge reads in pandaseq
-  	pandaseq -d rbfkms -T $cores -f "$r1" -r "$r2" -w "$output_folder/merged_reads/$i.fasta"
+	if [ -f  "$output_folder"/merged_reads/$i.fasta ]; then
+		echo "-> Reads from $i ready. Please check here: $output_folder/merged_reads/$i.fasta"
+  	else
+  		echo "-> Merging reads from $i"
+  		#Merge reads in pandaseq
+  		pandaseq -d rbfkms -T $cores -f "$r1" -r "$r2" -w "$output_folder/merged_reads/$i.fasta"
+  	fi
+	
 	
 	#Count number of reads in merged file
-  	echo "Calculating number of reads from $i"
   	num_reads=`wc -l "$output_folder/merged_reads/$i.fasta"`
   	echo -e "$i\t$num_reads" >> $output_folder/merged_reads/total_reads_per_lib.tsv;
 	
 	#Calculate average read size in lib
 	cat $i.fasta | grep -v ">" > aux;
-	seqs_num="$(wc -l aux | cut -f1 -d' ' )" ;
+	seqs_num="$(wc -l aux | cut -f1 -d' ' )";
 	size="$(wc -c aux | cut -f1 -d' ' )";
 	frag_avg_size="$((size/seqs_num))";
 	echo -e "$i\t$frag_avg_size" >> $output_folder/merged_reads/avg_reads_len.tsv;
