@@ -96,21 +96,23 @@ for i in $aux;
 	#Count number of reads in merged file
 	if [ "$relative" = "true" ]; then
 		
-		#if [ -f  $output_folder/merged_reads/total_reads_per_lib.tsv ]; then
-		#	echo "-> Total number of reads from $i counted. Please check here: $output_folder/merged_reads/total_reads_per_lib.tsv"
-  		#else
+		rm -f $output_folder/merged_reads/total_reads_per_lib.tsv;
+		if [ -f  $output_folder/merged_reads/total_reads_per_lib.tsv ]; then
+			echo "-> Total number of reads from $i counted. Please check here: $output_folder/merged_reads/total_reads_per_lib.tsv"
+  		else
 			echo "-> Counting reads from $i"
   			num_reads=`wc -l "$output_folder/merged_reads/$i.fasta"`
   			echo -e "$i\t$num_reads" >> $output_folder/merged_reads/total_reads_per_lib.tsv;
-		#fi
+		fi
 	fi
 	
 	#Calculate average read size in lib
 	if [ "$coverage" = "true" ]; then
 	
-		#if [ -f  $output_folder/merged_reads/avg_reads_len.tsv ]; then
-		#	echo "-> Average read size from $i calculated. Please check here: $output_folder/merged_reads/avg_reads_len.tsv "
-		#else
+		rm -f $output_folder/merged_reads/avg_reads_len.tsv
+		if [ -f  $output_folder/merged_reads/avg_reads_len.tsv ]; then
+			echo "-> Average read size from $i calculated. Please check here: $output_folder/merged_reads/avg_reads_len.tsv "
+		else
 			echo "-> Calculating average read size from $i"
 			cat $i.fasta | grep -v ">" > aux;
 			seqs_num="$(wc -l aux | cut -f1 -d' ' )";
@@ -118,7 +120,7 @@ for i in $aux;
 			frag_avg_size="$((size/seqs_num))";
 			echo -e "$i\t$frag_avg_size" >> $output_folder/merged_reads/avg_reads_len.tsv;
 			rm -f aux
-		#fi
+		fi
 	
 	fi
   
@@ -172,23 +174,24 @@ if [ "$complete" = "true" ]; then
 	
 	#Calculate coverage and relative abd tables
 	if [ "$coverage" = "true" ]; then
-		
+		rm -fr "$output_folder"/map_results_complete/map_complete_coverage_list.tsv
 		while read l;
 		do
-			num_hits="$(echo $l | cut -f3)";
-			lib="$(echo $l | cut -f2)";
-			bin="$(echo $l | cut -f1)";
+			num_hits="$(echo $l | cut -f3 -d " ")";
+			lib="$(echo $l | cut -f2 -d " ")";
+			bin="$(echo $l | cut -f1 -d " ")";
 			frag_size="$(grep -w $lib $output_folder/merged_reads/avg_reads_len.tsv | cut -f2)";
 			gen_size="$(grep -w $bin $output_folder/genomes_sizes | cut -f1 -d ' ')";
 			hits_times_frag="$(($num_hits*$frag_size))";
 			coverage="$(($hits_times_frag/$gen_size))";
-			echo "$bin" "$lib" "$coverage";
-		done < "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv > "$output_folder"/map_results_complete/map_complete_coverage_list.tsv
+			echo "$bin" "$lib" "$coverage" >> "$output_folder"/map_results_complete/map_complete_coverage_list.tsv
+		done < "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv
 		
 		# transform in cross table 
 		cat "$output_folder"/map_results_complete/map_complete_coverage_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_complete/map_complete_coverage_table.tsv
 	fi	
 	if [ "$relative" = "true" ]; then
+		rm -fr "$output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv
 		while read l;
 		do 
 			num_hits="$(echo $l | cut -f3 -d" ")" ;
@@ -196,8 +199,8 @@ if [ "$complete" = "true" ]; then
 			bin="$(echo $l | cut -f1 -d" ")";
 			total_n_reads="$(grep -w $lib $output_folder/merged_reads/total_reads_per_lib.tsv | cut -f2)";
 			r_abundance="$(  bc -l <<< $num_hits/$total_n_reads)";
-			echo "$bin" "$lib" "$r_abundance";
-		done < "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv > "$output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv
+			echo "$bin" "$lib" "$r_abundance" >> "$output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv
+		done < "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv 
 		# transform in cross table
 		cat "$output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_complete/map_complete_relative_abundance_table.tsv
 	fi
@@ -270,7 +273,7 @@ if [ "$reduced" = "true" ]; then
 	
 	#Calculate coverage and relative abd tables
 	if [ "$coverage" = "true" ]; then
-		
+		rm -fr "$output_folder"/map_results_reduced/map_reduced_coverage_list.tsv
 		while read l;
 		do
 			num_hits="$(echo $l | cut -f3 -d" ")";
@@ -280,13 +283,14 @@ if [ "$reduced" = "true" ]; then
 			gen_size="$(grep -w $bin $output_folder/genomes_sizes | cut -f1 -d ' ')";
 			hits_times_frag="$(($num_hits*$frag_size))";
 			coverage="$(($hits_times_frag/$gen_size))";
-			echo "$bin" "$lib" "$coverage";
-		done < "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv > "$output_folder"/map_results_reduced/map_reduced_coverage_list.tsv
+			echo "$bin" "$lib" "$coverage" >> "$output_folder"/map_results_reduced/map_reduced_coverage_list.tsv;
+		done < "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv 
 		
 		# transform in cross table 
 		cat "$output_folder"/map_results_reduced/map_reduced_coverage_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_reduced/map_reduced_coverage_table.tsv
 	fi
 	if [ "$relative" = "true" ]; then
+		rm -fr "$output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv
 		while read l;
 		do 
 			num_hits="$(echo $l | cut -f3 -d" ")" ;
@@ -294,8 +298,8 @@ if [ "$reduced" = "true" ]; then
 			bin="$(echo $l | cut -f1 -d" ")";
 			total_n_reads="$(grep -w $lib $output_folder/merged_reads/total_reads_per_lib.tsv | cut -f2 -d ' ')";
 			r_abundance="$(  bc -l <<< $num_hits/$total_n_reads)";
-			echo "$bin" "$lib" "$r_abundance";
-		done < "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv > "$output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv
+			echo "$bin" "$lib" "$r_abundance" >> "$output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv
+		done < "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv 
 		# transform in cross table
 		cat "$output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_reduced/map_reduced_relative_abundance_table.tsv
 	fi
