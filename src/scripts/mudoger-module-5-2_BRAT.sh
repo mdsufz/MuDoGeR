@@ -79,6 +79,8 @@ mkdir -p $output_folder/merged_reads
 cd $output_folder/merged_reads
 
 aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
+rm -f $output_folder/merged_reads/total_reads_per_lib.tsv
+rm -f $output_folder/merged_reads/avg_reads_len.tsv
 for i in $aux; 
 	do 
 	r1=$project_folder/$i/qc/final_pure_reads_1.fastq; 
@@ -96,23 +98,21 @@ for i in $aux;
 	#Count number of reads in merged file
 	if [ "$relative" = "true" ]; then
 		
-		rm -f $output_folder/merged_reads/total_reads_per_lib.tsv;
-		if [ -f  $output_folder/merged_reads/total_reads_per_lib.tsv ]; then
-			echo "-> Total number of reads from $i counted. Please check here: $output_folder/merged_reads/total_reads_per_lib.tsv"
-  		else
+		#if [ -f  $output_folder/merged_reads/total_reads_per_lib.tsv ]; then
+		#	echo "-> Total number of reads from $i counted. Please check here: $output_folder/merged_reads/total_reads_per_lib.tsv"
+  		#else
 			echo "-> Counting reads from $i"
   			num_reads=`wc -l "$output_folder/merged_reads/$i.fasta"`
   			echo -e "$i\t$num_reads" >> $output_folder/merged_reads/total_reads_per_lib.tsv;
-		fi
+		#fi
 	fi
 	
 	#Calculate average read size in lib
 	if [ "$coverage" = "true" ]; then
 	
-		rm -f $output_folder/merged_reads/avg_reads_len.tsv
-		if [ -f  $output_folder/merged_reads/avg_reads_len.tsv ]; then
-			echo "-> Average read size from $i calculated. Please check here: $output_folder/merged_reads/avg_reads_len.tsv "
-		else
+		#if [ -f  $output_folder/merged_reads/avg_reads_len.tsv ]; then
+		#	echo "-> Average read size from $i calculated. Please check here: $output_folder/merged_reads/avg_reads_len.tsv "
+		#else
 			echo "-> Calculating average read size from $i"
 			cat $i.fasta | grep -v ">" > aux;
 			seqs_num="$(wc -l aux | cut -f1 -d' ' )";
@@ -120,7 +120,7 @@ for i in $aux;
 			frag_avg_size="$((size/seqs_num))";
 			echo -e "$i\t$frag_avg_size" >> $output_folder/merged_reads/avg_reads_len.tsv;
 			rm -f aux
-		fi
+		#fi
 	
 	fi
   
@@ -197,7 +197,7 @@ if [ "$complete" = "true" ]; then
 			num_hits="$(echo $l | cut -f3 -d" ")" ;
 			lib="$(echo $l | cut -f2 -d" ")";
 			bin="$(echo $l | cut -f1 -d" ")";
-			total_n_reads="$(grep -w $lib $output_folder/merged_reads/total_reads_per_lib.tsv | cut -f2)";
+			total_n_reads="$(grep -w $lib $output_folder/merged_reads/total_reads_per_lib.tsv | cut -f2 | cut -f1 -d " ")";
 			r_abundance="$(  bc -l <<< $num_hits/$total_n_reads)";
 			echo "$bin" "$lib" "$r_abundance" >> "$output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv
 		done < "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv 
@@ -279,7 +279,7 @@ if [ "$reduced" = "true" ]; then
 			num_hits="$(echo $l | cut -f3 -d" ")";
 			lib="$(echo $l | cut -f2 -d" ")";
 			bin="$(echo $l | cut -f1 -d" ")";
-			frag_size="$(grep -w $lib $output_folder/merged_reads/avg_reads_len.tsv | cut -f1 -d ' ')";
+			frag_size="$(grep -w $lib $output_folder/merged_reads/avg_reads_len.tsv | cut -f2)";
 			gen_size="$(grep -w $bin $output_folder/genomes_sizes | cut -f1 -d ' ')";
 			hits_times_frag="$(($num_hits*$frag_size))";
 			coverage="$(($hits_times_frag/$gen_size))";
@@ -296,7 +296,7 @@ if [ "$reduced" = "true" ]; then
 			num_hits="$(echo $l | cut -f3 -d" ")" ;
 			lib="$(echo $l | cut -f2 -d" ")";
 			bin="$(echo $l | cut -f1 -d" ")";
-			total_n_reads="$(grep -w $lib $output_folder/merged_reads/total_reads_per_lib.tsv | cut -f2 -d ' ')";
+			total_n_reads="$(grep -w $lib $output_folder/merged_reads/total_reads_per_lib.tsv | cut -f2 | cut -f1 -d " ")";
 			r_abundance="$(  bc -l <<< $num_hits/$total_n_reads)";
 			echo "$bin" "$lib" "$r_abundance" >> "$output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv
 		done < "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv 
