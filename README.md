@@ -96,7 +96,6 @@ $ bash -i installation/install.sh
 # Enter "y" if you want to install all modules, otherwise enter "n".
 # If you entered "n",enter "y" for each of the modules you would like to install individually.
 
-```
 	The MuDoGeR's installation will begin..
 
 
@@ -116,10 +115,8 @@ $ bash -i installation/install.sh
 	  \_____________________/		
 
 	This might take a while. Time to grab a coffee...
-
 ```
 
-```
 **3 - Install necessary databases**
 
 Several bioinformatics tools used within MuDoGeR require specific databases to work. We developed a database download and set up tool to make our lives easier. Make sure to run the database setup after MuDoGeR is installed.
@@ -361,9 +358,9 @@ The result two level folder structure after a successful run of MuDoGeR is as fo
 └── mapping_results
     ├── all_bins
     ├── all_metrics
+    ├── assembly_gene_map
+    ├── genome_otu_mapping
     └── gOTUpick_results
-    └── abundance_results
-
 ```
 
 A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
@@ -374,8 +371,6 @@ A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https:
 # Acknowledgements
 
 	
-
-
 
  
 
