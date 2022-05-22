@@ -247,7 +247,8 @@ The steps of Module 5 can be summarized as follows. If you select **complete** o
 
 # MuDoGeR simplified usage
 
-MuDoGeR was designed to work module by module, starting from pre-process (Module 1). Additional modularity will be added in future updates to allow the user to run specific parts of the pipeline. Currently, MuDoGeR v1.0 only works with pair-end sequences. Future updated will add tools to work with long-read sequencing samples.
+Currently, MuDoGeR v1.0 only works with paired-end sequences. Future updates will add tools to work with long-read sequencing samples.
+MuDoGeR was designed to work module by module, starting from pre-process (Module 1). Additional modularity will be added in future updates to allow the user to run specific parts of the pipeline.
 
 **MuDoGeR** is an easy-to-use wrapper of several tools organized within modules. The individual modules can be called independently.
 
