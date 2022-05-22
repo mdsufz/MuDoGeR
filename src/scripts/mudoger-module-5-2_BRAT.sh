@@ -270,7 +270,7 @@ if [ "$reduced" = "true" ]; then
 		cat $d;
 	done > "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv
 	cd -
-	cat "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv | datamash -sW crosstab 1,2 unique 3 > map_reduced_absolute_n_hits_table.tsv
+	cat "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_table.tsv
 	
 	#Calculate coverage and relative abd tables
 	if [ "$coverage" = "true" ]; then
