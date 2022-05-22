@@ -97,25 +97,25 @@ $ bash -i installation/install.sh
 # If you entered "n",enter "y" for each of the modules you would like to install individually.
 
 ```
-The MuDoGeR's installation will begin..
+	The MuDoGeR's installation will begin..
 
 
 
 
-								
-      (  )   (   )  )			
-       ) (   )  (  (			
-       ( )  (    ) )			
-       _____________			
-      <_____________> ___		
-      |             |/ _ \		
-      |               | | |		
-      |               |_| |		
-   ___|             |\___/		
-  /    \___________/    \		
-  \_____________________/		
 
-This might take a while. Time to grab a coffee...
+	      (  )   (   )  )			
+	       ) (   )  (  (			
+	       ( )  (    ) )			
+	       _____________			
+	      <_____________> ___		
+	      |             |/ _ \		
+	      |               | | |		
+	      |               |_| |		
+	   ___|             |\___/		
+	  /    \___________/    \		
+	  \_____________________/		
+
+	This might take a while. Time to grab a coffee...
 
 ```
 
@@ -144,7 +144,7 @@ Some tools used in module 4 (GENEMARK and MAKER2) require the user to provide in
 
 The module 4 setup tutorial is found in [Module 4 setup](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md)
 
-
+## Modules Overview
 ### Module 1: Pre-Processing 
 
 ![Screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/Module%201.PNG) 
