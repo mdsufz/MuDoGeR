@@ -8,6 +8,8 @@
 ## - SAMTOOLS
 ## - DATAMASH
 ## - OTUpick
+## - Prokka
+## - HTSEQ
 
 echo "### INSTALLING MODULE 5. Genome Abundance Calculation ###"
 
@@ -22,7 +24,7 @@ if [ $PRESENT == 'yes' ]
 then :;
 else
 mamba create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/brat_env bioconda::bowtie2 bioconda::pandaseq conda-forge::gcc conda-forge::openmpi conda-forge::r-base=3.6 bioconda::samtools bioconda::datamash
-
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/brat_env -c anaconda gawk
 fi
 ############################################################################
 ############################################################################
@@ -53,3 +55,43 @@ if [ ! -s $MUDOGER_DEPENDENCIES_ENVS_PATH/otupick_env/bin/summarize-anisplitter-
 
 fi
 ############################################################################
+
+## CREATE ENVIRONMENT AND INSTALLING PROKKA ##
+verify_if_conda_env_exist prokka_env
+if [ $PRESENT == 'yes' ]
+then :;
+else
+conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/prokka_env 
+conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/prokka_env 
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/prokka_env -c conda-forge -c bioconda -c defaults prokka
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/prokka_env -c anaconda gawk
+conda deactivate
+fi
+
+############################################################################
+
+## CREATE ENVIRONMENT AND INSTALLING HTSEQ ##
+verify_if_conda_env_exist htseq_env
+if [ $PRESENT == 'yes' ]
+then :;
+else
+conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/htseq_env python=3.7
+conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/htseq_env
+pip install HTSeq
+conda deactivate
+fi
+
+
+############################################################################
+
+## CREATE ENVIRONMENT AND INSTALLING Cov and TPM calculation ##
+verify_if_conda_env_exist cov_env
+if [ $PRESENT == 'yes' ]
+then :;
+else
+conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/cov_env python=3.7
+conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/cov_env
+pip install pandas
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/cov_env -c anaconda gawk
+conda deactivate
+fi

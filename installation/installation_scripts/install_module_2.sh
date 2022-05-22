@@ -30,7 +30,8 @@ then :;
 else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/prokka_env 
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/prokka_env 
-mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/prokka_env  -c conda-forge -c bioconda -c defaults prokka
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/prokka_env -c conda-forge -c bioconda -c defaults prokka
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/prokka_env -c anaconda gawk
 conda deactivate
 fi
 
