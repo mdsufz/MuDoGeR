@@ -54,19 +54,8 @@ The Databases can be installed by following the instructons of the following hyp
 
 * As pplacer requires also dependencies, these dependencies, together with instructions of how to install them, can be found in the following link: http://matsen.github.io/pplacer/compiling.html.
 
+### PROKKA
 
-### Ubin (optional)
-* The pre-requests for **uBin** and how to install them, can be found in the follwoing hyperlink: [Creating input files for uBin](https://github.com/ProbstLab/uBin-helperscripts#creating-input-files-for-ubin).
-
-### DAS_Tool (optional)
-* The dependencies of **DAS_Tool** can be found in the following hyperlink: [Dependencies_DAS_TOOL](https://github.com/cmks/DAS_Tool#dependencies).
-## khmer
-| Dependencies | 
-|---|
-| Python 2.7.x or Python 3.3 | 
-| GCC/8.3.0 |  
-| OpenMPI/3.1.4|
-|R/3.6.2-2|
 
 ### VirSorter 
 
@@ -229,6 +218,10 @@ The Databases can be installed by following the instructons of the following hyp
 
 * More information about **EukCC/GeneMark-ES** dependencies can be found by following the webpage: https://eukcc.readthedocs.io/en/latest/install.html#install-via-conda.
 
+### GeneMark-ES
+
+...
+
 ### Ani_Splitter
 
 | Dependencies |  
@@ -247,7 +240,7 @@ The Databases can be installed by following the instructons of the following hyp
 | vctrs |
 
 
-### BRAT 
+### Bowtie
 
 | Dependencies | 
 |---|
@@ -260,7 +253,6 @@ The Databases can be installed by following the instructons of the following hyp
 
 * More information about Bowtie 2 can be found by following the webpage: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml.
 * More information about Samtools can be found by following the webpage: http://www.htslib.org/doc/samtools.html.
-* More information about can be found by following the webpage: http://brat.nlplab.org/installation.html.
 
 ### For resource calculation
 
@@ -270,7 +262,11 @@ The Databases can be installed by following the instructons of the following hyp
 | Package OpenMPI/3.1.4 |
 | R/3.6.2-2 |
 
+### gOTUpick
 
+...
+
+### HTSEQ
 
 
 # Installation
@@ -331,7 +327,3 @@ The instructions for EukCC/GeneMark installation can be found at [EukCC/GeneMark
 The instructions for BUSCO installation can be found at [BUSCO_Manual](https://github.com/WenchaoLin/BUSCO-Mod).
 ### MAKER2
 The instructions for MAKER2 installation can be found at [MAKER2_Manual](https://github.com/wuying1984/MAKER2_PM_genome_annotation).
-
-## Relative abundance
-### BRAT
-The instructions for BRAT installation can be found at  [BRAT_Manual](https://github.com/nlplab/brat).
