@@ -216,7 +216,7 @@ The steps of Module 4  are shown in Figure 5. A detailed description of its exec
     * **(4.b.4)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single-copy orthologous genes (SCGs) and estimation of completeness of Eukaryotic contigs.
 
 
-### Module 5 Relative abundace
+### Module 5 Relative abundance
 [](https://github.com/mdsufz/MuDoGeR/blob/master/Module%205.PNG)
 
 The steps of Module 5  are shown in Figure 6. A detailed description of its execution and outputs are found here: [Pipelines for abundance calculation](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
