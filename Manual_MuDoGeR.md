@@ -46,7 +46,7 @@ $ mudoger --module preprocess --meta /path/to/metadata.tsv -o /path/to/output/fo
 ```
 
 The available parameter for module 1 are:
-* --meta metadata table as described [here]()
+* --meta metadata table as described [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#required-metadata-table)
 * -o output directory (mandatory)
 * -m  Given RAM to assembly (optional)
 * -t number of threads/cores (default = 1)
@@ -59,7 +59,7 @@ Be aware that RAM is a relevant bottleneck for MAG recovery.
 For quality control, MuDoGeR uses the implementation present in [metaWRAP](https://github.com/bxlab/metaWRAP). The quality control procedure currently applied is to trim raw reads based on adapted content and PHRED scored with the default setting of Trim-galore. Future updates will allow the option to remove host contamination using different databases.
 
 
-The output directory of the read quality control module (***sample_name/qc***) contains:
+The output directory of the read quality control module (```sample_name/qc```) contains:
 ```console
 final_pure_reads_1.fastq    pre-QC_report
 final_pure_reads_2.fastq    post-QC_report 
@@ -73,8 +73,8 @@ After quality control, MuDoGeR estimates the required RAM for assembly.
 
 Initially, it counts the 33 and 55 unique k-mers from the quality-controlled reads (final_pure_reads_1.fastq) in the pre-processed reads (forward or reversed).
  
-The k-mer count is used by a linear regression model to predict the amount of memory necessary for assembling the reads with **metaSPAdes**. 
-Inside the calculation of resources output folder (***sample_name/khmer***) the user can find the following files:
+The k-mer count is used by a linear regression model to predict the amount of memory necessary for assembling the reads with [**metaSPAdes**](https://genome.cshlp.org/content/27/5/824). 
+Inside the calculation of resources output folder (```sample_name/khmer```) the user can find the following files:
 ```console
 final_prediction.tsv  input_for_predictR.tsv  kmer-33  kmer-55  metaspades_prediction.tsv
 ```
@@ -82,9 +82,9 @@ The ```final_prediction.tsv``` file contains the final RAM estimation in MB for 
 
 
 ### 1.c: Assembly 
-There are two possible tools for assembling data: **MegaHiT** and **metaSPAdes**. Both tools are considered reliable. **MegaHiT** uses lower memory and is faster compared to **metaSPAdes**, but **metaSPAdes** tends to produced longer contigs. In case of very large data sets, the user may use **MegaHiT**.
+There are two possible tools for assembling data: [**MegaHiT**](https://academic.oup.com/bioinformatics/article/31/10/1674/177884) and [**metaSPAdes**](https://genome.cshlp.org/content/27/5/824). Both tools are considered reliable. [**MegaHiT**](https://academic.oup.com/bioinformatics/article/31/10/1674/177884) uses lower memory and is faster compared to [**metaSPAdes**](https://genome.cshlp.org/content/27/5/824), but [**metaSPAdes**](https://genome.cshlp.org/content/27/5/824) tends to produced longer contigs. In case of very large data sets, the user may use **MegaHiT**.
 
-The assembly output folder (***sample_name/assembly***) should contain the following:
+The assembly output folder (```sample_name/assembly```) should contain the following:
 
 ```console
 assembly_report.html  final_assembly.fasta  megahit  metaspades  QUAST_out
@@ -122,18 +122,18 @@ output/path/
 
 ```
 
-If you want to use the other MuDoGeR modules, you can copy the showed folder structure with your own data and use the same *** -o output/path *** when running the other modules.
+If you want to use the other MuDoGeR modules, you can copy the showed folder structure with your own data and use the same ``` -o output/path ``` when running the other modules.
 
 ### Most relevant files from Module 1
 
-The relevant files generated in Module 1 used for the other modules are ***assembly/final_assembly.fasta***, ***qc/final_pure_reads_1.fastq***, and ***qc/final_pure_reads_2.fastq***. Please, make sure your resulted files are specificaly named as final_assembly.fasta and final_pure_reads_1/2.fastq.
+The relevant files generated in Module 1 used for the other modules are ```assembly/final_assembly.fasta```, ```qc/final_pure_reads_1.fastq```, and ```qc/final_pure_reads_2.fastq```. Please, make sure your resulted files are specificaly named as ```final_assembly.fasta``` and ```final_pure_reads_1/2.fastq```.
 
 
 ## Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes (MAGs)
 
-This module integrates the prokariotic binning procedure implemented in **metaWrap** using **Metabat2**, **Maxbin2**, and **CONCOCT** binners, a MuDoGeR bin dereplacation method, the **GTDB-tk** taxonomic annotation, **CheckM** quality estimation, **Prokka** metagenomic gene annotation,  MuDoGeR sequence metrics and **BBtools** sequence metrics calculation tools.
+This module integrates the prokariotic binning procedure implemented in [**metaWRAP**](https://github.com/bxlab/metaWRAP) using [**Metabat2**](https://peerj.com/articles/7359/), [**Maxbin2**](https://academic.oup.com/bioinformatics/article/32/4/605/1744462), and [**CONCOCT**](https://www.nature.com/articles/nmeth.3103) binners, a MuDoGeR bin dereplacation method, the [**GTDB-tk**](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182) taxonomic annotation, [**CheckM**](https://genome.cshlp.org/content/25/7/1043) quality estimation, [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517) metagenomic gene annotation,  MuDoGeR sequence metrics and [**BBtools**](https://sourceforge.net/projects/bbmap/) sequence metrics calculation tools.
 
-The tools that require specific databases in this module are **GTDB-tk** and **CheckM**. Both should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/mdsufz/MuDoGeR#installation)
+The tools that require specific databases in this module are [**GTDB-tk**](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182) and [**CheckM**](https://genome.cshlp.org/content/25/7/1043). Both should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/mdsufz/MuDoGeR#installation)
 
 For running all steps in module 2 use
 
@@ -141,7 +141,7 @@ For running all steps in module 2 use
 $ mudoger --module prokaryotes --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
 ```
 The available parameter for module 2 are:
-* --meta metadata table as described [here]()
+* --meta metadata table as described [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#required-metadata-table)
 * -o output directory (mandatory)
 * -t number of threads/cores (default = 1)
 
@@ -149,25 +149,25 @@ Additional modularity for this module is scheduled to happen.
 
 ### 2.a: Prokaryotic sequences binning
 
-The binnig process starts by using **Metabat2**, **Maxbin2**, and **CONCOCT** to bin the sequences from the ***final_assembly.fasta*** file.
-Following, the results from all binners are used to refine bacterial bins. For bacterial bins, the refinement process uses 50% minimum completeness and 10% maximum contamination as default. For archeal bins, the refinement process uses 40% minimum completeness and 30% maximum contamination as default. The refinement process used is implemented in **metaWrap**. Finally, MuDoGeR removes redundant bins.
+The binnig process starts by using [**Metabat2**](https://peerj.com/articles/7359/), [**Maxbin2**](https://academic.oup.com/bioinformatics/article/32/4/605/1744462), and [**CONCOCT**](https://www.nature.com/articles/nmeth.3103) to bin the sequences from the ```final_assembly.fasta``` file.
+Following, the results from all binners are used to refine bacterial bins. For bacterial bins, the refinement process uses 50% minimum completeness and 10% maximum contamination as default. For archeal bins, the refinement process uses 40% minimum completeness and 30% maximum contamination as default. The refinement process used is implemented in [**metaWRAP**](https://github.com/bxlab/metaWRAP). Finally, MuDoGeR removes redundant bins.
 
-The most relevant files from this step are the prokaryotic bins inside the ***unique_bins*** folder
+The most relevant files from this step are the prokaryotic bins inside the ```unique_bins/``` folder
 
 
 ### 2.b: Taxonomic classification, quality estimation, and gene annotation.
 
-After the binning step is completed, the resulted bins are taxonomic annotated using the **GTDB-tk** software and its most updated database. Following, the **unique_bins** are checked for quality using the **CheckM** tool. Finally, the recovered prokaryotic bins are annotated using **Prokka**.
+After the binning step is completed, the resulted bins are taxonomic annotated using the [**GTDB-tk**](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182) software and its most updated database. Following, the ```unique_bins/``` are checked for quality using the [**CheckM**](https://genome.cshlp.org/content/25/7/1043) tool. Finally, the recovered prokaryotic bins are annotated using [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517).
 
-Inside the ***metrics*** folder, you should have one folder for each tool. Inside ***prokka*** you will find one folder for each bin containing the outputs from the tool.
-The resulted files will be used by MuDoGeR to generate a more comprehensive report of the bins, as well as further processing. If you would like to know more about the outputs of each tool, please check their respective documentation. You can find links to the tools [here]()
+Inside the ```metrics/``` folder, you should have one folder for each tool. Inside ```prokka/``` you will find one folder for each bin containing the outputs from the tool.
+The resulted files will be used by MuDoGeR to generate a more comprehensive report of the bins, as well as further processing. If you would like to know more about the outputs of each tool, please check their respective documentation. You can find links to the tools [here](https://github.com/mdsufz/MuDoGeR/blob/master/dependencies_description.md).
 
 
 ### 2.c: Sequence metrics calculation and selection of Prokaryotic MAGs.
 
-Finally, MuDoGeR calculates some relevant metrics from the recovered bins, such as genome_size, number_of_scaffolds, largest_scaffold_size, N50, and N90. In addition, it also counts the number of annotated and unknown genes by prokka. **BBtools** is also used to extract sequence metrics. Later, MuDoGeR merges the results from the other tools and calculates the sequence quality (completeness – 5×contamination (Parks, 2018)). Bins with quality greater than or equal to 50 are considered MAGs and have their information summarised in the ***MAGS_results.tsv*** file.
+Finally, MuDoGeR calculates some relevant metrics from the recovered bins, such as genome_size, number_of_scaffolds, largest_scaffold_size, N50, and N90. In addition, it also counts the number of annotated and unknown genes by prokka. [**BBtools**](https://sourceforge.net/projects/bbmap/) is also used to extract sequence metrics. Later, MuDoGeR merges the results from the other tools and calculates the sequence quality (completeness – 5×contamination [(Parks, 2018)](https://www.nature.com/articles/s41564-017-0012-7)). Bins with quality greater than or equal to 50 are considered MAGs and have their information summarised in the ```MAGS_results.tsv``` file.
 
-The ***MAGS_results.tsv*** contains relevant annotations from the recovered MAGs. You can also check the annotated genes for each MAG by looking at the ***.gtf*** output by ***PROKKA*** for each MAG.
+The ```MAGS_results.tsv``` contains relevant annotations from the recovered MAGs. You can also check the annotated genes for each MAG by looking at the ```.gtf``` output by ```PROKKA``` for each MAG.
 
 ## Module 2 final considerations
 
@@ -211,7 +211,7 @@ For running all module 3 use
 $ mudoger --module viruses --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
 ```
 The available parameter for module 2 are:
-* --meta metadata table as described [here]() (mandatory)
+* --meta metadata table as described [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#required-metadata-table) (mandatory)
 * -o output directory (mandatory)
 * -t number of threads/cores (default = 1)
 * 
@@ -237,7 +237,7 @@ The Viral-Host pair estimation process is done based on the [**WiSH**](https://a
 
 Inside the ```host_prediction/``` folder you will find the Models created by **WiSH** for the prokaryotic MAGs. Inside the ```potential_host_genomes/``` you will find the MAGs recovered in Module 2, and inside the ```uvigs/``` folder, you have the fasta files for the viral contigs recovered in Module 3. Finally, you will have your main output in ```host_prediction/output_results/prediction.list```. There you will have the viral contigs name, the best provided MAGs match, the LogLikelihood, and the p-value for the match.
 
-### 3.d: Selection of Uvigs
+### 3.d: Selection of UViGs
 
 Finally, MuDoGeR retrieves all the previously created files and creates a summary table for the recovered viral contigss. A quality filter is also applied.
 
@@ -372,9 +372,9 @@ sample_name
 
 ```
 
-## Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (eMAGs)
+## Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (eMABs)
 
-The recovery of the eMAGs module integrates **EukRep** for selecting the eukaryotic contigs from the initial assembly, the **CONCOCT** binner, **GeneMark** for prediction of eukaryotic genes, **EukCC** for for quality estimation from eukaryiotic sequences, **MAKER2** for gene annotation, and **BUSCO** for detection of single-copy orthologous genes.
+The recovery of the eMABs module integrates **EukRep** for selecting the eukaryotic contigs from the initial assembly, the **CONCOCT** binner, **GeneMark** for prediction of eukaryotic genes, **EukCC** for for quality estimation from eukaryiotic sequences, **MAKER2** for gene annotation, and **BUSCO** for detection of single-copy orthologous genes.
 
 The tools that require specific databases in the eukaryotic module are **EukCC**, **BUSCO**, and **MAKER2**. **BUSCO** and **EukCC** databases  should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/mdsufz/MuDoGeR#installation). 
 
@@ -388,7 +388,7 @@ $ mudoger --module eukaryotes --meta /path/to/metadata.tsv -o /path/to/output/fo
 
 ### 4.a: Recovery and binning of Eukaryotic assemblies
 
-The eMAGs recovery starts with ***final_assembly.fasta*** as input to the **EukRep** tool. This splits the contigs within the assembled sequences into ***prokaryotic_contigs.fa*** and ***eukaryotic_contigs.fa***. Following, the eukaryotic contigs serve as input to the **CONCOCT** binner. Finally, the resulted eukaryotic bins are filtered by minimum size (by default we use 1.5 MB) and considered eMAGs.
+The eMABs recovery starts with ```final_assembly.fasta``` as input to the **EukRep** tool. This splits the contigs within the assembled sequences into ```prokaryotic_contigs.fa``` and ```eukaryotic_contigs.fa```. Following, the eukaryotic contigs serve as input to the **CONCOCT** binner. Finally, the resulted eukaryotic bins are filtered by minimum size (by default we use 1.5 MB) and considered eMABs.
 
 After successfully running step 4.a, you should have the following folder structure:
 
@@ -407,13 +407,13 @@ sample_name
 
 ```
 
-The main result of step 4.a.1 is the eMAGs fasta files located within the ***filtered_euk_bins*** folder.
+The main result of step 4.a.1 is the eMABs fasta files located within the ```filtered_euk_bins/``` folder.
 
 ### 4.b: Completeness and contamination estimation and annotation of Eukaryotic bins
 
-The second part of eMAGs recovery starts by predicting eukaryiotic genes using **GeneMark**. The input for this step are the eMAGs recovered in step 4.a located within the ***filtered_euk_bins*** folder. Following **EukCC** is used to calculate quality and completeness from the eMAGs recovered in 4.a.
+The second part of eMABs recovery starts by predicting eukaryiotic genes using **GeneMark**. The input for this step are the eMABs recovered in step 4.a located within the ```filtered_euk_bins/``` folder. Following **EukCC** is used to calculate quality and completeness from the eMABs recovered in 4.a.
 
-For the annotation of eukaryotic genes, MuDoGeR feeds the **MAKER2** tool with the eukaryotic bins and the necessary files generated by **GeneMark** for each eMAG. Finally, **BUSCO** receives the **MAKER2** genes as input for detecting single-copy orthologous genes (SCGs)
+For the annotation of eukaryotic genes, MuDoGeR feeds the **MAKER2** tool with the eukaryotic bins and the necessary files generated by **GeneMark** for each eMAB. Finally, **BUSCO** receives the **MAKER2** genes as input for detecting single-copy orthologous genes (SCGs)
 
 After successfully running step 4.b, you should have the following folder structure:
 
@@ -465,25 +465,25 @@ sample_name
 
 ```
 
-The results from **GeneMark** are calculated for each eMAG and you may find them in ***eukaryotes/genemarker_annotation/eMAG.fa_genemark***. The annotated genes are located in the ***genemark.gtf*** file. The model created for the eMAG, the ***gmhmm.mod*** is then used by **MAKER2**.
-A summary of the quality results calculated buy **EukCC** can be found in ***eukaryotes/eukcc_quality/eMAG.fa_eukcc/eukcc.csv***.
-The main results from the **MAKER2** annotation can be found for each eMAG within the folder ***eukaryotes/maker2_gene_annotation/eMAG.fa_maker2/eMAG.maker.output/***
-Finally, you can find **BUSCO** results in the files ***eukaryotes/euk_completeness/eMAG_busco/short_summary.specific.eukaryota_odb10.eMAG_busco.txt*** and ***eukaryotes/euk_completeness/eMAG_busco/run_eukaryota_odb10/full_table.tsv***.
+The results from **GeneMark** are calculated for each eMAB and you may find them in ```eukaryotes/genemarker_annotation/eMAB.fa_genemark```. The annotated genes are located in the ```genemark.gtf``` file. The model created for the eMAB, the ```gmhmm.mod``` is then used by **MAKER2**.
+A summary of the quality results calculated buy **EukCC** can be found in ```eukaryotes/eukcc_quality/eMAB.fa_eukcc/eukcc.csv```.
+The main results from the **MAKER2** annotation can be found for each eMAB within the folder ```eukaryotes/maker2_gene_annotation/eMAB.fa_maker2/eMAB.maker.output/```
+Finally, you can find **BUSCO** results in the files ```eukaryotes/euk_completeness/eMAB_busco/short_summary.specific.eukaryota_odb10.eMAB_busco.txt``` and ```eukaryotes/euk_completeness/eMAB_busco/run_eukaryota_odb10/full_table.tsv```.
 
 
 ## Module 5: Relative abundance 
 
 UNDER DEVELOPMENT
 
-Module 5 of MuDoGeR maps the quality-controlled reads to the recovered MAGs and Uvigs to calculate their abundance within the WGS samples.
+Module 5 of MuDoGeR maps the quality-controlled reads to the recovered MAGs/UViGs/eMAB to calculate their abundance within the WGS samples.
 
-Consequently, MuDoGeR requires as input the path to the quality-controlled reads and the path to the recovered MAGs and Uvigs sequences.
+Consequently, MuDoGeR requires as input the path to the quality-controlled reads and the path to the recovered MAGs and UViGs sequences.
 
 MuDoGeR provides three mapping pipelines, called --reduced , --complete , and --genes
 
-When using the --complete flag, MuDoGeR maps the WGS reads from a sample to the recovered MAGs from the same WGS sample. Therefore, the mapping occurs only within the sample. This flag outputs an abundance table for each MAG and Uvigs found in the sample.
+When using the --complete flag, MuDoGeR maps the WGS reads from a sample to the recovered MAGs from the same WGS sample. Therefore, the mapping occurs only within the sample. This flag outputs an abundance table for each MAG and UViGs found in the sample.
 
-When using the --reduced flag, MuDoGeR collects the MAGs recovered from all WGS samples provided in the --meta metadata table and groups them based on ANI 95 distance measure. Later, MuDoGeR selects the highest quality MAG within the group and maps it to the WGS reads from the samples where the MAGs from the group were recovered. This flag outputs an abundance table with samples in columns and representative MAGs and Uvigs as rows. 
+When using the --reduced flag, MuDoGeR collects the MAGs recovered from all WGS samples provided in the --meta metadata table and groups them based on ANI 95 distance measure. Later, MuDoGeR selects the highest quality MAG within the group and maps it to the WGS reads from the samples where the MAGs from the group were recovered. This flag outputs an abundance table with samples in columns and representative MAGs and UViGs as rows. 
 
 In addition, you can use the --gene flag to map the WGS quality-controlled reads to all the prokka annotated genes found in all MAGs in that sample.
 
