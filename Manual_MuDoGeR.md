@@ -39,7 +39,7 @@ Following you have an usage tutorial for each module. Each **Module's final cons
 
 ## Module 1: Pre-Processing
 
-For running module 1 use
+For running all module 1 use
 
 ```console
 $ mudoger --module preprocess --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --metaspades -m 100
@@ -199,22 +199,51 @@ sample_name
 
 ```
 
-## Module 3: Recovery of Uncultivated Viral Genomes (Uvigs)
+## Module 3: Recovery of Uncultivated Viral Genomes (UViGs)
 
-The recovery of the Uvigs module integrates the viral sequence recovery tools **VirSorter**, **VirFinder**, and **VIBRANT**. Later, the sequences are dereplicated using **Stampede-clustergenomes**. Following the Uvigs are analyzed and taxonomically estimated using ***Vcontact2**, and quality is estimated with **CheckV**. MuDoGeR also uses **WiSH** to predict the prokaryotic hosts from the Uvigs. Finally, MuDoGeR compiles the outputs from the used tools and selects high-quality Uvigs.
+The recovery of the UViGs module integrates the viral sequence recovery tools [**VirSorter**](https://peerj.com/articles/985/), [**VirFinder**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5), and [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0). Later, the sequences are dereplicated using [**Stampede-clustergenomes**](https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/). Following the potential viral contigs are analyzed and taxonomically estimated using [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8), and quality is estimated with [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7). MuDoGeR also uses [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377) to estimate the viral-host pairs from the potential viral contigs. Finally, MuDoGeR compiles the outputs from the used tools and selects high-quality UViGs as defined by [Roux, S., et al.(2019)](https://www.nature.com/articles/nbt.4306) and [Nayfach, S., et al. (2021)](https://www.nature.com/articles/s41587-020-00774-7).
 
-The tools that require specific databases in the viral module are **VIBRANT**, **WiSH**, and **CheckV**. All the databases should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/mdsufz/MuDoGeR#installation)
+The tools that require specific databases in the viral module are [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0), [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377), and [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7). All the databases should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/mdsufz/MuDoGeR#installation)
 
-For running module 3 use
+For running all module 3 use
 
 ```console
 $ mudoger --module viruses --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
 ```
+The available parameter for module 2 are:
+* --meta metadata table as described [here]() (mandatory)
+* -o output directory (mandatory)
+* -t number of threads/cores (default = 1)
+* 
+### 3.a: Recovery of Potential Viral Contigs
 
-### 3.a: Recovery of Uncultivated Viral Genomes
+In **3.a**, the viral recovery tools  [**VirSorter**](https://peerj.com/articles/985/), [**VirFinder**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5), and [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0) are applied to the assembly fasta file ```final_assembly.fasta``` created during the preprocess module. Sequences recovered with **VirFinder** with p-value > 0.01 and length < 1000 bp are removed. Later, the independent results of each tool are combined and dereplicated with [**Stampede-clustergenomes**](https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/) using 70% minimum coverage and 95% minimum identity.
 
-In **3.a**, the viral recovery tools **VirSorter**, **VirFinder** and **VIBRANT** are applied to the assembly fasta file ***final_assembly.fasta*** created during the preprocess module. Sequences recovered with **VirFinder** with p-value > 0.01 and length < 1000 bp are removed. Later, the independent results of each tool are combined and dereplicated with **Stampede-clustergenomes** using 70% minimum coverage and 95% minimum identity.
+The files result files ```vibrant_filtered_data.txt```, ```virfinder_filtered_data.txt```, and ```virsorter2_filtered_data.txt``` contains the names from the sequences identified as potential viral contigs. Those are the files used during the next steps.
 
+The final outputs from this step are inside the ```dereplication/``` folder. The file ```dereplication/uvigs_95-70.fna``` contains the viral sequences dereplicated, and the file file ```dereplication/uvigs_95-70.clstr``` contains the clusters formed from all identified potential viral contigs. 
+
+
+### 3.b: Taxonomic and Quality estimation of potential viral contigs
+
+Initially, MuDoGeR uses the ```dereplication/uvigs_95-70.fna``` file in **prodigal** to produce the amino acid sequence from the potential viral contigs. These amino acid sequences are input for the [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8) analysis and taxonomical estimation. Following, viral sequence quality is calculated using  [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7).
+
+The main output from [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8) used by MuDoGeR is the ```vcontact-output/genome_by_genome_overview.csv```. There you can find the estimated viral taxonomy and confidence score. For a more detailed explanation, please check the [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8) documentation. Finally, you can find the outputs from **CheckV** inside the ```vcheck_quality``` folder. The resulted file from  [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7) is organized in ```vcheck_quality/quality_summary.tsv```.
+
+
+### 3.c: Host identification of the dereplicated Potential Viral contigs
+
+The Viral-Host pair estimation process is done based on the [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377) software. For MuDoGeR to run it automatically, please keep the defined folder structure from the Prokaryotes recovery and Viral recovery. MuDoGeR will use the results from Module 2 and Module 3 to calculate the Viral-Host potential. 
+
+Inside the ```host_prediction/``` folder you will find the Models created by **WiSH** for the prokaryotic MAGs. Inside the ```potential_host_genomes/``` you will find the MAGs recovered in Module 2, and inside the ```uvigs/``` folder, you have the fasta files for the viral contigs recovered in Module 3. Finally, you will have your main output in ```host_prediction/output_results/prediction.list```. There you will have the viral contigs name, the best provided MAGs match, the LogLikelihood, and the p-value for the match.
+
+### 3.d: Selection of Uvigs
+
+Finally, MuDoGeR retrieves all the previously created files and creates a summary table for the recovered viral contigss. A quality filter is also applied.
+
+The ```viruses_summary.tsv``` contains the compiled information from each potential viral contig (original_contig, uvig_length, provirus, proviral_length, gene_count, viral_genes, host_genes, checkv_quality, miuvig_quality, completeness, completeness_method, contamination, kmer_freq, warnings, putative_host, and likelihood). The ```Uvigs_high_quality.tsv``` is a subset from ```viruses_summary.tsv``` with only defined UViGs.
+
+## Module 3: Final Considerations
 
 After successfully running step 3.a, you should have the following folder structure:
 
@@ -247,15 +276,6 @@ sample_name
              └── virsorter2_filtered_data.txt
 
 ```
-
-The files ***vibrant_filtered_data.txt***, ***virfinder_filtered_data.txt***, and ***virsorter2_filtered_data.txt*** contains the names from the sequences identified as Uvigs. Those are the files used during the next steps.
-
-The final outputs from this step are inside the ***dereplication*** folder. The file ***dereplication/uvigs_95-70.fna*** contains the viral sequences dereplicated, and the file file ***dereplication/uvigs_95-70.clstr*** contains the clusters formed from all identified Uvigs. 
-
-
-### 3.b: Taxonomic and Quality estimation of Uvigs
-
-Initially, MuDoGeR uses the ***dereplication/uvigs_95-70.fna*** file in **prodigal** to produce the amino acid sequence from the Uvigs. These amino acid sequences are input for the **vContact** analysis and taxonomical estimation. Following, viral sequence quality is calculated using **CheckV**.
 
 After successfully running step 3.b, you should have the following folder structure:
 
@@ -307,13 +327,6 @@ sample_name
 
 ```
 
-The main output from **vContact** used by MuDoGeR is the ***vcontact-output/genome_by_genome_overview.csv***. There you can find the estimated viral taxonomy and confidence score. For a more detailed explanation, please check the **vContact** documentation. Finally, you can find the outputs from **CheckV** inside the ***vcheck_quality*** folder. The resulted file from **CheckV** is organized in ***vcheck_quality/quality_summary.tsv***
-
-
-### 3.c: Host identification of the dereplicated Uvigs
-
-The Viral-Host identification process is done based on the **WiSH** software. For MuDoGeR to run it automatically, please keep the defined folder structure from the Prokaryotes recovery and Viral recovery. MuDoGeR will use the results from Module 2 and Module 3 to calculate the Viral-Host potential. 
-
 After successfully running step 3.c, you should have the following folder structure:
 
 ```console
@@ -344,12 +357,6 @@ sample_name
                 └── CONTENT_FROM_THE_Uvigs_CheckV_SHOWN_BEFORE
 
 ```
-Inside the ***host_prediction*** folder you will find the Models created by **WiSH** for the prokaryotic MAGs. Inside the ***potential_host_genomes*** you will find the MAGs recovered in Module 2, and inside the ***uvigs*** folder, you have the fasta files for the viral sequences recovered in Module 3. Finally, you will have your main output in ***host_prediction/output_results/prediction.list***. There you will have the Uvigs name, the best provided MAGs match, the LogLikelihood, and the p-value for the match.
-
-
-### 3.d: Selection of Uvigs
-
-Finally, MuDoGeR retrieves all the previously created files and creates a summary table for the recovered Uvigs. A quality filter is also applied.
 
 After successfully running step 3.d, you should have the following folder structure:
 
@@ -364,10 +371,6 @@ sample_name
           └── viruses_summary.tsv
 
 ```
-
-The ***viruses_summary.tsv*** contains the compiled information from each Uvig (original_contig, uvig_length, provirus, proviral_length, gene_count, viral_genes, host_genes, checkv_quality, miuvig_quality, completeness, completeness_method, contamination, kmer_freq, warnings, putative_host, and likelihood). The ***Uvigs_high_quality.tsv*** is a subset from ***viruses_summary.tsv*** with only high quality Uvigs.
-
-
 
 ## Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (eMAGs)
 
