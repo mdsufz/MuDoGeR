@@ -15,11 +15,12 @@ log="log_qc"                    # definition of path to QC log
 forward_library=$1              # forward library path
 reverse_library=$2              # reverse library path
 qc_folder=$3                    # output folder to be created inside master output folder
-bm_tag=$5        # define if human reads should be filtered out or not
+bm_tag=$5                       # define if human reads should be filtered out or not
 num_cores=$4                    # number of threads
 
+mkdir -p $qc_folder
 # command of quality control
-metawrap read_qc "$bm_tag" -1 "$forward_library" -2 "$reverse_library" -t "$num_cores" -o "$qc_folder"  &> "$out_qc"/"$log"
+metawrap read_qc "$bm_tag" -1 "$forward_library" -2 "$reverse_library" -t "$num_cores" -o "$qc_folder"  &> "$qc_folder"/"$log"
 
 # leave conda environment
 conda deactivate
