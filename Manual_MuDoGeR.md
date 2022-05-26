@@ -386,7 +386,7 @@ For running all module 4 use:
 $ mudoger --module eukaryotes --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
 ```
 
-The available parameter for module 34are:
+The available parameter for module 4 are:
 * --meta metadata table as described [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#required-metadata-table) (mandatory)
 * -o output directory (mandatory)
 * -t number of threads/cores (default = 1)
@@ -485,7 +485,7 @@ Consequently, MuDoGeR requires as input the path to the quality-controlled reads
 
 MuDoGeR provides three mapping pipelines, called --reduced, --complete, and --genes
 
-Initially, module 5 selects the representatives' MAGs/UViGs/eMAB based on ANI 95 distance measure using the **gOTUpick** software integrated into the MuDoGeR custom scripts. Following, MuDoGeR provides three mapping pipelines, called --reduced, --complete, and --genes.
+Initially, module 5 selects the representatives' MAGs/UViGs/eMAB based on Average nucleotide identity (ANI) 95 distance measure using the **gOTUpick** software integrated into the MuDoGeR custom scripts. Following, MuDoGeR provides three mapping pipelines, called --reduced, --complete, and --genes.
 
 When using the --complete flag, MuDoGeR maps all WGS samples to all representative MAGs/UViGs/eMAB selected by the **gOTUpick**. When using the --reduced flag, MuDoGeR maps the representative MAGs/UViGs/eMAB only to the WGS samples where they and their group of MAGs/UViGs/eMAB were recovered. In both cases, you can use the --coverage and --relative-abundance flags to also calculate the MAGs/UViGs/eMAB coverage and relative abundance, respectively.
 
@@ -497,24 +497,65 @@ You can run all module 5 as follows:
 mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --reduced --absolute-values --coverage --relative-abundance
 ```
 
-The available parameter for module 34are:
+The available parameter for module 5 are:
+
 * --meta metadata table as described [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#required-metadata-table) (mandatory)
 * -o output directory (mandatory)
 * -t number of threads/cores (default = 1)
 * --reduced (default), --complete, or --genes mapping type
 * --absolute-values --coverage, and/or --relative-abundance output values
 
+### 5.a: Select representative MAGs from each created OTU
+
+The first step from module 5 is to group all recovered MAGs within OTU groups. To do so, MuDoGeR uses the ANI 95 distance strategy implemented in the **gOTUpick** tool. Essentially, it starts by calculating the ANI distance from the MAGs and separates them into a group according to 95% identity within the groups. Following, it uses information from the **GTDB-tk** taxonomical annotation, and **CheckM** quality estimation to select the highest quality MAG from the same taxonomical class within the same ANI95 group as the group's representative MAG.
+
+You should have the following:
+```
+└── mapping_results
+    ├── all_bins
+    │   ├── sample_name-bin.0.fa
+    │   ├── sample_name-bin.1.fa
+    │   ├── sample_name-bin.0.fa
+    ├── all_metrics
+    │   ├── bbtools_all.tsv
+    │   ├── checkm_all.tsv
+    │   └── gtdbtk_all.tsv
+    └── gOTUpick_results
+        ├── all_fastani-out-1500-0.txt
+        ├── allgtdb.tsv
+        ├── ANI_distances
+        ├── ANI_OTU95
+        ├── final_output
+        ├── results
+        └── tax_groups
+
+```
+Inside the ```mapping_results/gOTUpick_results/final_output/``` folder you will have the ```bestbins.txt``` and  ```final_groups_output.csv``` files. Those files indicates the representatives MAGs, marker with an \*, and their groups. Those are also the files used in the next steps of the pipeline.
+
+### 5.b: MAGs mapping and abundance calculation
+
+Foloowing the pieline uses the OTU groyps created in step **5.a** and maps them according to the --complete or --reduced stategy. The outputs ofstep **5.b** is abundance tables from the genomes vs the WGS samples used during the mapping. The mapping is done using the **Bowtie2** software. If the user selects the --coverage --relative-abundance, MuDoGeR also calculates the covarege and relative abundance of the MAGs. Consequently, for the covarage calculation, it is also necessary to calculate the genome length and the avarage size of the sample reads. For the calculation of the relative abundance, MuDoGeR also count the total number of reads in the sample.
+
+By the end of 5.b you should have 
+``` 
+├── genome_otu_mapping
+│   ├── genome_size
+│   ├── genomes_sizes
+│   ├── map_final_tables_complete
+│   ├── map_final_tables_reduced
+│   ├── map_list_complete
+│   ├── map_list_reduced
+│   ├── map_results_complete
+│   ├── map_results_reduced
+│   ├── merged_reads
+│   └── otus_fasta
+```
+
+### 5.c: Genes relative abundance calculation from the samples assembly
+
+## Module 5: Final Considerations
 
 After a succesul run of module 5, you should have the following folder structure:
-```console
-output/folder
-	└── mapping_results
-	    ├── all_bins
-	    ├── all_metrics
-	    └── gOTUpick_results
-	    └── abundance_results
-```
-Inside the ```gOTUpick_results``` folder, you should find the list of MAGs selected for the mapping if the ```--reduced``` flag is used.
-Inside the ```abundance_results``` folder, you should have the list of MAGs abundance per sample if you selected the ```--complete``` flag or the abundance tables calculated if you selected the ```--reduced``` flag. The output files are named according to the selected output calculation method (--absolute-values, --coverage, and --relative-abundance). If you select the --gene flag, you should find the gene abundance tables for each MAG within the prokaryotes folder for each sample. The gene abundance tables should be under a new folder named ```gene_abundaces``` inside the ```prokaryotes``` folder.
+
 
 
