@@ -177,37 +177,37 @@ Module 2 workflow is shown in Figure 3. A detailed description of its execution 
      * **(2.c.2)** Prokaryotic MAGs gene annotation with **PROKKA**.
     
     
-### Module 3: Recovery of Uncultivated Viral Genomes (Uvigs)
+### Module 3: Recovery of Uncultivated Viral Genomes (UViGs)
 
 ![](https://github.com/mdsufz/MuDoGeR/blob/c65d851f6439cc4eb8c18672afb5cde9a9165f40/flowcharts/Module%203.png) 
 
-The steps of Module 3  are shown in Figure 4. A detailed description of its execution and outputs are found here: [Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes).
+The steps of Module 3  are shown in Figure 4. A detailed description of its execution and outputs are found here: [Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes-uvigs).
 
  The steps of Module 3 can be summarized as follows: 
  
-* **3.a**: Recovery of Uncultivated Viral Genomes
-    * **(3.a.1)** Recovery of Uvigs using **VirFinder**, **VirSorter** and **VIBRANT**.
-    * **(3.a.2)** Filtering of the Uvigs.
-    * **(3.a.3)** Dereplication of the Uvigs.
- * **3.b**: Taxonomic and Quality estimation of Uvigs
-    * **(3.b.1)** Taxonomic classification from the dereplicated Uvigs with **vContact2**.
-    * **(3.b.2)** Checking the quality of the dereplicated contigs with **CheckV**.
-* **3.c**: Host identification of the dereplicated Uvigs using **WIsH**. This step is only done automatically if you generate the prokaryotic MAGs using MuDoGeR as well. 
-* **3.d**: Selection of Uvigs
+* **3.a**: Recovery of Potential Viral Contigs
+    * **(3.a.1)** Recovery of potential viral contigs using [**VirSorter2**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00990-y), [**VirFinder**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5), and [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0)..
+    * **(3.a.2)** Filtering of the potential viral contigs.
+    * **(3.a.3)** Dereplication of the potential viral contigs.
+ * **3.b**: Taxonomic and Quality estimation of potential viral contigs
+    * **(3.b.1)** Taxonomic classification from the dereplicated potential viral contigs with [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8).
+    * **(3.b.2)** Checking the quality of the dereplicated contigs with [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7).
+* **3.c**: Viral-Host pair estimation using [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377). This step is only done automatically if you generate the prokaryotic MAGs using MuDoGeR as well. 
+* **3.d**: Selection of UViGs
     * **(3.d.1)** Selection of all viruses that yielded taxonomy when using vContact2 plus those larger than 15 Kb.
-    * **(3.d.2)** Selection based on the quality determined by **CheckV**
+    * **(3.d.2)** Selection based on the quality determined by [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7).
 
 
-### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (eMAGs)
+### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (eMABs)
 
 [](https://github.com/mdsufz/MuDoGeR/blob/master/Module%204.png)
 
-The steps of Module 4  are shown in Figure 5. A detailed description of its execution and outputs are found here:  [Pipelines for eukaryotic genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
+The steps of Module 4  are shown in Figure 5. A detailed description of its execution and outputs are found here:  [Pipelines for eukaryotic bins recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
 
  The steps of Module 4 can be summarized as follows:
 * **4.a**: Recovery and binning of Eukaryotic assemblies.
     * **(4.a.1)** Classification of Eukaryotic assemblies and removal of prokaryotic assemblies with **EukRep**.
-    * **(4.a.2)** Use of **CONCOCT** for binning the Eukaryotic assemblies.  
+    * **(4.a.2)** Use of **CONCOCT** for binning the Eukaryotic assemblies. 
     * **(4.a.3)** Filtering the Eukaryotic bins, produced from **CONCOCT**, by size. Bins with size < 1.5 Mb are removed.
 * **4.b**: Completeness and contamination estimation and annotation of Eukaryotic bins
     * **(4.b.1)** In the filtered bins produced in **4.a**, genes are predicted using **GeneMark**.
