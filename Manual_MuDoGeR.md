@@ -201,7 +201,7 @@ sample_name
 
 ## Module 3: Recovery of Uncultivated Viral Genomes (UViGs)
 
-The recovery of the UViGs module integrates the viral sequence recovery tools [**VirSorter**](https://peerj.com/articles/985/), [**VirFinder**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5), and [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0). Later, the sequences are dereplicated using [**Stampede-clustergenomes**](https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/). Following the potential viral contigs are analyzed and taxonomically estimated using [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8), and quality is estimated with [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7). MuDoGeR also uses [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377) to estimate the viral-host pairs from the potential viral contigs. Finally, MuDoGeR compiles the outputs from the used tools and selects high-quality UViGs as defined by [Roux, S., et al.(2019)](https://www.nature.com/articles/nbt.4306) and [Nayfach, S., et al. (2021)](https://www.nature.com/articles/s41587-020-00774-7).
+The recovery of the UViGs module integrates the viral sequence recovery tools [**VirSorter2**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00990-y), [**VirFinder**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5), and [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0). Later, the sequences are dereplicated using [**Stampede-clustergenomes**](https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/). Following the potential viral contigs are analyzed and taxonomically estimated using [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8), and quality is estimated with [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7). MuDoGeR also uses [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377) to estimate the viral-host pairs from the potential viral contigs. Finally, MuDoGeR compiles the outputs from the used tools and selects high-quality UViGs as defined by [Roux, S., et al.(2019)](https://www.nature.com/articles/nbt.4306) and [Nayfach, S., et al. (2021)](https://www.nature.com/articles/s41587-020-00774-7).
 
 The tools that require specific databases in the viral module are [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0), [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377), and [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7). All the databases should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/mdsufz/MuDoGeR#installation)
 
@@ -214,10 +214,10 @@ The available parameter for module 2 are:
 * --meta metadata table as described [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#required-metadata-table) (mandatory)
 * -o output directory (mandatory)
 * -t number of threads/cores (default = 1)
-* 
+
 ### 3.a: Recovery of Potential Viral Contigs
 
-In **3.a**, the viral recovery tools  [**VirSorter**](https://peerj.com/articles/985/), [**VirFinder**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5), and [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0) are applied to the assembly fasta file ```final_assembly.fasta``` created during the preprocess module. Sequences recovered with **VirFinder** with p-value > 0.01 and length < 1000 bp are removed. Later, the independent results of each tool are combined and dereplicated with [**Stampede-clustergenomes**](https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/) using 70% minimum coverage and 95% minimum identity.
+In **3.a**, the viral recovery tools  [**VirSorter2**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00990-y), [**VirFinder**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5), and [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0) are applied to the assembly fasta file ```final_assembly.fasta``` created during the preprocess module. Sequences recovered with **VirFinder** with p-value > 0.01 and length < 1000 bp are removed. Later, the independent results of each tool are combined and dereplicated with [**Stampede-clustergenomes**](https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/) using 70% minimum coverage and 95% minimum identity.
 
 The files result files ```vibrant_filtered_data.txt```, ```virfinder_filtered_data.txt```, and ```virsorter2_filtered_data.txt``` contains the names from the sequences identified as potential viral contigs. Those are the files used during the next steps.
 
@@ -231,11 +231,11 @@ Initially, MuDoGeR uses the ```dereplication/uvigs_95-70.fna``` file in **prodig
 The main output from [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8) used by MuDoGeR is the ```vcontact-output/genome_by_genome_overview.csv```. There you can find the estimated viral taxonomy and confidence score. For a more detailed explanation, please check the [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8) documentation. Finally, you can find the outputs from **CheckV** inside the ```vcheck_quality``` folder. The resulted file from  [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7) is organized in ```vcheck_quality/quality_summary.tsv```.
 
 
-### 3.c: Host identification of the dereplicated Potential Viral contigs
+### 3.c: Viral-Host pair estimation
 
 The Viral-Host pair estimation process is done based on the [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377) software. For MuDoGeR to run it automatically, please keep the defined folder structure from the Prokaryotes recovery and Viral recovery. MuDoGeR will use the results from Module 2 and Module 3 to calculate the Viral-Host potential. 
 
-Inside the ```host_prediction/``` folder you will find the Models created by **WiSH** for the prokaryotic MAGs. Inside the ```potential_host_genomes/``` you will find the MAGs recovered in Module 2, and inside the ```uvigs/``` folder, you have the fasta files for the viral contigs recovered in Module 3. Finally, you will have your main output in ```host_prediction/output_results/prediction.list```. There you will have the viral contigs name, the best provided MAGs match, the LogLikelihood, and the p-value for the match.
+Inside the ```host_prediction/``` folder you will find the Models created by [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377) for the prokaryotic MAGs. Inside the ```potential_host_genomes/``` you will find the MAGs recovered in Module 2, and inside the ```uvigs/``` folder, you have the fasta files for the viral contigs recovered in Module 3. Finally, you will have your main output in ```host_prediction/output_results/prediction.list```. There you will have the viral contigs name, the best provided MAGs match, the LogLikelihood, and the p-value for the match.
 
 ### 3.d: Selection of UViGs
 
@@ -372,7 +372,7 @@ sample_name
 
 ```
 
-## Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (eMABs)
+## Module 4: Recovery of Eukaryotic Metagenome-Assembled Bins (eMABs)
 
 The recovery of the eMABs module integrates **EukRep** for selecting the eukaryotic contigs from the initial assembly, the **CONCOCT** binner, **GeneMark** for prediction of eukaryotic genes, **EukCC** for for quality estimation from eukaryiotic sequences, **MAKER2** for gene annotation, and **BUSCO** for detection of single-copy orthologous genes.
 
@@ -380,15 +380,35 @@ The tools that require specific databases in the eukaryotic module are **EukCC**
 
 Module 4 requires specific configuration that can't be done automatically. Please, make sure you follow the instructions [here](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md) to complete **GeneMark** and **MAKER2** installation.
 
-For running module 4 use:
+For running all module 4 use:
 
 ```console
 $ mudoger --module eukaryotes --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
 ```
 
+The available parameter for module 34are:
+* --meta metadata table as described [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#required-metadata-table) (mandatory)
+* -o output directory (mandatory)
+* -t number of threads/cores (default = 1)
+
 ### 4.a: Recovery and binning of Eukaryotic assemblies
 
 The eMABs recovery starts with ```final_assembly.fasta``` as input to the **EukRep** tool. This splits the contigs within the assembled sequences into ```prokaryotic_contigs.fa``` and ```eukaryotic_contigs.fa```. Following, the eukaryotic contigs serve as input to the **CONCOCT** binner. Finally, the resulted eukaryotic bins are filtered by minimum size (by default we use 1.5 MB) and considered eMABs.
+
+The main result of step 4.a is the eMABs fasta files located within the ```filtered_euk_bins/``` folder.
+
+### 4.b: Completeness and contamination estimation and annotation of Eukaryotic bins
+
+The second part of eMABs recovery starts by predicting eukaryiotic genes using **GeneMark**. The input for this step are the eMABs recovered in step 4.a located within the ```filtered_euk_bins/``` folder. Following **EukCC** is used to calculate quality and completeness from the eMABs recovered in 4.a.
+
+For the annotation of eukaryotic genes, MuDoGeR feeds the **MAKER2** tool with the eukaryotic bins and the necessary files generated by **GeneMark** for each eMAB. Finally, **BUSCO** receives the **MAKER2** genes as input for detecting single-copy orthologous genes (SCGs)
+
+The results from **GeneMark** are calculated for each eMAB and you may find them in ```eukaryotes/genemarker_annotation/eMAB.fa_genemark```. The annotated genes are located in the ```genemark.gtf``` file. The model created for the eMAB, the ```gmhmm.mod``` is then used by **MAKER2**.
+A summary of the quality results calculated buy **EukCC** can be found in ```eukaryotes/eukcc_quality/eMAB.fa_eukcc/eukcc.csv```.
+The main results from the **MAKER2** annotation can be found for each eMAB within the folder ```eukaryotes/maker2_gene_annotation/eMAB.fa_maker2/eMAB.maker.output/```
+Finally, you can find **BUSCO** results in the files ```eukaryotes/euk_completeness/eMAB_busco/short_summary.specific.eukaryota_odb10.eMAB_busco.txt``` and ```eukaryotes/euk_completeness/eMAB_busco/run_eukaryota_odb10/full_table.tsv```.
+
+## Module 4: Final Considerations
 
 After successfully running step 4.a, you should have the following folder structure:
 
@@ -406,14 +426,6 @@ sample_name
 		└── prokaryotic_contigs.fa
 
 ```
-
-The main result of step 4.a.1 is the eMABs fasta files located within the ```filtered_euk_bins/``` folder.
-
-### 4.b: Completeness and contamination estimation and annotation of Eukaryotic bins
-
-The second part of eMABs recovery starts by predicting eukaryiotic genes using **GeneMark**. The input for this step are the eMABs recovered in step 4.a located within the ```filtered_euk_bins/``` folder. Following **EukCC** is used to calculate quality and completeness from the eMABs recovered in 4.a.
-
-For the annotation of eukaryotic genes, MuDoGeR feeds the **MAKER2** tool with the eukaryotic bins and the necessary files generated by **GeneMark** for each eMAB. Finally, **BUSCO** receives the **MAKER2** genes as input for detecting single-copy orthologous genes (SCGs)
 
 After successfully running step 4.b, you should have the following folder structure:
 
@@ -465,33 +477,33 @@ sample_name
 
 ```
 
-The results from **GeneMark** are calculated for each eMAB and you may find them in ```eukaryotes/genemarker_annotation/eMAB.fa_genemark```. The annotated genes are located in the ```genemark.gtf``` file. The model created for the eMAB, the ```gmhmm.mod``` is then used by **MAKER2**.
-A summary of the quality results calculated buy **EukCC** can be found in ```eukaryotes/eukcc_quality/eMAB.fa_eukcc/eukcc.csv```.
-The main results from the **MAKER2** annotation can be found for each eMAB within the folder ```eukaryotes/maker2_gene_annotation/eMAB.fa_maker2/eMAB.maker.output/```
-Finally, you can find **BUSCO** results in the files ```eukaryotes/euk_completeness/eMAB_busco/short_summary.specific.eukaryota_odb10.eMAB_busco.txt``` and ```eukaryotes/euk_completeness/eMAB_busco/run_eukaryota_odb10/full_table.tsv```.
-
-
 ## Module 5: Relative abundance 
-
-UNDER DEVELOPMENT
 
 Module 5 of MuDoGeR maps the quality-controlled reads to the recovered MAGs/UViGs/eMAB to calculate their abundance within the WGS samples.
 
-Consequently, MuDoGeR requires as input the path to the quality-controlled reads and the path to the recovered MAGs and UViGs sequences.
+Consequently, MuDoGeR requires as input the path to the quality-controlled reads and the path to the recovered MAGs/UViGs/eMAB sequences.
 
-MuDoGeR provides three mapping pipelines, called --reduced , --complete , and --genes
+MuDoGeR provides three mapping pipelines, called --reduced, --complete, and --genes
 
-When using the --complete flag, MuDoGeR maps the WGS reads from a sample to the recovered MAGs from the same WGS sample. Therefore, the mapping occurs only within the sample. This flag outputs an abundance table for each MAG and UViGs found in the sample.
+Initially, module 5 selects the representatives' MAGs/UViGs/eMAB based on ANI 95 distance measure using the **gOTUpick** software integrated into the MuDoGeR custom scripts. Following, MuDoGeR provides three mapping pipelines, called --reduced, --complete, and --genes.
 
-When using the --reduced flag, MuDoGeR collects the MAGs recovered from all WGS samples provided in the --meta metadata table and groups them based on ANI 95 distance measure. Later, MuDoGeR selects the highest quality MAG within the group and maps it to the WGS reads from the samples where the MAGs from the group were recovered. This flag outputs an abundance table with samples in columns and representative MAGs and UViGs as rows. 
+When using the --complete flag, MuDoGeR maps all WGS samples to all representative MAGs/UViGs/eMAB selected by the **gOTUpick**. When using the --reduced flag, MuDoGeR maps the representative MAGs/UViGs/eMAB only to the WGS samples where they and their group of MAGs/UViGs/eMAB were recovered. In both cases, you can use the --coverage and --relative-abundance flags to also calculate the MAGs/UViGs/eMAB coverage and relative abundance, respectively.
 
-In addition, you can use the --gene flag to map the WGS quality-controlled reads to all the prokka annotated genes found in all MAGs in that sample.
+In addition, you can use the --gene flag to map the WGS quality-controlled reads to all the prokka annotated genes found in the samples' ```final_assembly.fasta``` files. You can also use the --coverage and --relative-abundance flags to output coverage and relative abundance values, respectively, for the annotated genes.
 
-MuDoGeR has 3 output formats for calculating abundance: --absolute-values, --coverage, and --relative-abundance. They can be used simultaneously.
+You can run all module 5 as follows:
 
-You can run module 5 as follows:
-
+```console
 mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --reduced --absolute-values --coverage --relative-abundance
+```
+
+The available parameter for module 34are:
+* --meta metadata table as described [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#required-metadata-table) (mandatory)
+* -o output directory (mandatory)
+* -t number of threads/cores (default = 1)
+* --reduced (default), --complete, or --genes mapping type
+* --absolute-values --coverage, and/or --relative-abundance output values
+
 
 After a succesul run of module 5, you should have the following folder structure:
 ```console
