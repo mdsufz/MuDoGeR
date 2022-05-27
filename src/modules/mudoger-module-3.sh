@@ -56,7 +56,7 @@ else
 echo "-> Running Viral investigation"
 mkdir -p "$libname_folder"/viruses/investigation
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-3-1_viral-investigation.sh "$assembly" \
-"$libname_folder"/viruses/investigation \
+"$libname_folder"/viruses/ \
 $cores
 
 fi
