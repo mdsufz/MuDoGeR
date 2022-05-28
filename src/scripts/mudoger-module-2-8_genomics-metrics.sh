@@ -17,6 +17,7 @@ conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/bbtools_env
 
 mkdir -p "$1"/metrics/genome_statistics
 
+prokaryotes_folder=$1
 output_path="$1"/metrics/genome_statistics
 output_file="$output_path"/prok_genomes_stats.tsv
 cores=$2
@@ -56,7 +57,7 @@ rm -fr $temp_path;
 echo -e "$genome_name\t$X\t$Y\t$large_contig\t$N50\t$N90" >> $output_file
 done
 
-### summarize results in one table 
+### Summarize results in one table 
 
 echo -e "OTU\tcompleteness\tcontamination\tstr.heterogeneity\ttaxonomy\tgenome_size\t#scaffolds\tlargest_scaff\tN50\tN90\tprokka_known\tprokka_unknown" > $output_path/genome_metrics.tsv ;
 for d in  $1/binning/unique_bins/*;
@@ -70,7 +71,7 @@ metrics="$(grep "$bin" $output_path/prok_genomes_stats.tsv  | cut -f2-10)";
 echo -e "$metrics\t\c"; 
 prokka_known="$(tail -n +2 $1/metrics/prokka/"$bin"/PROKKA*tsv  | grep -v hypothetical | wc -l )";
 prokka_unknown="$(tail -n +2 $1/metrics/prokka/"$bin"/PROKKA*tsv  | grep hypothetical | wc -l )";
-echo -e "$prokka_known\t$prokka_unknown";done >> $output_path/genome_metrics.tsv
+echo -e "$prokka_known\t$prokka_unknown"; done >> $output_path/genome_metrics.tsv
 
 
 ##Run BBTOOLS on selected MAGs
@@ -78,10 +79,43 @@ cd "$1"/binning/unique_bins/
 
 "$MUDOGER_DEPENDENCIES_ENVS_PATH"/bbtools_env/bin/statswrapper.sh *.fa > $output_path/bbtools.tsv
 
-# FIlter Good quality bins (Complet - 5*Contamination >= 50) based on CheckM
+## Filter Good quality bins (Complet - 5*Contamination >= 50) based on CheckM
 cat $output_path/genome_metrics.tsv | awk 'BEGIN {FS="\t"};NR==1; ($2 - (5*$3)) >= 50' > "$1"/MAGS_results.tsv
 
 cd -
+
+## Colect all relevant results in one final output folder
+
+mkdir -p "$prokaryotes_folder"/final_outputs
+mkdir -p "$prokaryotes_folder"/final_outputs/all_bins_seq
+mkdir -p "$prokaryotes_folder"/final_outputs/only_mags_seq
+mkdir -p "$prokaryotes_folder"/final_outputs/bins_metrics_summary
+mkdir -p "$prokaryotes_folder"/final_outputs/bins_genes_prokka_summary
+
+#copy bins
+yes | cp "$prokaryotes_folder"/binning/unique_bins/*.fa "$prokaryotes_folder"/final_outputs/all_bins_seq/
+#Copy taxa
+yes | cp "$prokaryotes_folder"/metrics/GTDBtk_taxonomy/*.summ* "$prokaryotes_folder"/final_outputs/bins_metrics_summary/taxa_bins_gtdbtk_summary.tsv
+#Copy quality
+yes | cp "$prokaryotes_folder"/metrics/checkm_qc/outputcheckm.tsv "$prokaryotes_folder"/final_outputs/bins_metrics_summary/qual_bins_checkm_summary.tsv
+#copy gene annotation
+for d in  $1/binning/unique_bins/*;
+do bin="$(echo $d | rev | cut -f1 -d'/' | rev | sed "s/.fa//g")";
+yes | cp "$prokaryotes_folder"/metrics/prokka/"$bin"/PROKKA*tsv "$prokaryotes_folder"/final_outputs/bins_genes_prokka_summary/"$bin"_genes_prokka.tsv
+done
+
+#Copy complete summary
+yes | cp "$prokaryotes_folder"/$output_path/genome_metrics.tsv "$prokaryotes_folder"/final_outputs/allbins_metrics_summary.tsv
+
+#Move mags summary
+mv "$prokaryotes_folder"/MAGS_results.tsv "$prokaryotes_folder"/final_outputs/mags_results_summary.tsv
+
+#Copy only MAGs seq
+cat "$prokaryotes_folder"/final_outputs/mags_results_summary.tsv | cut -f1 | tail -n+2 > "$prokaryotes_folder"/final_outputs/tmp
+while read mag; do yes | cp "$prokaryotes_folder"/binning/unique_bins/$mag.fa "$prokaryotes_folder"/final_outputs/only_mags_seq;
+done < "$prokaryotes_folder"/final_outputs/tmp
+
+rm -f "$prokaryotes_folder"/final_outputs/tmp
 
 conda deactivate
 
