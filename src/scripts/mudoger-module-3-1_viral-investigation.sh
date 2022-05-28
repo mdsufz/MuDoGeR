@@ -16,6 +16,8 @@ database="${config_path/config/database}"
 source $config_path
 source $database
 
+lib=`echo $output_folder | rev | cut -f4 -d'/' | rev `
+
 ############ VIBRANT #################
 
 if [ -f "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna ];
