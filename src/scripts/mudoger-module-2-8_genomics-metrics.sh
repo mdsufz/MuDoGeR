@@ -105,7 +105,7 @@ yes | cp "$prokaryotes_folder"/metrics/prokka/"$bin"/PROKKA*tsv "$prokaryotes_fo
 done
 
 #Copy complete summary
-yes | cp "$prokaryotes_folder"/$output_path/genome_metrics.tsv "$prokaryotes_folder"/final_outputs/allbins_metrics_summary.tsv
+yes | cp $output_path/genome_metrics.tsv "$prokaryotes_folder"/final_outputs/allbins_metrics_summary.tsv
 
 #Move mags summary
 mv "$prokaryotes_folder"/MAGS_results.tsv "$prokaryotes_folder"/final_outputs/mags_results_summary.tsv
