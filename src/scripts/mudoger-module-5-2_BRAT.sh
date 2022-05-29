@@ -103,7 +103,7 @@ if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.t
 										$reduced \
 										$complete
 	echo -e "\n BRAT pMAGs DONE"
-	
+fi
 	
 #     Perform BRAT      submodule 5-2-2
 if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.txt ]; then
@@ -118,7 +118,7 @@ if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.t
 										$reduced \
 										$complete
 	echo -e "\n BRAT UViGs DONE"
-	
+fi
 	
 #     Perform BRAT      submodule 5-2-3
 #if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.txt ]; then
@@ -133,7 +133,7 @@ if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.t
 	#									$reduced \
 	#									$complete
 	#echo -e "\n BRAT eMABs DONE"
-
+#fi
 
 #deactivate env
 conda deactivate
