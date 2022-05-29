@@ -33,7 +33,7 @@ then
 #2 cp and prepare data
 yes | cp "$bins_folder"/*fa "$output_folder"/potential_host_genomes
 #python3 "$(echo $PATH | cut -f1 -d':' | sed "s/conda\/envs\/wish_env\/bin//g" )"/split-all-seq.py "$uvigs_file" "$output_folder"/uvigs/"$lib"_uvig
-python3 "$MUDOGER_DEPENDENCIES_PATH"/split-all-seq.py "$uvigs_file" "$output_folder"/uvigs/"$lib"_uvig
+python3 "$MUDOGER_DEPENDENCIES_PATH"/split-all-seq.py "$uvigs_file" "$output_folder"/uvigs/"$lib"_putative_viral_contig
 
 #3 build viral model
 WIsH -c build -g "$output_folder"/potential_host_genomes/ -m "$output_folder"/modelDir
