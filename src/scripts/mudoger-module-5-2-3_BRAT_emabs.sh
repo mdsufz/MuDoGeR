@@ -40,8 +40,8 @@ for i in $aux;
 	do
 	for f in $project_folder/$i/eukaryotes/filtered_euk_bins/*.fa
 		do
-		file_name="$(basename $f)"
-		yes | cp $f $emabs_output_folder/emabs_fasta/$i_$f
+		file=` echo $f | rev | cut -f1 -d'/' | rev`
+		yes | cp $f $emabs_output_folder/emabs_fasta/$i_$file
 	done
 done
 
