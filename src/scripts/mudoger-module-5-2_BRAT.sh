@@ -121,18 +121,18 @@ if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.t
 	
 	
 #     Perform BRAT      submodule 5-2-3
-if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.txt ]; then
+#if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.txt ]; then
 
-	echo -e "\n BRAT eMABs STARTED"
-	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-2-3_BRAT_emabs.sh $project_folder \
-										$metadata_table \
-										$cores \
-										$absolute \
-										$coverage \
-										$relative \
-										$reduced \
-										$complete
-	echo -e "\n BRAT eMABs DONE"
+	#echo -e "\n BRAT eMABs STARTED"
+	#bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-2-3_BRAT_emabs.sh $project_folder \
+	#									$metadata_table \
+	#									$cores \
+	#									$absolute \
+	#									$coverage \
+	#									$relative \
+	#									$reduced \
+	#									$complete
+	#echo -e "\n BRAT eMABs DONE"
 
 
 #deactivate env
