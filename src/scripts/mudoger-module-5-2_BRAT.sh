@@ -106,7 +106,7 @@ if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.t
 fi
 	
 #     Perform BRAT      submodule 5-2-2
-if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.txt ]; then
+#if [ "$(ls -A $project_folder/$i/viruses/final_outputs/only_uvigs_seq)" ]; then
 
 	echo -e "\n BRAT UViGs STARTED"
 	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-2-2_BRAT_uvigs.sh $project_folder \
@@ -118,21 +118,21 @@ if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.t
 										$reduced \
 										$complete
 	echo -e "\n BRAT UViGs DONE"
-fi
+#fi
 	
 #     Perform BRAT      submodule 5-2-3
 #if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.txt ]; then
 
-	#echo -e "\n BRAT eMABs STARTED"
-	#bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-2-3_BRAT_emabs.sh $project_folder \
-	#									$metadata_table \
-	#									$cores \
-	#									$absolute \
-	#									$coverage \
-	#									$relative \
-	#									$reduced \
-	#									$complete
-	#echo -e "\n BRAT eMABs DONE"
+	echo -e "\n BRAT eMABs STARTED"
+	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-2-3_BRAT_emabs.sh $project_folder \
+										$metadata_table \
+										$cores \
+										$absolute \
+										$coverage \
+										$relative \
+										$reduced \
+										$complete
+	echo -e "\n BRAT eMABs DONE"
 #fi
 
 #deactivate env

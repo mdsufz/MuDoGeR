@@ -22,58 +22,62 @@ reduced=$7
 complete=$8
 
 #Process inputs
-uvigs_output_folder=$project_folder/mapping_results/uvigs_mapping
+emabs_output_folder=$project_folder/mapping_results/euk_mabs_mapping
 merged_reads_folder=$project_folder/mapping_results/merged_reads
 
 # load brat env
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/brat_env
 
-mkdir -p $uvigs_output_folder
+mkdir -p $emabs_output_folder
 
 #### Copy seq files ####
-mkdir -p $uvigs_output_folder/uvigs_fasta
+mkdir -p $emabs_output_folder/emabs_fasta
 
-#Copy recovered UViGs 
+#Copy recovered emabs 
 
 aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
 for i in $aux; 
 	do
-	yes | cp $project_folder/$i/viruses/final_outputs/only_uvigs_seq/*.fa $uvigs_output_folder/uvigs_fasta/
+	for f in $project_folder/$i/eukaryotes/filtered_euk_bins/*.fa
+		do
+		file_name="$(basename $f)"
+		yes | cp $f $emabs_output_folder/emabs_fasta/$i_$f
+	done
 done
 
-#### Calculate MAGs/UViGs/eMABs sizes ###
+#### Calculate MAGs/emabs/eMABs sizes ###
 
 if [ "$coverage" = "true" ]; then
 
-	## UViGs sizes ##
-	mkdir -p $uvigs_output_folder/uvigs_sizes
+	## emabs sizes ##
+	mkdir -p $emabs_output_folder/emabs_sizes
 	
-	for uvigs_path in $uvigs_output_folder/uvigs_fasta/*.fa;
-	  do  uvig="$(echo "$uvigs_path" | rev | cut -f1 -d'/' | rev )";
-	  echo -e "\nCalculating genome size from $uvig"
-	  cat "$uvigs_path" | grep -v ">" > $uvigs_output_folder/uvigs_sizes/aux;
-	  size="$(wc -c $uvigs_output_folder/uvigs_sizes/aux | cut -f1 -d' ' )";
-	  echo ${size} ${uvig/.fa/} > "$uvigs_output_folder/uvigs_sizes/${uvig/.fa/}.uvig-size"
-	  rm -f $uvigs_output_folder/uvigs_sizes/aux;
+	for emabs_path in $emabs_output_folder/emabs_fasta/*.fa;
+	  do  emab="$(echo "$emabs_path" | rev | cut -f1 -d'/' | rev )";
+	  echo -e "\nCalculating genome size from $emab"
+	  cat "$emabs_path" | grep -v ">" > $emabs_output_folder/emabs_sizes/aux;
+	  size="$(wc -c $emabs_output_folder/emabs_sizes/aux | cut -f1 -d' ' )";
+	  echo ${size} ${emab/.fa/} > "$emabs_output_folder/emabs_sizes/${emab/.fa/}.emab-size"
+	  rm -f $emabs_output_folder/emabs_sizes/aux;
 
 	done
-	cat $uvigs_output_folder/uvigs_sizes/*.uvig-size > $uvigs_output_folder/uvigs_sizes
+	cat $emabs_output_folder/emabs_sizes/*.emab-size > $emabs_output_folder/emabs_sizes.txt
 		
 fi
 
 #### Indexing OTUs/UViGs/eMABs ####
 
-## Indexing UViGs
-cd $uvigs_output_folder/uvigs_fasta/
+## Indexing emabs
+cd $emabs_output_folder/emabs_fasta/
 
-for uvig in *.fa ; 
+for emab in *.fa ; 
   do
-  echo -e "\nIndexing $uvig"
-  if [ -f  $uvigs_output_folder/uvigs_fasta/${uvig/.fa/}.rev.1.bt2 ];
-  then echo "-> Bowtie-build already done. Please check here: $uvigs_output_folder/uvigs_fasta/${uvig/.fa/}.rev.1.bt2"
+  echo -e "\nIndexing $emab"
+  if [ -f  $emabs_output_folder/emabs_fasta/${emab/.fa/}.rev.1.bt2 ];
+  then echo "-> Bowtie-build already done. Please check here: $emabs_output_folder/emabs_fasta/${emab/.fa/}.rev.1.bt2"
   else
   echo "-> Running bowtie-build"
-  bowtie2-build "$uvig" "${uvig/.fa/}";
+  bowtie2-build "$emab" "${emab/.fa/}";
   fi
   
 done
@@ -83,18 +87,18 @@ cd -
 #Run complete if selected
 if [ "$complete" = "true" ]; then
 	#Create job array for Complete
-	cd $output_folder/otus_fasta
-	mkdir -p "$output_folder"/map_results_complete/
+	cd $emabs_output_folder/emabs_fasta
+	mkdir -p "$emabs_output_folder"/map_results_complete/
 	
 	for d in *.fa; 
 		do 
-		bin=$output_folder/otus_fasta/${d/.fa/};
+		bin=$emabs_output_folder/emabs_fasta/${d/.fa/};
 		for l in $merged_reads_folder/*.fasta;
 		do 
-		output="$output_folder"/map_results_complete/"${d/.fa/}"-LIB-"$(echo $l | rev | cut -f1 -d'/' | rev | sed "s/.fasta/.txt/g")";
+		output="$emabs_output_folder"/map_results_complete/"${d/.fa/}"-LIB-"$(echo $l | rev | cut -f1 -d'/' | rev | sed "s/.fasta/.txt/g")";
 		echo "$bin" "$l" "$output" ;
 		done;
-	done > "$output_folder"/map_list_complete
+	done > "$emabs_output_folder"/map_list_complete
 	
 	#Map according to map_list
 	while read l;
@@ -111,39 +115,41 @@ if [ "$complete" = "true" ]; then
 			bowtie2 --threads $cores -x "$bin" -f "$lib" | samtools view --threads $cores  -F 4 | cut -f1 | sort -u | wc -l > "$out"
 		fi
 		
-	done < "$output_folder"/map_list_complete
+	done < "$emabs_output_folder"/map_list_complete
 	cd -
-	rm -f "$output_folder"/map_list_complete
+	rm -f "$emabs_output_folder"/map_list_complete
+  
 	# Create table
-	cd "$output_folder"/map_results_complete/
+	cd "$emabs_output_folder"/map_results_complete/
 	for d in *.txt;
 		do 
 		echo -e "$d\t\c" | sed "s/-LIB-/\t/g" | sed "s/.txt//g";
 		cat $d;
-	done > "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv
+	done > "$emabs_output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv
 	cd -
-	cat "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_complete/map_complete_absolute_n_hits_table.tsv
+	cat "$emabs_output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$emabs_output_folder"/map_results_complete/map_complete_absolute_n_hits_table.tsv
 	
 	#Calculate coverage and relative abd tables
 	if [ "$coverage" = "true" ]; then
-		rm -fr "$output_folder"/map_results_complete/map_complete_coverage_list.tsv
+		rm -fr "$emabs_output_folder"/map_results_complete/map_complete_coverage_list.tsv
 		while read l;
 		do
 			num_hits="$(echo $l | cut -f3 -d " ")";
 			lib="$(echo $l | cut -f2 -d " ")";
 			bin="$(echo $l | cut -f1 -d " ")";
 			frag_size="$(grep -w $lib $merged_reads_folder/avg_reads_len.tsv | cut -f2)";
-			gen_size="$(grep -w $bin $output_folder/genomes_sizes | cut -f1 -d ' ')";
+			gen_size="$(grep -w $bin $emabs_output_folder/emabs_sizes.txt | cut -f1 -d ' ')";
 			hits_times_frag="$(($num_hits*$frag_size))";
 			coverage="$(($hits_times_frag/$gen_size))";
-			echo "$bin" "$lib" "$coverage" >> "$output_folder"/map_results_complete/map_complete_coverage_list.tsv
-		done < "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv
+			echo "$bin" "$lib" "$coverage" >> "$emabs_output_folder"/map_results_complete/map_complete_coverage_list.tsv
+		done < "$emabs_output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv
 		
 		# transform in cross table 
-		cat "$output_folder"/map_results_complete/map_complete_coverage_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_complete/map_complete_coverage_table.tsv
-	fi	
+		cat "$emabs_output_folder"/map_results_complete/map_complete_coverage_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$emabs_output_folder"/map_results_complete/map_complete_coverage_table.tsv
+	fi
+  
 	if [ "$relative" = "true" ]; then
-		rm -fr "$output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv
+		rm -fr "$emabs_output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv
 		while read l;
 		do 
 			num_hits="$(echo $l | cut -f3 -d" ")" ;
@@ -151,25 +157,25 @@ if [ "$complete" = "true" ]; then
 			bin="$(echo $l | cut -f1 -d" ")";
 			total_n_reads="$(grep -w $lib $merged_reads_folder/total_reads_per_lib.tsv | cut -f2 | cut -f1 -d " ")";
 			r_abundance="$(  bc -l <<< $num_hits/$total_n_reads)";
-			echo "$bin" "$lib" "$r_abundance" >> "$output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv
-		done < "$output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv 
+			echo "$bin" "$lib" "$r_abundance" >> "$emabs_output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv
+		done < "$emabs_output_folder"/map_results_complete/map_complete_absolute_n_hits_list.tsv 
 		# transform in cross table
-		cat "$output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_complete/map_complete_relative_abundance_table.tsv
+		cat "$emabs_output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$emabs_output_folder"/map_results_complete/map_complete_relative_abundance_table.tsv
 	fi
-mkdir -p $output_folder/map_final_tables_complete
-mv "$output_folder"/map_results_complete/map_complete_* $output_folder/map_final_tables_complete
+mkdir -p $emabs_output_folder/map_final_tables_complete
+mv "$emabs_output_folder"/map_results_complete/map_complete_* $emabs_output_folder/map_final_tables_complete
 fi
 
-#Run reduced if selected
+### Run reduced if selected ###
 
-if [ "$reduced" = "true" ]; then
+if [ "$reduced" = "not_testing" ]; then
 	#Create job array for Reduced
-	cd $output_folder/otus_fasta
-	mkdir -p "$output_folder"/map_results_reduced/
+	cd $emabs_output_folder/emabs_fasta
+	mkdir -p "$emabs_output_folder"/map_results_reduced/
 	
-	cat $project_folder/mapping_results/gOTUpick_results/final_output/final_groups_output.csv | grep "*" > "$output_folder"/aux_rep
-	rm -f "$output_folder"/map_list_reduced
-	touch "$output_folder"/map_list_reduced
+	cat $project_folder/mapping_results/gOTUpick_results/final_output/final_groups_output.csv | grep "*" > "$emabs_output_folder"/aux_rep
+	rm -f "$emabs_output_folder"/map_list_reduced
+	touch "$emabs_output_folder"/map_list_reduced
 	while read l; 
 		do
 		group=$(echo $l | cut -f2 -d ",");
@@ -177,24 +183,24 @@ if [ "$reduced" = "true" ]; then
 		echo $group;
 		if [ $group = "unique" ]; then
 			lib=$(echo $rep_bin | cut -f1 -d "-");
-			w_bin="$output_folder/otus_fasta/$(echo $rep_bin | sed "s/.fa//g")";
+			w_bin="$emabs_output_folder/emabs_fasta/$(echo $rep_bin | sed "s/.fa//g")";
 			w_lib="$merged_reads_folder/$lib.fasta"
-			w_out="$output_folder/map_results_reduced/$(echo $rep_bin | sed "s/.fa//g")-LIB-$lib.txt"
-			echo "$w_bin" "$w_lib" "$w_out" >> "$output_folder"/map_list_reduced
+			w_out="$emabs_output_folder/map_results_reduced/$(echo $rep_bin | sed "s/.fa//g")-LIB-$lib.txt"
+			echo "$w_bin" "$w_lib" "$w_out" >> "$emabs_output_folder"/map_list_reduced
 		else	
-			cat $project_folder/mapping_results/gOTUpick_results/final_output/final_groups_output.csv | grep "$group" > "$output_folder"/aux_group
+			cat $project_folder/mapping_results/gOTUpick_results/final_output/final_groups_output.csv | grep "$group" > "$emabs_output_folder"/aux_group
 			while read b;
 				do
 				lib=$(echo $b | cut -f1 -d "," | cut -f1 -d "-");
-				w_bin="$output_folder/otus_fasta/$(echo $rep_bin | sed "s/.fa//g")";
+				w_bin="$emabs_output_folder/emabs_fasta/$(echo $rep_bin | sed "s/.fa//g")";
 				w_lib="$merged_reads_folder/$lib.fasta"
-				w_out="$output_folder/map_results_reduced/$(echo $rep_bin | sed "s/.fa//g")-LIB-$lib.txt"
-				echo "$w_bin" "$w_lib" "$w_out" >> "$output_folder"/map_list_reduced
-			done < "$output_folder"/aux_group
+				w_out="$emabs_output_folder/map_results_reduced/$(echo $rep_bin | sed "s/.fa//g")-LIB-$lib.txt"
+				echo "$w_bin" "$w_lib" "$w_out" >> "$emabs_output_folder"/map_list_reduced
+			done < "$emabs_output_folder"/aux_group
 		fi
-	done < "$output_folder"/aux_rep
-	rm -f "$output_folder"/aux_rep
-	rm -f "$output_folder"/aux_group
+	done < "$emabs_output_folder"/aux_rep
+	rm -f "$emabs_output_folder"/aux_rep
+	rm -f "$emabs_output_folder"/aux_group
 	
 	#Map according to map_list
 	while read l;
@@ -211,39 +217,39 @@ if [ "$reduced" = "true" ]; then
 			bowtie2 --threads $cores -x "$bin" -f "$lib" | samtools view --threads $cores  -F 4 | cut -f1 | sort -u | wc -l > "$out"
 		fi
 		
-	done < "$output_folder"/map_list_reduced
+	done < "$emabs_output_folder"/map_list_reduced
 	cd -
 	
 	# Create table
-	cd "$output_folder"/map_results_reduced/
+	cd "$emabs_output_folder"/map_results_reduced/
 	for d in *.txt;
 		do 
 		echo -e "$d\t\c" | sed "s/-LIB-/\t/g" | sed "s/.txt//g";
 		cat $d;
-	done > "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv
+	done > "$emabs_output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv
 	cd -
-	cat "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_table.tsv
+	cat "$emabs_output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$emabs_output_folder"/map_results_reduced/map_reduced_absolute_n_hits_table.tsv
 	
 	#Calculate coverage and relative abd tables
 	if [ "$coverage" = "true" ]; then
-		rm -fr "$output_folder"/map_results_reduced/map_reduced_coverage_list.tsv
+		rm -fr "$emabs_output_folder"/map_results_reduced/map_reduced_coverage_list.tsv
 		while read l;
 		do
 			num_hits="$(echo $l | cut -f3 -d" ")";
 			lib="$(echo $l | cut -f2 -d" ")";
 			bin="$(echo $l | cut -f1 -d" ")";
 			frag_size="$(grep -w $lib $merged_reads_folder/avg_reads_len.tsv | cut -f2)";
-			gen_size="$(grep -w $bin $output_folder/genomes_sizes | cut -f1 -d ' ')";
+			gen_size="$(grep -w $bin $emabs_output_folder/emabs_sizes.txt | cut -f1 -d ' ')";
 			hits_times_frag="$(($num_hits*$frag_size))";
 			coverage="$(($hits_times_frag/$gen_size))";
-			echo "$bin" "$lib" "$coverage" >> "$output_folder"/map_results_reduced/map_reduced_coverage_list.tsv;
-		done < "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv 
+			echo "$bin" "$lib" "$coverage" >> "$emabs_output_folder"/map_results_reduced/map_reduced_coverage_list.tsv;
+		done < "$emabs_output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv 
 		
 		# transform in cross table 
-		cat "$output_folder"/map_results_reduced/map_reduced_coverage_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_reduced/map_reduced_coverage_table.tsv
+		cat "$emabs_output_folder"/map_results_reduced/map_reduced_coverage_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$emabs_output_folder"/map_results_reduced/map_reduced_coverage_table.tsv
 	fi
 	if [ "$relative" = "true" ]; then
-		rm -fr "$output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv
+		rm -fr "$emabs_output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv
 		while read l;
 		do 
 			num_hits="$(echo $l | cut -f3 -d" ")" ;
@@ -251,15 +257,14 @@ if [ "$reduced" = "true" ]; then
 			bin="$(echo $l | cut -f1 -d" ")";
 			total_n_reads="$(grep -w $lib $merged_reads_folder/total_reads_per_lib.tsv | cut -f2 | cut -f1 -d " ")";
 			r_abundance="$(  bc -l <<< $num_hits/$total_n_reads)";
-			echo "$bin" "$lib" "$r_abundance" >> "$output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv
-		done < "$output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv 
+			echo "$bin" "$lib" "$r_abundance" >> "$emabs_output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv
+		done < "$emabs_output_folder"/map_results_reduced/map_reduced_absolute_n_hits_list.tsv 
 		# transform in cross table
-		cat "$output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_reduced/map_reduced_relative_abundance_table.tsv
+		cat "$emabs_output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$emabs_output_folder"/map_results_reduced/map_reduced_relative_abundance_table.tsv
 	fi
-mkdir -p $output_folder/map_final_tables_reduced
-mv "$output_folder"/map_results_reduced/map_reduced_* $output_folder/map_final_tables_reduced
+mkdir -p $emabs_output_folder/map_final_tables_reduced
+mv "$emabs_output_folder"/map_results_reduced/map_reduced_* $emabs_output_folder/map_final_tables_reduced
 fi
 
 #deactivate env
 conda deactivate
-
