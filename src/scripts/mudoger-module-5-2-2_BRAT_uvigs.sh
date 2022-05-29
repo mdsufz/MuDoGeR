@@ -57,7 +57,7 @@ if [ "$coverage" = "true" ]; then
 	  rm -f $uvigs_output_folder/uvigs_sizes/aux;
 
 	done
-	cat $uvigs_output_folder/uvigs_sizes/*.uvig-size > $uvigs_output_folder/uvigs_sizes
+	cat $uvigs_output_folder/uvigs_sizes/*.uvig-size > $uvigs_output_folder/uvigs_sizes.txt
 		
 fi
 
@@ -134,7 +134,7 @@ if [ "$complete" = "true" ]; then
 			lib="$(echo $l | cut -f2 -d " ")";
 			bin="$(echo $l | cut -f1 -d " ")";
 			frag_size="$(grep -w $lib $merged_reads_folder/avg_reads_len.tsv | cut -f2)";
-			gen_size="$(grep -w $bin $uvigs_output_folder/genomes_sizes | cut -f1 -d ' ')";
+			gen_size="$(grep -w $bin $uvigs_output_folder/uvigs_sizes.txt | cut -f1 -d ' ')";
 			hits_times_frag="$(($num_hits*$frag_size))";
 			coverage="$(($hits_times_frag/$gen_size))";
 			echo "$bin" "$lib" "$coverage" >> "$uvigs_output_folder"/map_results_complete/map_complete_coverage_list.tsv
@@ -235,7 +235,7 @@ if [ "$reduced" = "not_testing" ]; then
 			lib="$(echo $l | cut -f2 -d" ")";
 			bin="$(echo $l | cut -f1 -d" ")";
 			frag_size="$(grep -w $lib $merged_reads_folder/avg_reads_len.tsv | cut -f2)";
-			gen_size="$(grep -w $bin $uvigs_output_folder/genomes_sizes | cut -f1 -d ' ')";
+			gen_size="$(grep -w $bin $uvigs_output_folder/uvigs_sizes.txt | cut -f1 -d ' ')";
 			hits_times_frag="$(($num_hits*$frag_size))";
 			coverage="$(($hits_times_frag/$gen_size))";
 			echo "$bin" "$lib" "$coverage" >> "$uvigs_output_folder"/map_results_reduced/map_reduced_coverage_list.tsv;
