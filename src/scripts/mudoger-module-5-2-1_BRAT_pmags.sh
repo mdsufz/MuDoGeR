@@ -41,7 +41,9 @@ while read l;
 	otu=$(echo $l | cut -f1 -d " ")
 	yes | cp -fr $project_folder/mapping_results/all_bins/$otu $output_folder/otus_fasta
 done < $output_folder/otus_fasta/aux
+
 rm -f $output_folder/otus_fasta/aux
+rm -fr "$project_folder"/mapping_results/all_bins/
 
 #### Calculate MAGs/UViGs/eMABs sizes ###
 
