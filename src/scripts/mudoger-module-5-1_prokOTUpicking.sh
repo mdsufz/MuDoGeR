@@ -85,6 +85,7 @@ rm -f $gOTUpick_results_path/final_output/repbin_aux
 rm -f $gOTUpick_results_path/final_output/aux_final_groups
 rm -f $gOTUpick_results_path/final_output/concat_file.tsv
 rm -f $gOTUpick_results_path/final_output/concat_file.csv
+rm -fr $all_metrics_path
 
 
 conda deactivate
