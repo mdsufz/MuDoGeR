@@ -23,6 +23,7 @@ complete=$8
 
 #Process inputs
 output_folder=$project_folder/mapping_results/pmags_otu_mapping
+merged_reads_folder=$project_folder/mapping_results/merged_reads
 
 # load brat env
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/brat_env
