@@ -22,7 +22,7 @@ reduced=$7
 complete=$8
 
 #Process inputs
-output_folder=$project_folder/mapping_results/genome_otu_mapping
+output_folder=$project_folder/mapping_results/pmags_otu_mapping
 uvigs_output_folder=$project_folder/mapping_results/uvigs_mapping
 emabs_output_folder=$project_folder/mapping_results/euk_mabs_mapping
 
