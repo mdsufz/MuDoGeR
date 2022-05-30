@@ -204,6 +204,7 @@ if [ "$reduced" = "true" ]; then
 		
 	done < "$emabs_output_folder"/map_list_reduced
 	cd -
+	rm -fr "$emabs_output_folder"/map_list_reduced
 	
 	# Create table
 	cd "$emabs_output_folder"/map_results_reduced/
