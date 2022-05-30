@@ -203,7 +203,7 @@ if [ "$reduced" = "true" ]; then
 		
 	done < "$uvigs_output_folder"/map_list_reduced
 	cd -
-	
+	rm -fr "$uvigs_output_folder"/map_list_reduced
 	# Create table
 	cd "$uvigs_output_folder"/map_results_reduced/
 	for d in *.txt;
