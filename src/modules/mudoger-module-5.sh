@@ -61,9 +61,9 @@ help_message() {
 
 WORKDIR=None;
 THREAD=1;
-reduced=false;
+reduced=true; #default
 complete=false;
-absolute=false;
+absolute=true; #default
 coverage=false;
 relative=false;
 genes=false;
@@ -79,7 +79,7 @@ do
 		-t) THREAD="$2"; shift 2;;
 		--meta) metadata_table=$2; shift 2;;
 		--reduced) reduced=true; shift 1;; 
-		--complete) complete=true; shift 1;;
+		--complete) complete=true;reduced=false; shift 1;;
 		--genes) genes=true; shift 1;; 
 		--absolute-values) absolute=true; shift 1;; 
 		--coverage) coverage=true; shift 1;; 
@@ -145,24 +145,19 @@ fi
 if [ "$reduced" = "true" ] || [ "$complete" = "true" ]; then
 
 	#     Perform BRAT      submodule 5-2
-	if [ -f $WORKDIR/mapping_results/gOTUpick_results/final_output/bestbins.txt ]; then
 	
-		echo -e "\n BRAT STARTED"
-   		bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-2_BRAT.sh $WORKDIR \
-											$metadata_table \
-											$THREAD \
-											$absolute \
-											$coverage \
-											$relative \
-											$reduced \
-											$complete
-		echo -e "\n BRAT DONE"
-	
-   		
-	else
-		echo -e "\nMake sure the gOTU picking is already done. Check if you have '$WORKDIR'/mapping_results/gOTUpick_results/final_output/bestbins.txt";
-		exit 1
-	fi
+	echo -e "\n BRAT STARTED"
+	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-5-2_BRAT.sh $WORKDIR \
+										$metadata_table \
+										$THREAD \
+										$absolute \
+										$coverage \
+										$relative \
+										$reduced \
+										$complete
+	echo -e "\n BRAT DONE"
+
+
 	
 	
 elif [ "$genes" = "true" ]; then
