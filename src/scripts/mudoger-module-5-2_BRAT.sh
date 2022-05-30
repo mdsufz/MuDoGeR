@@ -29,11 +29,6 @@ emabs_output_folder=$project_folder/mapping_results/euk_mabs_mapping
 # load brat env
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/brat_env
 
-mkdir -p $output_folder
-mkdir -p $uvigs_output_folder
-mkdir -p $emabs_output_folder
-
-
 #### Prepare reads ####
 mkdir -p $project_folder/mapping_results/merged_reads
 merged_reads_folder=$project_folder/mapping_results/merged_reads
@@ -103,6 +98,8 @@ if [ -f $project_folder/mapping_results/gOTUpick_results/final_output/bestbins.t
 										$reduced \
 										$complete
 	echo -e "\n BRAT pMAGs DONE"
+else
+	echo -e "\ pMAGs maping: Make sure the gOTU picking is already done. Check if you have '$WORKDIR'/mapping_results/gOTUpick_results/final_output/bestbins.txt";
 fi
 	
 #     Perform BRAT      submodule 5-2-2
