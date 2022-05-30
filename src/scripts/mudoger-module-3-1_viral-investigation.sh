@@ -6,7 +6,8 @@ echo -e '\n\n------- START MODULE 3-1 VIRAL INVESTIGATION \n\n'
 # arguments declaration
 log="log_vir"                   # definition of path to log file
 assembly=$1                     # assembly file
-output_folder=$2                # output folder to be created inside master output folder
+viruses_folder=$2               # master virus folder
+output_folder=$2/investigation  # output folder to be created inside master output folder
 num_cores=$3                    # number of threads
 
 conda activate mudoger_env
@@ -14,6 +15,8 @@ config_path="$(which config.sh)"
 database="${config_path/config/database}"
 source $config_path
 source $database
+
+lib=`echo $output_folder | rev | cut -f4 -d'/' | rev `
 
 ############ VIBRANT #################
 
@@ -88,6 +91,8 @@ if [ ! -f "$output_folder"/dereplication/uvigs_95-70.fna ];
 then
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/stampede_clustergenomes_env
 Cluster_genomes.pl -f "$output_folder"/dereplication/uvigs.fa  -c 70 -i 95
+mkdir -p "$viruses_folder"/final_outputs/putative_viral_contigs
+python3 "$MUDOGER_DEPENDENCIES_PATH"/split-all-seq.py "$output_folder"/dereplication/uvigs_95-70.fna "$viruses_folder"/final_outputs/putative_viral_contigs/"$lib"_putative_viral_contig
 conda deactivate
 echo "-----> END DEREPLICATION (4/4)"
 else
