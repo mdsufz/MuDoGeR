@@ -162,7 +162,7 @@ if [ "$complete" = "true" ]; then
 		cat "$output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_complete/map_complete_relative_abundance_table.tsv
 	fi
 mkdir -p $output_folder/map_final_tables_complete
-mv "$output_folder"/map_results_complete/map_complete_* $output_folder/map_final_tables_complete
+mv -f "$output_folder"/map_results_complete/map_complete_* $output_folder/map_final_tables_complete
 fi
 
 #Run reduced if selected
@@ -262,7 +262,7 @@ if [ "$reduced" = "true" ]; then
 		cat "$output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$output_folder"/map_results_reduced/map_reduced_relative_abundance_table.tsv
 	fi
 mkdir -p $output_folder/map_final_tables_reduced
-mv "$output_folder"/map_results_reduced/map_reduced_* $output_folder/map_final_tables_reduced
+mv -f "$output_folder"/map_results_reduced/map_reduced_* $output_folder/map_final_tables_reduced
 fi
 
 #deactivate env
