@@ -38,7 +38,11 @@ mkdir -p $uvigs_output_folder/uvigs_fasta
 aux="$(while read l ; do echo "$l" | cut -f1; done < "$metadata_table"  | tr '\t' '\n' | sort |  uniq)";
 for i in $aux; 
 	do
-	yes | cp $project_folder/$i/viruses/final_outputs/only_uvigs_seq/*.fa $uvigs_output_folder/uvigs_fasta/
+	for f in $project_folder/$i/viruses/final_outputs/only_uvigs_seq/*.fa
+		do
+		file=` echo $f | rev | cut -f1 -d'/' | rev`
+		yes | cp $f $uvigs_output_folder/uvigs_fasta/"$i"-"$file"
+	done
 done
 
 #### Calculate MAGs/UViGs/eMABs sizes ###
@@ -159,44 +163,28 @@ if [ "$complete" = "true" ]; then
 		cat "$uvigs_output_folder"/map_results_complete/map_complete_relative_abundance_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$uvigs_output_folder"/map_results_complete/map_complete_relative_abundance_table.tsv
 	fi
 mkdir -p $uvigs_output_folder/map_final_tables_complete
-mv "$uvigs_output_folder"/map_results_complete/map_complete_* $uvigs_output_folder/map_final_tables_complete
+mv -f "$uvigs_output_folder"/map_results_complete/map_complete_* $uvigs_output_folder/map_final_tables_complete
 fi
 
 ### Run reduced if selected ###
 
-if [ "$reduced" = "not_testing" ]; then
+if [ "$reduced" = "true" ]; then
 	#Create job array for Reduced
 	cd $uvigs_output_folder/uvigs_fasta
 	mkdir -p "$uvigs_output_folder"/map_results_reduced/
 	
-	cat $project_folder/mapping_results/gOTUpick_results/final_output/final_groups_output.csv | grep "*" > "$uvigs_output_folder"/aux_rep
 	rm -f "$uvigs_output_folder"/map_list_reduced
 	touch "$uvigs_output_folder"/map_list_reduced
-	while read l; 
-		do
-		group=$(echo $l | cut -f2 -d ",");
-		rep_bin=$(echo $l | cut -f1 -d ",");
-		echo $group;
-		if [ $group = "unique" ]; then
-			lib=$(echo $rep_bin | cut -f1 -d "-");
-			w_bin="$uvigs_output_folder/uvigs_fasta/$(echo $rep_bin | sed "s/.fa//g")";
-			w_lib="$merged_reads_folder/$lib.fasta"
-			w_out="$uvigs_output_folder/map_results_reduced/$(echo $rep_bin | sed "s/.fa//g")-LIB-$lib.txt"
-			echo "$w_bin" "$w_lib" "$w_out" >> "$uvigs_output_folder"/map_list_reduced
-		else	
-			cat $project_folder/mapping_results/gOTUpick_results/final_output/final_groups_output.csv | grep "$group" > "$uvigs_output_folder"/aux_group
-			while read b;
-				do
-				lib=$(echo $b | cut -f1 -d "," | cut -f1 -d "-");
-				w_bin="$uvigs_output_folder/uvigs_fasta/$(echo $rep_bin | sed "s/.fa//g")";
-				w_lib="$merged_reads_folder/$lib.fasta"
-				w_out="$uvigs_output_folder/map_results_reduced/$(echo $rep_bin | sed "s/.fa//g")-LIB-$lib.txt"
-				echo "$w_bin" "$w_lib" "$w_out" >> "$uvigs_output_folder"/map_list_reduced
-			done < "$uvigs_output_folder"/aux_group
-		fi
-	done < "$uvigs_output_folder"/aux_rep
-	rm -f "$uvigs_output_folder"/aux_rep
-	rm -f "$uvigs_output_folder"/aux_group
+	
+	for f in $uvigs_output_folder/uvigs_fasta/*.fa;
+		do 
+		lib=`echo $f | rev | cut -f1 -d'/' | rev | cut -f1 -d'-'`;
+		bin=`echo $f | rev | cut -f1 -d'/' | rev | sed "s/.fa//g"`;
+		w_bin="$uvigs_output_folder/uvigs_fasta/$bin";
+		w_lib="$merged_reads_folder/$lib.fasta"
+		w_out="$uvigs_output_folder/map_results_reduced/$bin-LIB-$lib.txt"
+		echo "$w_bin" "$w_lib" "$w_out" >> "$uvigs_output_folder"/map_list_reduced
+	done
 	
 	#Map according to map_list
 	while read l;
