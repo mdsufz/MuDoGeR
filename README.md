@@ -1,7 +1,7 @@
  # Multi-Domain Genome Recovery v1.0 (MuDoGeR v1.0)
  
  
-![ScreenShot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/fig1_20.5.21.png)
+![ScreenShot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/figure_1_overview.jpg)
 
 
 The **Multi-Domain Genome Recovery v1.0 (MuDoGeR v1.0)** framework (**Figure 1**) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs as defined by Parks et al. (2018)) and Uncultivated Viral Genomes (UViGs as defined by  Roux (2019)) from whole-genome sequence (WGS) samples simultaneously. The **MuDoGeR v1.0** framework act as a wrapper of several tools. It was designed to be an easy-to-use tool that outputs ready-to-use comprehensive files.
@@ -144,7 +144,7 @@ The module 4 setup tutorial is found in [Module 4 setup](https://github.com/mdsu
 ## Modules Overview
 ### Module 1: Pre-Processing 
 
-![Screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/Module%201.PNG) 
+![Screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_1_ovrw.jpg) 
 
 The steps of Module 1 are shown in Figure 2. A detailed description of its execution and outputs are found here: [Pre-Processing description](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
  
@@ -158,7 +158,7 @@ The steps of Module 1 are shown in Figure 2. A detailed description of its execu
 
 ### Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes (MAGs)
 
-![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/MODULE_2_21.5.21.png)
+![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_2_ovrw.jpg)
 
 Module 2 workflow is shown in Figure 3. A detailed description of its execution and outputs are found here: [Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
 
@@ -179,7 +179,7 @@ Module 2 workflow is shown in Figure 3. A detailed description of its execution 
     
 ### Module 3: Recovery of Uncultivated Viral Genomes (UViGs)
 
-![](https://github.com/mdsufz/MuDoGeR/blob/c65d851f6439cc4eb8c18672afb5cde9a9165f40/flowcharts/Module%203.png) 
+![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_3_ovrw.jpg) 
 
 The steps of Module 3  are shown in Figure 4. A detailed description of its execution and outputs are found here: [Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes-uvigs).
 
@@ -200,7 +200,7 @@ The steps of Module 3  are shown in Figure 4. A detailed description of its exec
 
 ### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (eMABs)
 
-[](https://github.com/mdsufz/MuDoGeR/blob/master/Module%204.png)
+![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_4_ovrw.jpg)
 
 The steps of Module 4  are shown in Figure 5. A detailed description of its execution and outputs are found here:  [Pipelines for eukaryotic bins recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
 
@@ -217,7 +217,7 @@ The steps of Module 4  are shown in Figure 5. A detailed description of its exec
 
 
 ### Module 5 Relative abundance
-[](https://github.com/mdsufz/MuDoGeR/blob/master/Module%205.PNG)
+![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_5_ovrw.jpg)
 
 The steps of Module 5  are shown in Figure 6. A detailed description of its execution and outputs are found here: [Pipelines for abundance calculation](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
 Essentially, module 5 maps the quality-controlled reads of your sample on the recovered MAGs or annotated prokaryotic genes. We designed three possible mapping types to calculate abundance: **reduced**, **complete**, or **genes**. A detailed description of their differences can be found [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance)
