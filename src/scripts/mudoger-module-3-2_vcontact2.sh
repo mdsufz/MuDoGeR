@@ -38,7 +38,7 @@ fi
 if [ !  -f "$folder_taxonomy"/vcontact-output/genome_by_genome_overview.csv ];
 then
 echo "-> step 3/4"
-cluster_1_path="$MUDOGER_CLONED_TOOLS_PATH/cluster_one-1.0.jar)"
+cluster_1_path=$MUDOGER_CLONED_TOOLS_PATH/cluster_one-1.0.jar
 vcontact2 -t "$cores" --raw-proteins "$folder_taxonomy"/viral_genomes.faa --rel-mode 'Diamond' --proteins-fp "$folder_taxonomy"/viral_genomes_g2g.csv --db 'ProkaryoticViralRefSeq94-Merged' --pcs-mode MCL --vcs-mode ClusterONE --c1-bin "$cluster_1_path" --output-dir "$2"/vcontact-output
 else :
 fi
