@@ -19,9 +19,9 @@ output_folder="$1"
 
 host_results=$viruses_folder'/host_prediction/output_results'
 derep=$viruses_folder'/investigation/dereplication'
-#uvigs=$viruses_folder'/host_prediction/uvigs'
 uvigs=$viruses_folder'/final_outputs/putative_viral_contigs'
 quality_summary=$viruses_folder'/vcheck_quality/quality_summary.tsv'
+vcontact_output='/mnt/mudoger_workspace/2022/TESTS/test-5/SRR3138838/viruses/taxonomy/vcontact-output'
 
 mkdir -p "$viruses_folder"/final_outputs/
 
@@ -46,20 +46,58 @@ fi
 rm -f $viruses_folder'/.header'
 rm -f $viruses_folder'/.viruses_summary_raw.tsv'
 
+echo "Formating Vcontact2 results..."
+
+if [ !  -f $viruses_folder'/taxa_estimation_vir_vcontact2_summary.csv' ];
+then
+    	  rm -f $viruses_folder'/.taxa_viruses_summary_raw.csv'
+        while read l;
+          do
+          uvig="$(echo "$l" | cut -f1 | cut -f1 -d'.')"
+          contig="$(echo "$l" | cut -f2)"
+          contig_line=$(echo | cat $vcontact_output/genome_by_genome_overview.csv | grep "$contig")
+          clt="$(echo "$contig_line" | cut -f7 -d',')"
+          if [ "$clt" == "Clustered" ];
+                then
+                vc_clt=$(echo "$contig_line" | cut -f9 -d',')
+                cat $vcontact_output/genome_by_genome_overview.csv | grep "$vc_clt" | cut -f3,4 -d',' > aux
+                while read j;
+                  do
+                  ord="$(echo $j | cut -f1 -d',')";
+                  if [ "$ord" != "Unassigned" ];
+                    then
+                    ord_family=$j
+                    break;
+                  else
+                    ord_family="Virus,Unassigned,Unassigned";
+                  fi;
+                done < aux
+                rm -f aux
+          else
+               	ord_family="Virus,Unassigned,Unassigned"
+          fi
+          echo -e "$uvig,$contig,$ord_family" >> $viruses_folder'/.taxa_viruses_summary_raw.csv'
+        done < $derep'/uvigs_mapping.txt'
+echo -e 'uvig,original_contig,Domain,Order,Family' >  $viruses_folder'/.taxa_header'
+cat $viruses_folder'/.taxa_header' $viruses_folder'/.taxa_viruses_summary_raw.csv' > $viruses_folder'/taxa_estimation_vir_vcontact2_summary.csv'
+else :; 
+fi
+rm -f $viruses_folder'/.taxa_header'
+rm -f $viruses_folder'/.taxa_viruses_summary_raw.csv'
+
 #Filter Good quality Uvigs based on CheckV
 awk -F "\t" 'NR==1;{ if($10 == "High-quality") { print } }' $viruses_folder'/viruses_summary.tsv' > $viruses_folder/uvigs_high_quality.tsv
 
 # Organize results in a single results folder
 
 mkdir -p "$viruses_folder"/final_outputs/
-#mkdir -p "$viruses_folder"/final_outputs/putative_viral_contigs # Done in 3-1
 mkdir -p "$viruses_folder"/final_outputs/only_uvigs_seq
 mkdir -p "$viruses_folder"/final_outputs/putative_vir_seq_metrics_summary # Hosts, Quality, Taxa, Genes
 
 #Move uvigs summary file
-mv $viruses_folder/uvigs_high_quality.tsv "$viruses_folder"/final_outputs/uvigs_high_quality_summary.tsv
+mv -f $viruses_folder/uvigs_high_quality.tsv "$viruses_folder"/final_outputs/uvigs_high_quality_summary.tsv
 #Move summary file
-mv $viruses_folder'/viruses_summary.tsv' "$viruses_folder"/final_outputs/putative_vir_contigs_summary.tsv
+mv -f $viruses_folder'/viruses_summary.tsv' "$viruses_folder"/final_outputs/putative_vir_contigs_summary.tsv
 #Move mapping file
 #mv $derep'/uvigs_mapping.txt' "$viruses_folder"/final_outputs/viral_contigs_seq_names.txt
 sed "s/\t/,/g" $derep'/uvigs_mapping.txt' > "$viruses_folder"/final_outputs/viral_contigs_seq_names.csv
@@ -78,8 +116,7 @@ yes | cp $host_results'/prediction.list' "$viruses_folder"/final_outputs/putativ
 cat "$viruses_folder"/final_outputs/putative_vir_contigs_summary.tsv | cut -f -15 > "$viruses_folder"/final_outputs/putative_vir_seq_metrics_summary/quality_checkv_summary.tsv
 
 #Copy Taxa estimation file summary
-head "$viruses_folder"/taxonomy/vcontact-output/genome_by_genome_overview.csv -n 1 > "$viruses_folder"/final_outputs/putative_vir_seq_metrics_summary/taxa_estimation_vir_vcontact2_summary.csv
-cat "$viruses_folder"/taxonomy/vcontact-output/genome_by_genome_overview.csv | grep "length" >> "$viruses_folder"/final_outputs/putative_vir_seq_metrics_summary/taxa_estimation_vir_vcontact2_summary.csv
+mv -f $viruses_folder'/taxa_estimation_vir_vcontact2_summary.csv' "$viruses_folder"/final_outputs/putative_vir_seq_metrics_summary/taxa_estimation_vir_vcontact2_summary.csv
 
 #Gene
 yes | cp "$viruses_folder"/investigation/vibrant/VIBRANT_final_assembly/VIBRANT_results_final_assembly/VIBRANT_genbank_table_final_assembly.tsv "$viruses_folder"/final_outputs/putative_vir_seq_metrics_summary/vir_contigs_genbank_annotation_vibrant.tsv
