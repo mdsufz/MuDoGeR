@@ -4,7 +4,13 @@
 ![ScreenShot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/figure_1_overview.jpg)
 
 
-The **Multi-Domain Genome Recovery v1.0 (MuDoGeR v1.0)** framework (**Figure 1**) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs as defined by Parks et al. (2018)) and Uncultivated Viral Genomes (UViGs as defined by  Roux (2019)) from whole-genome sequence (WGS) samples simultaneously. The **MuDoGeR v1.0** framework act as a wrapper of several tools. It was designed to be an easy-to-use tool that outputs ready-to-use comprehensive files.
+The **Multi-Domain Genome Recovery v1.0 (MuDoGeR v1.0)** framework ([**Figure 1**](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/figure_1_overview.jpg)) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs as defined by [Parks et al. (2018)](https://www.nature.com/articles/s41564-017-0012-7)) and Uncultivated Viral Genomes (UViGs as defined by  [Roux (2019)](https://www.nature.com/articles/nbt.4306)) from whole-genome sequence (WGS) samples simultaneously. The **MuDoGeR v1.0** framework act as a wrapper of several tools. It was designed to be an easy-to-use tool that outputs ready-to-use comprehensive files.
+
+You should be able to run 1 simple command for each module. Therefore, you only need 5 commands to completely run MuDoGeR. After a successful run of MuDoGeR, you should have the outputs summarized in [Figure 2](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/mudoger_outputs.jpg). Please find a comprehensive description of the main outputs in the [understand outputs](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) file.
+
+![ScreenShot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/mudoger_outputs.jpg)
+
+In addition, MuDoGeR also sets up individual working conda environments for each of the used tools. Consequently, if the user wants to customize the use of any tool, you can use MuDoGeR to configure your machine and follow the instruction [here](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md).
 
 ## Reading this GitHub
 
@@ -13,27 +19,32 @@ This Github should help you install and run the complete MuDoGeR pipeline, as we
 * First, read the [MuDoGeR overview](https://github.com/mdsufz/MuDoGeR#mudoger-overview) and define which modules you are interested in using.
 * Secondly, read the [System requirements](https://github.com/mdsufz/MuDoGeR#system-requirements) and make sure you have the resources for the modules you want to use.
 * Then, read the [Installation](https://github.com/mdsufz/MuDoGeR#installation) and follow its steps.
-* Read the overview descriptions of the MuDoGeR modules you intend to use.
+* Read the [overview descriptions](https://github.com/mdsufz/MuDoGeR#modules-overview) of the MuDoGeR modules you intend to use.
 * If you want a quick run, read the [MuDoGeR simplified usage](https://github.com/mdsufz/MuDoGeR#mudoger-simplified-usage)
+* Read the [understanding main outputs](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) file.
 * Read the [MuDoGeR Manual](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) for a more detailed description of the used modules and their output files
 
 ## MuDoGeR Overview
 
-The **MuDoGeR** starts with Module 1: **Pre-Processing**, which covers: **1.a** **Raw Read Quality Control** and **1.b** **Resources calculation** and **1.c** **Assembly**. The assembled libraries should be used in all the other modules.
+**MuDoGeR** was designed to be an easy-to-use tool that outputs ready-to-use comprehensive files. You should be able to run 1 simple command for each of the following modules.
+
+The **MuDoGeR** starts with Module 1: **Pre-Processing**, which covers the Raw Read Quality Control, Resources calculatio and Assembly. The assembled libraries should be used in all the other modules.
 
 After pre-processing of the data, **MuDoGeR** is divided into 3 different branches:
 Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes (pMAGs)**
-Module 3: **Recovery of Uncultivated Viral Genomes (UVIGs)**
+Module 3: **Recovery of Uncultivated Viral Genomes (UViGs)**
 Module 4: **Recovery of Eukaryotic Metagenome-Assembled Bins (eMABs)**
 
-Furthermore, in **Module 5**: **Relative Abundance**, users can automatically calculate the coverage and relative abundance tables from the recovered pMAGs. The users can also calculate the coverage and relative abundance tables from the genes annotated in assembled libraries. 
+Furthermore, in **Module 5**: **Relative Abundance**, users can automatically calculate the coverage and relative abundance tables from the recovered pMAGs/UViGs/eMABs. The users can also calculate the coverage and relative abundance tables from the prokaryotic genes annotated in assembled libraries. 
 
  
 * References of the used tools and a description of the **MuDoGeR** steps can be found in the following hyperlink: [Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md).
+* Please find a comprehensive description of the main outputs in the [understand outputs](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) file.
 * Instructions for using the **MuDoGeR** can be found in the following hyperlink: [Manual MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 * Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: [System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
 * Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: [Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
 * The simplified usage of the **MuDoGeR** can be found in the following hyperlink: [MuDoGeR simplified usage](https://github.com/mdsufz/MuDoGeR#mudoger-simplified-usage).
+*  To use the individual working conda environments created by MuDoGeR for each of the used tools go [here]((https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md)).
 
 
 # System requirements
