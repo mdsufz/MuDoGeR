@@ -6,7 +6,16 @@ The Multi-Domain Genome Recovery v1.0 (MuDoGeR v1.0) framework is a tool develop
 Therefore, when using MuDoGeR you will be able to find the relevant outputs for all used tools. Please refer to the Manual to understand where to find the tools-specific outputs and information on how they were created. In the Manual, you can also find the reference to the tools themselves, where you can read their specific documentation.
  However, to make the Genome recovery analysis easier, MuDoGeR also parses and summaries the resulted files into ready-to-use comprehensive files. Following, you find the description and location of the final files created by MuDoGeR.
 
-## Module 1 – Pre-processing and Assembly 
+## Module 1 – Pre-processing and Assembly
+
+From module 1, the 3 main outputs you will find are:
+
+* The quality-controlled reads located at ```output_folder/sample_name/qc/final_pure_reads_1/2.fastq```. The files are in regular .fastq format;
+* The RAM prediction for metaSPAdes assembly, located at ```output_folder/sample_name/khmer/final_prediction.tsv```. This is a tab-separated-values (tsv) file with only two columns: ```dataset   maxvmem_M```. They indicate the file used to predict the memory (dataset), and the memory requirements in megabytes (MB) (maxvmem_M)
+* The assembled sequence in regular .fasta file located at ```output_folder/sample_name/assembly/final_assembly.fasta```
+
+The folder structure from the results of Module 1 should be as follows:
+
 ```
 sample_name
 ├── assembly
