@@ -7,7 +7,7 @@ Therefore, when using MuDoGeR you will be able to find the relevant outputs for 
  However, to make the Genome recovery analysis easier, MuDoGeR also parses and summaries the resulted files into ready-to-use comprehensive files. Following, you find the description and location of the final files created by MuDoGeR.
 
 ## Module 1 – Pre-processing and Assembly 
-´´´
+```
 sample_name
 ├── assembly
 │   ├── final_assembly.fasta
@@ -19,10 +19,10 @@ sample_name
        ├── final_pure_reads_1.fastq
        ├── final_pure_reads_2.fastq
        └── …
- ´´´
+ ```
 ## Module 2 – pMAGs recovery final files
 
-´´´
+```
 sample_name/prokaryotes/final_outputs
 ├── all_bins_seq
 │   ├── A-bin.0.fa
@@ -43,11 +43,11 @@ sample_name/prokaryotes/final_outputs
     ├── A-bin.2.fa
     ├── A-bin.4.fa
     └── …
-´´´
+```
 
 ## Module 3 – UViGs recovery final files
 
-´´´
+```
 sample_name/viruses/final_outputs
 ├── only_uvigs_seq
 │   ├── A_putative_viral_contig-15.fa
@@ -66,21 +66,21 @@ sample_name/viruses/final_outputs
 │   └── …
 ├── uvigs_high_quality_summary.tsv
 └── viral_contigs_seq_names.csv
-´´´
+```
 
 ## Module 4 – eMABs recovery final files
 
 
 
 ## Module 5 – pMAGs/UViGs/eMABs coverage and relative abundance tables
-´´´
+```
 mapping_results/gOTUpick_results
   ├── final_output
   	├── bestbins.txt
  └── final_groups_output.csv
-´´´
+```
 
-´´´
+```
 mapping_results/ euk_mabs_mapping(pmags_otu_mapping)(uvigs_mapping)/
 ├── map_final_tables_complete
 │	   ├── map_complete_absolute_n_hits_list.tsv
@@ -96,9 +96,9 @@ mapping_results/ euk_mabs_mapping(pmags_otu_mapping)(uvigs_mapping)/
    ├── map_reduced_coverage_table.tsv
    ├── map_reduced_relative_abundance_list.tsv
    └── map_reduced_relative_abundance_table.tsv
-´´´
+```
 
-´´´
+```
 mapping_results/ assembly_gene_map/
 ├── functional_annotation
 │   	└── sample_name
@@ -110,7 +110,7 @@ mapping_results/ assembly_gene_map/
 │   	└── sample_name.cov
 └── map_tpm_norm
 └── sample_name.tpm
-´´´
+```
 
 
 # Using the tools independently
