@@ -10,7 +10,9 @@ You should be able to run 1 simple command for each module. Therefore, you only 
 
 ![ScreenShot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/mudoger_outputs.jpg)
 
-In addition, MuDoGeR also sets up individual working conda environments for each of the used tools. Consequently, if the user wants to customize the use of any tool, you can use MuDoGeR to configure your machine and follow the instruction [here](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md).
+### Using the tools individually
+
+In addition, MuDoGeR also sets up individual working conda environments for each of the integrated tools. Consequently, if the user wants to customize the use of any tool, you can use MuDoGeR to configure your machine and follow the instructions [here](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md#using-the-tools-independently) to activate the relevant environments.
 
 ## Reading this GitHub
 
