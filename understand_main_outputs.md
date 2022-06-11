@@ -11,7 +11,7 @@ Therefore, when using MuDoGeR you will be able to find the relevant outputs for 
 From module 1, the 3 main outputs you will find are:
 
 * The quality-controlled reads located at ```output_folder/sample_name/qc/final_pure_reads_1/2.fastq```. The files are in regular .fastq format;
-* The RAM prediction for metaSPAdes assembly, located at ```output_folder/sample_name/khmer/final_prediction.tsv```. This is a tab-separated-values (tsv) file with only two columns: ```dataset   maxvmem_M```. They indicate the file used to predict the memory (dataset), and the memory requirements in megabytes (MB) (maxvmem_M)
+* The RAM prediction for [**metaSPAdes**](https://genome.cshlp.org/content/27/5/824) assembly, located at ```output_folder/sample_name/khmer/final_prediction.tsv```. This is a tab-separated-values (tsv) file with only two columns: ```dataset   maxvmem_M```. They indicate the file used to predict the memory (dataset), and the memory requirements in megabytes (MB) (maxvmem_M)
 * The assembled sequence in regular .fasta file located at ```output_folder/sample_name/assembly/final_assembly.fasta```
 
 The folder structure from the results of Module 1 should be as follows:
@@ -29,30 +29,42 @@ sample_name
        ├── final_pure_reads_2.fastq
        └── …
  ```
+ 
 ## Module 2 – pMAGs recovery final files
+
+From the recovery of pMAGs, MuDoGeR parses the outputs from the tools mentioned in the Manual and outputs the following comprehensive results to the ```sample_name/prokaryotes/final_outputs/``` folder:
+
+* The recovered prokaryotic bins are located in the folder ```all_bins_seq/```. Those files are named as “sample_name”-bin.”number”.fa. The numbering simply indicates different sequences. They are all regular fasta files.
+* The ```allbins_metrics_summary.tsv``` file. This file contains a summary of all information recovered from all prokaryotic bins. It is a regular .tsv file and its columns are: ``` OTU     completeness    contamination   str.heterogeneity       taxonomy        genome_size     #scaffolds      largest_scaff   N50     N90     prokka_know	prokka_unknown```. They are, respectively: the bin name, completeness by [**CheckM**](https://genome.cshlp.org/content/25/7/1043), contamination by [**CheckM**](https://genome.cshlp.org/content/25/7/1043), strain heterogeneity by [**CheckM**](https://genome.cshlp.org/content/25/7/1043), taxonomy by [**GTDB-tk**](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182), bin size, number of scaffolds, size of the largest scaffold, N50 value, N90 value, number of known annotated [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517) genes, number of unknown identified [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517) genes.
+*  The ```bins_genes_prokka_summary/``` folder containing the gene annotation summary performed by [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517) for each of the recovered bins. The tsv file contains the following columns: ``` locus_tag       ftype   length_bp       gene    EC_number       COG     product```. You can also check the [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517) documentation by clicking on the tool's name.
+*  The ```bins_metrics_summary/ qual_bins_checkm_summary.tsv``` file. This file contains the summary of the quality estimation procedure performed by [**CheckM**](https://genome.cshlp.org/content/25/7/1043). You can check the official [**CheckM**](https://genome.cshlp.org/content/25/7/1043) documentation by clicking on the tool's name.
+*  ``` bins_metrics_summary/ taxa_bins_gtdbtk_summary.tsv ``` file. This file contains the summary of the final taxonomical classification procedure performed by [**GTDB-tk**](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182). You can check the official [**GTDB-tk**](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182) documentation by clicking on the tool's name.
+* The ```mags_results_summary.tsv``` file. This file is subset from the ```allbins_metrics_summary.tsv``` file containing only the bins classified as MAGs (completeness – 5*contamination > 50). 
+* The ```only_mags_seq/``` folder containing a copy of the fasta file from the bins classified as MAGs.
 
 ```
 sample_name/prokaryotes/final_outputs
 ├── all_bins_seq
-│   ├── A-bin.0.fa
-│   ├── A-bin.1.fa
-│   ├── A-bin.2.fa
+│   ├── sample_name-bin.0.fa
+│   ├── sample_name-bin.1.fa
+│   ├── sample_name-bin.2.fa
 │   └── …
 ├── allbins_metrics_summary.tsv
 ├── bins_genes_prokka_summary
-│   ├── A-bin.0_genes_prokka.tsv
-│   ├── A-bin.1_genes_prokka.tsv
-│   ├── A-bin.2_genes_prokka.tsv
+│   ├── sample_name-bin.0_genes_prokka.tsv
+│   ├── sample_name-bin.1_genes_prokka.tsv
+│   ├── sample_name-bin.2_genes_prokka.tsv
 │   └── …
 ├── bins_metrics_summary
 │   ├── qual_bins_checkm_summary.tsv
 │   └── taxa_bins_gtdbtk_summary.tsv
 ├── mags_results_summary.tsv
 └── only_mags_seq
-    ├── A-bin.2.fa
-    ├── A-bin.4.fa
+    ├── sample_name-bin.2.fa
+    ├── sample_name-bin.4.fa
     └── …
-```
+````
+
 
 ## Module 3 – UViGs recovery final files
 
