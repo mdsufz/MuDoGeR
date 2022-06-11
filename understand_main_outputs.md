@@ -18,16 +18,16 @@ The folder structure from the results of Module 1 should be as follows:
 
 ```
 sample_name
-├── assembly
-│   ├── final_assembly.fasta
-│   └── …
-├── khmer
-│   ├── final_prediction.tsv
-│   └── …
-└── qc
-       ├── final_pure_reads_1.fastq
-       ├── final_pure_reads_2.fastq
-       └── …
+     ├── assembly
+     │   ├── final_assembly.fasta
+     │   └── …
+     ├── khmer
+     │   ├── final_prediction.tsv
+     │   └── …
+     └── qc
+         ├── final_pure_reads_1.fastq
+         ├── final_pure_reads_2.fastq
+         └── …
  ```
  
 ## Module 2 – pMAGs recovery final files
@@ -44,50 +44,65 @@ From the recovery of pMAGs, MuDoGeR parses the outputs from the tools mentioned 
 
 ```
 sample_name/prokaryotes/final_outputs
-├── all_bins_seq
-│   ├── sample_name-bin.0.fa
-│   ├── sample_name-bin.1.fa
-│   ├── sample_name-bin.2.fa
-│   └── …
-├── allbins_metrics_summary.tsv
-├── bins_genes_prokka_summary
-│   ├── sample_name-bin.0_genes_prokka.tsv
-│   ├── sample_name-bin.1_genes_prokka.tsv
-│   ├── sample_name-bin.2_genes_prokka.tsv
-│   └── …
-├── bins_metrics_summary
-│   ├── qual_bins_checkm_summary.tsv
-│   └── taxa_bins_gtdbtk_summary.tsv
-├── mags_results_summary.tsv
-└── only_mags_seq
-    ├── sample_name-bin.2.fa
-    ├── sample_name-bin.4.fa
-    └── …
+              ├── all_bins_seq
+              │    ├── sample_name-bin.0.fa
+              │    ├── sample_name-bin.1.fa
+              │    ├── sample_name-bin.2.fa
+              │    └── …
+              ├── allbins_metrics_summary.tsv
+              ├── bins_genes_prokka_summary
+              │    ├── sample_name-bin.0_genes_prokka.tsv
+              │    ├── sample_name-bin.1_genes_prokka.tsv
+              │    ├── sample_name-bin.2_genes_prokka.tsv
+              │    └── …
+              ├── bins_metrics_summary
+              │    ├── qual_bins_checkm_summary.tsv
+              │    └── taxa_bins_gtdbtk_summary.tsv
+              ├── mags_results_summary.tsv
+              └── only_mags_seq
+                   ├── sample_name-bin.2.fa
+                   ├── sample_name-bin.4.fa
+                   └── …
 ````
-
 
 ## Module 3 – UViGs recovery final files
 
+From the recovery of UViGs, MuDoGeR parses the outputs from the tools mentioned in the Manual and outputs the following comprehensive results to the ```sample_name/viruses/final_outputs/``` folder:
+
+* The ``` only_uvigs_seq/``` folder contains the viral sequences classified as UViGs following the standard defined by [Roux, S., et al.(2019)](https://www.nature.com/articles/nbt.4306) and [Nayfach, S., et al. (2021)](https://www.nature.com/articles/s41587-020-00774-7). The files are regular fasta files and are named as “sample_name”_putative_viral_contig-“number”.fa
+* The ``` putative_vir_contigs_summary.tsv``` file. This file is a summary of all retrieved information from all the putative_vir_contigs recovered during the complete MuDoGeR pipeline. It is a regular tsv file, and its columns are: ``` uvig    original_contig uvig_length     provirus        proviral_length gene_count      viral_genes     host_genes     checkv_quality  miuvig_quality  completeness    completeness_method     contamination   kmer_freq     warnings putative_host   likelihood```. The columns mean, respectively, the given name to the uvig, the original contig name from the uvig found in the .fasta file, the uvig length in bp, provirus classification, proviral length (if any), number of genes found, number of viral genes identified, number of identified host genes, quality classification by [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7), miuvig quality classification, completeness, completeness method used, khmer frequency, any warnings identified, name of the prokaryotic host identified by [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377), and probability of that prokaryotic being the host.
+* The ```putative_vir_seq_metrics_summary/host_vir_pair_wish_summary.tsv``` file. This file contains the summary of the Viral-Host pair estimation performed by [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377). You can check the official [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377) documentation by clicking on the tool's name.
+* The ```putative_vir_seq_metrics_summary/quality_checkv_summary.tsv``` file. This file contains the summary of the quality estimation performed by [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7). You can check the official [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7) documentation by clicking on the tool's name.
+* The ```putative_vir_seq_metrics_summary/taxa_estimation_vir_vcontact2_summary.csv``` file. This file contains a parsed summary of the taxonomical classification performed by vcontact. To check how MuDoGeR parses the [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8) output, please, check MuDoGeR’s Manual. You can check the official vcontact documentation by clicking on the tool's name. The columns of this file are: ``` uvig, original_contig, Domain, Order, Family ```. The columns indicate, respectively, the uvig name according to the file names created by MuDoGeR, the original contig name from the uvig found with the .fasta file, the domain taxa level, the order taxa level, and the family taxa level.
+* The ```putative_vir_seq_metrics_summary/vir_contigs_annotation_vibrant_summary.tsv``` file. This file contains the summary of the viral gene annotation performed by [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0) on all putative viral contigs. You can check the official [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0) documentation by clicking on the tool's name.
+* The ```putative_vir_seq_metrics_summary/vir_contigs_genbank_annotation_vibrant.tsv``` file. This file contains the Genbank summary annotation performed by [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0). You can check the official [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0) documentation by clicking on the tool's name.
+* The ``` putative_viral_contigs/``` folder containing regular fasta sequences files from all recovered putative viral sequences recovered in MuDoGeR.
+* The ``` uvigs_high_quality_summary.tsv``` file. This file is a regular tsv and it is a subset from the ``` putative_vir_contigs_summary.tsv``` containing only complete and High-quality sequences as classified by [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7).
+* The ```viral_contigs_seq_names.csv``` file. This is a regular CSV file containing a direct mapping from the MuDoGeR putative viral sequences names to the original contig names found within the fasta files.
+
+The folder structure from the results of Module 3 should be as follows:
+
 ```
 sample_name/viruses/final_outputs
-├── only_uvigs_seq
-│   ├── A_putative_viral_contig-15.fa
-│   ├── A_putative_viral_contig-16.fa
-│   └── ...
-├── putative_vir_contigs_summary.tsv
-├── putative_vir_seq_metrics_summary
-│   ├── host_vir_pair_wish_summary.tsv
-│   ├── quality_checkv_summary.tsv
-│   ├── taxa_estimation_vir_vcontact2_summary.csv
-│   ├── vir_contigs_annotation_vibrant_summary.tsv
-│   └── vir_contigs_genbank_annotation_vibrant.tsv
-├── putative_viral_contigs
-│   ├── A_putative_viral_contig-0.fa
-│   ├── A_putative_viral_contig-1.fa
-│   └── …
-├── uvigs_high_quality_summary.tsv
-└── viral_contigs_seq_names.csv
+           ├── only_uvigs_seq
+           │    ├── sample_name_putative_viral_contig-15.fa
+           │    ├── sample_name_putative_viral_contig-16.fa
+           │    └── ...
+           ├── putative_vir_contigs_summary.tsv
+           ├── putative_vir_seq_metrics_summary
+           │    ├── host_vir_pair_wish_summary.tsv
+           │    ├── quality_checkv_summary.tsv
+           │    ├── taxa_estimation_vir_vcontact2_summary.csv
+           │    ├── vir_contigs_annotation_vibrant_summary.tsv
+           │    └── vir_contigs_genbank_annotation_vibrant.tsv
+           ├── putative_viral_contigs
+           │    ├── sample_name_putative_viral_contig-0.fa
+           │    ├── sample_name_putative_viral_contig-1.fa
+           │    └── …
+           ├── uvigs_high_quality_summary.tsv
+           └── viral_contigs_seq_names.csv
 ```
+
 
 ## Module 4 – eMABs recovery final files
 
