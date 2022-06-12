@@ -23,16 +23,16 @@ This Github should help you install and run the complete MuDoGeR pipeline, as we
 * Then, read the [Installation](https://github.com/mdsufz/MuDoGeR#installation) and follow its steps.
 * Read the [overview descriptions](https://github.com/mdsufz/MuDoGeR#modules-overview) of the MuDoGeR modules you intend to use.
 * If you want a quick run, read the [MuDoGeR simplified usage](https://github.com/mdsufz/MuDoGeR#mudoger-simplified-usage)
-* Read the [understanding main outputs](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) file.
+* Read the [understanding main outputs](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) file. To understand and find relevant outputs created by MuDoGeR.
 * Read the [MuDoGeR Manual](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) for a more detailed description of the used modules and their output files
 
 ## MuDoGeR Overview
 
 **MuDoGeR** was designed to be an easy-to-use tool that outputs ready-to-use comprehensive files. You should be able to run 1 simple command for each of the following modules.
 
-The **MuDoGeR** starts with Module 1: **Pre-Processing**, which covers the Raw Read Quality Control, Resources calculatio and Assembly. The assembled libraries should be used in all the other modules.
+The **MuDoGeR** starts with Module 1: **Pre-Processing**, which covers the Raw Read Quality Control, Resources calculation and Assembly. The assembled libraries should be used in all the other modules.
 
-After pre-processing of the data, **MuDoGeR** is divided into 3 different branches:
+After the data pre-processing, **MuDoGeR** is divided into 3 different branches:
 Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes (pMAGs)**
 Module 3: **Recovery of Uncultivated Viral Genomes (UViGs)**
 Module 4: **Recovery of Eukaryotic Metagenome-Assembled Bins (eMABs)**
@@ -40,7 +40,7 @@ Module 4: **Recovery of Eukaryotic Metagenome-Assembled Bins (eMABs)**
 Furthermore, in **Module 5**: **Relative Abundance**, users can automatically calculate the coverage and relative abundance tables from the recovered pMAGs/UViGs/eMABs. The users can also calculate the coverage and relative abundance tables from the prokaryotic genes annotated in assembled libraries. 
 
  
-* References of the used tools and a description of the **MuDoGeR** steps can be found in the following hyperlink: [Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md).
+* References of the used tools and a description of the **MuDoGeR** steps can be found in the following hyperlink: [Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md). Furthermore, you can click the tool's name on the text to be redirected to its own documentation
 * Please find a comprehensive description of the main outputs in the [understand outputs](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) file.
 * Instructions for using the **MuDoGeR** can be found in the following hyperlink: [Manual MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 * Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: [System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
@@ -51,9 +51,9 @@ Furthermore, in **Module 5**: **Relative Abundance**, users can automatically ca
 
 # System requirements
 
-**MuDoGeR makes it easy to install and run a group of complex software and dependencies.** A total of XX tools and XX dependencies are present in MuDoGeR. Hopefully, you won't have to worry too much about it. We designed an installation script that should take care of every dependency for you. You can find the **MuDoGeR** installation tutorial [here](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
+**MuDoGeR makes it easy to install and run a group of complex software and dependencies.** More than 20 bioinformatics tools and several complex software dependencies are present in MuDoGeR. Hopefully, you won't have to worry too much about it. We designed an installation script that should take care of every dependency for you. You can find the **MuDoGeR** installation tutorial [here](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
 
-Keep in mind that the MuDoGeR pipeline requires some computer power and you probably won't be able to run it on a laptop. The complete software installation requires approximately 170 GB, but **MAKER2**, from **Module 4** uses 99 GB of that space since it requires the database to be installed in a specific manner. See [Module 4 setup](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md). The complete database requirements, considering all tools, is around 439.9 GB.
+Keep in mind that the MuDoGeR pipeline requires some computer power and you probably won't be able to run it on a laptop. The complete software installation requires approximately 170 GB, but **MAKER2**, from **Module 4** uses 99 GB of that space since it requires the database to be installed in a specific manner. See [Module 4 setup](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md). The complete database requirements, considering all tools, is around 439.9 GB. However, you don't need to install all MuDoGeR's Modules to use it.
 
 MuDoGeR is designed to support only Linux x64 systems. As for the resource requirements, the MuDoGeR framework uses software that requires a large amount of RAM (e.g **GDTB-Tk**, **MetaWRAP** ). Specific resource requirements vary depending on your data and its sequencing depth. We recommend the user provide at least 180 GB of RAM. 
 Therefore, for the assembly process, **MuDoGeR** attempt to calculate the amount of memory necessary for **metaSPades** (on step **1.b**). The user should be aware that samples with higher expected diversity require a higher amount of memory.
@@ -70,7 +70,7 @@ The MuDoGeR pipeline requires several tools that have multiple dependencies. Mor
 
 ```console
 
-See documentation: https://docs.conda.io/en/latest/miniconda.html
+#See documentation: https://docs.conda.io/en/latest/miniconda.html
 
 $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
@@ -84,7 +84,7 @@ $ export PATH=~/miniconda3/bin:$PATH
 
 **2 - Install MuDoGeR**
 
-Once you have miniconda installed and on your PATH you can properly install MuDoGeR.
+Once you have miniconda installed and on your PATH, you can properly install MuDoGeR.
 The MuDoGeR environment can be complex, and the installation script was designed to install and set up all necessary bioinformatics tools.
 
 ```console
@@ -104,7 +104,7 @@ $ echo $CONDA_PREFIX
 #Run the installation script as follows
 $ bash -i installation/install.sh
 
-#Follow the instructions on the screen by:
+#Follow the instructions on the screen:
 # Enter "y" if you want to install all modules, otherwise enter "n".
 # If you entered "n",enter "y" for each of the modules you would like to install individually.
 
@@ -136,7 +136,7 @@ Several bioinformatics tools used within MuDoGeR require specific databases to w
 Use this script if you want MuDoGeR to take care of everything. 
 
 ```console
-#Make sure mudoger_env is activated
+#Make sure mudoger_env is activated. It should have been created when you ran 'bash -i installation/install.sh'
 $ conda activate mudoger_env
 
 #Go to MuDoGeR cloned directory
@@ -158,109 +158,110 @@ The module 4 setup tutorial is found in [Module 4 setup](https://github.com/mdsu
 
 ![Screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_1_ovrw.jpg) 
 
-The steps of Module 1 are shown in Figure 2. A detailed description of its execution and outputs are found here: [Pre-Processing description](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
+The steps of Module 1 are shown in [Figure 3](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_1_ovrw.jpg). A detailed description of its execution and outputs are found here: [Pre-Processing description](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-1-pre-processing).
  
- The steps of Module 1 can be summarized as follows:
+ When you use MuDoGeR Module 1, it will perform the following tasks:
 
 * **1.a**: Raw Read Quality Control.
 * **1.b**: Calculation of memory requirements for the assembly process.
     * **(1.b.1)** The k-mer (33-mer and 55-mer) of the quality-controled reads produced in **1.a** is calculated.  
-    * **(1.b.2)** The calculated k-mer is used within and trained machine learning model to estimate the amount of memory that **metaSPades** use to assemble the reads.
+    * **(1.b.2)** The calculated k-mer is used in a trained machine learning model to estimate the amount of memory that **metaSPades** use to assemble the reads.
 * **1.c**: Assembly of the quality-controlled reads.
 
-### Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes (MAGs)
+### Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes (pMAGs)
 
 ![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_2_ovrw.jpg)
 
-Module 2 workflow is shown in Figure 3. A detailed description of its execution and outputs are found here: [Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
+Module 2 workflow is shown in [Figure 4](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_2_ovrw.jpg). A detailed description of its execution and outputs are found here: [Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
 
- The steps of Module 2 can be summarized as following:
+When you use MuDoGeR Module 2, it will perform the following tasks:
  
 * **2.a**: Binning and bin refinement of the Prokaryotic bins.
-     * **(2.a.1)** Binning with **MaxBin2**, **metaBAT2**, and **CONCOCT**.
+     * **(2.a.1)** Binning with [**Metabat2**](https://peerj.com/articles/7359/), [**Maxbin2**](https://academic.oup.com/bioinformatics/article/32/4/605/1744462), and [**CONCOCT**](https://www.nature.com/articles/nmeth.3103).
      * **(2.a.2)** Bacterial bins refinement and archea bins refinement.
      * **(2.a.3)** Dereplication of the recovered prokaryotic bins.
-* **2.b**: Taxonomic classification, quality estimation, and gene annotation. selection of Prokaryotic MAGs.
-     * **(2.b.1)** Taxonomic classification of the prokaryotic bins produced in **(2.a.3)** using **GTDB-Tk**.
-     * **(2.b.2)** Generation of quality matrix of the prokaryotic bins produced in **(2.a.3)** using **CheckM**. 
-     * **(2.b.3)** Prokaryotic MAGs gene annotation with **PROKKA**.
+* **2.b**: Taxonomic classification, quality estimation, and gene annotation.
+     * **(2.b.1)** Taxonomic classification of the prokaryotic bins produced in **(2.a.3)** using [**GTDB-tk**](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182).
+     * **(2.b.2)** Generation of quality matrix of the prokaryotic bins produced in **(2.a.3)** using [**CheckM**](https://genome.cshlp.org/content/25/7/1043). 
+     * **(2.b.3)** Prokaryotic MAGs gene annotation with [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517).
 * **2.c**: Sequence metrics calculation and selection of Prokaryotic MAGs.
      * **(2.c.1)** Sequence metric calculation from the selected MAGs.
-     * **(2.c.2)** Prokaryotic MAGs gene annotation with **PROKKA**.
+     * **(2.c.2)** Selection of Prokaryotic MAGs
     
     
 ### Module 3: Recovery of Uncultivated Viral Genomes (UViGs)
 
 ![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_3_ovrw.jpg) 
 
-The steps of Module 3  are shown in Figure 4. A detailed description of its execution and outputs are found here: [Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes-uvigs).
+The steps of Module 3  are shown in [Figure 5](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_3_ovrw.jpg). A detailed description of its execution and outputs are found here: [Pipelines for viral genomes recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-3-recovery-of-uncultivated-viral-genomes-uvigs).
 
- The steps of Module 3 can be summarized as follows: 
+When you use MuDoGeR Module 3, it will perform the following tasks: 
  
-* **3.a**: Recovery of Potential Viral Contigs
-    * **(3.a.1)** Recovery of potential viral contigs using [**VirSorter2**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00990-y), [**VirFinder**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5), and [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0)..
-    * **(3.a.2)** Filtering of the potential viral contigs.
-    * **(3.a.3)** Dereplication of the potential viral contigs.
+* **3.a**: Recovery of Putative Viral Contigs
+    * **(3.a.1)** Recovery of Putative viral contigs using [**VirSorter2**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00990-y), [**VirFinder**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5), and [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0).
+    * **(3.a.2)** Filtering of the putative viral contigs.
+    * **(3.a.3)** Dereplication of the putative viral contigs.
  * **3.b**: Taxonomic and Quality estimation of potential viral contigs
-    * **(3.b.1)** Taxonomic classification from the dereplicated potential viral contigs with [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8).
+    * **(3.b.1)** Taxonomic classification from the dereplicated putative viral contigs with [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8).
     * **(3.b.2)** Checking the quality of the dereplicated contigs with [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7).
 * **3.c**: Viral-Host pair estimation using [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377). This step is only done automatically if you generate the prokaryotic MAGs using MuDoGeR as well. 
 * **3.d**: Selection of UViGs
     * **(3.d.1)** Selection of all viruses that yielded taxonomy when using vContact2 plus those larger than 15 Kb.
     * **(3.d.2)** Selection based on the quality determined by [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7).
 
-
 ### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (eMABs)
 
 ![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_4_ovrw.jpg)
 
-The steps of Module 4  are shown in Figure 5. A detailed description of its execution and outputs are found here:  [Pipelines for eukaryotic bins recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
+The steps of Module 4  are shown in [Figure 6](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_4_ovrw.jpg). A detailed description of its execution and outputs are found here:  [Pipelines for eukaryotic bins recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
 
- The steps of Module 4 can be summarized as follows:
+When you use MuDoGeR Module 4, it will perform the following tasks:
+
 * **4.a**: Recovery and binning of Eukaryotic assemblies.
-    * **(4.a.1)** Classification of Eukaryotic assemblies and removal of prokaryotic assemblies with **EukRep**.
-    * **(4.a.2)** Use of **CONCOCT** for binning the Eukaryotic assemblies. 
-    * **(4.a.3)** Filtering the Eukaryotic bins, produced from **CONCOCT**, by size. Bins with size < 1.5 Mb are removed.
+    * **(4.a.1)** Classification of Eukaryotic assemblies and removal of prokaryotic assemblies with [**EukRep**](https://genome.cshlp.org/content/28/4/569).
+    * **(4.a.2)** Use of [**CONCOCT**](https://www.nature.com/articles/nmeth.3103) for binning the Eukaryotic assemblies. 
+    * **(4.a.3)** Filtering the Eukaryotic bins, produced from [**CONCOCT**](https://www.nature.com/articles/nmeth.3103), by size. Bins with size < 1.5 Mb are removed.
 * **4.b**: Completeness and contamination estimation and annotation of Eukaryotic bins
-    * **(4.b.1)** In the filtered bins produced in **4.a**, genes are predicted using **GeneMark**.
-    * **(4.b.2)** Completeness and contamination estimation of the Eukaryotic filtered bins produced in **4.a** using **EukCC**.
-    * **(4.b.3)** **MAKER2** annotates the predicted genes produced by **GeneMark**. 
-    * **(4.b.4)** **BUSCO** is applied to the annotated genes from **MAKER2**, for detection of single-copy orthologous genes (SCGs) and estimation of completeness of Eukaryotic contigs.
+    * **(4.b.1)** In the filtered bins produced in **4.a**, genes are predicted using [**GeneMark**](https://academic.oup.com/nar/article/29/12/2607/1034721).
+    * **(4.b.2)** Completeness and contamination estimation of the Eukaryotic filtered bins produced in **4.a** using [**EukCC**](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02155-4).
+    * **(4.b.3)** [**MAKER2**](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-491) annotates the predicted genes produced by [**GeneMark**](https://academic.oup.com/nar/article/29/12/2607/1034721). 
+    * **(4.b.4)** [**BUSCO**](https://academic.oup.com/bioinformatics/article/31/19/3210/211866) is applied to the annotated genes from [**MAKER2**](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-491), for detection of single-copy orthologous genes (SCGs) and estimation of completeness of Eukaryotic contigs.
 
 
 ### Module 5 Relative abundance
+
 ![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_5_ovrw.jpg)
 
-The steps of Module 5  are shown in Figure 6. A detailed description of its execution and outputs are found here: [Pipelines for abundance calculation](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
-Essentially, module 5 maps the quality-controlled reads of your sample on the recovered MAGs or annotated prokaryotic genes. We designed three possible mapping types to calculate abundance: **reduced**, **complete**, or **genes**. A detailed description of their differences can be found [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance)
+The steps of Module 5  are shown in [Figure 7](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_5_ovrw.jpg). A detailed description of its execution and outputs are found here: [Pipelines for abundance calculation](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance).
+Essentially, module 5 maps the quality-controlled reads of your sample on the recovered pMAGs/UViGs/eMAB or annotated prokaryotic genes. We designed three possible mapping types to calculate abundance: **reduced**, **complete**, or **genes**. A detailed description of their differences can be found [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-5-relative-abundance)
 
 The steps of Module 5 can be summarized as follows. If you select **complete** or **genes**, the pipeline will run steps **5.a** and **5.b**. If you select **genes**, the pipeline will run **5.c**: 
 
-* **5.a**: Select representative MAGs from each created OTU
-    * **(5.a.1)** Copy recovered MAGs from all samples within the provided metadata table.
-    * **(5.a.2)** Group recovered MAGs of all samples within the provided metadata table using **gOTUpick**.
-    * **(5.a.3)** Select the highest quality MAG within the **gOTUpick** groups as the group's representative MAG.
-* **5.b**: MAGs mapping and abundance calculation
-    * **(5.b.1)** Copy representative MAGs from step **5.1**
-    * **(5.b.2)** Index Representative MAGs
-    * **(5.b.3)** If --coverage is selected, calculate representative MAGs size, and the average read length of all samples to be mapped. If --relative-abundance total number of reads from all samples.
-    * **(5.b.4)** If --reduced is selected, maps reads from the samples where the MAGs were found on the representative MAGs. If --complete is selected, the map reads from all samples on the representative MAGs.
+* **5.a**: Select representative pMAGs from each created OTU
+    * **(5.a.1)** Copy recovered pMAGs from all samples within the provided metadata table.
+    * **(5.a.2)** Group recovered pMAGs of all samples within the provided metadata table using **gOTUpick**.
+    * **(5.a.3)** Select the highest quality pMAG within the **gOTUpick** groups as the group's representative MAG.
+* **5.b**: pMAGs/UViGs/eMABs mapping and abundance calculation
+    * **(5.b.1)** Copy representative pMAGs from step **5.1** and the selected UViGs and eMABs recovered in module 3 and module 4, respectively.
+    * **(5.b.2)** Index selected pMAGs/UViGs/eMABs
+    * **(5.b.3)** If ```--coverage``` is selected, calculate pMAGs/UViGs/eMAB size, and the average read length of all samples to be mapped. If ```--relative-abundance``` calculate the total number of reads from all samples.
+    * **(5.b.4)** If ```--reduced``` is selected, maps reads from the samples where the pMAGs/UViGs/eMABs were found on the pMAGs/UViGs/eMABs. If ```--complete``` is selected, map reads from all samples on the pMAGs/UViGs/eMABs.
     * **(5.b.5)** Calculate the absolute number of hits, relative abundance, and coverage tables, if the respective flag is selected.
 * **5.c**: Genes relative abundance calculation from the samples assembly. Currently working on prokaryotic genes
     * **(5.c.1)** Index assemblies from given samples.
     * **(5.c.2)** Map sample reads on the respective assembly.
-    * **(5.c.3)** Annotate genes on the assembly with **PROKKA**.
-    * **(5.c.4)** Convert the .gff file from **PROKKA** gene annotation on to .gtf.
+    * **(5.c.3)** Annotate genes on the assembly with [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517).
+    * **(5.c.4)** Convert the .gff file from [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517) gene annotation into .gtf.
     * **(5.c.5)** Count mapped reads on each gene.
     * **(5.c.6)** Calculate the average read length of all mapped samples.
-    * **(5.c.7)** Calculate gene lenght from **PROKKA** .gtf file.
-    * **(5.c.8)** Calculate genes' absolute number of hits, relative abundance, coverage, and TPM tables for each MAG.
+    * **(5.c.7)** Calculate gene lenght from [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517) .gtf file.
+    * **(5.c.8)** Calculate genes' absolute number of hits, relative abundance, coverage, and TPM tables for each sample.
 
 
 # MuDoGeR simplified usage
 
-Currently, MuDoGeR v1.0 only works with paired-end sequences. Future updates will add tools to work with long-read sequencing samples.
-MuDoGeR was designed to work module by module, starting from pre-process (Module 1). Additional modularity will be added in future updates to allow the user to run specific parts of the pipeline.
+Currently, MuDoGeR v1.0 only works with paired-end ILLUMINA sequences. Future updates will add tools to work with long-read sequencing samples.
+MuDoGeR was designed to work module by module, starting from pre-process (Module 1). Additional modularity will be added in future updates to allow the user to run specific parts of the pipeline. However, you can always use the tools independently by using the created conda environments by MuDoGeR. You can follow the instructions [here](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md#using-the-tools-independently).
 
 **MuDoGeR** is an easy-to-use wrapper of several tools organized within modules. The individual modules can be called independently.
 
@@ -302,36 +303,14 @@ Usage: mudoger --module module_name --meta metadata_table.tsv -o output_folder [
 
   --meta              		 Metadata table with your samples, as explained in the github documentation
   --module preprocess            Run all steps from module 1 (read_qc, kmer memory prediction and assembly)
-          	read_qc
-          	mem_pred
-          	assembly
-  --module prokaryotes              Recovery of Prokaryotic Metagenome-Assembled Genomes
-          	initial_binning
-          	bac_bin_ref
-          	arc_bin_ref
-          	bin_dereplication
-          	tax_assignment
-          	bin_quality
-          	gene_annotation
-          	seq_metrics
-  --module viruses		Recovery of Uncultivated Viral Genomes
-          	potential_viralseq_recov
-          	potential_viralseq_tax
-          	host_pred
-          	potential_viralseq_quality
-          	potential_viralseq_metrics
-  --module eukaryotes		Recovery of Eukaryotic Metagenome-Assembled Bins
-          	euk_recov
-          	gene_pred
-          	euk_quality
-          	gene_annotation
-          	euk_scg
-  --module abundance_tables	Abundance calculation
-          	brat_type       can be --complete , --reduced or --genes (default: --reduced)
-          	mapping_type	can be --absolute-values, --coverage, and --relative-abundance
-
-  --help | -h		show this help message
-  --version | -v	show mudoger version
+  --module prokaryotes           Recovery of Prokaryotic Metagenome-Assembled Genomes
+  --module viruses		 Recovery of Uncultivated Viral Genomes
+  --module eukaryotes		 Recovery of Eukaryotic Metagenome-Assembled Bins
+  --module abundance_tables	 pMAGs/UViGs/eMABs coverage and abundance calculation
+          	type             can be --reduced (default) , --complete or --genes
+          	mapping_type	 can be --absolute-values (default), --coverage, and --relative-abundance
+  --help | -h		         show this help message
+  --version | -v	         show mudoger version
 
 ```
 
@@ -347,11 +326,11 @@ $ mudoger --module viruses --meta /path/to/metadata.tsv -o /path/to/output/folde
 
 $ mudoger --module eukaryotes --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
 
-$ mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --coverage --relative-abundance --reduced
+$ mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --reduced --coverage --relative-abundance
 
 ```
 
-The result two level folder structure after a successful run of MuDoGeR is as follows:
+The result two level folder structure after a successful run of all MuDoGeR is as follows:
 ```console
 .
 ├── sample_1
@@ -369,11 +348,12 @@ The result two level folder structure after a successful run of MuDoGeR is as fo
 │   ├── qc
 │   └── viruses
 └── mapping_results
-    ├── all_bins
-    ├── all_metrics
     ├── assembly_gene_map
-    ├── genome_otu_mapping
-    └── gOTUpick_results
+    ├── euk_mabs_mapping
+    ├── gOTUpick_results
+    ├── merged_reads
+    ├── pmags_otu_mapping
+    └── uvigs_mapping
 ```
 
 A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
