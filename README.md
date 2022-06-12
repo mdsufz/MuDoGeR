@@ -88,13 +88,6 @@ Once you have miniconda installed and on your PATH you can properly install MuDo
 The MuDoGeR environment can be complex, and the installation script was designed to install and set up all necessary bioinformatics tools.
 
 ```console
-
-#Create the mudoger conda environment
-$ conda create mudoger_env
-
-#activate environmet
-$ conda activate mudoger_env
-
 #clone repository
 
 $ git clone https://github.com/mdsufz/MuDoGeR.git
