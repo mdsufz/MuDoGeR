@@ -196,17 +196,17 @@ virfinder_env		virsorter2_env		wish_env
 
 Essentially, the user can activate a tool-specific environment by running:
 ```console
-conda activate path/to/your/miniconda/envs/mudoger_env/dependencies/conda/envs/toolname_env
+$ conda activate path/to/your/miniconda/envs/mudoger_env/dependencies/conda/envs/toolname_env
 ```
 
 However, since the user’s conda path is also saved by MuDoGeR during installation, the user can also activate a tool-specific environment by doing the following:
 
 ```console
-conda activate mudoger_env
-config_path="$(which config.sh)"
-database="${config_path/config/database}"
-source $config_path
-source $database
-conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/toolname_env
+$ conda activate mudoger_env
+$ config_path="$(which config.sh)"
+$ database="${config_path/config/database}"
+$ source $config_path
+$ source $database
+$ conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/toolname_env
 ````
 
