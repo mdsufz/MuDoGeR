@@ -95,6 +95,12 @@ $ git clone https://github.com/mdsufz/MuDoGeR.git
 #Go to the MuDoGeR cloned repository folder
 $ cd MuDoGeR
 
+#Make sure you have conda ready and that you are in your base environment.
+$ echo $CONDA_PREFIX
+
+#You should see something like the following:
+/path/to/miniconda3
+
 #Run the installation script as follows
 $ bash -i installation/install.sh
 
