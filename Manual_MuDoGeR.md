@@ -12,6 +12,8 @@
 
 MuDoGeR version 1.0 was designed to be an easy-to-use genome recovery tool. Therefore, we created a setup procedure that requires little user input. Consequently, one **important** aspect of MuDoGeR usage is the **output folder architecture**. The file names and folder architecture are important for the pipeline to work smoothly. If you want to prepare your data using other tools, and later use MuDoGeR, please keep the folder structure and file naming according to the MuDoGeR requirements. Please, check the outputs and folders created during the successful execution of each module in the following sections.
 
+Please note that you can click the tool's name on the text to be redirected to the tool's own documentation
+
 ## Required Metadata table
 
 Currently, MuDoGeR v1.0 only works with pair-end sequences. Future updates will add tools to work with long-read sequencing samples.
@@ -31,6 +33,10 @@ EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_1.fastq
 EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_2.fastq
 
 ```
+
+### Naming your samples: good practices
+
+Please pay attention to your samples' names. Avoid using spaces and special characters in your samples' names as good practices. If possible, use only letters and numbers. Special and space characters could cause malfunctioning in some of the used tools.
 
 
 Following you have an usage tutorial for each module. Each **Module's final consideration** section has the description of the expected folder and files names output.
@@ -53,7 +59,7 @@ The available parameter for module 1 are:
 * Assembler. Can be --megahit or --metaspades (default)
 
 The -m parameter is optional, once it is calculated during step **1.b**. If you specify the amount of RAM, the result from **1.b** will be ignored. 
-Be aware that RAM is a relevant bottleneck for MAG recovery.
+**Be aware that RAM is a relevant bottleneck for MAG recovery.**
 
 ### 1.a: Raw Read Quality Control  
 For quality control, MuDoGeR uses the implementation present in [metaWRAP](https://github.com/bxlab/metaWRAP). The quality control procedure currently applied is to trim raw reads based on adapted content and PHRED scored with the default setting of Trim-galore. Future updates will allow the option to remove host contamination using different databases.
@@ -128,7 +134,7 @@ If you want to use the other MuDoGeR modules, you can copy the showed folder str
 The relevant files generated in Module 1 used for the other modules are ```assembly/final_assembly.fasta```, ```qc/final_pure_reads_1.fastq```, and ```qc/final_pure_reads_2.fastq```. Please, make sure your resulted files are specificaly named as ```final_assembly.fasta``` and ```final_pure_reads_1/2.fastq```.
 
 
-## Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes (MAGs)
+## Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes (pMAGs)
 
 This module integrates the prokariotic binning procedure implemented in [**metaWRAP**](https://github.com/bxlab/metaWRAP) using [**Metabat2**](https://peerj.com/articles/7359/), [**Maxbin2**](https://academic.oup.com/bioinformatics/article/32/4/605/1744462), and [**CONCOCT**](https://www.nature.com/articles/nmeth.3103) binners, a MuDoGeR bin dereplacation method, the [**GTDB-tk**](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182) taxonomic annotation, [**CheckM**](https://genome.cshlp.org/content/25/7/1043) quality estimation, [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517) metagenomic gene annotation,  MuDoGeR sequence metrics and [**BBtools**](https://sourceforge.net/projects/bbmap/) sequence metrics calculation tools.
 
@@ -151,24 +157,24 @@ Additional modularity for this module is scheduled to happen.
 The binnig process starts by using [**Metabat2**](https://peerj.com/articles/7359/), [**Maxbin2**](https://academic.oup.com/bioinformatics/article/32/4/605/1744462), and [**CONCOCT**](https://www.nature.com/articles/nmeth.3103) to bin the sequences from the ```final_assembly.fasta``` file.
 Following, the results from all binners are used to refine bacterial bins. For bacterial bins, the refinement process uses 50% minimum completeness and 10% maximum contamination as default. For archeal bins, the refinement process uses 40% minimum completeness and 30% maximum contamination as default. The refinement process used is implemented in [**metaWRAP**](https://github.com/bxlab/metaWRAP). Finally, MuDoGeR removes redundant bins.
 
-The most relevant files from this step are the prokaryotic bins inside the ```unique_bins/``` folder
-
+The most relevant files from this step are the prokaryotic bins inside the ```unique_bins/``` folder. Please refer to Module 1 final consideration to understand the folder structure from Module 1.
 
 ### 2.b: Taxonomic classification, quality estimation, and gene annotation.
 
 After the binning step is completed, the resulted bins are taxonomic annotated using the [**GTDB-tk**](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182) software and its most updated database. Following, the ```unique_bins/``` are checked for quality using the [**CheckM**](https://genome.cshlp.org/content/25/7/1043) tool. Finally, the recovered prokaryotic bins are annotated using [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517).
 
 Inside the ```metrics/``` folder, you should have one folder for each tool. Inside ```prokka/``` you will find one folder for each bin containing the outputs from the tool.
-The resulted files will be used by MuDoGeR to generate a more comprehensive report of the bins, as well as further processing. If you would like to know more about the outputs of each tool, please check their respective documentation. You can find links to the tools [here](https://github.com/mdsufz/MuDoGeR/blob/master/dependencies_description.md).
-
+The resulted files will be used by MuDoGeR to generate a more comprehensive report of the bins, as well as further processing. If you would like to know more about the outputs of each tool, please check their respective documentation. You can find links to the tools [here](https://github.com/mdsufz/MuDoGeR/blob/master/dependencies_description.md) or by clicking on the tool's name.
 
 ### 2.c: Sequence metrics calculation and selection of Prokaryotic MAGs.
 
-Finally, MuDoGeR calculates some relevant metrics from the recovered bins, such as genome_size, number_of_scaffolds, largest_scaffold_size, N50, and N90. In addition, it also counts the number of annotated and unknown genes by prokka. [**BBtools**](https://sourceforge.net/projects/bbmap/) is also used to extract sequence metrics. Later, MuDoGeR merges the results from the other tools and calculates the sequence quality (completeness – 5×contamination [(Parks, 2018)](https://www.nature.com/articles/s41564-017-0012-7)). Bins with quality greater than or equal to 50 are considered MAGs and have their information summarised in the ```MAGS_results.tsv``` file.
+Finally, MuDoGeR calculates some relevant metrics from the recovered bins, such as genome_size, number_of_scaffolds, largest_scaffold_size, N50, and N90. In addition, it also counts the number of annotated and unknown genes by prokka. [**BBtools**](https://sourceforge.net/projects/bbmap/) is also used to extract sequence metrics. Later, MuDoGeR merges the results from the other tools and calculates the sequence quality (completeness – 5×contamination [(Parks, 2018)](https://www.nature.com/articles/s41564-017-0012-7)). Bins with quality greater than or equal to 50 are considered MAGs and have their information summarised in the ```mags_results_summary.tsv``` file.
 
-The ```MAGS_results.tsv``` contains relevant annotations from the recovered MAGs. You can also check the annotated genes for each MAG by looking at the ```.gtf``` output by ```PROKKA``` for each MAG.
+The ```mags_results_summary.tsv``` contains relevant annotations from the recovered MAGs. You can also check the annotated genes for each MAG by looking at the ```.tsv``` output by [**Prokka**](https://academic.oup.com/bioinformatics/article/30/14/2068/2390517) for each MAG.
 
 ## Module 2 final considerations
+
+By the end, MuDoGeR parses the outputs from all used tools and outputs the following comprehensive results to the ```sample_name/prokaryotes/final_outputs/``` folder. Please go to the [understand outputs](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) to better understand MuDoGeR results.
 
 After a successful run of Module 2 you should have the following folder structure:
 
@@ -183,14 +189,27 @@ sample_name
              │       ├── bin.0.fa
              │       ├── bin.10.fa
              │       └── bin.11.fa
-             ├── MAGS_results.tsv
+	     ├── final_outputs
+	     │   ├── all_bins_seq
+	     │   ├── allbins_metrics_summary.tsv
+	     │   ├── bins_genes_prokka_summary
+	     │   ├── bins_metrics_summary
+	     │   │   ├── qual_bins_checkm_summary.tsv
+	     │   │   └── taxa_bins_gtdbtk_summary.tsv
+	     │   ├── mags_results_summary.tsv
+	     │   └── only_mags_seq
              └── metrics
                  ├── checkm_qc
+		 │   ├── bins
+		 │   ├── lineage.ms
+		 │   ├── outputcheckm.tsv
+		 │   └── storage
                  ├── genome_statistics
                  │   ├── bbtools.tsv
                  │   ├── genome_metrics.tsv
                  │   └── prok_genomes_stats.tsv
                  ├── GTDBtk_taxonomy
+		 │   └── GTDB-tk_outputs
                  └── prokka
 		     ├── bin.0.fa/
                      ├── bin.10.fa/
