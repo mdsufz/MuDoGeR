@@ -179,3 +179,34 @@ mapping_results/ assembly_gene_map/
 
 
 # Using the tools independently
+
+A complete metagenome recovery pipeline can require several bioinformatics tools with complex installation and usage procedures. The MuDoGeR pipeline makes it easy to install and run a complete metagenome-assembled genome recovery.  Consequently, the MuDoGeR pipeline installs several tools that have multiple dependencies. More often than not, those tools require conflicting dependencies. To solve this problem, MuDoGeR will use miniconda to create multiple environments that are automatically orchestrated during the pipeline's functioning.
+Therefore, after installing MuDoGeR the user will have a working conda environment for each of the integrated tools. If the user wants to customize the use of any tool, you can use MuDoGeR to configure your machine and activate its environments independently. 
+The MuDoGeR installation procedure uses the variable ```$CONDA_PREFIX``` to detect your base environment, so make sure you have conda properly installed on your system. During installation, MuDoGeR saves several relevant system paths from your system on the file called ```config.sh```. In addition, MuDoGeR creates a mudoger_env and configures several new environments within the mudoger_env directory. The environments' names are called ```toolname_env```. 
+The MuDoGeR configures and installs are the following environments named according to their main tool:
+
+```
+bbtools_env		brat_env		busco_env		checkv_env
+eukcc_env		eukrep_env		extract_env		genemarker_env
+gtdbtk_env		htseq_env		khmer_env		maker2_env
+metawrap_env		otupick_env		prokka_env
+stampede_clustergenomes_env		vcontact2_env		vibrant_env
+virfinder_env		virsorter2_env		wish_env
+```
+
+Essentially, the user can activate a tool-specific environment by running:
+```console
+conda activate path/to/your/miniconda/envs/mudoger_env/dependencies/conda/envs/toolname_env
+```
+
+However, since the user’s conda path is also saved by MuDoGeR during installation, the user can also activate a tool-specific environment by doing the following:
+
+```console
+conda activate mudoger_env
+config_path="$(which config.sh)"
+database="${config_path/config/database}"
+source $config_path
+source $database
+conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/toolname_env
+````
+
