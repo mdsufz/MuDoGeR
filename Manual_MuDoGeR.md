@@ -92,7 +92,6 @@ assembly_report.html  final_assembly.fasta  megahit  metaspades  QUAST_out
 
 The ```final_assembly.fasta``` is the assembled sequences that are going to be used in the other modules.
 
-![](https://github.com/mdsufz/MuDoGeR/blob/master/Assembly.png)
 
 ## Module 1 final considerations
 
@@ -122,7 +121,7 @@ output/path/
 
 ```
 
-If you want to use the other MuDoGeR modules, you can copy the showed folder structure with your own data and use the same ``` -o output/path ``` when running the other modules.
+If you want to use the other MuDoGeR modules, you can copy the showed folder structure with your own data and use the same ```-o output/path ``` when running the other modules.
 
 ### Most relevant files from Module 1
 
@@ -215,7 +214,7 @@ The available parameter for module 2 are:
 * -o output directory (mandatory)
 * -t number of threads/cores (default = 1)
 
-### 3.a: Recovery of Potential Viral Contigs
+### 3.a: Recovery of Putative Viral Contigs
 
 In **3.a**, the viral recovery tools  [**VirSorter2**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00990-y), [**VirFinder**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5), and [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0) are applied to the assembly fasta file ```final_assembly.fasta``` created during the preprocess module. Sequences recovered with **VirFinder** with p-value > 0.01 and length < 1000 bp are removed. Later, the independent results of each tool are combined and dereplicated with [**Stampede-clustergenomes**](https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/) using 70% minimum coverage and 95% minimum identity.
 
@@ -374,11 +373,11 @@ sample_name
 
 ## Module 4: Recovery of Eukaryotic Metagenome-Assembled Bins (eMABs)
 
-The recovery of the eMABs module integrates **EukRep** for selecting the eukaryotic contigs from the initial assembly, the **CONCOCT** binner, **GeneMark** for prediction of eukaryotic genes, **EukCC** for for quality estimation from eukaryiotic sequences, **MAKER2** for gene annotation, and **BUSCO** for detection of single-copy orthologous genes.
+The recovery of the eMABs module integrates [**EukRep**](https://genome.cshlp.org/content/28/4/569) for selecting the eukaryotic contigs from the initial assembly, the [**CONCOCT**](https://www.nature.com/articles/nmeth.3103) binner, [**GeneMark**](https://academic.oup.com/nar/article/29/12/2607/1034721) for prediction of eukaryotic genes, [**EukCC**](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02155-4) for for quality estimation from eukaryiotic sequences, [**MAKER2**](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-491) for gene annotation, and [**BUSCO**](https://academic.oup.com/bioinformatics/article/31/19/3210/211866) for detection of single-copy orthologous genes.
 
-The tools that require specific databases in the eukaryotic module are **EukCC**, **BUSCO**, and **MAKER2**. **BUSCO** and **EukCC** databases  should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/mdsufz/MuDoGeR#installation). 
+The tools that require specific databases in the eukaryotic module are [**EukCC**](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02155-4), [**BUSCO**](https://academic.oup.com/bioinformatics/article/31/19/3210/211866), and [**MAKER2**](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-491). [**BUSCO**](https://academic.oup.com/bioinformatics/article/31/19/3210/211866) and [**EukCC**](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02155-4) databases  should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/mdsufz/MuDoGeR#installation). 
 
-Module 4 requires specific configuration that can't be done automatically. Please, make sure you follow the instructions [here](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md) to complete **GeneMark** and **MAKER2** installation.
+Module 4 requires specific configuration that can't be done automatically. Please, make sure you follow the instructions [here](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md) to complete [**GeneMark**](https://academic.oup.com/nar/article/29/12/2607/1034721) and [**MAKER2**](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-491) installation.
 
 For running all module 4 use:
 
@@ -393,20 +392,20 @@ The available parameter for module 4 are:
 
 ### 4.a: Recovery and binning of Eukaryotic assemblies
 
-The eMABs recovery starts with ```final_assembly.fasta``` as input to the **EukRep** tool. This splits the contigs within the assembled sequences into ```prokaryotic_contigs.fa``` and ```eukaryotic_contigs.fa```. Following, the eukaryotic contigs serve as input to the **CONCOCT** binner. Finally, the resulted eukaryotic bins are filtered by minimum size (by default we use 1.5 MB) and considered eMABs.
+The eMABs recovery starts with ```final_assembly.fasta``` as input to the [**EukRep**](https://genome.cshlp.org/content/28/4/569) tool. This splits the contigs within the assembled sequences into ```prokaryotic_contigs.fa``` and ```eukaryotic_contigs.fa```. Following, the eukaryotic contigs serve as input to the [**CONCOCT**](https://www.nature.com/articles/nmeth.3103) binner. Finally, the resulted eukaryotic bins are filtered by minimum size (by default we use 1.5 MB) and considered eMABs.
 
 The main result of step 4.a is the eMABs fasta files located within the ```filtered_euk_bins/``` folder.
 
 ### 4.b: Completeness and contamination estimation and annotation of Eukaryotic bins
 
-The second part of eMABs recovery starts by predicting eukaryiotic genes using **GeneMark**. The input for this step are the eMABs recovered in step 4.a located within the ```filtered_euk_bins/``` folder. Following **EukCC** is used to calculate quality and completeness from the eMABs recovered in 4.a.
+The second part of eMABs recovery starts by predicting eukaryiotic genes using [**GeneMark**](https://academic.oup.com/nar/article/29/12/2607/1034721). The input for this step are the eMABs recovered in step 4.a located within the ```filtered_euk_bins/``` folder. Following [**EukCC**](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02155-4) is used to calculate quality and completeness from the eMABs recovered in 4.a.
 
-For the annotation of eukaryotic genes, MuDoGeR feeds the **MAKER2** tool with the eukaryotic bins and the necessary files generated by **GeneMark** for each eMAB. Finally, **BUSCO** receives the **MAKER2** genes as input for detecting single-copy orthologous genes (SCGs)
+For the annotation of eukaryotic genes, MuDoGeR feeds the [**MAKER2**](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-491) tool with the eukaryotic bins and the necessary files generated by [**GeneMark**](https://academic.oup.com/nar/article/29/12/2607/1034721) for each eMAB. Finally, [**BUSCO**](https://academic.oup.com/bioinformatics/article/31/19/3210/211866) receives the [**MAKER2**](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-491) genes as input for detecting single-copy orthologous genes (SCGs)
 
-The results from **GeneMark** are calculated for each eMAB and you may find them in ```eukaryotes/genemarker_annotation/eMAB.fa_genemark```. The annotated genes are located in the ```genemark.gtf``` file. The model created for the eMAB, the ```gmhmm.mod``` is then used by **MAKER2**.
-A summary of the quality results calculated buy **EukCC** can be found in ```eukaryotes/eukcc_quality/eMAB.fa_eukcc/eukcc.csv```.
-The main results from the **MAKER2** annotation can be found for each eMAB within the folder ```eukaryotes/maker2_gene_annotation/eMAB.fa_maker2/eMAB.maker.output/```
-Finally, you can find **BUSCO** results in the files ```eukaryotes/euk_completeness/eMAB_busco/short_summary.specific.eukaryota_odb10.eMAB_busco.txt``` and ```eukaryotes/euk_completeness/eMAB_busco/run_eukaryota_odb10/full_table.tsv```.
+The results from [**GeneMark**](https://academic.oup.com/nar/article/29/12/2607/1034721) are calculated for each eMAB and you may find them in ```eukaryotes/genemarker_annotation/eMAB.fa_genemark```. The annotated genes are located in the ```genemark.gtf``` file. The model created for the eMAB, the ```gmhmm.mod``` is then used by [**MAKER2**](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-491).
+A summary of the quality results calculated buy [**EukCC**](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02155-4) can be found in ```eukaryotes/eukcc_quality/eMAB.fa_eukcc/eukcc.csv```.
+The main results from the [**MAKER2**](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-491) annotation can be found for each eMAB within the folder ```eukaryotes/maker2_gene_annotation/eMAB.fa_maker2/eMAB.maker.output/```
+Finally, you can find [**BUSCO**](https://academic.oup.com/bioinformatics/article/31/19/3210/211866) results in the files ```eukaryotes/euk_completeness/eMAB_busco/short_summary.specific.eukaryota_odb10.eMAB_busco.txt``` and ```eukaryotes/euk_completeness/eMAB_busco/run_eukaryota_odb10/full_table.tsv```.
 
 ## Module 4: Final Considerations
 
