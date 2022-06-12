@@ -3,8 +3,8 @@
 ![ScreenShot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/mudoger_outputs.jpg)
 
 The Multi-Domain Genome Recovery v1.0 (MuDoGeR v1.0) framework is a tool developed to help users to recover Prokaryotic Metagenome-Assembled Genomes (pMAGs), Uncultivated Viral Genomes (UViGs), and Eukaryotic Metagenome-Assembled Bins (eMABs) from whole-genome sequence (WGS) samples simultaneously. The MuDoGeR v1.0 framework act as a wrapper of several tools. It was designed to be an easy-to-use tool that orchestrates the application of the used bioinformatics tools and outputs ready-to-use comprehensive files. You should be able to run 1 simple command for each of the five modules inside MuDoGeR.
-Therefore, when using MuDoGeR you will be able to find the relevant outputs for all used tools. Please refer to the Manual to understand where to find the tools-specific outputs and information on how they were created. In the Manual, you can also find the reference to the tools themselves, where you can read their specific documentation.
- However, to make the Genome recovery analysis easier, MuDoGeR also parses and summaries the resulted files into ready-to-use comprehensive files. Following, you find the description and location of the final files created by MuDoGeR.
+Therefore, when using MuDoGeR you will be able to find the relevant outputs for all used tools. Please refer to the [Manual](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#mudoger-manual-v10) to understand where to find the tools-specific outputs and information on how they were created. In the [Manual](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#mudoger-manual-v10), you can also find the reference to the tools themselves, where you can read their specific documentation.
+However, to make the Genome recovery analysis easier, MuDoGeR also parses and summaries the resulted files into ready-to-use comprehensive files. Following, you find the description and location of the final files created by MuDoGeR.
 
 ## Module 1 – Pre-processing and Assembly
 
