@@ -108,45 +108,74 @@ sample_name/viruses/final_outputs
 
 
 
+
 ## Module 5 – pMAGs/UViGs/eMABs coverage and relative abundance tables
-```
+
+Initially, on step 5.a, MuDoGeR selects the representative pMAGs using the gOTUpick software. If you are interested in knowing the MAGs belonging to the same OTU group, you can find this information in the ``` mapping_results/gOTUpick_results/``` folder. There you will find the results files:
+
+* The ```bestbins.txt``` file. This a two-column file containing the name of the representative bin in the first column and the group it represents in the second. Bins from unique taxonomies are classified as the best bins from that taxonomical group.
+* The ```final_groups_outputs.csv``` file. This is a regular CSV file with 3 columns. The first indicates the name of all grouped bins, the second indicates the group that bin was assigned, and the third indicates with a “*” if that bin the representative from its group. 
+
+The results from step 5.a are structured as follows:
+´´´
 mapping_results/gOTUpick_results
-  ├── final_output
-  	├── bestbins.txt
- └── final_groups_output.csv
-```
+            ├── final_output
+            ├── bestbins.txt
+            └── final_groups_output.csv
+´´´
 
-```
-mapping_results/ euk_mabs_mapping(pmags_otu_mapping)(uvigs_mapping)/
-├── map_final_tables_complete
-│	   ├── map_complete_absolute_n_hits_list.tsv
-│	   ├── map_complete_absolute_n_hits_table.tsv
-│	   ├── map_complete_coverage_list.tsv
-│	   ├── map_complete_coverage_table.tsv
-│	   ├── map_complete_relative_abundance_list.tsv
-│	   └── map_complete_relative_abundance_table.tsv
-└── map_final_tables_reduced
-   ├── map_reduced_absolute_n_hits_list.tsv
-   ├── map_reduced_absolute_n_hits_table.tsv
-   ├── map_reduced_coverage_list.tsv
-   ├── map_reduced_coverage_table.tsv
-   ├── map_reduced_relative_abundance_list.tsv
-   └── map_reduced_relative_abundance_table.tsv
-```
+Step 5.b performs the mapping and calculation of the coverage and relative abundance from the recovered representative eMABs, pMAGs, and UViGs. After running step 5.b MuDoGeR creates the ```mapping_results/euk_mabs_mappings``` ```mapping_results/pmags_otu_mapping/```, and ```mapping_results/uvigs_mapping/``` for storing the results from the eMABs, pMAGs, and UViGs respectively. Inside those folders you should find the ```map_final_tables_reduced/``` folder if you use the MuDoGeR with the --reduced flag, and the ```map_final_tables_complete/``` if you use the --complete flag. Inside those folders you will find the final output files created by MuDoGeR as follows: 
 
-```
+* The ```map_reduced(complete)_absolute_n_hits_list.tsv``` file. This is a regular three-column tsv file containing in the first column the eMABs, pMAGs, and UViGs, the second is the sample used for the mapping, and the third is the absolute number of mapped reads. This file is created if you use the ```--reduced (--complete)``` flag.
+* The ``` map_reduced(complete)_absolute_n_hits_table.tsv``` file. This file is created based on the ```map_reduced(complete)_absolute_n_hits_list.tsv``` file. This is a regular tsv file with samples used for mapping as columns and target eMABs, pMAGs, and UViGs as rows. 
+* The ```map_reduced(complete)_coverage_list.tsv``` file. This is a regular three-column tsv file containing in the first column the target eMABs, pMAGs, and UViGs, the second is the sample used for the mapping, and the third is the coverage calculated for the eMABs, pMAGs, and UViGs. This file is created if you use the ```--reduced (--complete)``` flag.
+* The ``` map_reduced(complete)_ coverage _table.tsv``` file. This file is created based on the ```map_reduced(complete)_ coverage _list.tsv``` file. This is a regular tsv file with samples used for mapping as columns and target eMABs, pMAGs, and UViGs as rows. 
+* The ```map_reduced(complete)_ relative_abundance _list.tsv``` file. This is a regular three-column tsv file containing in the first column the target eMABs, pMAGs, and UViGs, the second is the sample used for the mapping, and the third is the relative abundance of the eMABs, pMAGs, and UViGs on the used samples. This file is created if you use the ```--reduced (--complete)``` flag.
+* The ``` map_reduced(complete)_ relative_abundance _table.tsv``` file. This file is created based on the ```map_reduced(complete)_ relative_abundance _list.tsv``` file. This is a regular tsv file with samples used for mapping as columns and target eMABs, pMAGs, and UViGs as rows. 
+
+The results from step 5.b are structured as follows:
+´´´
+mapping_results/(euk_mabs_mapping)(pmags_otu_mapping)(uvigs_mapping)/
+                    ├── map_final_tables_complete
+                    │	    ├── map_complete_absolute_n_hits_list.tsv
+                    │	    ├── map_complete_absolute_n_hits_table.tsv
+                    │	    ├── map_complete_coverage_list.tsv
+                    │	    ├── map_complete_coverage_table.tsv
+                    │	    ├── map_complete_relative_abundance_list.tsv
+                    │	    └── map_complete_relative_abundance_table.tsv
+                    └── map_final_tables_reduced
+                        ├── map_reduced_absolute_n_hits_list.tsv
+                        ├── map_reduced_absolute_n_hits_table.tsv
+                        ├── map_reduced_coverage_list.tsv
+                        ├── map_reduced_coverage_table.tsv
+                        ├── map_reduced_relative_abundance_list.tsv
+                        └── map_reduced_relative_abundance_table.tsv
+´´´
+
+Step 5.c performs the genes' relative abundance calculation from the samples' assembly. After using MuDoGeR module 5 using the --gene flag you should have the folders ```mapping_results/assembly_gene_map/```. Inside that folder you should find the following most relevant output files: 
+
+* The ```functional_annotation/sample_name/``` folder. There you will find the PROKKA gene annotation performed on the ```final_assembly.fasta``` file from the ```sample_name``` library.
+* The ```genelength/sample_name.genelength``` file. This is a two-column file with the gene id in the first and the gene length in the second from the genes annotated by PROKKA.
+* The ``` map_absolute_count /sample_name.count``` file. This is a two-column file with the gene id in the first and the absolute number of reads mapped to that gene.
+* The ``` map_coverage_norm/sample_name.cov``` file. This is a two-column file with the gene id in the first and the gene coverage on the sample_name where that gene was annotated. The coverage is calculated as: (average read length)\*(number of hits)/(gene length)
+* The ``` map_tpm_norm /sample_name.tpm``` file. This is a two-column file with the gene id in the first and the gene TPM calculation on the sample_name where that gene was annotated. The TPM calculation is done as: (reads mapped)/(average read length)\*10^6/(gene length)\*Sum\[(reads mapped)\*(average read length)/(gene length)\].
+
+The folder structure from the results of 5.c should be as follows:
+
+´´´
 mapping_results/ assembly_gene_map/
-├── functional_annotation
-│   	└── sample_name
-├── genelength
-│   	└── sample_name.genelength
-├── map_absolute_count
-│   	└── sample_name.count
-├── map_coverage_norm
-│   	└── sample_name.cov
-└── map_tpm_norm
-└── sample_name.tpm
-```
+                     ├── functional_annotation
+                     │   	└── sample_name
+                     ├── genelength
+                     │   	└── sample_name.genelength
+                     ├── map_absolute_count
+                     │   	└── sample_name.count
+                     ├── map_coverage_norm
+                     │   	└── sample_name.cov
+                     └── map_tpm_norm
+                          └── sample_name.tpm
+´´´
+
 
 
 # Using the tools independently
