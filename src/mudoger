@@ -20,37 +20,15 @@ help_message () {
         echo ""
 	echo "  --meta              		 Metadata table with your samples, as explained in the github documentation"
         echo "  --module preprocess              Run all steps from module 1 (read_qc, kmer memory prediction and assembly)"
-        echo "          	read_qc"
-        echo "          	mem_pred"
-        echo "          	assembly"
-        
         echo "  --module prokaryotes              Recovery of Prokaryotic Metagenome-Assembled Genomes"
-        echo "          	initial_binning"
-        echo "          	bac_bin_ref"
-        echo "          	arc_bin_ref"
-        echo "          	bin_dereplication"
-        echo "          	tax_assignment"
-        echo "          	bin_quality"
-        echo "          	gene_annotation"
-        echo "          	seq_metrics"
   
         echo "  --module viruses		Recovery of Uncultivated Viral Genomes"
-        echo "          	uvigs_recov"
-        echo "          	uvigs_tax"
-        echo "          	host_pred"
-        echo "          	uvigs_quality"
-        echo "          	uvigs_metrics"
                
         echo "  --module eukaryotes		Recovery of Eukaryotic Metagenome-Assembled Genomes"
-        echo "          	euk_recov"
-        echo "          	gene_pred"
-        echo "          	euk_quality"
-        echo "          	gene_annotation"
-        echo "          	euk_scg"
      
         echo "  --module abundance_tables	Abundance calculation"
-	echo "          	brat_type       can be --complete or --reduced (default: --reduced)"
-        echo "          	mapping_type	can be --absolute-values, --coverage, and --relative-abundance"
+	echo "          	type             can be --reduced (default) , --complete or --genes"
+        echo "          	mapping_type	 can be --absolute-values (default), --coverage, and --relative-abundance"
     
         echo ""
         echo "  --help | -h		show this help message"
@@ -86,6 +64,7 @@ while true; do
 		--coverage) brat_cov="--coverage"; shift 1;; 
 		--relative-abundance) brat_relativ="--relative-abundance"; shift 1;;
 		-h | --help) help_message; exit 1; shift 1;;
+		-v | --version) echo "$VERSION"; exit 1; shift 1;;
 		--) help_message; exit 1; shift; break ;;
 		*) break;;
 	esac
