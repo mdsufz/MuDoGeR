@@ -527,17 +527,15 @@ sample_name
 
 ## Module 5: Relative abundance 
 
-Module 5 of MuDoGeR maps the quality-controlled reads to the recovered MAGs/UViGs/eMAB to calculate their abundance within the WGS samples.
+Module 5 of MuDoGeR maps the quality-controlled reads to the recovered pMAGs/UViGs/eMAB to calculate their abundance within the WGS samples.
 
-Consequently, MuDoGeR requires as input the path to the quality-controlled reads and the path to the recovered MAGs/UViGs/eMAB sequences.
+Consequently, MuDoGeR uses the path to the quality-controlled reads and the path to the recovered pMAGs/UViGs/eMAB sequences.
 
-MuDoGeR provides three mapping pipelines, called --reduced, --complete, and --genes
+Initially, module 5 selects the representatives' pMAGs/UViGs/eMAB based on the Average nucleotide identity (ANI) 95 distance measure using the **gOTUpick** software integrated into the MuDoGeR custom scripts. Following, MuDoGeR provides two mapping pipelines, called ```--reduced``` and ```--complete```.
 
-Initially, module 5 selects the representatives' MAGs/UViGs/eMAB based on Average nucleotide identity (ANI) 95 distance measure using the **gOTUpick** software integrated into the MuDoGeR custom scripts. Following, MuDoGeR provides three mapping pipelines, called --reduced, --complete, and --genes.
+When using the ```--reduced``` flag, MuDoGeR maps the representative pMAGs/UViGs/eMAB only to the WGS samples where they were recovered. When using the ```--complete``` flag, MuDoGeR maps all WGS samples to all representative pMAGs/UViGs/eMAB selected by the **gOTUpick**.  In both cases, you can use the ```--coverage``` and ``` --relative-abundance``` flags to also calculate the pMAGs/UViGs/eMABs coverage and relative abundance, respectively.
 
-When using the --complete flag, MuDoGeR maps all WGS samples to all representative MAGs/UViGs/eMAB selected by the **gOTUpick**. When using the --reduced flag, MuDoGeR maps the representative MAGs/UViGs/eMAB only to the WGS samples where they and their group of MAGs/UViGs/eMAB were recovered. In both cases, you can use the --coverage and --relative-abundance flags to also calculate the MAGs/UViGs/eMAB coverage and relative abundance, respectively.
-
-In addition, you can use the --gene flag to map the WGS quality-controlled reads to all the prokka annotated genes found in the samples' ```final_assembly.fasta``` files. You can also use the --coverage and --relative-abundance flags to output coverage and relative abundance values, respectively, for the annotated genes.
+In addition, you can use the ``` --gene``` flag to map the WGS quality-controlled reads to all the [Prokka]( https://academic.oup.com/bioinformatics/article/30/14/2068/2390517) annotated genes found in the samples' ```final_assembly.fasta``` files. You can also use the ``` --coverage```  and ``` --relative-abundance```  flags to output coverage and relative abundance values, respectively, for the annotated genes.
 
 You can run all module 5 as follows:
 
@@ -545,7 +543,7 @@ You can run all module 5 as follows:
 mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --reduced --absolute-values --coverage --relative-abundance
 ```
 
-The available parameter for module 5 are:
+The available parameters for module 5 are:
 
 * --meta metadata table as described [here](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#required-metadata-table) (mandatory)
 * -o output directory (mandatory)
@@ -553,57 +551,176 @@ The available parameter for module 5 are:
 * --reduced (default), --complete, or --genes mapping type
 * --absolute-values --coverage, and/or --relative-abundance output values
 
-### 5.a: Select representative MAGs from each created OTU
+Please refer to Module 5 final consideration to understand the folder structure from Module 5.
 
-The first step from module 5 is to group all recovered MAGs within OTU groups. To do so, MuDoGeR uses the ANI 95 distance strategy implemented in the **gOTUpick** tool. Essentially, it starts by calculating the ANI distance from the MAGs and separates them into a group according to 95% identity within the groups. Following, it uses information from the **GTDB-tk** taxonomical annotation, and **CheckM** quality estimation to select the highest quality MAG from the same taxonomical class within the same ANI95 group as the group's representative MAG.
+### 5.a: Select representative pMAGs from each created OTU
 
-You should have the following:
-```
-└── mapping_results
-    ├── all_bins
-    │   ├── sample_name-bin.0.fa
-    │   ├── sample_name-bin.1.fa
-    │   ├── sample_name-bin.0.fa
-    ├── all_metrics
-    │   ├── bbtools_all.tsv
-    │   ├── checkm_all.tsv
-    │   └── gtdbtk_all.tsv
-    └── gOTUpick_results
-        ├── all_fastani-out-1500-0.txt
-        ├── allgtdb.tsv
-        ├── ANI_distances
-        ├── ANI_OTU95
-        ├── final_output
-        ├── results
-        └── tax_groups
+The first step from module 5 is to group all recovered pMAGs within OTU groups. To do so, MuDoGeR uses the ANI 95 distance strategy implemented in the **gOTUpick** tool. Essentially, it starts by calculating the ANI distance from the pMAGs and separates them into a group according to 95% identity within the groups. Following, it uses information from the [**GTDB-tk**](https://academic.oup.com/bioinformatics/article/36/6/1925/5626182) taxonomical annotation, and [**CheckM**](https://genome.cshlp.org/content/25/7/1043) quality estimation to select the highest quality pMAG from the same taxonomical class within the same ANI95 group as the group's representative MAG.
+After step 5.a is finished you should find the ```mapping_results/gOTUpick_results/final_output/``` folder. Inside this folder, you will have the ```bestbins.txt``` and ```final_groups_output.csv``` files. Those files indicate the representatives' pMAGs, marked with an \*, and their groups. Those are also the files used in the next steps of the pipeline. Please go to the [understand outputs]( https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) to better understand MuDoGeR results.
 
-```
-Inside the ```mapping_results/gOTUpick_results/final_output/``` folder you will have the ```bestbins.txt``` and  ```final_groups_output.csv``` files. Those files indicates the representatives MAGs, marker with an \*, and their groups. Those are also the files used in the next steps of the pipeline.
+### 5.b: pMAGs/UViGs/eMABs mapping and abundance calculation
 
-### 5.b: MAGs mapping and abundance calculation
+Following the MuDoGeR copies the OTUs selected in step **5.a**, the selected UViGs and eMABs recovered in module 3 and module 4, to the ```pmags_otu_mapping/otus_fasta```, ```uvigs_mapping/uvigs_fasta```, and ```euk_mabs_mapping/emabs_fasta```, respectively. 
+Later, MuDoGeR uses the **Bowtie2** software to index the copied fasta files. 
+If ```--coverage``` is selected, MuDoGeR calculates the pMAGs/UViGs/eMABs sizes, and the average read length of all samples to be mapped. Consequently, you should find the file ```merged_reads/avg_reads_len.tsv``` containing the average read length of all used samples. In addition, you should find the files ```genome_sizes```, ```uvigs_sizes.txt ```, and ```emabs_sizes.txt ``` inside the folder relative to the pMAGs, UViGS, and eMABs mapping, respectively. If ```--relative-abundance``` is selected, it also calculates the total reads per sample, and you should also find the file ``` merged_reads/total_reads_per_lib.tsv```.
 
-Foloowing the pieline uses the OTU groyps created in step **5.a** and maps them according to the --complete or --reduced stategy. The outputs ofstep **5.b** is abundance tables from the genomes vs the WGS samples used during the mapping. The mapping is done using the **Bowtie2** software. If the user selects the --coverage --relative-abundance, MuDoGeR also calculates the covarege and relative abundance of the MAGs. Consequently, for the covarage calculation, it is also necessary to calculate the genome length and the avarage size of the sample reads. For the calculation of the relative abundance, MuDoGeR also count the total number of reads in the sample.
+Following this, the MuDoGeR does the actual mapping according to the ```--reduced``` or ```--complete``` strategy. You should find the folders ```map_results_ reduced``` or ```map_results_complete``` inside the folder for each domain. These folders will contain one file for each performed mapping named “mapped_bin_name”-LIB-“sample_used”.txt.
+Finally, MuDoGeR calculates the absolute number of hit, coverage, and relative abundance tables and outputs the results inside the ```map_final_tables_reduced``` and ``` map_final_tables_complete```. You should have the tables named as ```map_reduced(complete)_absolute_n_hits(coverage)(relative_abundance)_table.tsv```.
 
-By the end of 5.b you should have 
-``` 
-├── genome_otu_mapping
-│   ├── genome_size
-│   ├── genomes_sizes
-│   ├── map_final_tables_complete
-│   ├── map_final_tables_reduced
-│   ├── map_list_complete
-│   ├── map_list_reduced
-│   ├── map_results_complete
-│   ├── map_results_reduced
-│   ├── merged_reads
-│   └── otus_fasta
-```
+Please go to the [understand outputs](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) to better understand MuDoGeR results.
 
-### 5.c: Genes relative abundance calculation from the samples assembly
+### 5.c: Genes relative abundance calculation from the samples’ assembly
+
+If you chose the ```--genes``` mapping type, MuDoGeR will copy and index the sample’s ```final_assembly.fasta``` file. After that, you should have the ```assembly_gene_map/raw_mapping/``` folder containing the assembly fasta file and the index outputs. Later, MuDoGeR maps the assembled sequence and you should have the ```sample_name.map.sorted.bam``` file inside the ```raw_mapping``` folder. 
+Following, MuDoGeR annotates the sample’s ```final_assembly.fasta``` file using [Prokka]( https://academic.oup.com/bioinformatics/article/30/14/2068/2390517). It them converts the resulted .gff file from [Prokka]( https://academic.oup.com/bioinformatics/article/30/14/2068/2390517) into .gtf file. You should find the results from this functional annotation step inside the ```assembly_gene_map/functional_annotation/sample_name/``` folder.
+MuDoGeR then counts the mapped reads on each gene using the information present on the .gtf file and the mapped ```.map.sorted.bam``` file. The result from the counting is in the ```map_absolute_count/sample_name.count``` file. 
+To calculate the gene coverage and relative abundance, MuDoGeR also calculates the average read length from the used sample and the gene length. The results from this step is found on the ```avg_reads_len.tsv``` and the ```genelength/sample_name.genelength``` respectively. 
+Finally, MuDoGeR calculates the gene coverage and gene TPM normalization. The results from this step are at the ```map_coverage_norm/sample_name.cov``` and ```map_tpm_norm/sample_name.tpm``` files respectively.
+
+Please go to the [understand outputs]( https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) to better understand MuDoGeR results.
 
 ## Module 5: Final Considerations
 
-After a succesul run of module 5, you should have the following folder structure:
+By the end, MuDoGeR parses the outputs from all used tools. Please go to the [understand outputs]( https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) to better understand MuDoGeR results.
+After a successful run of Module 5 you should have the following folder structure:
+After step 5.a is finished, you should have the following folder structure:
+```
+mapping_results
+└── gOTUpick_results
+   ├── ANI_OTU95
+   │   └── group-1-1
+   ├── ANI_distances
+   │   └── group-1
+   ├── all_fastani-out-1500-0.txt
+   ├── allgtdb.tsv
+   ├── final_output
+   │   ├── bestbins.txt
+   │   └── final_groups_output.csv
+   ├── results
+   │   ├── bestbins_metadata.tsv
+   │   ├── final_groups.tsv
+   │   ├── final_groups_qual.tsv
+   │   ├── further_95.txt
+   │   ├── groups_ANI95.tsv
+   │   ├── metadata_bbtools_sorted.tsv
+   │   ├── metadata_checkm_sorted.tsv
+   │   ├── metadata_gtdb_taxonomy_sorted.tsv
+   │   └── not_further_95.txt
+   └── tax_groups
+       ├── group-1
+       └── unique_tax
+```
+After step 5.b is finished, you should have the following folder structure:
+```
+mapping_results
+├── euk_mabs_mapping
+│   ├── emabs_fasta
+│   │   ├── sample_name-bin.6.1.bt2
+│   │   └── …
+│   ├── emabs_sizes
+│   │   └── sample_name-bin.6.emab-size
+│   ├── emabs_sizes.txt
+│   ├── map_final_tables_complete
+│   │   ├── map_complete_absolute_n_hits_list.tsv
+│   │   ├── map_complete_absolute_n_hits_table.tsv
+│   │   ├── map_complete_coverage_list.tsv
+│   │   ├── map_complete_coverage_table.tsv
+│   │   ├── map_complete_relative_abundance_list.tsv
+│   │   └── map_complete_relative_abundance_table.tsv
+│   ├── map_final_tables_reduced
+│   │   ├── map_reduced_absolute_n_hits_list.tsv
+│   │   ├── map_reduced_absolute_n_hits_table.tsv
+│   │   ├── map_reduced_coverage_list.tsv
+│   │   ├── map_reduced_coverage_table.tsv
+│   │   ├── map_reduced_relative_abundance_list.tsv
+│   │   └── map_reduced_relative_abundance_table.tsv
+│   ├── map_results_complete
+│   │   └── sample_name-bin.6-LIB-A.txt
+│   └── map_results_reduced
+│       └── sample_name-bin.6-LIB-A.txt
+├── merged_reads
+│   ├── sample_name.fasta
+│   ├── avg_reads_len.tsv
+│   └── total_reads_per_lib.tsv
+├── pmags_otu_mapping
+│   ├── genome_size
+│   │   ├── sample_name-bin.0.genome-size
+│   │   └── sample_name-bin.7.genome-size
+│   ├── genomes_sizes
+│   ├── map_final_tables_complete
+│   │   ├── map_complete_absolute_n_hits_list.tsv
+│   │   ├── map_complete_absolute_n_hits_table.tsv
+│   │   ├── map_complete_coverage_list.tsv
+│   │   ├── map_complete_coverage_table.tsv
+│   │   ├── map_complete_relative_abundance_list.tsv
+│   │   └── map_complete_relative_abundance_table.tsv
+│   ├── map_final_tables_reduced
+│   │   ├── map_reduced_absolute_n_hits_list.tsv
+│   │   ├── map_reduced_absolute_n_hits_table.tsv
+│   │   ├── map_reduced_coverage_list.tsv
+│   │   ├── map_reduced_coverage_table.tsv
+│   │   ├── map_reduced_relative_abundance_list.tsv
+│   │   └── map_reduced_relative_abundance_table.tsv
+│   ├── map_results_complete
+│   │   ├── sample_name-bin.0-LIB-sample_name.txt
+│   │   └── sample_name-bin.7-LIB-sample_name.txt
+│   ├── map_results_reduced
+│   │   ├── sample_name-bin.0-LIB-sample_name.txt
+│   │   └── sample_name-bin.7-LIB-sample_name.txt
+│   └── otus_fasta
+│       ├── A-bin.0.1.bt2
+│       ├── A-bin.7.rev.1.bt2
+│       └── …
+└── uvigs_mapping
+    ├── map_final_tables_complete
+    │   ├── map_complete_absolute_n_hits_list.tsv
+    │   ├── map_complete_absolute_n_hits_table.tsv
+    │   ├── map_complete_coverage_list.tsv
+    │   ├── map_complete_coverage_table.tsv
+    │   ├── map_complete_relative_abundance_list.tsv
+    │   └── map_complete_relative_abundance_table.tsv
+    ├── map_final_tables_reduced
+    │   ├── map_reduced_absolute_n_hits_list.tsv
+    │   ├── map_reduced_absolute_n_hits_table.tsv
+    │   ├── map_reduced_coverage_list.tsv
+    │   ├── map_reduced_coverage_table.tsv
+    │   ├── map_reduced_relative_abundance_list.tsv
+    │   └── map_reduced_relative_abundance_table.tsv
+    ├── map_list_reduced
+    ├── map_results_complete
+    │   ├── sample_name-sample_name_putative_viral_contig-15-LIB-sample_name.txt
+    │   └── …
+    ├── map_results_reduced
+    │   ├── sample_name-sample_name_putative_viral_contig-15-LIB-sample_name.txt
+    │   └── …
+    ├── uvigs_fasta
+    │   ├── sample_name-sample_name_putative_viral_contig-15.1.bt2
+    │   └── …
+    ├── uvigs_sizes
+    │   ├── sample_name-sample_name_putative_viral_contig-15.uvig-size
+    │   └──…
+    └── uvigs_sizes.txt
+```
+After step 5.c is finished, you should have the following folder structure:
+
+```
+mapping_results
+└── assembly_gene_map
+   ├── avg_reads_len.tsv
+   ├── functional_annotation
+   │   └── sample_name
+   ├── genelength
+   │   └── sample_name.genelength
+   ├── map_absolute_count
+   │   └── sample_name.count
+   ├── map_coverage_norm
+   │   └── sample_name.cov
+   ├── map_tpm_norm
+   │   └── sample_name.tpm
+   └── raw_mapping
+       ├── sample_name.map.sam
+       └── …
+```
 
 
 
