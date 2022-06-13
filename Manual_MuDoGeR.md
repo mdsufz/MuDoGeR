@@ -416,6 +416,8 @@ sample_name
 
 ## Module 4: Recovery of Eukaryotic Metagenome-Assembled Bins (eMABs)
 
+**Please refer to Module 4 final consideration to understand the folder structure from Module 4.**
+
 The recovery of eukaryotic genomes can be trickier than the prokaryotic genome recovery. This means that we do not assume the recovered eukaryotic bins to be genomes at any moment. That is why we keep the nomenclature as eMABs instead of pMAGs. The recovery of the eMABs module integrates [**EukRep**](https://genome.cshlp.org/content/28/4/569) for selecting the eukaryotic contigs from the initial assembly, the [**CONCOCT**](https://www.nature.com/articles/nmeth.3103) binner, [**GeneMark**](https://academic.oup.com/nar/article/29/12/2607/1034721) for prediction of eukaryotic genes, [**EukCC**](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02155-4) for for quality estimation from eukaryiotic sequences, [**MAKER2**](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-491) for gene annotation, and [**BUSCO**](https://academic.oup.com/bioinformatics/article/31/19/3210/211866) for detection of single-copy orthologous genes.
 
 The tools that require specific databases in the eukaryotic module are [**EukCC**](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02155-4), [**BUSCO**](https://academic.oup.com/bioinformatics/article/31/19/3210/211866), and [**MAKER2**](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-491). [**BUSCO**](https://academic.oup.com/bioinformatics/article/31/19/3210/211866) and [**EukCC**](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02155-4) databases  should be ready to use after running the database-setup.sh script. See instructions [here](https://github.com/mdsufz/MuDoGeR#installation). 
@@ -452,7 +454,11 @@ Finally, you can find [**BUSCO**](https://academic.oup.com/bioinformatics/articl
 
 ## Module 4: Final Considerations
 
-After successfully running step 4.a, you should have the following folder structure:
+By the end, MuDoGeR parses the outputs from all used tools. Please go to the [understand outputs](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) to better understand MuDoGeR results.
+
+After a successful run of Module 4 you should have the following folder structure:
+
+After step 4.a is finished, you should have the following folder structure:
 
 ```console
 sample_name
@@ -469,7 +475,7 @@ sample_name
 
 ```
 
-After successfully running step 4.b, you should have the following folder structure:
+After step 4.b is finished, you should have the following folder structure:
 
 ```console
 sample_name
