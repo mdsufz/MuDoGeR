@@ -45,7 +45,7 @@ Furthermore, in **Module 5**: **Relative Abundance**, users can automatically ca
 * Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: [System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
 * Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: [Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
 * The simplified usage of the **MuDoGeR** can be found in the following hyperlink: [MuDoGeR simplified usage](https://github.com/mdsufz/MuDoGeR#mudoger-simplified-usage).
-*  To use the individual working conda environments created by MuDoGeR for each of the used tools go [here](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md).
+*  To use the individual working conda environments created by MuDoGeR for each of the used tools go [here](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md#using-the-tools-independently).
 
 
 # System requirements
