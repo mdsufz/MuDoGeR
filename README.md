@@ -40,7 +40,6 @@ Module 4: **Recovery of Eukaryotic Metagenome-Assembled Bins (eMABs)**
 Furthermore, in **Module 5**: **Relative Abundance**, users can automatically calculate the coverage and relative abundance tables from the recovered pMAGs/UViGs/eMABs. The users can also calculate the coverage and relative abundance tables from the prokaryotic genes annotated in assembled libraries. 
 
  
-* References of the used tools and a description of the **MuDoGeR** steps can be found in the following hyperlink: [Module description](https://github.com/mdsufz/MuDoGeR/blob/master/module_description.md). Furthermore, you can click the tool's name on the text to be redirected to its own documentation
 * Please find a comprehensive description of the main outputs in the [understand outputs](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) file.
 * Instructions for using the **MuDoGeR** can be found in the following hyperlink: [Manual MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 * Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: [System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
