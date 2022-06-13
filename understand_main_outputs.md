@@ -106,8 +106,52 @@ sample_name/viruses/final_outputs
 
 ## Module 4 – eMABs recovery final files
 
+After using MuDoGeR module 4, we suggest you read the documentation of each used tool. In addition, we also indicate some of the relevant output files for you to check.
 
+You should pay extra attention to the files:
 
+* The ```eukcc.csv``` file.
+* The ```run_eukaryota_odb10/full_table.tsv``` file.
+* The ```filtered_euk_bins/``` folder. THere you find the .fasta sequences of the eMABs.
+* The ```genemark.gtf``` file.
+* The ```bin.8.maker.output/``` folder.
+
+Following, there is the folder structure of a successful run of module 4, indicating where to find the most relevant outputs:
+
+```
+sample_name
+     └── eukaryotes
+		├── eukcc_quality
+		│   └── bin.8.fa_eukcc
+		│       ├── eukcc.csv
+		│       └── ...
+		├── euk_completeness
+		│   ├── bin.8_busco
+		│   │   ├── run_eukaryota_odb10
+          │   │   │   ├── full_table.tsv
+          │   │   │   └── ...
+		│   │   ├── short_summary.specific.eukaryota_odb10.bin.8_busco.txt
+		│   │   └── ...
+		│   └── ...
+		├── filtered_euk_bins
+		│   └── bin.8.fa
+		├── genemarker_annotation
+		│   └── bin.8.fa_genemark
+		│       ├── genemark.gtf
+		│       ├── gmhmm.mod
+		│       └── ...
+		├── maker2_gene_annotation
+		│   ├── bin.8.fa_maker2
+		│   │   ├── bin.8.maker.output
+		│   │   │      ├── OUTPUT.all.maker.genemark.proteins.fasta
+		│   │   │      ├── OUTPUT.all.maker.genemark.transcripts.fasta
+		│   │   │      ├── OUTPUT.all.maker.non_overlapping_ab_initio.proteins.fasta
+		│   │   │      ├── OUTPUT.all.maker.non_overlapping_ab_initio.transcripts.fasta
+		│   │   │      └── ...
+		│   │   └── ...
+		│   └── ...
+		└── ...
+```
 
 ## Module 5 – pMAGs/UViGs/eMABs coverage and relative abundance tables
 
