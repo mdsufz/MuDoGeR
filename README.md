@@ -171,7 +171,7 @@ The steps of Module 1 are shown in [Figure 3](https://github.com/mdsufz/MuDoGeR/
 
 ![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_2_ovrw.jpg)
 
-Module 2 workflow is shown in [Figure 4](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_2_ovrw.jpg). A detailed description of its execution and outputs are found here: [Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes).
+Module 2 workflow is shown in [Figure 4](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_2_ovrw.jpg). A detailed description of its execution and outputs are found here: [Pipeline for recovery of Prokaryotic Metagenome-Assembled Genomes](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-2-recovery-of-prokaryotic-metagenome-assembled-genomes-pmags).
 
 When you use MuDoGeR Module 2, it will perform the following tasks:
  
@@ -212,7 +212,7 @@ When you use MuDoGeR Module 3, it will perform the following tasks:
 
 ![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_4_ovrw.jpg)
 
-The steps of Module 4  are shown in [Figure 6](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_4_ovrw.jpg). A detailed description of its execution and outputs are found here:  [Pipelines for eukaryotic bins recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-genomes).
+The steps of Module 4  are shown in [Figure 6](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_4_ovrw.jpg). A detailed description of its execution and outputs are found here:  [Pipelines for eukaryotic bins recovery](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md#module-4-recovery-of-eukaryotic-metagenome-assembled-bins-emabs).
 
 When you use MuDoGeR Module 4, it will perform the following tasks:
 
