@@ -1,8 +1,9 @@
-
 ## Dependencies
 ### Metawrap
 
 * **Metawrap** uses python version of 2.7.14.
+
+Tool link: https://github.com/bxlab/metaWRAP
 
 | Dependencies |  
 |---|
@@ -19,8 +20,9 @@ The Databases can be installed by following the instructons of the following hyp
 
 ### GTDB-Tk
 
-* **GTDB-Tk** uses Python version >=3.6 (3.6.4).
+Tool link: https://academic.oup.com/bioinformatics/article/36/6/1925/5626182
 
+* **GTDB-Tk** uses Python version >=3.6 (3.6.4).
 
 | Dependencies | Version |
 |---|---|
@@ -40,6 +42,8 @@ The Databases can be installed by following the instructons of the following hyp
 
 ### CheckM
 
+Tool link: https://genome.cshlp.org/content/25/7/1043
+
 * **CheckM** uses Python version 3.7.4.
 
 | Dependencies | Version |
@@ -56,8 +60,15 @@ The Databases can be installed by following the instructons of the following hyp
 
 ### PROKKA
 
+Tool link: https://academic.oup.com/bioinformatics/article/30/14/2068/2390517
 
-### VirSorter 
+### BBTools
+
+Tool link: https://sourceforge.net/projects/bbmap/
+
+### VirSorter2
+
+Tool link: https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00990-y
 
 | Dependencies | 
 |---|
@@ -73,6 +84,8 @@ The Databases can be installed by following the instructons of the following hyp
 
 ### CheckV
 
+Tool link: https://www.nature.com/articles/s41587-020-00774-7
+
 * For **CheckV** to work the installation of Anaconda3/5.3.0 with python version of 3.6 is required.
 
 | Dependencies | Version  |  
@@ -84,6 +97,8 @@ The Databases can be installed by following the instructons of the following hyp
 * More information about **CheckV** dependencies can be found by following the webpage: https://bitbucket.org/berkeleylab/checkv/src/master/.
 
 ### vContact2
+
+Tool link: https://www.nature.com/articles/s41587-019-0100-8
 
 * **vContact2** uses Anaconda3/5.3.0 and python of version >=3.7 (3.7.4 ).
 
@@ -105,6 +120,8 @@ The Databases can be installed by following the instructons of the following hyp
 *  More information about **vContact2** dependencies can be found by following the webpage: https://bioconda.github.io/recipes/vcontact2/README.html.
 
 ### VIBRANT
+
+Tool link: https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0
 
 * **VIBRANT** uses python of version >= 3.5 (3.6.6).
 
@@ -131,6 +148,9 @@ The Databases can be installed by following the instructons of the following hyp
 * More information about **VIBRANT** dependencies can be found in the following hyperlink: [VIBRANT_Dependencies](https://github.com/AnantharamanLab/VIBRANT#requirements-).
 
 ### Stampede-clustergenomes
+
+Tool link: https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master/
+
 * **Stampede-clustergenomes** uses python of version 2.7.14.
 
 | Packages | Version |    
@@ -146,6 +166,8 @@ The Databases can be installed by following the instructons of the following hyp
 
 ### VirFinder
 
+Tool link: https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5
+
 * **VirFinder** uses R/3.4.4. Also the user need to have OpenMPI/2.1.2 library installed.    
 
 | Dependencies | 
@@ -158,9 +180,13 @@ The Databases can be installed by following the instructons of the following hyp
 
 ### WIsH
 
+Tool link: https://academic.oup.com/bioinformatics/article/33/19/3113/3964377
+
 * **WIsH** requires OpenMP library installed.
 
 ### EukRep
+
+Tool link: https://genome.cshlp.org/content/28/4/569
 
 * **EukRep** uses python of version 3.6.4.
  
@@ -169,6 +195,8 @@ The Databases can be installed by following the instructons of the following hyp
 | GCC/6.4.0-2.28 |
 
 ### MAKER2
+
+Tool link: https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-491
 
 | Dependencies |  
 |---|
@@ -191,6 +219,9 @@ The Databases can be installed by following the instructons of the following hyp
 * More information about **MAKER2** dependencies can be found in the following hyperlink: [Maker2_Software prerequisites](https://github.com/wuying1984/MAKER2_PM_genome_annotation#software-prerequisites).
 
 ### BUSCO
+
+Tool link: https://academic.oup.com/bioinformatics/article/31/19/3210/211866
+
 * **BUSCO** uses python of version 3.7.4.
 
 | Dependencies |  
@@ -205,10 +236,13 @@ The Databases can be installed by following the instructons of the following hyp
 * As Augustus requires some more dependencies, they can be found in the following hyperlink: [Dependencies_Augustus](https://github.com/Gaius-Augustus/Augustus#install-dependencies).
 * More information about **BUSCO** dependencies can be found in the following hyperlink:[BUSCO_Dependencies](https://github.com/WenchaoLin/BUSCO-Mod#setup).
 
-### EukCC/GeneMark-ES
-* The **EukCC** uses python of version 3.7.4. Also the **EukCC** needs also installation of the **GeneMark-ES** first which has more dependencies. For the installation of **GeneMark-ES** dependencies the user can run the following command which will install all of them:
+### EukCC
 
-| Dependencies for **EukCC/GeneMark-ES** |  
+Tool link: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02155-4
+
+* The **EukCC** uses python of version 3.7.4.
+
+| Dependencies for **EukCC** |  
 |---|
 | Package GCCcore/8.3.0 | 
 | Package foss/2019b  |  
@@ -216,10 +250,11 @@ The Databases can be installed by following the instructons of the following hyp
 | Anaconda2/5.3.0 |
 | Package foss-2019b |
 
-* More information about **EukCC/GeneMark-ES** dependencies can be found by following the webpage: https://eukcc.readthedocs.io/en/latest/install.html#install-via-conda.
+* More information about **EukCC** dependencies can be found by following the webpage: https://eukcc.readthedocs.io/en/latest/install.html#install-via-conda.
 
 ### GeneMark-ES
 
+Tool link: https://academic.oup.com/nar/article/29/12/2607/1034721
 ...
 
 ### Ani_Splitter
@@ -254,76 +289,5 @@ The Databases can be installed by following the instructons of the following hyp
 * More information about Bowtie 2 can be found by following the webpage: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml.
 * More information about Samtools can be found by following the webpage: http://www.htslib.org/doc/samtools.html.
 
-### For resource calculation
-
-| Dependencies |  
-|---|
-| Package GCC/8.3.0 |
-| Package OpenMPI/3.1.4 |
-| R/3.6.2-2 |
-
-### gOTUpick
-
-...
-
-### HTSEQ
 
 
-# Installation
-
-## Pre-Processing Module
-### TrimGalore
-The instructions for  TrimGalore installation can be found at [TrimGalore_Manual](https://github.com/FelixKrueger/TrimGalore).
-### Bmtagger
-The instructions for the bmtagger installation can be found by following the webpage: https://bioconda.github.io/recipes/bmtagger/README.html.
-### MegaHit
-The instructions for the MegaHit installation can be found at [MegaHit_Manual](https://github.com/voutcn/megahit).
-### MetaSPades
-The instructions for the metaSPAdes installation can be found at [metaSPAdes_Manual](https://github.com/ablab/spades).
-### FastQC
-Instructions for FastQC installation can be found at [FastQC_Manual](https://github.com/pnnl/fqc).
-## khmer
-Instructions for the installation of khmer can be found ar [khmer](https://github.com/dib-lab/khmer).
-## Prokaryotic module
-### MetaWRAP
-The instructions for the metaWrap installation can be found at ![metaWRAP_Manual](https://github.com/bxlab/metaWRAP).
-### MaxBin2
-The instructions for the MaxBin2 installation can be found at ![MaxBin2_Manual](https://github.com/assemblerflow/flowcraft/blob/master/docs/user/components/maxbin2.rst).
-### MetaBAT2
-The instructions for the  metaBAT2 installation can be found by following the webpage: https://bioconda.github.io/recipes/metabat2/README.html.
-### CONCOCT 
-The instructions for the CONCOCT installation can be found at [CONCOCT_Manual](https://github.com/BinPro/CONCOCT).
-### CheckM
-The instructions for the CheckM  installation can be found at [CheckM_Manual](https://github.com/Ecogenomics/CheckM).
-### uBin
-The instructions for the uBin installation can be found at [uBin_Manual](https://github.com/ProbstLab/uBin).
-### GTDB-Tk
-The instructions for the GTDB-Tk installation can be found at [GTDB-Tk_Manual](https://github.com/ecogenomics/gtdbtk).
-### DAS_Tool
-The instructions for the DAS_Tool installation can be found at [DAS_Tool_Manual](https://github.com/cmks/DAS_Tool).
-
-## Viral module
-### VirFinder
-The instructions for VirFinder installation can be found at [VirFinder_Manual](https://github.com/jessieren/VirFinder).
-### VirSorter
-The instructions for VirSorter installation can be found at [VirSorter_Manual](https://github.com/simroux/VirSorter). 
-### VIBRANT 
-The instructions for VIBRANT installation can be found at [VIBRANT_Manual](https://github.com/AnantharamanLab/VIBRANT).
-### Stampede-clustergenomes
-The instructions for Stampede-clustergenomes usage cane be found by following the webpage: https://bitbucket.org/MAVERICLab/stampede-clustergenomes/src/master.
-### CheckV
-The instructions for CheckV installation can be found by following the webpage: https://bitbucket.org/berkeleylab/checkv/src/master/.
-### vContact2
-The instructions for vContact2 installation can be found by following the webpage: https://bioconda.github.io/recipes/vcontact2/README.html.
-### WIsH
-The instructions for WIsH installation [WIsH_Manual](https://github.com/soedinglab/wish).
-
-## Eukaryotic module
-### EukRep
-The instructions for EukRep installation can be found at [EukRep_Manual](https://github.com/patrickwest/EukRep_Pipeline ). 
-### EukCC/GeneMark
-The instructions for EukCC/GeneMark installation can be found at [EukCC/GeneMark_Manual](https://github.com/Finn-Lab/EukCC).
-### BUSCO
-The instructions for BUSCO installation can be found at [BUSCO_Manual](https://github.com/WenchaoLin/BUSCO-Mod).
-### MAKER2
-The instructions for MAKER2 installation can be found at [MAKER2_Manual](https://github.com/wuying1984/MAKER2_PM_genome_annotation).
