@@ -540,7 +540,7 @@ In addition, you can use the ``` --gene``` flag to map the WGS quality-controlle
 You can run all module 5 as follows:
 
 ```console
-mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --reduced --absolute-values --coverage --relative-abundance
+$ mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --reduced --absolute-values --coverage --relative-abundance
 ```
 
 The available parameters for module 5 are:
