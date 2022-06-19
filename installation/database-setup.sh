@@ -15,8 +15,8 @@ help_message () {
                
         echo "  --dbs eukaryotes              	download and install the necessaries databases for eukaryotes module"
         echo "  -o path/folder/to/save/dbs      output folder where you want to save the downloaded databases"
-        echo "  --help | -h		show this help message"
-        echo "  --version | -v		show mudoger version"
+        echo "  --help | -h			show this help message"
+        echo "  --version | -v			show mudoger version"
         echo "";}
   
 
@@ -27,6 +27,7 @@ while true; do
 		--dbs) active_module=$2; shift 2;;
 		-o) database_location=$2; shift 2;;
 		-h | --help) help_message; exit 1; shift 1;;
+		-v | --version) echo "$VERSION"; exit 1; shift 1;;
 		--) help_message; exit 1; shift; break ;;
 		*) break;;
 	esac
