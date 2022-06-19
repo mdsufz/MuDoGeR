@@ -132,6 +132,8 @@ $ bash -i installation/install.sh
 
 Several bioinformatics tools used within MuDoGeR require specific databases to work. We developed a database download and set up tool to make our lives easier. Make sure to run the database setup after MuDoGeR is installed.
 
+You can also choose to install the databases used by each module individually. You can use the flag ```--dbs``` and choose the name of the module you want to set up the databases (all \[default], prokaryotes, viruses, eukaryotes).
+
 Use this script if you want MuDoGeR to take care of everything. 
 
 ```console
@@ -142,7 +144,22 @@ $ conda activate mudoger_env
 $ cd MuDoGeR
 
 #Run database setup script
-$ bash -i installation/database-setup.sh -o /path/to/save/databases
+$ bash -i installation/database-setup.sh --dbs all -o /path/to/save/databases
+
+#You can also check out the database-setup help information
+$ bash -i installation/database-setup.sh --help
+
+MuDoGeR database script v=1.0
+Usage: bash -i database-setup.sh --dbs [module] -o output_folder_for_dbs
+
+  --dbs all              		download and install the necessaries databases for all MuDoGeR modules [default]
+  --dbs prokaryotes              	download and install the necessaries databases for prokaryotes module
+  --dbs viruses              		download and install the necessaries databases for viruses module
+  --dbs eukaryotes              	download and install the necessaries databases for eukaryotes module
+  -o path/folder/to/save/dbs      	output folder where you want to save the downloaded databases
+  --help | -h				show this help message
+  --version | -v			show mudoger version
+
 
 ```
 
