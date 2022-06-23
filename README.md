@@ -377,7 +377,7 @@ A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https:
 
 # Citing
 
-A pre-print of the manuscript can be found in [Biorxiv]()
+A pre-print of the manuscript can be found in [Biorxiv](https://www.biorxiv.org/content/10.1101/2022.06.21.496983v1)
 
 # Acknowledgements
 
