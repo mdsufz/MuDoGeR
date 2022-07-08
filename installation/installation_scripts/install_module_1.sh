@@ -31,18 +31,21 @@ echo '----> done'
 echo '----> creating metawrap env'
 echo  create --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y python=2.7
 conda create --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y python=2.7
-echo '----- stoppppp'
-#exit 0
+conda install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y mamba
+conda config --add channels defaults
+conda config --add channels conda-forge
+conda config --add channels bioconda
+conda config --add channels ursky
 echo '----> done'
+
 echo '----> copying metawrap bin FOLDER'
 echo cp -r $MUDOGER_CLONED_TOOLS_PATH/metaWRAP/bin/* $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env/bin
 cp -r $MUDOGER_CLONED_TOOLS_PATH/metaWRAP/bin/* $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env/bin
-echo '--> stoping now install module 1 line 38'
-#exit 0
+
 echo '----> mamba install metawrap'
-conda install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y --only-deps -c ursky -c bioconda -c conda-forge -c defaults metawrap-mg=1.3.2
-conda install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y -c bioconda bwa samtools quast megahit trim-galore fastqc
-conda update --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y spades
+mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y --only-deps -c ursky metawrap-mg
+mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y -c bioconda bwa samtools quast megahit trim-galore fastqc
+mamba update --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y spades
 echo '----> done'
 fi
 
