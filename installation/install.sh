@@ -80,7 +80,7 @@ echo -e "\n### WELCOME TO MuDoGeR! ###\n"
 echo "Do you want to install all MoDuGeR's Acessories Modules?"
 echo "- Module 1. Pre-Processing"
 echo "- Module 2. Recovery of Prokaryotic MAGs"
-echo "- Module 3. Uncultivated viral MAGs"
+echo "- Module 3. Uncultivated viral genomes"
 echo "- Module 4. Eukaryotic MAGs"
 echo "- Module 5. Relative abundance and genome coverage Table"
 while :
@@ -139,7 +139,7 @@ then
 		fi
 	done
 
-	echo "Do you want to install Module 3 (Uncultivated viral MAGs)? [Y/N]"
+	echo "Do you want to install Module 3 (Uncultivated viral genomes)? [Y/N]"
 	while :
 	do
 		read choose
@@ -156,7 +156,7 @@ then
 		fi
 	done
 
-	echo "Do you want to install Module 4 (Eucaryotic MAGs)? [Y/N]"
+	echo "Do you want to install Module 4 (Eukaryotic MAGs)? [Y/N]"
 	while :
 	do
 		read choose
