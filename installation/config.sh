@@ -1,4 +1,3 @@
-MUDOGER_CONDA_ENVIRONMENT_PATH=/mnt/tools/miniconda2/envs/mudoger_env
 #echo "------> loading config.sh"
 #source $(dirname $0)/installation_utils.sh
 
