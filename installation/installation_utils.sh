@@ -22,11 +22,8 @@ call_installation_script() {
 #### OUTPUT #### 
 ## The conda and mkdir outputs
 start_pre_configuration() {
-    conda create -y -n mudoger_env
+    conda create -y -n mudoger_env python=3
     conda activate mudoger_env
-    echo '----> installing mamba'
-    #conda install -c conda-forge -y mamba
-    echo '----> mamba installed'
     mkdir -p $MUDOGER_CONDA_ENVIRONMENT_PATH/dependencies
     mkdir -p $MUDOGER_CONDA_ENVIRONMENT_PATH/dependencies/conda
     mkdir -p $MUDOGER_CONDA_ENVIRONMENT_PATH/dependencies/conda/envs
