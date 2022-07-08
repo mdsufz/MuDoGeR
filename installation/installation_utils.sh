@@ -25,7 +25,7 @@ start_pre_configuration() {
     conda create -y -n mudoger_env
     conda activate mudoger_env
     echo '----> installing mamba'
-    conda install -c conda-forge -y mamba
+    #conda install -c conda-forge -y mamba
     echo '----> mamba installed'
     mkdir -p $MUDOGER_CONDA_ENVIRONMENT_PATH/dependencies
     mkdir -p $MUDOGER_CONDA_ENVIRONMENT_PATH/dependencies/conda
