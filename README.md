@@ -95,6 +95,7 @@ $ git clone https://github.com/mdsufz/MuDoGeR.git
 $ cd MuDoGeR
 
 #Make sure you have conda ready and that you are in your base environment.
+$ conda activate base
 $ echo $CONDA_PREFIX
 
 #You should see something like the following:
