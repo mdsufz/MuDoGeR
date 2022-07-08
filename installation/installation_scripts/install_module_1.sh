@@ -5,12 +5,9 @@
 ## - KHMER
 
 echo '------------------------------> STARTING INSTALL MODULE 1 '
-source installation/config.sh              # modified by rodolfo
-source installation/installation_utils.sh  # modified by rodolfo
+source installation/config.sh              
+source installation/installation_utils.sh  
 
-#echo 'stoppen sie bitte'
-#echo "$PWD"
-#exit 0
 
 echo "----> mudoger dependencies path",$MUDOGER_DEPENDENCIES_ENVS_PATH
 
@@ -31,7 +28,7 @@ echo '----> done'
 echo '----> creating metawrap env'
 echo  create --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y python=2.7
 conda create --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y python=2.7
-conda install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y mamba
+
 conda config --add channels defaults
 conda config --add channels conda-forge
 conda config --add channels bioconda
