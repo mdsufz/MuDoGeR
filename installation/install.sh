@@ -19,6 +19,7 @@
 #echo dirname "$dirname"
 #echo '----'
 
+conda activate base
 MUDOGER_CONDA_ENVIRONMENT_PATH=$CONDA_PREFIX/envs/mudoger_env
 echo MUDOGER_CONDA_ENVIRONMENT_PATH="$MUDOGER_CONDA_ENVIRONMENT_PATH" > $(dirname $0)/temp
 cat $(dirname $0)/temp  $(dirname $0)/.config_std.sh > $(dirname $0)/config.sh
@@ -75,6 +76,7 @@ yes | cp -rf $(dirname $0)/config.sh  $MUDOGER_CONDA_ENVIRONMENT_PATH/bin
 
 echo -e "\n### WELCOME TO MuDoGeR! ###\n"
 echo "Do you want to install all MoDuGeR's Acessories Modules?"
+echo "- Module 1. Pre-Processing"
 echo "- Module 2. Recovery of Prokaryotic MAGs"
 echo "- Module 3. Uncultivated viral MAGs"
 echo "- Module 4. Eukaryotic MAGs"
@@ -85,6 +87,7 @@ do
 	if [ $choose = y -o $choose = Y ];
 	then
             	echo "------> Installing all modules"
+		install_module_1_option=$choose
 		install_module_2_option=$choose
 		install_module_3_option=$choose
 		install_module_4_option=$choose
@@ -100,6 +103,23 @@ do
 done
 if [ $choose = n -o $choose = N ];
 then
+	echo "Do you want to install Module 1 (Pre-Processing)? [Y/N]"
+	while :
+	do
+		read choose
+		if [ $choose = y -o $choose = Y ];
+		then
+			install_module_1_option=$choose
+			break
+		elif [ $choose = n -o $choose = N ]
+		then
+			echo "Installation of Module 1 denied"
+			break
+		else
+			echo "Command not found, please, try again"
+		fi
+	done
+	
 	echo "Do you want to install Module 2 (Recovery of Prokaryotic MAGs)? [Y/N]"
 	while :
 	do
@@ -180,6 +200,11 @@ echo -e "\nThe MuDoGeR's installation will begin..\n"
 coffe_time
 
 
+if [ ! -z $install_module_1_option ];
+then
+	echo "-----> installing module 1"
+	call_installation_script install_module_1
+fi
 
 if [ ! -z $install_module_2_option ];
 then
