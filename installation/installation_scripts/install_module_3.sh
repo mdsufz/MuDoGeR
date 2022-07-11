@@ -11,8 +11,9 @@
 ## - ClusterONE
 
 echo "### INSTALLING MODULE 3. RECOVERY OF UVIGS ###"
-source installation/config.sh              # modified by rodolfo
-source installation/installation_utils.sh  # modified by rodolfo
+source installation/config.sh             
+source installation/installation_utils.sh  
+
 ## Checking if some tool already have a conda environment created
 
 
@@ -23,7 +24,7 @@ if [ $PRESENT == 'yes' ]
 then :;
 else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env
-conda install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env -c conda-forge -c bioconda virsorter#=2
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env -c conda-forge -c bioconda virsorter#=2
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env && virsorter setup -d $MUDOGER_DEPENDENCIES_ENVS_PATH/virsorter2_env/db -j 1 && conda deactivate
 fi
 ############################################################################
@@ -33,7 +34,20 @@ if [ $PRESENT == 'yes' ]
 then :;
 else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virfinder_env
-conda install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virfinder_env -c bioconda r-virfinder
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/virfinder_env -c bioconda r-virfinder
+fi
+
+############################################################################
+#INSTALLING VCONTACT2
+verify_if_conda_env_exist vcontact2_env
+if [ $PRESENT == 'yes' ]
+then :;
+else
+conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env -c conda-forge python=3 pandas==0.25.1 numpy==1.16.5 
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env -c bioconda vcontact2 mcl blast diamond prodigal
+wget --no-check http://www.paccanarolab.org/static_content/clusterone/cluster_one-1.0.jar -P $MUDOGER_CLONED_TOOLS_PATH
+cp $MUDOGER_CLONED_TOOLS_PATH/cluster_one-1.0.jar $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env/bin
 fi
 
 ############################################################################
@@ -43,12 +57,13 @@ if [ $PRESENT == 'yes' ]
 then :;
 else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-conda install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env install -y -c bioconda vibrant
-conda install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env python=3 bioconda::vibrant==1.2.0 bioconda::prodigal bioconda::hmmer ostrokach::gzip conda-forge::tar conda-forge::biopython conda-forge::matplotlib anaconda::wget anaconda::pandas anaconda::seaborn anaconda::numpy anaconda::scikit-learn==0.21.3
-git clone $VIBRANT_GIT_URL $MUDOGER_CLONED_TOOLS_PATH
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env python=3 bioconda::prodigal bioconda::hmmer ostrokach::gzip conda-forge::tar conda-forge::biopython conda-forge::matplotlib anaconda::wget anaconda::pandas anaconda::seaborn anaconda::numpy anaconda::scikit-learn==0.21.3
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env bioconda::vibrant==1.2.0
+#git clone $VIBRANT_GIT_URL $MUDOGER_CLONED_TOOLS_PATH
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-echo conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
+#echo conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
 pip install pickle-mixin
+conda deactivate
 fi
 
 ############################################################################
@@ -72,15 +87,6 @@ else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/extract_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/extract_env python=2
 fi
-
-
-#verify_if_conda_env_exist extract_env
-#if [ $PRESENT == 'yes' ]
-#then :;
-#else
-#conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env
-#mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env conda-forge::openmp anaconda::make anaconda::cmake
-#fi
 
 ############################################################################
 ## WISH
@@ -114,14 +120,3 @@ mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/checkv_env -c conda-fo
 fi
 
 ############################################################################
-#INSTALLING VCONTACT2
-verify_if_conda_env_exist vcontact2_env
-if [ $PRESENT == 'yes' ]
-then :;
-else
-conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env
-mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env  -c conda-forge python=3 pandas==0.25.1 numpy==1.16.5 
-mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env  -c bioconda vcontact2 mcl blast diamond prodigal
-wget --no-check http://www.paccanarolab.org/static_content/clusterone/cluster_one-1.0.jar -P $MUDOGER_CLONED_TOOLS_PATH
-cp $MUDOGER_CLONED_TOOLS_PATH/cluster_one-1.0.jar $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env/bin
-fi
