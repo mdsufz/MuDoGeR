@@ -73,12 +73,14 @@ if [ "$active_module" = "all" ]; then
 
     ############################################### VIRUSES ###############################################
     ## VIBRANT
-    conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-    pip install pickle-mixin --quiet
+
     VIBRANT_DB_DIR=$database_location/vibrant
     if [ ! -f $VIBRANT_DB_DIR/Pfam-A_v32.HMM.h3p ] ;
     then
     #echo 'let us download '$VIBRANT_DB_DIR
+    conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
+    pip install pickle-mixin --quiet
+    
     if [  ! -f $VIBRANT_DB_DIR/vog.hmm.tar.gz ] ; then
     wget http://fileshare.csb.univie.ac.at/vog/vog94/vog.hmm.tar.gz -P $VIBRANT_DB_DIR
     else :; fi
@@ -114,12 +116,11 @@ if [ "$active_module" = "all" ]; then
     hmmpress $VIBRANT_DB_DIR/VOGDB94_phage.HMM
     hmmpress $VIBRANT_DB_DIR/KEGG_profiles_prokaryotes.HMM
     hmmpress $VIBRANT_DB_DIR/Pfam-A_v32.HMM
-    #echo 'hmmfetch and hmmpressed'
-    chmod +x $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/scripts/*
-    cp -rf $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/scripts $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-    chmod +x $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/VIBRANT_run.py
-    cp $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/VIBRANT_run.py $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-    cp -r $VIBRANT_DB_DIR files $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
+    
+    echo '---> hmmfetch and hmmpressed'
+    
+    yes | cp -r $VIBRANT_DB_DIR files $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env    
+
     conda deactivate
     echo '-> your VIBRANT database is now ready'
     else echo '-> your VIBRANT database is ready'
