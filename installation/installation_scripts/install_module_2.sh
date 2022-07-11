@@ -7,8 +7,9 @@
 ## - BBTOOLS
 
 echo "### INSTALLING MODULE 2. RECOVERY OF PROKARYOTIC MAGs ###"
-source installation/config.sh              # modified by rodolfo
-source installation/installation_utils.sh  # modified by rodolfo
+source installation/config.sh            
+source installation/installation_utils.sh
+
 ## Checking if some tool already have a conda environment created
 
 ################################################################
