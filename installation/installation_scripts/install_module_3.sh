@@ -59,10 +59,15 @@ else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env python=3 bioconda::prodigal bioconda::hmmer ostrokach::gzip conda-forge::tar conda-forge::biopython conda-forge::matplotlib anaconda::wget anaconda::pandas anaconda::seaborn anaconda::numpy anaconda::scikit-learn==0.21.3
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env bioconda::vibrant==1.2.0
-#git clone $VIBRANT_GIT_URL $MUDOGER_CLONED_TOOLS_PATH
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-#echo conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
 pip install pickle-mixin
+
+#git clone $VIBRANT_GIT_URL $MUDOGER_CLONED_TOOLS_PATH
+#chmod +x $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/scripts/*
+#yes | cp -rf $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/scripts $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
+#chmod +x $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/VIBRANT_run.py
+#yes | cp $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/VIBRANT_run.py $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
+
 conda deactivate
 fi
 
