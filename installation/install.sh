@@ -22,6 +22,8 @@
 conda activate base
 echo "---> installing mamba"
 conda install -y -c conda-forge mamba
+#Update conda
+conda update -n base conda
 MUDOGER_CONDA_ENVIRONMENT_PATH=$CONDA_PREFIX/envs/mudoger_env
 echo MUDOGER_CONDA_ENVIRONMENT_PATH="$MUDOGER_CONDA_ENVIRONMENT_PATH" > $(dirname $0)/temp
 cat $(dirname $0)/temp  $(dirname $0)/.config_std.sh > $(dirname $0)/config.sh
