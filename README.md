@@ -182,7 +182,7 @@ The steps of Module 1 are shown in [Figure 3](https://github.com/mdsufz/MuDoGeR/
 * **1.a**: Raw Read Quality Control.
 * **1.b**: Calculation of memory requirements for the assembly process.
     * **(1.b.1)** The k-mer (33-mer and 55-mer) of the quality-controled reads produced in **1.a** is calculated.  
-    * **(1.b.2)** The calculated k-mer is used in a trained machine learning model to estimate the amount of memory that **metaSPades** use to assemble the reads.
+    * **(1.b.2)** The calculated k-mer is used in a trained machine learning model to estimate the amount of memory that **metaSPades** uses to assemble the reads.
 * **1.c**: Assembly of the quality-controlled reads.
 
 ### Module 2: Recovery of Prokaryotic Metagenome-Assembled Genomes (pMAGs)
@@ -215,13 +215,13 @@ The steps of Module 3  are shown in [Figure 5](https://github.com/mdsufz/MuDoGeR
 When you use MuDoGeR Module 3, it will perform the following tasks: 
  
 * **3.a**: Recovery of Putative Viral Contigs
-    * **(3.a.1)** Recovery of Putative viral contigs using [**VirSorter2**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00990-y), [**VirFinder**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5), and [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0).
+    * **(3.a.1)** Recovery of putative viral contigs using [**VirSorter2**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00990-y), [**VirFinder**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0283-5), and [**VIBRANT**](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-020-00867-0).
     * **(3.a.2)** Filtering of the putative viral contigs.
     * **(3.a.3)** Dereplication of the putative viral contigs.
  * **3.b**: Taxonomic and Quality estimation of potential viral contigs
     * **(3.b.1)** Taxonomic classification from the dereplicated putative viral contigs with [**Vcontact2**](https://www.nature.com/articles/s41587-019-0100-8).
     * **(3.b.2)** Checking the quality of the dereplicated contigs with [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7).
-* **3.c**: Viral-Host pair estimation using [**WiSH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377). This step is only done automatically if you generate the prokaryotic MAGs using MuDoGeR as well. 
+* **3.c**: Viral-Host pair estimation using [**WIsH**](https://academic.oup.com/bioinformatics/article/33/19/3113/3964377). This step is only done automatically if you generate the prokaryotic MAGs using MuDoGeR as well. 
 * **3.d**: Selection of UViGs
     * **(3.d.1)** Selection of all viruses that yielded taxonomy when using vContact2 plus those larger than 15 Kb.
     * **(3.d.2)** Selection based on the quality determined by [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7).
@@ -261,7 +261,7 @@ The steps of Module 5 can be summarized as follows. If you select **complete** o
 * **5.b**: pMAGs/UViGs/eMABs mapping and abundance calculation
     * **(5.b.1)** Copy representative pMAGs from step **5.1** and the selected UViGs and eMABs recovered in module 3 and module 4, respectively.
     * **(5.b.2)** Index selected pMAGs/UViGs/eMABs
-    * **(5.b.3)** If ```--coverage``` is selected, calculate pMAGs/UViGs/eMAB size, and the average read length of all samples to be mapped. If ```--relative-abundance``` calculate the total number of reads from all samples.
+    * **(5.b.3)** If ```--coverage``` is selected, calculate pMAGs/UViGs/eMAB size, and the average read length of all samples to be mapped. If ```--relative-abundance``` calculate the total number of reads from all samples. This information is used further in the pipeline.
     * **(5.b.4)** If ```--reduced``` is selected, maps reads from the samples where the pMAGs/UViGs/eMABs were found on the pMAGs/UViGs/eMABs. If ```--complete``` is selected, map reads from all samples on the pMAGs/UViGs/eMABs.
     * **(5.b.5)** Calculate the absolute number of hits, relative abundance, and coverage tables, if the respective flag is selected.
 * **5.c**: Genes relative abundance calculation from the samples assembly. Currently working on prokaryotic genes
@@ -297,7 +297,7 @@ EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_1.fastq
 EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_2.fastq
 
 ```
-MuDoGeR is designed to completely run all multi-domain genome recovery pipeline. In order for MuDoGeR to work automaticaly, from start to finish, we use a specific folder structure. Please, read the [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) if you would like to manipulate MuDoGeR. 
+MuDoGeR is designed to run all multi-domain genome recovery pipelines entirely. In order for MuDoGeR to work automaticaly, from start to finish, we use a specific folder structure. Please, read the [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) if you would like to manipulate MuDoGeR. 
 
 Once MuDoGeR is installed, you can test it as follows:
 ```console
