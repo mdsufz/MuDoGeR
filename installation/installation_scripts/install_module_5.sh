@@ -23,7 +23,7 @@ verify_if_conda_env_exist brat_env
 if [ $PRESENT == 'yes' ]
 then :;
 else
-mamba create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/brat_env bioconda::bowtie2 bioconda::pandaseq conda-forge::gcc conda-forge::openmpi conda-forge::r-base=3.6 bioconda::samtools bioconda::datamash
+conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/brat_env bioconda::bowtie2 bioconda::pandaseq conda-forge::gcc conda-forge::openmpi conda-forge::r-base=3.6 bioconda::samtools bioconda::datamash
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/brat_env -c anaconda gawk
 fi
 ############################################################################
