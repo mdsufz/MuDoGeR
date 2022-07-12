@@ -17,7 +17,7 @@ $ source "$config_file"
 
 2. SELECT OPTIONS 
 
-      **GeneMark-ES/ET/EP ver *_lic and LINUX 64**
+      **GeneMark-ES/ET/EP ver \*_lic and LINUX 64**
 
 
 3. FILL IN THE CREDENTIALS WITH ***YOUR NAME, E-MAIL, INSTITUTION, ETC... ***
