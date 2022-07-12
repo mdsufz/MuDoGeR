@@ -23,7 +23,7 @@ help_message () {
 # the option memory was desabled as we are using the memory predicted by script 1.2. We need to develop another way if it does not work with the amount of memory predicted. 
 
 output_folder=$(pwd) 		#output path for the downloaded sequences
-#memory=10			#given Memory to the Assembly process in GB
+memory=100			#given Memory to the Assembly process in GB
 num_cores=1 			#number of threads that is going to be used
 megahit=""			#assemble with megahit (default)"
 metaspades=""			#assemble with metaspades instead of megahit"
@@ -63,7 +63,7 @@ bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-1-1_QC.sh "$forward_l
 fi
 
 # 2 KMER COUNT AND MEMORY ESTIMATION FOR ASSEMBLY
-if [ -f  "$master_output_dir"/khmer/metaspades_prediction.tsv ]; 
+if [ -f  "$master_output_dir"/khmer/final_prediction.tsv ]; 
 then echo "-> Memory prediction is done. Please check here: "$master_output_dir"/khmer"
 else echo "-> Running khmer pred"
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-1-2_kmermempred.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/khmer
@@ -71,8 +71,17 @@ fi
 
 # 3 ASSEMBLY
 if [ -f  "$master_output_dir"/assembly/final_assembly.fasta ]; 
-then echo "-> Assembly is reading. Please check here: "$master_output_dir"/assembly"
+then echo "-> Assembly is done. Please check here: "$master_output_dir"/assembly"
 else echo "-> Running assembly"
+if [ -f  "$master_output_dir"/khmer/final_prediction.tsv ];
+then
+mem_mb="$(tail -n1 "$khmer_folder"/final_prediction.tsv    | cut -f2 )";
+mem_gb="$(echo $((mem_mb / 1000)))"
+memory=$mem_gb;
+else
+memory=100
+fi
+
 bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/mudoger-module-1-3_assembly.sh "$master_output_dir"/qc/final_pure_reads_1.fastq "$master_output_dir"/qc/final_pure_reads_2.fastq  "$master_output_dir" "$num_cores" "$metaspades" "$memory"
 fi
 
