@@ -75,7 +75,7 @@ then echo "-> Assembly is done. Please check here: "$master_output_dir"/assembly
 else echo "-> Running assembly"
 if [ -f  "$master_output_dir"/khmer/final_prediction.tsv ];
 then
-mem_mb="$(tail -n1 "$khmer_folder"/final_prediction.tsv    | cut -f2 )";
+mem_mb="$(tail -n1 "$master_output_dir"/khmer/final_prediction.tsv    | cut -f2 )";
 mem_gb="$(echo $((mem_mb / 1000)))"
 memory=$mem_gb;
 else
