@@ -173,7 +173,7 @@ if [ "$active_module" = "all" ]; then
     ### EukCC
     mkdir -p  "$database_location"/eukccdb
     cd "$database_location"/eukccdb
-    if [ ! -d eukcc2_db_ver_1.1 ]; then
+    if [ ! -d "$database_location"/eukccdb/db_base ]; then
     wget http://ftp.ebi.ac.uk/pub/databases/metagenomics/eukcc/eukcc2_db_ver_1.1.tar.gz
     tar -xzvf eukcc2_db_ver_1.1.tar.gz
     rm -fr eukcc2_db_ver_1.1.tar.gz
@@ -329,7 +329,7 @@ elif [ "$active_module" = "eukaryotes" ]; then
     ### EukCC
     mkdir -p  "$database_location"/eukccdb
     cd "$database_location"/eukccdb
-    if [ ! -d eukcc2_db_ver_1.1 ]; then
+    if [ ! -d "$database_location"/eukccdb/db_base ]; then
     wget http://ftp.ebi.ac.uk/pub/databases/metagenomics/eukcc/eukcc2_db_ver_1.1.tar.gz
     tar -xzvf eukcc2_db_ver_1.1.tar.gz
     rm -fr eukcc2_db_ver_1.1.tar.gz
