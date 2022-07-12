@@ -335,7 +335,7 @@ A simplified use of MuDoGeR can be done as follows:
 
 ```console
 
-$ mudoger --module preprocess --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
+$ mudoger --module preprocess --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 -m 100
 
 $ mudoger --module prokaryotes ---meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
 
