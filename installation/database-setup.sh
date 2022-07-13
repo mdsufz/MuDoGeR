@@ -50,7 +50,7 @@ if [ "$active_module" = "all" ]; then
     if [ ! -f selected_marker_sets.tsv ]; then
     echo 'installing checkm database ...'
     wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
-    tar -xvf checkm_data_2015_01_16.tar.gz
+    tar -xf checkm_data_2015_01_16.tar.gz
     rm -fr checkm_data_2015_01_16.tar.gz
 
     CHECKM_DB="$database_location"/checkm #Fixed? we need to test
@@ -63,9 +63,10 @@ if [ "$active_module" = "all" ]; then
     mkdir -p  "$database_location"/"gtdbtk"
     cd "$database_location"/"gtdbtk"
     if [ ! -d release*  ]; then
-    wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
-    tar xvzf gtdbtk_data.tar.gz
-    rm -fr gtdbtk_data.tar.gz
+    #https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
+    wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_v2_data.tar.gz
+    tar xzf gtdbtk_v2_data.tar.gz
+    rm -fr gtdbtk_v2_data.tar.gz
 
     else echo "-> your GTDBtk database is ready"
     fi
@@ -162,7 +163,7 @@ if [ "$active_module" = "all" ]; then
     cd "$database_location"/checkv
     if [ ! -d checkv-db-v1.0 ]; then
     wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
-    tar -zxvf checkv-db-v1.0.tar.gz
+    tar -zxf checkv-db-v1.0.tar.gz
     rm -fr checkv-db-v1.0.tar.gz
 
     else echo "-> your CheckV database is ready"
@@ -175,7 +176,7 @@ if [ "$active_module" = "all" ]; then
     cd "$database_location"/eukccdb
     if [ ! -d "$database_location"/eukccdb/db_base ]; then
     wget http://ftp.ebi.ac.uk/pub/databases/metagenomics/eukcc/eukcc2_db_ver_1.1.tar.gz
-    tar -xzvf eukcc2_db_ver_1.1.tar.gz
+    tar -xzf eukcc2_db_ver_1.1.tar.gz
     rm -fr eukcc2_db_ver_1.1.tar.gz
     mv eukcc2_db_ver_1.1/* ./
     rm -fr eukcc2_db_ver_1.1/
@@ -204,7 +205,7 @@ elif [ "$active_module" = "prokaryotes" ]; then
     if [ ! -f selected_marker_sets.tsv ]; then
     echo 'installing checkm database ...'
     wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
-    tar -xvf checkm_data_2015_01_16.tar.gz
+    tar -xf checkm_data_2015_01_16.tar.gz
     rm -fr checkm_data_2015_01_16.tar.gz
 
     CHECKM_DB="$database_location"/checkm #Fixed? we need to test
@@ -217,9 +218,10 @@ elif [ "$active_module" = "prokaryotes" ]; then
     mkdir -p  "$database_location"/"gtdbtk"
     cd "$database_location"/"gtdbtk"
     if [ ! -d release*  ]; then
-    wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
-    tar xvzf gtdbtk_data.tar.gz
-    rm -fr gtdbtk_data.tar.gz
+    #https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
+    wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_v2_data.tar.gz
+    tar -xzf gtdbtk_v2_data.tar.gz
+    rm -fr gtdbtk_v2_data.tar.gz
 
     else echo "-> your GTDBtk database is ready"
     fi
@@ -316,7 +318,7 @@ elif [ "$active_module" = "viruses" ]; then
     cd "$database_location"/checkv
     if [ ! -d checkv-db-v1.0 ]; then
     wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
-    tar -zxvf checkv-db-v1.0.tar.gz
+    tar -zxf checkv-db-v1.0.tar.gz
     rm -fr checkv-db-v1.0.tar.gz
 
     else echo "-> your CheckV database is ready"
@@ -331,7 +333,7 @@ elif [ "$active_module" = "eukaryotes" ]; then
     cd "$database_location"/eukccdb
     if [ ! -d "$database_location"/eukccdb/db_base ]; then
     wget http://ftp.ebi.ac.uk/pub/databases/metagenomics/eukcc/eukcc2_db_ver_1.1.tar.gz
-    tar -xzvf eukcc2_db_ver_1.1.tar.gz
+    tar -xzf eukcc2_db_ver_1.1.tar.gz
     rm -fr eukcc2_db_ver_1.1.tar.gz
     mv eukcc2_db_ver_1.1/* ./
     rm -fr eukcc2_db_ver_1.1/
