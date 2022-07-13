@@ -50,7 +50,7 @@ source $config_path
 
 # 1 viral investigation
 
-if [ -f  "$libname_folder"/viruses/investigation/vibrant_filtered_data.txt ] && [ -f  "$libname_folder"/viruses/investigation/virfinder_filtered_data.txt ] && [ -f  "$libname_folder"/viruses/investigation/virsorter2_filtered_data.txt ]; 		# if the outputs is already there, do not run
+if [ -f  "$libname_folder"/viruses/investigation/vibrant_filtered_data.txt ] && [ -f  "$libname_folder"/viruses/investigation/virfinder_filtered_data.txt ] && [ -f  "$libname_folder"/viruses/investigation/virsorter2_filtered_data.txt ] && [ -f  "$libname_folder"/viruses/investigation/dereplication/uvigs_95-70.fna ]; 		# if the outputs is already there, do not run
 then echo "-> Viral investigation already done. Please check here: "$libname_folder"/viruses/investigation/"
 else
 echo "-> Running Viral investigation"
