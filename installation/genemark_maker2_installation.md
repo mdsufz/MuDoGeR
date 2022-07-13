@@ -218,6 +218,10 @@ $ perl Build.PL #(Currently answer N to set MPI)
 $ cpanm FAILED::DEPENDENCY
 $ #ex: cpanm Bit::Vector
 ```
+  If that did not work, for any reason, use the maker2 solution and configure maker2 again
+  ```console
+  ./Build installdeps
+  ```
 
 
 15. INSTALL MAKER
