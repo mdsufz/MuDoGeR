@@ -220,6 +220,26 @@ cd $WORKDIR
 #Creating a folder within the working directory to store the fastANI output.
 mkdir -p $WORKDIR/ANI_distances
 
+#Check if only unique taxa
+only_unique=0
+if [ "$(ls $WORKDIR/tax_groups/ | wc -l)" -eq 1 ]; then
+	rm -fr $WORKDIR/final_output
+	mkdir -p $WORKDIR/final_output
+	echo "Only unique taxa found!";
+	only_unique=1
+	echo -e "bin\tcluster_id" > $WORKDIR/final_output/bestbins.txt
+	echo -e "bin,cluster_id,representative_bin" > $WORKDIR/final_output/final_groups_output.csv
+	for i in $WORKDIR/tax_groups/unique_tax/*;
+		do bin_n="$(echo "$i" | rev | cut -d '/' -f1 | rev)";
+		echo -e "$bin_n\tunique taxonomy" >> $WORKDIR/final_output/bestbins.txt;
+		echo -e "$bin_n,unique,taxonomy,*" >> $WORKDIR/final_output/final_groups_output.csv;
+	done
+	
+fi
+
+cd -
+if [ only_unique -eq 0 ]; then
+
 #Creating files containing paths to the bins/MAGs. The pathnames will be the input for fastANI.
 for i in $WORKDIR/tax_groups/gr*
 do 
@@ -246,6 +266,7 @@ done
 
 echo -e "\nCalculation of ANI distances is finished. Starting next step: Clustering\n"
 cd -
+
 ########CLUSTERING MAGS/BINS INSIDE EACH GROUP USING CALCULATED ANI DISTANCES########
 
 #Running aniSplitter.R with threshold ANI=95 (this is the default value). 
@@ -458,4 +479,5 @@ fi
 
 if [ ! -s $WORKDIR/final_output/bestbins.txt ]; then echo "Something went wrong while creating final output file. Exiting..."; exit 1; fi 
 cd -
+fi
 echo -e "\nThat's the end of gOTUpick. Enjoy your clusters and representative bins. Goodbye!"
