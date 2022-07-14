@@ -247,7 +247,7 @@ if [ "$reduced" = "true" ]; then
 		cat "$uvigs_output_folder"/map_results_reduced/map_reduced_relative_abundance_list.tsv | datamash -sW crosstab 1,2 unique 3 > "$uvigs_output_folder"/map_results_reduced/map_reduced_relative_abundance_table.tsv
 	fi
 mkdir -p $uvigs_output_folder/map_final_tables_reduced
-mv "$uvigs_output_folder"/map_results_reduced/map_reduced_* $uvigs_output_folder/map_final_tables_reduced
+mv -f "$uvigs_output_folder"/map_results_reduced/map_reduced_* $uvigs_output_folder/map_final_tables_reduced
 fi
 
 #deactivate env
