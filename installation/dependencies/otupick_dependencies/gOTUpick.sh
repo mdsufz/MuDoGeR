@@ -238,7 +238,7 @@ if [ "$(ls $WORKDIR/tax_groups/ | wc -l)" -eq 1 ]; then
 fi
 
 cd -
-if [ only_unique -eq 0 ]; then
+if [ $only_unique -eq 0 ]; then
 
 #Creating files containing paths to the bins/MAGs. The pathnames will be the input for fastANI.
 for i in $WORKDIR/tax_groups/gr*
