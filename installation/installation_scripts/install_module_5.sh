@@ -25,6 +25,7 @@ then :;
 else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/brat_env bioconda::bowtie2 bioconda::pandaseq conda-forge::gcc conda-forge::openmpi conda-forge::r-base=3.6 bioconda::samtools bioconda::datamash
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/brat_env -c anaconda gawk
+conda install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/brat_env -c conda-forge libtool
 fi
 ############################################################################
 ############################################################################
