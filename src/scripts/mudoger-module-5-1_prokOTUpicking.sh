@@ -71,7 +71,7 @@ bash -i "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/gOTUpick.sh --fastANI-
 
 #Create auxiliary results files
 
-if [ "$(ls gOTUpick_results_path/tax_groups/ | wc -l)" -eq 1 ]; then
+if [ "$(ls $gOTUpick_results_path/tax_groups/ | wc -l)" -eq 1 ]; then
 
 conda deactivate
 
