@@ -202,7 +202,7 @@ $ perl ./configure
 ```
    Hit enter if TRF path is correct
    Select 3 (HMMER) as search engine and set as default (Y)
-   Hit 5 to be done and wait databse configuration
+   Hit 5 to be done and wait database configuration
 ```console
 $ cd - #return
 ```
