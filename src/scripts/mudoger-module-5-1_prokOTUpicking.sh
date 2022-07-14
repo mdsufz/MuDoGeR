@@ -71,6 +71,11 @@ bash -i "$MUDOGER_DEPENDENCIES_ENVS_PATH"/otupick_env/bin/gOTUpick.sh --fastANI-
 
 #Create auxiliary results files
 
+if [ "$(ls gOTUpick_results_path/tax_groups/ | wc -l)" -eq 1 ]; then
+
+conda deactivate
+
+else
 awk 'NR==1 {printf("%s\t%s\n", $0, "representative_bin")}  NR>1 {printf("%s\t%s\n", $0, "*") }' $gOTUpick_results_path/final_output/bestbins.txt > $gOTUpick_results_path/final_output/repbin_aux
 
 awk '{ print $2, "\t" ,$4}' $gOTUpick_results_path/results/final_groups.tsv | tail -n +2 > $gOTUpick_results_path/final_output/aux_final_groups
@@ -87,5 +92,11 @@ rm -f $gOTUpick_results_path/final_output/concat_file.tsv
 rm -f $gOTUpick_results_path/final_output/concat_file.csv
 rm -fr $all_metrics_path
 
-
 conda deactivate
+
+fi
+
+
+
+
+
