@@ -219,9 +219,8 @@ cd $WORKDIR
 
 #Creating a folder within the working directory to store the fastANI output.
 mkdir -p $WORKDIR/ANI_distances
-
+cd -
 #Check if only unique taxa
-only_unique=0
 if [ "$(ls $WORKDIR/tax_groups/ | wc -l)" -eq 1 ]; then
 	rm -fr $WORKDIR/final_output
 	mkdir -p $WORKDIR/final_output
@@ -234,12 +233,9 @@ if [ "$(ls $WORKDIR/tax_groups/ | wc -l)" -eq 1 ]; then
 		echo -e "$bin_n\tunique taxonomy" >> $WORKDIR/final_output/bestbins.txt;
 		echo -e "$bin_n,unique,taxonomy,*" >> $WORKDIR/final_output/final_groups_output.csv;
 	done
-	
-fi
 
-cd -
-if [ $only_unique -eq 0 ]; then
-
+else
+echo "Continue!"
 #Creating files containing paths to the bins/MAGs. The pathnames will be the input for fastANI.
 for i in $WORKDIR/tax_groups/gr*
 do 
