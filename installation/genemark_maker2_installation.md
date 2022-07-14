@@ -72,7 +72,8 @@ $ cp gm_key_64 ~/.gm_key
 10. DECOMPRESS TOOL
 
 ```console
-$ tar -xvf gmes_linux_64.tar 
+$ tar -xvf gmes_linux_64.tar
+$ rm -fr gmes_linux_64.tar # Make sure you remove the tar file once extracted
 ```
 
 11. ACTIVATE THE genemark_env CONDA ENVIRONMENT (created during the installation procedure)
