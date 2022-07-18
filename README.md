@@ -226,7 +226,7 @@ When you use MuDoGeR Module 3, it will perform the following tasks:
     * **(3.d.1)** Selection of all viruses that yielded taxonomy when using vContact2 plus those larger than 15 Kb.
     * **(3.d.2)** Selection based on the quality determined by [**CheckV**](https://www.nature.com/articles/s41587-020-00774-7).
 
-### Module 4: Recovery of Eukaryotic Metagenome-Assembled Genomes (eMABs)
+### Module 4: Recovery of Eukaryotic Metagenome-Assembled Bins (eMABs)
 
 ![screenshot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/module_4_ovrw.jpg)
 
