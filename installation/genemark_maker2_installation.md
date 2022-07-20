@@ -17,7 +17,7 @@ $ source "$config_file"
 
 2. SELECT OPTIONS 
 
-      **GeneMark-ES/ET/EP ver 4.68_lic and LINUX 64**
+      **GeneMark-ES/ET/EP ver \*_lic and LINUX 64**
 
 
 3. FILL IN THE CREDENTIALS WITH ***YOUR NAME, E-MAIL, INSTITUTION, ETC... ***
@@ -203,7 +203,7 @@ $ perl ./configure
 ```
    Hit enter if TRF path is correct
    Select 3 (HMMER) as search engine and set as default (Y)
-   Hit 5 to be done and wait databse configuration
+   Hit 5 to be done and wait database configuration
 ```console
 $ cd - #return
 ```
@@ -219,6 +219,10 @@ $ perl Build.PL #(Currently answer N to set MPI)
 $ cpanm FAILED::DEPENDENCY
 $ #ex: cpanm Bit::Vector
 ```
+  If that did not work, for any reason, use the maker2 solution and configure maker2 again
+  ```console
+  ./Build installdeps
+  ```
 
 
 15. INSTALL MAKER
