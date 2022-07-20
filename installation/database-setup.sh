@@ -50,7 +50,7 @@ if [ "$active_module" = "all" ]; then
     if [ ! -f selected_marker_sets.tsv ]; then
     echo 'installing checkm database ...'
     wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
-    tar -xvf checkm_data_2015_01_16.tar.gz
+    tar -xf checkm_data_2015_01_16.tar.gz
     rm -fr checkm_data_2015_01_16.tar.gz
 
     CHECKM_DB="$database_location"/checkm #Fixed? we need to test
@@ -63,9 +63,10 @@ if [ "$active_module" = "all" ]; then
     mkdir -p  "$database_location"/"gtdbtk"
     cd "$database_location"/"gtdbtk"
     if [ ! -d release*  ]; then
-    wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
-    tar xvzf gtdbtk_data.tar.gz
-    rm -fr gtdbtk_data.tar.gz
+    #https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
+    wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_v2_data.tar.gz
+    tar xzf gtdbtk_v2_data.tar.gz
+    rm -fr gtdbtk_v2_data.tar.gz
 
     else echo "-> your GTDBtk database is ready"
     fi
@@ -73,12 +74,14 @@ if [ "$active_module" = "all" ]; then
 
     ############################################### VIRUSES ###############################################
     ## VIBRANT
-    conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-    pip install pickle-mixin --quiet
+
     VIBRANT_DB_DIR=$database_location/vibrant
     if [ ! -f $VIBRANT_DB_DIR/Pfam-A_v32.HMM.h3p ] ;
     then
     #echo 'let us download '$VIBRANT_DB_DIR
+    conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
+    pip install pickle-mixin --quiet
+    
     if [  ! -f $VIBRANT_DB_DIR/vog.hmm.tar.gz ] ; then
     wget http://fileshare.csb.univie.ac.at/vog/vog94/vog.hmm.tar.gz -P $VIBRANT_DB_DIR
     else :; fi
@@ -114,12 +117,11 @@ if [ "$active_module" = "all" ]; then
     hmmpress $VIBRANT_DB_DIR/VOGDB94_phage.HMM
     hmmpress $VIBRANT_DB_DIR/KEGG_profiles_prokaryotes.HMM
     hmmpress $VIBRANT_DB_DIR/Pfam-A_v32.HMM
-    #echo 'hmmfetch and hmmpressed'
-    chmod +x $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/scripts/*
-    cp -rf $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/scripts $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-    chmod +x $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/VIBRANT_run.py
-    cp $MUDOGER_CLONED_TOOLS_PATH/VIBRANT/VIBRANT_run.py $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
-    cp -r $VIBRANT_DB_DIR files $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
+    
+    echo '---> hmmfetch and hmmpressed'
+    
+    yes | cp -r $VIBRANT_DB_DIR files $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env    
+
     conda deactivate
     echo '-> your VIBRANT database is now ready'
     else echo '-> your VIBRANT database is ready'
@@ -161,7 +163,7 @@ if [ "$active_module" = "all" ]; then
     cd "$database_location"/checkv
     if [ ! -d checkv-db-v1.0 ]; then
     wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
-    tar -zxvf checkv-db-v1.0.tar.gz
+    tar -zxf checkv-db-v1.0.tar.gz
     rm -fr checkv-db-v1.0.tar.gz
 
     else echo "-> your CheckV database is ready"
@@ -172,9 +174,9 @@ if [ "$active_module" = "all" ]; then
     ### EukCC
     mkdir -p  "$database_location"/eukccdb
     cd "$database_location"/eukccdb
-    if [ ! -d eukcc2_db_ver_1.1 ]; then
+    if [ ! -d "$database_location"/eukccdb/db_base ]; then
     wget http://ftp.ebi.ac.uk/pub/databases/metagenomics/eukcc/eukcc2_db_ver_1.1.tar.gz
-    tar -xzvf eukcc2_db_ver_1.1.tar.gz
+    tar -xzf eukcc2_db_ver_1.1.tar.gz
     rm -fr eukcc2_db_ver_1.1.tar.gz
     mv eukcc2_db_ver_1.1/* ./
     rm -fr eukcc2_db_ver_1.1/
@@ -203,7 +205,7 @@ elif [ "$active_module" = "prokaryotes" ]; then
     if [ ! -f selected_marker_sets.tsv ]; then
     echo 'installing checkm database ...'
     wget https://data.ace.uq.edu.au/public/CheckM_databases/checkm_data_2015_01_16.tar.gz
-    tar -xvf checkm_data_2015_01_16.tar.gz
+    tar -xf checkm_data_2015_01_16.tar.gz
     rm -fr checkm_data_2015_01_16.tar.gz
 
     CHECKM_DB="$database_location"/checkm #Fixed? we need to test
@@ -216,9 +218,10 @@ elif [ "$active_module" = "prokaryotes" ]; then
     mkdir -p  "$database_location"/"gtdbtk"
     cd "$database_location"/"gtdbtk"
     if [ ! -d release*  ]; then
-    wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
-    tar xvzf gtdbtk_data.tar.gz
-    rm -fr gtdbtk_data.tar.gz
+    #https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
+    wget https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_v2_data.tar.gz
+    tar -xzf gtdbtk_v2_data.tar.gz
+    rm -fr gtdbtk_v2_data.tar.gz
 
     else echo "-> your GTDBtk database is ready"
     fi
@@ -315,7 +318,7 @@ elif [ "$active_module" = "viruses" ]; then
     cd "$database_location"/checkv
     if [ ! -d checkv-db-v1.0 ]; then
     wget https://portal.nersc.gov/CheckV/checkv-db-v1.0.tar.gz
-    tar -zxvf checkv-db-v1.0.tar.gz
+    tar -zxf checkv-db-v1.0.tar.gz
     rm -fr checkv-db-v1.0.tar.gz
 
     else echo "-> your CheckV database is ready"
@@ -328,9 +331,9 @@ elif [ "$active_module" = "eukaryotes" ]; then
     ### EukCC
     mkdir -p  "$database_location"/eukccdb
     cd "$database_location"/eukccdb
-    if [ ! -d eukcc2_db_ver_1.1 ]; then
+    if [ ! -d "$database_location"/eukccdb/db_base ]; then
     wget http://ftp.ebi.ac.uk/pub/databases/metagenomics/eukcc/eukcc2_db_ver_1.1.tar.gz
-    tar -xzvf eukcc2_db_ver_1.1.tar.gz
+    tar -xzf eukcc2_db_ver_1.1.tar.gz
     rm -fr eukcc2_db_ver_1.1.tar.gz
     mv eukcc2_db_ver_1.1/* ./
     rm -fr eukcc2_db_ver_1.1/

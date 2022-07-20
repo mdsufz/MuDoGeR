@@ -77,7 +77,7 @@ cat $output_folder/*txt | sort -u >  "$output_folder"/dereplication/viral_unique
 ### PICK FASTA SEQUENCES OF VIRAL CONTIGS FOR FURTHER DEREPLICATION
 
 if [ -f "$output_folder"/dereplication/uvigs.fa ];
-then echo -e '\n----> Viral dereplication is done\n'
+then echo -e '\n----> Viral dereplication is done (1/2)\n'
 else
 echo "-----> START DEREPLICATION (4/4)"
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/extract_env
@@ -96,6 +96,6 @@ python3 "$MUDOGER_DEPENDENCIES_PATH"/split-all-seq.py "$output_folder"/dereplica
 conda deactivate
 echo "-----> END DEREPLICATION (4/4)"
 else
-echo "-> Dereplication is done";
+echo "----> Viral dereplication is DONE";
 fi
 

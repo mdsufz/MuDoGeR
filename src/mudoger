@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=1.0.0
+VERSION=1.0.1
 
 mudoger_lettering(){
 echo -e "\n"
@@ -74,16 +74,6 @@ done
 
 dependencies="$(echo "$(which mudoger)" | sed "s/bin\/mudoger/dependencies/g")"
 bin="$(echo "$(which mudoger)" | sed "s/bin\/mudoger/dependencies/g")"
-
-### check if there was any problem with metadata file
-out="$(python "$dependencies"/mdcheck.py $metadata_table)"
-echo -e "$out"
-if [[ $out =~ "Closing" ]]; then
-   echo -e "\n TIP: run \"mudoger -h\" for help "
-   exit 0
-fi
-#############################
-# if everything is okay, proceeds with asking user for output folder
 
 mkdir -p "$output_folder"
 

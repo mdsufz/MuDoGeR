@@ -10,8 +10,7 @@ source $config_path
 source $database
 
 #Set genemark scripts folder as variable
-genemarker_scripts_folder="$MUDOGER_DEPENDENCIES_ENVS_PATH/genemarker_env/GENEMARK_MAIN/gmes_linux_64"
-
+genemarker_scripts_folder="$MUDOGER_DEPENDENCIES_ENVS_PATH"/genemarker_env/GENEMARK_MAIN/gmes_linux_64*
 
 # arguments declaration    
 euk_folder=$1 #"$libname_folder"/eukaryotes

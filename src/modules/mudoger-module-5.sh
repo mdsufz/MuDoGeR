@@ -41,6 +41,9 @@ help_message() {
 		echo "--complete"	
 		echo "	run BRAT of the fasta files to all reads."
 		echo ""
+		echo "--genes"	
+		echo "	Annotate genes and run BRAT on the assembled contigs."
+		echo ""
 		echo "Output types:"
 		echo ""
 		echo "--absolute-values"	
@@ -75,12 +78,12 @@ if [ $? -ne 0 ]; then echo "Warning: Something unexpected happened" help_message
 while true 
 do
 	case $1 in
-		-o) WORKDIR="$2"; shift 2;;
+		-o) WORKDIR=$(realpath "$2"); shift 2;;
 		-t) THREAD="$2"; shift 2;;
 		--meta) metadata_table=$2; shift 2;;
 		--reduced) reduced=true; shift 1;; 
 		--complete) complete=true;reduced=false; shift 1;;
-		--genes) genes=true; shift 1;; 
+		--genes) genes=true; reduced=false; complete=false; shift 1;; 
 		--absolute-values) absolute=true; shift 1;; 
 		--coverage) coverage=true; shift 1;; 
 		--relative-abundance) relative=true; shift 1;; 
