@@ -1,4 +1,4 @@
- # Multi-Domain Genome Recovery v1.0 (MuDoGeR v1.0)
+ # Multi-Domain Genome Recovery v1.0.1 (MuDoGeR v1.0.1)
  
  
 ![ScreenShot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/figure_1_overview.jpg)
