@@ -21,7 +21,7 @@ host_results=$viruses_folder'/host_prediction/output_results'
 derep=$viruses_folder'/investigation/dereplication'
 uvigs=$viruses_folder'/final_outputs/putative_viral_contigs'
 quality_summary=$viruses_folder'/vcheck_quality/quality_summary.tsv'
-vcontact_output='/mnt/mudoger_workspace/2022/TESTS/test-5/SRR3138838/viruses/taxonomy/vcontact-output'
+vcontact_output=$viruses_folder'/taxonomy/vcontact-output'
 
 mkdir -p "$viruses_folder"/final_outputs/
 
