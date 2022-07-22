@@ -41,7 +41,7 @@ mudoger_lettering
 num_cores=20
 megahit=""
 metaspades=""
-memory=""
+memory=100
 running_location="$(pwd)"
 brat_type=""
 brat_abs=""
