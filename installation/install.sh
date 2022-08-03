@@ -21,6 +21,9 @@
 
 conda activate base
 echo "---> installing mamba"
+conda install -y -c anaconda conda-package-handling
+conda install -y libarchive -n base -c conda-forge
+
 conda install -y -c conda-forge mamba
 #Update conda
 conda update -y -n base conda
