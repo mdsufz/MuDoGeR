@@ -59,8 +59,9 @@ for i in $aux;
 		#	echo "-> Total number of reads from $i counted. Please check here: $output_folder/merged_reads/total_reads_per_lib.tsv"
   		#else
 			echo "-> Counting reads from $i"
-  			num_reads=`wc -l "$merged_reads_folder/$i.fasta"`
-  			echo -e "$i\t$num_reads" >> $merged_reads_folder/total_reads_per_lib.tsv;
+  			num_reads=`wc -l "$merged_reads_folder/$i.fasta" | cut -d' ' -f1`
+			num_reads=$(( num_reads / 2 ))
+  			echo -e "$i\t$num_reads '$merged_reads_folder/$i.fasta'" >> $merged_reads_folder/total_reads_per_lib.tsv;
 		#fi
 	fi
 	
