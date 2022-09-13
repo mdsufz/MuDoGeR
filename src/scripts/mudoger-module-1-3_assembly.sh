@@ -39,6 +39,6 @@ fi
 metawrap assembly -1 $forward_library -2 $reverse_library -m $mem_gb -t "$num_cores" -o "$assembly_folder" "$assembler"
 
 if [ -f "$assembly_folder"/final_assembly.fasta ]; 
-then echo  "assembly was succesful" ; 
-else echo "assembly didnt work. please check your resources"; 
+then echo "--> Assembly was successful"; 
+else echo "--> Assembly didn't work. Please check your resources"; 
 fi
