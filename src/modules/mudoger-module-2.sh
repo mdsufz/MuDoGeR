@@ -22,7 +22,7 @@ help_message () {
 	echo "	-2 STR			reverse fastq reads path"
 	echo "	-a STR			assembly path"
 	echo "	-o STR			output directory path"
-	echo "	-m INT			given Memory to the Assembly process in GB (default=10)"
+	echo "	-m INT			given RAM in GB (default=50G)"
 	echo "	-t INT			number of threads/cores (default=1)"
 	echo "	-h --help		print this message"
 	echo "";}
@@ -32,7 +32,7 @@ help_message () {
 # the option memory was desabled as we are using the memory predicted by script 1.2. We need to develop another way if it does not work with the amount of memory predicted. 
 
 libname_folder=$(pwd) 		#output path for the downloaded sequences
-memory=10			#given Memory to the Assembly process in GB
+memory=50			#given Memory to the Assembly process in GB
 cores=1 			#number of threads that is going to be used
 
 # loop through input params
