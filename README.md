@@ -315,7 +315,7 @@ $ mudoger --help
 
 
 
-Mudoger v=1.0.0
+Mudoger v=1.0.1
 Usage: mudoger --module module_name --meta metadata_table.tsv -o output_folder [module_options]
 
   --meta              		 Metadata table with your samples, as explained in the github documentation
