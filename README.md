@@ -311,7 +311,7 @@ $ mudoger --help
 	██  ██  ██ ██    ██ ██   ██ ██    ██ ██    ██ ██      ██   ██ 
 	██      ██  ██████  ██████   ██████   ██████  ███████ ██   ██ 
 			Multi-Domain Genome Recovery
-				Version 1.0.0
+				Version 1.0.1
 
 
 
