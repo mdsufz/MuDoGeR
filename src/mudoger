@@ -71,6 +71,20 @@ while true; do
 done
 
 #############################  
+#Check metadata table
+
+echo Your metadata file is: $metadata_table
+if awk '{exit !/\t/}' $metadata_table; then
+        echo 'Metadata file is .tsv'
+        echo 'Continue'
+else
+    	echo ''
+        echo 'Oops... Your metadata file is not tab-delimited. Please make sure you properly format your metadata table.'
+        echo ''
+        exit 1
+fi
+
+#############################
 
 dependencies="$(echo "$(which mudoger)" | sed "s/bin\/mudoger/dependencies/g")"
 bin="$(echo "$(which mudoger)" | sed "s/bin\/mudoger/dependencies/g")"
