@@ -22,7 +22,7 @@
 conda activate base
 echo "---> installing mamba"
 conda install -y -c anaconda conda-package-handling
-conda install -c conda-forge gawk 
+conda install -y -c conda-forge gawk 
 conda install -y libarchive==3.5.2 -c conda-forge
 
 
