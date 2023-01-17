@@ -78,7 +78,7 @@ then :;
 else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/htseq_env python=3.7
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/htseq_env
-pip install HTSeq
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/htseq_env -c bioconda htseq
 conda deactivate
 fi
 
