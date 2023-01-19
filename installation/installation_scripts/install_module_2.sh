@@ -54,6 +54,7 @@ else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/gtdbtk_env 
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/gtdbtk_env 
 mamba install -y  --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/gtdbtk_env -c bioconda gtdbtk
+pip3 install mxnet-mkl==1.6.0 numpy==1.23.1
 conda deactivate
 fi
 
