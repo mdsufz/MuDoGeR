@@ -95,7 +95,8 @@ mkdir -p "$prokaryotes_folder"/final_outputs/bins_genes_prokka_summary
 #copy bins
 yes | cp "$prokaryotes_folder"/binning/unique_bins/*.fa "$prokaryotes_folder"/final_outputs/all_bins_seq/
 #Copy taxa
-yes | cp "$prokaryotes_folder"/metrics/GTDBtk_taxonomy/*.summ* "$prokaryotes_folder"/final_outputs/bins_metrics_summary/taxa_bins_gtdbtk_summary.tsv
+yes | cp "$prokaryotes_folder"/metrics/GTDBtk_taxonomy/*bac*.summ* "$prokaryotes_folder"/final_outputs/bins_metrics_summary/taxa_bins_gtdbtk_summary.tsv
+yes | cp "$prokaryotes_folder"/metrics/GTDBtk_taxonomy/*ar*.summ* "$prokaryotes_folder"/final_outputs/bins_metrics_summary/arc_taxa_bins_gtdbtk_summary.tsv
 #Copy quality
 yes | cp "$prokaryotes_folder"/metrics/checkm_qc/outputcheckm.tsv "$prokaryotes_folder"/final_outputs/bins_metrics_summary/qual_bins_checkm_summary.tsv
 #copy gene annotation
