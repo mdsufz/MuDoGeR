@@ -114,7 +114,7 @@ fi
 
 # 5 GTDBtk taxonomy assignment
 mkdir -p "$libname_folder"/prokaryotes/metrics
-if [ -f "$libname_folder"/prokaryotes/metrics/GTDBtk_taxonomy/gtdbtk.log ];
+if [ -f "$libname_folder"/prokaryotes/metrics/GTDBtk_taxonomy/gtdbtk_result.tsv ];
 then echo "-> Bin taxonomy assignment is done. Please check: "$libname_folder"/prokaryotes/metrics/GTDBtk_taxonomy"
 else
 echo "-> Run bin taxonomy"
