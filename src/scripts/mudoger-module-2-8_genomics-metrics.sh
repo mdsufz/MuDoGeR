@@ -63,7 +63,7 @@ echo -e "OTU\tcompleteness\tcontamination\tstr.heterogeneity\ttaxonomy\tgenome_s
 for d in  $1/binning/unique_bins/*;
 do bin="$(echo $d | rev | cut -f1 -d'/' | rev | sed "s/.fa//g")"; 
 echo -e "$bin\t\c"; 
-tax="$(grep "$bin" $1/metrics/GTDBtk_taxonomy/*.summ* | cut -f2)";
+tax="$(grep "$bin" $1/metrics/GTDBtk_taxonomy/gtdbtk_result.tsv | cut -f2)";
 qual="$(grep "$bin" $1/metrics/checkm_qc/outputcheckm.tsv | cut -f12,13,14 )";
 echo -e "$qual\t\c";
 echo -e "$tax\t\c";
@@ -95,8 +95,7 @@ mkdir -p "$prokaryotes_folder"/final_outputs/bins_genes_prokka_summary
 #copy bins
 yes | cp "$prokaryotes_folder"/binning/unique_bins/*.fa "$prokaryotes_folder"/final_outputs/all_bins_seq/
 #Copy taxa
-yes | cp "$prokaryotes_folder"/metrics/GTDBtk_taxonomy/*bac*.summ* "$prokaryotes_folder"/final_outputs/bins_metrics_summary/taxa_bins_gtdbtk_summary.tsv
-yes | cp "$prokaryotes_folder"/metrics/GTDBtk_taxonomy/*ar*.summ* "$prokaryotes_folder"/final_outputs/bins_metrics_summary/arc_taxa_bins_gtdbtk_summary.tsv
+yes | cp "$prokaryotes_folder"/metrics/GTDBtk_taxonomy/gtdbtk_result.tsv "$prokaryotes_folder"/final_outputs/bins_metrics_summary/taxa_bins_gtdbtk_summary.tsv
 #Copy quality
 yes | cp "$prokaryotes_folder"/metrics/checkm_qc/outputcheckm.tsv "$prokaryotes_folder"/final_outputs/bins_metrics_summary/qual_bins_checkm_summary.tsv
 #copy gene annotation
