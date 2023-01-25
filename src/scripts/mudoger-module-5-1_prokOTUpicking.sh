@@ -19,7 +19,7 @@ prefilter="--no-prefilter"
 #Define dependent parameters
 bbtools_input_path="prokaryotes/metrics/genome_statistics/bbtools.tsv"
 checkm_input_path="prokaryotes/metrics/checkm_qc/outputcheckm.tsv"
-gtdbtk_input_path="prokaryotes/metrics/GTDBtk_taxonomy/gtdbtk.bac120.summary.tsv"
+gtdbtk_input_path="prokaryotes/metrics/GTDBtk_taxonomy/gtdbtk_result.tsv"
 bins_input_path="prokaryotes/binning/unique_bins/"
 
 #Define output files path
