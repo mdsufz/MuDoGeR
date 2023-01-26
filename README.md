@@ -297,6 +297,9 @@ EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_1.fastq
 EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_2.fastq
 
 ```
+
+## Please note that the forward sequencing reads file must end in "_1.fastq" amd the reverse in "_2.fastq" ! 
+
 MuDoGeR is designed to run all multi-domain genome recovery pipelines entirely. In order for MuDoGeR to work automaticaly, from start to finish, we use a specific folder structure. Please, read the [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) if you would like to manipulate MuDoGeR. 
 
 Once MuDoGeR is installed, you can test it as follows:
