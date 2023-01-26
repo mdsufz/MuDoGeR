@@ -33,6 +33,7 @@ EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_1.fastq
 EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_2.fastq
 
 ```
+## Please make sure your foward and reverse raw sequencing files end in *"_1.fastq"* and in *"_2.fastq"*, respectively.
 
 ### Naming your samples: good practices
 
