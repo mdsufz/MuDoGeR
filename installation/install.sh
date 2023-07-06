@@ -20,15 +20,34 @@
 #echo '----'
 
 conda activate base
-echo "---> installing mamba"
 conda install -y -c anaconda conda-package-handling
 conda install -y -c conda-forge gawk 
 conda install -y libarchive==3.5.2 -c conda-forge
 
+# Check if conda is installed
+if command -v conda > /dev/null; then
+  echo "Conda is installed."
+else
+  echo "Conda is not installed. Please install Conda and try again."
+  exit 1
+fi
 
-conda install -y -c conda-forge mamba
-#Update conda
-#conda update -y -n base conda
+##Required to be installed:
+# mamba in base environment
+
+# Check if mamba is installed
+if conda list | grep -q mamba; then
+  echo "Mamba is already installed. Version:"
+  mamba --version
+else
+  echo "Mamba is not installed. Please install it before proceeding"
+  echo "For instance, you can use:"
+  echo "conda install -c conda-forge mamba"
+  echo "while you have your base environment activated"
+  exit 1
+fi
+
+
 MUDOGER_CONDA_ENVIRONMENT_PATH=$CONDA_PREFIX/envs/mudoger_env
 echo MUDOGER_CONDA_ENVIRONMENT_PATH="$MUDOGER_CONDA_ENVIRONMENT_PATH" > $(dirname $0)/temp
 cat $(dirname $0)/temp  $(dirname $0)/.config_std.sh > $(dirname $0)/config.sh
