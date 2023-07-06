@@ -101,6 +101,9 @@ $ echo $CONDA_PREFIX
 #You should see something like the following:
 /path/to/miniconda3
 
+#Install mamba in your base environment
+$ conda install -c conda-forge mamba
+
 #Run the installation script as follows
 $ bash -i installation/install.sh
 
