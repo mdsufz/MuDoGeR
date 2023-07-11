@@ -381,6 +381,16 @@ The result two level folder structure after a successful run of all MuDoGeR is a
 
 A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 
+# MuDoGeR as Wrapper and its Critical Use
+
+MuDoGeR is a wrapper designed to streamline the genome assembly process from metagenome samples across multiple domains. While MuDoGeR accelerates metagenomics analysis, it's crucial to understand the inherent limitations of any metagenomic approach. The tools and parameters integrated into MuDoGeR are based on benchmark studies, but users should understand their dataset and tools' limitations to adapt the workflow.
+
+* MuDoGeR generates progress reports, intermediate files, and error logs at various stages of the assembly process, which are detailed in the [MuDoGeR Manual](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md). Users should regularly check these reports to ensure the tool works as expected for their dataset.
+
+* MuDoGeR aims to help provide a holistic view of all three domains simultaneously, reducing cross-domain recovery bias by initiating all genome recovery from the same assembly. However, the genome recovery approaches from different domains are at different stages of technological progress and complexity of analysis.
+* Users should be aware of potential recovery bias from a particular dataset.
+* For experienced users, MuDoGeR allows the activation of each tool separately, enabling users to adapt the process to their specific needs. follow the instructions [here](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md#using-the-tools-independently).
+* Users are strongly recommended to consult and check the direct links from the tools used within the wrapper for a deeper understanding of the underlying processes and optimization of parameters for their specific needs. The software used during the pipeline are detailed described here: [Dependencies description](https://github.com/mdsufz/MuDoGeR/blob/master/dependencies_description.md).
 
 # Citing
 
