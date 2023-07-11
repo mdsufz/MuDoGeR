@@ -33,20 +33,34 @@ EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_1.fastq
 EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_2.fastq
 
 ```
-## Please make sure your foward and reverse raw sequencing files end in *"_1.fastq"* and in *"_2.fastq"*, respectively.
+## Please make sure your forward and reverse raw sequencing files end in *"_1.fastq"* and in *"_2.fastq"*, respectively.
 
 ### Naming your samples: good practices
 
 Please pay attention to your samples' names. Avoid using spaces and special characters in your samples' names as good practices. If possible, use only letters and numbers. Special and space characters could cause malfunctioning in some of the used tools.
 
 
-Following you have an usage tutorial for each module. Each **Module's final consideration** section has the description of the expected folder and files names output.
+Following, you have a usage tutorial for each module. Each **Module's final consideration** section has the description of the expected folder and file names output. 
 
 **Keep in mind that you only need one single command to run each module**
 
+## Co-assembly with MuDoGeR
+
+MuDoGeR was designed to assemble each sample separately. However, depending on your goals, you may want to co-assemble selected samples. For instance, perhaps you have replicate samples that you would like to assemble together.
+
+To perform co-assembly, simply concatenate the reads from the samples to be assembled together before feeding them to MuDoGeR:
+
+```
+#Concanate all forward reads together
+cat RAW_READS/*_1.fastq > RAW_READS/CONCAT_READS_1.fastq
+
+#Concanate all reverse reads together
+cat RAW_READS/*_2.fastq > RAW_READS/CONCAT_READS_2.fastq
+```
+
 ## Module 1: Pre-Processing
 
-For running all module 1 use
+For running all module 1, use
 
 ```console
 $ mudoger --module preprocess --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --metaspades -m 100
