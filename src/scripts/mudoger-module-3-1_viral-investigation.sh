@@ -36,7 +36,7 @@ echo "-----> END VIBRANT (1/4)"
 fi
 
 ######### VIRFINDER        
-dependencies="$(echo $PATH | cut -f1 -d':' | sed "s/bin/dependencies/g")"
+dependencies="$MUDOGER_DEPENDENCIES_PATH"
 if [ -f "$output_folder"/virfinder/virfinder_output.tsv ];
 then echo -e '\n----> Virfinder investigation is done\n'
 else
