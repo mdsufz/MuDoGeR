@@ -167,6 +167,12 @@ Usage: bash -i database-setup.sh --dbs [module] -o output_folder_for_dbs
 
 ```
 
+**3.1 - Update databases**
+
+We plan to update the automatic database installation script at least once a year. The user can check the version of the database update script by using the ```--version``` flag. Finally, in case the user would like manually update the databases, one should find the location of the databases used by MuDoGeR by running ```cat $CONDA_PREFIX/envs/mudoger_env/bin/database.sh```.
+
+The user can then follow the instructions from the tool developer to update the desired database. The only requirement is that the root folder for the database uses the name of the tool as follows: ```buscodbs/  checkm/  checkv/  eukccdb/  gtdbtk/  vibrant/  wish/```.
+
 **4 - Additional module 4 (eukaryotes) installation instructions**
 
 Some tools used in module 4 (GENEMARK and MAKER2) require the user to provide information to the developers. Consequently, we could not implement an automatic installation and setup script. However, we created a tutorial to finish the module 4 setup.
