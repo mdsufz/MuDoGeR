@@ -12,7 +12,8 @@
 
 MuDoGeR version 1.0 was designed to be an easy-to-use genome recovery tool. Therefore, we created a setup procedure that requires little user input. Consequently, one **important** aspect of MuDoGeR usage is the **output folder architecture**. The file names and folder architecture are important for the pipeline to work smoothly. If you want to prepare your data using other tools, and later use MuDoGeR, please keep the folder structure and file naming according to the MuDoGeR requirements. Please, check the outputs and folders created during the successful execution of each module in the following sections.
 
-Please note that you can click the tool's name on the text to be redirected to the tool's own documentation
+Please note that you can click the tool's name on the text to be redirected to the tool's own documentation.
+You can find MuDoGeR default parameters [here](https://github.com/mdsufz/MuDoGeR/blob/master/installation/MuDoGeR_default_parameters.sh)
 
 ## Required Metadata table
 
