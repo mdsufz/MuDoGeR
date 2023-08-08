@@ -25,7 +25,7 @@ memory=$7
 
 
 #Run only once during database installation configuration
-CHECKM_DB="$DATABASES_LOCATION"checkm
+CHECKM_DB="$DATABASES_LOCATION"/checkm
 
 echo ${CHECKM_DB} | checkm data setRoot ${CHECKM_DB}
 
