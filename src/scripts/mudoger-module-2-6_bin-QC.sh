@@ -22,7 +22,7 @@ extension="fa"
 mkdir -p $output_folder
 
 #Set CheckM DB
-CHECKM_DB="$DATABASES_LOCATION"checkm
+CHECKM_DB="$DATABASES_LOCATION"/checkm
 
 echo ${CHECKM_DB} | checkm data setRoot ${CHECKM_DB}
 
