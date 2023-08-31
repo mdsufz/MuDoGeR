@@ -22,7 +22,7 @@ call_installation_script() {
 #### OUTPUT #### 
 ## The conda and mkdir outputs
 start_pre_configuration() {
-    conda create -y -n mudoger_env python=3
+    conda create -y -n mudoger_env python=3.9
     conda activate mudoger_env
     mkdir -p $MUDOGER_CONDA_ENVIRONMENT_PATH/dependencies
     mkdir -p $MUDOGER_CONDA_ENVIRONMENT_PATH/dependencies/conda
