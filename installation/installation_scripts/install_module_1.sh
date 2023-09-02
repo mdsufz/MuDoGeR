@@ -40,7 +40,7 @@ echo cp -r $MUDOGER_CLONED_TOOLS_PATH/metaWRAP/bin/* $MUDOGER_DEPENDENCIES_ENVS_
 cp -r $MUDOGER_CLONED_TOOLS_PATH/metaWRAP/bin/* $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env/bin
 
 echo '----> mamba install metawrap'
-mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y --only-deps -c ursky metawrap-mg
+mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y --only-deps -c ursky metawrap-mg=1.3.2
 mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y -c bioconda samtools=1.9 --force-reinstall
 mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y -c bioconda bwa quast megahit trim-galore fastqc metabat2 spades
 mamba update --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y spades
@@ -53,8 +53,8 @@ if [ $PRESENT == 'yes' ]
 then :;
 else
 echo '----> creating khmer env'
-echo conda create --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/khmer_env -y python=3.7 conda-forge::r-base conda-forge::readline=6.2
-conda create --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/khmer_env -y python=3.7 conda-forge::r-base conda-forge::readline=6.2
+echo conda create --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/khmer_env -y python=3.8 conda-forge::r-base conda-forge::readline=6.2
+conda create --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/khmer_env -y python=3.8 conda-forge::r-base conda-forge::readline=6.2
 echo '----> done'
 echo '----> install khmer'
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/khmer_env && pip install khmer==2.1.1 && conda deactivate    
