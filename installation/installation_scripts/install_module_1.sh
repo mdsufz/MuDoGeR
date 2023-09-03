@@ -43,6 +43,9 @@ echo '----> mamba install metawrap'
 mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y --only-deps -c ursky metawrap-mg=1.3.2
 mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y -c bioconda samtools=1.9 --force-reinstall
 mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y -c bioconda bwa quast megahit trim-galore fastqc metabat2 spades
+mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y concoct=1.0
+mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y checkm-genome
+mamba install --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y maxbin2
 mamba update --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/metawrap_env -y spades
 echo '----> done'
 fi
