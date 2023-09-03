@@ -22,7 +22,7 @@ cores=$2
 if [ -f "$master_folder"/metrics/GTDBtk_taxonomy/gtdbtk.bac120.summary.tsv ] || [ -f "$master_folder"/metrics/GTDBtk_taxonomy/gtdbtk.ar53.summary.tsv ];
 then echo "";
 else
-gtdbtk classify_wf --extension fa --cpus "$cores" --genome_dir "$master_folder"/binning/unique_bins --out_dir "$master_folder"/metrics/GTDBtk_taxonomy
+gtdbtk classify_wf --skip_ani_screen --extension fa --cpus "$cores" --genome_dir "$master_folder"/binning/unique_bins --out_dir "$master_folder"/metrics/GTDBtk_taxonomy
 fi
 
 #Create merged results file
