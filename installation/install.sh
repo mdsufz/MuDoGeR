@@ -19,10 +19,10 @@
 #echo dirname "$dirname"
 #echo '----'
 
-conda activate base
-conda install -y -c anaconda conda-package-handling
-conda install -y -c conda-forge gawk 
-conda install -y libarchive==3.5.2 -c conda-forge
+#conda activate base
+mamba install -y -c anaconda conda-package-handling
+mamba install -y -c conda-forge gawk 
+mamba install -y libarchive==3.5.2 -c conda-forge
 
 # Check if conda is installed
 if command -v conda > /dev/null; then
