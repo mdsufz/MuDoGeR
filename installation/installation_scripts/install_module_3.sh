@@ -46,6 +46,7 @@ else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env -c conda-forge python=3 pandas==0.25.1 numpy==1.16.5 
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env -c bioconda vcontact2 mcl blast diamond prodigal
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env -c bioconda java-jdk
 wget --no-check http://www.paccanarolab.org/static_content/clusterone/cluster_one-1.0.jar -P $MUDOGER_CLONED_TOOLS_PATH
 cp $MUDOGER_CLONED_TOOLS_PATH/cluster_one-1.0.jar $MUDOGER_DEPENDENCIES_ENVS_PATH/vcontact2_env/bin
 fi
@@ -102,6 +103,8 @@ else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env conda-forge::openmp anaconda::make anaconda::cmake
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env -c conda-forge gcc
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/wish_env -c conda-forge r-base
 git clone $WISH_GIT_URL $MUDOGER_CLONED_TOOLS_PATH/WIsH
 cd $MUDOGER_CLONED_TOOLS_PATH/WIsH
 cmake .
