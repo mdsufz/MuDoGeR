@@ -4,7 +4,7 @@
 ![ScreenShot](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/figure_1_overview.jpg)
 
 
-The **Multi-Domain Genome Recovery v1.0 (MuDoGeR v1.0)** framework ([**Figure 1**](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/figure_1_overview.jpg)) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs as defined by [Parks et al. (2018)](https://www.nature.com/articles/s41564-017-0012-7)) and Uncultivated Viral Genomes (UViGs as defined by  [Roux (2019)](https://www.nature.com/articles/nbt.4306)) from whole-genome sequence (WGS) samples simultaneously. The **MuDoGeR v1.0** framework acts as a wrapper of several tools. It was designed to be an easy-to-use tool that outputs ready-to-use comprehensive files.
+The **Multi-Domain Genome Recovery v1.0 (MuDoGeR v1.0)** framework ([**Figure 1**](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/figure_1_overview.jpg)) is a tool developed to help users to recover Metagenome-Assembled Genomes (MAGs as defined by [Parks et al. (2018)](https://www.nature.com/articles/s41564-017-0012-7)) and Uncultivated Viral Genomes (UViGs as defined by  [Roux (2019)](https://www.nature.com/articles/nbt.4306)) from whole-genome sequence (WGS) samples simultaneously. The **MuDoGeR v1.0** framework acts as a wrapper for several tools. It was designed to be an easy-to-use tool that outputs ready-to-use comprehensive files.
 
 You should be able to run 1 simple command for each module. Therefore, you only need 5 commands to completely run MuDoGeR. After a successful run of MuDoGeR, you should have the outputs summarized in [Figure 2](https://github.com/mdsufz/MuDoGeR/blob/master/flowcharts/mudoger_outputs.jpg). Please find a comprehensive description of the main outputs in the [understand outputs](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) file.
 
@@ -30,7 +30,7 @@ This Github should help you install and run the complete MuDoGeR pipeline, as we
 
 **MuDoGeR** was designed to be an easy-to-use tool that outputs ready-to-use comprehensive files. You should be able to run 1 simple command for each of the following modules.
 
-The **MuDoGeR** starts with Module 1: **Pre-Processing**, which covers the Raw Read Quality Control, Resources calculation and Assembly. The assembled libraries should be used in all the other modules.
+The **MuDoGeR** starts with Module 1: **Pre-Processing**, which covers the Raw Read Quality Control, Resources calculation, and Assembly. The assembled libraries should be used in all the other modules.
 
 After the data pre-processing, **MuDoGeR** is divided into 3 different branches:
 Module 2: **Recovery of Prokaryotic Metagenome-Assembled Genomes (pMAGs)**
@@ -45,16 +45,16 @@ Furthermore, in **Module 5**: **Relative Abundance**, users can automatically ca
 * Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: [System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
 * Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: [Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
 * The simplified usage of the **MuDoGeR** can be found in the following hyperlink: [MuDoGeR simplified usage](https://github.com/mdsufz/MuDoGeR#mudoger-simplified-usage).
-*  To use the individual working conda environments created by MuDoGeR for each of the used tools go [here](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md#using-the-tools-independently).
+* To use the individual working conda environments created by MuDoGeR for each of the used tools, go [here](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md#using-the-tools-independently).
 
 
 # System requirements
 
 **MuDoGeR makes it easy to install and run a group of complex software and dependencies.** More than 20 bioinformatics tools and several complex software dependencies are present in MuDoGeR. Hopefully, you won't have to worry too much about it. We designed an installation script that should take care of every dependency for you. You can find the **MuDoGeR** installation tutorial [here](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
 
-Keep in mind that the MuDoGeR pipeline requires some computer power and you probably won't be able to run it on a laptop. The complete software installation requires approximately 170 GB, but **MAKER2**, from **Module 4** uses 99 GB of that space since it requires the database to be installed in a specific manner. See [Module 4 setup](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md). The complete database requirements, considering all tools, is around 439.9 GB. However, you don't need to install all MuDoGeR's Modules to use it.
+Keep in mind that the MuDoGeR pipeline requires some computer power, and you probably won't be able to run it on a laptop. The complete software installation requires approximately 170 GB, but **MAKER2**, from **Module 4**, uses 99 GB of that space since it requires the database to be installed in a specific manner. See [Module 4 setup](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md). The complete database requirements, considering all tools, is around 439.9 GB. However, you don't need to install all of MuDoGeR's Modules to use it.
 
-MuDoGeR is designed to support only Linux x64 systems. As for the resource requirements, the MuDoGeR framework uses software that requires a large amount of RAM (e.g **GDTB-Tk**, **MetaWRAP** ). Specific resource requirements vary depending on your data and its sequencing depth. We recommend the user provide at least 180 GB of RAM. 
+MuDoGeR is designed to support only Linux x64 systems. As for the resource requirements, the MuDoGeR framework uses software that requires a large amount of RAM (e.g. **GDTB-Tk**, **MetaWRAP** ). Specific resource requirements vary depending on your data and its sequencing depth. We recommend the user provide at least 180 GB of RAM. 
 Therefore, for the assembly process, **MuDoGeR** attempts to calculate the amount of memory necessary for **metaSPades** (on step **1.b**). The user should be aware that samples with higher expected diversity require a higher amount of memory.
 
 Consequently, we suggest you install and run **MuDoGeR** using your available high-performance computer or in cloud services such as [AWS](https://aws.amazon.com/ec2/?nc2=h_ql_prod_fs_ec2), [Google cloud](https://cloud.google.com/compute#section-8), or, for researchers in Germany, the [de.NBI](https://www.denbi.de/)
@@ -71,12 +71,11 @@ Otherwise, please follow the instructions on the official [Singularity installat
 
 **1 - Download MuDoGeR ready-to-use container**
 
-Once you have Singularity installed, you can simply download the MuDoGeR container. Remember that this usage of the container is slightly different, so please refer to the Singularity container [usage](https://github.com/mdsufz/MuDoGeR#mudoger-singularity-usage-notes)
-
+Once you have Singularity installed, you can simply download the MuDoGeR container. Remember that the container's usage is slightly different. Please refer to the Singularity container [usage](https://github.com/mdsufz/MuDoGeR#mudoger-singularity-usage-notes)
 
 ```console
 
-$ wget ............
+$ wget https://edef5.pcloud.com/cBZ6yHKHjZkugLWPZZZbHXjykZ2ZZUdpZkZS5zmuDZv0ZvkZeVZO7ZWXZp0Zn5Z25ZO0ZoXZAXZc0ZR5ZS7Z57q2ZgJbuwO9nPRjPMqM387lovLtcWD5V/mudogerV1.sif
 
 ```
 
@@ -135,7 +134,7 @@ $ gunzip gm_key_64.gz
 
 7. COPY AND RENAME KEY FILE TO A FOLDER
 
-The folder you will move the renamed key file will be used as your Home during the execution of Module 4 in singularity. Please see [here]() to run Module 4 using the singularity container. 
+The folder you will move the renamed key file will be used as your Home during the execution of Module 4 in singularity. Please see [here](https://github.com/mdsufz/MuDoGeR#mudoger-singularity-usage-notes) to run Module 4 using the singularity container. 
 
 ```console
 $ cp gm_key_64 /path/to/folder/.gm_key
@@ -398,6 +397,16 @@ To run the container, you should use the ```--bind``` flag from singularity to m
 
 **Do not change the folders ```/tools/data_input, /tools/mudoger_output_in_container, /tools/dbs, and /mudoger_home ```**, as those are the folder used inside the container.
 
+One additional point of attention. The input data is mounted in the container at ```/tools/data_input/```. Therefore, if your sample sequence files are in ```/path/to/input/sampleID/sampleID_1.fastq and /path/to/input/sampleID/sampleID_2.fastq``` your metadata.tsv file should look like:
+
+```
+#Show the content of the metadata.tsv file
+$ cat metadata.tsv
+
+sampleID   /tools/data_input/sampleID/sampleID_1.fastq
+sampleID   /tools/data_input/sampleID/sampleID_2.fastq
+```
+Usage:
 ```console
 
 #singularity exec --bind /path/to/input:/tools/data_input,/path/to/output:/tools/mudoger_output_in_container,/path/to/mudoger_dbs:/tools/dbs mudogerV1.sif mudoger [COMMAND]
@@ -412,14 +421,13 @@ singularity exec --bind /path/to/input:/tools/data_input,/path/to/output:/tools/
 
 ```
 
-Module 4 (Eukaryotes recovery) has one particularity. The [**GeneMark**](https://academic.oup.com/nar/article/29/12/2607/1034721) requires each user to agree to a license and place it in their home folder. You can obtain this license following the instructions [here](). Once the license is configured, you have to ```--bind``` the folder containing it to the singularity container using the ```--home``` flag. For instance, if you saved the Genemark license key in ```/path/to/tmp_home``` your module 4 singularity command will be:
+Module 4 (Eukaryotes recovery) has one particularity. The [**GeneMark**](https://academic.oup.com/nar/article/29/12/2607/1034721) requires each user to agree to a license and place it in their home folder. You can obtain this license following the instructions [here](https://github.com/mdsufz/MuDoGeR#installation-using-singularity-now-called-apptainer---recommended). Once the license is configured, you have to ```--bind``` the folder containing it to the singularity container using the ```--home``` flag. For instance, if you saved the Genemark license key in ```/path/to/tmp_home``` your module 4 singularity command will be:
 
 ```console
 
 singularity exec --bind /path/to/input:/tools/data_input,/path/to/output:/tools/mudoger_output_in_container,/path/to/mudoger_dbs:/tools/dbs,/path/to/tmp_home:/mudoger_home --home /mudoger_home mudogerV1.sif mudoger --module eukaryotes --meta /tools/data_input/metadata.tsv -o /tools/mudoger_output_in_container/ -t 25
 
 ```
-
 
 
 
