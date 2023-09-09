@@ -73,11 +73,10 @@ Otherwise, please follow the instructions on the official [Singularity installat
 
 Once you have Singularity installed, you can simply download the MuDoGeR container. Remember that the container's usage is slightly different. Please refer to the Singularity container [usage](https://github.com/mdsufz/MuDoGeR#mudoger-singularity-usage-notes)
 
-```console
+Click [here](https://e.pcloud.link/publink/show?code=XZ57q2ZksirrSUwBT0wEuorJjhuih93vQnV) to be redirected to the download page.
 
-$ wget https://edef5.pcloud.com/cBZ6yHKHjZkugLWPZZZbHXjykZ2ZZUdpZkZS5zmuDZv0ZvkZeVZO7ZWXZp0Zn5Z25ZO0ZoXZAXZc0ZR5ZS7Z57q2ZgJbuwO9nPRjPMqM387lovLtcWD5V/mudogerV1.sif
+Following, you can click on Direct Download or right-click it and "copy link". Once with the copied link, you can use ```wget``` on your platform.
 
-```
 
 **2 - Database installation**
 
