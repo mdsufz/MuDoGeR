@@ -47,6 +47,7 @@ brat_type=""
 brat_abs=""
 brat_cov=""
 brat_relativ=""
+memory_specified=false
 
 ###################################### while
 while true; do
@@ -55,7 +56,7 @@ while true; do
 		--meta) metadata_table=$2; shift 2;;
 		-o) output_folder=$2; shift 2;;
 		-t) num_cores=$2; shift 2;;
-		-m) memory=$2; shift 2;;
+		-m) memory=$2; memory_specified=true; shift 2;;
 		--metaspades) metaspades="--metaspades"; shift 1;;
 		--complete) brat_type="--complete"; shift 1;;
 		--reduced) brat_type="--reduced"; shift 1;;
@@ -105,7 +106,7 @@ if [ "$active_module" = preprocess ]; then
 	do 
 	r1="$(cat "$metadata_table" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_1.f')"; 
 	r2="$(cat "$metadata_table" | awk -F '\t' '{ if ($1 == "'$i'") {print} }' | cut -f2 | grep '_2.f')";
-	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/$module_script --metaspades --skip-bmtagger -1 $r1 -2 $r2 -o $output_folder/$i -t $num_cores -m $memory;
+	bash -i $MUDOGER_CONDA_ENVIRONMENT_PATH/bin/$module_script --metaspades --skip-bmtagger -1 $r1 -2 $r2 -o $output_folder/$i -t $num_cores -m $memory --m-spec $memory_specified;
 
 	done
 	
