@@ -24,19 +24,24 @@ output_folder=sys.argv[3]
 ### 1 get bins with same taxonomy and dump inside dictionary
 f=open(taxonomy_file,"r")
 cluster_dic={}
-while True:					# open and read file
-    l=f.readline()			# for each line, if its a bin (to skip the header)
-    if not l: break			# get the taxonomy and put in a dictionary
+while True:
+    l=f.readline()
+    if not l: break
     else:
-        
-        if "bin" in l:				# key = taxonomy
-            info=l.split("\t")			# value = bins
+	try:
+            info=l.split("\t")
             bin,tax=info[0],info[1]
-            if tax not in cluster_dic:
-                cluster_dic[tax]=[bin]
-            else:
-                cluster_dic[tax].append(bin) 	# put on the same key, bins with same taxonomy	
+        except ValueError:
+            print(f"Skipping malformed line: {l.strip()}")
+            continue
+
+        # Removed the "if 'bin' in l:" condition
+        if tax not in cluster_dic:
+            cluster_dic[tax]=[bin]
+        else:
+            cluster_dic[tax].append(bin)        
 f.close()
+
 #for k,v in cluster_dic.items():
 #	print k,v
 
