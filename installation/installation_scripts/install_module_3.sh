@@ -59,7 +59,8 @@ then :;
 else
 conda create -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
 mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env python=3 bioconda::prodigal bioconda::hmmer ostrokach::gzip conda-forge::tar conda-forge::biopython conda-forge::matplotlib anaconda::wget anaconda::pandas anaconda::seaborn anaconda::numpy anaconda::scikit-learn==0.21.3
-mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env bioconda::vibrant==1.2.0
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env bioconda::vibrant==1.2.1
+mamba install -y --prefix $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env anaconda::numpy=1.19.5
 conda activate $MUDOGER_DEPENDENCIES_ENVS_PATH/vibrant_env
 pip install pickle-mixin
 
