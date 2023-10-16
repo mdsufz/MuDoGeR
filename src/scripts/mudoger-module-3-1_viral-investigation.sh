@@ -25,8 +25,7 @@ then echo -e '\n----> Vibrant investigation is done\n'
 else
 echo "-----> START VIBRANT (1/4)"
 conda activate "$MUDOGER_DEPENDENCIES_ENVS_PATH"/vibrant_env
-conda_vib="$(echo $PATH | cut -f1 -d':')"
-VIBRANT_FILES="$(echo $PATH | sed "s/:/\n/g" | grep vibrant_env  | sed "s/bin/share\/vibrant-1.2.0\/files/g")"
+VIBRANT_FILES="${CONDA_PREFIX}/share/vibrant-1.2.1/db/files"
 VIBRANT_run.py -i $assembly -folder "$output_folder"/vibrant -t $num_cores -m "$VIBRANT_FILES" -d $DATABASES_LOCATION/vibrant
 # fetch results
 cat "$output_folder"/vibrant/VIBRANT_final_assembly/VIBRANT_phages_final_assembly/final_assembly.phages_combined.fna | 
