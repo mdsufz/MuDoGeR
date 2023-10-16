@@ -93,10 +93,10 @@ if [ "$active_module" = "all" ]; then
     wget http://fileshare.csb.univie.ac.at/vog/vog94/vog.hmm.tar.gz -P $VIBRANT_DB_DIR
     else :; fi
     if [ ! -f $VIBRANT_DB_DIR/Pfam-A.hmm.gz ]; then
-    wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz -P $VIBRANT_DB_DIR
+    wget https://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam36.0/Pfam-A.hmm.gz -P $VIBRANT_DB_DIR
     else :; fi
     if [ ! -f $VIBRANT_DB_DIR/profiles.tar.gz ]; then
-    wget ftp://ftp.genome.jp/pub/db/kofam/archives/2019-08-10/profiles.tar.gz -P $VIBRANT_DB_DIR
+    wget https://www.genome.jp/ftp/db/kofam/archives/2023-08-01/profiles.tar.gz -P $VIBRANT_DB_DIR
     else :; fi
     #echo 'downloaded'
     tar -xzf $VIBRANT_DB_DIR/vog.hmm.tar.gz -C $VIBRANT_DB_DIR
