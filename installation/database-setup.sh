@@ -93,7 +93,7 @@ if [ "$active_module" = "all" ]; then
     wget http://fileshare.csb.univie.ac.at/vog/vog94/vog.hmm.tar.gz -P $VIBRANT_DB_DIR
     else :; fi
     if [ ! -f $VIBRANT_DB_DIR/Pfam-A.hmm.gz ]; then
-    wget https://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam36.0/Pfam-A.hmm.gz -P $VIBRANT_DB_DIR
+    wget https://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz -P $VIBRANT_DB_DIR
     else :; fi
     if [ ! -f $VIBRANT_DB_DIR/profiles.tar.gz ]; then
     wget https://www.genome.jp/ftp/db/kofam/archives/2023-08-01/profiles.tar.gz -P $VIBRANT_DB_DIR
@@ -115,7 +115,7 @@ if [ "$active_module" = "all" ]; then
     rm -f  $VIBRANT_DB_DIR/VOG2*.hmm
     rm -rf $VIBRANT_DB_DIR/profiles
     #echo 'clean'
-    prof_names="$(echo $PATH | sed "s/:/\n/g" | grep vibrant | sed "s/bin/share\/vibrant-1.2.0\/databases\/profile_names/g")"
+    prof_names="${CONDA_PREFIX}/share/vibrant-1.2.1/db/databases/profile_names"
     cp -r $prof_names $VIBRANT_DB_DIR
     hmmfetch -o $VIBRANT_DB_DIR/VOGDB94_phage.HMM -f $VIBRANT_DB_DIR/vog_temp.HMM $VIBRANT_DB_DIR/profile_names/VIBRANT_vog_profiles.txt
     hmmfetch -o $VIBRANT_DB_DIR/KEGG_profiles_prokaryotes.HMM -f $VIBRANT_DB_DIR/kegg_temp.HMM $VIBRANT_DB_DIR/profile_names/VIBRANT_kegg_profiles.txt
