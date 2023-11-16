@@ -140,9 +140,10 @@ if [ "$active_module" = "all" ]; then
     then
     mkdir -p $WISH_DB_DIR
     wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.1.1.genomic.fna.gz" -P $WISH_DB_DIR
-    wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.2.1.genomic.fna.gz" -P $WISH_DB_DIR
-    wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.3.1.genomic.fna.gz" -P $WISH_DB_DIR
-    wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.4.1.genomic.fna.gz" -P $WISH_DB_DIR
+    #old links
+    #wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.2.1.genomic.fna.gz" -P $WISH_DB_DIR
+    #wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.3.1.genomic.fna.gz" -P $WISH_DB_DIR
+    #wget "https://ftp.ncbi.nlm.nih.gov/refseq/release/viral/viral.4.1.genomic.fna.gz" -P $WISH_DB_DIR
 
     gunzip $WISH_DB_DIR/*
     cat $WISH_DB_DIR/* > $WISH_DB_DIR/viral_refseq.fna
@@ -158,7 +159,7 @@ if [ "$active_module" = "all" ]; then
     done
 
     mv $WISH_DB_DIR/viruses* $WISH_DB_DIR/phages
-    rm -rf $WISH_DB_DIR/viral.1.1.genomic.fna  $WISH_DB_DIR/viral.2.1.genomic.fna  $WISH_DB_DIR/viral.3.1.genomic.fna  $WISH_DB_DIR/viral.4.1.genomic.fna $WISH_DB_DIR/viral_refseq.fna
+    rm -rf $WISH_DB_DIR/viral.1.1.genomic.fna  #$WISH_DB_DIR/viral.2.1.genomic.fna  $WISH_DB_DIR/viral.3.1.genomic.fna  $WISH_DB_DIR/viral.4.1.genomic.fna $WISH_DB_DIR/viral_refseq.fna
     touch $database_location/.wish_db_finished
     else
     echo "-> your Wish database is ready"
