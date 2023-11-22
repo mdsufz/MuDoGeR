@@ -22,7 +22,7 @@ This Github should help you install and run the complete MuDoGeR pipeline, as we
 * Secondly, read the [System requirements](https://github.com/mdsufz/MuDoGeR#system-requirements) and make sure you have the resources for the modules you want to use.
 * Then, read the [Installation](https://github.com/mdsufz/MuDoGeR#installation) and follow its steps.
 * Read the [overview descriptions](https://github.com/mdsufz/MuDoGeR#modules-overview) of the MuDoGeR modules you intend to use.
-* If you want a quick run, read the [MuDoGeR simplified usage](https://github.com/mdsufz/MuDoGeR#mudoger-simplified-usage)
+* If you want a quick run, read the [MuDoGeR simplified usage](https://github.com/mdsufz/MuDoGeR#mudoger-singularity-execution)
 * Read the [understanding main outputs](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md) file. To understand and find relevant outputs created by MuDoGeR.
 * Read the [MuDoGeR Manual](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) for a more detailed description of the used modules and their output files
 
@@ -44,7 +44,7 @@ Furthermore, in **Module 5**: **Relative Abundance**, users can automatically ca
 * Instructions for using the **MuDoGeR** can be found in the following hyperlink: [Manual MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 * Information about the system requirements of the **MuDoGeR** can be found in the following hyperlink: [System requirements](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#system-requirements).
 * Detailed instructions for the installation of the **MuDoGeR** tools can be found in the following hyperlink: [Installation](https://github.com/mdsufz/MuDoGeR/blob/master/README.md#installation).
-* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: [MuDoGeR simplified usage](https://github.com/mdsufz/MuDoGeR#mudoger-simplified-usage).
+* The simplified usage of the **MuDoGeR** can be found in the following hyperlink: [MuDoGeR simplified usage](https://github.com/mdsufz/MuDoGeR#mudoger-singularity-execution).
 * To use the individual working conda environments created by MuDoGeR for each of the used tools, go [here](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md#using-the-tools-independently).
 
 
@@ -71,7 +71,7 @@ Otherwise, please follow the instructions on the official [Singularity installat
 
 **1 - Download MuDoGeR ready-to-use container**
 
-Once you have Singularity installed, you can simply download the MuDoGeR container. Remember that the container's usage is slightly different. Please refer to the Singularity container [usage](https://github.com/mdsufz/MuDoGeR#mudoger-singularity-usage-notes)
+Once you have Singularity installed, you can simply download the MuDoGeR container. Remember that the container's usage is slightly different. Please refer to the Singularity container [usage](https://github.com/mdsufz/MuDoGeR#mudoger-singularity-execution)
 
 **Click [HERE](https://e.pcloud.link/publink/show?code=XZh9c2Zk5C18BQFOSLI5HHUB11vkHHjPPgk) to be redirected to the download page.**
 
@@ -365,7 +365,7 @@ Module 4 (Eukaryotes recovery) has one particularity. The [**GeneMark**](https:/
     └── uvigs_mapping
 ```
 
-A more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
+If you want to use the conda environment installation, a more detailed tutorial for the MuDoGeR can be found in [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md).
 
 # MuDoGeR as Wrapper and its Critical Use
 
