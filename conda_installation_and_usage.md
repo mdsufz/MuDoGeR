@@ -115,4 +115,81 @@ The user can then follow the instructions from the tool developer to update the 
 
 Some tools used in module 4 (GENEMARK and MAKER2) require the user to provide information to the developers. Consequently, we could not implement an automatic installation and setup script. However, we created a tutorial to finish the module 4 setup.
 
-The module 4 setup tutorial is found in [Module 4 setup](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md)
+The module 4 setup tutorial is found in [Module 4 setup](https://github.com/mdsufz/MuDoGeR/blob/master/installation/genemark_maker2_installation.md).
+
+# MuDoGeR simplified usage - with conda environments installation
+
+Currently, MuDoGeR v1.0 only works with paired-end ILLUMINA sequences. Future updates will add tools to work with long-read sequencing samples.
+MuDoGeR was designed to work module by module, starting from pre-process (Module 1). Additional modularity will be added in future updates to allow the user to run specific parts of the pipeline. However, you can always use the tools independently by using the created conda environments by MuDoGeR. You can follow the instructions [here](https://github.com/mdsufz/MuDoGeR/blob/master/understand_main_outputs.md#using-the-tools-independently).
+
+**MuDoGeR** is an easy-to-use wrapper of several tools organized within modules. The individual modules can be called independently.
+
+The pipeline requires, as input, a metadata table in tsv format containing the samples to be processed and the path to its raw sequence reads. The metadata file should have the sample name and the path to the forward reads file from the sample in one line, followed by the same sample name and the path to the reverse reads from the sample. An example metadata file is as follows:
+```
+#Show the content of the metadata.tsv file
+$ cat metadata.tsv
+
+EA_ERX4593008   /path/to/EA_ERX4593008/raw_reads_1.fastq
+EA_ERX4593008   /path/to/EA_ERX4593008/raw_reads_2.fastq
+EA_ERX4593009   /path/to/EA_ERX4593009/raw_reads_1.fastq
+EA_ERX4593009   /path/to/EA_ERX4593009/raw_reads_2.fastq
+EA_ERX4593010   /path/to/EA_ERX4593010/raw_reads_1.fastq
+EA_ERX4593010   /path/to/EA_ERX4593010/raw_reads_2.fastq
+EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_1.fastq
+EA_ERX4593011   /path/to/EA_ERX4593011/raw_reads_2.fastq
+
+```
+
+## Please note that the forward sequencing reads file must end in "_1.fastq" and the reverse in "_2.fastq"! 
+
+MuDoGeR is designed to run all multi-domain genome recovery pipelines entirely. In order for MuDoGeR to work automatically, from start to finish, we use a specific folder structure. Please read the [Manual_MuDoGeR](https://github.com/mdsufz/MuDoGeR/blob/master/Manual_MuDoGeR.md) if you would like to manipulate MuDoGeR.
+
+## MuDoGeR is installed via conda
+
+Once MuDoGeR is installed, you can test it as follows:
+```console
+$ conda activate mudoger_env
+$ mudoger --help
+
+
+	███    ███ ██    ██ ██████   ██████   ██████  ███████ ██████  
+	████  ████ ██    ██ ██   ██ ██    ██ ██       ██      ██   ██ 
+	██ ████ ██ ██    ██ ██   ██ ██    ██ ██   ███ █████   ██████  
+	██  ██  ██ ██    ██ ██   ██ ██    ██ ██    ██ ██      ██   ██ 
+	██      ██  ██████  ██████   ██████   ██████  ███████ ██   ██ 
+			Multi-Domain Genome Recovery
+				Version 1.0.1
+
+
+
+Mudoger v=1.0.1
+Usage: mudoger --module module_name --meta metadata_table.tsv -o output_folder [module_options]
+
+  --meta              		 Metadata table with your samples, as explained in the github documentation
+  --module preprocess            Run all steps from module 1 (read_qc, kmer memory prediction and assembly)
+  --module prokaryotes           Recovery of Prokaryotic Metagenome-Assembled Genomes
+  --module viruses		 Recovery of Uncultivated Viral Genomes
+  --module eukaryotes		 Recovery of Eukaryotic Metagenome-Assembled Bins
+  --module abundance_tables	 pMAGs/UViGs/eMABs coverage and abundance calculation
+          	type             can be --reduced (default) , --complete or --genes
+          	mapping_type	 can be --absolute-values (default), --coverage, and --relative-abundance
+  --help | -h		         show this help message
+  --version | -v	         show mudoger version
+
+```
+
+A simplified use of MuDoGeR can be done as follows:
+
+```console
+
+$ mudoger --module preprocess --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 -m 100
+
+$ mudoger --module prokaryotes --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
+
+$ mudoger --module viruses --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
+
+$ mudoger --module eukaryotes --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20
+
+$ mudoger --module abundance_tables --meta /path/to/metadata.tsv -o /path/to/output/folder -t 20 --reduced --coverage --relative-abundance
+
+```
