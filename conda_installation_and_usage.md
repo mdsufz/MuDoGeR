@@ -1,4 +1,4 @@
-Installing MuDoGeR via conda can help the user to utilize only part of the workflow. However, it is more recommended for those with a deeper understanding of how conda environmets works, as manual adjustments may need to be made.
+Installing MuDoGeR via conda can help the user to utilize only part of the workflow. However, it is recommended for those with a deeper understanding of how conda environments work, as manual adjustments may need to be made.
 
 ## Installation using Conda/Mamba
 **1 - Install miniconda**
