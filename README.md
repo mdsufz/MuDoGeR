@@ -77,7 +77,7 @@ Once you have Singularity installed, you can simply download the MuDoGeR contain
 
 Following, you can click on Direct Download or right-click it and "copy link". Once with the copied link, you can use ```wget``` on your platform.
 
-**2 - Download MuDoGeR Singularity usage scripts
+**2 - Download MuDoGeR Singularity usage scripts**
 
 To download the ```mudoger_singularity.sh``` script to run the MuDoGeR singularity container run:
 
