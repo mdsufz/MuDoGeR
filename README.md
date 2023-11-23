@@ -380,7 +380,7 @@ MuDoGeR is a wrapper designed to streamline the genome assembly process from met
 
 # Citing
 
-A preprint of the manuscript can be found in [Biorxiv](https://www.biorxiv.org/content/10.1101/2022.06.21.496983v3.full)
+Rocha, U., Coelho Kasmanas, J., Kallies, R., Saraiva, J. P., Toscan, R. B., Štefanič, P., Bicalho, M. F., Borim Correa, F., Baştürk, M. N., Fousekis, E., Viana Barbosa, L. M., Plewka, J., Probst, A. J., Baldrian, P., Stadler, P. F., & (2023). MuDoGeR: Multi-Domain Genome recovery from metagenomes made easy. Molecular Ecology Resources, 00, 1–12. [https://doi.org/10.1111/1755-0998.13904](https://onlinelibrary.wiley.com/doi/10.1111/1755-0998.13904)
 
 # Acknowledgements
 
