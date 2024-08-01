@@ -64,17 +64,17 @@ if (is.null(opt$directory)){
 # Load libraries
 message("Loading libraries ...")
 #suppressPackageStartupMessages(library(reshape2),lib.loc="/data/msb/tools/anisplitter/packages/")
-library(reshape2,lib.loc="/data/msb/tools/anisplitter/packages_new/")
+library(reshape2)
 #suppressPackageStartupMessages(library(ggplot2))
-library(ggplot2,lib.loc="/data/msb/tools/anisplitter/packages_new/")
+library(ggplot2)
 suppressPackageStartupMessages(library(dplyr))
 #library(dplyr,lib.loc="/data/msb/tools/anisplitter/packages/")
 #suppressPackageStartupMessages(library(dendextend))
-library(dendextend,lib.loc="/data/msb/tools/anisplitter/packages_new/")
+library(dendextend)
 #suppressPackageStartupMessages(library(cluster))
-library(cluster,lib.loc="/data/msb/tools/anisplitter/packages_new/")
+library(cluster)
 #suppressPackageStartupMessages(library(fpc)) # clusterboot function
-library(fpc,lib.loc="/data/msb/tools/anisplitter/packages_new/") # clusterboot function
+library(fpc) # clusterboot function
 
 
 
