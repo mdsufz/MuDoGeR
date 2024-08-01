@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-library(optparse,lib.loc="/data/msb/tools/anisplitter/packages_new/")
+library(optparse)
 
 
 ###### ARGUMENT PARSING ######
