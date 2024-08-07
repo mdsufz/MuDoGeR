@@ -2,7 +2,7 @@ name: Repository Traffic
 
 on:
   push:
-    branches: [ main ]  # or your default branch name
+    branches: [ master ]  # or your default branch name
   schedule:
     - cron: "0 0 * * 0"  # Runs at 00:00 every Sunday
 
